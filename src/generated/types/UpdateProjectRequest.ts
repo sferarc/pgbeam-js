@@ -54,4 +54,9 @@ export type UpdateProjectRequest = {
      * @type integer | undefined, int32
     */
     max_connections?: number;
+    /**
+     * @description IP allowlist as CIDR ranges. Empty array means allow all.\n
+     * @type array | undefined
+    */
+    allowed_cidrs?: string[];
 };

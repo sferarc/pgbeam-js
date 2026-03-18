@@ -66,6 +66,20 @@ export type Database = {
     */
     pool_region?: string;
     /**
+     * @description Query timeout in milliseconds. When set (> 0), the proxy sends SET statement_timeout on upstream connections. 0 means disabled (default).\n
+     * @minLength 0
+     * @maxLength 300000
+     * @default 0
+     * @type integer | undefined
+    */
+    query_timeout_ms?: number;
+    /**
+     * @description When enabled and replicas are configured, SELECT queries automatically route to read replicas without requiring the @pgbeam:replica SQL annotation.\n
+     * @default false
+     * @type boolean | undefined
+    */
+    auto_read_routing?: boolean;
+    /**
      * @description Query cache configuration.
      * @type object
     */

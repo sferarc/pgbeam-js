@@ -77,6 +77,11 @@ export type Project = {
     */
     max_connections?: number;
     /**
+     * @description IP allowlist as CIDR ranges (e.g., [\"10.0.0.0/8\", \"203.0.113.5/32\"]). When non-empty, only connections from matching IPs are accepted. Empty array means all IPs are allowed (default).\n
+     * @type array | undefined
+    */
+    allowed_cidrs?: string[];
+    /**
      * @description Number of databases attached to this project.
      * @type integer | undefined
     */

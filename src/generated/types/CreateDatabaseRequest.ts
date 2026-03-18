@@ -64,6 +64,20 @@ export type CreateDatabaseRequest = {
     */
     pool_region?: string;
     /**
+     * @description Query timeout in milliseconds. 0 means disabled (default).\n
+     * @minLength 0
+     * @maxLength 300000
+     * @default 0
+     * @type integer | undefined
+    */
+    query_timeout_ms?: number;
+    /**
+     * @description Auto-route SELECT queries to read replicas.\n
+     * @default false
+     * @type boolean | undefined
+    */
+    auto_read_routing?: boolean;
+    /**
      * @description Query cache configuration.
      * @type object | undefined
     */
