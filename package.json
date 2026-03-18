@@ -1,0 +1,54 @@
+{
+  "name": "pgbeam",
+  "version": "0.2.2",
+  "description": "TypeScript SDK for the PgBeam API — globally distributed PostgreSQL proxy platform",
+  "type": "module",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./operations": {
+      "import": {
+        "types": "./dist/operations.d.mts",
+        "default": "./dist/operations.mjs"
+      },
+      "require": {
+        "types": "./dist/operations.d.cts",
+        "default": "./dist/operations.cjs"
+      }
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "pgbeam",
+    "postgresql",
+    "postgres",
+    "proxy",
+    "connection-pooling",
+    "query-caching",
+    "sdk",
+    "api-client"
+  ],
+  "homepage": "https://pgbeam.com",
+  "scripts": {
+    "build": "bunchee",
+    "prepublishOnly": "pnpm build"
+  },
+  "devDependencies": {}
+}

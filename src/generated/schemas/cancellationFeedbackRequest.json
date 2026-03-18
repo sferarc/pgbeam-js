@@ -1,0 +1,1 @@
+{"type":"object","description":"Request body for capturing cancellation feedback from a user.","properties":{"reason":{"type":"string","description":"Predefined cancellation reason."},"feedback":{"type":"string","description":"Free-text feedback from the user."}},"x-readme-ref-name":"CancellationFeedbackRequest"}

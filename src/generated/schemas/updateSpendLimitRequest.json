@@ -1,0 +1,1 @@
+{"type":"object","description":"Request body for updating an organization's monthly spend cap.","properties":{"spend_limit":{"type":"number","format":"double","nullable":true,"description":"Monthly spend limit in dollars. Null to remove the limit."}},"x-readme-ref-name":"UpdateSpendLimitRequest"}
