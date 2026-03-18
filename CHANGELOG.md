@@ -1,5 +1,11 @@
 # pgbeam
 
+## 0.2.4
+
+### Patch Changes
+
+- bbab027: Add comprehensive test coverage across backend and frontend
+
 ## 0.2.3
 
 ### Patch Changes
