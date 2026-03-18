@@ -1,5 +1,13 @@
 # pgbeam
 
+## 0.2.3
+
+### Patch Changes
+
+- 0115d96: Add IP allowlisting, query timeout, and auto read routing
+- 1dfa672: Add MCP (Model Context Protocol) server with Streamable HTTP
+  transport
+
 ## 0.2.2
 
 ### Patch Changes
