@@ -1,5 +1,11 @@
 # pgbeam
 
+## 0.2.5
+
+### Patch Changes
+
+- 7d6e350: feat: auto-generate provider docs and IaC code from OpenAPI spec
+
 ## 0.2.4
 
 ### Patch Changes
