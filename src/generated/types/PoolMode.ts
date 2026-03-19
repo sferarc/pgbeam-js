@@ -14,5 +14,6 @@ export type PoolModeEnumKey = (typeof poolModeEnum)[keyof typeof poolModeEnum];
 
 /**
  * @description Connection pool mode.
+ * @example transaction
 */
 export type PoolMode = PoolModeEnumKey;

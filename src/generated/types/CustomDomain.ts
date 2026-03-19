@@ -3,6 +3,7 @@
 * Do not edit manually.
 */
 
+import type { DnsInstructions } from "./DnsInstructions";
 
 /**
  * @description Custom database hostname attached to a project.
@@ -44,41 +45,10 @@ export type CustomDomain = {
     */
     dns_verification_token: string;
     /**
-     * @description DNS records the user needs to create.
+     * @description DNS records the user needs to create for domain verification.
      * @type object | undefined
     */
-    dns_instructions?: {
-        /**
-         * @description The CNAME record host.
-         * @type string | undefined
-        */
-        cname_host?: string;
-        /**
-         * @description The CNAME record target.
-         * @type string | undefined
-        */
-        cname_target?: string;
-        /**
-         * @description The TXT record host for verification.
-         * @type string | undefined
-        */
-        txt_host?: string;
-        /**
-         * @description The TXT record value for verification.
-         * @type string | undefined
-        */
-        txt_value?: string;
-        /**
-         * @description The CNAME record host for ACME TLS certificate issuance.
-         * @type string | undefined
-        */
-        acme_cname_host?: string;
-        /**
-         * @description The CNAME target for ACME challenge delegation.
-         * @type string | undefined
-        */
-        acme_cname_target?: string;
-    };
+    dns_instructions?: DnsInstructions;
     /**
      * @description When the custom domain was created.
      * @type string, date-time

@@ -17,5 +17,6 @@ export type SSLModeEnumKey = (typeof SSLModeEnum)[keyof typeof SSLModeEnum];
 
 /**
  * @description PostgreSQL SSL connection mode.
+ * @example require
 */
 export type SSLMode = SSLModeEnumKey;

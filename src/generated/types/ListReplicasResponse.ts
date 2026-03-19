@@ -14,4 +14,9 @@ export type ListReplicasResponse = {
      * @type array
     */
     replicas: Replica[];
+    /**
+     * @description Opaque token for cursor-based pagination.
+     * @type string | undefined
+    */
+    next_page_token?: string;
 };

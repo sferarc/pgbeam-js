@@ -20,6 +20,7 @@ export type { DeleteCustomDomain204, DeleteCustomDomain400, DeleteCustomDomain40
 export type { DeleteDatabase204, DeleteDatabase400, DeleteDatabase401, DeleteDatabase403, DeleteDatabase404, DeleteDatabase429, DeleteDatabaseMutation, DeleteDatabaseMutationResponse, DeleteDatabasePathParams } from "./types/DeleteDatabase";
 export type { DeleteProject204, DeleteProject400, DeleteProject401, DeleteProject403, DeleteProject404, DeleteProject429, DeleteProjectMutation, DeleteProjectMutationResponse, DeleteProjectPathParams } from "./types/DeleteProject";
 export type { DeleteReplica204, DeleteReplica400, DeleteReplica401, DeleteReplica403, DeleteReplica404, DeleteReplica429, DeleteReplicaMutation, DeleteReplicaMutationResponse, DeleteReplicaPathParams } from "./types/DeleteReplica";
+export type { DnsInstructions } from "./types/DnsInstructions";
 export type { Error } from "./types/Error";
 export type { ExportAccountData200, ExportAccountData401, ExportAccountData404, ExportAccountData429, ExportAccountDataQuery, ExportAccountDataQueryResponse } from "./types/ExportAccountData";
 export type { GetDatabase200, GetDatabase400, GetDatabase401, GetDatabase403, GetDatabase404, GetDatabase429, GetDatabasePathParams, GetDatabaseQuery, GetDatabaseQueryResponse } from "./types/GetDatabase";
