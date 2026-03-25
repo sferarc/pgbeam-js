@@ -62,21 +62,21 @@ export type Project = {
      * @maxLength 2147483647
      * @type integer | undefined, int32
     */
-    queries_per_second?: number;
+    readonly queries_per_second?: number;
     /**
      * @description Burst allowance above the steady-state rate. 0 uses queries_per_second as burst.
      * @minLength 0
      * @maxLength 2147483647
      * @type integer | undefined, int32
     */
-    burst_size?: number;
+    readonly burst_size?: number;
     /**
      * @description Maximum concurrent proxy connections. 0 means unlimited.
      * @minLength 0
      * @maxLength 2147483647
      * @type integer | undefined, int32
     */
-    max_connections?: number;
+    readonly max_connections?: number;
     /**
      * @description IP filtering rules as CIDR ranges with optional labels. When non-empty, only connections from matching IPs are accepted. Empty array means all IPs are allowed (default). Both IPv4 (e.g. 10.0.0.0/8) and IPv6 (e.g. 2001:db8::/32) are supported.\n
      * @type array | undefined

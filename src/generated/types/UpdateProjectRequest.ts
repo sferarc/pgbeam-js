@@ -35,27 +35,6 @@ export type UpdateProjectRequest = {
     */
     status?: ProjectStatus;
     /**
-     * @description Maximum queries per second. 0 means unlimited.
-     * @minLength 0
-     * @maxLength 2147483647
-     * @type integer | undefined, int32
-    */
-    queries_per_second?: number;
-    /**
-     * @description Burst allowance above steady-state rate.
-     * @minLength 0
-     * @maxLength 2147483647
-     * @type integer | undefined, int32
-    */
-    burst_size?: number;
-    /**
-     * @description Maximum concurrent proxy connections. 0 means unlimited.
-     * @minLength 0
-     * @maxLength 2147483647
-     * @type integer | undefined, int32
-    */
-    max_connections?: number;
-    /**
      * @description IP filtering rules as CIDR ranges with optional labels. Empty array means allow all. Both IPv4 and IPv6 CIDR notation are supported.\n
      * @type array | undefined
     */
