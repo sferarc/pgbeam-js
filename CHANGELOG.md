@@ -1,5 +1,13 @@
 # pgbeam
 
+## 0.2.6
+
+### Patch Changes
+
+- 46b2b4b: feat: redesign IP filtering with labels, IPv6, and structured CIDR
+  input
+- bc47c25: Redesign rate limits page: plan-driven limits with slider overrides
+
 ## 0.2.5
 
 ### Patch Changes
