@@ -1,1 +1,0 @@
-{"type":"string","enum":["session","transaction","statement"],"description":"Connection pool mode.","example":"transaction","x-readme-ref-name":"PoolMode"}

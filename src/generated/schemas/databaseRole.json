@@ -1,1 +1,0 @@
-{"type":"string","enum":["primary","replica"],"description":"Database role. Primary receives writes, replicas receive reads.","default":"primary","x-readme-ref-name":"DatabaseRole"}

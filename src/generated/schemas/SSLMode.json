@@ -1,1 +1,0 @@
-{"type":"string","enum":["disable","allow","prefer","require","verify-ca","verify-full"],"description":"PostgreSQL SSL connection mode.","example":"require","x-readme-ref-name":"SSLMode"}

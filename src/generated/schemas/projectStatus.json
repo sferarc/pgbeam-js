@@ -1,1 +1,0 @@
-{"type":"string","enum":["active","suspended","deleted"],"description":"Project lifecycle status.","x-readme-ref-name":"ProjectStatus"}
