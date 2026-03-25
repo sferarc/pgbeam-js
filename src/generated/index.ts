@@ -3,6 +3,7 @@ export type { CacheConfig } from "./types/CacheConfig";
 export type { CacheRuleEntry, CacheRuleEntryQueryTypeEnumKey, CacheRuleEntryRecommendationEnumKey } from "./types/CacheRuleEntry";
 export type { CacheSummary } from "./types/CacheSummary";
 export type { CancellationFeedbackRequest } from "./types/CancellationFeedbackRequest";
+export type { CidrEntry } from "./types/CidrEntry";
 export type { CreateCustomDomain201, CreateCustomDomain400, CreateCustomDomain401, CreateCustomDomain403, CreateCustomDomain404, CreateCustomDomain409, CreateCustomDomain429, CreateCustomDomainMutation, CreateCustomDomainMutationRequest, CreateCustomDomainMutationResponse, CreateCustomDomainPathParams } from "./types/CreateCustomDomain";
 export type { CreateCustomDomainRequest } from "./types/CreateCustomDomainRequest";
 export type { CreateDatabase201, CreateDatabase400, CreateDatabase401, CreateDatabase403, CreateDatabase404, CreateDatabase429, CreateDatabaseMutation, CreateDatabaseMutationRequest, CreateDatabaseMutationResponse, CreateDatabasePathParams } from "./types/CreateDatabase";

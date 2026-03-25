@@ -3,6 +3,7 @@
 * Do not edit manually.
 */
 
+import type { CidrEntry } from "./CidrEntry";
 import type { ProjectStatus } from "./ProjectStatus";
 
 /**
@@ -55,8 +56,8 @@ export type UpdateProjectRequest = {
     */
     max_connections?: number;
     /**
-     * @description IP allowlist as CIDR ranges. Empty array means allow all.\n
+     * @description IP filtering rules as CIDR ranges with optional labels. Empty array means allow all. Both IPv4 and IPv6 CIDR notation are supported.\n
      * @type array | undefined
     */
-    allowed_cidrs?: string[];
+    allowed_cidrs?: CidrEntry[];
 };

@@ -3,6 +3,7 @@
 * Do not edit manually.
 */
 
+import type { CidrEntry } from "./CidrEntry";
 import type { ProjectStatus } from "./ProjectStatus";
 
 export const projectCloudEnum = {
@@ -77,10 +78,10 @@ export type Project = {
     */
     max_connections?: number;
     /**
-     * @description IP allowlist as CIDR ranges (e.g., [\"10.0.0.0/8\", \"203.0.113.5/32\"]). When non-empty, only connections from matching IPs are accepted. Empty array means all IPs are allowed (default).\n
+     * @description IP filtering rules as CIDR ranges with optional labels. When non-empty, only connections from matching IPs are accepted. Empty array means all IPs are allowed (default). Both IPv4 (e.g. 10.0.0.0/8) and IPv6 (e.g. 2001:db8::/32) are supported.\n
      * @type array | undefined
     */
-    allowed_cidrs?: string[];
+    allowed_cidrs?: CidrEntry[];
     /**
      * @description Number of databases attached to this project.
      * @type integer | undefined
