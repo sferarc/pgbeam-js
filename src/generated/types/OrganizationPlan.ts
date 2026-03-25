@@ -17,7 +17,8 @@ export type OrganizationPlanPlanEnumKey = (typeof organizationPlanPlanEnum)[keyo
 export const organizationPlanBillingProviderEnum = {
     stripe: "stripe",
     vercel: "vercel",
-    aws: "aws"
+    aws: "aws",
+    manual: "manual"
 } as const;
 
 export type OrganizationPlanBillingProviderEnumKey = (typeof organizationPlanBillingProviderEnum)[keyof typeof organizationPlanBillingProviderEnum];
