@@ -7,28 +7,54 @@ import type { AccountExport } from "./AccountExport";
 import type { Error } from "./Error";
 
 /**
- * @description Account data export.
+ * @description Full account data export for privacy and data-portability requests.
+ * @type object
 */
-export type ExportAccountData200 = AccountExport;
+export type ExportAccountDataStatus200 = AccountExport;
 
 /**
- * @description Missing or invalid authentication.
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
 */
-export type ExportAccountData401 = Error;
+export type ExportAccountDataStatus401 = Error;
 
 /**
- * @description Resource not found.
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
 */
-export type ExportAccountData404 = Error;
+export type ExportAccountDataStatus404 = Error;
 
 /**
- * @description Rate limited. Try again later.
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
 */
-export type ExportAccountData429 = Error;
+export type ExportAccountDataStatus429 = Error;
 
-export type ExportAccountDataQueryResponse = ExportAccountData200;
-
-export type ExportAccountDataQuery = {
-    Response: ExportAccountData200;
-    Errors: ExportAccountData401 | ExportAccountData404 | ExportAccountData429;
+/**
+ * @type object
+*/
+export type ExportAccountDataRequestConfig = {
+    data?: never;
+    pathParams?: never;
+    queryParams?: never;
+    headerParams?: never;
+    /**
+     * @type string
+    */
+    url: "/v1/account/export";
 };
+
+/**
+ * @type object
+*/
+export type ExportAccountDataResponses = {
+    "200": ExportAccountDataStatus200;
+    "401": ExportAccountDataStatus401;
+    "404": ExportAccountDataStatus404;
+    "429": ExportAccountDataStatus429;
+};
+
+/**
+ * @description Union of all possible responses
+*/
+export type ExportAccountDataResponse = (ExportAccountDataStatus200 | ExportAccountDataStatus401 | ExportAccountDataStatus404 | ExportAccountDataStatus429);

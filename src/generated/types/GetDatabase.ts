@@ -6,55 +6,89 @@
 import type { Database } from "./Database";
 import type { Error } from "./Error";
 
-export type GetDatabasePathParams = {
+/**
+ * @description Unique project identifier (prefixed, e.g. prj_xxx).
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string
+*/
+export type GetDatabasePathProjectId = string;
+
+/**
+ * @description Unique database identifier (prefixed, e.g. db_xxx).
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string
+*/
+export type GetDatabasePathDatabaseId = string;
+
+/**
+ * @description Registered upstream PostgreSQL database for a project.
+ * @type object
+*/
+export type GetDatabaseStatus200 = Database;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetDatabaseStatus400 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetDatabaseStatus401 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetDatabaseStatus403 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetDatabaseStatus404 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetDatabaseStatus429 = Error;
+
+/**
+ * @type object
+*/
+export type GetDatabaseRequestConfig = {
+    data?: never;
     /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type object
+    */
+    pathParams: {
+        project_id: GetDatabasePathProjectId;
+        database_id: GetDatabasePathDatabaseId;
+    };
+    queryParams?: never;
+    headerParams?: never;
+    /**
      * @type string
     */
-    project_id: string;
-    /**
-     * @description Unique database identifier (prefixed, e.g. db_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    database_id: string;
+    url: `/v1/projects/${string}/databases/${string}`;
 };
 
 /**
- * @description Database found.
+ * @type object
 */
-export type GetDatabase200 = Database;
-
-/**
- * @description Invalid request parameters.
-*/
-export type GetDatabase400 = Error;
-
-/**
- * @description Missing or invalid authentication.
-*/
-export type GetDatabase401 = Error;
-
-/**
- * @description Operation not allowed by current plan limits.
-*/
-export type GetDatabase403 = Error;
-
-/**
- * @description Resource not found.
-*/
-export type GetDatabase404 = Error;
-
-/**
- * @description Rate limited. Try again later.
-*/
-export type GetDatabase429 = Error;
-
-export type GetDatabaseQueryResponse = GetDatabase200;
-
-export type GetDatabaseQuery = {
-    Response: GetDatabase200;
-    PathParams: GetDatabasePathParams;
-    Errors: GetDatabase400 | GetDatabase401 | GetDatabase403 | GetDatabase404 | GetDatabase429;
+export type GetDatabaseResponses = {
+    "200": GetDatabaseStatus200;
+    "400": GetDatabaseStatus400;
+    "401": GetDatabaseStatus401;
+    "403": GetDatabaseStatus403;
+    "404": GetDatabaseStatus404;
+    "429": GetDatabaseStatus429;
 };
+
+/**
+ * @description Union of all possible responses
+*/
+export type GetDatabaseResponse = (GetDatabaseStatus200 | GetDatabaseStatus400 | GetDatabaseStatus401 | GetDatabaseStatus403 | GetDatabaseStatus404 | GetDatabaseStatus429);

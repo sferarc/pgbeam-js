@@ -15,6 +15,7 @@ export type CreateProjectRequestCloudEnumKey = (typeof createProjectRequestCloud
 
 /**
  * @description Request body for creating a project and its primary database.
+ * @type object
 */
 export type CreateProjectRequest = {
     /**
@@ -22,6 +23,7 @@ export type CreateProjectRequest = {
      * @minLength 1
      * @maxLength 100
      * @pattern ^[^\x00]*$
+     * @example my-app
      * @type string
     */
     name: string;
@@ -29,17 +31,20 @@ export type CreateProjectRequest = {
      * @description Better Auth organization ID.
      * @minLength 1
      * @pattern ^[^\x00]+$
+     * @example org_abc123
      * @type string
     */
     org_id: string;
     /**
      * @description Optional project description.
      * @maxLength 500
+     * @example Production database proxy
      * @type string | undefined
     */
     description?: string;
     /**
      * @description User-defined labels to attach to the project.
+     * @example production,us-east-1
      * @type array | undefined
     */
     tags?: string[];
@@ -50,7 +55,7 @@ export type CreateProjectRequest = {
     */
     cloud?: CreateProjectRequestCloudEnumKey;
     /**
-     * @description Request body for registering an upstream database.
+     * @description Primary database. Created atomically with the project.
      * @type object
     */
     database: CreateDatabaseRequest;

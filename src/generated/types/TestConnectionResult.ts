@@ -3,9 +3,9 @@
 * Do not edit manually.
 */
 
-
 /**
  * @description Result of testing connectivity to an upstream database.
+ * @type object
 */
 export type TestConnectionResult = {
     /**

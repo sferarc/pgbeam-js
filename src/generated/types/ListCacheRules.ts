@@ -6,73 +6,106 @@
 import type { Error } from "./Error";
 import type { ListCacheRulesResponse } from "./ListCacheRulesResponse";
 
-export type ListCacheRulesPathParams = {
+/**
+ * @description Unique project identifier (prefixed, e.g. prj_xxx).
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string
+*/
+export type ListCacheRulesPathProjectId = string;
+
+/**
+ * @description Unique database identifier (prefixed, e.g. db_xxx).
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string
+*/
+export type ListCacheRulesPathDatabaseId = string;
+
+/**
+ * @description Maximum number of items to return (1-100, default 20).
+ * @minLength 1
+ * @maxLength 100
+ * @default 20
+ * @type integer | undefined
+*/
+export type ListCacheRulesQueryPageSize = number | undefined;
+
+/**
+ * @description Opaque token for cursor-based pagination.
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string | undefined
+*/
+export type ListCacheRulesQueryPageToken = string | undefined;
+
+/**
+ * @description Cursor-paginated cache-rule entries for a database.
+ * @type object
+*/
+export type ListCacheRulesStatus200 = ListCacheRulesResponse;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type ListCacheRulesStatus400 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type ListCacheRulesStatus401 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type ListCacheRulesStatus403 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type ListCacheRulesStatus404 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type ListCacheRulesStatus429 = Error;
+
+/**
+ * @type object
+*/
+export type ListCacheRulesRequestConfig = {
+    data?: never;
     /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type object
+    */
+    pathParams: {
+        project_id: ListCacheRulesPathProjectId;
+        database_id: ListCacheRulesPathDatabaseId;
+    };
+    /**
+     * @type object | undefined
+    */
+    queryParams?: {
+        page_size?: ListCacheRulesQueryPageSize;
+        page_token?: ListCacheRulesQueryPageToken;
+    };
+    headerParams?: never;
+    /**
      * @type string
     */
-    project_id: string;
-    /**
-     * @description Unique database identifier (prefixed, e.g. db_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    database_id: string;
-};
-
-export type ListCacheRulesQueryParams = {
-    /**
-     * @description Maximum number of items to return (1-100, default 20).
-     * @minLength 1
-     * @maxLength 100
-     * @default 20
-     * @type integer | undefined
-    */
-    page_size?: number;
-    /**
-     * @description Opaque token for cursor-based pagination.
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string | undefined
-    */
-    page_token?: string;
+    url: `/v1/projects/${string}/databases/${string}/cache-rules`;
 };
 
 /**
- * @description Cache rule entries.
+ * @type object
 */
-export type ListCacheRules200 = ListCacheRulesResponse;
-
-/**
- * @description Invalid request parameters.
-*/
-export type ListCacheRules400 = Error;
-
-/**
- * @description Missing or invalid authentication.
-*/
-export type ListCacheRules401 = Error;
-
-/**
- * @description Operation not allowed by current plan limits.
-*/
-export type ListCacheRules403 = Error;
-
-/**
- * @description Resource not found.
-*/
-export type ListCacheRules404 = Error;
-
-/**
- * @description Rate limited. Try again later.
-*/
-export type ListCacheRules429 = Error;
-
-export type ListCacheRulesQueryResponse = ListCacheRules200;
-
-export type ListCacheRulesQuery = {
-    Response: ListCacheRules200;
-    PathParams: ListCacheRulesPathParams;
-    QueryParams: ListCacheRulesQueryParams;
-    Errors: ListCacheRules400 | ListCacheRules401 | ListCacheRules403 | ListCacheRules404 | ListCacheRules429;
+export type ListCacheRulesResponses = {
+    "200": ListCacheRulesStatus200;
+    "400": ListCacheRulesStatus400;
+    "401": ListCacheRulesStatus401;
+    "403": ListCacheRulesStatus403;
+    "404": ListCacheRulesStatus404;
+    "429": ListCacheRulesStatus429;
 };

@@ -7,20 +7,24 @@ import type { DnsInstructions } from "./DnsInstructions";
 
 /**
  * @description Custom database hostname attached to a project.
+ * @type object
 */
 export type CustomDomain = {
     /**
      * @description Unique domain identifier (prefixed).
+     * @example dom_01h455vb4pex5vsknk084sn02q
      * @type string
     */
     id: string;
     /**
      * @description Owning project ID.
+     * @example prj_01h455vb4pex5vsknk084sn02q
      * @type string
     */
     project_id: string;
     /**
      * @description The custom domain name.
+     * @example db.example.com
      * @type string
     */
     domain: string;
@@ -31,12 +35,12 @@ export type CustomDomain = {
     verified: boolean;
     /**
      * @description When DNS verification was completed.
-     * @type string, date-time
+     * @type string
     */
     verified_at?: string | null;
     /**
      * @description When the TLS certificate expires.
-     * @type string, date-time
+     * @type string
     */
     tls_cert_expiry?: string | null;
     /**
@@ -51,12 +55,12 @@ export type CustomDomain = {
     dns_instructions?: DnsInstructions;
     /**
      * @description When the custom domain was created.
-     * @type string, date-time
+     * @type string
     */
     created_at: string;
     /**
      * @description When the custom domain was last updated.
-     * @type string, date-time
+     * @type string
     */
     updated_at: string;
 };

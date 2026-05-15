@@ -7,66 +7,100 @@ import type { Error } from "./Error";
 import type { UpdateCacheRuleRequest } from "./UpdateCacheRuleRequest";
 import type { UpdateCacheRuleResponse } from "./UpdateCacheRuleResponse";
 
-export type UpdateCacheRulePathParams = {
+/**
+ * @description Unique project identifier (prefixed, e.g. prj_xxx).
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string
+*/
+export type UpdateCacheRulePathProjectId = string;
+
+/**
+ * @description Unique database identifier (prefixed, e.g. db_xxx).
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string
+*/
+export type UpdateCacheRulePathDatabaseId = string;
+
+/**
+ * @description xxhash64 hex of the normalized SQL.
+ * @minLength 16
+ * @maxLength 16
+ * @pattern ^[a-f0-9]+$
+ * @type string
+*/
+export type UpdateCacheRulePathQueryHash = string;
+
+/**
+ * @description Response returned after updating a cache rule.
+ * @type object
+*/
+export type UpdateCacheRuleStatus200 = UpdateCacheRuleResponse;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type UpdateCacheRuleStatus400 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type UpdateCacheRuleStatus401 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type UpdateCacheRuleStatus403 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type UpdateCacheRuleStatus404 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type UpdateCacheRuleStatus429 = Error;
+
+/**
+ * @description Request body for updating cache behavior of a query shape.
+ * @type object
+*/
+export type UpdateCacheRuleData = UpdateCacheRuleRequest;
+
+/**
+ * @type object
+*/
+export type UpdateCacheRuleRequestConfig = {
+    data?: UpdateCacheRuleData;
     /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type object
+    */
+    pathParams: {
+        project_id: UpdateCacheRulePathProjectId;
+        database_id: UpdateCacheRulePathDatabaseId;
+        query_hash: UpdateCacheRulePathQueryHash;
+    };
+    queryParams?: never;
+    headerParams?: never;
+    /**
      * @type string
     */
-    project_id: string;
-    /**
-     * @description Unique database identifier (prefixed, e.g. db_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    database_id: string;
-    /**
-     * @description xxhash64 hex of the normalized SQL.
-     * @minLength 16
-     * @maxLength 16
-     * @pattern ^[a-f0-9]+$
-     * @type string
-    */
-    query_hash: string;
+    url: `/v1/projects/${string}/databases/${string}/cache-rules/${string}`;
 };
 
 /**
- * @description Cache rule updated.
+ * @type object
 */
-export type UpdateCacheRule200 = UpdateCacheRuleResponse;
-
-/**
- * @description Invalid request parameters.
-*/
-export type UpdateCacheRule400 = Error;
-
-/**
- * @description Missing or invalid authentication.
-*/
-export type UpdateCacheRule401 = Error;
-
-/**
- * @description Operation not allowed by current plan limits.
-*/
-export type UpdateCacheRule403 = Error;
-
-/**
- * @description Resource not found.
-*/
-export type UpdateCacheRule404 = Error;
-
-/**
- * @description Rate limited. Try again later.
-*/
-export type UpdateCacheRule429 = Error;
-
-export type UpdateCacheRuleMutationRequest = UpdateCacheRuleRequest;
-
-export type UpdateCacheRuleMutationResponse = UpdateCacheRule200;
-
-export type UpdateCacheRuleMutation = {
-    Response: UpdateCacheRule200;
-    Request: UpdateCacheRuleMutationRequest;
-    PathParams: UpdateCacheRulePathParams;
-    Errors: UpdateCacheRule400 | UpdateCacheRule401 | UpdateCacheRule403 | UpdateCacheRule404 | UpdateCacheRule429;
+export type UpdateCacheRuleResponses = {
+    "200": UpdateCacheRuleStatus200;
+    "400": UpdateCacheRuleStatus400;
+    "401": UpdateCacheRuleStatus401;
+    "403": UpdateCacheRuleStatus403;
+    "404": UpdateCacheRuleStatus404;
+    "429": UpdateCacheRuleStatus429;
 };

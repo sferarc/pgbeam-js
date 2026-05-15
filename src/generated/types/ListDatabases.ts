@@ -6,67 +6,98 @@
 import type { Error } from "./Error";
 import type { ListDatabasesResponse } from "./ListDatabasesResponse";
 
-export type ListDatabasesPathParams = {
+/**
+ * @description Unique project identifier (prefixed, e.g. prj_xxx).
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string
+*/
+export type ListDatabasesPathProjectId = string;
+
+/**
+ * @description Maximum number of items to return (1-100, default 20).
+ * @minLength 1
+ * @maxLength 100
+ * @default 20
+ * @type integer | undefined
+*/
+export type ListDatabasesQueryPageSize = number | undefined;
+
+/**
+ * @description Opaque token for cursor-based pagination.
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string | undefined
+*/
+export type ListDatabasesQueryPageToken = string | undefined;
+
+/**
+ * @description Cursor-paginated list of databases attached to a project.
+ * @type object
+*/
+export type ListDatabasesStatus200 = ListDatabasesResponse;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type ListDatabasesStatus400 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type ListDatabasesStatus401 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type ListDatabasesStatus403 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type ListDatabasesStatus404 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type ListDatabasesStatus429 = Error;
+
+/**
+ * @type object
+*/
+export type ListDatabasesRequestConfig = {
+    data?: never;
     /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type object
+    */
+    pathParams: {
+        project_id: ListDatabasesPathProjectId;
+    };
+    /**
+     * @type object | undefined
+    */
+    queryParams?: {
+        page_size?: ListDatabasesQueryPageSize;
+        page_token?: ListDatabasesQueryPageToken;
+    };
+    headerParams?: never;
+    /**
      * @type string
     */
-    project_id: string;
-};
-
-export type ListDatabasesQueryParams = {
-    /**
-     * @description Maximum number of items to return (1-100, default 20).
-     * @minLength 1
-     * @maxLength 100
-     * @default 20
-     * @type integer | undefined
-    */
-    page_size?: number;
-    /**
-     * @description Opaque token for cursor-based pagination.
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string | undefined
-    */
-    page_token?: string;
+    url: `/v1/projects/${string}/databases`;
 };
 
 /**
- * @description List of databases.
+ * @type object
 */
-export type ListDatabases200 = ListDatabasesResponse;
-
-/**
- * @description Invalid request parameters.
-*/
-export type ListDatabases400 = Error;
-
-/**
- * @description Missing or invalid authentication.
-*/
-export type ListDatabases401 = Error;
-
-/**
- * @description Operation not allowed by current plan limits.
-*/
-export type ListDatabases403 = Error;
-
-/**
- * @description Resource not found.
-*/
-export type ListDatabases404 = Error;
-
-/**
- * @description Rate limited. Try again later.
-*/
-export type ListDatabases429 = Error;
-
-export type ListDatabasesQueryResponse = ListDatabases200;
-
-export type ListDatabasesQuery = {
-    Response: ListDatabases200;
-    PathParams: ListDatabasesPathParams;
-    QueryParams: ListDatabasesQueryParams;
-    Errors: ListDatabases400 | ListDatabases401 | ListDatabases403 | ListDatabases404 | ListDatabases429;
+export type ListDatabasesResponses = {
+    "200": ListDatabasesStatus200;
+    "400": ListDatabasesStatus400;
+    "401": ListDatabasesStatus401;
+    "403": ListDatabasesStatus403;
+    "404": ListDatabasesStatus404;
+    "429": ListDatabasesStatus429;
 };

@@ -8,41 +8,69 @@ import type { CreateProjectResponse } from "./CreateProjectResponse";
 import type { Error } from "./Error";
 
 /**
- * @description Project created.
+ * @description Response returned after creating a project and its primary database.
+ * @type object
 */
-export type CreateProject201 = CreateProjectResponse;
+export type CreateProjectStatus201 = CreateProjectResponse;
 
 /**
- * @description Invalid request parameters.
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
 */
-export type CreateProject400 = Error;
+export type CreateProjectStatus400 = Error;
 
 /**
- * @description Missing or invalid authentication.
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
 */
-export type CreateProject401 = Error;
+export type CreateProjectStatus401 = Error;
 
 /**
- * @description Operation not allowed by current plan limits.
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
 */
-export type CreateProject403 = Error;
+export type CreateProjectStatus403 = Error;
 
 /**
- * @description Resource already exists or conflicts with current state.
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
 */
-export type CreateProject409 = Error;
+export type CreateProjectStatus409 = Error;
 
 /**
- * @description Rate limited. Try again later.
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
 */
-export type CreateProject429 = Error;
+export type CreateProjectStatus429 = Error;
 
-export type CreateProjectMutationRequest = CreateProjectRequest;
+/**
+ * @description Request body for creating a project and its primary database.
+ * @type object
+*/
+export type CreateProjectData = CreateProjectRequest;
 
-export type CreateProjectMutationResponse = CreateProject201;
+/**
+ * @type object
+*/
+export type CreateProjectRequestConfig = {
+    data?: CreateProjectData;
+    pathParams?: never;
+    queryParams?: never;
+    headerParams?: never;
+    /**
+     * @type string
+    */
+    url: "/v1/projects";
+};
 
-export type CreateProjectMutation = {
-    Response: CreateProject201;
-    Request: CreateProjectMutationRequest;
-    Errors: CreateProject400 | CreateProject401 | CreateProject403 | CreateProject409 | CreateProject429;
+/**
+ * @type object
+*/
+export type CreateProjectResponses = {
+    "201": CreateProjectStatus201;
+    "400": CreateProjectStatus400;
+    "401": CreateProjectStatus401;
+    "403": CreateProjectStatus403;
+    "409": CreateProjectStatus409;
+    "429": CreateProjectStatus429;
 };

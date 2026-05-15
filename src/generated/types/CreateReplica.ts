@@ -7,52 +7,87 @@ import type { CreateReplicaRequest } from "./CreateReplicaRequest";
 import type { Error } from "./Error";
 import type { Replica } from "./Replica";
 
-export type CreateReplicaPathParams = {
+/**
+ * @description Unique database identifier (prefixed, e.g. db_xxx).
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string
+*/
+export type CreateReplicaPathDatabaseId = string;
+
+/**
+ * @description Read replica registered for a primary database.
+ * @type object
+*/
+export type CreateReplicaStatus201 = Replica;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type CreateReplicaStatus400 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type CreateReplicaStatus401 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type CreateReplicaStatus403 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type CreateReplicaStatus404 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type CreateReplicaStatus429 = Error;
+
+/**
+ * @description Request body for adding a read replica to a database.
+ * @type object
+*/
+export type CreateReplicaData = CreateReplicaRequest;
+
+/**
+ * @type object
+*/
+export type CreateReplicaRequestConfig = {
+    data?: CreateReplicaData;
     /**
-     * @description Unique database identifier (prefixed, e.g. db_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type object
+    */
+    pathParams: {
+        database_id: CreateReplicaPathDatabaseId;
+    };
+    queryParams?: never;
+    headerParams?: never;
+    /**
      * @type string
     */
-    database_id: string;
+    url: `/v1/databases/${string}/replicas`;
 };
 
 /**
- * @description Replica created.
+ * @type object
 */
-export type CreateReplica201 = Replica;
-
-/**
- * @description Invalid request parameters.
-*/
-export type CreateReplica400 = Error;
-
-/**
- * @description Missing or invalid authentication.
-*/
-export type CreateReplica401 = Error;
-
-/**
- * @description Operation not allowed by current plan limits.
-*/
-export type CreateReplica403 = Error;
-
-/**
- * @description Resource not found.
-*/
-export type CreateReplica404 = Error;
-
-/**
- * @description Rate limited. Try again later.
-*/
-export type CreateReplica429 = Error;
-
-export type CreateReplicaMutationRequest = CreateReplicaRequest;
-
-export type CreateReplicaMutationResponse = CreateReplica201;
-
-export type CreateReplicaMutation = {
-    Response: CreateReplica201;
-    Request: CreateReplicaMutationRequest;
-    PathParams: CreateReplicaPathParams;
-    Errors: CreateReplica400 | CreateReplica401 | CreateReplica403 | CreateReplica404 | CreateReplica429;
+export type CreateReplicaResponses = {
+    "201": CreateReplicaStatus201;
+    "400": CreateReplicaStatus400;
+    "401": CreateReplicaStatus401;
+    "403": CreateReplicaStatus403;
+    "404": CreateReplicaStatus404;
+    "429": CreateReplicaStatus429;
 };
+
+/**
+ * @description Union of all possible responses
+*/
+export type CreateReplicaResponse = (CreateReplicaStatus201 | CreateReplicaStatus400 | CreateReplicaStatus401 | CreateReplicaStatus403 | CreateReplicaStatus404 | CreateReplicaStatus429);

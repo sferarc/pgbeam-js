@@ -6,49 +6,81 @@
 import type { Error } from "./Error";
 import type { Project } from "./Project";
 
-export type GetProjectPathParams = {
+/**
+ * @description Unique project identifier (prefixed, e.g. prj_xxx).
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string
+*/
+export type GetProjectPathProjectId = string;
+
+/**
+ * @description Project configuration and current control-plane state.
+ * @type object
+*/
+export type GetProjectStatus200 = Project;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetProjectStatus400 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetProjectStatus401 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetProjectStatus403 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetProjectStatus404 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetProjectStatus429 = Error;
+
+/**
+ * @type object
+*/
+export type GetProjectRequestConfig = {
+    data?: never;
     /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type object
+    */
+    pathParams: {
+        project_id: GetProjectPathProjectId;
+    };
+    queryParams?: never;
+    headerParams?: never;
+    /**
      * @type string
     */
-    project_id: string;
+    url: `/v1/projects/${string}`;
 };
 
 /**
- * @description Project found.
+ * @type object
 */
-export type GetProject200 = Project;
-
-/**
- * @description Invalid request parameters.
-*/
-export type GetProject400 = Error;
-
-/**
- * @description Missing or invalid authentication.
-*/
-export type GetProject401 = Error;
-
-/**
- * @description Operation not allowed by current plan limits.
-*/
-export type GetProject403 = Error;
-
-/**
- * @description Resource not found.
-*/
-export type GetProject404 = Error;
-
-/**
- * @description Rate limited. Try again later.
-*/
-export type GetProject429 = Error;
-
-export type GetProjectQueryResponse = GetProject200;
-
-export type GetProjectQuery = {
-    Response: GetProject200;
-    PathParams: GetProjectPathParams;
-    Errors: GetProject400 | GetProject401 | GetProject403 | GetProject404 | GetProject429;
+export type GetProjectResponses = {
+    "200": GetProjectStatus200;
+    "400": GetProjectStatus400;
+    "401": GetProjectStatus401;
+    "403": GetProjectStatus403;
+    "404": GetProjectStatus404;
+    "429": GetProjectStatus429;
 };
+
+/**
+ * @description Union of all possible responses
+*/
+export type GetProjectResponse = (GetProjectStatus200 | GetProjectStatus400 | GetProjectStatus401 | GetProjectStatus403 | GetProjectStatus404 | GetProjectStatus429);

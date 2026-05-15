@@ -7,6 +7,7 @@ import type { MetricsSnapshot } from "./MetricsSnapshot";
 
 /**
  * @description Response envelope for recent project metrics snapshots.
+ * @type object
 */
 export type ProjectMetricsResponse = {
     /**

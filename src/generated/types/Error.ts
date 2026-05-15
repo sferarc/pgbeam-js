@@ -3,9 +3,9 @@
 * Do not edit manually.
 */
 
-
 /**
  * @description Standard error response envelope for PgBeam API requests.
+ * @type object
 */
 export type Error = {
     /**

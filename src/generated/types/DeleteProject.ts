@@ -5,49 +5,80 @@
 
 import type { Error } from "./Error";
 
-export type DeleteProjectPathParams = {
+/**
+ * @description Unique project identifier (prefixed, e.g. prj_xxx).
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string
+*/
+export type DeleteProjectPathProjectId = string;
+
+/**
+ * @type any
+*/
+export type DeleteProjectStatus204 = any;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type DeleteProjectStatus400 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type DeleteProjectStatus401 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type DeleteProjectStatus403 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type DeleteProjectStatus404 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type DeleteProjectStatus429 = Error;
+
+/**
+ * @type object
+*/
+export type DeleteProjectRequestConfig = {
+    data?: never;
     /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type object
+    */
+    pathParams: {
+        project_id: DeleteProjectPathProjectId;
+    };
+    queryParams?: never;
+    headerParams?: never;
+    /**
      * @type string
     */
-    project_id: string;
+    url: `/v1/projects/${string}`;
 };
 
 /**
- * @description Project deleted.
+ * @type object
 */
-export type DeleteProject204 = any;
-
-/**
- * @description Invalid request parameters.
-*/
-export type DeleteProject400 = Error;
-
-/**
- * @description Missing or invalid authentication.
-*/
-export type DeleteProject401 = Error;
-
-/**
- * @description Operation not allowed by current plan limits.
-*/
-export type DeleteProject403 = Error;
-
-/**
- * @description Resource not found.
-*/
-export type DeleteProject404 = Error;
-
-/**
- * @description Rate limited. Try again later.
-*/
-export type DeleteProject429 = Error;
-
-export type DeleteProjectMutationResponse = DeleteProject204;
-
-export type DeleteProjectMutation = {
-    Response: DeleteProject204;
-    PathParams: DeleteProjectPathParams;
-    Errors: DeleteProject400 | DeleteProject401 | DeleteProject403 | DeleteProject404 | DeleteProject429;
+export type DeleteProjectResponses = {
+    "204": DeleteProjectStatus204;
+    "400": DeleteProjectStatus400;
+    "401": DeleteProjectStatus401;
+    "403": DeleteProjectStatus403;
+    "404": DeleteProjectStatus404;
+    "429": DeleteProjectStatus429;
 };
+
+/**
+ * @description Union of all possible responses
+*/
+export type DeleteProjectResponse = (DeleteProjectStatus204 | DeleteProjectStatus400 | DeleteProjectStatus401 | DeleteProjectStatus403 | DeleteProjectStatus404 | DeleteProjectStatus429);

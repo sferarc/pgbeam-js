@@ -3,9 +3,9 @@
 * Do not edit manually.
 */
 
-
 /**
  * @description Request body for updating cache behavior of a query shape.
+ * @type object
 */
 export type UpdateCacheRuleRequest = {
     /**
@@ -17,6 +17,7 @@ export type UpdateCacheRuleRequest = {
      * @description TTL override in seconds. Null to use project default.
      * @minLength 0
      * @maxLength 86400
+     * @example 300
      * @type integer
     */
     cache_ttl_seconds?: number | null;
@@ -24,6 +25,7 @@ export type UpdateCacheRuleRequest = {
      * @description SWR override in seconds. Null to use project default.
      * @minLength 0
      * @maxLength 86400
+     * @example 60
      * @type integer
     */
     cache_swr_seconds?: number | null;

@@ -7,6 +7,7 @@ import type { CustomDomain } from "./CustomDomain";
 
 /**
  * @description Cursor-paginated list of custom domains for a project.
+ * @type object
 */
 export type ListCustomDomainsResponse = {
     /**

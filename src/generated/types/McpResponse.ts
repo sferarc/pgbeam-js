@@ -3,7 +3,6 @@
 * Do not edit manually.
 */
 
-
 export const mcpResponseJsonrpcEnum = {
     "2.0": "2.0"
 } as const;
@@ -12,6 +11,7 @@ export type McpResponseJsonrpcEnumKey = (typeof mcpResponseJsonrpcEnum)[keyof ty
 
 /**
  * @description JSON-RPC 2.0 response envelope for MCP over Streamable HTTP.
+ * @type object
 */
 export type McpResponse = {
     /**

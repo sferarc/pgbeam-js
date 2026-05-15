@@ -7,6 +7,7 @@ import type { PlanLimits } from "./PlanLimits";
 
 /**
  * @description Publicly visible plan metadata and limits.
+ * @type object
 */
 export type PlanInfo = {
     /**

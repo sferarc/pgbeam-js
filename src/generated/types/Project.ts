@@ -4,7 +4,7 @@
 */
 
 import type { CidrEntry } from "./CidrEntry";
-import type { ProjectStatus } from "./ProjectStatus";
+import type { ProjectStatusKey } from "./ProjectStatus";
 
 export const projectCloudEnum = {
     aws: "aws",
@@ -16,15 +16,18 @@ export type ProjectCloudEnumKey = (typeof projectCloudEnum)[keyof typeof project
 
 /**
  * @description Project configuration and current control-plane state.
+ * @type object
 */
 export type Project = {
     /**
      * @description Unique project identifier (prefixed).
+     * @example prj_01h455vb4pex5vsknk084sn02q
      * @type string
     */
     id: string;
     /**
      * @description Better Auth organization ID that owns this project.
+     * @example org_abc123
      * @type string
     */
     org_id: string;
@@ -32,17 +35,20 @@ export type Project = {
      * @description Human-readable project name.
      * @minLength 1
      * @maxLength 100
+     * @example my-app
      * @type string
     */
     name: string;
     /**
      * @description Optional project description.
      * @maxLength 500
+     * @example Production database proxy
      * @type string | undefined
     */
     description?: string;
     /**
      * @description User-defined labels applied to the project.
+     * @example production,us-east-1
      * @type array | undefined
     */
     tags?: string[];
@@ -58,27 +64,25 @@ export type Project = {
     readonly proxy_host?: string;
     /**
      * @description Maximum queries per second for this project. 0 means unlimited.
-     * @minLength 0
-     * @maxLength 2147483647
-     * @type integer | undefined, int32
+     * @example 1000
+     * @type integer | undefined
     */
     readonly queries_per_second?: number;
     /**
      * @description Burst allowance above the steady-state rate. 0 uses queries_per_second as burst.
-     * @minLength 0
-     * @maxLength 2147483647
-     * @type integer | undefined, int32
+     * @example 200
+     * @type integer | undefined
     */
     readonly burst_size?: number;
     /**
      * @description Maximum concurrent proxy connections. 0 means unlimited.
-     * @minLength 0
-     * @maxLength 2147483647
-     * @type integer | undefined, int32
+     * @example 500
+     * @type integer | undefined
     */
     readonly max_connections?: number;
     /**
      * @description IP filtering rules as CIDR ranges with optional labels. When non-empty, only connections from matching IPs are accepted. Empty array means all IPs are allowed (default). Both IPv4 (e.g. 10.0.0.0/8) and IPv6 (e.g. 2001:db8::/32) are supported.\n
+     * @example [object Object],[object Object]
      * @type array | undefined
     */
     allowed_cidrs?: CidrEntry[];
@@ -96,15 +100,15 @@ export type Project = {
      * @description Project lifecycle status.
      * @type string
     */
-    status: ProjectStatus;
+    status: ProjectStatusKey;
     /**
      * @description When the project was created.
-     * @type string, date-time
+     * @type string
     */
     created_at: string;
     /**
      * @description When the project was last updated.
-     * @type string, date-time
+     * @type string
     */
     updated_at: string;
 };

@@ -8,6 +8,7 @@ import type { Project } from "./Project";
 
 /**
  * @description Response returned after creating a project and its primary database.
+ * @type object
 */
 export type CreateProjectResponse = {
     /**

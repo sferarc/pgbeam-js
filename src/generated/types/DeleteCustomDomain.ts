@@ -5,55 +5,88 @@
 
 import type { Error } from "./Error";
 
-export type DeleteCustomDomainPathParams = {
+/**
+ * @description Unique project identifier (prefixed, e.g. prj_xxx).
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string
+*/
+export type DeleteCustomDomainPathProjectId = string;
+
+/**
+ * @description Unique custom domain identifier (prefixed, e.g. dom_xxx).
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string
+*/
+export type DeleteCustomDomainPathDomainId = string;
+
+/**
+ * @type any
+*/
+export type DeleteCustomDomainStatus204 = any;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type DeleteCustomDomainStatus400 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type DeleteCustomDomainStatus401 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type DeleteCustomDomainStatus403 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type DeleteCustomDomainStatus404 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type DeleteCustomDomainStatus429 = Error;
+
+/**
+ * @type object
+*/
+export type DeleteCustomDomainRequestConfig = {
+    data?: never;
     /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type object
+    */
+    pathParams: {
+        project_id: DeleteCustomDomainPathProjectId;
+        domain_id: DeleteCustomDomainPathDomainId;
+    };
+    queryParams?: never;
+    headerParams?: never;
+    /**
      * @type string
     */
-    project_id: string;
-    /**
-     * @description Unique custom domain identifier (prefixed, e.g. dom_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    domain_id: string;
+    url: `/v1/projects/${string}/domains/${string}`;
 };
 
 /**
- * @description Custom domain deleted.
+ * @type object
 */
-export type DeleteCustomDomain204 = any;
-
-/**
- * @description Invalid request parameters.
-*/
-export type DeleteCustomDomain400 = Error;
-
-/**
- * @description Missing or invalid authentication.
-*/
-export type DeleteCustomDomain401 = Error;
-
-/**
- * @description Operation not allowed by current plan limits.
-*/
-export type DeleteCustomDomain403 = Error;
-
-/**
- * @description Resource not found.
-*/
-export type DeleteCustomDomain404 = Error;
-
-/**
- * @description Rate limited. Try again later.
-*/
-export type DeleteCustomDomain429 = Error;
-
-export type DeleteCustomDomainMutationResponse = DeleteCustomDomain204;
-
-export type DeleteCustomDomainMutation = {
-    Response: DeleteCustomDomain204;
-    PathParams: DeleteCustomDomainPathParams;
-    Errors: DeleteCustomDomain400 | DeleteCustomDomain401 | DeleteCustomDomain403 | DeleteCustomDomain404 | DeleteCustomDomain429;
+export type DeleteCustomDomainResponses = {
+    "204": DeleteCustomDomainStatus204;
+    "400": DeleteCustomDomainStatus400;
+    "401": DeleteCustomDomainStatus401;
+    "403": DeleteCustomDomainStatus403;
+    "404": DeleteCustomDomainStatus404;
+    "429": DeleteCustomDomainStatus429;
 };
+
+/**
+ * @description Union of all possible responses
+*/
+export type DeleteCustomDomainResponse = (DeleteCustomDomainStatus204 | DeleteCustomDomainStatus400 | DeleteCustomDomainStatus401 | DeleteCustomDomainStatus403 | DeleteCustomDomainStatus404 | DeleteCustomDomainStatus429);

@@ -7,6 +7,7 @@ import type { CacheRuleEntry } from "./CacheRuleEntry";
 
 /**
  * @description Response returned after updating a cache rule.
+ * @type object
 */
 export type UpdateCacheRuleResponse = {
     /**

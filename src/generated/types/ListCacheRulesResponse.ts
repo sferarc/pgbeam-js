@@ -7,6 +7,7 @@ import type { CacheRuleEntry } from "./CacheRuleEntry";
 
 /**
  * @description Cursor-paginated cache-rule entries for a database.
+ * @type object
 */
 export type ListCacheRulesResponse = {
     /**

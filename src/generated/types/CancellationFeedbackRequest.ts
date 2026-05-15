@@ -3,18 +3,20 @@
 * Do not edit manually.
 */
 
-
 /**
  * @description Request body for capturing cancellation feedback from a user.
+ * @type object
 */
 export type CancellationFeedbackRequest = {
     /**
      * @description Predefined cancellation reason.
+     * @example too-expensive
      * @type string | undefined
     */
     reason?: string;
     /**
      * @description Free-text feedback from the user.
+     * @example Switching to a self-hosted solution.
      * @type string | undefined
     */
     feedback?: string;

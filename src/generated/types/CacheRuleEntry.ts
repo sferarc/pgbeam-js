@@ -3,7 +3,6 @@
 * Do not edit manually.
 */
 
-
 export const cacheRuleEntryQueryTypeEnum = {
     read: "read",
     write: "write",
@@ -23,15 +22,18 @@ export type CacheRuleEntryRecommendationEnumKey = (typeof cacheRuleEntryRecommen
 
 /**
  * @description Observed query shape and its cache recommendation for a database.
+ * @type object
 */
 export type CacheRuleEntry = {
     /**
      * @description xxhash64 hex of the normalized SQL.
+     * @example a1b2c3d4e5f60718
      * @type string
     */
     query_hash: string;
     /**
      * @description SQL with literals replaced by $N placeholders.
+     * @example SELECT * FROM users WHERE id = $1
      * @type string
     */
     normalized_sql: string;
@@ -48,38 +50,40 @@ export type CacheRuleEntry = {
     /**
      * @description TTL override in seconds. Null means use project default.
      * @minLength 0
+     * @example 300
      * @type integer
     */
     cache_ttl_seconds?: number | null;
     /**
      * @description SWR override in seconds. Null means use project default.
      * @minLength 0
+     * @example 60
      * @type integer
     */
     cache_swr_seconds?: number | null;
     /**
      * @description Total number of executions observed.
-     * @type integer, int64
+     * @type integer
     */
     call_count: number;
     /**
      * @description Average query latency in milliseconds.
-     * @type number, double
+     * @type number
     */
     avg_latency_ms: number;
     /**
      * @description 95th percentile latency in milliseconds.
-     * @type number, double
+     * @type number
     */
     p95_latency_ms: number;
     /**
      * @description Average response size in bytes.
-     * @type integer, int64
+     * @type integer
     */
     avg_response_bytes: number;
     /**
      * @description Response stability rate (0.0 to 1.0). Higher means more stable.
-     * @type number, double
+     * @type number
     */
     stability_rate: number;
     /**
@@ -89,12 +93,12 @@ export type CacheRuleEntry = {
     recommendation: CacheRuleEntryRecommendationEnumKey;
     /**
      * @description When this query was first observed.
-     * @type string, date-time
+     * @type string
     */
     first_seen_at: string;
     /**
      * @description When this query was last observed.
-     * @type string, date-time
+     * @type string
     */
     last_seen_at: string;
 };

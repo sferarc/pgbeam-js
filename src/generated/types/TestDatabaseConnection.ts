@@ -6,55 +6,89 @@
 import type { Error } from "./Error";
 import type { TestConnectionResult } from "./TestConnectionResult";
 
-export type TestDatabaseConnectionPathParams = {
+/**
+ * @description Unique project identifier (prefixed, e.g. prj_xxx).
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string
+*/
+export type TestDatabaseConnectionPathProjectId = string;
+
+/**
+ * @description Unique database identifier (prefixed, e.g. db_xxx).
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string
+*/
+export type TestDatabaseConnectionPathDatabaseId = string;
+
+/**
+ * @description Result of testing connectivity to an upstream database.
+ * @type object
+*/
+export type TestDatabaseConnectionStatus200 = TestConnectionResult;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type TestDatabaseConnectionStatus400 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type TestDatabaseConnectionStatus401 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type TestDatabaseConnectionStatus403 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type TestDatabaseConnectionStatus404 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type TestDatabaseConnectionStatus429 = Error;
+
+/**
+ * @type object
+*/
+export type TestDatabaseConnectionRequestConfig = {
+    data?: never;
     /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type object
+    */
+    pathParams: {
+        project_id: TestDatabaseConnectionPathProjectId;
+        database_id: TestDatabaseConnectionPathDatabaseId;
+    };
+    queryParams?: never;
+    headerParams?: never;
+    /**
      * @type string
     */
-    project_id: string;
-    /**
-     * @description Unique database identifier (prefixed, e.g. db_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    database_id: string;
+    url: `/v1/projects/${string}/databases/${string}/test-connection`;
 };
 
 /**
- * @description Connection test result.
+ * @type object
 */
-export type TestDatabaseConnection200 = TestConnectionResult;
-
-/**
- * @description Invalid request parameters.
-*/
-export type TestDatabaseConnection400 = Error;
-
-/**
- * @description Missing or invalid authentication.
-*/
-export type TestDatabaseConnection401 = Error;
-
-/**
- * @description Operation not allowed by current plan limits.
-*/
-export type TestDatabaseConnection403 = Error;
-
-/**
- * @description Resource not found.
-*/
-export type TestDatabaseConnection404 = Error;
-
-/**
- * @description Rate limited. Try again later.
-*/
-export type TestDatabaseConnection429 = Error;
-
-export type TestDatabaseConnectionMutationResponse = TestDatabaseConnection200;
-
-export type TestDatabaseConnectionMutation = {
-    Response: TestDatabaseConnection200;
-    PathParams: TestDatabaseConnectionPathParams;
-    Errors: TestDatabaseConnection400 | TestDatabaseConnection401 | TestDatabaseConnection403 | TestDatabaseConnection404 | TestDatabaseConnection429;
+export type TestDatabaseConnectionResponses = {
+    "200": TestDatabaseConnectionStatus200;
+    "400": TestDatabaseConnectionStatus400;
+    "401": TestDatabaseConnectionStatus401;
+    "403": TestDatabaseConnectionStatus403;
+    "404": TestDatabaseConnectionStatus404;
+    "429": TestDatabaseConnectionStatus429;
 };
+
+/**
+ * @description Union of all possible responses
+*/
+export type TestDatabaseConnectionResponse = (TestDatabaseConnectionStatus200 | TestDatabaseConnectionStatus400 | TestDatabaseConnectionStatus401 | TestDatabaseConnectionStatus403 | TestDatabaseConnectionStatus404 | TestDatabaseConnectionStatus429);

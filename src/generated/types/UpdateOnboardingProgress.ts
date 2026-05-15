@@ -7,52 +7,88 @@ import type { Error } from "./Error";
 import type { OnboardingProgress } from "./OnboardingProgress";
 import type { UpdateOnboardingRequest } from "./UpdateOnboardingRequest";
 
-export type UpdateOnboardingProgressPathParams = {
+/**
+ * @description Unique organization identifier.
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @example org_abc123
+ * @type string
+*/
+export type UpdateOnboardingProgressPathOrgId = string;
+
+/**
+ * @description Progress state for the dashboard onboarding checklist.
+ * @type object
+*/
+export type UpdateOnboardingProgressStatus200 = OnboardingProgress;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type UpdateOnboardingProgressStatus400 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type UpdateOnboardingProgressStatus401 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type UpdateOnboardingProgressStatus403 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type UpdateOnboardingProgressStatus404 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type UpdateOnboardingProgressStatus429 = Error;
+
+/**
+ * @description Request body for advancing or dismissing onboarding.
+ * @type object
+*/
+export type UpdateOnboardingProgressData = UpdateOnboardingRequest;
+
+/**
+ * @type object
+*/
+export type UpdateOnboardingProgressRequestConfig = {
+    data?: UpdateOnboardingProgressData;
     /**
-     * @description Unique organization identifier.
-     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type object
+    */
+    pathParams: {
+        org_id: UpdateOnboardingProgressPathOrgId;
+    };
+    queryParams?: never;
+    headerParams?: never;
+    /**
      * @type string
     */
-    org_id: string;
+    url: `/v1/organizations/${string}/onboarding`;
 };
 
 /**
- * @description Updated onboarding progress.
+ * @type object
 */
-export type UpdateOnboardingProgress200 = OnboardingProgress;
-
-/**
- * @description Invalid request parameters.
-*/
-export type UpdateOnboardingProgress400 = Error;
-
-/**
- * @description Missing or invalid authentication.
-*/
-export type UpdateOnboardingProgress401 = Error;
-
-/**
- * @description Operation not allowed by current plan limits.
-*/
-export type UpdateOnboardingProgress403 = Error;
-
-/**
- * @description Resource not found.
-*/
-export type UpdateOnboardingProgress404 = Error;
-
-/**
- * @description Rate limited. Try again later.
-*/
-export type UpdateOnboardingProgress429 = Error;
-
-export type UpdateOnboardingProgressMutationRequest = UpdateOnboardingRequest;
-
-export type UpdateOnboardingProgressMutationResponse = UpdateOnboardingProgress200;
-
-export type UpdateOnboardingProgressMutation = {
-    Response: UpdateOnboardingProgress200;
-    Request: UpdateOnboardingProgressMutationRequest;
-    PathParams: UpdateOnboardingProgressPathParams;
-    Errors: UpdateOnboardingProgress400 | UpdateOnboardingProgress401 | UpdateOnboardingProgress403 | UpdateOnboardingProgress404 | UpdateOnboardingProgress429;
+export type UpdateOnboardingProgressResponses = {
+    "200": UpdateOnboardingProgressStatus200;
+    "400": UpdateOnboardingProgressStatus400;
+    "401": UpdateOnboardingProgressStatus401;
+    "403": UpdateOnboardingProgressStatus403;
+    "404": UpdateOnboardingProgressStatus404;
+    "429": UpdateOnboardingProgressStatus429;
 };
+
+/**
+ * @description Union of all possible responses
+*/
+export type UpdateOnboardingProgressResponse = (UpdateOnboardingProgressStatus200 | UpdateOnboardingProgressStatus400 | UpdateOnboardingProgressStatus401 | UpdateOnboardingProgressStatus403 | UpdateOnboardingProgressStatus404 | UpdateOnboardingProgressStatus429);

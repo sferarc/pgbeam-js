@@ -7,52 +7,87 @@ import type { Error } from "./Error";
 import type { Project } from "./Project";
 import type { UpdateProjectRequest } from "./UpdateProjectRequest";
 
-export type UpdateProjectPathParams = {
+/**
+ * @description Unique project identifier (prefixed, e.g. prj_xxx).
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string
+*/
+export type UpdateProjectPathProjectId = string;
+
+/**
+ * @description Project configuration and current control-plane state.
+ * @type object
+*/
+export type UpdateProjectStatus200 = Project;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type UpdateProjectStatus400 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type UpdateProjectStatus401 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type UpdateProjectStatus403 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type UpdateProjectStatus404 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type UpdateProjectStatus429 = Error;
+
+/**
+ * @description Request body for partially updating a project.
+ * @type object
+*/
+export type UpdateProjectData = UpdateProjectRequest;
+
+/**
+ * @type object
+*/
+export type UpdateProjectRequestConfig = {
+    data?: UpdateProjectData;
     /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type object
+    */
+    pathParams: {
+        project_id: UpdateProjectPathProjectId;
+    };
+    queryParams?: never;
+    headerParams?: never;
+    /**
      * @type string
     */
-    project_id: string;
+    url: `/v1/projects/${string}`;
 };
 
 /**
- * @description Project updated.
+ * @type object
 */
-export type UpdateProject200 = Project;
-
-/**
- * @description Invalid request parameters.
-*/
-export type UpdateProject400 = Error;
-
-/**
- * @description Missing or invalid authentication.
-*/
-export type UpdateProject401 = Error;
-
-/**
- * @description Operation not allowed by current plan limits.
-*/
-export type UpdateProject403 = Error;
-
-/**
- * @description Resource not found.
-*/
-export type UpdateProject404 = Error;
-
-/**
- * @description Rate limited. Try again later.
-*/
-export type UpdateProject429 = Error;
-
-export type UpdateProjectMutationRequest = UpdateProjectRequest;
-
-export type UpdateProjectMutationResponse = UpdateProject200;
-
-export type UpdateProjectMutation = {
-    Response: UpdateProject200;
-    Request: UpdateProjectMutationRequest;
-    PathParams: UpdateProjectPathParams;
-    Errors: UpdateProject400 | UpdateProject401 | UpdateProject403 | UpdateProject404 | UpdateProject429;
+export type UpdateProjectResponses = {
+    "200": UpdateProjectStatus200;
+    "400": UpdateProjectStatus400;
+    "401": UpdateProjectStatus401;
+    "403": UpdateProjectStatus403;
+    "404": UpdateProjectStatus404;
+    "429": UpdateProjectStatus429;
 };
+
+/**
+ * @description Union of all possible responses
+*/
+export type UpdateProjectResponse = (UpdateProjectStatus200 | UpdateProjectStatus400 | UpdateProjectStatus401 | UpdateProjectStatus403 | UpdateProjectStatus404 | UpdateProjectStatus429);

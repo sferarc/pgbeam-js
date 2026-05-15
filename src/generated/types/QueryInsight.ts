@@ -3,9 +3,9 @@
 * Do not edit manually.
 */
 
-
 /**
  * @description Aggregated analytics for a normalized SQL query shape.
+ * @type object
 */
 export type QueryInsight = {
     /**
@@ -20,27 +20,27 @@ export type QueryInsight = {
     query_pattern: string;
     /**
      * @description Total number of executions in the time range.
-     * @type integer, int64
+     * @type integer
     */
     total_count: number;
     /**
      * @description Total cache hits attributed to the query shape.
-     * @type integer, int64
+     * @type integer
     */
     total_cache_hits: number;
     /**
      * @description Total cache misses attributed to the query shape.
-     * @type integer, int64
+     * @type integer
     */
     total_cache_misses: number;
     /**
      * @description Average query latency in milliseconds.
-     * @type number, double
+     * @type number
     */
     avg_latency_ms: number;
     /**
      * @description P99 query latency in milliseconds.
-     * @type number, double
+     * @type number
     */
     p99_latency_ms: number;
 };

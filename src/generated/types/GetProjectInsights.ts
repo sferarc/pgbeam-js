@@ -6,71 +6,97 @@
 import type { Error } from "./Error";
 import type { ProjectInsights } from "./ProjectInsights";
 
-export type GetProjectInsightsPathParams = {
+/**
+ * @description Unique project identifier (prefixed, e.g. prj_xxx).
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string
+*/
+export type GetProjectInsightsPathProjectId = string;
+
+/**
+ * @description Time range to query. Defaults to 24h.
+ * @default "24h"
+ * @example 24h
+ * @type string | undefined
+*/
+export type GetProjectInsightsQueryRange = ("1h" | "6h" | "24h" | "7d") | undefined;
+
+/**
+ * @description Maximum number of top queries to return (1-100).
+ * @minLength 1
+ * @maxLength 100
+ * @default 20
+ * @type integer | undefined
+*/
+export type GetProjectInsightsQueryLimit = number | undefined;
+
+/**
+ * @description Query insights, cache performance, and latency for a project.
+ * @type object
+*/
+export type GetProjectInsightsStatus200 = ProjectInsights;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetProjectInsightsStatus400 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetProjectInsightsStatus401 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetProjectInsightsStatus404 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetProjectInsightsStatus429 = Error;
+
+/**
+ * @type object
+*/
+export type GetProjectInsightsRequestConfig = {
+    data?: never;
     /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type object
+    */
+    pathParams: {
+        project_id: GetProjectInsightsPathProjectId;
+    };
+    /**
+     * @type object | undefined
+    */
+    queryParams?: {
+        range?: GetProjectInsightsQueryRange;
+        limit?: GetProjectInsightsQueryLimit;
+    };
+    headerParams?: never;
+    /**
      * @type string
     */
-    project_id: string;
-};
-
-export const getProjectInsightsQueryParamsRangeEnum = {
-    "1h": "1h",
-    "6h": "6h",
-    "24h": "24h",
-    "7d": "7d"
-} as const;
-
-export type GetProjectInsightsQueryParamsRangeEnumKey = (typeof getProjectInsightsQueryParamsRangeEnum)[keyof typeof getProjectInsightsQueryParamsRangeEnum];
-
-export type GetProjectInsightsQueryParams = {
-    /**
-     * @description Time range to query. Defaults to 24h.
-     * @default "24h"
-     * @type string | undefined
-    */
-    range?: GetProjectInsightsQueryParamsRangeEnumKey;
-    /**
-     * @description Maximum number of top queries to return (1-100).
-     * @minLength 1
-     * @maxLength 100
-     * @default 20
-     * @type integer | undefined
-    */
-    limit?: number;
+    url: `/v1/projects/${string}/insights`;
 };
 
 /**
- * @description Query insights for the project.
+ * @type object
 */
-export type GetProjectInsights200 = ProjectInsights;
-
-/**
- * @description Invalid request parameters.
-*/
-export type GetProjectInsights400 = Error;
-
-/**
- * @description Missing or invalid authentication.
-*/
-export type GetProjectInsights401 = Error;
-
-/**
- * @description Resource not found.
-*/
-export type GetProjectInsights404 = Error;
-
-/**
- * @description Rate limited. Try again later.
-*/
-export type GetProjectInsights429 = Error;
-
-export type GetProjectInsightsQueryResponse = GetProjectInsights200;
-
-export type GetProjectInsightsQuery = {
-    Response: GetProjectInsights200;
-    PathParams: GetProjectInsightsPathParams;
-    QueryParams: GetProjectInsightsQueryParams;
-    Errors: GetProjectInsights400 | GetProjectInsights401 | GetProjectInsights404 | GetProjectInsights429;
+export type GetProjectInsightsResponses = {
+    "200": GetProjectInsightsStatus200;
+    "400": GetProjectInsightsStatus400;
+    "401": GetProjectInsightsStatus401;
+    "404": GetProjectInsightsStatus404;
+    "429": GetProjectInsightsStatus429;
 };
+
+/**
+ * @description Union of all possible responses
+*/
+export type GetProjectInsightsResponse = (GetProjectInsightsStatus200 | GetProjectInsightsStatus400 | GetProjectInsightsStatus401 | GetProjectInsightsStatus404 | GetProjectInsightsStatus429);

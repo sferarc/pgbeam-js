@@ -7,18 +7,40 @@ import type { Error } from "./Error";
 import type { HealthResponse } from "./HealthResponse";
 
 /**
- * @description Service is healthy.
+ * @description Health status and build metadata for the API service.
+ * @type object
 */
-export type GetHealth200 = HealthResponse;
+export type GetHealthStatus200 = HealthResponse;
 
 /**
- * @description Rate limited. Try again later.
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
 */
-export type GetHealth429 = Error;
+export type GetHealthStatus429 = Error;
 
-export type GetHealthQueryResponse = GetHealth200;
-
-export type GetHealthQuery = {
-    Response: GetHealth200;
-    Errors: GetHealth429;
+/**
+ * @type object
+*/
+export type GetHealthRequestConfig = {
+    data?: never;
+    pathParams?: never;
+    queryParams?: never;
+    headerParams?: never;
+    /**
+     * @type string
+    */
+    url: "/v1/health";
 };
+
+/**
+ * @type object
+*/
+export type GetHealthResponses = {
+    "200": GetHealthStatus200;
+    "429": GetHealthStatus429;
+};
+
+/**
+ * @description Union of all possible responses
+*/
+export type GetHealthResponse = (GetHealthStatus200 | GetHealthStatus429);

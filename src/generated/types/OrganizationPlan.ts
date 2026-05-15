@@ -39,10 +39,12 @@ export type OrganizationPlanSubscriptionStatusEnumKey = (typeof organizationPlan
 
 /**
  * @description Billing state and plan limits for an organization.
+ * @type object
 */
 export type OrganizationPlan = {
     /**
      * @description Organization identifier the plan applies to.
+     * @example org_abc123
      * @type string
     */
     org_id: string;
@@ -63,7 +65,7 @@ export type OrganizationPlan = {
     subscription_status?: OrganizationPlanSubscriptionStatusEnumKey;
     /**
      * @description End of current billing period.
-     * @type string | undefined, date-time
+     * @type string | undefined
     */
     current_period_end?: string;
     /**
@@ -78,7 +80,8 @@ export type OrganizationPlan = {
     custom_pricing?: boolean;
     /**
      * @description Monthly spend limit in dollars. Null means no limit.
-     * @type number, double
+     * @example 500
+     * @type number
     */
     spend_limit?: number | null;
     /**
@@ -88,12 +91,12 @@ export type OrganizationPlan = {
     limits: PlanLimits;
     /**
      * @description When the billing record was created.
-     * @type string | undefined, date-time
+     * @type string | undefined
     */
     created_at?: string;
     /**
      * @description When the billing record was last updated.
-     * @type string | undefined, date-time
+     * @type string | undefined
     */
     updated_at?: string;
 };

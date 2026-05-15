@@ -7,6 +7,7 @@ import type { DailyUsage } from "./DailyUsage";
 
 /**
  * @description Response envelope for organization usage queries.
+ * @type object
 */
 export type UsageResponse = {
     /**

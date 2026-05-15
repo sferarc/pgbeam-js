@@ -3,20 +3,22 @@
 * Do not edit manually.
 */
 
-
 /**
  * @description An IP filtering rule with a CIDR range and optional human-readable label.
+ * @type object
 */
 export type CidrEntry = {
     /**
      * @description CIDR range in IPv4 (e.g. 203.0.113.0/24) or IPv6 (e.g. 2001:db8::/32) notation. A plain IP without prefix length defaults to /32 (IPv4) or /128 (IPv6).\n
      * @pattern ^[0-9a-fA-F.:]+(/[0-9]+)?$
+     * @example 10.0.0.0/8
      * @type string
     */
     cidr: string;
     /**
      * @description Optional human-readable label for this CIDR entry (e.g. \"Office\", \"VPC\").
      * @maxLength 100
+     * @example Office network
      * @type string | undefined
     */
     label?: string;

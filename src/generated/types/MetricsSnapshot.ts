@@ -3,9 +3,9 @@
 * Do not edit manually.
 */
 
-
 /**
  * @description Aggregated project metrics captured for a point in time.
+ * @type object
 */
 export type MetricsSnapshot = {
     /**
@@ -25,17 +25,17 @@ export type MetricsSnapshot = {
     region: string;
     /**
      * @description Total queries served during the snapshot interval.
-     * @type integer, int64
+     * @type integer
     */
     queries_total: number;
     /**
      * @description Number of queries served from cache.
-     * @type integer, int64
+     * @type integer
     */
     cache_hits: number;
     /**
      * @description Number of queries forwarded upstream.
-     * @type integer, int64
+     * @type integer
     */
     cache_misses: number;
     /**
@@ -45,27 +45,27 @@ export type MetricsSnapshot = {
     active_connections: number;
     /**
      * @description Average end-to-end query latency in milliseconds.
-     * @type number, double
+     * @type number
     */
     avg_latency_ms: number;
     /**
      * @description 99th percentile end-to-end query latency in milliseconds.
-     * @type number, double
+     * @type number
     */
     p99_latency_ms: number;
     /**
      * @description Average upstream connection acquisition latency in milliseconds.
-     * @type number | undefined, double
+     * @type number | undefined
     */
     avg_connect_ms?: number;
     /**
      * @description Average upstream query execution latency in milliseconds.
-     * @type number | undefined, double
+     * @type number | undefined
     */
     avg_query_ms?: number;
     /**
      * @description When the snapshot was recorded.
-     * @type string, date-time
+     * @type string
     */
     created_at: string;
 };

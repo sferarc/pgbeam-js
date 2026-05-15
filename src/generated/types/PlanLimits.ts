@@ -3,14 +3,14 @@
 * Do not edit manually.
 */
 
-
 /**
  * @description Effective usage limits enforced for an organization plan.
+ * @type object
 */
 export type PlanLimits = {
     /**
      * @description Maximum queries per day across all projects. 0 means unlimited.
-     * @type integer, int64
+     * @type integer
     */
     queries_per_day: number;
     /**
@@ -35,7 +35,7 @@ export type PlanLimits = {
     queries_per_second: number;
     /**
      * @description Monthly data transfer quota in bytes. 0 means unlimited.
-     * @type integer, int64
+     * @type integer
     */
     bytes_per_month: number;
     /**

@@ -6,72 +6,97 @@
 import type { Error } from "./Error";
 import type { ListProjectsResponse } from "./ListProjectsResponse";
 
-export const listProjectsQueryParamsSortByEnum = {
-    name: "name",
-    created_at: "created_at",
-    active_connections: "active_connections"
-} as const;
+/**
+ * @description Organization ID to filter projects.
+ * @pattern ^[\x20-\x7E]+$
+ * @example org_abc123
+ * @type string
+*/
+export type ListProjectsQueryOrgId = string;
 
-export type ListProjectsQueryParamsSortByEnumKey = (typeof listProjectsQueryParamsSortByEnum)[keyof typeof listProjectsQueryParamsSortByEnum];
+/**
+ * @description Maximum number of items to return (1-100, default 20).
+ * @minLength 1
+ * @maxLength 100
+ * @default 20
+ * @type integer | undefined
+*/
+export type ListProjectsQueryPageSize = number | undefined;
 
-export type ListProjectsQueryParams = {
+/**
+ * @description Opaque token for cursor-based pagination.
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string | undefined
+*/
+export type ListProjectsQueryPageToken = string | undefined;
+
+/**
+ * @description Sort field for projects list.
+ * @default "created_at"
+ * @example created_at
+ * @type string | undefined
+*/
+export type ListProjectsQuerySortBy = ("name" | "created_at" | "active_connections") | undefined;
+
+/**
+ * @description Cursor-paginated list of projects for an organization.
+ * @type object
+*/
+export type ListProjectsStatus200 = ListProjectsResponse;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type ListProjectsStatus400 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type ListProjectsStatus401 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type ListProjectsStatus403 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type ListProjectsStatus429 = Error;
+
+/**
+ * @type object
+*/
+export type ListProjectsRequestConfig = {
+    data?: never;
+    pathParams?: never;
     /**
-     * @description Organization ID to filter projects.
-     * @pattern ^[\x20-\x7E]+$
+     * @type object | undefined
+    */
+    queryParams?: {
+        org_id: ListProjectsQueryOrgId;
+        page_size?: ListProjectsQueryPageSize;
+        page_token?: ListProjectsQueryPageToken;
+        sort_by?: ListProjectsQuerySortBy;
+    };
+    headerParams?: never;
+    /**
      * @type string
     */
-    org_id: string;
-    /**
-     * @description Maximum number of items to return (1-100, default 20).
-     * @minLength 1
-     * @maxLength 100
-     * @default 20
-     * @type integer | undefined
-    */
-    page_size?: number;
-    /**
-     * @description Opaque token for cursor-based pagination.
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string | undefined
-    */
-    page_token?: string;
-    /**
-     * @description Sort field for projects list.
-     * @default "created_at"
-     * @type string | undefined
-    */
-    sort_by?: ListProjectsQueryParamsSortByEnumKey;
+    url: "/v1/projects";
 };
 
 /**
- * @description List of projects.
+ * @type object
 */
-export type ListProjects200 = ListProjectsResponse;
-
-/**
- * @description Invalid request parameters.
-*/
-export type ListProjects400 = Error;
-
-/**
- * @description Missing or invalid authentication.
-*/
-export type ListProjects401 = Error;
-
-/**
- * @description Operation not allowed by current plan limits.
-*/
-export type ListProjects403 = Error;
-
-/**
- * @description Rate limited. Try again later.
-*/
-export type ListProjects429 = Error;
-
-export type ListProjectsQueryResponse = ListProjects200;
-
-export type ListProjectsQuery = {
-    Response: ListProjects200;
-    QueryParams: ListProjectsQueryParams;
-    Errors: ListProjects400 | ListProjects401 | ListProjects403 | ListProjects429;
+export type ListProjectsResponses = {
+    "200": ListProjectsStatus200;
+    "400": ListProjectsStatus400;
+    "401": ListProjectsStatus401;
+    "403": ListProjectsStatus403;
+    "429": ListProjectsStatus429;
 };

@@ -6,67 +6,98 @@
 import type { Error } from "./Error";
 import type { ListCustomDomainsResponse } from "./ListCustomDomainsResponse";
 
-export type ListCustomDomainsPathParams = {
+/**
+ * @description Unique project identifier (prefixed, e.g. prj_xxx).
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string
+*/
+export type ListCustomDomainsPathProjectId = string;
+
+/**
+ * @description Maximum number of items to return (1-100, default 20).
+ * @minLength 1
+ * @maxLength 100
+ * @default 20
+ * @type integer | undefined
+*/
+export type ListCustomDomainsQueryPageSize = number | undefined;
+
+/**
+ * @description Opaque token for cursor-based pagination.
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string | undefined
+*/
+export type ListCustomDomainsQueryPageToken = string | undefined;
+
+/**
+ * @description Cursor-paginated list of custom domains for a project.
+ * @type object
+*/
+export type ListCustomDomainsStatus200 = ListCustomDomainsResponse;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type ListCustomDomainsStatus400 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type ListCustomDomainsStatus401 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type ListCustomDomainsStatus403 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type ListCustomDomainsStatus404 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type ListCustomDomainsStatus429 = Error;
+
+/**
+ * @type object
+*/
+export type ListCustomDomainsRequestConfig = {
+    data?: never;
     /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type object
+    */
+    pathParams: {
+        project_id: ListCustomDomainsPathProjectId;
+    };
+    /**
+     * @type object | undefined
+    */
+    queryParams?: {
+        page_size?: ListCustomDomainsQueryPageSize;
+        page_token?: ListCustomDomainsQueryPageToken;
+    };
+    headerParams?: never;
+    /**
      * @type string
     */
-    project_id: string;
-};
-
-export type ListCustomDomainsQueryParams = {
-    /**
-     * @description Maximum number of items to return (1-100, default 20).
-     * @minLength 1
-     * @maxLength 100
-     * @default 20
-     * @type integer | undefined
-    */
-    page_size?: number;
-    /**
-     * @description Opaque token for cursor-based pagination.
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string | undefined
-    */
-    page_token?: string;
+    url: `/v1/projects/${string}/domains`;
 };
 
 /**
- * @description List of custom domains.
+ * @type object
 */
-export type ListCustomDomains200 = ListCustomDomainsResponse;
-
-/**
- * @description Invalid request parameters.
-*/
-export type ListCustomDomains400 = Error;
-
-/**
- * @description Missing or invalid authentication.
-*/
-export type ListCustomDomains401 = Error;
-
-/**
- * @description Operation not allowed by current plan limits.
-*/
-export type ListCustomDomains403 = Error;
-
-/**
- * @description Resource not found.
-*/
-export type ListCustomDomains404 = Error;
-
-/**
- * @description Rate limited. Try again later.
-*/
-export type ListCustomDomains429 = Error;
-
-export type ListCustomDomainsQueryResponse = ListCustomDomains200;
-
-export type ListCustomDomainsQuery = {
-    Response: ListCustomDomains200;
-    PathParams: ListCustomDomainsPathParams;
-    QueryParams: ListCustomDomainsQueryParams;
-    Errors: ListCustomDomains400 | ListCustomDomains401 | ListCustomDomains403 | ListCustomDomains404 | ListCustomDomains429;
+export type ListCustomDomainsResponses = {
+    "200": ListCustomDomainsStatus200;
+    "400": ListCustomDomainsStatus400;
+    "401": ListCustomDomainsStatus401;
+    "403": ListCustomDomainsStatus403;
+    "404": ListCustomDomainsStatus404;
+    "429": ListCustomDomainsStatus429;
 };

@@ -7,6 +7,7 @@ import type { CustomDomain } from "./CustomDomain";
 
 /**
  * @description Result of checking DNS ownership for a custom domain.
+ * @type object
 */
 export type VerifyCustomDomainResponse = {
     /**

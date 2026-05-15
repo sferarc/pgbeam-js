@@ -3,39 +3,39 @@
 * Do not edit manually.
 */
 
-
 /**
  * @description Daily usage totals aggregated across all projects in an organization.
+ * @type object
 */
 export type DailyUsage = {
     /**
      * @description Usage date in UTC.
-     * @type string, date
+     * @type string
     */
     day: string;
     /**
      * @description Total queries served on the day.
-     * @type integer, int64
+     * @type integer
     */
     queries_total: number;
     /**
      * @description Total cache hits on the day.
-     * @type integer, int64
+     * @type integer
     */
     cache_hits: number;
     /**
      * @description Total cache misses on the day.
-     * @type integer, int64
+     * @type integer
     */
     cache_misses: number;
     /**
      * @description Total proxy connection time consumed on the day.
-     * @type integer, int64
+     * @type integer
     */
     connection_seconds: number;
     /**
      * @description Total bytes transferred to clients.
-     * @type integer, int64
+     * @type integer
     */
     bytes_transferred: number;
 };

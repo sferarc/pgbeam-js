@@ -6,58 +6,94 @@
 import type { Error } from "./Error";
 import type { ProjectUsageResponse } from "./ProjectUsageResponse";
 
-export type GetProjectUsagePathParams = {
+/**
+ * @description Unique project identifier (prefixed, e.g. prj_xxx).
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string
+*/
+export type GetProjectUsagePathProjectId = string;
+
+/**
+ * @description Start date (inclusive, YYYY-MM-DD).
+ * @example 2024-01-01
+ * @type string
+*/
+export type GetProjectUsageQueryStartDate = string;
+
+/**
+ * @description End date (inclusive, YYYY-MM-DD).
+ * @example 2024-01-31
+ * @type string
+*/
+export type GetProjectUsageQueryEndDate = string;
+
+/**
+ * @description Response envelope for project usage queries.
+ * @type object
+*/
+export type GetProjectUsageStatus200 = ProjectUsageResponse;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetProjectUsageStatus400 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetProjectUsageStatus401 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetProjectUsageStatus404 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetProjectUsageStatus429 = Error;
+
+/**
+ * @type object
+*/
+export type GetProjectUsageRequestConfig = {
+    data?: never;
     /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type object
+    */
+    pathParams: {
+        project_id: GetProjectUsagePathProjectId;
+    };
+    /**
+     * @type object | undefined
+    */
+    queryParams?: {
+        start_date: GetProjectUsageQueryStartDate;
+        end_date: GetProjectUsageQueryEndDate;
+    };
+    headerParams?: never;
+    /**
      * @type string
     */
-    project_id: string;
-};
-
-export type GetProjectUsageQueryParams = {
-    /**
-     * @description Start date (inclusive, YYYY-MM-DD).
-     * @type string, date
-    */
-    start_date: string;
-    /**
-     * @description End date (inclusive, YYYY-MM-DD).
-     * @type string, date
-    */
-    end_date: string;
+    url: `/v1/projects/${string}/usage`;
 };
 
 /**
- * @description Daily usage data by region.
+ * @type object
 */
-export type GetProjectUsage200 = ProjectUsageResponse;
-
-/**
- * @description Invalid request parameters.
-*/
-export type GetProjectUsage400 = Error;
-
-/**
- * @description Missing or invalid authentication.
-*/
-export type GetProjectUsage401 = Error;
-
-/**
- * @description Resource not found.
-*/
-export type GetProjectUsage404 = Error;
-
-/**
- * @description Rate limited. Try again later.
-*/
-export type GetProjectUsage429 = Error;
-
-export type GetProjectUsageQueryResponse = GetProjectUsage200;
-
-export type GetProjectUsageQuery = {
-    Response: GetProjectUsage200;
-    PathParams: GetProjectUsagePathParams;
-    QueryParams: GetProjectUsageQueryParams;
-    Errors: GetProjectUsage400 | GetProjectUsage401 | GetProjectUsage404 | GetProjectUsage429;
+export type GetProjectUsageResponses = {
+    "200": GetProjectUsageStatus200;
+    "400": GetProjectUsageStatus400;
+    "401": GetProjectUsageStatus401;
+    "404": GetProjectUsageStatus404;
+    "429": GetProjectUsageStatus429;
 };
+
+/**
+ * @description Union of all possible responses
+*/
+export type GetProjectUsageResponse = (GetProjectUsageStatus200 | GetProjectUsageStatus400 | GetProjectUsageStatus401 | GetProjectUsageStatus404 | GetProjectUsageStatus429);

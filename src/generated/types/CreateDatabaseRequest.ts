@@ -4,18 +4,20 @@
 */
 
 import type { CacheConfig } from "./CacheConfig";
-import type { DatabaseRole } from "./DatabaseRole";
+import type { DatabaseRoleKey } from "./DatabaseRole";
 import type { PoolConfig } from "./PoolConfig";
-import type { SSLMode } from "./SSLMode";
+import type { SSLModeKey } from "./SSLMode";
 
 /**
  * @description Request body for registering an upstream database.
+ * @type object
 */
 export type CreateDatabaseRequest = {
     /**
      * @description PostgreSQL host.
      * @minLength 1
      * @pattern ^[^\s\x00]+$
+     * @example db.example.com
      * @type string
     */
     host: string;
@@ -23,6 +25,7 @@ export type CreateDatabaseRequest = {
      * @description PostgreSQL port.
      * @minLength 1
      * @maxLength 65535
+     * @example 5432
      * @type integer
     */
     port: number;
@@ -30,6 +33,7 @@ export type CreateDatabaseRequest = {
      * @description PostgreSQL database name.
      * @minLength 1
      * @pattern ^[^\x00]+$
+     * @example mydb
      * @type string
     */
     name: string;
@@ -37,6 +41,7 @@ export type CreateDatabaseRequest = {
      * @description PostgreSQL username.
      * @minLength 1
      * @pattern ^[^\x00]+$
+     * @example pgbeam
      * @type string
     */
     username: string;
@@ -44,22 +49,24 @@ export type CreateDatabaseRequest = {
      * @description PostgreSQL password. Stored encrypted at rest.
      * @minLength 1
      * @pattern ^[^\x00]+$
-     * @type string, password
+     * @type string
     */
     password: string;
     /**
      * @description PostgreSQL SSL connection mode.
+     * @example require
      * @type string | undefined
     */
-    ssl_mode?: SSLMode;
+    ssl_mode?: SSLModeKey;
     /**
      * @description Database role. Primary receives writes, replicas receive reads.
      * @default "primary"
      * @type string | undefined
     */
-    role?: DatabaseRole;
+    role?: DatabaseRoleKey;
     /**
      * @description Region where the connection pool is maintained (near the database). When set and different from the client\'s edge region, queries are relayed through the pool region\'s data plane. Empty means direct connection.\n
+     * @example us-east-1
      * @type string | undefined
     */
     pool_region?: string;

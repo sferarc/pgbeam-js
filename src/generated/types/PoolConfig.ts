@@ -3,10 +3,11 @@
 * Do not edit manually.
 */
 
-import type { PoolMode } from "./PoolMode";
+import type { PoolModeKey } from "./PoolMode";
 
 /**
  * @description Connection pool configuration.
+ * @type object
 */
 export type PoolConfig = {
     /**
@@ -14,6 +15,7 @@ export type PoolConfig = {
      * @minLength 1
      * @maxLength 10000
      * @default 10
+     * @example 20
      * @type integer
     */
     pool_size: number;
@@ -22,14 +24,16 @@ export type PoolConfig = {
      * @minLength 1
      * @maxLength 10000
      * @default 1
+     * @example 5
      * @type integer
     */
     min_pool_size: number;
     /**
      * @description Connection pool mode.
+     * @example transaction
      * @type string
     */
-    pool_mode: PoolMode;
+    pool_mode: PoolModeKey;
     /**
      * @description Maximum concurrent upstream connections per pool.
      * @minLength 1

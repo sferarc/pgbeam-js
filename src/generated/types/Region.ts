@@ -3,7 +3,6 @@
 * Do not edit manually.
 */
 
-
 export const regionProviderEnum = {
     aws: "aws",
     azure: "azure",
@@ -22,20 +21,24 @@ export type RegionStatusEnumKey = (typeof regionStatusEnum)[keyof typeof regionS
 
 /**
  * @description Data plane region available for PgBeam traffic.
+ * @type object
 */
 export type Region = {
     /**
      * @description Region identifier (e.g. us-east-1).
+     * @example us-east-1
      * @type string
     */
     id: string;
     /**
      * @description Human-readable region name.
+     * @example US East (N. Virginia)
      * @type string
     */
     name: string;
     /**
      * @description Cloud provider.
+     * @example aws
      * @type string
     */
     provider: RegionProviderEnumKey;

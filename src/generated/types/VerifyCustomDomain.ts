@@ -6,55 +6,84 @@
 import type { Error } from "./Error";
 import type { VerifyCustomDomainResponse } from "./VerifyCustomDomainResponse";
 
-export type VerifyCustomDomainPathParams = {
+/**
+ * @description Unique project identifier (prefixed, e.g. prj_xxx).
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string
+*/
+export type VerifyCustomDomainPathProjectId = string;
+
+/**
+ * @description Unique custom domain identifier (prefixed, e.g. dom_xxx).
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string
+*/
+export type VerifyCustomDomainPathDomainId = string;
+
+/**
+ * @description Result of checking DNS ownership for a custom domain.
+ * @type object
+*/
+export type VerifyCustomDomainStatus200 = VerifyCustomDomainResponse;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type VerifyCustomDomainStatus400 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type VerifyCustomDomainStatus401 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type VerifyCustomDomainStatus403 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type VerifyCustomDomainStatus404 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type VerifyCustomDomainStatus429 = Error;
+
+/**
+ * @type object
+*/
+export type VerifyCustomDomainRequestConfig = {
+    data?: never;
     /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type object
+    */
+    pathParams: {
+        project_id: VerifyCustomDomainPathProjectId;
+        domain_id: VerifyCustomDomainPathDomainId;
+    };
+    queryParams?: never;
+    headerParams?: never;
+    /**
      * @type string
     */
-    project_id: string;
-    /**
-     * @description Unique custom domain identifier (prefixed, e.g. dom_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    domain_id: string;
+    url: `/v1/projects/${string}/domains/${string}/verify`;
 };
 
 /**
- * @description Verification result.
+ * @type object
 */
-export type VerifyCustomDomain200 = VerifyCustomDomainResponse;
-
-/**
- * @description Invalid request parameters.
-*/
-export type VerifyCustomDomain400 = Error;
-
-/**
- * @description Missing or invalid authentication.
-*/
-export type VerifyCustomDomain401 = Error;
-
-/**
- * @description Custom domains require a Scale or Enterprise plan.
-*/
-export type VerifyCustomDomain403 = Error;
-
-/**
- * @description Resource not found.
-*/
-export type VerifyCustomDomain404 = Error;
-
-/**
- * @description Rate limited. Try again later.
-*/
-export type VerifyCustomDomain429 = Error;
-
-export type VerifyCustomDomainMutationResponse = VerifyCustomDomain200;
-
-export type VerifyCustomDomainMutation = {
-    Response: VerifyCustomDomain200;
-    PathParams: VerifyCustomDomainPathParams;
-    Errors: VerifyCustomDomain400 | VerifyCustomDomain401 | VerifyCustomDomain403 | VerifyCustomDomain404 | VerifyCustomDomain429;
+export type VerifyCustomDomainResponses = {
+    "200": VerifyCustomDomainStatus200;
+    "400": VerifyCustomDomainStatus400;
+    "401": VerifyCustomDomainStatus401;
+    "403": VerifyCustomDomainStatus403;
+    "404": VerifyCustomDomainStatus404;
+    "429": VerifyCustomDomainStatus429;
 };

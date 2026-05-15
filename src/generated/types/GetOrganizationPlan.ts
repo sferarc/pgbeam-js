@@ -6,44 +6,75 @@
 import type { Error } from "./Error";
 import type { OrganizationPlan } from "./OrganizationPlan";
 
-export type GetOrganizationPlanPathParams = {
+/**
+ * @description Unique organization identifier.
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @example org_abc123
+ * @type string
+*/
+export type GetOrganizationPlanPathOrgId = string;
+
+/**
+ * @description Billing state and plan limits for an organization.
+ * @type object
+*/
+export type GetOrganizationPlanStatus200 = OrganizationPlan;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetOrganizationPlanStatus400 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetOrganizationPlanStatus401 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetOrganizationPlanStatus403 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetOrganizationPlanStatus429 = Error;
+
+/**
+ * @type object
+*/
+export type GetOrganizationPlanRequestConfig = {
+    data?: never;
     /**
-     * @description Unique organization identifier.
-     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type object
+    */
+    pathParams: {
+        org_id: GetOrganizationPlanPathOrgId;
+    };
+    queryParams?: never;
+    headerParams?: never;
+    /**
      * @type string
     */
-    org_id: string;
+    url: `/v1/organizations/${string}/plan`;
 };
 
 /**
- * @description Organization plan details.
+ * @type object
 */
-export type GetOrganizationPlan200 = OrganizationPlan;
-
-/**
- * @description Invalid request parameters.
-*/
-export type GetOrganizationPlan400 = Error;
-
-/**
- * @description Missing or invalid authentication.
-*/
-export type GetOrganizationPlan401 = Error;
-
-/**
- * @description Operation not allowed by current plan limits.
-*/
-export type GetOrganizationPlan403 = Error;
-
-/**
- * @description Rate limited. Try again later.
-*/
-export type GetOrganizationPlan429 = Error;
-
-export type GetOrganizationPlanQueryResponse = GetOrganizationPlan200;
-
-export type GetOrganizationPlanQuery = {
-    Response: GetOrganizationPlan200;
-    PathParams: GetOrganizationPlanPathParams;
-    Errors: GetOrganizationPlan400 | GetOrganizationPlan401 | GetOrganizationPlan403 | GetOrganizationPlan429;
+export type GetOrganizationPlanResponses = {
+    "200": GetOrganizationPlanStatus200;
+    "400": GetOrganizationPlanStatus400;
+    "401": GetOrganizationPlanStatus401;
+    "403": GetOrganizationPlanStatus403;
+    "429": GetOrganizationPlanStatus429;
 };
+
+/**
+ * @description Union of all possible responses
+*/
+export type GetOrganizationPlanResponse = (GetOrganizationPlanStatus200 | GetOrganizationPlanStatus400 | GetOrganizationPlanStatus401 | GetOrganizationPlanStatus403 | GetOrganizationPlanStatus429);

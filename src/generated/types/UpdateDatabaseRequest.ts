@@ -4,18 +4,20 @@
 */
 
 import type { CacheConfig } from "./CacheConfig";
-import type { DatabaseRole } from "./DatabaseRole";
+import type { DatabaseRoleKey } from "./DatabaseRole";
 import type { PoolConfig } from "./PoolConfig";
-import type { SSLMode } from "./SSLMode";
+import type { SSLModeKey } from "./SSLMode";
 
 /**
  * @description Request body for partially updating an upstream database.
+ * @type object
 */
 export type UpdateDatabaseRequest = {
     /**
      * @description Updated PostgreSQL host.
      * @minLength 1
      * @pattern ^[^\x00]+$
+     * @example db.example.com
      * @type string | undefined
     */
     host?: string;
@@ -23,40 +25,45 @@ export type UpdateDatabaseRequest = {
      * @description Updated PostgreSQL port.
      * @minLength 1
      * @maxLength 65535
+     * @example 5432
      * @type integer | undefined
     */
     port?: number;
     /**
      * @description Updated PostgreSQL database name.
      * @pattern ^[^\x00]*$
+     * @example mydb
      * @type string | undefined
     */
     name?: string;
     /**
      * @description Updated PostgreSQL username.
      * @pattern ^[^\x00]*$
+     * @example pgbeam
      * @type string | undefined
     */
     username?: string;
     /**
      * @description Updated PostgreSQL password.
      * @pattern ^[^\x00]*$
-     * @type string | undefined, password
+     * @type string | undefined
     */
     password?: string;
     /**
      * @description PostgreSQL SSL connection mode.
+     * @example require
      * @type string | undefined
     */
-    ssl_mode?: SSLMode;
+    ssl_mode?: SSLModeKey;
     /**
      * @description Database role. Primary receives writes, replicas receive reads.
      * @default "primary"
      * @type string | undefined
     */
-    role?: DatabaseRole;
+    role?: DatabaseRoleKey;
     /**
      * @description Region where the connection pool is maintained (near the database). When set and different from the client\'s edge region, queries are relayed through the pool region\'s data plane. Empty means direct connection.\n
+     * @example us-east-1
      * @type string | undefined
     */
     pool_region?: string;

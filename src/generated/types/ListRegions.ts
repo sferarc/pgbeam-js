@@ -7,23 +7,42 @@ import type { Error } from "./Error";
 import type { ListRegionsResponse } from "./ListRegionsResponse";
 
 /**
- * @description List of regions.
+ * @description Response envelope for available region queries.
+ * @type object
 */
-export type ListRegions200 = ListRegionsResponse;
+export type ListRegionsStatus200 = ListRegionsResponse;
 
 /**
- * @description Missing or invalid authentication.
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
 */
-export type ListRegions401 = Error;
+export type ListRegionsStatus401 = Error;
 
 /**
- * @description Rate limited. Try again later.
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
 */
-export type ListRegions429 = Error;
+export type ListRegionsStatus429 = Error;
 
-export type ListRegionsQueryResponse = ListRegions200;
+/**
+ * @type object
+*/
+export type ListRegionsRequestConfig = {
+    data?: never;
+    pathParams?: never;
+    queryParams?: never;
+    headerParams?: never;
+    /**
+     * @type string
+    */
+    url: "/v1/regions";
+};
 
-export type ListRegionsQuery = {
-    Response: ListRegions200;
-    Errors: ListRegions401 | ListRegions429;
+/**
+ * @type object
+*/
+export type ListRegionsResponses = {
+    "200": ListRegionsStatus200;
+    "401": ListRegionsStatus401;
+    "429": ListRegionsStatus429;
 };

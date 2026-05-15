@@ -7,6 +7,7 @@ import type { Database } from "./Database";
 
 /**
  * @description Cursor-paginated list of databases attached to a project.
+ * @type object
 */
 export type ListDatabasesResponse = {
     /**

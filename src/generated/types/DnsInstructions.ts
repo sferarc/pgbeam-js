@@ -3,38 +3,44 @@
 * Do not edit manually.
 */
 
-
 /**
  * @description DNS records the user needs to create for domain verification.
+ * @type object
 */
 export type DnsInstructions = {
     /**
      * @description The CNAME record host.
+     * @example db.example.com
      * @type string | undefined
     */
     cname_host?: string;
     /**
      * @description The CNAME record target.
+     * @example abc.aws.pgbeam.app
      * @type string | undefined
     */
     cname_target?: string;
     /**
      * @description The TXT record host for verification.
+     * @example _pgbeam-verify.db.example.com
      * @type string | undefined
     */
     txt_host?: string;
     /**
      * @description The TXT record value for verification.
+     * @example pgbeam-verify=abc123token
      * @type string | undefined
     */
     txt_value?: string;
     /**
      * @description The CNAME record host for ACME TLS certificate issuance.
+     * @example _acme-challenge.db.example.com
      * @type string | undefined
     */
     acme_cname_host?: string;
     /**
      * @description The CNAME target for ACME challenge delegation.
+     * @example _acme-challenge.abc.aws.pgbeam.app
      * @type string | undefined
     */
     acme_cname_target?: string;

@@ -3,17 +3,10 @@
 * Do not edit manually.
 */
 
-
-export const poolModeEnum = {
+export const poolMode = {
     session: "session",
     transaction: "transaction",
     statement: "statement"
 } as const;
 
-export type PoolModeEnumKey = (typeof poolModeEnum)[keyof typeof poolModeEnum];
-
-/**
- * @description Connection pool mode.
- * @example transaction
-*/
-export type PoolMode = PoolModeEnumKey;
+export type PoolModeKey = (typeof poolMode)[keyof typeof poolMode];

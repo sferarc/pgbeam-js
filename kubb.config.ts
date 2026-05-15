@@ -1,8 +1,10 @@
-import { defineConfig } from "@kubb/core";
-import { pluginOas } from "@kubb/plugin-oas";
+import { adapterOas } from "@kubb/adapter-oas";
+import { middlewareBarrel } from "@kubb/middleware-barrel";
 import { pluginTs } from "@kubb/plugin-ts";
+import { defineConfig } from "kubb";
 
 export default defineConfig({
+  root: ".",
   input: { path: "../../../backend/openapi/bundles/public.yaml" },
   output: {
     path: "./src/generated",
@@ -15,8 +17,11 @@ export default defineConfig({
     // Formatting is handled by biome via the fix-frontend pre-commit hook.
     format: false,
   },
+  // integerType: "number" preserves v4 behavior; v5 defaults int64 to bigint
+  // which would require arithmetic-site changes across dashboard/CLI.
+  adapter: adapterOas({ validate: false, integerType: "number" }),
+  middleware: [middlewareBarrel()],
   plugins: [
-    pluginOas({ validate: false }),
     pluginTs({
       output: { path: "./types", barrelType: "named" },
       enumType: "asConst",

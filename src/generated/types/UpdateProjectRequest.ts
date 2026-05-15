@@ -4,10 +4,11 @@
 */
 
 import type { CidrEntry } from "./CidrEntry";
-import type { ProjectStatus } from "./ProjectStatus";
+import type { ProjectStatusKey } from "./ProjectStatus";
 
 /**
  * @description Request body for partially updating a project.
+ * @type object
 */
 export type UpdateProjectRequest = {
     /**
@@ -15,17 +16,20 @@ export type UpdateProjectRequest = {
      * @minLength 1
      * @maxLength 100
      * @pattern ^[^\x00]*$
+     * @example my-app
      * @type string | undefined
     */
     name?: string;
     /**
      * @description Updated project description.
      * @maxLength 500
+     * @example Production database proxy
      * @type string | undefined
     */
     description?: string;
     /**
      * @description Replacement set of user-defined project labels.
+     * @example production,us-east-1
      * @type array | undefined
     */
     tags?: string[];
@@ -33,9 +37,10 @@ export type UpdateProjectRequest = {
      * @description Project lifecycle status.
      * @type string | undefined
     */
-    status?: ProjectStatus;
+    status?: ProjectStatusKey;
     /**
      * @description IP filtering rules as CIDR ranges with optional labels. Empty array means allow all. Both IPv4 and IPv6 CIDR notation are supported.\n
+     * @example [object Object],[object Object]
      * @type array | undefined
     */
     allowed_cidrs?: CidrEntry[];

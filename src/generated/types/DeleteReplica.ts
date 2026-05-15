@@ -5,55 +5,88 @@
 
 import type { Error } from "./Error";
 
-export type DeleteReplicaPathParams = {
+/**
+ * @description Unique database identifier (prefixed, e.g. db_xxx).
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string
+*/
+export type DeleteReplicaPathDatabaseId = string;
+
+/**
+ * @description Unique replica identifier (prefixed, e.g. rep_xxx).
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string
+*/
+export type DeleteReplicaPathReplicaId = string;
+
+/**
+ * @type any
+*/
+export type DeleteReplicaStatus204 = any;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type DeleteReplicaStatus400 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type DeleteReplicaStatus401 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type DeleteReplicaStatus403 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type DeleteReplicaStatus404 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type DeleteReplicaStatus429 = Error;
+
+/**
+ * @type object
+*/
+export type DeleteReplicaRequestConfig = {
+    data?: never;
     /**
-     * @description Unique database identifier (prefixed, e.g. db_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type object
+    */
+    pathParams: {
+        database_id: DeleteReplicaPathDatabaseId;
+        replica_id: DeleteReplicaPathReplicaId;
+    };
+    queryParams?: never;
+    headerParams?: never;
+    /**
      * @type string
     */
-    database_id: string;
-    /**
-     * @description Unique replica identifier (prefixed, e.g. rep_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    replica_id: string;
+    url: `/v1/databases/${string}/replicas/${string}`;
 };
 
 /**
- * @description Replica deleted.
+ * @type object
 */
-export type DeleteReplica204 = any;
-
-/**
- * @description Invalid request parameters.
-*/
-export type DeleteReplica400 = Error;
-
-/**
- * @description Missing or invalid authentication.
-*/
-export type DeleteReplica401 = Error;
-
-/**
- * @description Operation not allowed by current plan limits.
-*/
-export type DeleteReplica403 = Error;
-
-/**
- * @description Resource not found.
-*/
-export type DeleteReplica404 = Error;
-
-/**
- * @description Rate limited. Try again later.
-*/
-export type DeleteReplica429 = Error;
-
-export type DeleteReplicaMutationResponse = DeleteReplica204;
-
-export type DeleteReplicaMutation = {
-    Response: DeleteReplica204;
-    PathParams: DeleteReplicaPathParams;
-    Errors: DeleteReplica400 | DeleteReplica401 | DeleteReplica403 | DeleteReplica404 | DeleteReplica429;
+export type DeleteReplicaResponses = {
+    "204": DeleteReplicaStatus204;
+    "400": DeleteReplicaStatus400;
+    "401": DeleteReplicaStatus401;
+    "403": DeleteReplicaStatus403;
+    "404": DeleteReplicaStatus404;
+    "429": DeleteReplicaStatus429;
 };
+
+/**
+ * @description Union of all possible responses
+*/
+export type DeleteReplicaResponse = (DeleteReplicaStatus204 | DeleteReplicaStatus400 | DeleteReplicaStatus401 | DeleteReplicaStatus403 | DeleteReplicaStatus404 | DeleteReplicaStatus429);

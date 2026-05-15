@@ -8,26 +8,53 @@ import type { McpRequest } from "./McpRequest";
 import type { McpResponse } from "./McpResponse";
 
 /**
- * @description JSON-RPC 2.0 response.
+ * @description JSON-RPC 2.0 response envelope for MCP over Streamable HTTP.
+ * @type object
 */
-export type McpTransport200 = McpResponse;
+export type McpTransportStatus200 = McpResponse;
 
 /**
- * @description Missing or invalid authentication.
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
 */
-export type McpTransport401 = Error;
+export type McpTransportStatus401 = Error;
 
 /**
- * @description Rate limited. Try again later.
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
 */
-export type McpTransport429 = Error;
+export type McpTransportStatus429 = Error;
 
-export type McpTransportMutationRequest = McpRequest;
+/**
+ * @description JSON-RPC 2.0 request envelope for MCP over Streamable HTTP.
+ * @type object
+*/
+export type McpTransportData = McpRequest;
 
-export type McpTransportMutationResponse = McpTransport200;
-
-export type McpTransportMutation = {
-    Response: McpTransport200;
-    Request: McpTransportMutationRequest;
-    Errors: McpTransport401 | McpTransport429;
+/**
+ * @type object
+*/
+export type McpTransportRequestConfig = {
+    data?: McpTransportData;
+    pathParams?: never;
+    queryParams?: never;
+    headerParams?: never;
+    /**
+     * @type string
+    */
+    url: "/v1/mcp";
 };
+
+/**
+ * @type object
+*/
+export type McpTransportResponses = {
+    "200": McpTransportStatus200;
+    "401": McpTransportStatus401;
+    "429": McpTransportStatus429;
+};
+
+/**
+ * @description Union of all possible responses
+*/
+export type McpTransportResponse = (McpTransportStatus200 | McpTransportStatus401 | McpTransportStatus429);

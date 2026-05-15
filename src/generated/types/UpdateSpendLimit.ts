@@ -7,47 +7,81 @@ import type { Error } from "./Error";
 import type { OrganizationPlan } from "./OrganizationPlan";
 import type { UpdateSpendLimitRequest } from "./UpdateSpendLimitRequest";
 
-export type UpdateSpendLimitPathParams = {
+/**
+ * @description Unique organization identifier.
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @example org_abc123
+ * @type string
+*/
+export type UpdateSpendLimitPathOrgId = string;
+
+/**
+ * @description Billing state and plan limits for an organization.
+ * @type object
+*/
+export type UpdateSpendLimitStatus200 = OrganizationPlan;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type UpdateSpendLimitStatus400 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type UpdateSpendLimitStatus401 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type UpdateSpendLimitStatus403 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type UpdateSpendLimitStatus429 = Error;
+
+/**
+ * @description Request body for updating an organization\'s monthly spend cap.
+ * @type object
+*/
+export type UpdateSpendLimitData = UpdateSpendLimitRequest;
+
+/**
+ * @type object
+*/
+export type UpdateSpendLimitRequestConfig = {
+    data?: UpdateSpendLimitData;
     /**
-     * @description Unique organization identifier.
-     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type object
+    */
+    pathParams: {
+        org_id: UpdateSpendLimitPathOrgId;
+    };
+    queryParams?: never;
+    headerParams?: never;
+    /**
      * @type string
     */
-    org_id: string;
+    url: `/v1/organizations/${string}/spend-limit`;
 };
 
 /**
- * @description Spend limit updated.
+ * @type object
 */
-export type UpdateSpendLimit200 = OrganizationPlan;
-
-/**
- * @description Invalid request parameters.
-*/
-export type UpdateSpendLimit400 = Error;
-
-/**
- * @description Missing or invalid authentication.
-*/
-export type UpdateSpendLimit401 = Error;
-
-/**
- * @description Operation not allowed by current plan limits.
-*/
-export type UpdateSpendLimit403 = Error;
-
-/**
- * @description Rate limited. Try again later.
-*/
-export type UpdateSpendLimit429 = Error;
-
-export type UpdateSpendLimitMutationRequest = UpdateSpendLimitRequest;
-
-export type UpdateSpendLimitMutationResponse = UpdateSpendLimit200;
-
-export type UpdateSpendLimitMutation = {
-    Response: UpdateSpendLimit200;
-    Request: UpdateSpendLimitMutationRequest;
-    PathParams: UpdateSpendLimitPathParams;
-    Errors: UpdateSpendLimit400 | UpdateSpendLimit401 | UpdateSpendLimit403 | UpdateSpendLimit429;
+export type UpdateSpendLimitResponses = {
+    "200": UpdateSpendLimitStatus200;
+    "400": UpdateSpendLimitStatus400;
+    "401": UpdateSpendLimitStatus401;
+    "403": UpdateSpendLimitStatus403;
+    "429": UpdateSpendLimitStatus429;
 };
+
+/**
+ * @description Union of all possible responses
+*/
+export type UpdateSpendLimitResponse = (UpdateSpendLimitStatus200 | UpdateSpendLimitStatus400 | UpdateSpendLimitStatus401 | UpdateSpendLimitStatus403 | UpdateSpendLimitStatus429);

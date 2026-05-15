@@ -6,58 +6,95 @@
 import type { Error } from "./Error";
 import type { UsageResponse } from "./UsageResponse";
 
-export type GetOrganizationUsagePathParams = {
+/**
+ * @description Unique organization identifier.
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @example org_abc123
+ * @type string
+*/
+export type GetOrganizationUsagePathOrgId = string;
+
+/**
+ * @description Start date (inclusive, YYYY-MM-DD).
+ * @example 2024-01-01
+ * @type string
+*/
+export type GetOrganizationUsageQueryStartDate = string;
+
+/**
+ * @description End date (inclusive, YYYY-MM-DD).
+ * @example 2024-01-31
+ * @type string
+*/
+export type GetOrganizationUsageQueryEndDate = string;
+
+/**
+ * @description Response envelope for organization usage queries.
+ * @type object
+*/
+export type GetOrganizationUsageStatus200 = UsageResponse;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetOrganizationUsageStatus400 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetOrganizationUsageStatus401 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetOrganizationUsageStatus403 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetOrganizationUsageStatus429 = Error;
+
+/**
+ * @type object
+*/
+export type GetOrganizationUsageRequestConfig = {
+    data?: never;
     /**
-     * @description Unique organization identifier.
-     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type object
+    */
+    pathParams: {
+        org_id: GetOrganizationUsagePathOrgId;
+    };
+    /**
+     * @type object | undefined
+    */
+    queryParams?: {
+        start_date: GetOrganizationUsageQueryStartDate;
+        end_date: GetOrganizationUsageQueryEndDate;
+    };
+    headerParams?: never;
+    /**
      * @type string
     */
-    org_id: string;
-};
-
-export type GetOrganizationUsageQueryParams = {
-    /**
-     * @description Start date (inclusive, YYYY-MM-DD).
-     * @type string, date
-    */
-    start_date: string;
-    /**
-     * @description End date (inclusive, YYYY-MM-DD).
-     * @type string, date
-    */
-    end_date: string;
+    url: `/v1/organizations/${string}/usage`;
 };
 
 /**
- * @description Daily usage data.
+ * @type object
 */
-export type GetOrganizationUsage200 = UsageResponse;
-
-/**
- * @description Invalid request parameters.
-*/
-export type GetOrganizationUsage400 = Error;
-
-/**
- * @description Missing or invalid authentication.
-*/
-export type GetOrganizationUsage401 = Error;
-
-/**
- * @description Operation not allowed by current plan limits.
-*/
-export type GetOrganizationUsage403 = Error;
-
-/**
- * @description Rate limited. Try again later.
-*/
-export type GetOrganizationUsage429 = Error;
-
-export type GetOrganizationUsageQueryResponse = GetOrganizationUsage200;
-
-export type GetOrganizationUsageQuery = {
-    Response: GetOrganizationUsage200;
-    PathParams: GetOrganizationUsagePathParams;
-    QueryParams: GetOrganizationUsageQueryParams;
-    Errors: GetOrganizationUsage400 | GetOrganizationUsage401 | GetOrganizationUsage403 | GetOrganizationUsage429;
+export type GetOrganizationUsageResponses = {
+    "200": GetOrganizationUsageStatus200;
+    "400": GetOrganizationUsageStatus400;
+    "401": GetOrganizationUsageStatus401;
+    "403": GetOrganizationUsageStatus403;
+    "429": GetOrganizationUsageStatus429;
 };
+
+/**
+ * @description Union of all possible responses
+*/
+export type GetOrganizationUsageResponse = (GetOrganizationUsageStatus200 | GetOrganizationUsageStatus400 | GetOrganizationUsageStatus401 | GetOrganizationUsageStatus403 | GetOrganizationUsageStatus429);

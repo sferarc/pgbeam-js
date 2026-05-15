@@ -3,16 +3,9 @@
 * Do not edit manually.
 */
 
-
-export const databaseRoleEnum = {
+export const databaseRole = {
     primary: "primary",
     replica: "replica"
 } as const;
 
-export type DatabaseRoleEnumKey = (typeof databaseRoleEnum)[keyof typeof databaseRoleEnum];
-
-/**
- * @description Database role. Primary receives writes, replicas receive reads.
- * @default primary
-*/
-export type DatabaseRole = DatabaseRoleEnumKey;
+export type DatabaseRoleKey = (typeof databaseRole)[keyof typeof databaseRole];

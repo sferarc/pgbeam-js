@@ -3,7 +3,6 @@
 * Do not edit manually.
 */
 
-
 export const updateOnboardingRequestStepEnum = {
     project_created: "project_created",
     database_added: "database_added",
@@ -16,10 +15,12 @@ export type UpdateOnboardingRequestStepEnumKey = (typeof updateOnboardingRequest
 
 /**
  * @description Request body for advancing or dismissing onboarding.
+ * @type object
 */
 export type UpdateOnboardingRequest = {
     /**
      * @description The onboarding step to mark as complete.
+     * @example project_created
      * @type string | undefined
     */
     step?: UpdateOnboardingRequestStepEnumKey;

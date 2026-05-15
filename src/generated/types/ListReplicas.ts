@@ -6,49 +6,76 @@
 import type { Error } from "./Error";
 import type { ListReplicasResponse } from "./ListReplicasResponse";
 
-export type ListReplicasPathParams = {
+/**
+ * @description Unique database identifier (prefixed, e.g. db_xxx).
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string
+*/
+export type ListReplicasPathDatabaseId = string;
+
+/**
+ * @description Response envelope for listing registered replicas.
+ * @type object
+*/
+export type ListReplicasStatus200 = ListReplicasResponse;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type ListReplicasStatus400 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type ListReplicasStatus401 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type ListReplicasStatus403 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type ListReplicasStatus404 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type ListReplicasStatus429 = Error;
+
+/**
+ * @type object
+*/
+export type ListReplicasRequestConfig = {
+    data?: never;
     /**
-     * @description Unique database identifier (prefixed, e.g. db_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type object
+    */
+    pathParams: {
+        database_id: ListReplicasPathDatabaseId;
+    };
+    queryParams?: never;
+    headerParams?: never;
+    /**
      * @type string
     */
-    database_id: string;
+    url: `/v1/databases/${string}/replicas`;
 };
 
 /**
- * @description List of replicas.
+ * @type object
 */
-export type ListReplicas200 = ListReplicasResponse;
-
-/**
- * @description Invalid request parameters.
-*/
-export type ListReplicas400 = Error;
-
-/**
- * @description Missing or invalid authentication.
-*/
-export type ListReplicas401 = Error;
-
-/**
- * @description Operation not allowed by current plan limits.
-*/
-export type ListReplicas403 = Error;
-
-/**
- * @description Resource not found.
-*/
-export type ListReplicas404 = Error;
-
-/**
- * @description Rate limited. Try again later.
-*/
-export type ListReplicas429 = Error;
-
-export type ListReplicasQueryResponse = ListReplicas200;
-
-export type ListReplicasQuery = {
-    Response: ListReplicas200;
-    PathParams: ListReplicasPathParams;
-    Errors: ListReplicas400 | ListReplicas401 | ListReplicas403 | ListReplicas404 | ListReplicas429;
+export type ListReplicasResponses = {
+    "200": ListReplicasStatus200;
+    "400": ListReplicasStatus400;
+    "401": ListReplicasStatus401;
+    "403": ListReplicasStatus403;
+    "404": ListReplicasStatus404;
+    "429": ListReplicasStatus429;
 };

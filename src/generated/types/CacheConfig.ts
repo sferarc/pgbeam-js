@@ -3,9 +3,9 @@
 * Do not edit manually.
 */
 
-
 /**
  * @description Query cache configuration.
+ * @type object
 */
 export type CacheConfig = {
     /**

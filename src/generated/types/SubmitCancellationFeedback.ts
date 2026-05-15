@@ -6,47 +6,80 @@
 import type { CancellationFeedbackRequest } from "./CancellationFeedbackRequest";
 import type { Error } from "./Error";
 
-export type SubmitCancellationFeedbackPathParams = {
+/**
+ * @description Unique organization identifier.
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @example org_abc123
+ * @type string
+*/
+export type SubmitCancellationFeedbackPathOrgId = string;
+
+/**
+ * @type any
+*/
+export type SubmitCancellationFeedbackStatus204 = any;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type SubmitCancellationFeedbackStatus400 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type SubmitCancellationFeedbackStatus401 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type SubmitCancellationFeedbackStatus403 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type SubmitCancellationFeedbackStatus429 = Error;
+
+/**
+ * @description Request body for capturing cancellation feedback from a user.
+ * @type object
+*/
+export type SubmitCancellationFeedbackData = CancellationFeedbackRequest;
+
+/**
+ * @type object
+*/
+export type SubmitCancellationFeedbackRequestConfig = {
+    data?: SubmitCancellationFeedbackData;
     /**
-     * @description Unique organization identifier.
-     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type object
+    */
+    pathParams: {
+        org_id: SubmitCancellationFeedbackPathOrgId;
+    };
+    queryParams?: never;
+    headerParams?: never;
+    /**
      * @type string
     */
-    org_id: string;
+    url: `/v1/organizations/${string}/cancellation-feedback`;
 };
 
 /**
- * @description Feedback recorded.
+ * @type object
 */
-export type SubmitCancellationFeedback204 = any;
-
-/**
- * @description Invalid request parameters.
-*/
-export type SubmitCancellationFeedback400 = Error;
-
-/**
- * @description Missing or invalid authentication.
-*/
-export type SubmitCancellationFeedback401 = Error;
-
-/**
- * @description Operation not allowed by current plan limits.
-*/
-export type SubmitCancellationFeedback403 = Error;
-
-/**
- * @description Rate limited. Try again later.
-*/
-export type SubmitCancellationFeedback429 = Error;
-
-export type SubmitCancellationFeedbackMutationRequest = CancellationFeedbackRequest;
-
-export type SubmitCancellationFeedbackMutationResponse = SubmitCancellationFeedback204;
-
-export type SubmitCancellationFeedbackMutation = {
-    Response: SubmitCancellationFeedback204;
-    Request: SubmitCancellationFeedbackMutationRequest;
-    PathParams: SubmitCancellationFeedbackPathParams;
-    Errors: SubmitCancellationFeedback400 | SubmitCancellationFeedback401 | SubmitCancellationFeedback403 | SubmitCancellationFeedback429;
+export type SubmitCancellationFeedbackResponses = {
+    "204": SubmitCancellationFeedbackStatus204;
+    "400": SubmitCancellationFeedbackStatus400;
+    "401": SubmitCancellationFeedbackStatus401;
+    "403": SubmitCancellationFeedbackStatus403;
+    "429": SubmitCancellationFeedbackStatus429;
 };
+
+/**
+ * @description Union of all possible responses
+*/
+export type SubmitCancellationFeedbackResponse = (SubmitCancellationFeedbackStatus204 | SubmitCancellationFeedbackStatus400 | SubmitCancellationFeedbackStatus401 | SubmitCancellationFeedbackStatus403 | SubmitCancellationFeedbackStatus429);

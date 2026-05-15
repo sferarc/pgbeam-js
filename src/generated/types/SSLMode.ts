@@ -3,8 +3,7 @@
 * Do not edit manually.
 */
 
-
-export const SSLModeEnum = {
+export const SSLMode = {
     disable: "disable",
     allow: "allow",
     prefer: "prefer",
@@ -13,10 +12,4 @@ export const SSLModeEnum = {
     "verify-full": "verify-full"
 } as const;
 
-export type SSLModeEnumKey = (typeof SSLModeEnum)[keyof typeof SSLModeEnum];
-
-/**
- * @description PostgreSQL SSL connection mode.
- * @example require
-*/
-export type SSLMode = SSLModeEnumKey;
+export type SSLModeKey = (typeof SSLMode)[keyof typeof SSLMode];

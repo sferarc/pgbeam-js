@@ -6,61 +6,96 @@
 import type { Error } from "./Error";
 import type { ProjectMetricsResponse } from "./ProjectMetricsResponse";
 
-export type GetProjectMetricsPathParams = {
+/**
+ * @description Unique project identifier (prefixed, e.g. prj_xxx).
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string
+*/
+export type GetProjectMetricsPathProjectId = string;
+
+/**
+ * @description Maximum number of recent snapshots to return.
+ * @minLength 1
+ * @maxLength 1000
+ * @default 60
+ * @type integer | undefined
+*/
+export type GetProjectMetricsQueryLimit = number | undefined;
+
+/**
+ * @description Filter metrics by region code.
+ * @example us-east-1
+ * @type string | undefined
+*/
+export type GetProjectMetricsQueryRegion = string | undefined;
+
+/**
+ * @description Response envelope for recent project metrics snapshots.
+ * @type object
+*/
+export type GetProjectMetricsStatus200 = ProjectMetricsResponse;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetProjectMetricsStatus400 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetProjectMetricsStatus401 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetProjectMetricsStatus404 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetProjectMetricsStatus429 = Error;
+
+/**
+ * @type object
+*/
+export type GetProjectMetricsRequestConfig = {
+    data?: never;
     /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type object
+    */
+    pathParams: {
+        project_id: GetProjectMetricsPathProjectId;
+    };
+    /**
+     * @type object | undefined
+    */
+    queryParams?: {
+        limit?: GetProjectMetricsQueryLimit;
+        region?: GetProjectMetricsQueryRegion;
+    };
+    headerParams?: never;
+    /**
      * @type string
     */
-    project_id: string;
-};
-
-export type GetProjectMetricsQueryParams = {
-    /**
-     * @description Maximum number of recent snapshots to return.
-     * @minLength 1
-     * @maxLength 1000
-     * @default 60
-     * @type integer | undefined
-    */
-    limit?: number;
-    /**
-     * @description Filter metrics by region code.
-     * @type string | undefined
-    */
-    region?: string;
+    url: `/v1/projects/${string}/metrics`;
 };
 
 /**
- * @description Metrics snapshots
+ * @type object
 */
-export type GetProjectMetrics200 = ProjectMetricsResponse;
-
-/**
- * @description Invalid request parameters.
-*/
-export type GetProjectMetrics400 = Error;
-
-/**
- * @description Missing or invalid authentication.
-*/
-export type GetProjectMetrics401 = Error;
-
-/**
- * @description Resource not found.
-*/
-export type GetProjectMetrics404 = Error;
-
-/**
- * @description Rate limited. Try again later.
-*/
-export type GetProjectMetrics429 = Error;
-
-export type GetProjectMetricsQueryResponse = GetProjectMetrics200;
-
-export type GetProjectMetricsQuery = {
-    Response: GetProjectMetrics200;
-    PathParams: GetProjectMetricsPathParams;
-    QueryParams: GetProjectMetricsQueryParams;
-    Errors: GetProjectMetrics400 | GetProjectMetrics401 | GetProjectMetrics404 | GetProjectMetrics429;
+export type GetProjectMetricsResponses = {
+    "200": GetProjectMetricsStatus200;
+    "400": GetProjectMetricsStatus400;
+    "401": GetProjectMetricsStatus401;
+    "404": GetProjectMetricsStatus404;
+    "429": GetProjectMetricsStatus429;
 };
+
+/**
+ * @description Union of all possible responses
+*/
+export type GetProjectMetricsResponse = (GetProjectMetricsStatus200 | GetProjectMetricsStatus400 | GetProjectMetricsStatus401 | GetProjectMetricsStatus404 | GetProjectMetricsStatus429);

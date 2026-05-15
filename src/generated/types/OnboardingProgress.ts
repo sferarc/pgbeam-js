@@ -3,9 +3,9 @@
 * Do not edit manually.
 */
 
-
 /**
  * @description Progress state for the dashboard onboarding checklist.
+ * @type object
 */
 export type OnboardingProgress = {
     /**
@@ -65,7 +65,7 @@ export type OnboardingProgress = {
     steps_total: number;
     /**
      * @description When onboarding was completed. Null if not yet completed.
-     * @type string, date-time
+     * @type string
     */
     completed_at?: string | null;
 };

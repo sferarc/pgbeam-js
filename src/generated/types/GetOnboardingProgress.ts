@@ -6,49 +6,82 @@
 import type { Error } from "./Error";
 import type { OnboardingProgress } from "./OnboardingProgress";
 
-export type GetOnboardingProgressPathParams = {
+/**
+ * @description Unique organization identifier.
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @example org_abc123
+ * @type string
+*/
+export type GetOnboardingProgressPathOrgId = string;
+
+/**
+ * @description Progress state for the dashboard onboarding checklist.
+ * @type object
+*/
+export type GetOnboardingProgressStatus200 = OnboardingProgress;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetOnboardingProgressStatus400 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetOnboardingProgressStatus401 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetOnboardingProgressStatus403 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetOnboardingProgressStatus404 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type GetOnboardingProgressStatus429 = Error;
+
+/**
+ * @type object
+*/
+export type GetOnboardingProgressRequestConfig = {
+    data?: never;
     /**
-     * @description Unique organization identifier.
-     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type object
+    */
+    pathParams: {
+        org_id: GetOnboardingProgressPathOrgId;
+    };
+    queryParams?: never;
+    headerParams?: never;
+    /**
      * @type string
     */
-    org_id: string;
+    url: `/v1/organizations/${string}/onboarding`;
 };
 
 /**
- * @description Onboarding progress.
+ * @type object
 */
-export type GetOnboardingProgress200 = OnboardingProgress;
-
-/**
- * @description Invalid request parameters.
-*/
-export type GetOnboardingProgress400 = Error;
-
-/**
- * @description Missing or invalid authentication.
-*/
-export type GetOnboardingProgress401 = Error;
-
-/**
- * @description Operation not allowed by current plan limits.
-*/
-export type GetOnboardingProgress403 = Error;
-
-/**
- * @description Resource not found.
-*/
-export type GetOnboardingProgress404 = Error;
-
-/**
- * @description Rate limited. Try again later.
-*/
-export type GetOnboardingProgress429 = Error;
-
-export type GetOnboardingProgressQueryResponse = GetOnboardingProgress200;
-
-export type GetOnboardingProgressQuery = {
-    Response: GetOnboardingProgress200;
-    PathParams: GetOnboardingProgressPathParams;
-    Errors: GetOnboardingProgress400 | GetOnboardingProgress401 | GetOnboardingProgress403 | GetOnboardingProgress404 | GetOnboardingProgress429;
+export type GetOnboardingProgressResponses = {
+    "200": GetOnboardingProgressStatus200;
+    "400": GetOnboardingProgressStatus400;
+    "401": GetOnboardingProgressStatus401;
+    "403": GetOnboardingProgressStatus403;
+    "404": GetOnboardingProgressStatus404;
+    "429": GetOnboardingProgressStatus429;
 };
+
+/**
+ * @description Union of all possible responses
+*/
+export type GetOnboardingProgressResponse = (GetOnboardingProgressStatus200 | GetOnboardingProgressStatus400 | GetOnboardingProgressStatus401 | GetOnboardingProgressStatus403 | GetOnboardingProgressStatus404 | GetOnboardingProgressStatus429);

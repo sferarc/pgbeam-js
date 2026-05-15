@@ -3,14 +3,15 @@
 * Do not edit manually.
 */
 
-
 /**
  * @description Request body for updating an organization\'s monthly spend cap.
+ * @type object
 */
 export type UpdateSpendLimitRequest = {
     /**
      * @description Monthly spend limit in dollars. Null to remove the limit.
-     * @type number, double
+     * @example 500
+     * @type number
     */
     spend_limit?: number | null;
 };

@@ -7,6 +7,7 @@ import type { ProjectDailyUsage } from "./ProjectDailyUsage";
 
 /**
  * @description Response envelope for project usage queries.
+ * @type object
 */
 export type ProjectUsageResponse = {
     /**

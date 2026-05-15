@@ -7,23 +7,42 @@ import type { Error } from "./Error";
 import type { ListPlansResponse } from "./ListPlansResponse";
 
 /**
- * @description List of available plans.
+ * @description Response envelope for listing available billing plans.
+ * @type object
 */
-export type ListPlans200 = ListPlansResponse;
+export type ListPlansStatus200 = ListPlansResponse;
 
 /**
- * @description Missing or invalid authentication.
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
 */
-export type ListPlans401 = Error;
+export type ListPlansStatus401 = Error;
 
 /**
- * @description Rate limited. Try again later.
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
 */
-export type ListPlans429 = Error;
+export type ListPlansStatus429 = Error;
 
-export type ListPlansQueryResponse = ListPlans200;
+/**
+ * @type object
+*/
+export type ListPlansRequestConfig = {
+    data?: never;
+    pathParams?: never;
+    queryParams?: never;
+    headerParams?: never;
+    /**
+     * @type string
+    */
+    url: "/v1/plans";
+};
 
-export type ListPlansQuery = {
-    Response: ListPlans200;
-    Errors: ListPlans401 | ListPlans429;
+/**
+ * @type object
+*/
+export type ListPlansResponses = {
+    "200": ListPlansStatus200;
+    "401": ListPlansStatus401;
+    "429": ListPlansStatus429;
 };

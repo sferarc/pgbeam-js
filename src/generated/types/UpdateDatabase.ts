@@ -7,58 +7,95 @@ import type { Database } from "./Database";
 import type { Error } from "./Error";
 import type { UpdateDatabaseRequest } from "./UpdateDatabaseRequest";
 
-export type UpdateDatabasePathParams = {
+/**
+ * @description Unique project identifier (prefixed, e.g. prj_xxx).
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string
+*/
+export type UpdateDatabasePathProjectId = string;
+
+/**
+ * @description Unique database identifier (prefixed, e.g. db_xxx).
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string
+*/
+export type UpdateDatabasePathDatabaseId = string;
+
+/**
+ * @description Registered upstream PostgreSQL database for a project.
+ * @type object
+*/
+export type UpdateDatabaseStatus200 = Database;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type UpdateDatabaseStatus400 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type UpdateDatabaseStatus401 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type UpdateDatabaseStatus403 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type UpdateDatabaseStatus404 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type UpdateDatabaseStatus429 = Error;
+
+/**
+ * @description Request body for partially updating an upstream database.
+ * @type object
+*/
+export type UpdateDatabaseData = UpdateDatabaseRequest;
+
+/**
+ * @type object
+*/
+export type UpdateDatabaseRequestConfig = {
+    data?: UpdateDatabaseData;
     /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type object
+    */
+    pathParams: {
+        project_id: UpdateDatabasePathProjectId;
+        database_id: UpdateDatabasePathDatabaseId;
+    };
+    queryParams?: never;
+    headerParams?: never;
+    /**
      * @type string
     */
-    project_id: string;
-    /**
-     * @description Unique database identifier (prefixed, e.g. db_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    database_id: string;
+    url: `/v1/projects/${string}/databases/${string}`;
 };
 
 /**
- * @description Database updated.
+ * @type object
 */
-export type UpdateDatabase200 = Database;
-
-/**
- * @description Invalid request parameters.
-*/
-export type UpdateDatabase400 = Error;
-
-/**
- * @description Missing or invalid authentication.
-*/
-export type UpdateDatabase401 = Error;
-
-/**
- * @description Operation not allowed by current plan limits.
-*/
-export type UpdateDatabase403 = Error;
-
-/**
- * @description Resource not found.
-*/
-export type UpdateDatabase404 = Error;
-
-/**
- * @description Rate limited. Try again later.
-*/
-export type UpdateDatabase429 = Error;
-
-export type UpdateDatabaseMutationRequest = UpdateDatabaseRequest;
-
-export type UpdateDatabaseMutationResponse = UpdateDatabase200;
-
-export type UpdateDatabaseMutation = {
-    Response: UpdateDatabase200;
-    Request: UpdateDatabaseMutationRequest;
-    PathParams: UpdateDatabasePathParams;
-    Errors: UpdateDatabase400 | UpdateDatabase401 | UpdateDatabase403 | UpdateDatabase404 | UpdateDatabase429;
+export type UpdateDatabaseResponses = {
+    "200": UpdateDatabaseStatus200;
+    "400": UpdateDatabaseStatus400;
+    "401": UpdateDatabaseStatus401;
+    "403": UpdateDatabaseStatus403;
+    "404": UpdateDatabaseStatus404;
+    "429": UpdateDatabaseStatus429;
 };
+
+/**
+ * @description Union of all possible responses
+*/
+export type UpdateDatabaseResponse = (UpdateDatabaseStatus200 | UpdateDatabaseStatus400 | UpdateDatabaseStatus401 | UpdateDatabaseStatus403 | UpdateDatabaseStatus404 | UpdateDatabaseStatus429);

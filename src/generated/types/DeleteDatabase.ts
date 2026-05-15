@@ -5,55 +5,88 @@
 
 import type { Error } from "./Error";
 
-export type DeleteDatabasePathParams = {
+/**
+ * @description Unique project identifier (prefixed, e.g. prj_xxx).
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string
+*/
+export type DeleteDatabasePathProjectId = string;
+
+/**
+ * @description Unique database identifier (prefixed, e.g. db_xxx).
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string
+*/
+export type DeleteDatabasePathDatabaseId = string;
+
+/**
+ * @type any
+*/
+export type DeleteDatabaseStatus204 = any;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type DeleteDatabaseStatus400 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type DeleteDatabaseStatus401 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type DeleteDatabaseStatus403 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type DeleteDatabaseStatus404 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type DeleteDatabaseStatus429 = Error;
+
+/**
+ * @type object
+*/
+export type DeleteDatabaseRequestConfig = {
+    data?: never;
     /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type object
+    */
+    pathParams: {
+        project_id: DeleteDatabasePathProjectId;
+        database_id: DeleteDatabasePathDatabaseId;
+    };
+    queryParams?: never;
+    headerParams?: never;
+    /**
      * @type string
     */
-    project_id: string;
-    /**
-     * @description Unique database identifier (prefixed, e.g. db_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    database_id: string;
+    url: `/v1/projects/${string}/databases/${string}`;
 };
 
 /**
- * @description Database deleted.
+ * @type object
 */
-export type DeleteDatabase204 = any;
-
-/**
- * @description Invalid request parameters.
-*/
-export type DeleteDatabase400 = Error;
-
-/**
- * @description Missing or invalid authentication.
-*/
-export type DeleteDatabase401 = Error;
-
-/**
- * @description Operation not allowed by current plan limits.
-*/
-export type DeleteDatabase403 = Error;
-
-/**
- * @description Resource not found.
-*/
-export type DeleteDatabase404 = Error;
-
-/**
- * @description Rate limited. Try again later.
-*/
-export type DeleteDatabase429 = Error;
-
-export type DeleteDatabaseMutationResponse = DeleteDatabase204;
-
-export type DeleteDatabaseMutation = {
-    Response: DeleteDatabase204;
-    PathParams: DeleteDatabasePathParams;
-    Errors: DeleteDatabase400 | DeleteDatabase401 | DeleteDatabase403 | DeleteDatabase404 | DeleteDatabase429;
+export type DeleteDatabaseResponses = {
+    "204": DeleteDatabaseStatus204;
+    "400": DeleteDatabaseStatus400;
+    "401": DeleteDatabaseStatus401;
+    "403": DeleteDatabaseStatus403;
+    "404": DeleteDatabaseStatus404;
+    "429": DeleteDatabaseStatus429;
 };
+
+/**
+ * @description Union of all possible responses
+*/
+export type DeleteDatabaseResponse = (DeleteDatabaseStatus204 | DeleteDatabaseStatus400 | DeleteDatabaseStatus401 | DeleteDatabaseStatus403 | DeleteDatabaseStatus404 | DeleteDatabaseStatus429);

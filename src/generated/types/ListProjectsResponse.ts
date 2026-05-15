@@ -7,6 +7,7 @@ import type { Project } from "./Project";
 
 /**
  * @description Cursor-paginated list of projects for an organization.
+ * @type object
 */
 export type ListProjectsResponse = {
     /**

@@ -7,57 +7,94 @@ import type { CreateCustomDomainRequest } from "./CreateCustomDomainRequest";
 import type { CustomDomain } from "./CustomDomain";
 import type { Error } from "./Error";
 
-export type CreateCustomDomainPathParams = {
+/**
+ * @description Unique project identifier (prefixed, e.g. prj_xxx).
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string
+*/
+export type CreateCustomDomainPathProjectId = string;
+
+/**
+ * @description Custom database hostname attached to a project.
+ * @type object
+*/
+export type CreateCustomDomainStatus201 = CustomDomain;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type CreateCustomDomainStatus400 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type CreateCustomDomainStatus401 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type CreateCustomDomainStatus403 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type CreateCustomDomainStatus404 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type CreateCustomDomainStatus409 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type CreateCustomDomainStatus429 = Error;
+
+/**
+ * @description Request body for attaching a custom domain to a project.
+ * @type object
+*/
+export type CreateCustomDomainData = CreateCustomDomainRequest;
+
+/**
+ * @type object
+*/
+export type CreateCustomDomainRequestConfig = {
+    data?: CreateCustomDomainData;
     /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type object
+    */
+    pathParams: {
+        project_id: CreateCustomDomainPathProjectId;
+    };
+    queryParams?: never;
+    headerParams?: never;
+    /**
      * @type string
     */
-    project_id: string;
+    url: `/v1/projects/${string}/domains`;
 };
 
 /**
- * @description Custom domain created.
+ * @type object
 */
-export type CreateCustomDomain201 = CustomDomain;
-
-/**
- * @description Invalid request parameters.
-*/
-export type CreateCustomDomain400 = Error;
-
-/**
- * @description Missing or invalid authentication.
-*/
-export type CreateCustomDomain401 = Error;
-
-/**
- * @description Custom domains require a Scale or Enterprise plan.
-*/
-export type CreateCustomDomain403 = Error;
-
-/**
- * @description Resource not found.
-*/
-export type CreateCustomDomain404 = Error;
-
-/**
- * @description Resource already exists or conflicts with current state.
-*/
-export type CreateCustomDomain409 = Error;
-
-/**
- * @description Rate limited. Try again later.
-*/
-export type CreateCustomDomain429 = Error;
-
-export type CreateCustomDomainMutationRequest = CreateCustomDomainRequest;
-
-export type CreateCustomDomainMutationResponse = CreateCustomDomain201;
-
-export type CreateCustomDomainMutation = {
-    Response: CreateCustomDomain201;
-    Request: CreateCustomDomainMutationRequest;
-    PathParams: CreateCustomDomainPathParams;
-    Errors: CreateCustomDomain400 | CreateCustomDomain401 | CreateCustomDomain403 | CreateCustomDomain404 | CreateCustomDomain409 | CreateCustomDomain429;
+export type CreateCustomDomainResponses = {
+    "201": CreateCustomDomainStatus201;
+    "400": CreateCustomDomainStatus400;
+    "401": CreateCustomDomainStatus401;
+    "403": CreateCustomDomainStatus403;
+    "404": CreateCustomDomainStatus404;
+    "409": CreateCustomDomainStatus409;
+    "429": CreateCustomDomainStatus429;
 };
+
+/**
+ * @description Union of all possible responses
+*/
+export type CreateCustomDomainResponse = (CreateCustomDomainStatus201 | CreateCustomDomainStatus400 | CreateCustomDomainStatus401 | CreateCustomDomainStatus403 | CreateCustomDomainStatus404 | CreateCustomDomainStatus409 | CreateCustomDomainStatus429);

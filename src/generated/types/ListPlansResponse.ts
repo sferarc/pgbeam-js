@@ -7,6 +7,7 @@ import type { PlanInfo } from "./PlanInfo";
 
 /**
  * @description Response envelope for listing available billing plans.
+ * @type object
 */
 export type ListPlansResponse = {
     /**

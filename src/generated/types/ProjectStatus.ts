@@ -3,16 +3,10 @@
 * Do not edit manually.
 */
 
-
-export const projectStatusEnum = {
+export const projectStatus = {
     active: "active",
     suspended: "suspended",
     deleted: "deleted"
 } as const;
 
-export type ProjectStatusEnumKey = (typeof projectStatusEnum)[keyof typeof projectStatusEnum];
-
-/**
- * @description Project lifecycle status.
-*/
-export type ProjectStatus = ProjectStatusEnumKey;
+export type ProjectStatusKey = (typeof projectStatus)[keyof typeof projectStatus];

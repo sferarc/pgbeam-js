@@ -3,7 +3,6 @@
 * Do not edit manually.
 */
 
-
 export const mcpRequestJsonrpcEnum = {
     "2.0": "2.0"
 } as const;
@@ -22,20 +21,24 @@ export type McpRequestMethodEnumKey = (typeof mcpRequestMethodEnum)[keyof typeof
 
 /**
  * @description JSON-RPC 2.0 request envelope for MCP over Streamable HTTP.
+ * @type object
 */
 export type McpRequest = {
     /**
      * @description JSON-RPC version. Must be \"2.0\".
+     * @example 2.0
      * @type string
     */
     jsonrpc: McpRequestJsonrpcEnumKey;
     /**
      * @description Request identifier. Omit for notifications.
+     * @example 1
      * @type string | undefined
     */
     id?: string;
     /**
      * @description MCP method to invoke.
+     * @example initialize
      * @type string
     */
     method: McpRequestMethodEnumKey;

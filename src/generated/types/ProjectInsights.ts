@@ -9,6 +9,7 @@ import type { QueryInsight } from "./QueryInsight";
 
 /**
  * @description Query insights, cache performance, and latency for a project.
+ * @type object
 */
 export type ProjectInsights = {
     /**

@@ -7,52 +7,87 @@ import type { CreateDatabaseRequest } from "./CreateDatabaseRequest";
 import type { Database } from "./Database";
 import type { Error } from "./Error";
 
-export type CreateDatabasePathParams = {
+/**
+ * @description Unique project identifier (prefixed, e.g. prj_xxx).
+ * @pattern ^[a-zA-Z0-9_.-]+$
+ * @type string
+*/
+export type CreateDatabasePathProjectId = string;
+
+/**
+ * @description Registered upstream PostgreSQL database for a project.
+ * @type object
+*/
+export type CreateDatabaseStatus201 = Database;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type CreateDatabaseStatus400 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type CreateDatabaseStatus401 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type CreateDatabaseStatus403 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type CreateDatabaseStatus404 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type CreateDatabaseStatus429 = Error;
+
+/**
+ * @description Request body for registering an upstream database.
+ * @type object
+*/
+export type CreateDatabaseData = CreateDatabaseRequest;
+
+/**
+ * @type object
+*/
+export type CreateDatabaseRequestConfig = {
+    data?: CreateDatabaseData;
     /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type object
+    */
+    pathParams: {
+        project_id: CreateDatabasePathProjectId;
+    };
+    queryParams?: never;
+    headerParams?: never;
+    /**
      * @type string
     */
-    project_id: string;
+    url: `/v1/projects/${string}/databases`;
 };
 
 /**
- * @description Database created.
+ * @type object
 */
-export type CreateDatabase201 = Database;
-
-/**
- * @description Invalid request parameters.
-*/
-export type CreateDatabase400 = Error;
-
-/**
- * @description Missing or invalid authentication.
-*/
-export type CreateDatabase401 = Error;
-
-/**
- * @description Operation not allowed by current plan limits.
-*/
-export type CreateDatabase403 = Error;
-
-/**
- * @description Resource not found.
-*/
-export type CreateDatabase404 = Error;
-
-/**
- * @description Rate limited. Try again later.
-*/
-export type CreateDatabase429 = Error;
-
-export type CreateDatabaseMutationRequest = CreateDatabaseRequest;
-
-export type CreateDatabaseMutationResponse = CreateDatabase201;
-
-export type CreateDatabaseMutation = {
-    Response: CreateDatabase201;
-    Request: CreateDatabaseMutationRequest;
-    PathParams: CreateDatabasePathParams;
-    Errors: CreateDatabase400 | CreateDatabase401 | CreateDatabase403 | CreateDatabase404 | CreateDatabase429;
+export type CreateDatabaseResponses = {
+    "201": CreateDatabaseStatus201;
+    "400": CreateDatabaseStatus400;
+    "401": CreateDatabaseStatus401;
+    "403": CreateDatabaseStatus403;
+    "404": CreateDatabaseStatus404;
+    "429": CreateDatabaseStatus429;
 };
+
+/**
+ * @description Union of all possible responses
+*/
+export type CreateDatabaseResponse = (CreateDatabaseStatus201 | CreateDatabaseStatus400 | CreateDatabaseStatus401 | CreateDatabaseStatus403 | CreateDatabaseStatus404 | CreateDatabaseStatus429);
