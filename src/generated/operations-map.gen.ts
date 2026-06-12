@@ -4,6 +4,12 @@
  */
 
 import type { ExportAccountDataStatus200 } from "./types/ExportAccountData";
+import type { ListAgentCredentialsRequestConfig, ListAgentCredentialsStatus200 } from "./types/ListAgentCredentials";
+import type { CreateAgentCredentialRequestConfig, CreateAgentCredentialStatus201 } from "./types/CreateAgentCredential";
+import type { GetAgentCredentialRequestConfig, GetAgentCredentialStatus200 } from "./types/GetAgentCredential";
+import type { UpdateAgentCredentialStatusRequestConfig, UpdateAgentCredentialStatusStatus200 } from "./types/UpdateAgentCredentialStatus";
+import type { RevokeAgentCredentialRequestConfig } from "./types/RevokeAgentCredential";
+import type { ListAuditLogsRequestConfig, ListAuditLogsStatus200 } from "./types/ListAuditLogs";
 import type { ListPlansStatus200 } from "./types/ListPlans";
 import type { GetOrganizationPlanRequestConfig, GetOrganizationPlanStatus200 } from "./types/GetOrganizationPlan";
 import type { UpdateSpendLimitRequestConfig, UpdateSpendLimitStatus200 } from "./types/UpdateSpendLimit";
@@ -24,6 +30,11 @@ import type { GetHealthStatus200 } from "./types/GetHealth";
 import type { GetProjectInsightsRequestConfig, GetProjectInsightsStatus200 } from "./types/GetProjectInsights";
 import type { GetOnboardingProgressRequestConfig, GetOnboardingProgressStatus200 } from "./types/GetOnboardingProgress";
 import type { UpdateOnboardingProgressRequestConfig, UpdateOnboardingProgressStatus200 } from "./types/UpdateOnboardingProgress";
+import type { ListPolicyProfilesRequestConfig, ListPolicyProfilesStatus200 } from "./types/ListPolicyProfiles";
+import type { CreatePolicyProfileRequestConfig, CreatePolicyProfileStatus201 } from "./types/CreatePolicyProfile";
+import type { GetPolicyProfileRequestConfig, GetPolicyProfileStatus200 } from "./types/GetPolicyProfile";
+import type { UpdatePolicyProfileRequestConfig, UpdatePolicyProfileStatus200 } from "./types/UpdatePolicyProfile";
+import type { DeletePolicyProfileRequestConfig } from "./types/DeletePolicyProfile";
 import type { ListProjectsRequestConfig, ListProjectsStatus200 } from "./types/ListProjects";
 import type { CreateProjectRequestConfig, CreateProjectStatus201 } from "./types/CreateProject";
 import type { GetProjectRequestConfig, GetProjectStatus200 } from "./types/GetProject";
@@ -42,6 +53,14 @@ export const operationsByTag = {
     exportAccountData: { method: "GET", path: "/v1/account/export" },
     getOnboardingProgress: { method: "GET", path: "/v1/organizations/{org_id}/onboarding" },
     updateOnboardingProgress: { method: "PATCH", path: "/v1/organizations/{org_id}/onboarding" },
+  },
+  agents: {
+    listAgentCredentials: { method: "GET", path: "/v1/projects/{project_id}/agents" },
+    createAgentCredential: { method: "POST", path: "/v1/projects/{project_id}/agents" },
+    getAgentCredential: { method: "GET", path: "/v1/projects/{project_id}/agents/{agent_id}" },
+    updateAgentCredentialStatus: { method: "PATCH", path: "/v1/projects/{project_id}/agents/{agent_id}" },
+    revokeAgentCredential: { method: "DELETE", path: "/v1/projects/{project_id}/agents/{agent_id}" },
+    listAuditLogs: { method: "GET", path: "/v1/projects/{project_id}/audit-logs" },
   },
   analytics: {
     listPlans: { method: "GET", path: "/v1/plans" },
@@ -81,10 +100,23 @@ export const operationsByTag = {
     getHealth: { method: "GET", path: "/v1/health" },
     listRegions: { method: "GET", path: "/v1/regions" },
   },
+  policies: {
+    listPolicyProfiles: { method: "GET", path: "/v1/projects/{project_id}/policies" },
+    createPolicyProfile: { method: "POST", path: "/v1/projects/{project_id}/policies" },
+    getPolicyProfile: { method: "GET", path: "/v1/projects/{project_id}/policies/{policy_id}" },
+    updatePolicyProfile: { method: "PUT", path: "/v1/projects/{project_id}/policies/{policy_id}" },
+    deletePolicyProfile: { method: "DELETE", path: "/v1/projects/{project_id}/policies/{policy_id}" },
+  },
 } as const;
 
 export const operationsByPath = {
   "GET /v1/account/export": { method: "GET", path: "/v1/account/export", operationId: "exportAccountData" },
+  "GET /v1/projects/{project_id}/agents": { method: "GET", path: "/v1/projects/{project_id}/agents", operationId: "listAgentCredentials" },
+  "POST /v1/projects/{project_id}/agents": { method: "POST", path: "/v1/projects/{project_id}/agents", operationId: "createAgentCredential" },
+  "GET /v1/projects/{project_id}/agents/{agent_id}": { method: "GET", path: "/v1/projects/{project_id}/agents/{agent_id}", operationId: "getAgentCredential" },
+  "PATCH /v1/projects/{project_id}/agents/{agent_id}": { method: "PATCH", path: "/v1/projects/{project_id}/agents/{agent_id}", operationId: "updateAgentCredentialStatus" },
+  "DELETE /v1/projects/{project_id}/agents/{agent_id}": { method: "DELETE", path: "/v1/projects/{project_id}/agents/{agent_id}", operationId: "revokeAgentCredential" },
+  "GET /v1/projects/{project_id}/audit-logs": { method: "GET", path: "/v1/projects/{project_id}/audit-logs", operationId: "listAuditLogs" },
   "GET /v1/plans": { method: "GET", path: "/v1/plans", operationId: "listPlans" },
   "GET /v1/organizations/{org_id}/plan": { method: "GET", path: "/v1/organizations/{org_id}/plan", operationId: "getOrganizationPlan" },
   "PUT /v1/organizations/{org_id}/spend-limit": { method: "PUT", path: "/v1/organizations/{org_id}/spend-limit", operationId: "updateSpendLimit" },
@@ -105,6 +137,11 @@ export const operationsByPath = {
   "GET /v1/projects/{project_id}/insights": { method: "GET", path: "/v1/projects/{project_id}/insights", operationId: "getProjectInsights" },
   "GET /v1/organizations/{org_id}/onboarding": { method: "GET", path: "/v1/organizations/{org_id}/onboarding", operationId: "getOnboardingProgress" },
   "PATCH /v1/organizations/{org_id}/onboarding": { method: "PATCH", path: "/v1/organizations/{org_id}/onboarding", operationId: "updateOnboardingProgress" },
+  "GET /v1/projects/{project_id}/policies": { method: "GET", path: "/v1/projects/{project_id}/policies", operationId: "listPolicyProfiles" },
+  "POST /v1/projects/{project_id}/policies": { method: "POST", path: "/v1/projects/{project_id}/policies", operationId: "createPolicyProfile" },
+  "GET /v1/projects/{project_id}/policies/{policy_id}": { method: "GET", path: "/v1/projects/{project_id}/policies/{policy_id}", operationId: "getPolicyProfile" },
+  "PUT /v1/projects/{project_id}/policies/{policy_id}": { method: "PUT", path: "/v1/projects/{project_id}/policies/{policy_id}", operationId: "updatePolicyProfile" },
+  "DELETE /v1/projects/{project_id}/policies/{policy_id}": { method: "DELETE", path: "/v1/projects/{project_id}/policies/{policy_id}", operationId: "deletePolicyProfile" },
   "GET /v1/projects": { method: "GET", path: "/v1/projects", operationId: "listProjects" },
   "POST /v1/projects": { method: "POST", path: "/v1/projects", operationId: "createProject" },
   "GET /v1/projects/{project_id}": { method: "GET", path: "/v1/projects/{project_id}", operationId: "getProject" },
@@ -119,86 +156,153 @@ export const operationsByPath = {
   "GET /v1/projects/{project_id}/usage": { method: "GET", path: "/v1/projects/{project_id}/usage", operationId: "getProjectUsage" },
 } as const;
 
+type ListAgentCredentialsParams = { pathParams: NonNullable<ListAgentCredentialsRequestConfig["pathParams"]>; queryParams?: NonNullable<ListAgentCredentialsRequestConfig["queryParams"]> };
+type CreateAgentCredentialParams = { pathParams: NonNullable<CreateAgentCredentialRequestConfig["pathParams"]>; body: NonNullable<CreateAgentCredentialRequestConfig["data"]> };
+type GetAgentCredentialParams = { pathParams: NonNullable<GetAgentCredentialRequestConfig["pathParams"]> };
+type UpdateAgentCredentialStatusParams = { pathParams: NonNullable<UpdateAgentCredentialStatusRequestConfig["pathParams"]>; body: NonNullable<UpdateAgentCredentialStatusRequestConfig["data"]> };
+type RevokeAgentCredentialParams = { pathParams: NonNullable<RevokeAgentCredentialRequestConfig["pathParams"]> };
+type ListAuditLogsParams = { pathParams: NonNullable<ListAuditLogsRequestConfig["pathParams"]>; queryParams?: NonNullable<ListAuditLogsRequestConfig["queryParams"]> };
+type GetOrganizationPlanParams = { pathParams: NonNullable<GetOrganizationPlanRequestConfig["pathParams"]> };
+type UpdateSpendLimitParams = { pathParams: NonNullable<UpdateSpendLimitRequestConfig["pathParams"]>; body: NonNullable<UpdateSpendLimitRequestConfig["data"]> };
+type SubmitCancellationFeedbackParams = { pathParams: NonNullable<SubmitCancellationFeedbackRequestConfig["pathParams"]>; body: NonNullable<SubmitCancellationFeedbackRequestConfig["data"]> };
+type ListCacheRulesParams = { pathParams: NonNullable<ListCacheRulesRequestConfig["pathParams"]>; queryParams?: NonNullable<ListCacheRulesRequestConfig["queryParams"]> };
+type UpdateCacheRuleParams = { pathParams: NonNullable<UpdateCacheRuleRequestConfig["pathParams"]>; body: NonNullable<UpdateCacheRuleRequestConfig["data"]> };
+type ListDatabasesParams = { pathParams: NonNullable<ListDatabasesRequestConfig["pathParams"]>; queryParams?: NonNullable<ListDatabasesRequestConfig["queryParams"]> };
+type CreateDatabaseParams = { pathParams: NonNullable<CreateDatabaseRequestConfig["pathParams"]>; body: NonNullable<CreateDatabaseRequestConfig["data"]> };
+type GetDatabaseParams = { pathParams: NonNullable<GetDatabaseRequestConfig["pathParams"]> };
+type UpdateDatabaseParams = { pathParams: NonNullable<UpdateDatabaseRequestConfig["pathParams"]>; body: NonNullable<UpdateDatabaseRequestConfig["data"]> };
+type DeleteDatabaseParams = { pathParams: NonNullable<DeleteDatabaseRequestConfig["pathParams"]> };
+type TestDatabaseConnectionParams = { pathParams: NonNullable<TestDatabaseConnectionRequestConfig["pathParams"]> };
+type ListCustomDomainsParams = { pathParams: NonNullable<ListCustomDomainsRequestConfig["pathParams"]>; queryParams?: NonNullable<ListCustomDomainsRequestConfig["queryParams"]> };
+type CreateCustomDomainParams = { pathParams: NonNullable<CreateCustomDomainRequestConfig["pathParams"]>; body: NonNullable<CreateCustomDomainRequestConfig["data"]> };
+type DeleteCustomDomainParams = { pathParams: NonNullable<DeleteCustomDomainRequestConfig["pathParams"]> };
+type VerifyCustomDomainParams = { pathParams: NonNullable<VerifyCustomDomainRequestConfig["pathParams"]> };
+type GetProjectInsightsParams = { pathParams: NonNullable<GetProjectInsightsRequestConfig["pathParams"]>; queryParams?: NonNullable<GetProjectInsightsRequestConfig["queryParams"]> };
+type GetOnboardingProgressParams = { pathParams: NonNullable<GetOnboardingProgressRequestConfig["pathParams"]> };
+type UpdateOnboardingProgressParams = { pathParams: NonNullable<UpdateOnboardingProgressRequestConfig["pathParams"]>; body: NonNullable<UpdateOnboardingProgressRequestConfig["data"]> };
+type ListPolicyProfilesParams = { pathParams: NonNullable<ListPolicyProfilesRequestConfig["pathParams"]>; queryParams?: NonNullable<ListPolicyProfilesRequestConfig["queryParams"]> };
+type CreatePolicyProfileParams = { pathParams: NonNullable<CreatePolicyProfileRequestConfig["pathParams"]>; body: NonNullable<CreatePolicyProfileRequestConfig["data"]> };
+type GetPolicyProfileParams = { pathParams: NonNullable<GetPolicyProfileRequestConfig["pathParams"]> };
+type UpdatePolicyProfileParams = { pathParams: NonNullable<UpdatePolicyProfileRequestConfig["pathParams"]>; body: NonNullable<UpdatePolicyProfileRequestConfig["data"]> };
+type DeletePolicyProfileParams = { pathParams: NonNullable<DeletePolicyProfileRequestConfig["pathParams"]> };
+type ListProjectsParams = { queryParams: NonNullable<ListProjectsRequestConfig["queryParams"]> };
+type CreateProjectParams = { body: NonNullable<CreateProjectRequestConfig["data"]> };
+type GetProjectParams = { pathParams: NonNullable<GetProjectRequestConfig["pathParams"]> };
+type UpdateProjectParams = { pathParams: NonNullable<UpdateProjectRequestConfig["pathParams"]>; body: NonNullable<UpdateProjectRequestConfig["data"]> };
+type DeleteProjectParams = { pathParams: NonNullable<DeleteProjectRequestConfig["pathParams"]> };
+type GetProjectMetricsParams = { pathParams: NonNullable<GetProjectMetricsRequestConfig["pathParams"]>; queryParams?: NonNullable<GetProjectMetricsRequestConfig["queryParams"]> };
+type ListReplicasParams = { pathParams: NonNullable<ListReplicasRequestConfig["pathParams"]> };
+type CreateReplicaParams = { pathParams: NonNullable<CreateReplicaRequestConfig["pathParams"]>; body: NonNullable<CreateReplicaRequestConfig["data"]> };
+type DeleteReplicaParams = { pathParams: NonNullable<DeleteReplicaRequestConfig["pathParams"]> };
+type GetOrganizationUsageParams = { pathParams: NonNullable<GetOrganizationUsageRequestConfig["pathParams"]>; queryParams: NonNullable<GetOrganizationUsageRequestConfig["queryParams"]> };
+type GetProjectUsageParams = { pathParams: NonNullable<GetProjectUsageRequestConfig["pathParams"]>; queryParams: NonNullable<GetProjectUsageRequestConfig["queryParams"]> };
+
 export interface ApiOperations {
   account: {
     exportAccountData(): Promise<ExportAccountDataStatus200>;
-    getOnboardingProgress(params: { pathParams: NonNullable<GetOnboardingProgressRequestConfig["pathParams"]> }): Promise<GetOnboardingProgressStatus200>;
-    updateOnboardingProgress(params: { pathParams: NonNullable<UpdateOnboardingProgressRequestConfig["pathParams"]>; body: NonNullable<UpdateOnboardingProgressRequestConfig["data"]> }): Promise<UpdateOnboardingProgressStatus200>;
+    getOnboardingProgress(params: GetOnboardingProgressParams): Promise<GetOnboardingProgressStatus200>;
+    updateOnboardingProgress(params: UpdateOnboardingProgressParams): Promise<UpdateOnboardingProgressStatus200>;
+  };
+  agents: {
+    listAgentCredentials(params: ListAgentCredentialsParams): Promise<ListAgentCredentialsStatus200>;
+    createAgentCredential(params: CreateAgentCredentialParams): Promise<CreateAgentCredentialStatus201>;
+    getAgentCredential(params: GetAgentCredentialParams): Promise<GetAgentCredentialStatus200>;
+    updateAgentCredentialStatus(params: UpdateAgentCredentialStatusParams): Promise<UpdateAgentCredentialStatusStatus200>;
+    revokeAgentCredential(params: RevokeAgentCredentialParams): Promise<void>;
+    listAuditLogs(params: ListAuditLogsParams): Promise<ListAuditLogsStatus200>;
   };
   analytics: {
     listPlans(): Promise<ListPlansStatus200>;
-    getOrganizationPlan(params: { pathParams: NonNullable<GetOrganizationPlanRequestConfig["pathParams"]> }): Promise<GetOrganizationPlanStatus200>;
-    updateSpendLimit(params: { pathParams: NonNullable<UpdateSpendLimitRequestConfig["pathParams"]>; body: NonNullable<UpdateSpendLimitRequestConfig["data"]> }): Promise<UpdateSpendLimitStatus200>;
-    submitCancellationFeedback(params: { pathParams: NonNullable<SubmitCancellationFeedbackRequestConfig["pathParams"]>; body: NonNullable<SubmitCancellationFeedbackRequestConfig["data"]> }): Promise<void>;
-    getProjectInsights(params: { pathParams: NonNullable<GetProjectInsightsRequestConfig["pathParams"]>; queryParams?: NonNullable<GetProjectInsightsRequestConfig["queryParams"]> }): Promise<GetProjectInsightsStatus200>;
-    getOrganizationUsage(params: { pathParams: NonNullable<GetOrganizationUsageRequestConfig["pathParams"]>; queryParams: NonNullable<GetOrganizationUsageRequestConfig["queryParams"]> }): Promise<GetOrganizationUsageStatus200>;
-    getProjectUsage(params: { pathParams: NonNullable<GetProjectUsageRequestConfig["pathParams"]>; queryParams: NonNullable<GetProjectUsageRequestConfig["queryParams"]> }): Promise<GetProjectUsageStatus200>;
+    getOrganizationPlan(params: GetOrganizationPlanParams): Promise<GetOrganizationPlanStatus200>;
+    updateSpendLimit(params: UpdateSpendLimitParams): Promise<UpdateSpendLimitStatus200>;
+    submitCancellationFeedback(params: SubmitCancellationFeedbackParams): Promise<void>;
+    getProjectInsights(params: GetProjectInsightsParams): Promise<GetProjectInsightsStatus200>;
+    getOrganizationUsage(params: GetOrganizationUsageParams): Promise<GetOrganizationUsageStatus200>;
+    getProjectUsage(params: GetProjectUsageParams): Promise<GetProjectUsageStatus200>;
   };
   projects: {
-    listCacheRules(params: { pathParams: NonNullable<ListCacheRulesRequestConfig["pathParams"]>; queryParams?: NonNullable<ListCacheRulesRequestConfig["queryParams"]> }): Promise<ListCacheRulesStatus200>;
-    updateCacheRule(params: { pathParams: NonNullable<UpdateCacheRuleRequestConfig["pathParams"]>; body: NonNullable<UpdateCacheRuleRequestConfig["data"]> }): Promise<UpdateCacheRuleStatus200>;
-    listCustomDomains(params: { pathParams: NonNullable<ListCustomDomainsRequestConfig["pathParams"]>; queryParams?: NonNullable<ListCustomDomainsRequestConfig["queryParams"]> }): Promise<ListCustomDomainsStatus200>;
-    createCustomDomain(params: { pathParams: NonNullable<CreateCustomDomainRequestConfig["pathParams"]>; body: NonNullable<CreateCustomDomainRequestConfig["data"]> }): Promise<CreateCustomDomainStatus201>;
-    deleteCustomDomain(params: { pathParams: NonNullable<DeleteCustomDomainRequestConfig["pathParams"]> }): Promise<void>;
-    verifyCustomDomain(params: { pathParams: NonNullable<VerifyCustomDomainRequestConfig["pathParams"]> }): Promise<VerifyCustomDomainStatus200>;
-    listProjects(params: { queryParams: NonNullable<ListProjectsRequestConfig["queryParams"]> }): Promise<ListProjectsStatus200>;
-    createProject(params: { body: NonNullable<CreateProjectRequestConfig["data"]> }): Promise<CreateProjectStatus201>;
-    getProject(params: { pathParams: NonNullable<GetProjectRequestConfig["pathParams"]> }): Promise<GetProjectStatus200>;
-    updateProject(params: { pathParams: NonNullable<UpdateProjectRequestConfig["pathParams"]>; body: NonNullable<UpdateProjectRequestConfig["data"]> }): Promise<UpdateProjectStatus200>;
-    deleteProject(params: { pathParams: NonNullable<DeleteProjectRequestConfig["pathParams"]> }): Promise<void>;
-    getProjectMetrics(params: { pathParams: NonNullable<GetProjectMetricsRequestConfig["pathParams"]>; queryParams?: NonNullable<GetProjectMetricsRequestConfig["queryParams"]> }): Promise<GetProjectMetricsStatus200>;
-    listReplicas(params: { pathParams: NonNullable<ListReplicasRequestConfig["pathParams"]> }): Promise<ListReplicasStatus200>;
-    createReplica(params: { pathParams: NonNullable<CreateReplicaRequestConfig["pathParams"]>; body: NonNullable<CreateReplicaRequestConfig["data"]> }): Promise<CreateReplicaStatus201>;
-    deleteReplica(params: { pathParams: NonNullable<DeleteReplicaRequestConfig["pathParams"]> }): Promise<void>;
+    listCacheRules(params: ListCacheRulesParams): Promise<ListCacheRulesStatus200>;
+    updateCacheRule(params: UpdateCacheRuleParams): Promise<UpdateCacheRuleStatus200>;
+    listCustomDomains(params: ListCustomDomainsParams): Promise<ListCustomDomainsStatus200>;
+    createCustomDomain(params: CreateCustomDomainParams): Promise<CreateCustomDomainStatus201>;
+    deleteCustomDomain(params: DeleteCustomDomainParams): Promise<void>;
+    verifyCustomDomain(params: VerifyCustomDomainParams): Promise<VerifyCustomDomainStatus200>;
+    listProjects(params: ListProjectsParams): Promise<ListProjectsStatus200>;
+    createProject(params: CreateProjectParams): Promise<CreateProjectStatus201>;
+    getProject(params: GetProjectParams): Promise<GetProjectStatus200>;
+    updateProject(params: UpdateProjectParams): Promise<UpdateProjectStatus200>;
+    deleteProject(params: DeleteProjectParams): Promise<void>;
+    getProjectMetrics(params: GetProjectMetricsParams): Promise<GetProjectMetricsStatus200>;
+    listReplicas(params: ListReplicasParams): Promise<ListReplicasStatus200>;
+    createReplica(params: CreateReplicaParams): Promise<CreateReplicaStatus201>;
+    deleteReplica(params: DeleteReplicaParams): Promise<void>;
   };
   databases: {
-    listDatabases(params: { pathParams: NonNullable<ListDatabasesRequestConfig["pathParams"]>; queryParams?: NonNullable<ListDatabasesRequestConfig["queryParams"]> }): Promise<ListDatabasesStatus200>;
-    createDatabase(params: { pathParams: NonNullable<CreateDatabaseRequestConfig["pathParams"]>; body: NonNullable<CreateDatabaseRequestConfig["data"]> }): Promise<CreateDatabaseStatus201>;
-    getDatabase(params: { pathParams: NonNullable<GetDatabaseRequestConfig["pathParams"]> }): Promise<GetDatabaseStatus200>;
-    updateDatabase(params: { pathParams: NonNullable<UpdateDatabaseRequestConfig["pathParams"]>; body: NonNullable<UpdateDatabaseRequestConfig["data"]> }): Promise<UpdateDatabaseStatus200>;
-    deleteDatabase(params: { pathParams: NonNullable<DeleteDatabaseRequestConfig["pathParams"]> }): Promise<void>;
-    testDatabaseConnection(params: { pathParams: NonNullable<TestDatabaseConnectionRequestConfig["pathParams"]> }): Promise<TestDatabaseConnectionStatus200>;
+    listDatabases(params: ListDatabasesParams): Promise<ListDatabasesStatus200>;
+    createDatabase(params: CreateDatabaseParams): Promise<CreateDatabaseStatus201>;
+    getDatabase(params: GetDatabaseParams): Promise<GetDatabaseStatus200>;
+    updateDatabase(params: UpdateDatabaseParams): Promise<UpdateDatabaseStatus200>;
+    deleteDatabase(params: DeleteDatabaseParams): Promise<void>;
+    testDatabaseConnection(params: TestDatabaseConnectionParams): Promise<TestDatabaseConnectionStatus200>;
   };
   platform: {
     getHealth(): Promise<GetHealthStatus200>;
     listRegions(): Promise<ListRegionsStatus200>;
   };
+  policies: {
+    listPolicyProfiles(params: ListPolicyProfilesParams): Promise<ListPolicyProfilesStatus200>;
+    createPolicyProfile(params: CreatePolicyProfileParams): Promise<CreatePolicyProfileStatus201>;
+    getPolicyProfile(params: GetPolicyProfileParams): Promise<GetPolicyProfileStatus200>;
+    updatePolicyProfile(params: UpdatePolicyProfileParams): Promise<UpdatePolicyProfileStatus200>;
+    deletePolicyProfile(params: DeletePolicyProfileParams): Promise<void>;
+  };
 }
 
 export interface RequestMap {
   "GET /v1/account/export": { params?: undefined; response: ExportAccountDataStatus200 };
+  "GET /v1/projects/{project_id}/agents": { params: ListAgentCredentialsParams; response: ListAgentCredentialsStatus200 };
+  "POST /v1/projects/{project_id}/agents": { params: CreateAgentCredentialParams; response: CreateAgentCredentialStatus201 };
+  "GET /v1/projects/{project_id}/agents/{agent_id}": { params: GetAgentCredentialParams; response: GetAgentCredentialStatus200 };
+  "PATCH /v1/projects/{project_id}/agents/{agent_id}": { params: UpdateAgentCredentialStatusParams; response: UpdateAgentCredentialStatusStatus200 };
+  "DELETE /v1/projects/{project_id}/agents/{agent_id}": { params: RevokeAgentCredentialParams; response: void };
+  "GET /v1/projects/{project_id}/audit-logs": { params: ListAuditLogsParams; response: ListAuditLogsStatus200 };
   "GET /v1/plans": { params?: undefined; response: ListPlansStatus200 };
-  "GET /v1/organizations/{org_id}/plan": { params: { pathParams: NonNullable<GetOrganizationPlanRequestConfig["pathParams"]> }; response: GetOrganizationPlanStatus200 };
-  "PUT /v1/organizations/{org_id}/spend-limit": { params: { pathParams: NonNullable<UpdateSpendLimitRequestConfig["pathParams"]>; body: NonNullable<UpdateSpendLimitRequestConfig["data"]> }; response: UpdateSpendLimitStatus200 };
-  "POST /v1/organizations/{org_id}/cancellation-feedback": { params: { pathParams: NonNullable<SubmitCancellationFeedbackRequestConfig["pathParams"]>; body: NonNullable<SubmitCancellationFeedbackRequestConfig["data"]> }; response: void };
-  "GET /v1/projects/{project_id}/databases/{database_id}/cache-rules": { params: { pathParams: NonNullable<ListCacheRulesRequestConfig["pathParams"]>; queryParams?: NonNullable<ListCacheRulesRequestConfig["queryParams"]> }; response: ListCacheRulesStatus200 };
-  "PUT /v1/projects/{project_id}/databases/{database_id}/cache-rules/{query_hash}": { params: { pathParams: NonNullable<UpdateCacheRuleRequestConfig["pathParams"]>; body: NonNullable<UpdateCacheRuleRequestConfig["data"]> }; response: UpdateCacheRuleStatus200 };
-  "GET /v1/projects/{project_id}/databases": { params: { pathParams: NonNullable<ListDatabasesRequestConfig["pathParams"]>; queryParams?: NonNullable<ListDatabasesRequestConfig["queryParams"]> }; response: ListDatabasesStatus200 };
-  "POST /v1/projects/{project_id}/databases": { params: { pathParams: NonNullable<CreateDatabaseRequestConfig["pathParams"]>; body: NonNullable<CreateDatabaseRequestConfig["data"]> }; response: CreateDatabaseStatus201 };
-  "GET /v1/projects/{project_id}/databases/{database_id}": { params: { pathParams: NonNullable<GetDatabaseRequestConfig["pathParams"]> }; response: GetDatabaseStatus200 };
-  "PATCH /v1/projects/{project_id}/databases/{database_id}": { params: { pathParams: NonNullable<UpdateDatabaseRequestConfig["pathParams"]>; body: NonNullable<UpdateDatabaseRequestConfig["data"]> }; response: UpdateDatabaseStatus200 };
-  "DELETE /v1/projects/{project_id}/databases/{database_id}": { params: { pathParams: NonNullable<DeleteDatabaseRequestConfig["pathParams"]> }; response: void };
-  "POST /v1/projects/{project_id}/databases/{database_id}/test-connection": { params: { pathParams: NonNullable<TestDatabaseConnectionRequestConfig["pathParams"]> }; response: TestDatabaseConnectionStatus200 };
-  "GET /v1/projects/{project_id}/domains": { params: { pathParams: NonNullable<ListCustomDomainsRequestConfig["pathParams"]>; queryParams?: NonNullable<ListCustomDomainsRequestConfig["queryParams"]> }; response: ListCustomDomainsStatus200 };
-  "POST /v1/projects/{project_id}/domains": { params: { pathParams: NonNullable<CreateCustomDomainRequestConfig["pathParams"]>; body: NonNullable<CreateCustomDomainRequestConfig["data"]> }; response: CreateCustomDomainStatus201 };
-  "DELETE /v1/projects/{project_id}/domains/{domain_id}": { params: { pathParams: NonNullable<DeleteCustomDomainRequestConfig["pathParams"]> }; response: void };
-  "POST /v1/projects/{project_id}/domains/{domain_id}/verify": { params: { pathParams: NonNullable<VerifyCustomDomainRequestConfig["pathParams"]> }; response: VerifyCustomDomainStatus200 };
+  "GET /v1/organizations/{org_id}/plan": { params: GetOrganizationPlanParams; response: GetOrganizationPlanStatus200 };
+  "PUT /v1/organizations/{org_id}/spend-limit": { params: UpdateSpendLimitParams; response: UpdateSpendLimitStatus200 };
+  "POST /v1/organizations/{org_id}/cancellation-feedback": { params: SubmitCancellationFeedbackParams; response: void };
+  "GET /v1/projects/{project_id}/databases/{database_id}/cache-rules": { params: ListCacheRulesParams; response: ListCacheRulesStatus200 };
+  "PUT /v1/projects/{project_id}/databases/{database_id}/cache-rules/{query_hash}": { params: UpdateCacheRuleParams; response: UpdateCacheRuleStatus200 };
+  "GET /v1/projects/{project_id}/databases": { params: ListDatabasesParams; response: ListDatabasesStatus200 };
+  "POST /v1/projects/{project_id}/databases": { params: CreateDatabaseParams; response: CreateDatabaseStatus201 };
+  "GET /v1/projects/{project_id}/databases/{database_id}": { params: GetDatabaseParams; response: GetDatabaseStatus200 };
+  "PATCH /v1/projects/{project_id}/databases/{database_id}": { params: UpdateDatabaseParams; response: UpdateDatabaseStatus200 };
+  "DELETE /v1/projects/{project_id}/databases/{database_id}": { params: DeleteDatabaseParams; response: void };
+  "POST /v1/projects/{project_id}/databases/{database_id}/test-connection": { params: TestDatabaseConnectionParams; response: TestDatabaseConnectionStatus200 };
+  "GET /v1/projects/{project_id}/domains": { params: ListCustomDomainsParams; response: ListCustomDomainsStatus200 };
+  "POST /v1/projects/{project_id}/domains": { params: CreateCustomDomainParams; response: CreateCustomDomainStatus201 };
+  "DELETE /v1/projects/{project_id}/domains/{domain_id}": { params: DeleteCustomDomainParams; response: void };
+  "POST /v1/projects/{project_id}/domains/{domain_id}/verify": { params: VerifyCustomDomainParams; response: VerifyCustomDomainStatus200 };
   "GET /v1/health": { params?: undefined; response: GetHealthStatus200 };
-  "GET /v1/projects/{project_id}/insights": { params: { pathParams: NonNullable<GetProjectInsightsRequestConfig["pathParams"]>; queryParams?: NonNullable<GetProjectInsightsRequestConfig["queryParams"]> }; response: GetProjectInsightsStatus200 };
-  "GET /v1/organizations/{org_id}/onboarding": { params: { pathParams: NonNullable<GetOnboardingProgressRequestConfig["pathParams"]> }; response: GetOnboardingProgressStatus200 };
-  "PATCH /v1/organizations/{org_id}/onboarding": { params: { pathParams: NonNullable<UpdateOnboardingProgressRequestConfig["pathParams"]>; body: NonNullable<UpdateOnboardingProgressRequestConfig["data"]> }; response: UpdateOnboardingProgressStatus200 };
-  "GET /v1/projects": { params: { queryParams: NonNullable<ListProjectsRequestConfig["queryParams"]> }; response: ListProjectsStatus200 };
-  "POST /v1/projects": { params: { body: NonNullable<CreateProjectRequestConfig["data"]> }; response: CreateProjectStatus201 };
-  "GET /v1/projects/{project_id}": { params: { pathParams: NonNullable<GetProjectRequestConfig["pathParams"]> }; response: GetProjectStatus200 };
-  "PATCH /v1/projects/{project_id}": { params: { pathParams: NonNullable<UpdateProjectRequestConfig["pathParams"]>; body: NonNullable<UpdateProjectRequestConfig["data"]> }; response: UpdateProjectStatus200 };
-  "DELETE /v1/projects/{project_id}": { params: { pathParams: NonNullable<DeleteProjectRequestConfig["pathParams"]> }; response: void };
-  "GET /v1/projects/{project_id}/metrics": { params: { pathParams: NonNullable<GetProjectMetricsRequestConfig["pathParams"]>; queryParams?: NonNullable<GetProjectMetricsRequestConfig["queryParams"]> }; response: GetProjectMetricsStatus200 };
+  "GET /v1/projects/{project_id}/insights": { params: GetProjectInsightsParams; response: GetProjectInsightsStatus200 };
+  "GET /v1/organizations/{org_id}/onboarding": { params: GetOnboardingProgressParams; response: GetOnboardingProgressStatus200 };
+  "PATCH /v1/organizations/{org_id}/onboarding": { params: UpdateOnboardingProgressParams; response: UpdateOnboardingProgressStatus200 };
+  "GET /v1/projects/{project_id}/policies": { params: ListPolicyProfilesParams; response: ListPolicyProfilesStatus200 };
+  "POST /v1/projects/{project_id}/policies": { params: CreatePolicyProfileParams; response: CreatePolicyProfileStatus201 };
+  "GET /v1/projects/{project_id}/policies/{policy_id}": { params: GetPolicyProfileParams; response: GetPolicyProfileStatus200 };
+  "PUT /v1/projects/{project_id}/policies/{policy_id}": { params: UpdatePolicyProfileParams; response: UpdatePolicyProfileStatus200 };
+  "DELETE /v1/projects/{project_id}/policies/{policy_id}": { params: DeletePolicyProfileParams; response: void };
+  "GET /v1/projects": { params: ListProjectsParams; response: ListProjectsStatus200 };
+  "POST /v1/projects": { params: CreateProjectParams; response: CreateProjectStatus201 };
+  "GET /v1/projects/{project_id}": { params: GetProjectParams; response: GetProjectStatus200 };
+  "PATCH /v1/projects/{project_id}": { params: UpdateProjectParams; response: UpdateProjectStatus200 };
+  "DELETE /v1/projects/{project_id}": { params: DeleteProjectParams; response: void };
+  "GET /v1/projects/{project_id}/metrics": { params: GetProjectMetricsParams; response: GetProjectMetricsStatus200 };
   "GET /v1/regions": { params?: undefined; response: ListRegionsStatus200 };
-  "GET /v1/databases/{database_id}/replicas": { params: { pathParams: NonNullable<ListReplicasRequestConfig["pathParams"]> }; response: ListReplicasStatus200 };
-  "POST /v1/databases/{database_id}/replicas": { params: { pathParams: NonNullable<CreateReplicaRequestConfig["pathParams"]>; body: NonNullable<CreateReplicaRequestConfig["data"]> }; response: CreateReplicaStatus201 };
-  "DELETE /v1/databases/{database_id}/replicas/{replica_id}": { params: { pathParams: NonNullable<DeleteReplicaRequestConfig["pathParams"]> }; response: void };
-  "GET /v1/organizations/{org_id}/usage": { params: { pathParams: NonNullable<GetOrganizationUsageRequestConfig["pathParams"]>; queryParams: NonNullable<GetOrganizationUsageRequestConfig["queryParams"]> }; response: GetOrganizationUsageStatus200 };
-  "GET /v1/projects/{project_id}/usage": { params: { pathParams: NonNullable<GetProjectUsageRequestConfig["pathParams"]>; queryParams: NonNullable<GetProjectUsageRequestConfig["queryParams"]> }; response: GetProjectUsageStatus200 };
+  "GET /v1/databases/{database_id}/replicas": { params: ListReplicasParams; response: ListReplicasStatus200 };
+  "POST /v1/databases/{database_id}/replicas": { params: CreateReplicaParams; response: CreateReplicaStatus201 };
+  "DELETE /v1/databases/{database_id}/replicas/{replica_id}": { params: DeleteReplicaParams; response: void };
+  "GET /v1/organizations/{org_id}/usage": { params: GetOrganizationUsageParams; response: GetOrganizationUsageStatus200 };
+  "GET /v1/projects/{project_id}/usage": { params: GetProjectUsageParams; response: GetProjectUsageStatus200 };
 }
 
 export type ApiTag = keyof ApiOperations;
