@@ -1,5 +1,11 @@
 # pgbeam
 
+## 0.2.7
+
+### Patch Changes
+
+- 6ba336f: feat: agent gateway — safe Postgres access for AI agents
+
 ## 0.2.6
 
 ### Patch Changes
