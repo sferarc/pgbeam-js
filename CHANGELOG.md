@@ -1,5 +1,11 @@
 # pgbeam
 
+## 0.2.8
+
+### Patch Changes
+
+- 4761ffe: feat: cloud-neutral proxy.pgbeam.app + recover prod deploy (BetterStack monitor)
+
 ## 0.2.7
 
 ### Patch Changes
