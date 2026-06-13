@@ -87,6 +87,12 @@ export type Project = {
     */
     allowed_cidrs?: CidrEntry[];
     /**
+     * @description When set, passthrough/human connections are enforced against this policy profile.
+     * @example pol_01h455vb4pex5vsknk084sn02q
+     * @type string
+    */
+    default_policy_profile_id?: string | null;
+    /**
      * @description Number of databases attached to this project.
      * @type integer | undefined
     */

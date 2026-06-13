@@ -4,6 +4,7 @@
 */
 
 import type { MaskingRule } from "./MaskingRule";
+import type { RowFilter } from "./RowFilter";
 import type { StatementRules } from "./StatementRules";
 
 export const policyProfileAccessModeEnum = {
@@ -12,6 +13,31 @@ export const policyProfileAccessModeEnum = {
 } as const;
 
 export type PolicyProfileAccessModeEnumKey = (typeof policyProfileAccessModeEnum)[keyof typeof policyProfileAccessModeEnum];
+
+export const policyProfileWriteModeEnum = {
+    normal: "normal",
+    rollback: "rollback",
+    sandbox: "sandbox"
+} as const;
+
+export type PolicyProfileWriteModeEnumKey = (typeof policyProfileWriteModeEnum)[keyof typeof policyProfileWriteModeEnum];
+
+export const policyProfileApprovalModeEnum = {
+    off: "off",
+    writes: "writes",
+    ddl: "ddl",
+    all: "all"
+} as const;
+
+export type PolicyProfileApprovalModeEnumKey = (typeof policyProfileApprovalModeEnum)[keyof typeof policyProfileApprovalModeEnum];
+
+export const policyProfileMigrationSafetyEnum = {
+    off: "off",
+    warn: "warn",
+    block: "block"
+} as const;
+
+export type PolicyProfileMigrationSafetyEnumKey = (typeof policyProfileMigrationSafetyEnum)[keyof typeof policyProfileMigrationSafetyEnum];
 
 /**
  * @description A named bundle of rules enforced on agent credentials in the data plane.
@@ -85,6 +111,50 @@ export type PolicyProfile = {
      * @type integer | undefined
     */
     statement_timeout_ms?: number;
+    /**
+     * @description Per-relation row filters ANDed into agent reads.
+     * @type array | undefined
+    */
+    row_filters?: RowFilter[];
+    /**
+     * @description How writes are handled. normal commits, rollback auto-rolls back, sandbox routes to an ephemeral branch.
+     * @default "normal"
+     * @type string | undefined
+    */
+    write_mode?: PolicyProfileWriteModeEnumKey;
+    /**
+     * @description Which statement classes require human approval before execution.
+     * @default "off"
+     * @type string | undefined
+    */
+    approval_mode?: PolicyProfileApprovalModeEnumKey;
+    /**
+     * @description Statements touching at most this many rows are auto-approved. 0 means none.
+     * @minLength 0
+     * @default 0
+     * @type integer | undefined
+    */
+    approval_auto_max_rows?: number;
+    /**
+     * @description How long a held statement waits for a decision before expiring.
+     * @minLength 0
+     * @default 300
+     * @type integer | undefined
+    */
+    approval_timeout_seconds?: number;
+    /**
+     * @description Migration safety mode. warn surfaces findings, block refuses unsafe DDL.
+     * @default "off"
+     * @type string | undefined
+    */
+    migration_safety?: PolicyProfileMigrationSafetyEnumKey;
+    /**
+     * @description Per-day egress budget in bytes. 0 means unlimited.
+     * @minLength 0
+     * @default 0
+     * @type integer | undefined
+    */
+    egress_bytes_per_day?: number;
     /**
      * @description When the policy profile was created.
      * @type string

@@ -9,11 +9,18 @@ import type { CreateAgentCredentialRequestConfig, CreateAgentCredentialStatus201
 import type { GetAgentCredentialRequestConfig, GetAgentCredentialStatus200 } from "./types/GetAgentCredential";
 import type { UpdateAgentCredentialStatusRequestConfig, UpdateAgentCredentialStatusStatus200 } from "./types/UpdateAgentCredentialStatus";
 import type { RevokeAgentCredentialRequestConfig } from "./types/RevokeAgentCredential";
+import type { ListAnomalyAlertsRequestConfig, ListAnomalyAlertsStatus200 } from "./types/ListAnomalyAlerts";
+import type { UpdateAnomalyAlertRequestConfig, UpdateAnomalyAlertStatus200 } from "./types/UpdateAnomalyAlert";
+import type { ListApprovalRequestsRequestConfig, ListApprovalRequestsStatus200 } from "./types/ListApprovalRequests";
+import type { ApproveApprovalRequestRequestConfig, ApproveApprovalRequestStatus200 } from "./types/ApproveApprovalRequest";
+import type { RejectApprovalRequestRequestConfig, RejectApprovalRequestStatus200 } from "./types/RejectApprovalRequest";
 import type { ListAuditLogsRequestConfig, ListAuditLogsStatus200 } from "./types/ListAuditLogs";
 import type { ListPlansStatus200 } from "./types/ListPlans";
 import type { GetOrganizationPlanRequestConfig, GetOrganizationPlanStatus200 } from "./types/GetOrganizationPlan";
 import type { UpdateSpendLimitRequestConfig, UpdateSpendLimitStatus200 } from "./types/UpdateSpendLimit";
 import type { SubmitCancellationFeedbackRequestConfig } from "./types/SubmitCancellationFeedback";
+import type { ListDatabaseBranchesRequestConfig, ListDatabaseBranchesStatus200 } from "./types/ListDatabaseBranches";
+import type { DiscardDatabaseBranchRequestConfig } from "./types/DiscardDatabaseBranch";
 import type { ListCacheRulesRequestConfig, ListCacheRulesStatus200 } from "./types/ListCacheRules";
 import type { UpdateCacheRuleRequestConfig, UpdateCacheRuleStatus200 } from "./types/UpdateCacheRule";
 import type { ListDatabasesRequestConfig, ListDatabasesStatus200 } from "./types/ListDatabases";
@@ -28,6 +35,7 @@ import type { DeleteCustomDomainRequestConfig } from "./types/DeleteCustomDomain
 import type { VerifyCustomDomainRequestConfig, VerifyCustomDomainStatus200 } from "./types/VerifyCustomDomain";
 import type { GetHealthStatus200 } from "./types/GetHealth";
 import type { GetProjectInsightsRequestConfig, GetProjectInsightsStatus200 } from "./types/GetProjectInsights";
+import type { LintMigrationRequestConfig, LintMigrationStatus200 } from "./types/LintMigration";
 import type { GetOnboardingProgressRequestConfig, GetOnboardingProgressStatus200 } from "./types/GetOnboardingProgress";
 import type { UpdateOnboardingProgressRequestConfig, UpdateOnboardingProgressStatus200 } from "./types/UpdateOnboardingProgress";
 import type { ListPolicyProfilesRequestConfig, ListPolicyProfilesStatus200 } from "./types/ListPolicyProfiles";
@@ -47,6 +55,12 @@ import type { CreateReplicaRequestConfig, CreateReplicaStatus201 } from "./types
 import type { DeleteReplicaRequestConfig } from "./types/DeleteReplica";
 import type { GetOrganizationUsageRequestConfig, GetOrganizationUsageStatus200 } from "./types/GetOrganizationUsage";
 import type { GetProjectUsageRequestConfig, GetProjectUsageStatus200 } from "./types/GetProjectUsage";
+import type { ListWebhookEndpointsRequestConfig, ListWebhookEndpointsStatus200 } from "./types/ListWebhookEndpoints";
+import type { CreateWebhookEndpointRequestConfig, CreateWebhookEndpointStatus201 } from "./types/CreateWebhookEndpoint";
+import type { GetWebhookEndpointRequestConfig, GetWebhookEndpointStatus200 } from "./types/GetWebhookEndpoint";
+import type { UpdateWebhookEndpointRequestConfig, UpdateWebhookEndpointStatus200 } from "./types/UpdateWebhookEndpoint";
+import type { DeleteWebhookEndpointRequestConfig } from "./types/DeleteWebhookEndpoint";
+import type { TestWebhookEndpointRequestConfig, TestWebhookEndpointStatus202 } from "./types/TestWebhookEndpoint";
 
 export const operationsByTag = {
   account: {
@@ -62,6 +76,15 @@ export const operationsByTag = {
     revokeAgentCredential: { method: "DELETE", path: "/v1/projects/{project_id}/agents/{agent_id}" },
     listAuditLogs: { method: "GET", path: "/v1/projects/{project_id}/audit-logs" },
   },
+  anomalies: {
+    listAnomalyAlerts: { method: "GET", path: "/v1/projects/{project_id}/anomalies" },
+    updateAnomalyAlert: { method: "PATCH", path: "/v1/projects/{project_id}/anomalies/{anomaly_id}" },
+  },
+  approvals: {
+    listApprovalRequests: { method: "GET", path: "/v1/projects/{project_id}/approvals" },
+    approveApprovalRequest: { method: "POST", path: "/v1/projects/{project_id}/approvals/{approval_id}/approve" },
+    rejectApprovalRequest: { method: "POST", path: "/v1/projects/{project_id}/approvals/{approval_id}/reject" },
+  },
   analytics: {
     listPlans: { method: "GET", path: "/v1/plans" },
     getOrganizationPlan: { method: "GET", path: "/v1/organizations/{org_id}/plan" },
@@ -70,6 +93,10 @@ export const operationsByTag = {
     getProjectInsights: { method: "GET", path: "/v1/projects/{project_id}/insights" },
     getOrganizationUsage: { method: "GET", path: "/v1/organizations/{org_id}/usage" },
     getProjectUsage: { method: "GET", path: "/v1/projects/{project_id}/usage" },
+  },
+  branches: {
+    listDatabaseBranches: { method: "GET", path: "/v1/projects/{project_id}/branches" },
+    discardDatabaseBranch: { method: "DELETE", path: "/v1/projects/{project_id}/branches/{branch_id}" },
   },
   projects: {
     listCacheRules: { method: "GET", path: "/v1/projects/{project_id}/databases/{database_id}/cache-rules" },
@@ -100,12 +127,23 @@ export const operationsByTag = {
     getHealth: { method: "GET", path: "/v1/health" },
     listRegions: { method: "GET", path: "/v1/regions" },
   },
+  migrations: {
+    lintMigration: { method: "POST", path: "/v1/projects/{project_id}/migrations:lint" },
+  },
   policies: {
     listPolicyProfiles: { method: "GET", path: "/v1/projects/{project_id}/policies" },
     createPolicyProfile: { method: "POST", path: "/v1/projects/{project_id}/policies" },
     getPolicyProfile: { method: "GET", path: "/v1/projects/{project_id}/policies/{policy_id}" },
     updatePolicyProfile: { method: "PUT", path: "/v1/projects/{project_id}/policies/{policy_id}" },
     deletePolicyProfile: { method: "DELETE", path: "/v1/projects/{project_id}/policies/{policy_id}" },
+  },
+  webhooks: {
+    listWebhookEndpoints: { method: "GET", path: "/v1/projects/{project_id}/webhooks" },
+    createWebhookEndpoint: { method: "POST", path: "/v1/projects/{project_id}/webhooks" },
+    getWebhookEndpoint: { method: "GET", path: "/v1/projects/{project_id}/webhooks/{webhook_id}" },
+    updateWebhookEndpoint: { method: "PUT", path: "/v1/projects/{project_id}/webhooks/{webhook_id}" },
+    deleteWebhookEndpoint: { method: "DELETE", path: "/v1/projects/{project_id}/webhooks/{webhook_id}" },
+    testWebhookEndpoint: { method: "POST", path: "/v1/projects/{project_id}/webhooks/{webhook_id}/test" },
   },
 } as const;
 
@@ -116,11 +154,18 @@ export const operationsByPath = {
   "GET /v1/projects/{project_id}/agents/{agent_id}": { method: "GET", path: "/v1/projects/{project_id}/agents/{agent_id}", operationId: "getAgentCredential" },
   "PATCH /v1/projects/{project_id}/agents/{agent_id}": { method: "PATCH", path: "/v1/projects/{project_id}/agents/{agent_id}", operationId: "updateAgentCredentialStatus" },
   "DELETE /v1/projects/{project_id}/agents/{agent_id}": { method: "DELETE", path: "/v1/projects/{project_id}/agents/{agent_id}", operationId: "revokeAgentCredential" },
+  "GET /v1/projects/{project_id}/anomalies": { method: "GET", path: "/v1/projects/{project_id}/anomalies", operationId: "listAnomalyAlerts" },
+  "PATCH /v1/projects/{project_id}/anomalies/{anomaly_id}": { method: "PATCH", path: "/v1/projects/{project_id}/anomalies/{anomaly_id}", operationId: "updateAnomalyAlert" },
+  "GET /v1/projects/{project_id}/approvals": { method: "GET", path: "/v1/projects/{project_id}/approvals", operationId: "listApprovalRequests" },
+  "POST /v1/projects/{project_id}/approvals/{approval_id}/approve": { method: "POST", path: "/v1/projects/{project_id}/approvals/{approval_id}/approve", operationId: "approveApprovalRequest" },
+  "POST /v1/projects/{project_id}/approvals/{approval_id}/reject": { method: "POST", path: "/v1/projects/{project_id}/approvals/{approval_id}/reject", operationId: "rejectApprovalRequest" },
   "GET /v1/projects/{project_id}/audit-logs": { method: "GET", path: "/v1/projects/{project_id}/audit-logs", operationId: "listAuditLogs" },
   "GET /v1/plans": { method: "GET", path: "/v1/plans", operationId: "listPlans" },
   "GET /v1/organizations/{org_id}/plan": { method: "GET", path: "/v1/organizations/{org_id}/plan", operationId: "getOrganizationPlan" },
   "PUT /v1/organizations/{org_id}/spend-limit": { method: "PUT", path: "/v1/organizations/{org_id}/spend-limit", operationId: "updateSpendLimit" },
   "POST /v1/organizations/{org_id}/cancellation-feedback": { method: "POST", path: "/v1/organizations/{org_id}/cancellation-feedback", operationId: "submitCancellationFeedback" },
+  "GET /v1/projects/{project_id}/branches": { method: "GET", path: "/v1/projects/{project_id}/branches", operationId: "listDatabaseBranches" },
+  "DELETE /v1/projects/{project_id}/branches/{branch_id}": { method: "DELETE", path: "/v1/projects/{project_id}/branches/{branch_id}", operationId: "discardDatabaseBranch" },
   "GET /v1/projects/{project_id}/databases/{database_id}/cache-rules": { method: "GET", path: "/v1/projects/{project_id}/databases/{database_id}/cache-rules", operationId: "listCacheRules" },
   "PUT /v1/projects/{project_id}/databases/{database_id}/cache-rules/{query_hash}": { method: "PUT", path: "/v1/projects/{project_id}/databases/{database_id}/cache-rules/{query_hash}", operationId: "updateCacheRule" },
   "GET /v1/projects/{project_id}/databases": { method: "GET", path: "/v1/projects/{project_id}/databases", operationId: "listDatabases" },
@@ -135,6 +180,7 @@ export const operationsByPath = {
   "POST /v1/projects/{project_id}/domains/{domain_id}/verify": { method: "POST", path: "/v1/projects/{project_id}/domains/{domain_id}/verify", operationId: "verifyCustomDomain" },
   "GET /v1/health": { method: "GET", path: "/v1/health", operationId: "getHealth" },
   "GET /v1/projects/{project_id}/insights": { method: "GET", path: "/v1/projects/{project_id}/insights", operationId: "getProjectInsights" },
+  "POST /v1/projects/{project_id}/migrations:lint": { method: "POST", path: "/v1/projects/{project_id}/migrations:lint", operationId: "lintMigration" },
   "GET /v1/organizations/{org_id}/onboarding": { method: "GET", path: "/v1/organizations/{org_id}/onboarding", operationId: "getOnboardingProgress" },
   "PATCH /v1/organizations/{org_id}/onboarding": { method: "PATCH", path: "/v1/organizations/{org_id}/onboarding", operationId: "updateOnboardingProgress" },
   "GET /v1/projects/{project_id}/policies": { method: "GET", path: "/v1/projects/{project_id}/policies", operationId: "listPolicyProfiles" },
@@ -154,6 +200,12 @@ export const operationsByPath = {
   "DELETE /v1/databases/{database_id}/replicas/{replica_id}": { method: "DELETE", path: "/v1/databases/{database_id}/replicas/{replica_id}", operationId: "deleteReplica" },
   "GET /v1/organizations/{org_id}/usage": { method: "GET", path: "/v1/organizations/{org_id}/usage", operationId: "getOrganizationUsage" },
   "GET /v1/projects/{project_id}/usage": { method: "GET", path: "/v1/projects/{project_id}/usage", operationId: "getProjectUsage" },
+  "GET /v1/projects/{project_id}/webhooks": { method: "GET", path: "/v1/projects/{project_id}/webhooks", operationId: "listWebhookEndpoints" },
+  "POST /v1/projects/{project_id}/webhooks": { method: "POST", path: "/v1/projects/{project_id}/webhooks", operationId: "createWebhookEndpoint" },
+  "GET /v1/projects/{project_id}/webhooks/{webhook_id}": { method: "GET", path: "/v1/projects/{project_id}/webhooks/{webhook_id}", operationId: "getWebhookEndpoint" },
+  "PUT /v1/projects/{project_id}/webhooks/{webhook_id}": { method: "PUT", path: "/v1/projects/{project_id}/webhooks/{webhook_id}", operationId: "updateWebhookEndpoint" },
+  "DELETE /v1/projects/{project_id}/webhooks/{webhook_id}": { method: "DELETE", path: "/v1/projects/{project_id}/webhooks/{webhook_id}", operationId: "deleteWebhookEndpoint" },
+  "POST /v1/projects/{project_id}/webhooks/{webhook_id}/test": { method: "POST", path: "/v1/projects/{project_id}/webhooks/{webhook_id}/test", operationId: "testWebhookEndpoint" },
 } as const;
 
 type ListAgentCredentialsParams = { pathParams: NonNullable<ListAgentCredentialsRequestConfig["pathParams"]>; queryParams?: NonNullable<ListAgentCredentialsRequestConfig["queryParams"]> };
@@ -161,10 +213,17 @@ type CreateAgentCredentialParams = { pathParams: NonNullable<CreateAgentCredenti
 type GetAgentCredentialParams = { pathParams: NonNullable<GetAgentCredentialRequestConfig["pathParams"]> };
 type UpdateAgentCredentialStatusParams = { pathParams: NonNullable<UpdateAgentCredentialStatusRequestConfig["pathParams"]>; body: NonNullable<UpdateAgentCredentialStatusRequestConfig["data"]> };
 type RevokeAgentCredentialParams = { pathParams: NonNullable<RevokeAgentCredentialRequestConfig["pathParams"]> };
+type ListAnomalyAlertsParams = { pathParams: NonNullable<ListAnomalyAlertsRequestConfig["pathParams"]>; queryParams?: NonNullable<ListAnomalyAlertsRequestConfig["queryParams"]> };
+type UpdateAnomalyAlertParams = { pathParams: NonNullable<UpdateAnomalyAlertRequestConfig["pathParams"]>; body: NonNullable<UpdateAnomalyAlertRequestConfig["data"]> };
+type ListApprovalRequestsParams = { pathParams: NonNullable<ListApprovalRequestsRequestConfig["pathParams"]>; queryParams?: NonNullable<ListApprovalRequestsRequestConfig["queryParams"]> };
+type ApproveApprovalRequestParams = { pathParams: NonNullable<ApproveApprovalRequestRequestConfig["pathParams"]>; body: NonNullable<ApproveApprovalRequestRequestConfig["data"]> };
+type RejectApprovalRequestParams = { pathParams: NonNullable<RejectApprovalRequestRequestConfig["pathParams"]>; body: NonNullable<RejectApprovalRequestRequestConfig["data"]> };
 type ListAuditLogsParams = { pathParams: NonNullable<ListAuditLogsRequestConfig["pathParams"]>; queryParams?: NonNullable<ListAuditLogsRequestConfig["queryParams"]> };
 type GetOrganizationPlanParams = { pathParams: NonNullable<GetOrganizationPlanRequestConfig["pathParams"]> };
 type UpdateSpendLimitParams = { pathParams: NonNullable<UpdateSpendLimitRequestConfig["pathParams"]>; body: NonNullable<UpdateSpendLimitRequestConfig["data"]> };
 type SubmitCancellationFeedbackParams = { pathParams: NonNullable<SubmitCancellationFeedbackRequestConfig["pathParams"]>; body: NonNullable<SubmitCancellationFeedbackRequestConfig["data"]> };
+type ListDatabaseBranchesParams = { pathParams: NonNullable<ListDatabaseBranchesRequestConfig["pathParams"]>; queryParams?: NonNullable<ListDatabaseBranchesRequestConfig["queryParams"]> };
+type DiscardDatabaseBranchParams = { pathParams: NonNullable<DiscardDatabaseBranchRequestConfig["pathParams"]> };
 type ListCacheRulesParams = { pathParams: NonNullable<ListCacheRulesRequestConfig["pathParams"]>; queryParams?: NonNullable<ListCacheRulesRequestConfig["queryParams"]> };
 type UpdateCacheRuleParams = { pathParams: NonNullable<UpdateCacheRuleRequestConfig["pathParams"]>; body: NonNullable<UpdateCacheRuleRequestConfig["data"]> };
 type ListDatabasesParams = { pathParams: NonNullable<ListDatabasesRequestConfig["pathParams"]>; queryParams?: NonNullable<ListDatabasesRequestConfig["queryParams"]> };
@@ -178,6 +237,7 @@ type CreateCustomDomainParams = { pathParams: NonNullable<CreateCustomDomainRequ
 type DeleteCustomDomainParams = { pathParams: NonNullable<DeleteCustomDomainRequestConfig["pathParams"]> };
 type VerifyCustomDomainParams = { pathParams: NonNullable<VerifyCustomDomainRequestConfig["pathParams"]> };
 type GetProjectInsightsParams = { pathParams: NonNullable<GetProjectInsightsRequestConfig["pathParams"]>; queryParams?: NonNullable<GetProjectInsightsRequestConfig["queryParams"]> };
+type LintMigrationParams = { pathParams: NonNullable<LintMigrationRequestConfig["pathParams"]>; body: NonNullable<LintMigrationRequestConfig["data"]> };
 type GetOnboardingProgressParams = { pathParams: NonNullable<GetOnboardingProgressRequestConfig["pathParams"]> };
 type UpdateOnboardingProgressParams = { pathParams: NonNullable<UpdateOnboardingProgressRequestConfig["pathParams"]>; body: NonNullable<UpdateOnboardingProgressRequestConfig["data"]> };
 type ListPolicyProfilesParams = { pathParams: NonNullable<ListPolicyProfilesRequestConfig["pathParams"]>; queryParams?: NonNullable<ListPolicyProfilesRequestConfig["queryParams"]> };
@@ -196,6 +256,12 @@ type CreateReplicaParams = { pathParams: NonNullable<CreateReplicaRequestConfig[
 type DeleteReplicaParams = { pathParams: NonNullable<DeleteReplicaRequestConfig["pathParams"]> };
 type GetOrganizationUsageParams = { pathParams: NonNullable<GetOrganizationUsageRequestConfig["pathParams"]>; queryParams: NonNullable<GetOrganizationUsageRequestConfig["queryParams"]> };
 type GetProjectUsageParams = { pathParams: NonNullable<GetProjectUsageRequestConfig["pathParams"]>; queryParams: NonNullable<GetProjectUsageRequestConfig["queryParams"]> };
+type ListWebhookEndpointsParams = { pathParams: NonNullable<ListWebhookEndpointsRequestConfig["pathParams"]>; queryParams?: NonNullable<ListWebhookEndpointsRequestConfig["queryParams"]> };
+type CreateWebhookEndpointParams = { pathParams: NonNullable<CreateWebhookEndpointRequestConfig["pathParams"]>; body: NonNullable<CreateWebhookEndpointRequestConfig["data"]> };
+type GetWebhookEndpointParams = { pathParams: NonNullable<GetWebhookEndpointRequestConfig["pathParams"]> };
+type UpdateWebhookEndpointParams = { pathParams: NonNullable<UpdateWebhookEndpointRequestConfig["pathParams"]>; body: NonNullable<UpdateWebhookEndpointRequestConfig["data"]> };
+type DeleteWebhookEndpointParams = { pathParams: NonNullable<DeleteWebhookEndpointRequestConfig["pathParams"]> };
+type TestWebhookEndpointParams = { pathParams: NonNullable<TestWebhookEndpointRequestConfig["pathParams"]> };
 
 export interface ApiOperations {
   account: {
@@ -211,6 +277,15 @@ export interface ApiOperations {
     revokeAgentCredential(params: RevokeAgentCredentialParams): Promise<void>;
     listAuditLogs(params: ListAuditLogsParams): Promise<ListAuditLogsStatus200>;
   };
+  anomalies: {
+    listAnomalyAlerts(params: ListAnomalyAlertsParams): Promise<ListAnomalyAlertsStatus200>;
+    updateAnomalyAlert(params: UpdateAnomalyAlertParams): Promise<UpdateAnomalyAlertStatus200>;
+  };
+  approvals: {
+    listApprovalRequests(params: ListApprovalRequestsParams): Promise<ListApprovalRequestsStatus200>;
+    approveApprovalRequest(params: ApproveApprovalRequestParams): Promise<ApproveApprovalRequestStatus200>;
+    rejectApprovalRequest(params: RejectApprovalRequestParams): Promise<RejectApprovalRequestStatus200>;
+  };
   analytics: {
     listPlans(): Promise<ListPlansStatus200>;
     getOrganizationPlan(params: GetOrganizationPlanParams): Promise<GetOrganizationPlanStatus200>;
@@ -219,6 +294,10 @@ export interface ApiOperations {
     getProjectInsights(params: GetProjectInsightsParams): Promise<GetProjectInsightsStatus200>;
     getOrganizationUsage(params: GetOrganizationUsageParams): Promise<GetOrganizationUsageStatus200>;
     getProjectUsage(params: GetProjectUsageParams): Promise<GetProjectUsageStatus200>;
+  };
+  branches: {
+    listDatabaseBranches(params: ListDatabaseBranchesParams): Promise<ListDatabaseBranchesStatus200>;
+    discardDatabaseBranch(params: DiscardDatabaseBranchParams): Promise<void>;
   };
   projects: {
     listCacheRules(params: ListCacheRulesParams): Promise<ListCacheRulesStatus200>;
@@ -249,12 +328,23 @@ export interface ApiOperations {
     getHealth(): Promise<GetHealthStatus200>;
     listRegions(): Promise<ListRegionsStatus200>;
   };
+  migrations: {
+    lintMigration(params: LintMigrationParams): Promise<LintMigrationStatus200>;
+  };
   policies: {
     listPolicyProfiles(params: ListPolicyProfilesParams): Promise<ListPolicyProfilesStatus200>;
     createPolicyProfile(params: CreatePolicyProfileParams): Promise<CreatePolicyProfileStatus201>;
     getPolicyProfile(params: GetPolicyProfileParams): Promise<GetPolicyProfileStatus200>;
     updatePolicyProfile(params: UpdatePolicyProfileParams): Promise<UpdatePolicyProfileStatus200>;
     deletePolicyProfile(params: DeletePolicyProfileParams): Promise<void>;
+  };
+  webhooks: {
+    listWebhookEndpoints(params: ListWebhookEndpointsParams): Promise<ListWebhookEndpointsStatus200>;
+    createWebhookEndpoint(params: CreateWebhookEndpointParams): Promise<CreateWebhookEndpointStatus201>;
+    getWebhookEndpoint(params: GetWebhookEndpointParams): Promise<GetWebhookEndpointStatus200>;
+    updateWebhookEndpoint(params: UpdateWebhookEndpointParams): Promise<UpdateWebhookEndpointStatus200>;
+    deleteWebhookEndpoint(params: DeleteWebhookEndpointParams): Promise<void>;
+    testWebhookEndpoint(params: TestWebhookEndpointParams): Promise<TestWebhookEndpointStatus202>;
   };
 }
 
@@ -265,11 +355,18 @@ export interface RequestMap {
   "GET /v1/projects/{project_id}/agents/{agent_id}": { params: GetAgentCredentialParams; response: GetAgentCredentialStatus200 };
   "PATCH /v1/projects/{project_id}/agents/{agent_id}": { params: UpdateAgentCredentialStatusParams; response: UpdateAgentCredentialStatusStatus200 };
   "DELETE /v1/projects/{project_id}/agents/{agent_id}": { params: RevokeAgentCredentialParams; response: void };
+  "GET /v1/projects/{project_id}/anomalies": { params: ListAnomalyAlertsParams; response: ListAnomalyAlertsStatus200 };
+  "PATCH /v1/projects/{project_id}/anomalies/{anomaly_id}": { params: UpdateAnomalyAlertParams; response: UpdateAnomalyAlertStatus200 };
+  "GET /v1/projects/{project_id}/approvals": { params: ListApprovalRequestsParams; response: ListApprovalRequestsStatus200 };
+  "POST /v1/projects/{project_id}/approvals/{approval_id}/approve": { params: ApproveApprovalRequestParams; response: ApproveApprovalRequestStatus200 };
+  "POST /v1/projects/{project_id}/approvals/{approval_id}/reject": { params: RejectApprovalRequestParams; response: RejectApprovalRequestStatus200 };
   "GET /v1/projects/{project_id}/audit-logs": { params: ListAuditLogsParams; response: ListAuditLogsStatus200 };
   "GET /v1/plans": { params?: undefined; response: ListPlansStatus200 };
   "GET /v1/organizations/{org_id}/plan": { params: GetOrganizationPlanParams; response: GetOrganizationPlanStatus200 };
   "PUT /v1/organizations/{org_id}/spend-limit": { params: UpdateSpendLimitParams; response: UpdateSpendLimitStatus200 };
   "POST /v1/organizations/{org_id}/cancellation-feedback": { params: SubmitCancellationFeedbackParams; response: void };
+  "GET /v1/projects/{project_id}/branches": { params: ListDatabaseBranchesParams; response: ListDatabaseBranchesStatus200 };
+  "DELETE /v1/projects/{project_id}/branches/{branch_id}": { params: DiscardDatabaseBranchParams; response: void };
   "GET /v1/projects/{project_id}/databases/{database_id}/cache-rules": { params: ListCacheRulesParams; response: ListCacheRulesStatus200 };
   "PUT /v1/projects/{project_id}/databases/{database_id}/cache-rules/{query_hash}": { params: UpdateCacheRuleParams; response: UpdateCacheRuleStatus200 };
   "GET /v1/projects/{project_id}/databases": { params: ListDatabasesParams; response: ListDatabasesStatus200 };
@@ -284,6 +381,7 @@ export interface RequestMap {
   "POST /v1/projects/{project_id}/domains/{domain_id}/verify": { params: VerifyCustomDomainParams; response: VerifyCustomDomainStatus200 };
   "GET /v1/health": { params?: undefined; response: GetHealthStatus200 };
   "GET /v1/projects/{project_id}/insights": { params: GetProjectInsightsParams; response: GetProjectInsightsStatus200 };
+  "POST /v1/projects/{project_id}/migrations:lint": { params: LintMigrationParams; response: LintMigrationStatus200 };
   "GET /v1/organizations/{org_id}/onboarding": { params: GetOnboardingProgressParams; response: GetOnboardingProgressStatus200 };
   "PATCH /v1/organizations/{org_id}/onboarding": { params: UpdateOnboardingProgressParams; response: UpdateOnboardingProgressStatus200 };
   "GET /v1/projects/{project_id}/policies": { params: ListPolicyProfilesParams; response: ListPolicyProfilesStatus200 };
@@ -303,6 +401,12 @@ export interface RequestMap {
   "DELETE /v1/databases/{database_id}/replicas/{replica_id}": { params: DeleteReplicaParams; response: void };
   "GET /v1/organizations/{org_id}/usage": { params: GetOrganizationUsageParams; response: GetOrganizationUsageStatus200 };
   "GET /v1/projects/{project_id}/usage": { params: GetProjectUsageParams; response: GetProjectUsageStatus200 };
+  "GET /v1/projects/{project_id}/webhooks": { params: ListWebhookEndpointsParams; response: ListWebhookEndpointsStatus200 };
+  "POST /v1/projects/{project_id}/webhooks": { params: CreateWebhookEndpointParams; response: CreateWebhookEndpointStatus201 };
+  "GET /v1/projects/{project_id}/webhooks/{webhook_id}": { params: GetWebhookEndpointParams; response: GetWebhookEndpointStatus200 };
+  "PUT /v1/projects/{project_id}/webhooks/{webhook_id}": { params: UpdateWebhookEndpointParams; response: UpdateWebhookEndpointStatus200 };
+  "DELETE /v1/projects/{project_id}/webhooks/{webhook_id}": { params: DeleteWebhookEndpointParams; response: void };
+  "POST /v1/projects/{project_id}/webhooks/{webhook_id}/test": { params: TestWebhookEndpointParams; response: TestWebhookEndpointStatus202 };
 }
 
 export type ApiTag = keyof ApiOperations;

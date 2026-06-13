@@ -11,6 +11,20 @@ export const agentCredentialStatusEnum = {
 
 export type AgentCredentialStatusEnumKey = (typeof agentCredentialStatusEnum)[keyof typeof agentCredentialStatusEnum];
 
+export const agentCredentialPrincipalTypeEnum = {
+    agent: "agent",
+    human: "human"
+} as const;
+
+export type AgentCredentialPrincipalTypeEnumKey = (typeof agentCredentialPrincipalTypeEnum)[keyof typeof agentCredentialPrincipalTypeEnum];
+
+export const agentCredentialAuthMethodEnum = {
+    cleartext: "cleartext",
+    "scram-sha-256": "scram-sha-256"
+} as const;
+
+export type AgentCredentialAuthMethodEnumKey = (typeof agentCredentialAuthMethodEnum)[keyof typeof agentCredentialAuthMethodEnum];
+
 /**
  * @description A PgBeam-issued, scoped Postgres login plus hosted MCP token for an AI agent.
  * @type object
@@ -51,6 +65,18 @@ export type AgentCredential = {
      * @type string
     */
     status: AgentCredentialStatusEnumKey;
+    /**
+     * @description Whether this credential represents an autonomous agent or a human operator.
+     * @default "agent"
+     * @type string | undefined
+    */
+    principal_type?: AgentCredentialPrincipalTypeEnumKey;
+    /**
+     * @description Postgres auth method the proxy presents for this credential.
+     * @default "scram-sha-256"
+     * @type string | undefined
+    */
+    readonly auth_method?: AgentCredentialAuthMethodEnumKey;
     /**
      * @description When the credential was last used to connect, if ever.
      * @type string

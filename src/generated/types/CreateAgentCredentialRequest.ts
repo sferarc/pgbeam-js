@@ -3,6 +3,13 @@
 * Do not edit manually.
 */
 
+export const createAgentCredentialRequestPrincipalTypeEnum = {
+    agent: "agent",
+    human: "human"
+} as const;
+
+export type CreateAgentCredentialRequestPrincipalTypeEnumKey = (typeof createAgentCredentialRequestPrincipalTypeEnum)[keyof typeof createAgentCredentialRequestPrincipalTypeEnum];
+
 /**
  * @description Request body for issuing a new agent credential.
  * @type object
@@ -20,4 +27,10 @@ export type CreateAgentCredentialRequest = {
      * @type string
     */
     policy_profile_id: string;
+    /**
+     * @description Whether this credential represents an autonomous agent or a human operator.
+     * @default "agent"
+     * @type string | undefined
+    */
+    principal_type?: CreateAgentCredentialRequestPrincipalTypeEnumKey;
 };
