@@ -16,7 +16,7 @@ export type DnsInstructions = {
     cname_host?: string;
     /**
      * @description The CNAME record target.
-     * @example abc.aws.pgbeam.app
+     * @example abc.proxy.pgbeam.app
      * @type string | undefined
     */
     cname_target?: string;
@@ -40,7 +40,7 @@ export type DnsInstructions = {
     acme_cname_host?: string;
     /**
      * @description The CNAME target for ACME challenge delegation.
-     * @example _acme-challenge.abc.aws.pgbeam.app
+     * @example _acme-challenge.abc.proxy.pgbeam.app
      * @type string | undefined
     */
     acme_cname_target?: string;

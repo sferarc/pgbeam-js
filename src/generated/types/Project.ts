@@ -58,7 +58,7 @@ export type Project = {
     */
     readonly cloud?: ProjectCloudEnumKey;
     /**
-     * @description Proxy hostname for connecting through PgBeam (e.g., myproject.aws.pgbeam.app).
+     * @description Proxy hostname for connecting through PgBeam (e.g., myproject.proxy.pgbeam.app).
      * @type string | undefined
     */
     readonly proxy_host?: string;

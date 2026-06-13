@@ -17,7 +17,7 @@ export type AgentCredentialSecrets = {
     credential: AgentCredential;
     /**
      * @description Guarded Postgres connection string for this agent credential.
-     * @example postgresql://agent_a1b2c3d4e5f6:secret@abc.aws.pgbeam.app:5432/mydb
+     * @example postgresql://agent_a1b2c3d4e5f6:secret@abc.proxy.pgbeam.app:5432/mydb
      * @type string
     */
     connection_string: string;

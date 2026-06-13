@@ -27,7 +27,7 @@ export type Database = {
     project_id: string;
     /**
      * @description Connection string for connecting through PgBeam proxy. Password is replaced with a placeholder.
-     * @example postgresql://myuser:YOUR_PASSWORD@myproject.aws.pgbeam.app:5432/mydb
+     * @example postgresql://myuser:YOUR_PASSWORD@myproject.proxy.pgbeam.app:5432/mydb
      * @type string | undefined
     */
     readonly connection_string?: string;
