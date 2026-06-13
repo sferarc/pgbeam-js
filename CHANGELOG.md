@@ -1,5 +1,11 @@
 # pgbeam
 
+## 0.2.9
+
+### Patch Changes
+
+- ed8238a: feat: agent gateway — full roadmap release (v1 + post-v1, agents & humans)
+
 ## 0.2.8
 
 ### Patch Changes
