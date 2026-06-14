@@ -83,6 +83,11 @@ export type AgentCredential = {
     */
     last_used_at?: string | null;
     /**
+     * @description When the credential expires and becomes unusable. Null means it never expires. Enforcement is fail-closed in the proxy the instant this time passes, before any cleanup sweep runs.
+     * @type string
+    */
+    expires_at?: string | null;
+    /**
      * @description When the credential was created.
      * @type string
     */

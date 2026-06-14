@@ -30,7 +30,7 @@ export type AuditLogEntry = {
     */
     region?: string;
     /**
-     * @description Event type (query, blocked, masked, budget_exhausted, truncated, auth_failed).
+     * @description Event type (query, blocked, masked, budget_exhausted, truncated, auth_failed, credential_expired).
      * @type string
     */
     event: string;
@@ -95,7 +95,7 @@ export type AuditLogEntry = {
     */
     session_id?: string;
     /**
-     * @description Statement origin (wire or mcp).
+     * @description Statement origin (wire, mcp, or control for control-plane lifecycle events).
      * @type string | undefined
     */
     source?: string;
