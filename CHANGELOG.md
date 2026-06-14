@@ -1,5 +1,13 @@
 # pgbeam
 
+## 0.3.0
+
+### Minor Changes
+
+- 728a7a5: Add agent credential expiry (`expires_at`). Credentials can now be issued with an
+  optional expiry; the field is surfaced on agent credentials and on `credential_expired`
+  audit log entries.
+
 ## 0.2.9
 
 ### Patch Changes
