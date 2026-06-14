@@ -1,5 +1,11 @@
 # pgbeam
 
+## 0.3.2
+
+### Patch Changes
+
+- f2d1f56: feat: add Support Center with bidirectional Slack integration
+
 ## 0.3.1
 
 ### Patch Changes
