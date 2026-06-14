@@ -1,5 +1,11 @@
 # pgbeam
 
+## 0.3.1
+
+### Patch Changes
+
+- b1d406d: feat(mcp): serve DB MCP under per-project proxy host, drop mcp.pgbeam.app
+
 ## 0.3.0
 
 ### Minor Changes

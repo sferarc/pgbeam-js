@@ -1,6 +1,6 @@
 {
   "name": "pgbeam",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "TypeScript SDK for the PgBeam API — globally distributed PostgreSQL proxy platform",
   "type": "module",
   "exports": {
