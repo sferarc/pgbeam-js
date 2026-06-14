@@ -31,6 +31,12 @@ export type GetSupportCaseStatus200 = GetSupportCaseResponse;
  * @description Standard error response envelope for PgBeam API requests.
  * @type object
 */
+export type GetSupportCaseStatus400 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
 export type GetSupportCaseStatus401 = Error;
 
 /**
@@ -70,6 +76,7 @@ export type GetSupportCaseRequestConfig = {
 */
 export type GetSupportCaseResponses = {
     "200": GetSupportCaseStatus200;
+    "400": GetSupportCaseStatus400;
     "401": GetSupportCaseStatus401;
     "403": GetSupportCaseStatus403;
     "404": GetSupportCaseStatus404;
