@@ -22,8 +22,8 @@ export type AgentCredentialSecrets = {
     */
     connection_string: string;
     /**
-     * @description Hosted MCP endpoint URL for this credential.
-     * @example https://api.pgbeam.com/mcp
+     * @description Hosted agent-database MCP endpoint. Paste into an MCP client (Claude Code, Cursor, …) with the mcp_token as a bearer token. The endpoint is token-scoped, so the same URL serves every credential.
+     * @example https://mcp.pgbeam.app/mcp
      * @type string
     */
     mcp_url: string;

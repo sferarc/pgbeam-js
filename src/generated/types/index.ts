@@ -109,6 +109,7 @@ export type { Region, RegionProviderEnumKey, RegionStatusEnumKey } from "./Regio
 export type { RejectApprovalRequestData, RejectApprovalRequestPathApprovalId, RejectApprovalRequestPathProjectId, RejectApprovalRequestRequestConfig, RejectApprovalRequestResponse, RejectApprovalRequestResponses, RejectApprovalRequestStatus200, RejectApprovalRequestStatus400, RejectApprovalRequestStatus401, RejectApprovalRequestStatus403, RejectApprovalRequestStatus404, RejectApprovalRequestStatus409 } from "./RejectApprovalRequest";
 export type { Replica } from "./Replica";
 export type { RevokeAgentCredentialPathAgentId, RevokeAgentCredentialPathProjectId, RevokeAgentCredentialRequestConfig, RevokeAgentCredentialResponse, RevokeAgentCredentialResponses, RevokeAgentCredentialStatus204, RevokeAgentCredentialStatus400, RevokeAgentCredentialStatus401, RevokeAgentCredentialStatus403, RevokeAgentCredentialStatus404 } from "./RevokeAgentCredential";
+export type { RotateAgentCredentialPathAgentId, RotateAgentCredentialPathProjectId, RotateAgentCredentialRequestConfig, RotateAgentCredentialResponse, RotateAgentCredentialResponses, RotateAgentCredentialStatus200, RotateAgentCredentialStatus400, RotateAgentCredentialStatus401, RotateAgentCredentialStatus403, RotateAgentCredentialStatus404, RotateAgentCredentialStatus409 } from "./RotateAgentCredential";
 export type { RowFilter } from "./RowFilter";
 export type { SSLModeKey } from "./SSLMode";
 export type { StatementRules } from "./StatementRules";

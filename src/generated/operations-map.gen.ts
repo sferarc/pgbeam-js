@@ -9,6 +9,7 @@ import type { CreateAgentCredentialRequestConfig, CreateAgentCredentialStatus201
 import type { GetAgentCredentialRequestConfig, GetAgentCredentialStatus200 } from "./types/GetAgentCredential";
 import type { UpdateAgentCredentialStatusRequestConfig, UpdateAgentCredentialStatusStatus200 } from "./types/UpdateAgentCredentialStatus";
 import type { RevokeAgentCredentialRequestConfig } from "./types/RevokeAgentCredential";
+import type { RotateAgentCredentialRequestConfig, RotateAgentCredentialStatus200 } from "./types/RotateAgentCredential";
 import type { ListAnomalyAlertsRequestConfig, ListAnomalyAlertsStatus200 } from "./types/ListAnomalyAlerts";
 import type { UpdateAnomalyAlertRequestConfig, UpdateAnomalyAlertStatus200 } from "./types/UpdateAnomalyAlert";
 import type { ListApprovalRequestsRequestConfig, ListApprovalRequestsStatus200 } from "./types/ListApprovalRequests";
@@ -74,6 +75,7 @@ export const operationsByTag = {
     getAgentCredential: { method: "GET", path: "/v1/projects/{project_id}/agents/{agent_id}" },
     updateAgentCredentialStatus: { method: "PATCH", path: "/v1/projects/{project_id}/agents/{agent_id}" },
     revokeAgentCredential: { method: "DELETE", path: "/v1/projects/{project_id}/agents/{agent_id}" },
+    rotateAgentCredential: { method: "POST", path: "/v1/projects/{project_id}/agents/{agent_id}/rotate" },
     listAuditLogs: { method: "GET", path: "/v1/projects/{project_id}/audit-logs" },
   },
   anomalies: {
@@ -154,6 +156,7 @@ export const operationsByPath = {
   "GET /v1/projects/{project_id}/agents/{agent_id}": { method: "GET", path: "/v1/projects/{project_id}/agents/{agent_id}", operationId: "getAgentCredential" },
   "PATCH /v1/projects/{project_id}/agents/{agent_id}": { method: "PATCH", path: "/v1/projects/{project_id}/agents/{agent_id}", operationId: "updateAgentCredentialStatus" },
   "DELETE /v1/projects/{project_id}/agents/{agent_id}": { method: "DELETE", path: "/v1/projects/{project_id}/agents/{agent_id}", operationId: "revokeAgentCredential" },
+  "POST /v1/projects/{project_id}/agents/{agent_id}/rotate": { method: "POST", path: "/v1/projects/{project_id}/agents/{agent_id}/rotate", operationId: "rotateAgentCredential" },
   "GET /v1/projects/{project_id}/anomalies": { method: "GET", path: "/v1/projects/{project_id}/anomalies", operationId: "listAnomalyAlerts" },
   "PATCH /v1/projects/{project_id}/anomalies/{anomaly_id}": { method: "PATCH", path: "/v1/projects/{project_id}/anomalies/{anomaly_id}", operationId: "updateAnomalyAlert" },
   "GET /v1/projects/{project_id}/approvals": { method: "GET", path: "/v1/projects/{project_id}/approvals", operationId: "listApprovalRequests" },
@@ -213,6 +216,7 @@ type CreateAgentCredentialParams = { pathParams: NonNullable<CreateAgentCredenti
 type GetAgentCredentialParams = { pathParams: NonNullable<GetAgentCredentialRequestConfig["pathParams"]> };
 type UpdateAgentCredentialStatusParams = { pathParams: NonNullable<UpdateAgentCredentialStatusRequestConfig["pathParams"]>; body: NonNullable<UpdateAgentCredentialStatusRequestConfig["data"]> };
 type RevokeAgentCredentialParams = { pathParams: NonNullable<RevokeAgentCredentialRequestConfig["pathParams"]> };
+type RotateAgentCredentialParams = { pathParams: NonNullable<RotateAgentCredentialRequestConfig["pathParams"]> };
 type ListAnomalyAlertsParams = { pathParams: NonNullable<ListAnomalyAlertsRequestConfig["pathParams"]>; queryParams?: NonNullable<ListAnomalyAlertsRequestConfig["queryParams"]> };
 type UpdateAnomalyAlertParams = { pathParams: NonNullable<UpdateAnomalyAlertRequestConfig["pathParams"]>; body: NonNullable<UpdateAnomalyAlertRequestConfig["data"]> };
 type ListApprovalRequestsParams = { pathParams: NonNullable<ListApprovalRequestsRequestConfig["pathParams"]>; queryParams?: NonNullable<ListApprovalRequestsRequestConfig["queryParams"]> };
@@ -275,6 +279,7 @@ export interface ApiOperations {
     getAgentCredential(params: GetAgentCredentialParams): Promise<GetAgentCredentialStatus200>;
     updateAgentCredentialStatus(params: UpdateAgentCredentialStatusParams): Promise<UpdateAgentCredentialStatusStatus200>;
     revokeAgentCredential(params: RevokeAgentCredentialParams): Promise<void>;
+    rotateAgentCredential(params: RotateAgentCredentialParams): Promise<RotateAgentCredentialStatus200>;
     listAuditLogs(params: ListAuditLogsParams): Promise<ListAuditLogsStatus200>;
   };
   anomalies: {
@@ -355,6 +360,7 @@ export interface RequestMap {
   "GET /v1/projects/{project_id}/agents/{agent_id}": { params: GetAgentCredentialParams; response: GetAgentCredentialStatus200 };
   "PATCH /v1/projects/{project_id}/agents/{agent_id}": { params: UpdateAgentCredentialStatusParams; response: UpdateAgentCredentialStatusStatus200 };
   "DELETE /v1/projects/{project_id}/agents/{agent_id}": { params: RevokeAgentCredentialParams; response: void };
+  "POST /v1/projects/{project_id}/agents/{agent_id}/rotate": { params: RotateAgentCredentialParams; response: RotateAgentCredentialStatus200 };
   "GET /v1/projects/{project_id}/anomalies": { params: ListAnomalyAlertsParams; response: ListAnomalyAlertsStatus200 };
   "PATCH /v1/projects/{project_id}/anomalies/{anomaly_id}": { params: UpdateAnomalyAlertParams; response: UpdateAnomalyAlertStatus200 };
   "GET /v1/projects/{project_id}/approvals": { params: ListApprovalRequestsParams; response: ListApprovalRequestsStatus200 };

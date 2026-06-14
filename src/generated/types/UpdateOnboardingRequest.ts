@@ -8,7 +8,8 @@ export const updateOnboardingRequestStepEnum = {
     database_added: "database_added",
     connection_tested: "connection_tested",
     connection_string_copied: "connection_string_copied",
-    first_query_run: "first_query_run"
+    first_query_run: "first_query_run",
+    agent_credential_created: "agent_credential_created"
 } as const;
 
 export type UpdateOnboardingRequestStepEnumKey = (typeof updateOnboardingRequestStepEnum)[keyof typeof updateOnboardingRequestStepEnum];

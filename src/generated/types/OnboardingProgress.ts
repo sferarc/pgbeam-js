@@ -44,6 +44,11 @@ export type OnboardingProgress = {
     */
     first_query_run: boolean;
     /**
+     * @description Whether an agent credential has been issued.
+     * @type boolean
+    */
+    agent_credential_created: boolean;
+    /**
      * @description Whether the user has dismissed the onboarding checklist.
      * @type boolean
     */
