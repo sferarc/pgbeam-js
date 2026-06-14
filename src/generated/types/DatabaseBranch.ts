@@ -39,35 +39,10 @@ export type DatabaseBranch = {
     */
     session_id?: string;
     /**
-     * @description Provider branch name.
+     * @description Generated name for the branch.
      * @type string
     */
     branch_name: string;
-    /**
-     * @description Branch host.
-     * @type string | undefined
-    */
-    host?: string;
-    /**
-     * @description Branch port.
-     * @type integer | undefined
-    */
-    port?: number;
-    /**
-     * @description Branch database name.
-     * @type string | undefined
-    */
-    name?: string;
-    /**
-     * @description Branch username.
-     * @type string | undefined
-    */
-    username?: string;
-    /**
-     * @description Branch provider (e.g. internal, neon).
-     * @type string
-    */
-    provider: string;
     /**
      * @description Provisioning state of the branch.
      * @type string
