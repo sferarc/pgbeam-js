@@ -54,6 +54,12 @@ import type { ListRegionsStatus200 } from "./types/ListRegions";
 import type { ListReplicasRequestConfig, ListReplicasStatus200 } from "./types/ListReplicas";
 import type { CreateReplicaRequestConfig, CreateReplicaStatus201 } from "./types/CreateReplica";
 import type { DeleteReplicaRequestConfig } from "./types/DeleteReplica";
+import type { ListSupportCasesRequestConfig, ListSupportCasesStatus200 } from "./types/ListSupportCases";
+import type { CreateSupportCaseRequestConfig, CreateSupportCaseStatus201 } from "./types/CreateSupportCase";
+import type { GetSupportCaseRequestConfig, GetSupportCaseStatus200 } from "./types/GetSupportCase";
+import type { UpdateSupportCaseRequestConfig, UpdateSupportCaseStatus200 } from "./types/UpdateSupportCase";
+import type { CreateSupportMessageRequestConfig, CreateSupportMessageStatus201 } from "./types/CreateSupportMessage";
+import type { HandleSlackSupportEventRequestConfig, HandleSlackSupportEventStatus200 } from "./types/HandleSlackSupportEvent";
 import type { GetOrganizationUsageRequestConfig, GetOrganizationUsageStatus200 } from "./types/GetOrganizationUsage";
 import type { GetProjectUsageRequestConfig, GetProjectUsageStatus200 } from "./types/GetProjectUsage";
 import type { ListWebhookEndpointsRequestConfig, ListWebhookEndpointsStatus200 } from "./types/ListWebhookEndpoints";
@@ -139,6 +145,16 @@ export const operationsByTag = {
     updatePolicyProfile: { method: "PUT", path: "/v1/projects/{project_id}/policies/{policy_id}" },
     deletePolicyProfile: { method: "DELETE", path: "/v1/projects/{project_id}/policies/{policy_id}" },
   },
+  support: {
+    listSupportCases: { method: "GET", path: "/v1/organizations/{org_id}/support/cases" },
+    createSupportCase: { method: "POST", path: "/v1/organizations/{org_id}/support/cases" },
+    getSupportCase: { method: "GET", path: "/v1/organizations/{org_id}/support/cases/{case_id}" },
+    updateSupportCase: { method: "PATCH", path: "/v1/organizations/{org_id}/support/cases/{case_id}" },
+    createSupportMessage: { method: "POST", path: "/v1/organizations/{org_id}/support/cases/{case_id}/messages" },
+  },
+  internal: {
+    handleSlackSupportEvent: { method: "POST", path: "/v1/internal/support/slack-event" },
+  },
   webhooks: {
     listWebhookEndpoints: { method: "GET", path: "/v1/projects/{project_id}/webhooks" },
     createWebhookEndpoint: { method: "POST", path: "/v1/projects/{project_id}/webhooks" },
@@ -201,6 +217,12 @@ export const operationsByPath = {
   "GET /v1/databases/{database_id}/replicas": { method: "GET", path: "/v1/databases/{database_id}/replicas", operationId: "listReplicas" },
   "POST /v1/databases/{database_id}/replicas": { method: "POST", path: "/v1/databases/{database_id}/replicas", operationId: "createReplica" },
   "DELETE /v1/databases/{database_id}/replicas/{replica_id}": { method: "DELETE", path: "/v1/databases/{database_id}/replicas/{replica_id}", operationId: "deleteReplica" },
+  "GET /v1/organizations/{org_id}/support/cases": { method: "GET", path: "/v1/organizations/{org_id}/support/cases", operationId: "listSupportCases" },
+  "POST /v1/organizations/{org_id}/support/cases": { method: "POST", path: "/v1/organizations/{org_id}/support/cases", operationId: "createSupportCase" },
+  "GET /v1/organizations/{org_id}/support/cases/{case_id}": { method: "GET", path: "/v1/organizations/{org_id}/support/cases/{case_id}", operationId: "getSupportCase" },
+  "PATCH /v1/organizations/{org_id}/support/cases/{case_id}": { method: "PATCH", path: "/v1/organizations/{org_id}/support/cases/{case_id}", operationId: "updateSupportCase" },
+  "POST /v1/organizations/{org_id}/support/cases/{case_id}/messages": { method: "POST", path: "/v1/organizations/{org_id}/support/cases/{case_id}/messages", operationId: "createSupportMessage" },
+  "POST /v1/internal/support/slack-event": { method: "POST", path: "/v1/internal/support/slack-event", operationId: "handleSlackSupportEvent" },
   "GET /v1/organizations/{org_id}/usage": { method: "GET", path: "/v1/organizations/{org_id}/usage", operationId: "getOrganizationUsage" },
   "GET /v1/projects/{project_id}/usage": { method: "GET", path: "/v1/projects/{project_id}/usage", operationId: "getProjectUsage" },
   "GET /v1/projects/{project_id}/webhooks": { method: "GET", path: "/v1/projects/{project_id}/webhooks", operationId: "listWebhookEndpoints" },
@@ -258,6 +280,12 @@ type GetProjectMetricsParams = { pathParams: NonNullable<GetProjectMetricsReques
 type ListReplicasParams = { pathParams: NonNullable<ListReplicasRequestConfig["pathParams"]> };
 type CreateReplicaParams = { pathParams: NonNullable<CreateReplicaRequestConfig["pathParams"]>; body: NonNullable<CreateReplicaRequestConfig["data"]> };
 type DeleteReplicaParams = { pathParams: NonNullable<DeleteReplicaRequestConfig["pathParams"]> };
+type ListSupportCasesParams = { pathParams: NonNullable<ListSupportCasesRequestConfig["pathParams"]>; queryParams?: NonNullable<ListSupportCasesRequestConfig["queryParams"]> };
+type CreateSupportCaseParams = { pathParams: NonNullable<CreateSupportCaseRequestConfig["pathParams"]>; body: NonNullable<CreateSupportCaseRequestConfig["data"]> };
+type GetSupportCaseParams = { pathParams: NonNullable<GetSupportCaseRequestConfig["pathParams"]> };
+type UpdateSupportCaseParams = { pathParams: NonNullable<UpdateSupportCaseRequestConfig["pathParams"]>; body: NonNullable<UpdateSupportCaseRequestConfig["data"]> };
+type CreateSupportMessageParams = { pathParams: NonNullable<CreateSupportMessageRequestConfig["pathParams"]>; body: NonNullable<CreateSupportMessageRequestConfig["data"]> };
+type HandleSlackSupportEventParams = { body: NonNullable<HandleSlackSupportEventRequestConfig["data"]> };
 type GetOrganizationUsageParams = { pathParams: NonNullable<GetOrganizationUsageRequestConfig["pathParams"]>; queryParams: NonNullable<GetOrganizationUsageRequestConfig["queryParams"]> };
 type GetProjectUsageParams = { pathParams: NonNullable<GetProjectUsageRequestConfig["pathParams"]>; queryParams: NonNullable<GetProjectUsageRequestConfig["queryParams"]> };
 type ListWebhookEndpointsParams = { pathParams: NonNullable<ListWebhookEndpointsRequestConfig["pathParams"]>; queryParams?: NonNullable<ListWebhookEndpointsRequestConfig["queryParams"]> };
@@ -343,6 +371,16 @@ export interface ApiOperations {
     updatePolicyProfile(params: UpdatePolicyProfileParams): Promise<UpdatePolicyProfileStatus200>;
     deletePolicyProfile(params: DeletePolicyProfileParams): Promise<void>;
   };
+  support: {
+    listSupportCases(params: ListSupportCasesParams): Promise<ListSupportCasesStatus200>;
+    createSupportCase(params: CreateSupportCaseParams): Promise<CreateSupportCaseStatus201>;
+    getSupportCase(params: GetSupportCaseParams): Promise<GetSupportCaseStatus200>;
+    updateSupportCase(params: UpdateSupportCaseParams): Promise<UpdateSupportCaseStatus200>;
+    createSupportMessage(params: CreateSupportMessageParams): Promise<CreateSupportMessageStatus201>;
+  };
+  internal: {
+    handleSlackSupportEvent(params: HandleSlackSupportEventParams): Promise<HandleSlackSupportEventStatus200>;
+  };
   webhooks: {
     listWebhookEndpoints(params: ListWebhookEndpointsParams): Promise<ListWebhookEndpointsStatus200>;
     createWebhookEndpoint(params: CreateWebhookEndpointParams): Promise<CreateWebhookEndpointStatus201>;
@@ -405,6 +443,12 @@ export interface RequestMap {
   "GET /v1/databases/{database_id}/replicas": { params: ListReplicasParams; response: ListReplicasStatus200 };
   "POST /v1/databases/{database_id}/replicas": { params: CreateReplicaParams; response: CreateReplicaStatus201 };
   "DELETE /v1/databases/{database_id}/replicas/{replica_id}": { params: DeleteReplicaParams; response: void };
+  "GET /v1/organizations/{org_id}/support/cases": { params: ListSupportCasesParams; response: ListSupportCasesStatus200 };
+  "POST /v1/organizations/{org_id}/support/cases": { params: CreateSupportCaseParams; response: CreateSupportCaseStatus201 };
+  "GET /v1/organizations/{org_id}/support/cases/{case_id}": { params: GetSupportCaseParams; response: GetSupportCaseStatus200 };
+  "PATCH /v1/organizations/{org_id}/support/cases/{case_id}": { params: UpdateSupportCaseParams; response: UpdateSupportCaseStatus200 };
+  "POST /v1/organizations/{org_id}/support/cases/{case_id}/messages": { params: CreateSupportMessageParams; response: CreateSupportMessageStatus201 };
+  "POST /v1/internal/support/slack-event": { params: HandleSlackSupportEventParams; response: HandleSlackSupportEventStatus200 };
   "GET /v1/organizations/{org_id}/usage": { params: GetOrganizationUsageParams; response: GetOrganizationUsageStatus200 };
   "GET /v1/projects/{project_id}/usage": { params: GetProjectUsageParams; response: GetProjectUsageStatus200 };
   "GET /v1/projects/{project_id}/webhooks": { params: ListWebhookEndpointsParams; response: ListWebhookEndpointsStatus200 };
