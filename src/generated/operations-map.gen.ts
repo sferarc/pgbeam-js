@@ -30,6 +30,7 @@ import type { GetDatabaseRequestConfig, GetDatabaseStatus200 } from "./types/Get
 import type { UpdateDatabaseRequestConfig, UpdateDatabaseStatus200 } from "./types/UpdateDatabase";
 import type { DeleteDatabaseRequestConfig } from "./types/DeleteDatabase";
 import type { TestDatabaseConnectionRequestConfig, TestDatabaseConnectionStatus200 } from "./types/TestDatabaseConnection";
+import type { ScanDatabaseForPiiRequestConfig, ScanDatabaseForPiiStatus200 } from "./types/ScanDatabaseForPii";
 import type { ListCustomDomainsRequestConfig, ListCustomDomainsStatus200 } from "./types/ListCustomDomains";
 import type { CreateCustomDomainRequestConfig, CreateCustomDomainStatus201 } from "./types/CreateCustomDomain";
 import type { DeleteCustomDomainRequestConfig } from "./types/DeleteCustomDomain";
@@ -130,6 +131,7 @@ export const operationsByTag = {
     updateDatabase: { method: "PATCH", path: "/v1/projects/{project_id}/databases/{database_id}" },
     deleteDatabase: { method: "DELETE", path: "/v1/projects/{project_id}/databases/{database_id}" },
     testDatabaseConnection: { method: "POST", path: "/v1/projects/{project_id}/databases/{database_id}/test-connection" },
+    scanDatabaseForPii: { method: "POST", path: "/v1/projects/{project_id}/databases/{database_id}/scan-pii" },
   },
   platform: {
     getHealth: { method: "GET", path: "/v1/health" },
@@ -193,6 +195,7 @@ export const operationsByPath = {
   "PATCH /v1/projects/{project_id}/databases/{database_id}": { method: "PATCH", path: "/v1/projects/{project_id}/databases/{database_id}", operationId: "updateDatabase" },
   "DELETE /v1/projects/{project_id}/databases/{database_id}": { method: "DELETE", path: "/v1/projects/{project_id}/databases/{database_id}", operationId: "deleteDatabase" },
   "POST /v1/projects/{project_id}/databases/{database_id}/test-connection": { method: "POST", path: "/v1/projects/{project_id}/databases/{database_id}/test-connection", operationId: "testDatabaseConnection" },
+  "POST /v1/projects/{project_id}/databases/{database_id}/scan-pii": { method: "POST", path: "/v1/projects/{project_id}/databases/{database_id}/scan-pii", operationId: "scanDatabaseForPii" },
   "GET /v1/projects/{project_id}/domains": { method: "GET", path: "/v1/projects/{project_id}/domains", operationId: "listCustomDomains" },
   "POST /v1/projects/{project_id}/domains": { method: "POST", path: "/v1/projects/{project_id}/domains", operationId: "createCustomDomain" },
   "DELETE /v1/projects/{project_id}/domains/{domain_id}": { method: "DELETE", path: "/v1/projects/{project_id}/domains/{domain_id}", operationId: "deleteCustomDomain" },
@@ -258,6 +261,7 @@ type GetDatabaseParams = { pathParams: NonNullable<GetDatabaseRequestConfig["pat
 type UpdateDatabaseParams = { pathParams: NonNullable<UpdateDatabaseRequestConfig["pathParams"]>; body: NonNullable<UpdateDatabaseRequestConfig["data"]> };
 type DeleteDatabaseParams = { pathParams: NonNullable<DeleteDatabaseRequestConfig["pathParams"]> };
 type TestDatabaseConnectionParams = { pathParams: NonNullable<TestDatabaseConnectionRequestConfig["pathParams"]> };
+type ScanDatabaseForPiiParams = { pathParams: NonNullable<ScanDatabaseForPiiRequestConfig["pathParams"]> };
 type ListCustomDomainsParams = { pathParams: NonNullable<ListCustomDomainsRequestConfig["pathParams"]>; queryParams?: NonNullable<ListCustomDomainsRequestConfig["queryParams"]> };
 type CreateCustomDomainParams = { pathParams: NonNullable<CreateCustomDomainRequestConfig["pathParams"]>; body: NonNullable<CreateCustomDomainRequestConfig["data"]> };
 type DeleteCustomDomainParams = { pathParams: NonNullable<DeleteCustomDomainRequestConfig["pathParams"]> };
@@ -356,6 +360,7 @@ export interface ApiOperations {
     updateDatabase(params: UpdateDatabaseParams): Promise<UpdateDatabaseStatus200>;
     deleteDatabase(params: DeleteDatabaseParams): Promise<void>;
     testDatabaseConnection(params: TestDatabaseConnectionParams): Promise<TestDatabaseConnectionStatus200>;
+    scanDatabaseForPii(params: ScanDatabaseForPiiParams): Promise<ScanDatabaseForPiiStatus200>;
   };
   platform: {
     getHealth(): Promise<GetHealthStatus200>;
@@ -419,6 +424,7 @@ export interface RequestMap {
   "PATCH /v1/projects/{project_id}/databases/{database_id}": { params: UpdateDatabaseParams; response: UpdateDatabaseStatus200 };
   "DELETE /v1/projects/{project_id}/databases/{database_id}": { params: DeleteDatabaseParams; response: void };
   "POST /v1/projects/{project_id}/databases/{database_id}/test-connection": { params: TestDatabaseConnectionParams; response: TestDatabaseConnectionStatus200 };
+  "POST /v1/projects/{project_id}/databases/{database_id}/scan-pii": { params: ScanDatabaseForPiiParams; response: ScanDatabaseForPiiStatus200 };
   "GET /v1/projects/{project_id}/domains": { params: ListCustomDomainsParams; response: ListCustomDomainsStatus200 };
   "POST /v1/projects/{project_id}/domains": { params: CreateCustomDomainParams; response: CreateCustomDomainStatus201 };
   "DELETE /v1/projects/{project_id}/domains/{domain_id}": { params: DeleteCustomDomainParams; response: void };

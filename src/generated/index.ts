@@ -101,6 +101,7 @@ export type { MigrationLintRequest } from "./types/MigrationLintRequest";
 export type { MigrationLintResponse } from "./types/MigrationLintResponse";
 export type { OnboardingProgress } from "./types/OnboardingProgress";
 export type { OrganizationPlan, OrganizationPlanBillingProviderEnumKey, OrganizationPlanPlanEnumKey, OrganizationPlanSubscriptionStatusEnumKey } from "./types/OrganizationPlan";
+export type { PiiSuggestion, PiiSuggestionMaskKindEnumKey, PiiSuggestionPiiTypeEnumKey } from "./types/PiiSuggestion";
 export type { PlanInfo } from "./types/PlanInfo";
 export type { PlanLimits } from "./types/PlanLimits";
 export type { PolicyProfile, PolicyProfileAccessModeEnumKey, PolicyProfileApprovalModeEnumKey, PolicyProfileMigrationSafetyEnumKey, PolicyProfileWriteModeEnumKey } from "./types/PolicyProfile";
@@ -121,6 +122,8 @@ export type { RevokeAgentCredentialPathAgentId, RevokeAgentCredentialPathProject
 export type { RotateAgentCredentialPathAgentId, RotateAgentCredentialPathProjectId, RotateAgentCredentialRequestConfig, RotateAgentCredentialResponse, RotateAgentCredentialResponses, RotateAgentCredentialStatus200, RotateAgentCredentialStatus400, RotateAgentCredentialStatus401, RotateAgentCredentialStatus403, RotateAgentCredentialStatus404, RotateAgentCredentialStatus409 } from "./types/RotateAgentCredential";
 export type { RowFilter } from "./types/RowFilter";
 export type { SSLModeKey } from "./types/SSLMode";
+export type { ScanDatabaseForPiiPathDatabaseId, ScanDatabaseForPiiPathProjectId, ScanDatabaseForPiiRequestConfig, ScanDatabaseForPiiResponse, ScanDatabaseForPiiResponses, ScanDatabaseForPiiStatus200, ScanDatabaseForPiiStatus400, ScanDatabaseForPiiStatus401, ScanDatabaseForPiiStatus403, ScanDatabaseForPiiStatus404, ScanDatabaseForPiiStatus429 } from "./types/ScanDatabaseForPii";
+export type { ScanPiiResult } from "./types/ScanPiiResult";
 export type { SlackEventPayload } from "./types/SlackEventPayload";
 export type { StatementRules } from "./types/StatementRules";
 export type { SubmitCancellationFeedbackData, SubmitCancellationFeedbackPathOrgId, SubmitCancellationFeedbackRequestConfig, SubmitCancellationFeedbackResponse, SubmitCancellationFeedbackResponses, SubmitCancellationFeedbackStatus204, SubmitCancellationFeedbackStatus400, SubmitCancellationFeedbackStatus401, SubmitCancellationFeedbackStatus403, SubmitCancellationFeedbackStatus429 } from "./types/SubmitCancellationFeedback";
@@ -170,6 +173,7 @@ export { mcpRequestJsonrpcEnum, mcpRequestMethodEnum } from "./types/McpRequest"
 export { mcpResponseJsonrpcEnum } from "./types/McpResponse";
 export { migrationFindingSeverityEnum } from "./types/MigrationFinding";
 export { organizationPlanBillingProviderEnum, organizationPlanPlanEnum, organizationPlanSubscriptionStatusEnum } from "./types/OrganizationPlan";
+export { piiSuggestionMaskKindEnum, piiSuggestionPiiTypeEnum } from "./types/PiiSuggestion";
 export { policyProfileAccessModeEnum, policyProfileApprovalModeEnum, policyProfileMigrationSafetyEnum, policyProfileWriteModeEnum } from "./types/PolicyProfile";
 export { policyProfileInputAccessModeEnum, policyProfileInputApprovalModeEnum, policyProfileInputMigrationSafetyEnum, policyProfileInputWriteModeEnum } from "./types/PolicyProfileInput";
 export { poolMode } from "./types/PoolMode";
