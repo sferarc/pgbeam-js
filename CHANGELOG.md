@@ -1,5 +1,11 @@
 # pgbeam
 
+## 0.3.3
+
+### Patch Changes
+
+- 602fe55: feat(agent-gateway): PII auto-detection + guided masking (G10a)
+
 ## 0.3.2
 
 ### Patch Changes
