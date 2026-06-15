@@ -1,5 +1,11 @@
 # pgbeam
 
+## 0.3.4
+
+### Patch Changes
+
+- a369073: feat(dashboard): project-level kill-switch — block all agent connections
+
 ## 0.3.3
 
 ### Patch Changes
