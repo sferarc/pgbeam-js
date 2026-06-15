@@ -32,6 +32,7 @@ import type { UpdateDatabaseRequestConfig, UpdateDatabaseStatus200 } from "./typ
 import type { DeleteDatabaseRequestConfig } from "./types/DeleteDatabase";
 import type { TestDatabaseConnectionRequestConfig, TestDatabaseConnectionStatus200 } from "./types/TestDatabaseConnection";
 import type { ScanDatabaseForPiiRequestConfig, ScanDatabaseForPiiStatus200 } from "./types/ScanDatabaseForPii";
+import type { GetSchemaCatalogRequestConfig, GetSchemaCatalogStatus200 } from "./types/GetSchemaCatalog";
 import type { ListCustomDomainsRequestConfig, ListCustomDomainsStatus200 } from "./types/ListCustomDomains";
 import type { CreateCustomDomainRequestConfig, CreateCustomDomainStatus201 } from "./types/CreateCustomDomain";
 import type { DeleteCustomDomainRequestConfig } from "./types/DeleteCustomDomain";
@@ -46,6 +47,7 @@ import type { CreatePolicyProfileRequestConfig, CreatePolicyProfileStatus201 } f
 import type { GetPolicyProfileRequestConfig, GetPolicyProfileStatus200 } from "./types/GetPolicyProfile";
 import type { UpdatePolicyProfileRequestConfig, UpdatePolicyProfileStatus200 } from "./types/UpdatePolicyProfile";
 import type { DeletePolicyProfileRequestConfig } from "./types/DeletePolicyProfile";
+import type { DryEvalPolicyRequestConfig, DryEvalPolicyStatus200 } from "./types/DryEvalPolicy";
 import type { ListProjectsRequestConfig, ListProjectsStatus200 } from "./types/ListProjects";
 import type { CreateProjectRequestConfig, CreateProjectStatus201 } from "./types/CreateProject";
 import type { GetProjectRequestConfig, GetProjectStatus200 } from "./types/GetProject";
@@ -134,6 +136,7 @@ export const operationsByTag = {
     deleteDatabase: { method: "DELETE", path: "/v1/projects/{project_id}/databases/{database_id}" },
     testDatabaseConnection: { method: "POST", path: "/v1/projects/{project_id}/databases/{database_id}/test-connection" },
     scanDatabaseForPii: { method: "POST", path: "/v1/projects/{project_id}/databases/{database_id}/scan-pii" },
+    getSchemaCatalog: { method: "GET", path: "/v1/projects/{project_id}/databases/{database_id}/schema-catalog" },
   },
   platform: {
     getHealth: { method: "GET", path: "/v1/health" },
@@ -148,6 +151,7 @@ export const operationsByTag = {
     getPolicyProfile: { method: "GET", path: "/v1/projects/{project_id}/policies/{policy_id}" },
     updatePolicyProfile: { method: "PUT", path: "/v1/projects/{project_id}/policies/{policy_id}" },
     deletePolicyProfile: { method: "DELETE", path: "/v1/projects/{project_id}/policies/{policy_id}" },
+    dryEvalPolicy: { method: "POST", path: "/v1/projects/{project_id}/policy-evaluations" },
   },
   support: {
     listSupportCases: { method: "GET", path: "/v1/organizations/{org_id}/support/cases" },
@@ -199,6 +203,7 @@ export const operationsByPath = {
   "DELETE /v1/projects/{project_id}/databases/{database_id}": { method: "DELETE", path: "/v1/projects/{project_id}/databases/{database_id}", operationId: "deleteDatabase" },
   "POST /v1/projects/{project_id}/databases/{database_id}/test-connection": { method: "POST", path: "/v1/projects/{project_id}/databases/{database_id}/test-connection", operationId: "testDatabaseConnection" },
   "POST /v1/projects/{project_id}/databases/{database_id}/scan-pii": { method: "POST", path: "/v1/projects/{project_id}/databases/{database_id}/scan-pii", operationId: "scanDatabaseForPii" },
+  "GET /v1/projects/{project_id}/databases/{database_id}/schema-catalog": { method: "GET", path: "/v1/projects/{project_id}/databases/{database_id}/schema-catalog", operationId: "getSchemaCatalog" },
   "GET /v1/projects/{project_id}/domains": { method: "GET", path: "/v1/projects/{project_id}/domains", operationId: "listCustomDomains" },
   "POST /v1/projects/{project_id}/domains": { method: "POST", path: "/v1/projects/{project_id}/domains", operationId: "createCustomDomain" },
   "DELETE /v1/projects/{project_id}/domains/{domain_id}": { method: "DELETE", path: "/v1/projects/{project_id}/domains/{domain_id}", operationId: "deleteCustomDomain" },
@@ -213,6 +218,7 @@ export const operationsByPath = {
   "GET /v1/projects/{project_id}/policies/{policy_id}": { method: "GET", path: "/v1/projects/{project_id}/policies/{policy_id}", operationId: "getPolicyProfile" },
   "PUT /v1/projects/{project_id}/policies/{policy_id}": { method: "PUT", path: "/v1/projects/{project_id}/policies/{policy_id}", operationId: "updatePolicyProfile" },
   "DELETE /v1/projects/{project_id}/policies/{policy_id}": { method: "DELETE", path: "/v1/projects/{project_id}/policies/{policy_id}", operationId: "deletePolicyProfile" },
+  "POST /v1/projects/{project_id}/policy-evaluations": { method: "POST", path: "/v1/projects/{project_id}/policy-evaluations", operationId: "dryEvalPolicy" },
   "GET /v1/projects": { method: "GET", path: "/v1/projects", operationId: "listProjects" },
   "POST /v1/projects": { method: "POST", path: "/v1/projects", operationId: "createProject" },
   "GET /v1/projects/{project_id}": { method: "GET", path: "/v1/projects/{project_id}", operationId: "getProject" },
@@ -266,6 +272,7 @@ type UpdateDatabaseParams = { pathParams: NonNullable<UpdateDatabaseRequestConfi
 type DeleteDatabaseParams = { pathParams: NonNullable<DeleteDatabaseRequestConfig["pathParams"]> };
 type TestDatabaseConnectionParams = { pathParams: NonNullable<TestDatabaseConnectionRequestConfig["pathParams"]> };
 type ScanDatabaseForPiiParams = { pathParams: NonNullable<ScanDatabaseForPiiRequestConfig["pathParams"]> };
+type GetSchemaCatalogParams = { pathParams: NonNullable<GetSchemaCatalogRequestConfig["pathParams"]> };
 type ListCustomDomainsParams = { pathParams: NonNullable<ListCustomDomainsRequestConfig["pathParams"]>; queryParams?: NonNullable<ListCustomDomainsRequestConfig["queryParams"]> };
 type CreateCustomDomainParams = { pathParams: NonNullable<CreateCustomDomainRequestConfig["pathParams"]>; body: NonNullable<CreateCustomDomainRequestConfig["data"]> };
 type DeleteCustomDomainParams = { pathParams: NonNullable<DeleteCustomDomainRequestConfig["pathParams"]> };
@@ -279,6 +286,7 @@ type CreatePolicyProfileParams = { pathParams: NonNullable<CreatePolicyProfileRe
 type GetPolicyProfileParams = { pathParams: NonNullable<GetPolicyProfileRequestConfig["pathParams"]> };
 type UpdatePolicyProfileParams = { pathParams: NonNullable<UpdatePolicyProfileRequestConfig["pathParams"]>; body: NonNullable<UpdatePolicyProfileRequestConfig["data"]> };
 type DeletePolicyProfileParams = { pathParams: NonNullable<DeletePolicyProfileRequestConfig["pathParams"]> };
+type DryEvalPolicyParams = { pathParams: NonNullable<DryEvalPolicyRequestConfig["pathParams"]>; body: NonNullable<DryEvalPolicyRequestConfig["data"]> };
 type ListProjectsParams = { queryParams: NonNullable<ListProjectsRequestConfig["queryParams"]> };
 type CreateProjectParams = { body: NonNullable<CreateProjectRequestConfig["data"]> };
 type GetProjectParams = { pathParams: NonNullable<GetProjectRequestConfig["pathParams"]> };
@@ -366,6 +374,7 @@ export interface ApiOperations {
     deleteDatabase(params: DeleteDatabaseParams): Promise<void>;
     testDatabaseConnection(params: TestDatabaseConnectionParams): Promise<TestDatabaseConnectionStatus200>;
     scanDatabaseForPii(params: ScanDatabaseForPiiParams): Promise<ScanDatabaseForPiiStatus200>;
+    getSchemaCatalog(params: GetSchemaCatalogParams): Promise<GetSchemaCatalogStatus200>;
   };
   platform: {
     getHealth(): Promise<GetHealthStatus200>;
@@ -380,6 +389,7 @@ export interface ApiOperations {
     getPolicyProfile(params: GetPolicyProfileParams): Promise<GetPolicyProfileStatus200>;
     updatePolicyProfile(params: UpdatePolicyProfileParams): Promise<UpdatePolicyProfileStatus200>;
     deletePolicyProfile(params: DeletePolicyProfileParams): Promise<void>;
+    dryEvalPolicy(params: DryEvalPolicyParams): Promise<DryEvalPolicyStatus200>;
   };
   support: {
     listSupportCases(params: ListSupportCasesParams): Promise<ListSupportCasesStatus200>;
@@ -431,6 +441,7 @@ export interface RequestMap {
   "DELETE /v1/projects/{project_id}/databases/{database_id}": { params: DeleteDatabaseParams; response: void };
   "POST /v1/projects/{project_id}/databases/{database_id}/test-connection": { params: TestDatabaseConnectionParams; response: TestDatabaseConnectionStatus200 };
   "POST /v1/projects/{project_id}/databases/{database_id}/scan-pii": { params: ScanDatabaseForPiiParams; response: ScanDatabaseForPiiStatus200 };
+  "GET /v1/projects/{project_id}/databases/{database_id}/schema-catalog": { params: GetSchemaCatalogParams; response: GetSchemaCatalogStatus200 };
   "GET /v1/projects/{project_id}/domains": { params: ListCustomDomainsParams; response: ListCustomDomainsStatus200 };
   "POST /v1/projects/{project_id}/domains": { params: CreateCustomDomainParams; response: CreateCustomDomainStatus201 };
   "DELETE /v1/projects/{project_id}/domains/{domain_id}": { params: DeleteCustomDomainParams; response: void };
@@ -445,6 +456,7 @@ export interface RequestMap {
   "GET /v1/projects/{project_id}/policies/{policy_id}": { params: GetPolicyProfileParams; response: GetPolicyProfileStatus200 };
   "PUT /v1/projects/{project_id}/policies/{policy_id}": { params: UpdatePolicyProfileParams; response: UpdatePolicyProfileStatus200 };
   "DELETE /v1/projects/{project_id}/policies/{policy_id}": { params: DeletePolicyProfileParams; response: void };
+  "POST /v1/projects/{project_id}/policy-evaluations": { params: DryEvalPolicyParams; response: DryEvalPolicyStatus200 };
   "GET /v1/projects": { params: ListProjectsParams; response: ListProjectsStatus200 };
   "POST /v1/projects": { params: CreateProjectParams; response: CreateProjectStatus201 };
   "GET /v1/projects/{project_id}": { params: GetProjectParams; response: GetProjectStatus200 };
