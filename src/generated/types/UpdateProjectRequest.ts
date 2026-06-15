@@ -50,4 +50,10 @@ export type UpdateProjectRequest = {
      * @type string
     */
     default_policy_profile_id?: string | null;
+    /**
+     * @description Project-level kill-switch. Set true to block ALL agent-credential connections to this project (live agent sessions are dropped within seconds); set false to re-enable them. Passthrough/human connections are unaffected. Engaging the kill-switch emits a kill_switch webhook event.\n
+     * @example true
+     * @type boolean | undefined
+    */
+    agents_disabled?: boolean;
 };

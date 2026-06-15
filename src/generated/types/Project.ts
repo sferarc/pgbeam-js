@@ -93,6 +93,12 @@ export type Project = {
     */
     default_policy_profile_id?: string | null;
     /**
+     * @description Project-level kill-switch. When true, ALL agent-credential connections to this project are blocked at the proxy and live agent sessions are dropped within seconds. Passthrough/human connections are unaffected.\n
+     * @example false
+     * @type boolean | undefined
+    */
+    agents_disabled?: boolean;
+    /**
      * @description Number of databases attached to this project.
      * @type integer | undefined
     */
