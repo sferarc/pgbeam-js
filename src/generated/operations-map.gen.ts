@@ -16,6 +16,7 @@ import type { ListApprovalRequestsRequestConfig, ListApprovalRequestsStatus200 }
 import type { ApproveApprovalRequestRequestConfig, ApproveApprovalRequestStatus200 } from "./types/ApproveApprovalRequest";
 import type { RejectApprovalRequestRequestConfig, RejectApprovalRequestStatus200 } from "./types/RejectApprovalRequest";
 import type { ListAuditLogsRequestConfig, ListAuditLogsStatus200 } from "./types/ListAuditLogs";
+import type { ExportAuditLogsRequestConfig, ExportAuditLogsStatus200 } from "./types/ExportAuditLogs";
 import type { ListPlansStatus200 } from "./types/ListPlans";
 import type { GetOrganizationPlanRequestConfig, GetOrganizationPlanStatus200 } from "./types/GetOrganizationPlan";
 import type { UpdateSpendLimitRequestConfig, UpdateSpendLimitStatus200 } from "./types/UpdateSpendLimit";
@@ -84,6 +85,7 @@ export const operationsByTag = {
     revokeAgentCredential: { method: "DELETE", path: "/v1/projects/{project_id}/agents/{agent_id}" },
     rotateAgentCredential: { method: "POST", path: "/v1/projects/{project_id}/agents/{agent_id}/rotate" },
     listAuditLogs: { method: "GET", path: "/v1/projects/{project_id}/audit-logs" },
+    exportAuditLogs: { method: "GET", path: "/v1/projects/{project_id}/audit-logs/export" },
   },
   anomalies: {
     listAnomalyAlerts: { method: "GET", path: "/v1/projects/{project_id}/anomalies" },
@@ -181,6 +183,7 @@ export const operationsByPath = {
   "POST /v1/projects/{project_id}/approvals/{approval_id}/approve": { method: "POST", path: "/v1/projects/{project_id}/approvals/{approval_id}/approve", operationId: "approveApprovalRequest" },
   "POST /v1/projects/{project_id}/approvals/{approval_id}/reject": { method: "POST", path: "/v1/projects/{project_id}/approvals/{approval_id}/reject", operationId: "rejectApprovalRequest" },
   "GET /v1/projects/{project_id}/audit-logs": { method: "GET", path: "/v1/projects/{project_id}/audit-logs", operationId: "listAuditLogs" },
+  "GET /v1/projects/{project_id}/audit-logs/export": { method: "GET", path: "/v1/projects/{project_id}/audit-logs/export", operationId: "exportAuditLogs" },
   "GET /v1/plans": { method: "GET", path: "/v1/plans", operationId: "listPlans" },
   "GET /v1/organizations/{org_id}/plan": { method: "GET", path: "/v1/organizations/{org_id}/plan", operationId: "getOrganizationPlan" },
   "PUT /v1/organizations/{org_id}/spend-limit": { method: "PUT", path: "/v1/organizations/{org_id}/spend-limit", operationId: "updateSpendLimit" },
@@ -248,6 +251,7 @@ type ListApprovalRequestsParams = { pathParams: NonNullable<ListApprovalRequests
 type ApproveApprovalRequestParams = { pathParams: NonNullable<ApproveApprovalRequestRequestConfig["pathParams"]>; body: NonNullable<ApproveApprovalRequestRequestConfig["data"]> };
 type RejectApprovalRequestParams = { pathParams: NonNullable<RejectApprovalRequestRequestConfig["pathParams"]>; body: NonNullable<RejectApprovalRequestRequestConfig["data"]> };
 type ListAuditLogsParams = { pathParams: NonNullable<ListAuditLogsRequestConfig["pathParams"]>; queryParams?: NonNullable<ListAuditLogsRequestConfig["queryParams"]> };
+type ExportAuditLogsParams = { pathParams: NonNullable<ExportAuditLogsRequestConfig["pathParams"]>; queryParams?: NonNullable<ExportAuditLogsRequestConfig["queryParams"]> };
 type GetOrganizationPlanParams = { pathParams: NonNullable<GetOrganizationPlanRequestConfig["pathParams"]> };
 type UpdateSpendLimitParams = { pathParams: NonNullable<UpdateSpendLimitRequestConfig["pathParams"]>; body: NonNullable<UpdateSpendLimitRequestConfig["data"]> };
 type SubmitCancellationFeedbackParams = { pathParams: NonNullable<SubmitCancellationFeedbackRequestConfig["pathParams"]>; body: NonNullable<SubmitCancellationFeedbackRequestConfig["data"]> };
@@ -313,6 +317,7 @@ export interface ApiOperations {
     revokeAgentCredential(params: RevokeAgentCredentialParams): Promise<void>;
     rotateAgentCredential(params: RotateAgentCredentialParams): Promise<RotateAgentCredentialStatus200>;
     listAuditLogs(params: ListAuditLogsParams): Promise<ListAuditLogsStatus200>;
+    exportAuditLogs(params: ExportAuditLogsParams): Promise<ExportAuditLogsStatus200>;
   };
   anomalies: {
     listAnomalyAlerts(params: ListAnomalyAlertsParams): Promise<ListAnomalyAlertsStatus200>;
@@ -410,6 +415,7 @@ export interface RequestMap {
   "POST /v1/projects/{project_id}/approvals/{approval_id}/approve": { params: ApproveApprovalRequestParams; response: ApproveApprovalRequestStatus200 };
   "POST /v1/projects/{project_id}/approvals/{approval_id}/reject": { params: RejectApprovalRequestParams; response: RejectApprovalRequestStatus200 };
   "GET /v1/projects/{project_id}/audit-logs": { params: ListAuditLogsParams; response: ListAuditLogsStatus200 };
+  "GET /v1/projects/{project_id}/audit-logs/export": { params: ExportAuditLogsParams; response: ExportAuditLogsStatus200 };
   "GET /v1/plans": { params?: undefined; response: ListPlansStatus200 };
   "GET /v1/organizations/{org_id}/plan": { params: GetOrganizationPlanParams; response: GetOrganizationPlanStatus200 };
   "PUT /v1/organizations/{org_id}/spend-limit": { params: UpdateSpendLimitParams; response: UpdateSpendLimitStatus200 };

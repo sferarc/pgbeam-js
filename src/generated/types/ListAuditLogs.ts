@@ -3,6 +3,8 @@
 * Do not edit manually.
 */
 
+import type { AuditDecisionKey } from "./AuditDecision";
+import type { AuditSourceKey } from "./AuditSource";
 import type { Error } from "./Error";
 import type { ListAuditLogsResponse } from "./ListAuditLogsResponse";
 
@@ -21,14 +23,38 @@ export type ListAuditLogsPathProjectId = string;
 export type ListAuditLogsQueryCredentialId = string | undefined;
 
 /**
- * @description Filter to a single event type (e.g. blocked).
+ * @description Filter to a single event type (e.g. blocked, masked, query).
  * @pattern ^[a-z_]+$
  * @type string | undefined
 */
 export type ListAuditLogsQueryEvent = string | undefined;
 
 /**
- * @description Return entries strictly older than this timestamp (cursor).
+ * @description Coarse outcome filter that groups events. `allow` = query; `block` = blocked, budget_exhausted, auth_failed, credential_expired; `mask` = masked; `truncate` = truncated.
+ * @type string | undefined
+*/
+export type ListAuditLogsQueryDecision = AuditDecisionKey | undefined;
+
+/**
+ * @description Filter by statement origin (wire, mcp, or control).
+ * @type string | undefined
+*/
+export type ListAuditLogsQuerySource = AuditSourceKey | undefined;
+
+/**
+ * @description Return entries at or after this timestamp (inclusive lower bound).
+ * @type string | undefined
+*/
+export type ListAuditLogsQueryStart = string | undefined;
+
+/**
+ * @description Return entries strictly older than this timestamp (cursor / upper bound).
+ * @type string | undefined
+*/
+export type ListAuditLogsQueryEnd = string | undefined;
+
+/**
+ * @description Return entries strictly older than this timestamp (keyset pagination cursor).
  * @type string | undefined
 */
 export type ListAuditLogsQueryBefore = string | undefined;
@@ -95,6 +121,10 @@ export type ListAuditLogsRequestConfig = {
     queryParams?: {
         credential_id?: ListAuditLogsQueryCredentialId;
         event?: ListAuditLogsQueryEvent;
+        decision?: ListAuditLogsQueryDecision;
+        source?: ListAuditLogsQuerySource;
+        start?: ListAuditLogsQueryStart;
+        end?: ListAuditLogsQueryEnd;
         before?: ListAuditLogsQueryBefore;
         page_size?: ListAuditLogsQueryPageSize;
     };

@@ -5,7 +5,9 @@ export type { AnomalyAlert, AnomalyAlertSeverityEnumKey, AnomalyAlertStatusEnumK
 export type { ApprovalDecisionRequest } from "./ApprovalDecisionRequest";
 export type { ApprovalRequest, ApprovalRequestStatusEnumKey } from "./ApprovalRequest";
 export type { ApproveApprovalRequestData, ApproveApprovalRequestPathApprovalId, ApproveApprovalRequestPathProjectId, ApproveApprovalRequestRequestConfig, ApproveApprovalRequestResponse, ApproveApprovalRequestResponses, ApproveApprovalRequestStatus200, ApproveApprovalRequestStatus400, ApproveApprovalRequestStatus401, ApproveApprovalRequestStatus403, ApproveApprovalRequestStatus404, ApproveApprovalRequestStatus409 } from "./ApproveApprovalRequest";
+export type { AuditDecision, AuditDecisionKey } from "./AuditDecision";
 export type { AuditLogEntry } from "./AuditLogEntry";
+export type { AuditSource, AuditSourceKey } from "./AuditSource";
 export type { CacheConfig } from "./CacheConfig";
 export type { CacheRuleEntry, CacheRuleEntryQueryTypeEnumKey, CacheRuleEntryRecommendationEnumKey } from "./CacheRuleEntry";
 export type { CacheSummary } from "./CacheSummary";
@@ -43,6 +45,7 @@ export type { DiscardDatabaseBranchPathBranchId, DiscardDatabaseBranchPathProjec
 export type { DnsInstructions } from "./DnsInstructions";
 export type { Error } from "./Error";
 export type { ExportAccountDataRequestConfig, ExportAccountDataResponse, ExportAccountDataResponses, ExportAccountDataStatus200, ExportAccountDataStatus401, ExportAccountDataStatus404, ExportAccountDataStatus429 } from "./ExportAccountData";
+export type { ExportAuditLogsPathProjectId, ExportAuditLogsQueryCredentialId, ExportAuditLogsQueryDecision, ExportAuditLogsQueryEnd, ExportAuditLogsQueryEvent, ExportAuditLogsQuerySource, ExportAuditLogsQueryStart, ExportAuditLogsRequestConfig, ExportAuditLogsResponse, ExportAuditLogsResponses, ExportAuditLogsStatus200, ExportAuditLogsStatus400, ExportAuditLogsStatus401, ExportAuditLogsStatus403, ExportAuditLogsStatus404, ExportAuditLogsStatus429 } from "./ExportAuditLogs";
 export type { GetAgentCredentialPathAgentId, GetAgentCredentialPathProjectId, GetAgentCredentialRequestConfig, GetAgentCredentialResponse, GetAgentCredentialResponses, GetAgentCredentialStatus200, GetAgentCredentialStatus400, GetAgentCredentialStatus401, GetAgentCredentialStatus403, GetAgentCredentialStatus404 } from "./GetAgentCredential";
 export type { GetDatabasePathDatabaseId, GetDatabasePathProjectId, GetDatabaseRequestConfig, GetDatabaseResponse, GetDatabaseResponses, GetDatabaseStatus200, GetDatabaseStatus400, GetDatabaseStatus401, GetDatabaseStatus403, GetDatabaseStatus404, GetDatabaseStatus429 } from "./GetDatabase";
 export type { GetHealthRequestConfig, GetHealthResponse, GetHealthResponses, GetHealthStatus200, GetHealthStatus429 } from "./GetHealth";
@@ -67,7 +70,7 @@ export type { ListAnomalyAlertsPathProjectId, ListAnomalyAlertsQueryPageSize, Li
 export type { ListAnomalyAlertsResponse } from "./ListAnomalyAlertsResponse";
 export type { ListApprovalRequestsPathProjectId, ListApprovalRequestsQueryPageSize, ListApprovalRequestsQueryPageToken, ListApprovalRequestsQueryStatus, ListApprovalRequestsRequestConfig, ListApprovalRequestsResponses, ListApprovalRequestsStatus200, ListApprovalRequestsStatus400, ListApprovalRequestsStatus401, ListApprovalRequestsStatus403, ListApprovalRequestsStatus404, ListApprovalRequestsStatus429 } from "./ListApprovalRequests";
 export type { ListApprovalRequestsResponse } from "./ListApprovalRequestsResponse";
-export type { ListAuditLogsPathProjectId, ListAuditLogsQueryBefore, ListAuditLogsQueryCredentialId, ListAuditLogsQueryEvent, ListAuditLogsQueryPageSize, ListAuditLogsRequestConfig, ListAuditLogsResponses, ListAuditLogsStatus200, ListAuditLogsStatus400, ListAuditLogsStatus401, ListAuditLogsStatus403, ListAuditLogsStatus404, ListAuditLogsStatus429 } from "./ListAuditLogs";
+export type { ListAuditLogsPathProjectId, ListAuditLogsQueryBefore, ListAuditLogsQueryCredentialId, ListAuditLogsQueryDecision, ListAuditLogsQueryEnd, ListAuditLogsQueryEvent, ListAuditLogsQueryPageSize, ListAuditLogsQuerySource, ListAuditLogsQueryStart, ListAuditLogsRequestConfig, ListAuditLogsResponses, ListAuditLogsStatus200, ListAuditLogsStatus400, ListAuditLogsStatus401, ListAuditLogsStatus403, ListAuditLogsStatus404, ListAuditLogsStatus429 } from "./ListAuditLogs";
 export type { ListAuditLogsResponse } from "./ListAuditLogsResponse";
 export type { ListCacheRulesPathDatabaseId, ListCacheRulesPathProjectId, ListCacheRulesQueryPageSize, ListCacheRulesQueryPageToken, ListCacheRulesRequestConfig, ListCacheRulesResponses, ListCacheRulesStatus200, ListCacheRulesStatus400, ListCacheRulesStatus401, ListCacheRulesStatus403, ListCacheRulesStatus404, ListCacheRulesStatus429 } from "./ListCacheRules";
 export type { ListCacheRulesResponse } from "./ListCacheRulesResponse";
@@ -162,6 +165,8 @@ export type { WebhookTestResponse } from "./WebhookTestResponse";
 export { agentCredentialAuthMethodEnum, agentCredentialPrincipalTypeEnum, agentCredentialStatusEnum } from "./AgentCredential";
 export { anomalyAlertSeverityEnum, anomalyAlertStatusEnum } from "./AnomalyAlert";
 export { approvalRequestStatusEnum } from "./ApprovalRequest";
+export { auditDecision } from "./AuditDecision";
+export { auditSource } from "./AuditSource";
 export { cacheRuleEntryQueryTypeEnum, cacheRuleEntryRecommendationEnum } from "./CacheRuleEntry";
 export { createAgentCredentialRequestPrincipalTypeEnum } from "./CreateAgentCredentialRequest";
 export { createProjectRequestCloudEnum } from "./CreateProjectRequest";
