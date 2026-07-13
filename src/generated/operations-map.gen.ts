@@ -19,6 +19,7 @@ import type { ListAuditLogsRequestConfig, ListAuditLogsStatus200 } from "./types
 import type { ExportAuditLogsRequestConfig, ExportAuditLogsStatus200 } from "./types/ExportAuditLogs";
 import type { ListPlansStatus200 } from "./types/ListPlans";
 import type { GetOrganizationPlanRequestConfig, GetOrganizationPlanStatus200 } from "./types/GetOrganizationPlan";
+import type { GetVercelInstallationRequestConfig, GetVercelInstallationStatus200 } from "./types/GetVercelInstallation";
 import type { UpdateSpendLimitRequestConfig, UpdateSpendLimitStatus200 } from "./types/UpdateSpendLimit";
 import type { SubmitCancellationFeedbackRequestConfig } from "./types/SubmitCancellationFeedback";
 import type { ListDatabaseBranchesRequestConfig, ListDatabaseBranchesStatus200 } from "./types/ListDatabaseBranches";
@@ -101,6 +102,7 @@ export const operationsByTag = {
   analytics: {
     listPlans: { method: "GET", path: "/v1/plans" },
     getOrganizationPlan: { method: "GET", path: "/v1/organizations/{org_id}/plan" },
+    getVercelInstallation: { method: "GET", path: "/v1/organizations/{org_id}/vercel-installation" },
     updateSpendLimit: { method: "PUT", path: "/v1/organizations/{org_id}/spend-limit" },
     submitCancellationFeedback: { method: "POST", path: "/v1/organizations/{org_id}/cancellation-feedback" },
     getProjectInsights: { method: "GET", path: "/v1/projects/{project_id}/insights" },
@@ -190,6 +192,7 @@ export const operationsByPath = {
   "GET /v1/projects/{project_id}/audit-logs/export": { method: "GET", path: "/v1/projects/{project_id}/audit-logs/export", operationId: "exportAuditLogs" },
   "GET /v1/plans": { method: "GET", path: "/v1/plans", operationId: "listPlans" },
   "GET /v1/organizations/{org_id}/plan": { method: "GET", path: "/v1/organizations/{org_id}/plan", operationId: "getOrganizationPlan" },
+  "GET /v1/organizations/{org_id}/vercel-installation": { method: "GET", path: "/v1/organizations/{org_id}/vercel-installation", operationId: "getVercelInstallation" },
   "PUT /v1/organizations/{org_id}/spend-limit": { method: "PUT", path: "/v1/organizations/{org_id}/spend-limit", operationId: "updateSpendLimit" },
   "POST /v1/organizations/{org_id}/cancellation-feedback": { method: "POST", path: "/v1/organizations/{org_id}/cancellation-feedback", operationId: "submitCancellationFeedback" },
   "GET /v1/projects/{project_id}/branches": { method: "GET", path: "/v1/projects/{project_id}/branches", operationId: "listDatabaseBranches" },
@@ -259,6 +262,7 @@ type RejectApprovalRequestParams = { pathParams: NonNullable<RejectApprovalReque
 type ListAuditLogsParams = { pathParams: NonNullable<ListAuditLogsRequestConfig["pathParams"]>; queryParams?: NonNullable<ListAuditLogsRequestConfig["queryParams"]> };
 type ExportAuditLogsParams = { pathParams: NonNullable<ExportAuditLogsRequestConfig["pathParams"]>; queryParams?: NonNullable<ExportAuditLogsRequestConfig["queryParams"]> };
 type GetOrganizationPlanParams = { pathParams: NonNullable<GetOrganizationPlanRequestConfig["pathParams"]> };
+type GetVercelInstallationParams = { pathParams: NonNullable<GetVercelInstallationRequestConfig["pathParams"]> };
 type UpdateSpendLimitParams = { pathParams: NonNullable<UpdateSpendLimitRequestConfig["pathParams"]>; body: NonNullable<UpdateSpendLimitRequestConfig["data"]> };
 type SubmitCancellationFeedbackParams = { pathParams: NonNullable<SubmitCancellationFeedbackRequestConfig["pathParams"]>; body: NonNullable<SubmitCancellationFeedbackRequestConfig["data"]> };
 type ListDatabaseBranchesParams = { pathParams: NonNullable<ListDatabaseBranchesRequestConfig["pathParams"]>; queryParams?: NonNullable<ListDatabaseBranchesRequestConfig["queryParams"]> };
@@ -339,6 +343,7 @@ export interface ApiOperations {
   analytics: {
     listPlans(): Promise<ListPlansStatus200>;
     getOrganizationPlan(params: GetOrganizationPlanParams): Promise<GetOrganizationPlanStatus200>;
+    getVercelInstallation(params: GetVercelInstallationParams): Promise<GetVercelInstallationStatus200>;
     updateSpendLimit(params: UpdateSpendLimitParams): Promise<UpdateSpendLimitStatus200>;
     submitCancellationFeedback(params: SubmitCancellationFeedbackParams): Promise<void>;
     getProjectInsights(params: GetProjectInsightsParams): Promise<GetProjectInsightsStatus200>;
@@ -428,6 +433,7 @@ export interface RequestMap {
   "GET /v1/projects/{project_id}/audit-logs/export": { params: ExportAuditLogsParams; response: ExportAuditLogsStatus200 };
   "GET /v1/plans": { params?: undefined; response: ListPlansStatus200 };
   "GET /v1/organizations/{org_id}/plan": { params: GetOrganizationPlanParams; response: GetOrganizationPlanStatus200 };
+  "GET /v1/organizations/{org_id}/vercel-installation": { params: GetVercelInstallationParams; response: GetVercelInstallationStatus200 };
   "PUT /v1/organizations/{org_id}/spend-limit": { params: UpdateSpendLimitParams; response: UpdateSpendLimitStatus200 };
   "POST /v1/organizations/{org_id}/cancellation-feedback": { params: SubmitCancellationFeedbackParams; response: void };
   "GET /v1/projects/{project_id}/branches": { params: ListDatabaseBranchesParams; response: ListDatabaseBranchesStatus200 };

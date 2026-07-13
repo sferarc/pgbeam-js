@@ -64,6 +64,7 @@ export type { GetProjectUsagePathProjectId, GetProjectUsageQueryEndDate, GetProj
 export type { GetSchemaCatalogPathDatabaseId, GetSchemaCatalogPathProjectId, GetSchemaCatalogRequestConfig, GetSchemaCatalogResponse, GetSchemaCatalogResponses, GetSchemaCatalogStatus200, GetSchemaCatalogStatus400, GetSchemaCatalogStatus401, GetSchemaCatalogStatus403, GetSchemaCatalogStatus404, GetSchemaCatalogStatus429 } from "./GetSchemaCatalog";
 export type { GetSupportCasePathCaseId, GetSupportCasePathOrgId, GetSupportCaseRequestConfig, GetSupportCaseResponses, GetSupportCaseStatus200, GetSupportCaseStatus400, GetSupportCaseStatus401, GetSupportCaseStatus403, GetSupportCaseStatus404 } from "./GetSupportCase";
 export type { GetSupportCaseResponse } from "./GetSupportCaseResponse";
+export type { GetVercelInstallationPathOrgId, GetVercelInstallationRequestConfig, GetVercelInstallationResponse, GetVercelInstallationResponses, GetVercelInstallationStatus200, GetVercelInstallationStatus400, GetVercelInstallationStatus401, GetVercelInstallationStatus403, GetVercelInstallationStatus404, GetVercelInstallationStatus429 } from "./GetVercelInstallation";
 export type { GetWebhookEndpointPathProjectId, GetWebhookEndpointPathWebhookId, GetWebhookEndpointRequestConfig, GetWebhookEndpointResponse, GetWebhookEndpointResponses, GetWebhookEndpointStatus200, GetWebhookEndpointStatus400, GetWebhookEndpointStatus401, GetWebhookEndpointStatus403, GetWebhookEndpointStatus404 } from "./GetWebhookEndpoint";
 export type { HandleSlackSupportEventData, HandleSlackSupportEventRequestConfig, HandleSlackSupportEventResponse, HandleSlackSupportEventResponses, HandleSlackSupportEventStatus200, HandleSlackSupportEventStatus400, HandleSlackSupportEventStatus401, HandleSlackSupportEventStatus404 } from "./HandleSlackSupportEvent";
 export type { HealthResponse, HealthResponseStatusEnumKey } from "./HealthResponse";
@@ -165,6 +166,8 @@ export type { UpdateSupportCaseData, UpdateSupportCasePathCaseId, UpdateSupportC
 export type { UpdateSupportCaseRequest } from "./UpdateSupportCaseRequest";
 export type { UpdateWebhookEndpointData, UpdateWebhookEndpointPathProjectId, UpdateWebhookEndpointPathWebhookId, UpdateWebhookEndpointRequestConfig, UpdateWebhookEndpointResponse, UpdateWebhookEndpointResponses, UpdateWebhookEndpointStatus200, UpdateWebhookEndpointStatus400, UpdateWebhookEndpointStatus401, UpdateWebhookEndpointStatus403, UpdateWebhookEndpointStatus404 } from "./UpdateWebhookEndpoint";
 export type { UsageResponse } from "./UsageResponse";
+export type { VercelInstallationStatus } from "./VercelInstallationStatus";
+export type { VercelResourceStatus, VercelResourceStatusStatusEnumKey } from "./VercelResourceStatus";
 export type { VerifyCustomDomainPathDomainId, VerifyCustomDomainPathProjectId, VerifyCustomDomainRequestConfig, VerifyCustomDomainResponses, VerifyCustomDomainStatus200, VerifyCustomDomainStatus400, VerifyCustomDomainStatus401, VerifyCustomDomainStatus403, VerifyCustomDomainStatus404, VerifyCustomDomainStatus429 } from "./VerifyCustomDomain";
 export type { VerifyCustomDomainResponse } from "./VerifyCustomDomainResponse";
 export type { WebhookEndpoint, WebhookEndpointFormatEnumKey } from "./WebhookEndpoint";
@@ -202,5 +205,6 @@ export { supportMessageSource } from "./SupportMessageSource";
 export { updateAgentCredentialStatusRequestStatusEnum } from "./UpdateAgentCredentialStatusRequest";
 export { updateAnomalyAlertRequestStatusEnum } from "./UpdateAnomalyAlertRequest";
 export { updateOnboardingRequestStepEnum } from "./UpdateOnboardingRequest";
+export { vercelResourceStatusStatusEnum } from "./VercelResourceStatus";
 export { webhookEndpointFormatEnum } from "./WebhookEndpoint";
 export { webhookEndpointInputFormatEnum } from "./WebhookEndpointInput";
