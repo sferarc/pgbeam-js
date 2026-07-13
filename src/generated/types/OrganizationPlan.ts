@@ -85,6 +85,16 @@ export type OrganizationPlan = {
     */
     spend_limit?: number | null;
     /**
+     * @description Whether the organization has hit its spend limit and agent access is paused at the proxy. Lifts automatically when usage resets for the new billing period, or immediately when the spend limit is raised or removed.
+     * @type boolean | undefined
+    */
+    spend_capped?: boolean;
+    /**
+     * @description When the spend cap was applied. Null when not capped.
+     * @type string
+    */
+    spend_capped_at?: string | null;
+    /**
      * @description Effective usage limits enforced for an organization plan.
      * @type object
     */
