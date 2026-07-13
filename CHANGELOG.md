@@ -1,5 +1,11 @@
 # pgbeam
 
+## 0.3.5
+
+### Patch Changes
+
+- 615a24f: feat(mcp): compact TS describe, instructions, annotations, per-tool telemetry, and OAuth challenge
+
 ## 0.3.4
 
 ### Patch Changes
