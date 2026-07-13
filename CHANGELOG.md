@@ -1,5 +1,11 @@
 # pgbeam
 
+## 0.3.6
+
+### Patch Changes
+
+- bb681f4: feat(marketplace): finish Vercel Marketplace integration (billing fix + dashboard + go-live wiring)
+
 ## 0.3.5
 
 ### Patch Changes
