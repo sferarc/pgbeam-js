@@ -1,4 +1,9 @@
 export {
+  type DescribeEndpoint,
+  type DescribeParam,
+  describeByOperationId,
+} from "./generated/describe-map.gen";
+export {
   type ApiOperations,
   type ApiTag,
   operationsByPath,
