@@ -1,5 +1,11 @@
 # pgbeam
 
+## 0.3.7
+
+### Patch Changes
+
+- 320102e: feat(policy): enforce standalone max_affected_rows hard write-row cap
+
 ## 0.3.6
 
 ### Patch Changes
