@@ -156,6 +156,13 @@ export type PolicyProfile = {
     */
     egress_bytes_per_day?: number;
     /**
+     * @description Hard cap on rows a single write (INSERT/UPDATE/DELETE) may affect. A write whose affected-row count would exceed this is executed inside a transaction, checked, and rolled back so nothing persists, then blocked. Enforced independently of human approval. 0 means unlimited.
+     * @minLength 0
+     * @default 0
+     * @type integer | undefined
+    */
+    max_affected_rows?: number;
+    /**
      * @description When the policy profile was created.
      * @type string
     */
