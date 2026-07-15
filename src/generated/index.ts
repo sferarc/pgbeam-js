@@ -25,6 +25,8 @@ export type { CreateProjectRequest, CreateProjectRequestCloudEnumKey } from "./t
 export type { CreateProjectResponse } from "./types/CreateProjectResponse";
 export type { CreateReplicaData, CreateReplicaPathDatabaseId, CreateReplicaRequestConfig, CreateReplicaResponse, CreateReplicaResponses, CreateReplicaStatus201, CreateReplicaStatus400, CreateReplicaStatus401, CreateReplicaStatus403, CreateReplicaStatus404, CreateReplicaStatus429 } from "./types/CreateReplica";
 export type { CreateReplicaRequest } from "./types/CreateReplicaRequest";
+export type { CreateSelfHostEnrollmentData, CreateSelfHostEnrollmentPathOrgId, CreateSelfHostEnrollmentRequestConfig, CreateSelfHostEnrollmentResponse, CreateSelfHostEnrollmentResponses, CreateSelfHostEnrollmentStatus201, CreateSelfHostEnrollmentStatus400, CreateSelfHostEnrollmentStatus401, CreateSelfHostEnrollmentStatus403, CreateSelfHostEnrollmentStatus429 } from "./types/CreateSelfHostEnrollment";
+export type { CreateSelfHostEnrollmentRequest } from "./types/CreateSelfHostEnrollmentRequest";
 export type { CreateSupportCaseData, CreateSupportCasePathOrgId, CreateSupportCaseRequestConfig, CreateSupportCaseResponse, CreateSupportCaseResponses, CreateSupportCaseStatus201, CreateSupportCaseStatus400, CreateSupportCaseStatus401, CreateSupportCaseStatus403 } from "./types/CreateSupportCase";
 export type { CreateSupportCaseRequest } from "./types/CreateSupportCaseRequest";
 export type { CreateSupportMessageData, CreateSupportMessagePathCaseId, CreateSupportMessagePathOrgId, CreateSupportMessageRequestConfig, CreateSupportMessageResponse, CreateSupportMessageResponses, CreateSupportMessageStatus201, CreateSupportMessageStatus400, CreateSupportMessageStatus401, CreateSupportMessageStatus403, CreateSupportMessageStatus404 } from "./types/CreateSupportMessage";
@@ -97,6 +99,8 @@ export type { ListRegionsRequestConfig, ListRegionsResponses, ListRegionsStatus2
 export type { ListRegionsResponse } from "./types/ListRegionsResponse";
 export type { ListReplicasPathDatabaseId, ListReplicasRequestConfig, ListReplicasResponses, ListReplicasStatus200, ListReplicasStatus400, ListReplicasStatus401, ListReplicasStatus403, ListReplicasStatus404, ListReplicasStatus429 } from "./types/ListReplicas";
 export type { ListReplicasResponse } from "./types/ListReplicasResponse";
+export type { ListSelfHostEnrollmentsPathOrgId, ListSelfHostEnrollmentsRequestConfig, ListSelfHostEnrollmentsResponses, ListSelfHostEnrollmentsStatus200, ListSelfHostEnrollmentsStatus401, ListSelfHostEnrollmentsStatus403 } from "./types/ListSelfHostEnrollments";
+export type { ListSelfHostEnrollmentsResponse } from "./types/ListSelfHostEnrollmentsResponse";
 export type { ListSupportCasesPathOrgId, ListSupportCasesQueryPage, ListSupportCasesQueryPageSize, ListSupportCasesQuerySearch, ListSupportCasesQueryStatus, ListSupportCasesRequestConfig, ListSupportCasesResponses, ListSupportCasesStatus200, ListSupportCasesStatus400, ListSupportCasesStatus401, ListSupportCasesStatus403 } from "./types/ListSupportCases";
 export type { ListSupportCasesResponse } from "./types/ListSupportCasesResponse";
 export type { ListWebhookEndpointsPathProjectId, ListWebhookEndpointsQueryPageSize, ListWebhookEndpointsQueryPageToken, ListWebhookEndpointsRequestConfig, ListWebhookEndpointsResponses, ListWebhookEndpointsStatus200, ListWebhookEndpointsStatus400, ListWebhookEndpointsStatus401, ListWebhookEndpointsStatus403, ListWebhookEndpointsStatus404, ListWebhookEndpointsStatus429 } from "./types/ListWebhookEndpoints";
@@ -129,6 +133,7 @@ export type { Region, RegionProviderEnumKey, RegionStatusEnumKey } from "./types
 export type { RejectApprovalRequestData, RejectApprovalRequestPathApprovalId, RejectApprovalRequestPathProjectId, RejectApprovalRequestRequestConfig, RejectApprovalRequestResponse, RejectApprovalRequestResponses, RejectApprovalRequestStatus200, RejectApprovalRequestStatus400, RejectApprovalRequestStatus401, RejectApprovalRequestStatus403, RejectApprovalRequestStatus404, RejectApprovalRequestStatus409 } from "./types/RejectApprovalRequest";
 export type { Replica } from "./types/Replica";
 export type { RevokeAgentCredentialPathAgentId, RevokeAgentCredentialPathProjectId, RevokeAgentCredentialRequestConfig, RevokeAgentCredentialResponse, RevokeAgentCredentialResponses, RevokeAgentCredentialStatus204, RevokeAgentCredentialStatus400, RevokeAgentCredentialStatus401, RevokeAgentCredentialStatus403, RevokeAgentCredentialStatus404 } from "./types/RevokeAgentCredential";
+export type { RevokeSelfHostEnrollmentPathEnrollmentId, RevokeSelfHostEnrollmentPathOrgId, RevokeSelfHostEnrollmentRequestConfig, RevokeSelfHostEnrollmentResponse, RevokeSelfHostEnrollmentResponses, RevokeSelfHostEnrollmentStatus204, RevokeSelfHostEnrollmentStatus401, RevokeSelfHostEnrollmentStatus403, RevokeSelfHostEnrollmentStatus404 } from "./types/RevokeSelfHostEnrollment";
 export type { RotateAgentCredentialPathAgentId, RotateAgentCredentialPathProjectId, RotateAgentCredentialRequestConfig, RotateAgentCredentialResponse, RotateAgentCredentialResponses, RotateAgentCredentialStatus200, RotateAgentCredentialStatus400, RotateAgentCredentialStatus401, RotateAgentCredentialStatus403, RotateAgentCredentialStatus404, RotateAgentCredentialStatus409 } from "./types/RotateAgentCredential";
 export type { RowFilter } from "./types/RowFilter";
 export type { SSLModeKey } from "./types/SSLMode";
@@ -137,6 +142,8 @@ export type { ScanPiiResult } from "./types/ScanPiiResult";
 export type { SchemaCatalog } from "./types/SchemaCatalog";
 export type { SchemaCatalogColumn } from "./types/SchemaCatalogColumn";
 export type { SchemaCatalogRelation, SchemaCatalogRelationKindEnumKey } from "./types/SchemaCatalogRelation";
+export type { SelfHostEnrollment } from "./types/SelfHostEnrollment";
+export type { SelfHostEnrollmentSecret } from "./types/SelfHostEnrollmentSecret";
 export type { SlackEventPayload } from "./types/SlackEventPayload";
 export type { StatementRules } from "./types/StatementRules";
 export type { SubmitCancellationFeedbackData, SubmitCancellationFeedbackPathOrgId, SubmitCancellationFeedbackRequestConfig, SubmitCancellationFeedbackResponse, SubmitCancellationFeedbackResponses, SubmitCancellationFeedbackStatus204, SubmitCancellationFeedbackStatus400, SubmitCancellationFeedbackStatus401, SubmitCancellationFeedbackStatus403, SubmitCancellationFeedbackStatus429 } from "./types/SubmitCancellationFeedback";

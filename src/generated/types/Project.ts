@@ -59,6 +59,12 @@ export type Project = {
     */
     readonly cloud?: ProjectCloudEnumKey;
     /**
+     * @description When true, this project\'s data plane runs in the customer\'s own VPC/cluster (BYOC): the control plane does not provision hosted infra, and a self-hosted proxy dials home over the config/audit gRPC stream. Requires the Scale or enterprise plan.\n
+     * @example false
+     * @type boolean | undefined
+    */
+    readonly self_hosted?: boolean;
+    /**
      * @description Proxy hostname for connecting through PgBeam (e.g., myproject.proxy.pgbeam.app).
      * @type string | undefined
     */

@@ -55,6 +55,12 @@ export type CreateProjectRequest = {
     */
     cloud?: CreateProjectRequestCloudEnumKey;
     /**
+     * @description Mark this project as running on a self-hosted (BYOC) data plane in the customer\'s own VPC/cluster. Requires the Scale or enterprise plan.\n
+     * @default false
+     * @type boolean | undefined
+    */
+    self_hosted?: boolean;
+    /**
      * @description Primary database. Created atomically with the project.
      * @type object
     */

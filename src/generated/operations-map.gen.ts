@@ -59,6 +59,9 @@ import type { ListRegionsStatus200 } from "./types/ListRegions";
 import type { ListReplicasRequestConfig, ListReplicasStatus200 } from "./types/ListReplicas";
 import type { CreateReplicaRequestConfig, CreateReplicaStatus201 } from "./types/CreateReplica";
 import type { DeleteReplicaRequestConfig } from "./types/DeleteReplica";
+import type { ListSelfHostEnrollmentsRequestConfig, ListSelfHostEnrollmentsStatus200 } from "./types/ListSelfHostEnrollments";
+import type { CreateSelfHostEnrollmentRequestConfig, CreateSelfHostEnrollmentStatus201 } from "./types/CreateSelfHostEnrollment";
+import type { RevokeSelfHostEnrollmentRequestConfig } from "./types/RevokeSelfHostEnrollment";
 import type { ListSupportCasesRequestConfig, ListSupportCasesStatus200 } from "./types/ListSupportCases";
 import type { CreateSupportCaseRequestConfig, CreateSupportCaseStatus201 } from "./types/CreateSupportCase";
 import type { GetSupportCaseRequestConfig, GetSupportCaseStatus200 } from "./types/GetSupportCase";
@@ -143,6 +146,9 @@ export const operationsByTag = {
   platform: {
     getHealth: { method: "GET", path: "/v1/health" },
     listRegions: { method: "GET", path: "/v1/regions" },
+    listSelfHostEnrollments: { method: "GET", path: "/v1/organizations/{org_id}/self-host-enrollments" },
+    createSelfHostEnrollment: { method: "POST", path: "/v1/organizations/{org_id}/self-host-enrollments" },
+    revokeSelfHostEnrollment: { method: "DELETE", path: "/v1/organizations/{org_id}/self-host-enrollments/{enrollment_id}" },
   },
   migrations: {
     lintMigration: { method: "POST", path: "/v1/projects/{project_id}/migrations:lint" },
@@ -232,6 +238,9 @@ export const operationsByPath = {
   "GET /v1/databases/{database_id}/replicas": { method: "GET", path: "/v1/databases/{database_id}/replicas", operationId: "listReplicas" },
   "POST /v1/databases/{database_id}/replicas": { method: "POST", path: "/v1/databases/{database_id}/replicas", operationId: "createReplica" },
   "DELETE /v1/databases/{database_id}/replicas/{replica_id}": { method: "DELETE", path: "/v1/databases/{database_id}/replicas/{replica_id}", operationId: "deleteReplica" },
+  "GET /v1/organizations/{org_id}/self-host-enrollments": { method: "GET", path: "/v1/organizations/{org_id}/self-host-enrollments", operationId: "listSelfHostEnrollments" },
+  "POST /v1/organizations/{org_id}/self-host-enrollments": { method: "POST", path: "/v1/organizations/{org_id}/self-host-enrollments", operationId: "createSelfHostEnrollment" },
+  "DELETE /v1/organizations/{org_id}/self-host-enrollments/{enrollment_id}": { method: "DELETE", path: "/v1/organizations/{org_id}/self-host-enrollments/{enrollment_id}", operationId: "revokeSelfHostEnrollment" },
   "GET /v1/organizations/{org_id}/support/cases": { method: "GET", path: "/v1/organizations/{org_id}/support/cases", operationId: "listSupportCases" },
   "POST /v1/organizations/{org_id}/support/cases": { method: "POST", path: "/v1/organizations/{org_id}/support/cases", operationId: "createSupportCase" },
   "GET /v1/organizations/{org_id}/support/cases/{case_id}": { method: "GET", path: "/v1/organizations/{org_id}/support/cases/{case_id}", operationId: "getSupportCase" },
@@ -300,6 +309,9 @@ type GetProjectMetricsParams = { pathParams: NonNullable<GetProjectMetricsReques
 type ListReplicasParams = { pathParams: NonNullable<ListReplicasRequestConfig["pathParams"]> };
 type CreateReplicaParams = { pathParams: NonNullable<CreateReplicaRequestConfig["pathParams"]>; body: NonNullable<CreateReplicaRequestConfig["data"]> };
 type DeleteReplicaParams = { pathParams: NonNullable<DeleteReplicaRequestConfig["pathParams"]> };
+type ListSelfHostEnrollmentsParams = { pathParams: NonNullable<ListSelfHostEnrollmentsRequestConfig["pathParams"]> };
+type CreateSelfHostEnrollmentParams = { pathParams: NonNullable<CreateSelfHostEnrollmentRequestConfig["pathParams"]>; body: NonNullable<CreateSelfHostEnrollmentRequestConfig["data"]> };
+type RevokeSelfHostEnrollmentParams = { pathParams: NonNullable<RevokeSelfHostEnrollmentRequestConfig["pathParams"]> };
 type ListSupportCasesParams = { pathParams: NonNullable<ListSupportCasesRequestConfig["pathParams"]>; queryParams?: NonNullable<ListSupportCasesRequestConfig["queryParams"]> };
 type CreateSupportCaseParams = { pathParams: NonNullable<CreateSupportCaseRequestConfig["pathParams"]>; body: NonNullable<CreateSupportCaseRequestConfig["data"]> };
 type GetSupportCaseParams = { pathParams: NonNullable<GetSupportCaseRequestConfig["pathParams"]> };
@@ -384,6 +396,9 @@ export interface ApiOperations {
   platform: {
     getHealth(): Promise<GetHealthStatus200>;
     listRegions(): Promise<ListRegionsStatus200>;
+    listSelfHostEnrollments(params: ListSelfHostEnrollmentsParams): Promise<ListSelfHostEnrollmentsStatus200>;
+    createSelfHostEnrollment(params: CreateSelfHostEnrollmentParams): Promise<CreateSelfHostEnrollmentStatus201>;
+    revokeSelfHostEnrollment(params: RevokeSelfHostEnrollmentParams): Promise<void>;
   };
   migrations: {
     lintMigration(params: LintMigrationParams): Promise<LintMigrationStatus200>;
@@ -473,6 +488,9 @@ export interface RequestMap {
   "GET /v1/databases/{database_id}/replicas": { params: ListReplicasParams; response: ListReplicasStatus200 };
   "POST /v1/databases/{database_id}/replicas": { params: CreateReplicaParams; response: CreateReplicaStatus201 };
   "DELETE /v1/databases/{database_id}/replicas/{replica_id}": { params: DeleteReplicaParams; response: void };
+  "GET /v1/organizations/{org_id}/self-host-enrollments": { params: ListSelfHostEnrollmentsParams; response: ListSelfHostEnrollmentsStatus200 };
+  "POST /v1/organizations/{org_id}/self-host-enrollments": { params: CreateSelfHostEnrollmentParams; response: CreateSelfHostEnrollmentStatus201 };
+  "DELETE /v1/organizations/{org_id}/self-host-enrollments/{enrollment_id}": { params: RevokeSelfHostEnrollmentParams; response: void };
   "GET /v1/organizations/{org_id}/support/cases": { params: ListSupportCasesParams; response: ListSupportCasesStatus200 };
   "POST /v1/organizations/{org_id}/support/cases": { params: CreateSupportCaseParams; response: CreateSupportCaseStatus201 };
   "GET /v1/organizations/{org_id}/support/cases/{case_id}": { params: GetSupportCaseParams; response: GetSupportCaseStatus200 };
