@@ -463,6 +463,27 @@ describe("fetcher", () => {
     expect(result).toEqual(data);
   });
 
+  it("returns the raw text for a non-JSON body (e.g. text/csv export)", async () => {
+    const csv = "id,event\nlog_1,blocked\n";
+    mockFetch.mockResolvedValue({
+      ok: true,
+      status: 200,
+      statusText: "OK",
+      headers: new Headers({ "content-type": "text/csv" }),
+      json: () => Promise.reject(new Error("not called")),
+      text: () => Promise.resolve(csv),
+    } as unknown as Response);
+
+    const result = await fetcher<string>({
+      method: "GET",
+      path: "/v1/projects/prj_1/audit-logs/export",
+      baseUrl: "https://api.example.com",
+      token: null,
+    });
+
+    expect(result).toBe(csv);
+  });
+
   // -- onResponse hook --
 
   it("calls onResponse hook with the response object", async () => {

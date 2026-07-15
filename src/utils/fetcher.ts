@@ -205,13 +205,15 @@ async function parseResponseBody<T>(response: Response): Promise<T> {
   if (contentType?.includes("application/json")) {
     return response.json() as Promise<T>;
   }
-  // Fallback: try JSON, return undefined if body is empty/non-JSON
+  // Non-JSON body (e.g. text/csv from audit-log export). Parse opportunistically
+  // in case the server mislabels JSON, but fall back to the raw text so callers
+  // get the payload instead of undefined. Only an empty body is undefined.
   const text = await response.text();
   if (!text) return undefined as T;
   try {
     return JSON.parse(text) as T;
   } catch {
-    return undefined as T;
+    return text as T;
   }
 }
 
