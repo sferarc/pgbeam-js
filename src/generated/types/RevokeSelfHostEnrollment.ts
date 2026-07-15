@@ -30,6 +30,12 @@ export type RevokeSelfHostEnrollmentStatus204 = any;
  * @description Standard error response envelope for PgBeam API requests.
  * @type object
 */
+export type RevokeSelfHostEnrollmentStatus400 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
 export type RevokeSelfHostEnrollmentStatus401 = Error;
 
 /**
@@ -69,6 +75,7 @@ export type RevokeSelfHostEnrollmentRequestConfig = {
 */
 export type RevokeSelfHostEnrollmentResponses = {
     "204": RevokeSelfHostEnrollmentStatus204;
+    "400": RevokeSelfHostEnrollmentStatus400;
     "401": RevokeSelfHostEnrollmentStatus401;
     "403": RevokeSelfHostEnrollmentStatus403;
     "404": RevokeSelfHostEnrollmentStatus404;
@@ -77,4 +84,4 @@ export type RevokeSelfHostEnrollmentResponses = {
 /**
  * @description Union of all possible responses
 */
-export type RevokeSelfHostEnrollmentResponse = (RevokeSelfHostEnrollmentStatus204 | RevokeSelfHostEnrollmentStatus401 | RevokeSelfHostEnrollmentStatus403 | RevokeSelfHostEnrollmentStatus404);
+export type RevokeSelfHostEnrollmentResponse = (RevokeSelfHostEnrollmentStatus204 | RevokeSelfHostEnrollmentStatus400 | RevokeSelfHostEnrollmentStatus401 | RevokeSelfHostEnrollmentStatus403 | RevokeSelfHostEnrollmentStatus404);

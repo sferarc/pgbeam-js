@@ -24,6 +24,12 @@ export type ListSelfHostEnrollmentsStatus200 = ListSelfHostEnrollmentsResponse;
  * @description Standard error response envelope for PgBeam API requests.
  * @type object
 */
+export type ListSelfHostEnrollmentsStatus400 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
 export type ListSelfHostEnrollmentsStatus401 = Error;
 
 /**
@@ -56,6 +62,7 @@ export type ListSelfHostEnrollmentsRequestConfig = {
 */
 export type ListSelfHostEnrollmentsResponses = {
     "200": ListSelfHostEnrollmentsStatus200;
+    "400": ListSelfHostEnrollmentsStatus400;
     "401": ListSelfHostEnrollmentsStatus401;
     "403": ListSelfHostEnrollmentsStatus403;
 };
