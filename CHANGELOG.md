@@ -1,5 +1,17 @@
 # pgbeam
 
+## 0.3.8
+
+### Patch Changes
+
+- 0db5320: feat(byoc): self-hosted data-plane packaging + entitlement enrollment
+- 18d777f: feat(proxy): region discovery + per-project residency enforcement
+- fae176d: Generate the CLI's API-surface commands from the OpenAPI contract so they can no longer drift.
+
+  A new generator (`scripts/src/generate-cli.ts`, wired into `pnpm generate`) reads the same public OpenAPI bundle as the SDK and emits a command manifest; a small hand-written runtime turns each entry into a citty command with contract-derived flags, path parameters, pagination, tables, and detail views. The core resource reads/deletes/actions (projects, databases, agent credentials, policies, branches, custom domains) are now generated; bespoke commands (auth, mcp, env, link, interactive creators, secret rendering) stay hand-authored and compose with the generated leaves.
+
+  Along the way this fixes several CLI bugs by construction: `domains`, `replicas`, `cache-rules`, and `env` are now registered as top-level commands (previously unreachable); `auth status`/`whoami` honor `--token` and the `PGBEAM_API_KEY`/`PGBEAM_TOKEN`/`PGBEAM_API_TOKEN` env vars instead of only the saved profile; boolean flags accept an explicit `true`/`false` value so `--flag false` is no longer silently parsed as true; and the SDK now returns the raw body for non-JSON responses (for example `text/csv`), fixing `pgbeam audit export`.
+
 ## 0.3.7
 
 ### Patch Changes
