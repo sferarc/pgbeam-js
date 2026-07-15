@@ -4,6 +4,7 @@
 */
 
 import type { CidrEntry } from "./CidrEntry";
+import type { DataResidencyKey } from "./DataResidency";
 import type { ProjectStatusKey } from "./ProjectStatus";
 
 export const projectCloudEnum = {
@@ -92,6 +93,13 @@ export type Project = {
      * @type string
     */
     default_policy_profile_id?: string | null;
+    /**
+     * @description Data-residency requirement for the project. \"any\" (default) lets queries be served from the nearest data-plane metro. \"us\" or \"eu\" require the serving metro to be in that jurisdiction; the proxy fails a connection closed when it is served from a metro outside the required jurisdiction, so regulated workloads never process outside their permitted region.\n
+     * @default "any"
+     * @example eu
+     * @type string | undefined
+    */
+    residency?: DataResidencyKey;
     /**
      * @description Project-level kill-switch. When true, ALL agent-credential connections to this project are blocked at the proxy and live agent sessions are dropped within seconds. Passthrough/human connections are unaffected.\n
      * @example false

@@ -4,6 +4,7 @@
 */
 
 import type { CidrEntry } from "./CidrEntry";
+import type { DataResidencyKey } from "./DataResidency";
 import type { ProjectStatusKey } from "./ProjectStatus";
 
 /**
@@ -50,6 +51,13 @@ export type UpdateProjectRequest = {
      * @type string
     */
     default_policy_profile_id?: string | null;
+    /**
+     * @description Data-residency requirement for the project. \"any\" (default) lets queries be served from the nearest data-plane metro. \"us\" or \"eu\" require the serving metro to be in that jurisdiction; the proxy fails a connection closed when it is served from a metro outside the required jurisdiction, so regulated workloads never process outside their permitted region.\n
+     * @default "any"
+     * @example eu
+     * @type string | undefined
+    */
+    residency?: DataResidencyKey;
     /**
      * @description Project-level kill-switch. Set true to block ALL agent-credential connections to this project (live agent sessions are dropped within seconds); set false to re-enable them. Passthrough/human connections are unaffected. Engaging the kill-switch emits a kill_switch webhook event.\n
      * @example true

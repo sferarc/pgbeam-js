@@ -32,6 +32,7 @@ export type { CreateSupportMessageRequest } from "./types/CreateSupportMessageRe
 export type { CreateWebhookEndpointData, CreateWebhookEndpointPathProjectId, CreateWebhookEndpointRequestConfig, CreateWebhookEndpointResponse, CreateWebhookEndpointResponses, CreateWebhookEndpointStatus201, CreateWebhookEndpointStatus400, CreateWebhookEndpointStatus401, CreateWebhookEndpointStatus403, CreateWebhookEndpointStatus404, CreateWebhookEndpointStatus429 } from "./types/CreateWebhookEndpoint";
 export type { CustomDomain } from "./types/CustomDomain";
 export type { DailyUsage } from "./types/DailyUsage";
+export type { DataResidencyKey } from "./types/DataResidency";
 export type { Database } from "./types/Database";
 export type { DatabaseBranch, DatabaseBranchStatusEnumKey } from "./types/DatabaseBranch";
 export type { DatabaseRoleKey } from "./types/DatabaseRole";
@@ -181,6 +182,7 @@ export { auditSource } from "./types/AuditSource";
 export { cacheRuleEntryQueryTypeEnum, cacheRuleEntryRecommendationEnum } from "./types/CacheRuleEntry";
 export { createAgentCredentialRequestPrincipalTypeEnum } from "./types/CreateAgentCredentialRequest";
 export { createProjectRequestCloudEnum } from "./types/CreateProjectRequest";
+export { dataResidency } from "./types/DataResidency";
 export { databaseBranchStatusEnum } from "./types/DatabaseBranch";
 export { databaseRole } from "./types/DatabaseRole";
 export { dryEvalMaskedColumnKindEnum } from "./types/DryEvalMaskedColumn";
