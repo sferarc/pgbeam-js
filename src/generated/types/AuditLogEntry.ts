@@ -104,4 +104,19 @@ export type AuditLogEntry = {
      * @type string
     */
     ts: string;
+    /**
+     * @description Monotonic per-project position in the tamper-evident hash chain.
+     * @type integer | undefined
+    */
+    seq?: number;
+    /**
+     * @description Hex SHA-256 of the previous chained entry (a fixed genesis value for the first entry). Empty for pre-chain legacy entries.
+     * @type string | undefined
+    */
+    prev_hash?: string;
+    /**
+     * @description Hex SHA-256 of this entry\'s canonical content chained onto prev_hash. Empty for pre-chain legacy entries.
+     * @type string | undefined
+    */
+    entry_hash?: string;
 };

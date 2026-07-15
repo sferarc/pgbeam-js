@@ -5,6 +5,7 @@ export type { AnomalyAlert, AnomalyAlertSeverityEnumKey, AnomalyAlertStatusEnumK
 export type { ApprovalDecisionRequest } from "./types/ApprovalDecisionRequest";
 export type { ApprovalRequest, ApprovalRequestStatusEnumKey } from "./types/ApprovalRequest";
 export type { ApproveApprovalRequestData, ApproveApprovalRequestPathApprovalId, ApproveApprovalRequestPathProjectId, ApproveApprovalRequestRequestConfig, ApproveApprovalRequestResponse, ApproveApprovalRequestResponses, ApproveApprovalRequestStatus200, ApproveApprovalRequestStatus400, ApproveApprovalRequestStatus401, ApproveApprovalRequestStatus403, ApproveApprovalRequestStatus404, ApproveApprovalRequestStatus409 } from "./types/ApproveApprovalRequest";
+export type { AuditChainVerification } from "./types/AuditChainVerification";
 export type { AuditDecision, AuditDecisionKey } from "./types/AuditDecision";
 export type { AuditLogEntry } from "./types/AuditLogEntry";
 export type { AuditSource, AuditSourceKey } from "./types/AuditSource";
@@ -176,6 +177,7 @@ export type { UpdateWebhookEndpointData, UpdateWebhookEndpointPathProjectId, Upd
 export type { UsageResponse } from "./types/UsageResponse";
 export type { VercelInstallationStatus } from "./types/VercelInstallationStatus";
 export type { VercelResourceStatus, VercelResourceStatusStatusEnumKey } from "./types/VercelResourceStatus";
+export type { VerifyAuditChainPathProjectId, VerifyAuditChainQueryEnd, VerifyAuditChainQueryStart, VerifyAuditChainRequestConfig, VerifyAuditChainResponse, VerifyAuditChainResponses, VerifyAuditChainStatus200, VerifyAuditChainStatus400, VerifyAuditChainStatus401, VerifyAuditChainStatus403, VerifyAuditChainStatus404, VerifyAuditChainStatus429 } from "./types/VerifyAuditChain";
 export type { VerifyCustomDomainPathDomainId, VerifyCustomDomainPathProjectId, VerifyCustomDomainRequestConfig, VerifyCustomDomainResponses, VerifyCustomDomainStatus200, VerifyCustomDomainStatus400, VerifyCustomDomainStatus401, VerifyCustomDomainStatus403, VerifyCustomDomainStatus404, VerifyCustomDomainStatus429 } from "./types/VerifyCustomDomain";
 export type { VerifyCustomDomainResponse } from "./types/VerifyCustomDomainResponse";
 export type { WebhookEndpoint, WebhookEndpointFormatEnumKey } from "./types/WebhookEndpoint";
