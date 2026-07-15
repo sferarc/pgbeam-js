@@ -48,4 +48,34 @@ export type PlanLimits = {
      * @type integer
     */
     included_seats: number;
+    /**
+     * @description Maximum agent credentials per organization. 0 means unlimited.
+     * @type integer
+    */
+    max_agent_credentials: number;
+    /**
+     * @description Agent audit-log retention window in days.
+     * @type integer
+    */
+    audit_retention_days: number;
+    /**
+     * @description Maximum concurrently active instant (sandbox) branches. 0 means no limit.
+     * @type integer
+    */
+    sandbox_max_branches: number;
+    /**
+     * @description Maximum upstream source-database size a sandbox base sync accepts, in bytes. 0 means no limit.
+     * @type integer
+    */
+    sandbox_max_upstream_bytes: number;
+    /**
+     * @description Idle time before an instant (sandbox) branch scales to zero, in seconds.
+     * @type integer
+    */
+    sandbox_idle_seconds: number;
+    /**
+     * @description Lifetime of an instant (sandbox) branch before the TTL sweep discards it, in seconds.
+     * @type integer
+    */
+    sandbox_ttl_seconds: number;
 };
