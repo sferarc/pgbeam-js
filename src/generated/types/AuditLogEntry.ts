@@ -95,7 +95,7 @@ export type AuditLogEntry = {
     */
     session_id?: string;
     /**
-     * @description Statement origin (wire, mcp, or control for control-plane lifecycle events).
+     * @description Statement origin (wire, mcp, rest, or control for control-plane lifecycle events).
      * @type string | undefined
     */
     source?: string;

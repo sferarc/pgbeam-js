@@ -36,7 +36,7 @@ export type ListAuditLogsQueryEvent = string | undefined;
 export type ListAuditLogsQueryDecision = AuditDecisionKey | undefined;
 
 /**
- * @description Filter by statement origin (wire, mcp, or control).
+ * @description Filter by statement origin (wire, mcp, rest, or control).
  * @type string | undefined
 */
 export type ListAuditLogsQuerySource = AuditSourceKey | undefined;
