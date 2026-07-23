@@ -52,4 +52,9 @@ export type SelfHostEnrollment = {
      * @type string
     */
     revoked_at?: string | null;
+    /**
+     * @description When the enrollment token expires and stops authenticating new proxy connections. Null means it never expires. Enforcement is fail-closed at the gRPC auth gate the instant this time passes.
+     * @type string
+    */
+    expires_at?: string | null;
 };

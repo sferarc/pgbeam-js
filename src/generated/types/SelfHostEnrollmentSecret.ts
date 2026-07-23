@@ -6,7 +6,7 @@
 import type { SelfHostEnrollment } from "./SelfHostEnrollment";
 
 /**
- * @description Response returned once when an enrollment is created. The token is shown a single time and cannot be retrieved again; set it as GRPC_AUTH_TOKEN on the self-hosted proxy.\n
+ * @description Response returned once when an enrollment is created or its token is rotated. The token is shown a single time and cannot be retrieved again; set it as GRPC_AUTH_TOKEN on the self-hosted proxy.\n
  * @type object
 */
 export type SelfHostEnrollmentSecret = {

@@ -24,4 +24,9 @@ export type CreateSelfHostEnrollmentRequest = {
      * @type string | undefined
     */
     description?: string;
+    /**
+     * @description Optional expiry. When set, the enrollment token stops authenticating new proxy connections at this time (must be in the future). Omit or set null for a token that never expires.
+     * @type string
+    */
+    expires_at?: string | null;
 };
