@@ -50,6 +50,7 @@ import type { GetPolicyProfileRequestConfig, GetPolicyProfileStatus200 } from ".
 import type { UpdatePolicyProfileRequestConfig, UpdatePolicyProfileStatus200 } from "./types/UpdatePolicyProfile";
 import type { DeletePolicyProfileRequestConfig } from "./types/DeletePolicyProfile";
 import type { DryEvalPolicyRequestConfig, DryEvalPolicyStatus200 } from "./types/DryEvalPolicy";
+import type { ReplayPolicyRequestConfig, ReplayPolicyStatus200 } from "./types/ReplayPolicy";
 import type { ListProjectsRequestConfig, ListProjectsStatus200 } from "./types/ListProjects";
 import type { CreateProjectRequestConfig, CreateProjectStatus201 } from "./types/CreateProject";
 import type { GetProjectRequestConfig, GetProjectStatus200 } from "./types/GetProject";
@@ -162,6 +163,7 @@ export const operationsByTag = {
     updatePolicyProfile: { method: "PUT", path: "/v1/projects/{project_id}/policies/{policy_id}" },
     deletePolicyProfile: { method: "DELETE", path: "/v1/projects/{project_id}/policies/{policy_id}" },
     dryEvalPolicy: { method: "POST", path: "/v1/projects/{project_id}/policy-evaluations" },
+    replayPolicy: { method: "POST", path: "/v1/projects/{project_id}/policy-replays" },
   },
   support: {
     listSupportCases: { method: "GET", path: "/v1/organizations/{org_id}/support/cases" },
@@ -231,6 +233,7 @@ export const operationsByPath = {
   "PUT /v1/projects/{project_id}/policies/{policy_id}": { method: "PUT", path: "/v1/projects/{project_id}/policies/{policy_id}", operationId: "updatePolicyProfile" },
   "DELETE /v1/projects/{project_id}/policies/{policy_id}": { method: "DELETE", path: "/v1/projects/{project_id}/policies/{policy_id}", operationId: "deletePolicyProfile" },
   "POST /v1/projects/{project_id}/policy-evaluations": { method: "POST", path: "/v1/projects/{project_id}/policy-evaluations", operationId: "dryEvalPolicy" },
+  "POST /v1/projects/{project_id}/policy-replays": { method: "POST", path: "/v1/projects/{project_id}/policy-replays", operationId: "replayPolicy" },
   "GET /v1/projects": { method: "GET", path: "/v1/projects", operationId: "listProjects" },
   "POST /v1/projects": { method: "POST", path: "/v1/projects", operationId: "createProject" },
   "GET /v1/projects/{project_id}": { method: "GET", path: "/v1/projects/{project_id}", operationId: "getProject" },
@@ -304,6 +307,7 @@ type GetPolicyProfileParams = { pathParams: NonNullable<GetPolicyProfileRequestC
 type UpdatePolicyProfileParams = { pathParams: NonNullable<UpdatePolicyProfileRequestConfig["pathParams"]>; body: NonNullable<UpdatePolicyProfileRequestConfig["data"]> };
 type DeletePolicyProfileParams = { pathParams: NonNullable<DeletePolicyProfileRequestConfig["pathParams"]> };
 type DryEvalPolicyParams = { pathParams: NonNullable<DryEvalPolicyRequestConfig["pathParams"]>; body: NonNullable<DryEvalPolicyRequestConfig["data"]> };
+type ReplayPolicyParams = { pathParams: NonNullable<ReplayPolicyRequestConfig["pathParams"]>; body: NonNullable<ReplayPolicyRequestConfig["data"]> };
 type ListProjectsParams = { queryParams: NonNullable<ListProjectsRequestConfig["queryParams"]> };
 type CreateProjectParams = { body: NonNullable<CreateProjectRequestConfig["data"]> };
 type GetProjectParams = { pathParams: NonNullable<GetProjectRequestConfig["pathParams"]> };
@@ -415,6 +419,7 @@ export interface ApiOperations {
     updatePolicyProfile(params: UpdatePolicyProfileParams): Promise<UpdatePolicyProfileStatus200>;
     deletePolicyProfile(params: DeletePolicyProfileParams): Promise<void>;
     dryEvalPolicy(params: DryEvalPolicyParams): Promise<DryEvalPolicyStatus200>;
+    replayPolicy(params: ReplayPolicyParams): Promise<ReplayPolicyStatus200>;
   };
   support: {
     listSupportCases(params: ListSupportCasesParams): Promise<ListSupportCasesStatus200>;
@@ -484,6 +489,7 @@ export interface RequestMap {
   "PUT /v1/projects/{project_id}/policies/{policy_id}": { params: UpdatePolicyProfileParams; response: UpdatePolicyProfileStatus200 };
   "DELETE /v1/projects/{project_id}/policies/{policy_id}": { params: DeletePolicyProfileParams; response: void };
   "POST /v1/projects/{project_id}/policy-evaluations": { params: DryEvalPolicyParams; response: DryEvalPolicyStatus200 };
+  "POST /v1/projects/{project_id}/policy-replays": { params: ReplayPolicyParams; response: ReplayPolicyStatus200 };
   "GET /v1/projects": { params: ListProjectsParams; response: ListProjectsStatus200 };
   "POST /v1/projects": { params: CreateProjectParams; response: CreateProjectStatus201 };
   "GET /v1/projects/{project_id}": { params: GetProjectParams; response: GetProjectStatus200 };
