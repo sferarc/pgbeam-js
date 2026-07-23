@@ -66,6 +66,16 @@ export type ApprovalRequest = {
     */
     statement_kind?: string;
     /**
+     * @description Best-effort estimate of how many rows the statement would affect, attached by the data plane when the statement was held. Either the planner estimate from EXPLAIN or the exact count observed in a rolled-back trial execution. Null when no estimate could be made; treat it as an estimate, not a guarantee.
+     * @type integer
+    */
+    estimated_rows?: number | null;
+    /**
+     * @description Relations the statement touches, from the gateway\'s parse analysis.
+     * @type array | undefined
+    */
+    target_tables?: string[];
+    /**
      * @description Current state of the approval request.
      * @type string
     */
