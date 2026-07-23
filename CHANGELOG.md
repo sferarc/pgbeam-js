@@ -1,5 +1,11 @@
 # pgbeam
 
+## 0.3.9
+
+### Patch Changes
+
+- 642b681: feat(policies): traffic replay, evaluate recorded agent traffic against a candidate policy (API, CLI, dashboard, docs)
+
 ## 0.3.8
 
 ### Patch Changes
