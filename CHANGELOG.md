@@ -1,5 +1,11 @@
 # pgbeam
 
+## 0.3.10
+
+### Patch Changes
+
+- 19a6caf: feat(approvals): affected-row estimate, target tables, and statement kind on approval requests
+
 ## 0.3.9
 
 ### Patch Changes
