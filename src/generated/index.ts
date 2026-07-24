@@ -90,6 +90,8 @@ export type { ListDatabaseBranchesPathProjectId, ListDatabaseBranchesQueryPageSi
 export type { ListDatabaseBranchesResponse } from "./types/ListDatabaseBranchesResponse";
 export type { ListDatabasesPathProjectId, ListDatabasesQueryPageSize, ListDatabasesQueryPageToken, ListDatabasesRequestConfig, ListDatabasesResponses, ListDatabasesStatus200, ListDatabasesStatus400, ListDatabasesStatus401, ListDatabasesStatus403, ListDatabasesStatus404, ListDatabasesStatus429 } from "./types/ListDatabases";
 export type { ListDatabasesResponse } from "./types/ListDatabasesResponse";
+export type { ListOrganizationsRequestConfig, ListOrganizationsResponses, ListOrganizationsStatus200, ListOrganizationsStatus401, ListOrganizationsStatus429 } from "./types/ListOrganizations";
+export type { ListOrganizationsResponse } from "./types/ListOrganizationsResponse";
 export type { ListPlansRequestConfig, ListPlansResponses, ListPlansStatus200, ListPlansStatus401, ListPlansStatus429 } from "./types/ListPlans";
 export type { ListPlansResponse } from "./types/ListPlansResponse";
 export type { ListPolicyProfilesPathProjectId, ListPolicyProfilesQueryPageSize, ListPolicyProfilesQueryPageToken, ListPolicyProfilesRequestConfig, ListPolicyProfilesResponses, ListPolicyProfilesStatus200, ListPolicyProfilesStatus400, ListPolicyProfilesStatus401, ListPolicyProfilesStatus403, ListPolicyProfilesStatus404, ListPolicyProfilesStatus429 } from "./types/ListPolicyProfiles";
@@ -116,6 +118,7 @@ export type { MigrationLintRequest } from "./types/MigrationLintRequest";
 export type { MigrationLintResponse } from "./types/MigrationLintResponse";
 export type { OnboardingProgress } from "./types/OnboardingProgress";
 export type { OrganizationPlan, OrganizationPlanBillingProviderEnumKey, OrganizationPlanPlanEnumKey, OrganizationPlanSubscriptionStatusEnumKey } from "./types/OrganizationPlan";
+export type { OrganizationSummary } from "./types/OrganizationSummary";
 export type { PiiSuggestion, PiiSuggestionMaskKindEnumKey, PiiSuggestionPiiTypeEnumKey } from "./types/PiiSuggestion";
 export type { PlanInfo } from "./types/PlanInfo";
 export type { PlanLimits } from "./types/PlanLimits";

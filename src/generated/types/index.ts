@@ -90,6 +90,8 @@ export type { ListDatabaseBranchesPathProjectId, ListDatabaseBranchesQueryPageSi
 export type { ListDatabaseBranchesResponse } from "./ListDatabaseBranchesResponse";
 export type { ListDatabasesPathProjectId, ListDatabasesQueryPageSize, ListDatabasesQueryPageToken, ListDatabasesRequestConfig, ListDatabasesResponses, ListDatabasesStatus200, ListDatabasesStatus400, ListDatabasesStatus401, ListDatabasesStatus403, ListDatabasesStatus404, ListDatabasesStatus429 } from "./ListDatabases";
 export type { ListDatabasesResponse } from "./ListDatabasesResponse";
+export type { ListOrganizationsRequestConfig, ListOrganizationsResponses, ListOrganizationsStatus200, ListOrganizationsStatus401, ListOrganizationsStatus429 } from "./ListOrganizations";
+export type { ListOrganizationsResponse } from "./ListOrganizationsResponse";
 export type { ListPlansRequestConfig, ListPlansResponses, ListPlansStatus200, ListPlansStatus401, ListPlansStatus429 } from "./ListPlans";
 export type { ListPlansResponse } from "./ListPlansResponse";
 export type { ListPolicyProfilesPathProjectId, ListPolicyProfilesQueryPageSize, ListPolicyProfilesQueryPageToken, ListPolicyProfilesRequestConfig, ListPolicyProfilesResponses, ListPolicyProfilesStatus200, ListPolicyProfilesStatus400, ListPolicyProfilesStatus401, ListPolicyProfilesStatus403, ListPolicyProfilesStatus404, ListPolicyProfilesStatus429 } from "./ListPolicyProfiles";
@@ -116,6 +118,7 @@ export type { MigrationLintRequest } from "./MigrationLintRequest";
 export type { MigrationLintResponse } from "./MigrationLintResponse";
 export type { OnboardingProgress } from "./OnboardingProgress";
 export type { OrganizationPlan, OrganizationPlanBillingProviderEnumKey, OrganizationPlanPlanEnumKey, OrganizationPlanSubscriptionStatusEnumKey } from "./OrganizationPlan";
+export type { OrganizationSummary } from "./OrganizationSummary";
 export type { PiiSuggestion, PiiSuggestionMaskKindEnumKey, PiiSuggestionPiiTypeEnumKey } from "./PiiSuggestion";
 export type { PlanInfo } from "./PlanInfo";
 export type { PlanLimits } from "./PlanLimits";

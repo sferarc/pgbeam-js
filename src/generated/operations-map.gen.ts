@@ -44,6 +44,7 @@ import type { GetProjectInsightsRequestConfig, GetProjectInsightsStatus200 } fro
 import type { LintMigrationRequestConfig, LintMigrationStatus200 } from "./types/LintMigration";
 import type { GetOnboardingProgressRequestConfig, GetOnboardingProgressStatus200 } from "./types/GetOnboardingProgress";
 import type { UpdateOnboardingProgressRequestConfig, UpdateOnboardingProgressStatus200 } from "./types/UpdateOnboardingProgress";
+import type { ListOrganizationsStatus200 } from "./types/ListOrganizations";
 import type { ListPolicyProfilesRequestConfig, ListPolicyProfilesStatus200 } from "./types/ListPolicyProfiles";
 import type { CreatePolicyProfileRequestConfig, CreatePolicyProfileStatus201 } from "./types/CreatePolicyProfile";
 import type { GetPolicyProfileRequestConfig, GetPolicyProfileStatus200 } from "./types/GetPolicyProfile";
@@ -85,6 +86,7 @@ export const operationsByTag = {
     exportAccountData: { method: "GET", path: "/v1/account/export" },
     getOnboardingProgress: { method: "GET", path: "/v1/organizations/{org_id}/onboarding" },
     updateOnboardingProgress: { method: "PATCH", path: "/v1/organizations/{org_id}/onboarding" },
+    listOrganizations: { method: "GET", path: "/v1/organizations" },
   },
   agents: {
     listAgentCredentials: { method: "GET", path: "/v1/projects/{project_id}/agents" },
@@ -229,6 +231,7 @@ export const operationsByPath = {
   "POST /v1/projects/{project_id}/migrations:lint": { method: "POST", path: "/v1/projects/{project_id}/migrations:lint", operationId: "lintMigration" },
   "GET /v1/organizations/{org_id}/onboarding": { method: "GET", path: "/v1/organizations/{org_id}/onboarding", operationId: "getOnboardingProgress" },
   "PATCH /v1/organizations/{org_id}/onboarding": { method: "PATCH", path: "/v1/organizations/{org_id}/onboarding", operationId: "updateOnboardingProgress" },
+  "GET /v1/organizations": { method: "GET", path: "/v1/organizations", operationId: "listOrganizations" },
   "GET /v1/projects/{project_id}/policies": { method: "GET", path: "/v1/projects/{project_id}/policies", operationId: "listPolicyProfiles" },
   "POST /v1/projects/{project_id}/policies": { method: "POST", path: "/v1/projects/{project_id}/policies", operationId: "createPolicyProfile" },
   "GET /v1/projects/{project_id}/policies/{policy_id}": { method: "GET", path: "/v1/projects/{project_id}/policies/{policy_id}", operationId: "getPolicyProfile" },
@@ -344,6 +347,7 @@ export interface ApiOperations {
     exportAccountData(): Promise<ExportAccountDataStatus200>;
     getOnboardingProgress(params: GetOnboardingProgressParams): Promise<GetOnboardingProgressStatus200>;
     updateOnboardingProgress(params: UpdateOnboardingProgressParams): Promise<UpdateOnboardingProgressStatus200>;
+    listOrganizations(): Promise<ListOrganizationsStatus200>;
   };
   agents: {
     listAgentCredentials(params: ListAgentCredentialsParams): Promise<ListAgentCredentialsStatus200>;
@@ -488,6 +492,7 @@ export interface RequestMap {
   "POST /v1/projects/{project_id}/migrations:lint": { params: LintMigrationParams; response: LintMigrationStatus200 };
   "GET /v1/organizations/{org_id}/onboarding": { params: GetOnboardingProgressParams; response: GetOnboardingProgressStatus200 };
   "PATCH /v1/organizations/{org_id}/onboarding": { params: UpdateOnboardingProgressParams; response: UpdateOnboardingProgressStatus200 };
+  "GET /v1/organizations": { params?: undefined; response: ListOrganizationsStatus200 };
   "GET /v1/projects/{project_id}/policies": { params: ListPolicyProfilesParams; response: ListPolicyProfilesStatus200 };
   "POST /v1/projects/{project_id}/policies": { params: CreatePolicyProfileParams; response: CreatePolicyProfileStatus201 };
   "GET /v1/projects/{project_id}/policies/{policy_id}": { params: GetPolicyProfileParams; response: GetPolicyProfileStatus200 };
