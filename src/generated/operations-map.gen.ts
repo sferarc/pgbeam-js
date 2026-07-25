@@ -10,6 +10,7 @@ import type { GetAgentCredentialRequestConfig, GetAgentCredentialStatus200 } fro
 import type { UpdateAgentCredentialStatusRequestConfig, UpdateAgentCredentialStatusStatus200 } from "./types/UpdateAgentCredentialStatus";
 import type { RevokeAgentCredentialRequestConfig } from "./types/RevokeAgentCredential";
 import type { RotateAgentCredentialRequestConfig, RotateAgentCredentialStatus200 } from "./types/RotateAgentCredential";
+import type { RecommendAgentPolicyRequestConfig, RecommendAgentPolicyStatus200 } from "./types/RecommendAgentPolicy";
 import type { ListAnomalyAlertsRequestConfig, ListAnomalyAlertsStatus200 } from "./types/ListAnomalyAlerts";
 import type { UpdateAnomalyAlertRequestConfig, UpdateAnomalyAlertStatus200 } from "./types/UpdateAnomalyAlert";
 import type { ListApprovalRequestsRequestConfig, ListApprovalRequestsStatus200 } from "./types/ListApprovalRequests";
@@ -99,6 +100,16 @@ export const operationsByTag = {
     exportAuditLogs: { method: "GET", path: "/v1/projects/{project_id}/audit-logs/export" },
     verifyAuditChain: { method: "GET", path: "/v1/projects/{project_id}/audit-logs/verify" },
   },
+  policies: {
+    recommendAgentPolicy: { method: "POST", path: "/v1/projects/{project_id}/agents/{agent_id}/policy-recommendation" },
+    listPolicyProfiles: { method: "GET", path: "/v1/projects/{project_id}/policies" },
+    createPolicyProfile: { method: "POST", path: "/v1/projects/{project_id}/policies" },
+    getPolicyProfile: { method: "GET", path: "/v1/projects/{project_id}/policies/{policy_id}" },
+    updatePolicyProfile: { method: "PUT", path: "/v1/projects/{project_id}/policies/{policy_id}" },
+    deletePolicyProfile: { method: "DELETE", path: "/v1/projects/{project_id}/policies/{policy_id}" },
+    dryEvalPolicy: { method: "POST", path: "/v1/projects/{project_id}/policy-evaluations" },
+    replayPolicy: { method: "POST", path: "/v1/projects/{project_id}/policy-replays" },
+  },
   anomalies: {
     listAnomalyAlerts: { method: "GET", path: "/v1/projects/{project_id}/anomalies" },
     updateAnomalyAlert: { method: "PATCH", path: "/v1/projects/{project_id}/anomalies/{anomaly_id}" },
@@ -160,15 +171,6 @@ export const operationsByTag = {
   migrations: {
     lintMigration: { method: "POST", path: "/v1/projects/{project_id}/migrations:lint" },
   },
-  policies: {
-    listPolicyProfiles: { method: "GET", path: "/v1/projects/{project_id}/policies" },
-    createPolicyProfile: { method: "POST", path: "/v1/projects/{project_id}/policies" },
-    getPolicyProfile: { method: "GET", path: "/v1/projects/{project_id}/policies/{policy_id}" },
-    updatePolicyProfile: { method: "PUT", path: "/v1/projects/{project_id}/policies/{policy_id}" },
-    deletePolicyProfile: { method: "DELETE", path: "/v1/projects/{project_id}/policies/{policy_id}" },
-    dryEvalPolicy: { method: "POST", path: "/v1/projects/{project_id}/policy-evaluations" },
-    replayPolicy: { method: "POST", path: "/v1/projects/{project_id}/policy-replays" },
-  },
   support: {
     listSupportCases: { method: "GET", path: "/v1/organizations/{org_id}/support/cases" },
     createSupportCase: { method: "POST", path: "/v1/organizations/{org_id}/support/cases" },
@@ -197,6 +199,7 @@ export const operationsByPath = {
   "PATCH /v1/projects/{project_id}/agents/{agent_id}": { method: "PATCH", path: "/v1/projects/{project_id}/agents/{agent_id}", operationId: "updateAgentCredentialStatus" },
   "DELETE /v1/projects/{project_id}/agents/{agent_id}": { method: "DELETE", path: "/v1/projects/{project_id}/agents/{agent_id}", operationId: "revokeAgentCredential" },
   "POST /v1/projects/{project_id}/agents/{agent_id}/rotate": { method: "POST", path: "/v1/projects/{project_id}/agents/{agent_id}/rotate", operationId: "rotateAgentCredential" },
+  "POST /v1/projects/{project_id}/agents/{agent_id}/policy-recommendation": { method: "POST", path: "/v1/projects/{project_id}/agents/{agent_id}/policy-recommendation", operationId: "recommendAgentPolicy" },
   "GET /v1/projects/{project_id}/anomalies": { method: "GET", path: "/v1/projects/{project_id}/anomalies", operationId: "listAnomalyAlerts" },
   "PATCH /v1/projects/{project_id}/anomalies/{anomaly_id}": { method: "PATCH", path: "/v1/projects/{project_id}/anomalies/{anomaly_id}", operationId: "updateAnomalyAlert" },
   "GET /v1/projects/{project_id}/approvals": { method: "GET", path: "/v1/projects/{project_id}/approvals", operationId: "listApprovalRequests" },
@@ -275,6 +278,7 @@ type GetAgentCredentialParams = { pathParams: NonNullable<GetAgentCredentialRequ
 type UpdateAgentCredentialStatusParams = { pathParams: NonNullable<UpdateAgentCredentialStatusRequestConfig["pathParams"]>; body: NonNullable<UpdateAgentCredentialStatusRequestConfig["data"]> };
 type RevokeAgentCredentialParams = { pathParams: NonNullable<RevokeAgentCredentialRequestConfig["pathParams"]> };
 type RotateAgentCredentialParams = { pathParams: NonNullable<RotateAgentCredentialRequestConfig["pathParams"]> };
+type RecommendAgentPolicyParams = { pathParams: NonNullable<RecommendAgentPolicyRequestConfig["pathParams"]>; body: NonNullable<RecommendAgentPolicyRequestConfig["data"]> };
 type ListAnomalyAlertsParams = { pathParams: NonNullable<ListAnomalyAlertsRequestConfig["pathParams"]>; queryParams?: NonNullable<ListAnomalyAlertsRequestConfig["queryParams"]> };
 type UpdateAnomalyAlertParams = { pathParams: NonNullable<UpdateAnomalyAlertRequestConfig["pathParams"]>; body: NonNullable<UpdateAnomalyAlertRequestConfig["data"]> };
 type ListApprovalRequestsParams = { pathParams: NonNullable<ListApprovalRequestsRequestConfig["pathParams"]>; queryParams?: NonNullable<ListApprovalRequestsRequestConfig["queryParams"]> };
@@ -360,6 +364,16 @@ export interface ApiOperations {
     exportAuditLogs(params: ExportAuditLogsParams): Promise<ExportAuditLogsStatus200>;
     verifyAuditChain(params: VerifyAuditChainParams): Promise<VerifyAuditChainStatus200>;
   };
+  policies: {
+    recommendAgentPolicy(params: RecommendAgentPolicyParams): Promise<RecommendAgentPolicyStatus200>;
+    listPolicyProfiles(params: ListPolicyProfilesParams): Promise<ListPolicyProfilesStatus200>;
+    createPolicyProfile(params: CreatePolicyProfileParams): Promise<CreatePolicyProfileStatus201>;
+    getPolicyProfile(params: GetPolicyProfileParams): Promise<GetPolicyProfileStatus200>;
+    updatePolicyProfile(params: UpdatePolicyProfileParams): Promise<UpdatePolicyProfileStatus200>;
+    deletePolicyProfile(params: DeletePolicyProfileParams): Promise<void>;
+    dryEvalPolicy(params: DryEvalPolicyParams): Promise<DryEvalPolicyStatus200>;
+    replayPolicy(params: ReplayPolicyParams): Promise<ReplayPolicyStatus200>;
+  };
   anomalies: {
     listAnomalyAlerts(params: ListAnomalyAlertsParams): Promise<ListAnomalyAlertsStatus200>;
     updateAnomalyAlert(params: UpdateAnomalyAlertParams): Promise<UpdateAnomalyAlertStatus200>;
@@ -421,15 +435,6 @@ export interface ApiOperations {
   migrations: {
     lintMigration(params: LintMigrationParams): Promise<LintMigrationStatus200>;
   };
-  policies: {
-    listPolicyProfiles(params: ListPolicyProfilesParams): Promise<ListPolicyProfilesStatus200>;
-    createPolicyProfile(params: CreatePolicyProfileParams): Promise<CreatePolicyProfileStatus201>;
-    getPolicyProfile(params: GetPolicyProfileParams): Promise<GetPolicyProfileStatus200>;
-    updatePolicyProfile(params: UpdatePolicyProfileParams): Promise<UpdatePolicyProfileStatus200>;
-    deletePolicyProfile(params: DeletePolicyProfileParams): Promise<void>;
-    dryEvalPolicy(params: DryEvalPolicyParams): Promise<DryEvalPolicyStatus200>;
-    replayPolicy(params: ReplayPolicyParams): Promise<ReplayPolicyStatus200>;
-  };
   support: {
     listSupportCases(params: ListSupportCasesParams): Promise<ListSupportCasesStatus200>;
     createSupportCase(params: CreateSupportCaseParams): Promise<CreateSupportCaseStatus201>;
@@ -458,6 +463,7 @@ export interface RequestMap {
   "PATCH /v1/projects/{project_id}/agents/{agent_id}": { params: UpdateAgentCredentialStatusParams; response: UpdateAgentCredentialStatusStatus200 };
   "DELETE /v1/projects/{project_id}/agents/{agent_id}": { params: RevokeAgentCredentialParams; response: void };
   "POST /v1/projects/{project_id}/agents/{agent_id}/rotate": { params: RotateAgentCredentialParams; response: RotateAgentCredentialStatus200 };
+  "POST /v1/projects/{project_id}/agents/{agent_id}/policy-recommendation": { params: RecommendAgentPolicyParams; response: RecommendAgentPolicyStatus200 };
   "GET /v1/projects/{project_id}/anomalies": { params: ListAnomalyAlertsParams; response: ListAnomalyAlertsStatus200 };
   "PATCH /v1/projects/{project_id}/anomalies/{anomaly_id}": { params: UpdateAnomalyAlertParams; response: UpdateAnomalyAlertStatus200 };
   "GET /v1/projects/{project_id}/approvals": { params: ListApprovalRequestsParams; response: ListApprovalRequestsStatus200 };
