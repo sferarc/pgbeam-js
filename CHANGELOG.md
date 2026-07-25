@@ -1,5 +1,11 @@
 # pgbeam
 
+## 0.3.13
+
+### Patch Changes
+
+- 19fd607: feat(policies): least-privilege auto-policy recommender from audit traffic (BET-1)
+
 ## 0.3.12
 
 ### Patch Changes
