@@ -41,6 +41,11 @@ import type { CreateCustomDomainRequestConfig, CreateCustomDomainStatus201 } fro
 import type { DeleteCustomDomainRequestConfig } from "./types/DeleteCustomDomain";
 import type { VerifyCustomDomainRequestConfig, VerifyCustomDomainStatus200 } from "./types/VerifyCustomDomain";
 import type { GetHealthStatus200 } from "./types/GetHealth";
+import type { ListHoneytokensRequestConfig, ListHoneytokensStatus200 } from "./types/ListHoneytokens";
+import type { CreateHoneytokenRequestConfig, CreateHoneytokenStatus201 } from "./types/CreateHoneytoken";
+import type { GetHoneytokenRequestConfig, GetHoneytokenStatus200 } from "./types/GetHoneytoken";
+import type { UpdateHoneytokenRequestConfig, UpdateHoneytokenStatus200 } from "./types/UpdateHoneytoken";
+import type { DeleteHoneytokenRequestConfig } from "./types/DeleteHoneytoken";
 import type { GetProjectInsightsRequestConfig, GetProjectInsightsStatus200 } from "./types/GetProjectInsights";
 import type { LintMigrationRequestConfig, LintMigrationStatus200 } from "./types/LintMigration";
 import type { GetOnboardingProgressRequestConfig, GetOnboardingProgressStatus200 } from "./types/GetOnboardingProgress";
@@ -168,6 +173,13 @@ export const operationsByTag = {
     revokeSelfHostEnrollment: { method: "DELETE", path: "/v1/organizations/{org_id}/self-host-enrollments/{enrollment_id}" },
     rotateSelfHostEnrollment: { method: "POST", path: "/v1/organizations/{org_id}/self-host-enrollments/{enrollment_id}/rotate" },
   },
+  honeytokens: {
+    listHoneytokens: { method: "GET", path: "/v1/projects/{project_id}/honeytokens" },
+    createHoneytoken: { method: "POST", path: "/v1/projects/{project_id}/honeytokens" },
+    getHoneytoken: { method: "GET", path: "/v1/projects/{project_id}/honeytokens/{honeytoken_id}" },
+    updateHoneytoken: { method: "PUT", path: "/v1/projects/{project_id}/honeytokens/{honeytoken_id}" },
+    deleteHoneytoken: { method: "DELETE", path: "/v1/projects/{project_id}/honeytokens/{honeytoken_id}" },
+  },
   migrations: {
     lintMigration: { method: "POST", path: "/v1/projects/{project_id}/migrations:lint" },
   },
@@ -230,6 +242,11 @@ export const operationsByPath = {
   "DELETE /v1/projects/{project_id}/domains/{domain_id}": { method: "DELETE", path: "/v1/projects/{project_id}/domains/{domain_id}", operationId: "deleteCustomDomain" },
   "POST /v1/projects/{project_id}/domains/{domain_id}/verify": { method: "POST", path: "/v1/projects/{project_id}/domains/{domain_id}/verify", operationId: "verifyCustomDomain" },
   "GET /v1/health": { method: "GET", path: "/v1/health", operationId: "getHealth" },
+  "GET /v1/projects/{project_id}/honeytokens": { method: "GET", path: "/v1/projects/{project_id}/honeytokens", operationId: "listHoneytokens" },
+  "POST /v1/projects/{project_id}/honeytokens": { method: "POST", path: "/v1/projects/{project_id}/honeytokens", operationId: "createHoneytoken" },
+  "GET /v1/projects/{project_id}/honeytokens/{honeytoken_id}": { method: "GET", path: "/v1/projects/{project_id}/honeytokens/{honeytoken_id}", operationId: "getHoneytoken" },
+  "PUT /v1/projects/{project_id}/honeytokens/{honeytoken_id}": { method: "PUT", path: "/v1/projects/{project_id}/honeytokens/{honeytoken_id}", operationId: "updateHoneytoken" },
+  "DELETE /v1/projects/{project_id}/honeytokens/{honeytoken_id}": { method: "DELETE", path: "/v1/projects/{project_id}/honeytokens/{honeytoken_id}", operationId: "deleteHoneytoken" },
   "GET /v1/projects/{project_id}/insights": { method: "GET", path: "/v1/projects/{project_id}/insights", operationId: "getProjectInsights" },
   "POST /v1/projects/{project_id}/migrations:lint": { method: "POST", path: "/v1/projects/{project_id}/migrations:lint", operationId: "lintMigration" },
   "GET /v1/organizations/{org_id}/onboarding": { method: "GET", path: "/v1/organizations/{org_id}/onboarding", operationId: "getOnboardingProgress" },
@@ -307,6 +324,11 @@ type ListCustomDomainsParams = { pathParams: NonNullable<ListCustomDomainsReques
 type CreateCustomDomainParams = { pathParams: NonNullable<CreateCustomDomainRequestConfig["pathParams"]>; body: NonNullable<CreateCustomDomainRequestConfig["data"]> };
 type DeleteCustomDomainParams = { pathParams: NonNullable<DeleteCustomDomainRequestConfig["pathParams"]> };
 type VerifyCustomDomainParams = { pathParams: NonNullable<VerifyCustomDomainRequestConfig["pathParams"]> };
+type ListHoneytokensParams = { pathParams: NonNullable<ListHoneytokensRequestConfig["pathParams"]>; queryParams?: NonNullable<ListHoneytokensRequestConfig["queryParams"]> };
+type CreateHoneytokenParams = { pathParams: NonNullable<CreateHoneytokenRequestConfig["pathParams"]>; body: NonNullable<CreateHoneytokenRequestConfig["data"]> };
+type GetHoneytokenParams = { pathParams: NonNullable<GetHoneytokenRequestConfig["pathParams"]> };
+type UpdateHoneytokenParams = { pathParams: NonNullable<UpdateHoneytokenRequestConfig["pathParams"]>; body: NonNullable<UpdateHoneytokenRequestConfig["data"]> };
+type DeleteHoneytokenParams = { pathParams: NonNullable<DeleteHoneytokenRequestConfig["pathParams"]> };
 type GetProjectInsightsParams = { pathParams: NonNullable<GetProjectInsightsRequestConfig["pathParams"]>; queryParams?: NonNullable<GetProjectInsightsRequestConfig["queryParams"]> };
 type LintMigrationParams = { pathParams: NonNullable<LintMigrationRequestConfig["pathParams"]>; body: NonNullable<LintMigrationRequestConfig["data"]> };
 type GetOnboardingProgressParams = { pathParams: NonNullable<GetOnboardingProgressRequestConfig["pathParams"]> };
@@ -432,6 +454,13 @@ export interface ApiOperations {
     revokeSelfHostEnrollment(params: RevokeSelfHostEnrollmentParams): Promise<void>;
     rotateSelfHostEnrollment(params: RotateSelfHostEnrollmentParams): Promise<RotateSelfHostEnrollmentStatus200>;
   };
+  honeytokens: {
+    listHoneytokens(params: ListHoneytokensParams): Promise<ListHoneytokensStatus200>;
+    createHoneytoken(params: CreateHoneytokenParams): Promise<CreateHoneytokenStatus201>;
+    getHoneytoken(params: GetHoneytokenParams): Promise<GetHoneytokenStatus200>;
+    updateHoneytoken(params: UpdateHoneytokenParams): Promise<UpdateHoneytokenStatus200>;
+    deleteHoneytoken(params: DeleteHoneytokenParams): Promise<void>;
+  };
   migrations: {
     lintMigration(params: LintMigrationParams): Promise<LintMigrationStatus200>;
   };
@@ -494,6 +523,11 @@ export interface RequestMap {
   "DELETE /v1/projects/{project_id}/domains/{domain_id}": { params: DeleteCustomDomainParams; response: void };
   "POST /v1/projects/{project_id}/domains/{domain_id}/verify": { params: VerifyCustomDomainParams; response: VerifyCustomDomainStatus200 };
   "GET /v1/health": { params?: undefined; response: GetHealthStatus200 };
+  "GET /v1/projects/{project_id}/honeytokens": { params: ListHoneytokensParams; response: ListHoneytokensStatus200 };
+  "POST /v1/projects/{project_id}/honeytokens": { params: CreateHoneytokenParams; response: CreateHoneytokenStatus201 };
+  "GET /v1/projects/{project_id}/honeytokens/{honeytoken_id}": { params: GetHoneytokenParams; response: GetHoneytokenStatus200 };
+  "PUT /v1/projects/{project_id}/honeytokens/{honeytoken_id}": { params: UpdateHoneytokenParams; response: UpdateHoneytokenStatus200 };
+  "DELETE /v1/projects/{project_id}/honeytokens/{honeytoken_id}": { params: DeleteHoneytokenParams; response: void };
   "GET /v1/projects/{project_id}/insights": { params: GetProjectInsightsParams; response: GetProjectInsightsStatus200 };
   "POST /v1/projects/{project_id}/migrations:lint": { params: LintMigrationParams; response: LintMigrationStatus200 };
   "GET /v1/organizations/{org_id}/onboarding": { params: GetOnboardingProgressParams; response: GetOnboardingProgressStatus200 };

@@ -20,6 +20,7 @@ export type { CreateCustomDomainData, CreateCustomDomainPathProjectId, CreateCus
 export type { CreateCustomDomainRequest } from "./CreateCustomDomainRequest";
 export type { CreateDatabaseData, CreateDatabasePathProjectId, CreateDatabaseRequestConfig, CreateDatabaseResponse, CreateDatabaseResponses, CreateDatabaseStatus201, CreateDatabaseStatus400, CreateDatabaseStatus401, CreateDatabaseStatus403, CreateDatabaseStatus404, CreateDatabaseStatus429 } from "./CreateDatabase";
 export type { CreateDatabaseRequest } from "./CreateDatabaseRequest";
+export type { CreateHoneytokenData, CreateHoneytokenPathProjectId, CreateHoneytokenRequestConfig, CreateHoneytokenResponse, CreateHoneytokenResponses, CreateHoneytokenStatus201, CreateHoneytokenStatus400, CreateHoneytokenStatus401, CreateHoneytokenStatus403, CreateHoneytokenStatus404, CreateHoneytokenStatus429 } from "./CreateHoneytoken";
 export type { CreatePolicyProfileData, CreatePolicyProfilePathProjectId, CreatePolicyProfileRequestConfig, CreatePolicyProfileResponse, CreatePolicyProfileResponses, CreatePolicyProfileStatus201, CreatePolicyProfileStatus400, CreatePolicyProfileStatus401, CreatePolicyProfileStatus403, CreatePolicyProfileStatus404, CreatePolicyProfileStatus409, CreatePolicyProfileStatus429 } from "./CreatePolicyProfile";
 export type { CreateProjectData, CreateProjectRequestConfig, CreateProjectResponses, CreateProjectStatus201, CreateProjectStatus400, CreateProjectStatus401, CreateProjectStatus403, CreateProjectStatus409, CreateProjectStatus429 } from "./CreateProject";
 export type { CreateProjectRequest, CreateProjectRequestCloudEnumKey } from "./CreateProjectRequest";
@@ -41,6 +42,7 @@ export type { DatabaseBranch, DatabaseBranchStatusEnumKey } from "./DatabaseBran
 export type { DatabaseRoleKey } from "./DatabaseRole";
 export type { DeleteCustomDomainPathDomainId, DeleteCustomDomainPathProjectId, DeleteCustomDomainRequestConfig, DeleteCustomDomainResponse, DeleteCustomDomainResponses, DeleteCustomDomainStatus204, DeleteCustomDomainStatus400, DeleteCustomDomainStatus401, DeleteCustomDomainStatus403, DeleteCustomDomainStatus404, DeleteCustomDomainStatus429 } from "./DeleteCustomDomain";
 export type { DeleteDatabasePathDatabaseId, DeleteDatabasePathProjectId, DeleteDatabaseRequestConfig, DeleteDatabaseResponse, DeleteDatabaseResponses, DeleteDatabaseStatus204, DeleteDatabaseStatus400, DeleteDatabaseStatus401, DeleteDatabaseStatus403, DeleteDatabaseStatus404, DeleteDatabaseStatus429 } from "./DeleteDatabase";
+export type { DeleteHoneytokenPathHoneytokenId, DeleteHoneytokenPathProjectId, DeleteHoneytokenRequestConfig, DeleteHoneytokenResponse, DeleteHoneytokenResponses, DeleteHoneytokenStatus204, DeleteHoneytokenStatus400, DeleteHoneytokenStatus401, DeleteHoneytokenStatus403, DeleteHoneytokenStatus404 } from "./DeleteHoneytoken";
 export type { DeletePolicyProfilePathPolicyId, DeletePolicyProfilePathProjectId, DeletePolicyProfileRequestConfig, DeletePolicyProfileResponse, DeletePolicyProfileResponses, DeletePolicyProfileStatus204, DeletePolicyProfileStatus400, DeletePolicyProfileStatus401, DeletePolicyProfileStatus403, DeletePolicyProfileStatus404, DeletePolicyProfileStatus409 } from "./DeletePolicyProfile";
 export type { DeleteProjectPathProjectId, DeleteProjectRequestConfig, DeleteProjectResponse, DeleteProjectResponses, DeleteProjectStatus204, DeleteProjectStatus400, DeleteProjectStatus401, DeleteProjectStatus403, DeleteProjectStatus404, DeleteProjectStatus429 } from "./DeleteProject";
 export type { DeleteReplicaPathDatabaseId, DeleteReplicaPathReplicaId, DeleteReplicaRequestConfig, DeleteReplicaResponse, DeleteReplicaResponses, DeleteReplicaStatus204, DeleteReplicaStatus400, DeleteReplicaStatus401, DeleteReplicaStatus403, DeleteReplicaStatus404, DeleteReplicaStatus429 } from "./DeleteReplica";
@@ -57,6 +59,7 @@ export type { ExportAuditLogsPathProjectId, ExportAuditLogsQueryCredentialId, Ex
 export type { GetAgentCredentialPathAgentId, GetAgentCredentialPathProjectId, GetAgentCredentialRequestConfig, GetAgentCredentialResponse, GetAgentCredentialResponses, GetAgentCredentialStatus200, GetAgentCredentialStatus400, GetAgentCredentialStatus401, GetAgentCredentialStatus403, GetAgentCredentialStatus404 } from "./GetAgentCredential";
 export type { GetDatabasePathDatabaseId, GetDatabasePathProjectId, GetDatabaseRequestConfig, GetDatabaseResponse, GetDatabaseResponses, GetDatabaseStatus200, GetDatabaseStatus400, GetDatabaseStatus401, GetDatabaseStatus403, GetDatabaseStatus404, GetDatabaseStatus429 } from "./GetDatabase";
 export type { GetHealthRequestConfig, GetHealthResponse, GetHealthResponses, GetHealthStatus200, GetHealthStatus429 } from "./GetHealth";
+export type { GetHoneytokenPathHoneytokenId, GetHoneytokenPathProjectId, GetHoneytokenRequestConfig, GetHoneytokenResponse, GetHoneytokenResponses, GetHoneytokenStatus200, GetHoneytokenStatus400, GetHoneytokenStatus401, GetHoneytokenStatus403, GetHoneytokenStatus404 } from "./GetHoneytoken";
 export type { GetOnboardingProgressPathOrgId, GetOnboardingProgressRequestConfig, GetOnboardingProgressResponse, GetOnboardingProgressResponses, GetOnboardingProgressStatus200, GetOnboardingProgressStatus400, GetOnboardingProgressStatus401, GetOnboardingProgressStatus403, GetOnboardingProgressStatus404, GetOnboardingProgressStatus429 } from "./GetOnboardingProgress";
 export type { GetOrganizationPlanPathOrgId, GetOrganizationPlanRequestConfig, GetOrganizationPlanResponse, GetOrganizationPlanResponses, GetOrganizationPlanStatus200, GetOrganizationPlanStatus400, GetOrganizationPlanStatus401, GetOrganizationPlanStatus403, GetOrganizationPlanStatus429 } from "./GetOrganizationPlan";
 export type { GetOrganizationUsagePathOrgId, GetOrganizationUsageQueryEndDate, GetOrganizationUsageQueryStartDate, GetOrganizationUsageRequestConfig, GetOrganizationUsageResponse, GetOrganizationUsageResponses, GetOrganizationUsageStatus200, GetOrganizationUsageStatus400, GetOrganizationUsageStatus401, GetOrganizationUsageStatus403, GetOrganizationUsageStatus429 } from "./GetOrganizationUsage";
@@ -72,6 +75,8 @@ export type { GetVercelInstallationPathOrgId, GetVercelInstallationRequestConfig
 export type { GetWebhookEndpointPathProjectId, GetWebhookEndpointPathWebhookId, GetWebhookEndpointRequestConfig, GetWebhookEndpointResponse, GetWebhookEndpointResponses, GetWebhookEndpointStatus200, GetWebhookEndpointStatus400, GetWebhookEndpointStatus401, GetWebhookEndpointStatus403, GetWebhookEndpointStatus404 } from "./GetWebhookEndpoint";
 export type { HandleSlackSupportEventData, HandleSlackSupportEventRequestConfig, HandleSlackSupportEventResponse, HandleSlackSupportEventResponses, HandleSlackSupportEventStatus200, HandleSlackSupportEventStatus400, HandleSlackSupportEventStatus401, HandleSlackSupportEventStatus404 } from "./HandleSlackSupportEvent";
 export type { HealthResponse, HealthResponseStatusEnumKey } from "./HealthResponse";
+export type { Honeytoken, HoneytokenActionEnumKey } from "./Honeytoken";
+export type { HoneytokenInput, HoneytokenInputActionEnumKey } from "./HoneytokenInput";
 export type { LatencySummary } from "./LatencySummary";
 export type { LintMigrationData, LintMigrationPathProjectId, LintMigrationRequestConfig, LintMigrationResponse, LintMigrationResponses, LintMigrationStatus200, LintMigrationStatus400, LintMigrationStatus401, LintMigrationStatus403, LintMigrationStatus404 } from "./LintMigration";
 export type { ListAgentCredentialsPathProjectId, ListAgentCredentialsQueryPageSize, ListAgentCredentialsQueryPageToken, ListAgentCredentialsRequestConfig, ListAgentCredentialsResponses, ListAgentCredentialsStatus200, ListAgentCredentialsStatus400, ListAgentCredentialsStatus401, ListAgentCredentialsStatus403, ListAgentCredentialsStatus404, ListAgentCredentialsStatus429 } from "./ListAgentCredentials";
@@ -90,6 +95,8 @@ export type { ListDatabaseBranchesPathProjectId, ListDatabaseBranchesQueryPageSi
 export type { ListDatabaseBranchesResponse } from "./ListDatabaseBranchesResponse";
 export type { ListDatabasesPathProjectId, ListDatabasesQueryPageSize, ListDatabasesQueryPageToken, ListDatabasesRequestConfig, ListDatabasesResponses, ListDatabasesStatus200, ListDatabasesStatus400, ListDatabasesStatus401, ListDatabasesStatus403, ListDatabasesStatus404, ListDatabasesStatus429 } from "./ListDatabases";
 export type { ListDatabasesResponse } from "./ListDatabasesResponse";
+export type { ListHoneytokensPathProjectId, ListHoneytokensQueryPageSize, ListHoneytokensQueryPageToken, ListHoneytokensRequestConfig, ListHoneytokensResponses, ListHoneytokensStatus200, ListHoneytokensStatus400, ListHoneytokensStatus401, ListHoneytokensStatus403, ListHoneytokensStatus404, ListHoneytokensStatus429 } from "./ListHoneytokens";
+export type { ListHoneytokensResponse } from "./ListHoneytokensResponse";
 export type { ListOrganizationsRequestConfig, ListOrganizationsResponses, ListOrganizationsStatus200, ListOrganizationsStatus401, ListOrganizationsStatus429 } from "./ListOrganizations";
 export type { ListOrganizationsResponse } from "./ListOrganizationsResponse";
 export type { ListPlansRequestConfig, ListPlansResponses, ListPlansStatus200, ListPlansStatus401, ListPlansStatus429 } from "./ListPlans";
@@ -176,6 +183,7 @@ export type { UpdateCacheRuleRequest } from "./UpdateCacheRuleRequest";
 export type { UpdateCacheRuleResponse } from "./UpdateCacheRuleResponse";
 export type { UpdateDatabaseData, UpdateDatabasePathDatabaseId, UpdateDatabasePathProjectId, UpdateDatabaseRequestConfig, UpdateDatabaseResponse, UpdateDatabaseResponses, UpdateDatabaseStatus200, UpdateDatabaseStatus400, UpdateDatabaseStatus401, UpdateDatabaseStatus403, UpdateDatabaseStatus404, UpdateDatabaseStatus429 } from "./UpdateDatabase";
 export type { UpdateDatabaseRequest } from "./UpdateDatabaseRequest";
+export type { UpdateHoneytokenData, UpdateHoneytokenPathHoneytokenId, UpdateHoneytokenPathProjectId, UpdateHoneytokenRequestConfig, UpdateHoneytokenResponse, UpdateHoneytokenResponses, UpdateHoneytokenStatus200, UpdateHoneytokenStatus400, UpdateHoneytokenStatus401, UpdateHoneytokenStatus403, UpdateHoneytokenStatus404 } from "./UpdateHoneytoken";
 export type { UpdateOnboardingProgressData, UpdateOnboardingProgressPathOrgId, UpdateOnboardingProgressRequestConfig, UpdateOnboardingProgressResponse, UpdateOnboardingProgressResponses, UpdateOnboardingProgressStatus200, UpdateOnboardingProgressStatus400, UpdateOnboardingProgressStatus401, UpdateOnboardingProgressStatus403, UpdateOnboardingProgressStatus404, UpdateOnboardingProgressStatus429 } from "./UpdateOnboardingProgress";
 export type { UpdateOnboardingRequest, UpdateOnboardingRequestStepEnumKey } from "./UpdateOnboardingRequest";
 export type { UpdatePolicyProfileData, UpdatePolicyProfilePathPolicyId, UpdatePolicyProfilePathProjectId, UpdatePolicyProfileRequestConfig, UpdatePolicyProfileResponse, UpdatePolicyProfileResponses, UpdatePolicyProfileStatus200, UpdatePolicyProfileStatus400, UpdatePolicyProfileStatus401, UpdatePolicyProfileStatus403, UpdatePolicyProfileStatus404, UpdatePolicyProfileStatus429 } from "./UpdatePolicyProfile";
@@ -209,6 +217,8 @@ export { databaseRole } from "./DatabaseRole";
 export { dryEvalMaskedColumnKindEnum } from "./DryEvalMaskedColumn";
 export { dryEvalResultVerdictEnum } from "./DryEvalResult";
 export { healthResponseStatusEnum } from "./HealthResponse";
+export { honeytokenActionEnum } from "./Honeytoken";
+export { honeytokenInputActionEnum } from "./HoneytokenInput";
 export { maskingRuleKindEnum } from "./MaskingRule";
 export { mcpRequestJsonrpcEnum, mcpRequestMethodEnum } from "./McpRequest";
 export { mcpResponseJsonrpcEnum } from "./McpResponse";
