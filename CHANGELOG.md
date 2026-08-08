@@ -1,5 +1,11 @@
 # pgbeam
 
+## 0.3.14
+
+### Patch Changes
+
+- d78ddfc: feat(crm): org-scoped CRM with a graph-and-loop research agent
+
 ## 0.3.13
 
 ### Patch Changes
