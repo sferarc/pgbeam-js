@@ -1,4 +1,9 @@
-export type { ApiClient, PgBeamClientOptions } from "./client";
+export type {
+  ApiClient,
+  OperationMeta,
+  OperationRegistry,
+  PgBeamClientOptions,
+} from "./client";
 export { PgBeamClient } from "./client";
 export type * from "./generated/index";
 export type { RetryConfig } from "./utils/fetcher";
