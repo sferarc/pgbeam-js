@@ -51,6 +51,8 @@ export interface PgBeamClientOptions {
   onResponse?: OnResponseHook;
   /** Retry configuration. Default: { maxRetries: 5 }. Set false to disable. */
   retry?: RetryConfig | false;
+  /** Per-request timeout in ms. Default: 30_000. 0 disables it. */
+  timeoutMs?: number;
   /** Operation registry to dispatch on. Defaults to the public API's. */
   operations?: OperationRegistry;
 }
@@ -61,6 +63,7 @@ export class PgBeamClient<TApi = ApiClient> {
   private _fetchImpl?: typeof globalThis.fetch;
   private _onResponse?: OnResponseHook;
   private _retry?: RetryConfig;
+  private _timeoutMs?: number;
   private _operations: OperationRegistry;
   private _api?: TApi;
 
@@ -71,6 +74,7 @@ export class PgBeamClient<TApi = ApiClient> {
     this._onResponse = options.onResponse;
     this._retry =
       options.retry === false ? { maxRetries: 0 } : (options.retry ?? { maxRetries: 5 });
+    this._timeoutMs = options.timeoutMs;
     this._operations = options.operations ?? publicRegistry;
   }
 
@@ -94,6 +98,7 @@ export class PgBeamClient<TApi = ApiClient> {
       fetchImpl: this._fetchImpl,
       onResponse: this._onResponse,
       retry: this._retry,
+      timeoutMs: this._timeoutMs,
     });
   }
 

@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { ApiError, extractMessage, fetcher } from "./fetcher";
+import { ApiError, describeError, extractMessage, fetcher, NetworkError } from "./fetcher";
 
 // ---------------------------------------------------------------------------
 // ApiError
@@ -106,6 +106,58 @@ describe("extractMessage", () => {
 
   it("returns undefined when error is null inside the body", () => {
     expect(extractMessage({ error: null })).toBeUndefined();
+  });
+});
+
+// ---------------------------------------------------------------------------
+// describeError
+// ---------------------------------------------------------------------------
+describe("describeError", () => {
+  it("renders name and message", () => {
+    expect(describeError(new Error("boom"))).toBe("Error: boom");
+  });
+
+  it("appends a Node error code", () => {
+    const err = Object.assign(new Error("connect ECONNREFUSED 10.0.0.1:443"), {
+      code: "ECONNREFUSED",
+    });
+    expect(describeError(err)).toBe("Error: connect ECONNREFUSED 10.0.0.1:443 [ECONNREFUSED]");
+  });
+
+  it("unwraps the cause chain that undici hides behind 'fetch failed'", () => {
+    const cause = Object.assign(new Error("connect ECONNREFUSED 10.0.0.1:443"), {
+      code: "ECONNREFUSED",
+    });
+    const err = new TypeError("fetch failed", { cause });
+
+    expect(describeError(err)).toBe(
+      "TypeError: fetch failed (caused by Error: connect ECONNREFUSED 10.0.0.1:443 [ECONNREFUSED])",
+    );
+  });
+
+  it("unwraps every reason of an AggregateError", () => {
+    const inner = new AggregateError(
+      [new Error("v4 refused"), new Error("v6 refused")],
+      "all addresses failed",
+    );
+    const err = new TypeError("fetch failed", { cause: inner });
+
+    expect(describeError(err)).toBe(
+      "TypeError: fetch failed (caused by AggregateError: all addresses failed " +
+        "(caused by Error: v4 refused; Error: v6 refused))",
+    );
+  });
+
+  it("stops walking a cyclic chain", () => {
+    const err: Error & { cause?: unknown } = new Error("loop");
+    err.cause = err;
+    expect(describeError(err)).toContain("…");
+  });
+
+  it("stringifies non-object values", () => {
+    expect(describeError("plain string")).toBe("plain string");
+    expect(describeError(null)).toBe("null");
+    expect(describeError(undefined)).toBe("undefined");
   });
 });
 
@@ -774,6 +826,189 @@ describe("fetcher", () => {
 
       // 1 initial + 2 retries = 3 total
       expect(mockFetch).toHaveBeenCalledTimes(3);
+    });
+
+    it("stops retrying once the total budget is spent", async () => {
+      mockFetch.mockRejectedValue(new TypeError("fetch failed"));
+
+      // A 10-retry ladder starting at 10s would run for minutes. The budget is
+      // smaller than the very first backoff, so the first failure is final.
+      await expect(
+        fetcher({
+          method: "GET",
+          path: "/v1/test",
+          baseUrl: "https://api.example.com",
+          token: null,
+          retry: {
+            maxRetries: 10,
+            initialDelayMs: 10_000,
+            maxDelayMs: 30_000,
+            totalBudgetMs: 5_000,
+          },
+        }),
+      ).rejects.toBeInstanceOf(NetworkError);
+
+      expect(mockFetch).toHaveBeenCalledTimes(1);
+    });
+
+    it("stops retrying a retryable status once the total budget is spent", async () => {
+      mockFetch.mockResolvedValue(
+        jsonResponse(null, { status: 503, statusText: "Service Unavailable" }),
+      );
+
+      await expect(
+        fetcher({
+          method: "GET",
+          path: "/v1/test",
+          baseUrl: "https://api.example.com",
+          token: null,
+          retry: {
+            maxRetries: 10,
+            initialDelayMs: 10_000,
+            maxDelayMs: 30_000,
+            totalBudgetMs: 5_000,
+          },
+        }),
+      ).rejects.toThrow(ApiError);
+
+      expect(mockFetch).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  // -- Per-request timeout --
+
+  describe("timeout", () => {
+    it("attaches an abort signal by default", async () => {
+      mockFetch.mockResolvedValue(jsonResponse({ ok: true }));
+
+      await fetcher({
+        method: "GET",
+        path: "/v1/test",
+        baseUrl: "https://api.example.com",
+        token: null,
+      });
+
+      const [, init] = mockFetch.mock.calls[0];
+      expect(init.signal).toBeInstanceOf(AbortSignal);
+    });
+
+    it("omits the signal when the timeout is disabled", async () => {
+      mockFetch.mockResolvedValue(jsonResponse({ ok: true }));
+
+      await fetcher({
+        method: "GET",
+        path: "/v1/test",
+        baseUrl: "https://api.example.com",
+        token: null,
+        timeoutMs: 0,
+      });
+
+      const [, init] = mockFetch.mock.calls[0];
+      expect(init.signal).toBeUndefined();
+    });
+
+    it("reports a timed-out attempt with the endpoint and the configured timeout", async () => {
+      const timeout = Object.assign(new Error("The operation was aborted due to timeout"), {
+        name: "TimeoutError",
+      });
+      mockFetch.mockRejectedValue(timeout);
+
+      const err = await fetcher({
+        method: "GET",
+        path: "/v1/slow",
+        baseUrl: "https://api.example.com",
+        token: null,
+        timeoutMs: 1234,
+      }).catch((e: unknown) => e);
+
+      expect(err).toBeInstanceOf(NetworkError);
+      const networkErr = err as NetworkError;
+      expect(networkErr.timedOut).toBe(true);
+      expect(networkErr.message).toContain("https://api.example.com/v1/slow");
+      expect(networkErr.message).toContain("timed out after 1234ms");
+    });
+  });
+
+  // -- Network error reporting --
+
+  describe("network errors", () => {
+    it("names the endpoint, the attempt count and the underlying cause", async () => {
+      const cause = Object.assign(new Error("connect ECONNREFUSED 10.0.0.1:443"), {
+        code: "ECONNREFUSED",
+      });
+      mockFetch.mockRejectedValue(new TypeError("fetch failed", { cause }));
+
+      const err = await fetcher({
+        method: "POST",
+        path: "/v1/projects",
+        body: { name: "x" },
+        baseUrl: "https://api.example.com",
+        token: "tok",
+      }).catch((e: unknown) => e);
+
+      expect(err).toBeInstanceOf(NetworkError);
+      const networkErr = err as NetworkError;
+      expect(networkErr.method).toBe("POST");
+      expect(networkErr.url).toBe("https://api.example.com/v1/projects");
+      expect(networkErr.attempts).toBe(1);
+      expect(networkErr.timedOut).toBe(false);
+      expect(networkErr.cause).toBeInstanceOf(TypeError);
+      expect(networkErr.message).toContain("POST https://api.example.com/v1/projects");
+      expect(networkErr.message).toContain("TypeError: fetch failed");
+      expect(networkErr.message).toContain("connect ECONNREFUSED 10.0.0.1:443 [ECONNREFUSED]");
+    });
+
+    it("counts every attempt it made", async () => {
+      vi.useFakeTimers({ shouldAdvanceTime: true });
+      try {
+        mockFetch.mockRejectedValue(new TypeError("fetch failed"));
+
+        const err = await fetcher({
+          method: "GET",
+          path: "/v1/test",
+          baseUrl: "https://api.example.com",
+          token: null,
+          retry: { maxRetries: 2, initialDelayMs: 10, maxDelayMs: 100 },
+        }).catch((e: unknown) => e);
+
+        expect((err as NetworkError).attempts).toBe(3);
+      } finally {
+        vi.useRealTimers();
+      }
+    });
+
+    it("does not dress up a post-response failure as a reachability problem", async () => {
+      mockFetch.mockResolvedValue(jsonResponse({ ok: true }));
+      const onResponse = vi.fn(() => {
+        throw new Error("hook exploded");
+      });
+
+      const err = await fetcher({
+        method: "GET",
+        path: "/v1/test",
+        baseUrl: "https://api.example.com",
+        token: null,
+        onResponse,
+      }).catch((e: unknown) => e);
+
+      expect(err).not.toBeInstanceOf(NetworkError);
+      expect((err as Error).message).toBe("hook exploded");
+    });
+
+    it("leaves an ApiError alone", async () => {
+      mockFetch.mockResolvedValue(
+        jsonResponse({ error: { message: "nope" } }, { status: 400, statusText: "Bad Request" }),
+      );
+
+      const err = await fetcher({
+        method: "GET",
+        path: "/v1/test",
+        baseUrl: "https://api.example.com",
+        token: null,
+      }).catch((e: unknown) => e);
+
+      expect(err).toBeInstanceOf(ApiError);
+      expect(err).not.toBeInstanceOf(NetworkError);
     });
   });
 });
