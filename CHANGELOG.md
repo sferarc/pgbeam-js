@@ -1,5 +1,25 @@
 # pgbeam
 
+## 0.4.0
+
+### Minor Changes
+
+- 2d6e1ee: Bound every API call with a timeout and a retry budget, and report what failed.
+
+  `fetcher` now aborts an attempt after `timeoutMs` (default 30s, `0` disables it)
+  and stops retrying once `RetryConfig.totalBudgetMs` (default 120s) is spent, so a
+  long backoff ladder against a service that is down cannot outlive the budget. A
+  request that never got an answer throws a `NetworkError` naming the method, URL,
+  attempt count and elapsed time, with the `cause` chain flattened by the new
+  `describeError` export instead of an opaque `TypeError: fetch failed`.
+
+  The Pulumi provider uses a 15s request timeout and a 60s total budget, down from
+  an unbounded ladder that could spend over five minutes before failing. Its
+  generated `read()` now keeps the last known state when the API gave no considered
+  answer (a refused or timed-out connection, or a gateway status), because a
+  refresh that could not observe a resource has not found drift. Anything the API
+  actually answered still fails the run.
+
 ## 0.3.14
 
 ### Patch Changes
