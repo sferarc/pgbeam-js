@@ -44,7 +44,7 @@ export type CreateProjectStatus409 = Error;
 export type CreateProjectStatus429 = Error;
 
 /**
- * @description Request body for creating a project and its primary database.
+ * @description Request body for creating a project and its primary database, which are created atomically.
  * @type object
 */
 export type CreateProjectData = CreateProjectRequest;

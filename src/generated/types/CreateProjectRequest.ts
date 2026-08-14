@@ -14,7 +14,7 @@ export const createProjectRequestCloudEnum = {
 export type CreateProjectRequestCloudEnumKey = (typeof createProjectRequestCloudEnum)[keyof typeof createProjectRequestCloudEnum];
 
 /**
- * @description Request body for creating a project and its primary database.
+ * @description Request body for creating a project and its primary database, which are created atomically.
  * @type object
 */
 export type CreateProjectRequest = {
@@ -61,7 +61,7 @@ export type CreateProjectRequest = {
     */
     self_hosted?: boolean;
     /**
-     * @description Primary database. Created atomically with the project.
+     * @description Request body for registering an upstream database.
      * @type object
     */
     database: CreateDatabaseRequest;
