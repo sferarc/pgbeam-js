@@ -73,12 +73,12 @@ export type PolicyProfile = {
     */
     statement_rules?: StatementRules;
     /**
-     * @description If non-empty, only these relations are reachable. Schema-qualified or bare names.
+     * @description If non-empty, only these relations are reachable. Entries are schema-qualified (billing.orders) or bare (orders); a bare entry grants the public schema only, so the same table name in another schema must be listed in full.
      * @type array
     */
     table_allowlist: string[];
     /**
-     * @description Relations explicitly blocked (takes precedence over the allowlist).
+     * @description Relations explicitly blocked (takes precedence over the allowlist). A bare entry blocks that relation in every schema.
      * @type array
     */
     table_denylist: string[];

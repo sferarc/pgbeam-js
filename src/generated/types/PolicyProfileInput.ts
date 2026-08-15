@@ -63,12 +63,12 @@ export type PolicyProfileInput = {
     */
     statement_rules?: StatementRules;
     /**
-     * @description If non-empty, only these relations are reachable.
+     * @description If non-empty, only these relations are reachable. A bare entry grants the public schema only; list another schema in full, as in billing.orders.
      * @type array | undefined
     */
     table_allowlist?: string[];
     /**
-     * @description Relations explicitly blocked.
+     * @description Relations explicitly blocked. A bare entry blocks that relation in every schema.
      * @type array | undefined
     */
     table_denylist?: string[];
