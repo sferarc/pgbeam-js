@@ -139,7 +139,13 @@ export interface FetcherOptions {
   queryParams?: Record<string, unknown>;
   body?: unknown;
   baseUrl: string;
-  token: string | null;
+  /**
+   * A JWT, or a function resolving one. The function form is resolved here,
+   * under `timeoutMs`, rather than by the caller: a lazy token is itself a
+   * network call, and one resolved before the fetcher is entered would sit
+   * outside every bound this module applies.
+   */
+  token: string | null | (() => Promise<string | null>);
   fetchImpl?: typeof globalThis.fetch;
   onResponse?: OnResponseHook;
   retry?: RetryConfig;
@@ -223,6 +229,63 @@ function isMutatingMethod(method: string): boolean {
   return upper === "POST" || upper === "PATCH";
 }
 
+/**
+ * Resolve a lazy token, or give up once `timeoutMs` has passed without it.
+ *
+ * A token function is a network call in disguise. Both browser clients resolve
+ * a JWT from an auth endpoint (`authClient.token()`), so an auth endpoint that
+ * accepts the request and never answers is a stall like any other. It just
+ * happened before the attempt loop, where none of this module's bounds reach:
+ * `AbortSignal.timeout` is attached to the fetch, `totalBudgetMs` is measured
+ * from the first attempt, and neither exists yet. A `try`/`catch` in the token
+ * function does not cover it either, because a call that never answers never
+ * rejects. The result was a request with no ceiling of any kind, which is
+ * exactly what every other bound in this file was written to rule out.
+ *
+ * The failure is reported as a timed-out `NetworkError`, the same shape a
+ * stalled attempt produces, because it is the same event to a caller: the
+ * request never got an answer and a second try tests the same thing again.
+ * `lib/query-provider.tsx` in the dashboard already withholds its retry on
+ * `timedOut`, so it gets the right behaviour here for free.
+ *
+ * The bound is `timeoutMs`, the per-attempt ceiling, because the token round
+ * trip is an attempt. A call whose token stalls and whose request then stalls
+ * costs two of them, which is the honest cost of two sequential round trips and
+ * still finite, where before it was unbounded.
+ *
+ * `timeoutMs` of 0 disables the fetch timeout by documented contract, so it
+ * disables this one too rather than inventing a ceiling the caller turned off.
+ */
+async function resolveToken(
+  token: FetcherOptions["token"],
+  ctx: { method: string; url: string; startedAt: number; timeoutMs: number },
+): Promise<string | null> {
+  if (typeof token !== "function") return token;
+  if (ctx.timeoutMs <= 0) return token();
+
+  const stalled = Symbol("token-timeout");
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const deadline = new Promise<typeof stalled>((resolve) => {
+    timer = setTimeout(() => resolve(stalled), ctx.timeoutMs);
+  });
+
+  // A rejection from `token()` wins the race and propagates unchanged: the
+  // function decided it had failed, and relabelling that as a network timeout
+  // would lose the reason.
+  const resolved = await Promise.race([token(), deadline]).finally(() => clearTimeout(timer));
+  if (resolved !== stalled) return resolved;
+
+  throw new NetworkError({
+    method: ctx.method,
+    url: ctx.url,
+    attempts: 0,
+    elapsedMs: Date.now() - ctx.startedAt,
+    timedOut: true,
+    timeoutMs: ctx.timeoutMs,
+    cause: new Error("token resolution did not settle"),
+  });
+}
+
 export async function fetcher<T>(options: FetcherOptions): Promise<T> {
   let url = options.path;
   if (options.pathParams) {
@@ -241,20 +304,29 @@ export async function fetcher<T>(options: FetcherOptions): Promise<T> {
     }
   }
 
-  const headers: Record<string, string> = {};
-  if (options.token) {
-    headers.Authorization = `Bearer ${options.token}`;
-  }
-  if (options.body !== undefined) {
-    headers["Content-Type"] = "application/json";
-  }
-
   const fetchFn = options.fetchImpl ?? globalThis.fetch;
   const retry = resolveRetry(options.retry);
   const timeoutMs = options.timeoutMs ?? DEFAULT_TIMEOUT_MS;
   const startedAt = Date.now();
   const urlStr = fullUrl.toString();
   const fetchBody = options.body !== undefined ? JSON.stringify(options.body) : undefined;
+
+  // Resolved once, before the attempt loop, so retries reuse one token rather
+  // than paying for a fresh auth round trip each time.
+  const token = await resolveToken(options.token, {
+    method: options.method,
+    url: urlStr,
+    startedAt,
+    timeoutMs,
+  });
+
+  const headers: Record<string, string> = {};
+  if (token) {
+    headers.Authorization = `Bearer ${token}`;
+  }
+  if (options.body !== undefined) {
+    headers["Content-Type"] = "application/json";
+  }
 
   // Generate idempotency key once, reused across all retry attempts.
   const idempotencyKey =

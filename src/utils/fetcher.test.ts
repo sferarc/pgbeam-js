@@ -929,6 +929,163 @@ describe("fetcher", () => {
     });
   });
 
+  // -- Lazy token resolution --
+
+  describe("token resolution", () => {
+    it("awaits a token function and sends what it resolved", async () => {
+      mockFetch.mockResolvedValue(jsonResponse({ ok: true }));
+
+      await fetcher({
+        method: "GET",
+        path: "/v1/test",
+        baseUrl: "https://api.example.com",
+        token: async () => "lazy-tok",
+      });
+
+      const [, init] = mockFetch.mock.calls[0];
+      expect(init.headers.Authorization).toBe("Bearer lazy-tok");
+    });
+
+    it("sends no Authorization header when the function resolves null", async () => {
+      mockFetch.mockResolvedValue(jsonResponse({ ok: true }));
+
+      await fetcher({
+        method: "GET",
+        path: "/v1/test",
+        baseUrl: "https://api.example.com",
+        token: async () => null,
+      });
+
+      const [, init] = mockFetch.mock.calls[0];
+      expect(init.headers.Authorization).toBeUndefined();
+    });
+
+    it("gives up on a token function that never settles, and never opens the request", async () => {
+      // The defect. Every bound this client documents (`timeoutMs`, the retry
+      // budget, and the `timedOut` flag callers branch on) lives inside the
+      // attempt loop below, which a token that never resolves never reaches. A
+      // `catch` around the token function does not help either: a call that
+      // never answers never rejects. Before the fix this assertion never runs,
+      // because the fetcher itself never settles and the test times out.
+      vi.useFakeTimers();
+      try {
+        mockFetch.mockResolvedValue(jsonResponse({ ok: true }));
+
+        const settled = fetcher({
+          method: "GET",
+          path: "/v1/slow-token",
+          baseUrl: "https://api.example.com",
+          token: () => new Promise<string | null>(() => {}),
+          timeoutMs: 1234,
+        }).catch((e: unknown) => e);
+
+        await vi.advanceTimersByTimeAsync(600_000);
+        const err = await settled;
+
+        expect(err).toBeInstanceOf(NetworkError);
+        const networkErr = err as NetworkError;
+        expect(networkErr.timedOut).toBe(true);
+        expect(networkErr.method).toBe("GET");
+        expect(networkErr.url).toBe("https://api.example.com/v1/slow-token");
+        expect(networkErr.message).toContain("timed out after 1234ms");
+        // A request that was never authenticated must not go out unauthenticated.
+        expect(mockFetch).not.toHaveBeenCalled();
+      } finally {
+        vi.useRealTimers();
+      }
+    });
+
+    it("waits no longer for the token than for the request it authenticates", async () => {
+      vi.useFakeTimers();
+      try {
+        const began = Date.now();
+        const settled = fetcher({
+          method: "GET",
+          path: "/v1/slow-token",
+          baseUrl: "https://api.example.com",
+          token: () => new Promise<string | null>(() => {}),
+          timeoutMs: 5_000,
+        }).catch(() => Date.now() - began);
+
+        await vi.advanceTimersByTimeAsync(600_000);
+        expect(await settled).toBe(5_000);
+      } finally {
+        vi.useRealTimers();
+      }
+    });
+
+    it("leaves the token unbounded when the timeout is disabled", async () => {
+      // `timeoutMs: 0` is documented as "no timeout, at the mercy of the
+      // platform's own socket timeouts". The token phase honours that rather
+      // than inventing a bound the caller turned off.
+      vi.useFakeTimers();
+      try {
+        mockFetch.mockResolvedValue(jsonResponse({ ok: true }));
+        let release: ((token: string | null) => void) | undefined;
+
+        const work = fetcher({
+          method: "GET",
+          path: "/v1/test",
+          baseUrl: "https://api.example.com",
+          token: () =>
+            new Promise<string | null>((resolve) => {
+              release = resolve;
+            }),
+          timeoutMs: 0,
+        });
+
+        await vi.advanceTimersByTimeAsync(600_000);
+        expect(mockFetch).not.toHaveBeenCalled();
+
+        release?.("late-tok");
+        await work;
+
+        const [, init] = mockFetch.mock.calls[0];
+        expect(init.headers.Authorization).toBe("Bearer late-tok");
+      } finally {
+        vi.useRealTimers();
+      }
+    });
+
+    it("lets a token function's own rejection through unchanged", async () => {
+      // Only a stall is new. A token function that decides it has failed has
+      // made a real decision, and dressing it up as a network timeout would
+      // lose the reason.
+      const boom = new Error("refresh endpoint said no");
+
+      const err = await fetcher({
+        method: "GET",
+        path: "/v1/test",
+        baseUrl: "https://api.example.com",
+        token: () => Promise.reject(boom),
+      }).catch((e: unknown) => e);
+
+      expect(err).toBe(boom);
+      expect(mockFetch).not.toHaveBeenCalled();
+    });
+
+    it("resolves the token once, not once per retry attempt", async () => {
+      vi.useFakeTimers({ shouldAdvanceTime: true });
+      try {
+        const token = vi.fn(async () => "tok");
+        mockFetch.mockResolvedValue(jsonResponse({ error: { message: "down" } }, { status: 503 }));
+
+        await fetcher({
+          method: "GET",
+          path: "/v1/test",
+          baseUrl: "https://api.example.com",
+          token,
+          retry: { maxRetries: 2, initialDelayMs: 10, maxDelayMs: 100 },
+        }).catch(() => undefined);
+
+        expect(mockFetch).toHaveBeenCalledTimes(3);
+        expect(token).toHaveBeenCalledTimes(1);
+      } finally {
+        vi.useRealTimers();
+      }
+    });
+  });
+
   // -- Network error reporting --
 
   describe("network errors", () => {

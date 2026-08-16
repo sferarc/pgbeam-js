@@ -78,15 +78,17 @@ export class PgBeamClient<TApi = ApiClient> {
     this._operations = options.operations ?? publicRegistry;
   }
 
-  private async _resolveToken(): Promise<string | null> {
-    if (typeof this._tokenOrFn === "function") {
-      return this._tokenOrFn();
-    }
-    return this._tokenOrFn;
-  }
-
+  /**
+   * `token` is handed to the fetcher unresolved on purpose.
+   *
+   * Awaiting a token function here put the auth round trip outside every bound
+   * the fetcher applies, so a token endpoint that accepted the request and never
+   * answered left the call outstanding with no ceiling at all: not `timeoutMs`,
+   * not the retry budget, and with no `timedOut` signal for a caller to branch
+   * on. The fetcher resolves it under the same per-attempt timeout as the
+   * request it authenticates.
+   */
   private async _send(meta: OperationMeta, params: CallParams): Promise<unknown> {
-    const token = await this._resolveToken();
     return fetcher({
       method: meta.method,
       path: meta.path,
@@ -94,7 +96,7 @@ export class PgBeamClient<TApi = ApiClient> {
       queryParams: params.queryParams,
       body: params.body,
       baseUrl: this._baseUrl,
-      token,
+      token: this._tokenOrFn,
       fetchImpl: this._fetchImpl,
       onResponse: this._onResponse,
       retry: this._retry,

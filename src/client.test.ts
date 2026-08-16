@@ -1,5 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { PgBeamClient } from "./client";
+import { NetworkError } from "./utils/fetcher";
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -345,6 +346,42 @@ describe("PgBeamClient", () => {
 
       const [, init] = mockFetch.mock.calls[0];
       expect(init.headers).not.toHaveProperty("Authorization");
+    });
+
+    it("bounds a token function that never settles by the per-request timeout", async () => {
+      // A lazy token is a network call of its own: the dashboard's resolves a
+      // JWT from the auth endpoint, and the admin app's does the same. An
+      // endpoint that accepts that request and never answers used to leave the
+      // whole call outstanding with nothing to stop it, because `timeoutMs`,
+      // the retry budget and the `NetworkError.timedOut` signal callers branch
+      // on all live past this await. Without the bound this test does not fail,
+      // it hangs.
+      vi.useFakeTimers();
+      try {
+        const client = new PgBeamClient({
+          token: () => new Promise<string | null>(() => {}),
+          baseUrl: "https://api.example.com",
+          fetch: mockFetch,
+          timeoutMs: 3_000,
+        });
+
+        const began = Date.now();
+        const settled = client.api.platform.getHealth().then(
+          () => ({ ok: true }) as const,
+          (error: unknown) => ({ ok: false, error, elapsedMs: Date.now() - began }) as const,
+        );
+        await vi.advanceTimersByTimeAsync(600_000);
+        const result = await settled;
+
+        expect(result.ok).toBe(false);
+        if (result.ok) return;
+        expect(result.error).toBeInstanceOf(NetworkError);
+        expect((result.error as NetworkError).timedOut).toBe(true);
+        expect(result.elapsedMs).toBe(3_000);
+        expect(mockFetch).not.toHaveBeenCalled();
+      } finally {
+        vi.useRealTimers();
+      }
     });
   });
 
