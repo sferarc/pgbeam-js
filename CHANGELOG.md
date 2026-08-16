@@ -1,5 +1,27 @@
 # pgbeam
 
+## 0.4.2
+
+### Patch Changes
+
+- 89e2f33: Bound a lazy token by the same timeout as the request it authenticates.
+
+  `PgBeamClient` accepts `token` as a function so a client can resolve a fresh JWT
+  per call. That function is a network call of its own, and it was awaited before
+  `fetcher` was entered, so it sat outside every bound this package applies:
+  `timeoutMs`, `RetryConfig.totalBudgetMs`, and the `NetworkError.timedOut` flag
+  callers branch on. An auth endpoint that accepted the request and never answered
+  left the whole call outstanding with no ceiling at all, which no `try`/`catch` in
+  the token function can prevent, because a request that never answers never
+  rejects.
+
+  The token is now resolved inside `fetcher`, under the same per-attempt
+  `timeoutMs` as the request it authenticates, and a stall throws a `NetworkError`
+  with `timedOut` true so existing retry policies keyed on that flag apply
+  unchanged. `timeoutMs: 0` still disables the bound, a token function that rejects
+  still propagates its own error, and the token is still resolved once per call
+  rather than once per retry attempt.
+
 ## 0.4.1
 
 ### Patch Changes
