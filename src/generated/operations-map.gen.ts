@@ -18,6 +18,7 @@ import type { ApproveApprovalRequestRequestConfig, ApproveApprovalRequestStatus2
 import type { RejectApprovalRequestRequestConfig, RejectApprovalRequestStatus200 } from "./types/RejectApprovalRequest";
 import type { ListAuditLogsRequestConfig, ListAuditLogsStatus200 } from "./types/ListAuditLogs";
 import type { ExportAuditLogsRequestConfig, ExportAuditLogsStatus200 } from "./types/ExportAuditLogs";
+import type { GetAuditSessionSummaryRequestConfig, GetAuditSessionSummaryStatus200 } from "./types/GetAuditSessionSummary";
 import type { VerifyAuditChainRequestConfig, VerifyAuditChainStatus200 } from "./types/VerifyAuditChain";
 import type { ListPlansStatus200 } from "./types/ListPlans";
 import type { GetOrganizationPlanRequestConfig, GetOrganizationPlanStatus200 } from "./types/GetOrganizationPlan";
@@ -106,6 +107,7 @@ export const operationsByTag = {
     rotateAgentCredential: { method: "POST", path: "/v1/projects/{project_id}/agents/{agent_id}/rotate" },
     listAuditLogs: { method: "GET", path: "/v1/projects/{project_id}/audit-logs" },
     exportAuditLogs: { method: "GET", path: "/v1/projects/{project_id}/audit-logs/export" },
+    getAuditSessionSummary: { method: "GET", path: "/v1/projects/{project_id}/audit-logs/sessions/{session_id}" },
     verifyAuditChain: { method: "GET", path: "/v1/projects/{project_id}/audit-logs/verify" },
   },
   policies: {
@@ -227,6 +229,7 @@ export const operationsByPath = {
   "POST /v1/projects/{project_id}/approvals/{approval_id}/reject": { method: "POST", path: "/v1/projects/{project_id}/approvals/{approval_id}/reject", operationId: "rejectApprovalRequest" },
   "GET /v1/projects/{project_id}/audit-logs": { method: "GET", path: "/v1/projects/{project_id}/audit-logs", operationId: "listAuditLogs" },
   "GET /v1/projects/{project_id}/audit-logs/export": { method: "GET", path: "/v1/projects/{project_id}/audit-logs/export", operationId: "exportAuditLogs" },
+  "GET /v1/projects/{project_id}/audit-logs/sessions/{session_id}": { method: "GET", path: "/v1/projects/{project_id}/audit-logs/sessions/{session_id}", operationId: "getAuditSessionSummary" },
   "GET /v1/projects/{project_id}/audit-logs/verify": { method: "GET", path: "/v1/projects/{project_id}/audit-logs/verify", operationId: "verifyAuditChain" },
   "GET /v1/plans": { method: "GET", path: "/v1/plans", operationId: "listPlans" },
   "GET /v1/organizations/{org_id}/plan": { method: "GET", path: "/v1/organizations/{org_id}/plan", operationId: "getOrganizationPlan" },
@@ -314,6 +317,7 @@ type ApproveApprovalRequestParams = { pathParams: NonNullable<ApproveApprovalReq
 type RejectApprovalRequestParams = { pathParams: NonNullable<RejectApprovalRequestRequestConfig["pathParams"]>; body: NonNullable<RejectApprovalRequestRequestConfig["data"]> };
 type ListAuditLogsParams = { pathParams: NonNullable<ListAuditLogsRequestConfig["pathParams"]>; queryParams?: NonNullable<ListAuditLogsRequestConfig["queryParams"]> };
 type ExportAuditLogsParams = { pathParams: NonNullable<ExportAuditLogsRequestConfig["pathParams"]>; queryParams?: NonNullable<ExportAuditLogsRequestConfig["queryParams"]> };
+type GetAuditSessionSummaryParams = { pathParams: NonNullable<GetAuditSessionSummaryRequestConfig["pathParams"]>; queryParams?: NonNullable<GetAuditSessionSummaryRequestConfig["queryParams"]> };
 type VerifyAuditChainParams = { pathParams: NonNullable<VerifyAuditChainRequestConfig["pathParams"]>; queryParams?: NonNullable<VerifyAuditChainRequestConfig["queryParams"]> };
 type GetOrganizationPlanParams = { pathParams: NonNullable<GetOrganizationPlanRequestConfig["pathParams"]> };
 type GetVercelInstallationParams = { pathParams: NonNullable<GetVercelInstallationRequestConfig["pathParams"]> };
@@ -398,6 +402,7 @@ export interface ApiOperations {
     rotateAgentCredential(params: RotateAgentCredentialParams): Promise<RotateAgentCredentialStatus200>;
     listAuditLogs(params: ListAuditLogsParams): Promise<ListAuditLogsStatus200>;
     exportAuditLogs(params: ExportAuditLogsParams): Promise<ExportAuditLogsStatus200>;
+    getAuditSessionSummary(params: GetAuditSessionSummaryParams): Promise<GetAuditSessionSummaryStatus200>;
     verifyAuditChain(params: VerifyAuditChainParams): Promise<VerifyAuditChainStatus200>;
   };
   policies: {
@@ -519,6 +524,7 @@ export interface RequestMap {
   "POST /v1/projects/{project_id}/approvals/{approval_id}/reject": { params: RejectApprovalRequestParams; response: RejectApprovalRequestStatus200 };
   "GET /v1/projects/{project_id}/audit-logs": { params: ListAuditLogsParams; response: ListAuditLogsStatus200 };
   "GET /v1/projects/{project_id}/audit-logs/export": { params: ExportAuditLogsParams; response: ExportAuditLogsStatus200 };
+  "GET /v1/projects/{project_id}/audit-logs/sessions/{session_id}": { params: GetAuditSessionSummaryParams; response: GetAuditSessionSummaryStatus200 };
   "GET /v1/projects/{project_id}/audit-logs/verify": { params: VerifyAuditChainParams; response: VerifyAuditChainStatus200 };
   "GET /v1/plans": { params?: undefined; response: ListPlansStatus200 };
   "GET /v1/organizations/{org_id}/plan": { params: GetOrganizationPlanParams; response: GetOrganizationPlanStatus200 };

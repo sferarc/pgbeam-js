@@ -8,6 +8,7 @@ export type { ApproveApprovalRequestData, ApproveApprovalRequestPathApprovalId, 
 export type { AuditChainVerification } from "./AuditChainVerification";
 export type { AuditDecision, AuditDecisionKey } from "./AuditDecision";
 export type { AuditLogEntry } from "./AuditLogEntry";
+export type { AuditSessionSummary } from "./AuditSessionSummary";
 export type { AuditSource, AuditSourceKey } from "./AuditSource";
 export type { CacheConfig } from "./CacheConfig";
 export type { CacheRuleEntry, CacheRuleEntryQueryTypeEnumKey, CacheRuleEntryRecommendationEnumKey } from "./CacheRuleEntry";
@@ -58,6 +59,7 @@ export type { Error } from "./Error";
 export type { ExportAccountDataRequestConfig, ExportAccountDataResponse, ExportAccountDataResponses, ExportAccountDataStatus200, ExportAccountDataStatus401, ExportAccountDataStatus404, ExportAccountDataStatus429 } from "./ExportAccountData";
 export type { ExportAuditLogsPathProjectId, ExportAuditLogsQueryCredentialId, ExportAuditLogsQueryDecision, ExportAuditLogsQueryEnd, ExportAuditLogsQueryEvent, ExportAuditLogsQuerySource, ExportAuditLogsQueryStart, ExportAuditLogsRequestConfig, ExportAuditLogsResponse, ExportAuditLogsResponses, ExportAuditLogsStatus200, ExportAuditLogsStatus400, ExportAuditLogsStatus401, ExportAuditLogsStatus403, ExportAuditLogsStatus404, ExportAuditLogsStatus429 } from "./ExportAuditLogs";
 export type { GetAgentCredentialPathAgentId, GetAgentCredentialPathProjectId, GetAgentCredentialRequestConfig, GetAgentCredentialResponse, GetAgentCredentialResponses, GetAgentCredentialStatus200, GetAgentCredentialStatus400, GetAgentCredentialStatus401, GetAgentCredentialStatus403, GetAgentCredentialStatus404 } from "./GetAgentCredential";
+export type { GetAuditSessionSummaryPathProjectId, GetAuditSessionSummaryPathSessionId, GetAuditSessionSummaryQueryEnd, GetAuditSessionSummaryQueryStart, GetAuditSessionSummaryRequestConfig, GetAuditSessionSummaryResponse, GetAuditSessionSummaryResponses, GetAuditSessionSummaryStatus200, GetAuditSessionSummaryStatus400, GetAuditSessionSummaryStatus401, GetAuditSessionSummaryStatus403, GetAuditSessionSummaryStatus404, GetAuditSessionSummaryStatus429 } from "./GetAuditSessionSummary";
 export type { GetDatabasePathDatabaseId, GetDatabasePathProjectId, GetDatabaseRequestConfig, GetDatabaseResponse, GetDatabaseResponses, GetDatabaseStatus200, GetDatabaseStatus400, GetDatabaseStatus401, GetDatabaseStatus403, GetDatabaseStatus404, GetDatabaseStatus429 } from "./GetDatabase";
 export type { GetHealthRequestConfig, GetHealthResponse, GetHealthResponses, GetHealthStatus200, GetHealthStatus429 } from "./GetHealth";
 export type { GetHoneytokenPathHoneytokenId, GetHoneytokenPathProjectId, GetHoneytokenRequestConfig, GetHoneytokenResponse, GetHoneytokenResponses, GetHoneytokenStatus200, GetHoneytokenStatus400, GetHoneytokenStatus401, GetHoneytokenStatus403, GetHoneytokenStatus404 } from "./GetHoneytoken";
