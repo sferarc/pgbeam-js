@@ -3,11 +3,28 @@
 * Do not edit manually.
 */
 
+export const policyReplaySummaryTrafficScopeEnum = {
+    project: "project",
+    bound_credentials: "bound_credentials"
+} as const;
+
+export type PolicyReplaySummaryTrafficScopeEnumKey = (typeof policyReplaySummaryTrafficScopeEnum)[keyof typeof policyReplaySummaryTrafficScopeEnum];
+
 /**
  * @description Aggregate outcome of a policy replay.
  * @type object
 */
 export type PolicyReplaySummary = {
+    /**
+     * @description Which recorded traffic the replay covered. \"project\" is every credential in the project, so some replayed queries may belong to credentials this candidate policy does not govern. \"bound_credentials\" is only the credentials bound to bound_policy_id, which is what actually changes when that policy is saved.
+     * @type string
+    */
+    traffic_scope: PolicyReplaySummaryTrafficScopeEnumKey;
+    /**
+     * @description How many agent credentials are bound to bound_policy_id. Set only when traffic_scope is bound_credentials. Zero means the policy governs no credential today, so an empty replay is a statement about bindings and not evidence that the change is safe.
+     * @type integer | undefined
+    */
+    bound_credentials?: number;
     /**
      * @description Recorded audit entries covered by the replayed queries.
      * @type integer

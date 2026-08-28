@@ -139,7 +139,7 @@ export type { PolicyRecommendationInput } from "./types/PolicyRecommendationInpu
 export type { PolicyReplayInput } from "./types/PolicyReplayInput";
 export type { PolicyReplayItem, PolicyReplayItemChangeEnumKey } from "./types/PolicyReplayItem";
 export type { PolicyReplayResult } from "./types/PolicyReplayResult";
-export type { PolicyReplaySummary } from "./types/PolicyReplaySummary";
+export type { PolicyReplaySummary, PolicyReplaySummaryTrafficScopeEnumKey } from "./types/PolicyReplaySummary";
 export type { PoolConfig } from "./types/PoolConfig";
 export type { PoolModeKey } from "./types/PoolMode";
 export type { Project, ProjectCloudEnumKey } from "./types/Project";
@@ -234,6 +234,7 @@ export { piiSuggestionMaskKindEnum, piiSuggestionPiiTypeEnum } from "./types/Pii
 export { policyProfileAccessModeEnum, policyProfileApprovalModeEnum, policyProfileMigrationSafetyEnum, policyProfileWriteModeEnum } from "./types/PolicyProfile";
 export { policyProfileInputAccessModeEnum, policyProfileInputApprovalModeEnum, policyProfileInputMigrationSafetyEnum, policyProfileInputWriteModeEnum } from "./types/PolicyProfileInput";
 export { policyReplayItemChangeEnum } from "./types/PolicyReplayItem";
+export { policyReplaySummaryTrafficScopeEnum } from "./types/PolicyReplaySummary";
 export { poolMode } from "./types/PoolMode";
 export { projectCloudEnum } from "./types/Project";
 export { projectStatus } from "./types/ProjectStatus";

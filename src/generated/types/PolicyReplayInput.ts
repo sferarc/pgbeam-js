@@ -28,6 +28,12 @@ export type PolicyReplayInput = {
     */
     credential_id?: string;
     /**
+     * @description Restrict the replay to traffic recorded for the agent credentials currently bound to this policy profile. Use it to preview a change to a live policy against the traffic that policy actually governs: without it the replay covers every credential in the project, including credentials bound to other profiles, whose behaviour saving this candidate cannot change. Mutually exclusive with credential_id.
+     * @example pol_01h455vb4pex5vsknk084sn02q
+     * @type string | undefined
+    */
+    bound_policy_id?: string;
+    /**
      * @description Start of the traffic window (inclusive). Defaults to 7 days before end_ts.
      * @type string | undefined
     */

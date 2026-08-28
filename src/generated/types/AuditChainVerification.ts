@@ -19,6 +19,11 @@ export type AuditChainVerification = {
     */
     verified_count: number;
     /**
+     * @description How many of the checked entries were signed with an HMAC key rather than hashed unkeyed. An unkeyed entry is still tamper-evident against anyone who cannot write to the database, but a writer can recompute it; a keyed one they cannot. Lower than verified_count over a range that predates the deployment\'s signing key.
+     * @type integer
+    */
+    keyed_count: number;
+    /**
      * @description Pre-chain (legacy) entries in the range that predate the hash chain and were skipped rather than treated as tampering.
      * @type integer
     */
@@ -39,7 +44,7 @@ export type AuditChainVerification = {
     */
     first_broken_seq?: number | null;
     /**
-     * @description Machine-readable failure kind: hash_mismatch (entry content edited), broken_link (prev_hash does not match the predecessor), or missing_entry (a sequence number was deleted). Null when ok.
+     * @description Machine-readable failure kind: hash_mismatch (entry content edited), broken_link (prev_hash does not match the predecessor), missing_entry (a sequence number was deleted), unknown_key (the entry was signed with a key this deployment does not hold, so it can be neither confirmed nor called tampered), or key_downgrade (the chain ends in unsigned entries that follow a signed one with nothing signed after them, which is what truncating a signed chain and continuing it without the key looks like). Null when ok.
      * @type string
     */
     failure_reason?: string | null;
