@@ -30,7 +30,7 @@ export type AuditLogEntry = {
     */
     region?: string;
     /**
-     * @description Event type (query, blocked, masked, budget_exhausted, truncated, auth_failed, credential_expired).
+     * @description Event type (query, blocked, masked, truncated, budget_exhausted, canary_tripped, rejected, approval_expired, auth_failed, credential_expired, approval_requested, approved, migration_flagged).
      * @type string
     */
     event: string;
