@@ -57,7 +57,7 @@ import { operationsByTag, operationsByPath } from "pgbeam/operations";
 
 ## Documentation
 
-Full API reference at [docs.pgbeam.com/ts-sdk](https://docs.pgbeam.com/ts-sdk).
+Full API reference at [pgbeam.com/docs/ts-sdk](https://pgbeam.com/docs/ts-sdk).
 
 ## License
 
