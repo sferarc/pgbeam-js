@@ -1,5 +1,11 @@
 # pgbeam
 
+## 0.4.3
+
+### Patch Changes
+
+- d5149ba: fix(docs): every published README sends readers to a host that serves nothing
+
 ## 0.4.2
 
 ### Patch Changes
