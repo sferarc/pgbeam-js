@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { Replica } from "./Replica";
+import type { Replica } from './Replica'
 
 /**
  * @description Response envelope for listing registered replicas.

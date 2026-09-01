@@ -3,8 +3,8 @@
 * Do not edit manually.
 */
 
-import type { AccountExport } from "./AccountExport";
-import type { Error } from "./Error";
+import type { AccountExport } from './AccountExport'
+import type { Error } from './Error'
 
 /**
  * @description Full account data export for privacy and data-portability requests.
@@ -30,23 +30,13 @@ export type ExportAccountDataStatus404 = Error;
 */
 export type ExportAccountDataStatus429 = Error;
 
-/**
- * @type object
-*/
-export type ExportAccountDataRequestConfig = {
-    data?: never;
-    pathParams?: never;
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: "/v1/account/export";
+export type ExportAccountDataOptions = {
+    body?: never;
+    path?: never;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type ExportAccountDataResponses = {
     "200": ExportAccountDataStatus200;
     "401": ExportAccountDataStatus401;

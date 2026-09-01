@@ -3,19 +3,18 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
+import type { Error } from './Error'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type DeleteProjectPathProjectId = string;
+export type DeleteProjectPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+};
 
-/**
- * @type any
-*/
-export type DeleteProjectStatus204 = any;
+export type DeleteProjectStatus204 = unknown;
 
 /**
  * @description Standard error response envelope for PgBeam API requests.
@@ -47,28 +46,13 @@ export type DeleteProjectStatus404 = Error;
 */
 export type DeleteProjectStatus429 = Error;
 
-/**
- * @type object
-*/
-export type DeleteProjectRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: DeleteProjectPathProjectId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}`;
+export type DeleteProjectOptions = {
+    body?: never;
+    path: DeleteProjectPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type DeleteProjectResponses = {
     "204": DeleteProjectStatus204;
     "400": DeleteProjectStatus400;

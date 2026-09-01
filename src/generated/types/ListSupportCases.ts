@@ -3,46 +3,47 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { ListSupportCasesResponse } from "./ListSupportCasesResponse";
-import type { SupportCaseStatusKey } from "./SupportCaseStatus";
+import type { Error } from './Error'
+import type { ListSupportCasesResponse } from './ListSupportCasesResponse'
+import type { SupportCaseStatusKey } from './SupportCaseStatus'
 
-/**
- * @description Unique organization identifier.
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @example org_abc123
- * @type string
-*/
-export type ListSupportCasesPathOrgId = string;
+export type ListSupportCasesPath = {
+    /**
+     * @description Unique organization identifier.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @example org_abc123
+     * @type string
+    */
+    org_id: string;
+};
 
-/**
- * @description Filter by case status.
- * @type string | undefined
-*/
-export type ListSupportCasesQueryStatus = SupportCaseStatusKey | undefined;
-
-/**
- * @description Search cases by title.
- * @type string | undefined
-*/
-export type ListSupportCasesQuerySearch = string | undefined;
-
-/**
- * @description Number of results per page (1-100, default 20).
- * @minLength 1
- * @maxLength 100
- * @default 20
- * @type integer | undefined
-*/
-export type ListSupportCasesQueryPageSize = number | undefined;
-
-/**
- * @description Page number (1-based, default 1).
- * @minLength 1
- * @default 1
- * @type integer | undefined
-*/
-export type ListSupportCasesQueryPage = number | undefined;
+export type ListSupportCasesQuery = {
+    /**
+     * @description Filter by case status.
+     * @type string | undefined
+    */
+    status?: SupportCaseStatusKey;
+    /**
+     * @description Search cases by title.
+     * @type string | undefined
+    */
+    search?: string;
+    /**
+     * @description Number of results per page (1-100, default 20).
+     * @minLength 1
+     * @maxLength 100
+     * @default 20
+     * @type integer | undefined
+    */
+    page_size?: number;
+    /**
+     * @description Page number (1-based, default 1).
+     * @minLength 1
+     * @default 1
+     * @type integer | undefined
+    */
+    page?: number;
+};
 
 /**
  * @description Paginated list of support cases.
@@ -68,36 +69,13 @@ export type ListSupportCasesStatus401 = Error;
 */
 export type ListSupportCasesStatus403 = Error;
 
-/**
- * @type object
-*/
-export type ListSupportCasesRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        org_id: ListSupportCasesPathOrgId;
-    };
-    /**
-     * @type object | undefined
-    */
-    queryParams?: {
-        status?: ListSupportCasesQueryStatus;
-        search?: ListSupportCasesQuerySearch;
-        page_size?: ListSupportCasesQueryPageSize;
-        page?: ListSupportCasesQueryPage;
-    };
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/organizations/${string}/support/cases`;
+export type ListSupportCasesOptions = {
+    body?: never;
+    path: ListSupportCasesPath;
+    query?: ListSupportCasesQuery;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type ListSupportCasesResponses = {
     "200": ListSupportCasesStatus200;
     "400": ListSupportCasesStatus400;

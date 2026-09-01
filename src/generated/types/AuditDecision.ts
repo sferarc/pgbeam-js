@@ -11,9 +11,3 @@ export const auditDecision = {
 } as const;
 
 export type AuditDecisionKey = (typeof auditDecision)[keyof typeof auditDecision];
-
-/**
- * @description Coarse outcome filter that groups events. `allow` = query; `block` = blocked, budget_exhausted, auth_failed, credential_expired; `mask` = masked; `truncate` = truncated.
- * @type string | undefined
-*/
-export type AuditDecision = AuditDecisionKey | undefined;

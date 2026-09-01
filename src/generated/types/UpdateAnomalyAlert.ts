@@ -3,23 +3,24 @@
 * Do not edit manually.
 */
 
-import type { AnomalyAlert } from "./AnomalyAlert";
-import type { Error } from "./Error";
-import type { UpdateAnomalyAlertRequest } from "./UpdateAnomalyAlertRequest";
+import type { AnomalyAlert } from './AnomalyAlert'
+import type { Error } from './Error'
+import type { UpdateAnomalyAlertRequest } from './UpdateAnomalyAlertRequest'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type UpdateAnomalyAlertPathProjectId = string;
-
-/**
- * @description Unique anomaly alert identifier (prefixed, e.g. ano_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type UpdateAnomalyAlertPathAnomalyId = string;
+export type UpdateAnomalyAlertPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+    /**
+     * @description Unique anomaly alert identifier (prefixed, e.g. ano_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    anomaly_id: string;
+};
 
 /**
  * @description A surfaced anomalous-behavior alert for review.
@@ -55,31 +56,15 @@ export type UpdateAnomalyAlertStatus404 = Error;
  * @description Request body for triaging an anomaly alert.
  * @type object
 */
-export type UpdateAnomalyAlertData = UpdateAnomalyAlertRequest;
+export type UpdateAnomalyAlertBody = UpdateAnomalyAlertRequest;
 
-/**
- * @type object
-*/
-export type UpdateAnomalyAlertRequestConfig = {
-    data?: UpdateAnomalyAlertData;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: UpdateAnomalyAlertPathProjectId;
-        anomaly_id: UpdateAnomalyAlertPathAnomalyId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/anomalies/${string}`;
+export type UpdateAnomalyAlertOptions = {
+    body: UpdateAnomalyAlertBody;
+    path: UpdateAnomalyAlertPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type UpdateAnomalyAlertResponses = {
     "200": UpdateAnomalyAlertStatus200;
     "400": UpdateAnomalyAlertStatus400;

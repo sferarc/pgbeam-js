@@ -3,22 +3,23 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { VerifyCustomDomainResponse } from "./VerifyCustomDomainResponse";
+import type { Error } from './Error'
+import type { VerifyCustomDomainResponse } from './VerifyCustomDomainResponse'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type VerifyCustomDomainPathProjectId = string;
-
-/**
- * @description Unique custom domain identifier (prefixed, e.g. dom_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type VerifyCustomDomainPathDomainId = string;
+export type VerifyCustomDomainPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+    /**
+     * @description Unique custom domain identifier (prefixed, e.g. dom_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    domain_id: string;
+};
 
 /**
  * @description Result of checking DNS ownership for a custom domain.
@@ -56,29 +57,13 @@ export type VerifyCustomDomainStatus404 = Error;
 */
 export type VerifyCustomDomainStatus429 = Error;
 
-/**
- * @type object
-*/
-export type VerifyCustomDomainRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: VerifyCustomDomainPathProjectId;
-        domain_id: VerifyCustomDomainPathDomainId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/domains/${string}/verify`;
+export type VerifyCustomDomainOptions = {
+    body?: never;
+    path: VerifyCustomDomainPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type VerifyCustomDomainResponses = {
     "200": VerifyCustomDomainStatus200;
     "400": VerifyCustomDomainStatus400;

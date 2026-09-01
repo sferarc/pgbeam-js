@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { Region } from "./Region";
+import type { Region } from './Region'
 
 /**
  * @description Response envelope for available region queries.

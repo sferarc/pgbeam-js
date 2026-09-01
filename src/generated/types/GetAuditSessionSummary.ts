@@ -3,34 +3,40 @@
 * Do not edit manually.
 */
 
-import type { AuditSessionSummary } from "./AuditSessionSummary";
-import type { Error } from "./Error";
+import type { AuditSessionSummary } from './AuditSessionSummary'
+import type { Error } from './Error'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type GetAuditSessionSummaryPathProjectId = string;
+export type GetAuditSessionSummaryPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+    /**
+     * @description Session identifier from an audit entry\'s session_id field. Unique per connection within a proxy instance, not over time.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    session_id: string;
+};
 
-/**
- * @description Session identifier from an audit entry\'s session_id field. Unique per connection within a proxy instance, not over time.
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type GetAuditSessionSummaryPathSessionId = string;
-
-/**
- * @description Return entries at or after this timestamp (inclusive lower bound).
- * @type string | undefined
-*/
-export type GetAuditSessionSummaryQueryStart = string | undefined;
-
-/**
- * @description Return entries strictly older than this timestamp (cursor / upper bound).
- * @type string | undefined
-*/
-export type GetAuditSessionSummaryQueryEnd = string | undefined;
+export type GetAuditSessionSummaryQuery = {
+    /**
+     * @description Return entries at or after this timestamp (inclusive lower bound).
+     *
+     * Format: `date-time`
+     * @type string | undefined
+    */
+    start?: string;
+    /**
+     * @description Return entries strictly older than this timestamp (cursor / upper bound).
+     *
+     * Format: `date-time`
+     * @type string | undefined
+    */
+    end?: string;
+};
 
 /**
  * @description Deterministic summary of one agent session\'s recorded statements: what it touched, how much it moved, and how often the policy engine stepped in. Computed from the project\'s audit log with no model in the loop, so the same entries always summarize the same way. Carries schema metadata (table names) and counts only, never row values.
@@ -68,35 +74,13 @@ export type GetAuditSessionSummaryStatus404 = Error;
 */
 export type GetAuditSessionSummaryStatus429 = Error;
 
-/**
- * @type object
-*/
-export type GetAuditSessionSummaryRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: GetAuditSessionSummaryPathProjectId;
-        session_id: GetAuditSessionSummaryPathSessionId;
-    };
-    /**
-     * @type object | undefined
-    */
-    queryParams?: {
-        start?: GetAuditSessionSummaryQueryStart;
-        end?: GetAuditSessionSummaryQueryEnd;
-    };
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/audit-logs/sessions/${string}`;
+export type GetAuditSessionSummaryOptions = {
+    body?: never;
+    path: GetAuditSessionSummaryPath;
+    query?: GetAuditSessionSummaryQuery;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type GetAuditSessionSummaryResponses = {
     "200": GetAuditSessionSummaryStatus200;
     "400": GetAuditSessionSummaryStatus400;

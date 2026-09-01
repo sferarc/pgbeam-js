@@ -3,23 +3,24 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { GetSupportCaseResponse } from "./GetSupportCaseResponse";
+import type { Error } from './Error'
+import type { GetSupportCaseResponse } from './GetSupportCaseResponse'
 
-/**
- * @description Unique organization identifier.
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @example org_abc123
- * @type string
-*/
-export type GetSupportCasePathOrgId = string;
-
-/**
- * @description Unique support case identifier (prefixed, e.g. sc_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type GetSupportCasePathCaseId = string;
+export type GetSupportCasePath = {
+    /**
+     * @description Unique organization identifier.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @example org_abc123
+     * @type string
+    */
+    org_id: string;
+    /**
+     * @description Unique support case identifier (prefixed, e.g. sc_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    case_id: string;
+};
 
 /**
  * @description Support case with its message thread.
@@ -51,29 +52,13 @@ export type GetSupportCaseStatus403 = Error;
 */
 export type GetSupportCaseStatus404 = Error;
 
-/**
- * @type object
-*/
-export type GetSupportCaseRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        org_id: GetSupportCasePathOrgId;
-        case_id: GetSupportCasePathCaseId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/organizations/${string}/support/cases/${string}`;
+export type GetSupportCaseOptions = {
+    body?: never;
+    path: GetSupportCasePath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type GetSupportCaseResponses = {
     "200": GetSupportCaseStatus200;
     "400": GetSupportCaseStatus400;

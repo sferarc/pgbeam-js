@@ -3,31 +3,34 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { ListHoneytokensResponse } from "./ListHoneytokensResponse";
+import type { Error } from './Error'
+import type { ListHoneytokensResponse } from './ListHoneytokensResponse'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type ListHoneytokensPathProjectId = string;
+export type ListHoneytokensPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+};
 
-/**
- * @description Maximum number of items to return (1-100, default 20).
- * @minLength 1
- * @maxLength 100
- * @default 20
- * @type integer | undefined
-*/
-export type ListHoneytokensQueryPageSize = number | undefined;
-
-/**
- * @description Opaque token for cursor-based pagination.
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string | undefined
-*/
-export type ListHoneytokensQueryPageToken = string | undefined;
+export type ListHoneytokensQuery = {
+    /**
+     * @description Maximum number of items to return (1-100, default 20).
+     * @minLength 1
+     * @maxLength 100
+     * @default 20
+     * @type integer | undefined
+    */
+    page_size?: number;
+    /**
+     * @description Opaque token for cursor-based pagination.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string | undefined
+    */
+    page_token?: string;
+};
 
 /**
  * @description Cursor-paginated honeytokens for a project.
@@ -65,34 +68,13 @@ export type ListHoneytokensStatus404 = Error;
 */
 export type ListHoneytokensStatus429 = Error;
 
-/**
- * @type object
-*/
-export type ListHoneytokensRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: ListHoneytokensPathProjectId;
-    };
-    /**
-     * @type object | undefined
-    */
-    queryParams?: {
-        page_size?: ListHoneytokensQueryPageSize;
-        page_token?: ListHoneytokensQueryPageToken;
-    };
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/honeytokens`;
+export type ListHoneytokensOptions = {
+    body?: never;
+    path: ListHoneytokensPath;
+    query?: ListHoneytokensQuery;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type ListHoneytokensResponses = {
     "200": ListHoneytokensStatus200;
     "400": ListHoneytokensStatus400;

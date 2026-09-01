@@ -3,17 +3,19 @@
 * Do not edit manually.
 */
 
-import type { CreateSupportCaseRequest } from "./CreateSupportCaseRequest";
-import type { Error } from "./Error";
-import type { SupportCase } from "./SupportCase";
+import type { CreateSupportCaseRequest } from './CreateSupportCaseRequest'
+import type { Error } from './Error'
+import type { SupportCase } from './SupportCase'
 
-/**
- * @description Unique organization identifier.
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @example org_abc123
- * @type string
-*/
-export type CreateSupportCasePathOrgId = string;
+export type CreateSupportCasePath = {
+    /**
+     * @description Unique organization identifier.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @example org_abc123
+     * @type string
+    */
+    org_id: string;
+};
 
 /**
  * @description A support case filed by an organization member.
@@ -43,30 +45,15 @@ export type CreateSupportCaseStatus403 = Error;
  * @description Request body for creating a support case.
  * @type object
 */
-export type CreateSupportCaseData = CreateSupportCaseRequest;
+export type CreateSupportCaseBody = CreateSupportCaseRequest;
 
-/**
- * @type object
-*/
-export type CreateSupportCaseRequestConfig = {
-    data?: CreateSupportCaseData;
-    /**
-     * @type object
-    */
-    pathParams: {
-        org_id: CreateSupportCasePathOrgId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/organizations/${string}/support/cases`;
+export type CreateSupportCaseOptions = {
+    body: CreateSupportCaseBody;
+    path: CreateSupportCasePath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type CreateSupportCaseResponses = {
     "201": CreateSupportCaseStatus201;
     "400": CreateSupportCaseStatus400;

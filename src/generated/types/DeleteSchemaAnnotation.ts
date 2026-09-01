@@ -3,41 +3,40 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
+import type { Error } from './Error'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type DeleteSchemaAnnotationPathProjectId = string;
+export type DeleteSchemaAnnotationPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+};
 
-/**
- * @description Relation (table or view) the annotation describes.
- * @minLength 1
- * @maxLength 255
- * @type string
-*/
-export type DeleteSchemaAnnotationQueryTableName = string;
+export type DeleteSchemaAnnotationQuery = {
+    /**
+     * @description Relation (table or view) the annotation describes.
+     * @minLength 1
+     * @maxLength 255
+     * @type string
+    */
+    table_name: string;
+    /**
+     * @description Optional schema. Omit to match the unqualified form.
+     * @maxLength 255
+     * @type string | undefined
+    */
+    schema_name?: string;
+    /**
+     * @description Optional column. Omit to delete a table-level annotation.
+     * @maxLength 255
+     * @type string | undefined
+    */
+    column_name?: string;
+};
 
-/**
- * @description Optional schema. Omit to match the unqualified form.
- * @maxLength 255
- * @type string | undefined
-*/
-export type DeleteSchemaAnnotationQuerySchemaName = string | undefined;
-
-/**
- * @description Optional column. Omit to delete a table-level annotation.
- * @maxLength 255
- * @type string | undefined
-*/
-export type DeleteSchemaAnnotationQueryColumnName = string | undefined;
-
-/**
- * @type any
-*/
-export type DeleteSchemaAnnotationStatus204 = any;
+export type DeleteSchemaAnnotationStatus204 = unknown;
 
 /**
  * @description Standard error response envelope for PgBeam API requests.
@@ -63,35 +62,13 @@ export type DeleteSchemaAnnotationStatus403 = Error;
 */
 export type DeleteSchemaAnnotationStatus404 = Error;
 
-/**
- * @type object
-*/
-export type DeleteSchemaAnnotationRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: DeleteSchemaAnnotationPathProjectId;
-    };
-    /**
-     * @type object | undefined
-    */
-    queryParams?: {
-        table_name: DeleteSchemaAnnotationQueryTableName;
-        schema_name?: DeleteSchemaAnnotationQuerySchemaName;
-        column_name?: DeleteSchemaAnnotationQueryColumnName;
-    };
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/schema-annotations`;
+export type DeleteSchemaAnnotationOptions = {
+    body?: never;
+    path: DeleteSchemaAnnotationPath;
+    query: DeleteSchemaAnnotationQuery;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type DeleteSchemaAnnotationResponses = {
     "204": DeleteSchemaAnnotationStatus204;
     "400": DeleteSchemaAnnotationStatus400;

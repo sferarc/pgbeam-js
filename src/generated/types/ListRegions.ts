@@ -3,8 +3,8 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { ListRegionsResponse } from "./ListRegionsResponse";
+import type { Error } from './Error'
+import type { ListRegionsResponse } from './ListRegionsResponse'
 
 /**
  * @description Response envelope for available region queries.
@@ -24,23 +24,13 @@ export type ListRegionsStatus401 = Error;
 */
 export type ListRegionsStatus429 = Error;
 
-/**
- * @type object
-*/
-export type ListRegionsRequestConfig = {
-    data?: never;
-    pathParams?: never;
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: "/v1/regions";
+export type ListRegionsOptions = {
+    body?: never;
+    path?: never;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type ListRegionsResponses = {
     "200": ListRegionsStatus200;
     "401": ListRegionsStatus401;

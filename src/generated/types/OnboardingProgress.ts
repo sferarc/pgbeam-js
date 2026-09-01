@@ -70,7 +70,9 @@ export type OnboardingProgress = {
     steps_total: number;
     /**
      * @description When onboarding was completed. Null if not yet completed.
-     * @type string
+     *
+     * Format: `date-time`
+     * @type string | undefined
     */
     completed_at?: string | null;
 };

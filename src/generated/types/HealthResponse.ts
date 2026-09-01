@@ -34,6 +34,8 @@ export type HealthResponse = {
     image_sha: string;
     /**
      * @description Server time.
+     *
+     * Format: `date-time`
      * @type string | undefined
     */
     timestamp?: string;

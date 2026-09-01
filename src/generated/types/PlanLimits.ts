@@ -10,6 +10,8 @@
 export type PlanLimits = {
     /**
      * @description Maximum queries per day across all projects. 0 means unlimited.
+     *
+     * Format: `int64`
      * @type integer
     */
     queries_per_day: number;
@@ -35,6 +37,8 @@ export type PlanLimits = {
     queries_per_second: number;
     /**
      * @description Monthly data transfer quota in bytes. 0 means unlimited.
+     *
+     * Format: `int64`
      * @type integer
     */
     bytes_per_month: number;
@@ -65,6 +69,8 @@ export type PlanLimits = {
     sandbox_max_branches: number;
     /**
      * @description Maximum upstream source-database size a sandbox base sync accepts, in bytes. 0 means no limit.
+     *
+     * Format: `int64`
      * @type integer
     */
     sandbox_max_upstream_bytes: number;

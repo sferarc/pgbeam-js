@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { SchemaAnnotation } from "./SchemaAnnotation";
+import type { SchemaAnnotation } from './SchemaAnnotation'
 
 /**
  * @description Cursor-paginated schema annotations for a project.

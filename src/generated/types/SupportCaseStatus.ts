@@ -9,9 +9,3 @@ export const supportCaseStatus = {
 } as const;
 
 export type SupportCaseStatusKey = (typeof supportCaseStatus)[keyof typeof supportCaseStatus];
-
-/**
- * @description Filter by case status.
- * @type string | undefined
-*/
-export type SupportCaseStatus = SupportCaseStatusKey | undefined;

@@ -3,30 +3,37 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { UsageResponse } from "./UsageResponse";
+import type { Error } from './Error'
+import type { UsageResponse } from './UsageResponse'
 
-/**
- * @description Unique organization identifier.
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @example org_abc123
- * @type string
-*/
-export type GetOrganizationUsagePathOrgId = string;
+export type GetOrganizationUsagePath = {
+    /**
+     * @description Unique organization identifier.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @example org_abc123
+     * @type string
+    */
+    org_id: string;
+};
 
-/**
- * @description Start date (inclusive, YYYY-MM-DD).
- * @example 2024-01-01
- * @type string
-*/
-export type GetOrganizationUsageQueryStartDate = string;
-
-/**
- * @description End date (inclusive, YYYY-MM-DD).
- * @example 2024-01-31
- * @type string
-*/
-export type GetOrganizationUsageQueryEndDate = string;
+export type GetOrganizationUsageQuery = {
+    /**
+     * @description Start date (inclusive, YYYY-MM-DD).
+     *
+     * Format: `date`
+     * @example 2024-01-01
+     * @type string
+    */
+    start_date: string;
+    /**
+     * @description End date (inclusive, YYYY-MM-DD).
+     *
+     * Format: `date`
+     * @example 2024-01-31
+     * @type string
+    */
+    end_date: string;
+};
 
 /**
  * @description Response envelope for organization usage queries.
@@ -58,34 +65,13 @@ export type GetOrganizationUsageStatus403 = Error;
 */
 export type GetOrganizationUsageStatus429 = Error;
 
-/**
- * @type object
-*/
-export type GetOrganizationUsageRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        org_id: GetOrganizationUsagePathOrgId;
-    };
-    /**
-     * @type object | undefined
-    */
-    queryParams?: {
-        start_date: GetOrganizationUsageQueryStartDate;
-        end_date: GetOrganizationUsageQueryEndDate;
-    };
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/organizations/${string}/usage`;
+export type GetOrganizationUsageOptions = {
+    body?: never;
+    path: GetOrganizationUsagePath;
+    query: GetOrganizationUsageQuery;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type GetOrganizationUsageResponses = {
     "200": GetOrganizationUsageStatus200;
     "400": GetOrganizationUsageStatus400;

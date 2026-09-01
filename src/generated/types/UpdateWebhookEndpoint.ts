@@ -3,23 +3,24 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { WebhookEndpoint } from "./WebhookEndpoint";
-import type { WebhookEndpointInput } from "./WebhookEndpointInput";
+import type { Error } from './Error'
+import type { WebhookEndpoint } from './WebhookEndpoint'
+import type { WebhookEndpointInput } from './WebhookEndpointInput'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type UpdateWebhookEndpointPathProjectId = string;
-
-/**
- * @description Unique webhook endpoint identifier (prefixed, e.g. whk_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type UpdateWebhookEndpointPathWebhookId = string;
+export type UpdateWebhookEndpointPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+    /**
+     * @description Unique webhook endpoint identifier (prefixed, e.g. whk_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    webhook_id: string;
+};
 
 /**
  * @description A delivery target for project audit/event notifications.
@@ -55,31 +56,15 @@ export type UpdateWebhookEndpointStatus404 = Error;
  * @description Mutable fields of a webhook endpoint (used for create and update).
  * @type object
 */
-export type UpdateWebhookEndpointData = WebhookEndpointInput;
+export type UpdateWebhookEndpointBody = WebhookEndpointInput;
 
-/**
- * @type object
-*/
-export type UpdateWebhookEndpointRequestConfig = {
-    data?: UpdateWebhookEndpointData;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: UpdateWebhookEndpointPathProjectId;
-        webhook_id: UpdateWebhookEndpointPathWebhookId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/webhooks/${string}`;
+export type UpdateWebhookEndpointOptions = {
+    body: UpdateWebhookEndpointBody;
+    path: UpdateWebhookEndpointPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type UpdateWebhookEndpointResponses = {
     "200": UpdateWebhookEndpointStatus200;
     "400": UpdateWebhookEndpointStatus400;

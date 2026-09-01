@@ -3,22 +3,23 @@
 * Do not edit manually.
 */
 
-import type { Database } from "./Database";
-import type { Error } from "./Error";
+import type { Database } from './Database'
+import type { Error } from './Error'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type GetDatabasePathProjectId = string;
-
-/**
- * @description Unique database identifier (prefixed, e.g. db_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type GetDatabasePathDatabaseId = string;
+export type GetDatabasePath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+    /**
+     * @description Unique database identifier (prefixed, e.g. db_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    database_id: string;
+};
 
 /**
  * @description Registered upstream PostgreSQL database for a project.
@@ -56,29 +57,13 @@ export type GetDatabaseStatus404 = Error;
 */
 export type GetDatabaseStatus429 = Error;
 
-/**
- * @type object
-*/
-export type GetDatabaseRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: GetDatabasePathProjectId;
-        database_id: GetDatabasePathDatabaseId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/databases/${string}`;
+export type GetDatabaseOptions = {
+    body?: never;
+    path: GetDatabasePath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type GetDatabaseResponses = {
     "200": GetDatabaseStatus200;
     "400": GetDatabaseStatus400;

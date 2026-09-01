@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { SupportCaseStatusKey } from "./SupportCaseStatus";
+import type { SupportCaseStatusKey } from './SupportCaseStatus'
 
 /**
  * @description Request body for updating a support case status.

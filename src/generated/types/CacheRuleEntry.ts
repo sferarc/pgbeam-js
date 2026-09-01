@@ -51,38 +51,48 @@ export type CacheRuleEntry = {
      * @description TTL override in seconds. Null means use project default.
      * @minLength 0
      * @example 300
-     * @type integer
+     * @type integer | undefined
     */
     cache_ttl_seconds?: number | null;
     /**
      * @description SWR override in seconds. Null means use project default.
      * @minLength 0
      * @example 60
-     * @type integer
+     * @type integer | undefined
     */
     cache_swr_seconds?: number | null;
     /**
      * @description Total number of executions observed.
+     *
+     * Format: `int64`
      * @type integer
     */
     call_count: number;
     /**
      * @description Average query latency in milliseconds.
+     *
+     * Format: `double`
      * @type number
     */
     avg_latency_ms: number;
     /**
      * @description 95th percentile latency in milliseconds.
+     *
+     * Format: `double`
      * @type number
     */
     p95_latency_ms: number;
     /**
      * @description Average response size in bytes.
+     *
+     * Format: `int64`
      * @type integer
     */
     avg_response_bytes: number;
     /**
      * @description Response stability rate (0.0 to 1.0). Higher means more stable.
+     *
+     * Format: `double`
      * @type number
     */
     stability_rate: number;
@@ -93,11 +103,15 @@ export type CacheRuleEntry = {
     recommendation: CacheRuleEntryRecommendationEnumKey;
     /**
      * @description When this query was first observed.
+     *
+     * Format: `date-time`
      * @type string
     */
     first_seen_at: string;
     /**
      * @description When this query was last observed.
+     *
+     * Format: `date-time`
      * @type string
     */
     last_seen_at: string;

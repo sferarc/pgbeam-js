@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { DnsInstructions } from "./DnsInstructions";
+import type { DnsInstructions } from './DnsInstructions'
 
 /**
  * @description Custom database hostname attached to a project.
@@ -35,12 +35,16 @@ export type CustomDomain = {
     verified: boolean;
     /**
      * @description When DNS verification was completed.
-     * @type string
+     *
+     * Format: `date-time`
+     * @type string | undefined
     */
     verified_at?: string | null;
     /**
      * @description When the TLS certificate expires.
-     * @type string
+     *
+     * Format: `date-time`
+     * @type string | undefined
     */
     tls_cert_expiry?: string | null;
     /**
@@ -55,11 +59,15 @@ export type CustomDomain = {
     dns_instructions?: DnsInstructions;
     /**
      * @description When the custom domain was created.
+     *
+     * Format: `date-time`
      * @type string
     */
     created_at: string;
     /**
      * @description When the custom domain was last updated.
+     *
+     * Format: `date-time`
      * @type string
     */
     updated_at: string;

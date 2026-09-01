@@ -3,26 +3,24 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
+import type { Error } from './Error'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type DeleteDatabasePathProjectId = string;
+export type DeleteDatabasePath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+    /**
+     * @description Unique database identifier (prefixed, e.g. db_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    database_id: string;
+};
 
-/**
- * @description Unique database identifier (prefixed, e.g. db_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type DeleteDatabasePathDatabaseId = string;
-
-/**
- * @type any
-*/
-export type DeleteDatabaseStatus204 = any;
+export type DeleteDatabaseStatus204 = unknown;
 
 /**
  * @description Standard error response envelope for PgBeam API requests.
@@ -54,29 +52,13 @@ export type DeleteDatabaseStatus404 = Error;
 */
 export type DeleteDatabaseStatus429 = Error;
 
-/**
- * @type object
-*/
-export type DeleteDatabaseRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: DeleteDatabasePathProjectId;
-        database_id: DeleteDatabasePathDatabaseId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/databases/${string}`;
+export type DeleteDatabaseOptions = {
+    body?: never;
+    path: DeleteDatabasePath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type DeleteDatabaseResponses = {
     "204": DeleteDatabaseStatus204;
     "400": DeleteDatabaseStatus400;

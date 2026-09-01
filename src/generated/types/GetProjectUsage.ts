@@ -3,29 +3,36 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { ProjectUsageResponse } from "./ProjectUsageResponse";
+import type { Error } from './Error'
+import type { ProjectUsageResponse } from './ProjectUsageResponse'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type GetProjectUsagePathProjectId = string;
+export type GetProjectUsagePath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+};
 
-/**
- * @description Start date (inclusive, YYYY-MM-DD).
- * @example 2024-01-01
- * @type string
-*/
-export type GetProjectUsageQueryStartDate = string;
-
-/**
- * @description End date (inclusive, YYYY-MM-DD).
- * @example 2024-01-31
- * @type string
-*/
-export type GetProjectUsageQueryEndDate = string;
+export type GetProjectUsageQuery = {
+    /**
+     * @description Start date (inclusive, YYYY-MM-DD).
+     *
+     * Format: `date`
+     * @example 2024-01-01
+     * @type string
+    */
+    start_date: string;
+    /**
+     * @description End date (inclusive, YYYY-MM-DD).
+     *
+     * Format: `date`
+     * @example 2024-01-31
+     * @type string
+    */
+    end_date: string;
+};
 
 /**
  * @description Response envelope for project usage queries.
@@ -57,34 +64,13 @@ export type GetProjectUsageStatus404 = Error;
 */
 export type GetProjectUsageStatus429 = Error;
 
-/**
- * @type object
-*/
-export type GetProjectUsageRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: GetProjectUsagePathProjectId;
-    };
-    /**
-     * @type object | undefined
-    */
-    queryParams?: {
-        start_date: GetProjectUsageQueryStartDate;
-        end_date: GetProjectUsageQueryEndDate;
-    };
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/usage`;
+export type GetProjectUsageOptions = {
+    body?: never;
+    path: GetProjectUsagePath;
+    query: GetProjectUsageQuery;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type GetProjectUsageResponses = {
     "200": GetProjectUsageStatus200;
     "400": GetProjectUsageStatus400;

@@ -3,10 +3,10 @@
 * Do not edit manually.
 */
 
-import type { CacheConfig } from "./CacheConfig";
-import type { DatabaseRoleKey } from "./DatabaseRole";
-import type { PoolConfig } from "./PoolConfig";
-import type { SSLModeKey } from "./SSLMode";
+import type { CacheConfig } from './CacheConfig'
+import type { DatabaseRoleKey } from './DatabaseRole'
+import type { PoolConfig } from './PoolConfig'
+import type { SSLModeKey } from './SSLMode'
 
 /**
  * @description Request body for partially updating an upstream database.
@@ -45,6 +45,8 @@ export type UpdateDatabaseRequest = {
     username?: string;
     /**
      * @description Updated PostgreSQL password.
+     *
+     * Format: `password`
      * @pattern ^[^\x00]*$
      * @type string | undefined
     */
@@ -57,7 +59,7 @@ export type UpdateDatabaseRequest = {
     ssl_mode?: SSLModeKey;
     /**
      * @description Database role. Primary receives writes, replicas receive reads.
-     * @default "primary"
+     * @default 'primary'
      * @type string | undefined
     */
     role?: DatabaseRoleKey;

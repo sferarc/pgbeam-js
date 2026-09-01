@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { PolicyProfileInput } from "./PolicyProfileInput";
+import type { PolicyProfileInput } from './PolicyProfileInput'
 
 /**
  * @description A SQL statement to test plus the policy to test it against. Supply exactly one of policy_id (an existing saved policy) or policy (an unsaved draft, e.g. the in-progress editor form).

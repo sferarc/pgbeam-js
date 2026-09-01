@@ -3,16 +3,18 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { VercelInstallationStatus } from "./VercelInstallationStatus";
+import type { Error } from './Error'
+import type { VercelInstallationStatus } from './VercelInstallationStatus'
 
-/**
- * @description Unique organization identifier.
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @example org_abc123
- * @type string
-*/
-export type GetVercelInstallationPathOrgId = string;
+export type GetVercelInstallationPath = {
+    /**
+     * @description Unique organization identifier.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @example org_abc123
+     * @type string
+    */
+    org_id: string;
+};
 
 /**
  * @description Vercel Marketplace installation status for an organization, including its resources.
@@ -50,28 +52,13 @@ export type GetVercelInstallationStatus404 = Error;
 */
 export type GetVercelInstallationStatus429 = Error;
 
-/**
- * @type object
-*/
-export type GetVercelInstallationRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        org_id: GetVercelInstallationPathOrgId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/organizations/${string}/vercel-installation`;
+export type GetVercelInstallationOptions = {
+    body?: never;
+    path: GetVercelInstallationPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type GetVercelInstallationResponses = {
     "200": GetVercelInstallationStatus200;
     "400": GetVercelInstallationStatus400;

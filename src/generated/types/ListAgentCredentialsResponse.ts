@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { AgentCredential } from "./AgentCredential";
+import type { AgentCredential } from './AgentCredential'
 
 /**
  * @description Cursor-paginated list of agent credentials for a project.

@@ -3,26 +3,24 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
+import type { Error } from './Error'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type DeleteCustomDomainPathProjectId = string;
+export type DeleteCustomDomainPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+    /**
+     * @description Unique custom domain identifier (prefixed, e.g. dom_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    domain_id: string;
+};
 
-/**
- * @description Unique custom domain identifier (prefixed, e.g. dom_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type DeleteCustomDomainPathDomainId = string;
-
-/**
- * @type any
-*/
-export type DeleteCustomDomainStatus204 = any;
+export type DeleteCustomDomainStatus204 = unknown;
 
 /**
  * @description Standard error response envelope for PgBeam API requests.
@@ -54,29 +52,13 @@ export type DeleteCustomDomainStatus404 = Error;
 */
 export type DeleteCustomDomainStatus429 = Error;
 
-/**
- * @type object
-*/
-export type DeleteCustomDomainRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: DeleteCustomDomainPathProjectId;
-        domain_id: DeleteCustomDomainPathDomainId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/domains/${string}`;
+export type DeleteCustomDomainOptions = {
+    body?: never;
+    path: DeleteCustomDomainPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type DeleteCustomDomainResponses = {
     "204": DeleteCustomDomainStatus204;
     "400": DeleteCustomDomainStatus400;

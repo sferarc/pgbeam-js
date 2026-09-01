@@ -3,9 +3,9 @@
 * Do not edit manually.
 */
 
-import type { CidrEntry } from "./CidrEntry";
-import type { DataResidencyKey } from "./DataResidency";
-import type { ProjectStatusKey } from "./ProjectStatus";
+import type { CidrEntry } from './CidrEntry'
+import type { DataResidencyKey } from './DataResidency'
+import type { ProjectStatusKey } from './ProjectStatus'
 
 /**
  * @description Request body for partially updating a project.
@@ -30,7 +30,7 @@ export type UpdateProjectRequest = {
     description?: string;
     /**
      * @description Replacement set of user-defined project labels.
-     * @example production,us-east-1
+     * @example ["production","us-east-1"]
      * @type array | undefined
     */
     tags?: string[];
@@ -41,19 +41,19 @@ export type UpdateProjectRequest = {
     status?: ProjectStatusKey;
     /**
      * @description IP filtering rules as CIDR ranges with optional labels. Empty array means allow all. Both IPv4 and IPv6 CIDR notation are supported.\n
-     * @example [object Object],[object Object]
+     * @example [{"cidr":"10.0.0.0/8","label":"VPC"},{"cidr":"203.0.113.5/32","label":"Office"}]
      * @type array | undefined
     */
     allowed_cidrs?: CidrEntry[];
     /**
      * @description When set, passthrough/human connections are enforced against this policy profile. Send an empty string to clear.\n
      * @example pol_01h455vb4pex5vsknk084sn02q
-     * @type string
+     * @type string | undefined
     */
     default_policy_profile_id?: string | null;
     /**
      * @description Data-residency requirement for the project. \"any\" (default) lets queries be served from the nearest data-plane metro. \"us\" or \"eu\" require the serving metro to be in that jurisdiction; the proxy fails a connection closed when it is served from a metro outside the required jurisdiction, so regulated workloads never process outside their permitted region.\n
-     * @default "any"
+     * @default 'any'
      * @example eu
      * @type string | undefined
     */

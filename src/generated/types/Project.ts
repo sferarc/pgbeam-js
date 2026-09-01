@@ -3,9 +3,9 @@
 * Do not edit manually.
 */
 
-import type { CidrEntry } from "./CidrEntry";
-import type { DataResidencyKey } from "./DataResidency";
-import type { ProjectStatusKey } from "./ProjectStatus";
+import type { CidrEntry } from './CidrEntry'
+import type { DataResidencyKey } from './DataResidency'
+import type { ProjectStatusKey } from './ProjectStatus'
 
 export const projectCloudEnum = {
     aws: "aws",
@@ -49,7 +49,7 @@ export type Project = {
     description?: string;
     /**
      * @description User-defined labels applied to the project.
-     * @example production,us-east-1
+     * @example ["production","us-east-1"]
      * @type array | undefined
     */
     tags?: string[];
@@ -71,37 +71,43 @@ export type Project = {
     readonly proxy_host?: string;
     /**
      * @description Maximum queries per second for this project. 0 means unlimited.
+     *
+     * Format: `int32`
      * @example 1000
      * @type integer | undefined
     */
     readonly queries_per_second?: number;
     /**
      * @description Burst allowance above the steady-state rate. 0 uses queries_per_second as burst.
+     *
+     * Format: `int32`
      * @example 200
      * @type integer | undefined
     */
     readonly burst_size?: number;
     /**
      * @description Maximum concurrent proxy connections. 0 means unlimited.
+     *
+     * Format: `int32`
      * @example 500
      * @type integer | undefined
     */
     readonly max_connections?: number;
     /**
      * @description IP filtering rules as CIDR ranges with optional labels. When non-empty, only connections from matching IPs are accepted. Empty array means all IPs are allowed (default). Both IPv4 (e.g. 10.0.0.0/8) and IPv6 (e.g. 2001:db8::/32) are supported.\n
-     * @example [object Object],[object Object]
+     * @example [{"cidr":"10.0.0.0/8","label":"VPC"},{"cidr":"2001:db8::/32","label":"IPv6 range"}]
      * @type array | undefined
     */
     allowed_cidrs?: CidrEntry[];
     /**
      * @description When set, passthrough/human connections are enforced against this policy profile.
      * @example pol_01h455vb4pex5vsknk084sn02q
-     * @type string
+     * @type string | undefined
     */
     default_policy_profile_id?: string | null;
     /**
      * @description Data-residency requirement for the project. \"any\" (default) lets queries be served from the nearest data-plane metro. \"us\" or \"eu\" require the serving metro to be in that jurisdiction; the proxy fails a connection closed when it is served from a metro outside the required jurisdiction, so regulated workloads never process outside their permitted region.\n
-     * @default "any"
+     * @default 'any'
      * @example eu
      * @type string | undefined
     */
@@ -129,11 +135,15 @@ export type Project = {
     status: ProjectStatusKey;
     /**
      * @description When the project was created.
+     *
+     * Format: `date-time`
      * @type string
     */
     created_at: string;
     /**
      * @description When the project was last updated.
+     *
+     * Format: `date-time`
      * @type string
     */
     updated_at: string;

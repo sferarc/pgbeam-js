@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { AgentCredential } from "./AgentCredential";
+import type { AgentCredential } from './AgentCredential'
 
 /**
  * @description One-time secrets returned only at creation. The connection string and MCP token are not retrievable again.

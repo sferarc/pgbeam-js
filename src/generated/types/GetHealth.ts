@@ -3,8 +3,8 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { HealthResponse } from "./HealthResponse";
+import type { Error } from './Error'
+import type { HealthResponse } from './HealthResponse'
 
 /**
  * @description Health status and build metadata for the API service.
@@ -18,23 +18,13 @@ export type GetHealthStatus200 = HealthResponse;
 */
 export type GetHealthStatus429 = Error;
 
-/**
- * @type object
-*/
-export type GetHealthRequestConfig = {
-    data?: never;
-    pathParams?: never;
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: "/v1/health";
+export type GetHealthOptions = {
+    body?: never;
+    path?: never;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type GetHealthResponses = {
     "200": GetHealthStatus200;
     "429": GetHealthStatus429;

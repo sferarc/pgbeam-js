@@ -3,70 +3,73 @@
 * Do not edit manually.
 */
 
-import type { AuditDecisionKey } from "./AuditDecision";
-import type { AuditSourceKey } from "./AuditSource";
-import type { Error } from "./Error";
-import type { ListAuditLogsResponse } from "./ListAuditLogsResponse";
+import type { AuditDecisionKey } from './AuditDecision'
+import type { AuditSourceKey } from './AuditSource'
+import type { Error } from './Error'
+import type { ListAuditLogsResponse } from './ListAuditLogsResponse'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type ListAuditLogsPathProjectId = string;
+export type ListAuditLogsPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+};
 
-/**
- * @description Filter to a single agent credential.
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string | undefined
-*/
-export type ListAuditLogsQueryCredentialId = string | undefined;
-
-/**
- * @description Filter to a single event type (e.g. blocked, masked, query).
- * @pattern ^[a-z_]+$
- * @type string | undefined
-*/
-export type ListAuditLogsQueryEvent = string | undefined;
-
-/**
- * @description Coarse outcome filter that groups events. `allow` = query; `block` = blocked, budget_exhausted, auth_failed, credential_expired; `mask` = masked; `truncate` = truncated.
- * @type string | undefined
-*/
-export type ListAuditLogsQueryDecision = AuditDecisionKey | undefined;
-
-/**
- * @description Filter by statement origin (wire, mcp, rest, or control).
- * @type string | undefined
-*/
-export type ListAuditLogsQuerySource = AuditSourceKey | undefined;
-
-/**
- * @description Return entries at or after this timestamp (inclusive lower bound).
- * @type string | undefined
-*/
-export type ListAuditLogsQueryStart = string | undefined;
-
-/**
- * @description Return entries strictly older than this timestamp (cursor / upper bound).
- * @type string | undefined
-*/
-export type ListAuditLogsQueryEnd = string | undefined;
-
-/**
- * @description Return entries strictly older than this timestamp (keyset pagination cursor).
- * @type string | undefined
-*/
-export type ListAuditLogsQueryBefore = string | undefined;
-
-/**
- * @description Maximum number of items to return (1-100, default 20).
- * @minLength 1
- * @maxLength 100
- * @default 20
- * @type integer | undefined
-*/
-export type ListAuditLogsQueryPageSize = number | undefined;
+export type ListAuditLogsQuery = {
+    /**
+     * @description Filter to a single agent credential.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string | undefined
+    */
+    credential_id?: string;
+    /**
+     * @description Filter to a single event type (e.g. blocked, masked, query).
+     * @pattern ^[a-z_]+$
+     * @type string | undefined
+    */
+    event?: string;
+    /**
+     * @description Coarse outcome filter that groups events. `allow` = query; `block` = blocked, budget_exhausted, auth_failed, credential_expired; `mask` = masked; `truncate` = truncated.
+     * @type string | undefined
+    */
+    decision?: AuditDecisionKey;
+    /**
+     * @description Filter by statement origin (wire, mcp, rest, or control).
+     * @type string | undefined
+    */
+    source?: AuditSourceKey;
+    /**
+     * @description Return entries at or after this timestamp (inclusive lower bound).
+     *
+     * Format: `date-time`
+     * @type string | undefined
+    */
+    start?: string;
+    /**
+     * @description Return entries strictly older than this timestamp (cursor / upper bound).
+     *
+     * Format: `date-time`
+     * @type string | undefined
+    */
+    end?: string;
+    /**
+     * @description Return entries strictly older than this timestamp (keyset pagination cursor).
+     *
+     * Format: `date-time`
+     * @type string | undefined
+    */
+    before?: string;
+    /**
+     * @description Maximum number of items to return (1-100, default 20).
+     * @minLength 1
+     * @maxLength 100
+     * @default 20
+     * @type integer | undefined
+    */
+    page_size?: number;
+};
 
 /**
  * @description Time-ordered page of audit entries (newest first).
@@ -104,40 +107,13 @@ export type ListAuditLogsStatus404 = Error;
 */
 export type ListAuditLogsStatus429 = Error;
 
-/**
- * @type object
-*/
-export type ListAuditLogsRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: ListAuditLogsPathProjectId;
-    };
-    /**
-     * @type object | undefined
-    */
-    queryParams?: {
-        credential_id?: ListAuditLogsQueryCredentialId;
-        event?: ListAuditLogsQueryEvent;
-        decision?: ListAuditLogsQueryDecision;
-        source?: ListAuditLogsQuerySource;
-        start?: ListAuditLogsQueryStart;
-        end?: ListAuditLogsQueryEnd;
-        before?: ListAuditLogsQueryBefore;
-        page_size?: ListAuditLogsQueryPageSize;
-    };
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/audit-logs`;
+export type ListAuditLogsOptions = {
+    body?: never;
+    path: ListAuditLogsPath;
+    query?: ListAuditLogsQuery;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type ListAuditLogsResponses = {
     "200": ListAuditLogsStatus200;
     "400": ListAuditLogsStatus400;

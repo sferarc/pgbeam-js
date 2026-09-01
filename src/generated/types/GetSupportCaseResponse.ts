@@ -3,8 +3,8 @@
 * Do not edit manually.
 */
 
-import type { SupportCase } from "./SupportCase";
-import type { SupportMessage } from "./SupportMessage";
+import type { SupportCase } from './SupportCase'
+import type { SupportMessage } from './SupportMessage'
 
 /**
  * @description Support case with its message thread.

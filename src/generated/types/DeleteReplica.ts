@@ -3,26 +3,24 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
+import type { Error } from './Error'
 
-/**
- * @description Unique database identifier (prefixed, e.g. db_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type DeleteReplicaPathDatabaseId = string;
+export type DeleteReplicaPath = {
+    /**
+     * @description Unique database identifier (prefixed, e.g. db_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    database_id: string;
+    /**
+     * @description Unique replica identifier (prefixed, e.g. rep_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    replica_id: string;
+};
 
-/**
- * @description Unique replica identifier (prefixed, e.g. rep_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type DeleteReplicaPathReplicaId = string;
-
-/**
- * @type any
-*/
-export type DeleteReplicaStatus204 = any;
+export type DeleteReplicaStatus204 = unknown;
 
 /**
  * @description Standard error response envelope for PgBeam API requests.
@@ -54,29 +52,13 @@ export type DeleteReplicaStatus404 = Error;
 */
 export type DeleteReplicaStatus429 = Error;
 
-/**
- * @type object
-*/
-export type DeleteReplicaRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        database_id: DeleteReplicaPathDatabaseId;
-        replica_id: DeleteReplicaPathReplicaId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/databases/${string}/replicas/${string}`;
+export type DeleteReplicaOptions = {
+    body?: never;
+    path: DeleteReplicaPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type DeleteReplicaResponses = {
     "204": DeleteReplicaStatus204;
     "400": DeleteReplicaStatus400;

@@ -3,16 +3,18 @@
 * Do not edit manually.
 */
 
-import type { CreateCustomDomainRequest } from "./CreateCustomDomainRequest";
-import type { CustomDomain } from "./CustomDomain";
-import type { Error } from "./Error";
+import type { CreateCustomDomainRequest } from './CreateCustomDomainRequest'
+import type { CustomDomain } from './CustomDomain'
+import type { Error } from './Error'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type CreateCustomDomainPathProjectId = string;
+export type CreateCustomDomainPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+};
 
 /**
  * @description Custom database hostname attached to a project.
@@ -60,30 +62,15 @@ export type CreateCustomDomainStatus429 = Error;
  * @description Request body for attaching a custom domain to a project.
  * @type object
 */
-export type CreateCustomDomainData = CreateCustomDomainRequest;
+export type CreateCustomDomainBody = CreateCustomDomainRequest;
 
-/**
- * @type object
-*/
-export type CreateCustomDomainRequestConfig = {
-    data?: CreateCustomDomainData;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: CreateCustomDomainPathProjectId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/domains`;
+export type CreateCustomDomainOptions = {
+    body: CreateCustomDomainBody;
+    path: CreateCustomDomainPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type CreateCustomDomainResponses = {
     "201": CreateCustomDomainStatus201;
     "400": CreateCustomDomainStatus400;

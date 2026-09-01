@@ -3,31 +3,34 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { ListWebhookEndpointsResponse } from "./ListWebhookEndpointsResponse";
+import type { Error } from './Error'
+import type { ListWebhookEndpointsResponse } from './ListWebhookEndpointsResponse'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type ListWebhookEndpointsPathProjectId = string;
+export type ListWebhookEndpointsPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+};
 
-/**
- * @description Maximum number of items to return (1-100, default 20).
- * @minLength 1
- * @maxLength 100
- * @default 20
- * @type integer | undefined
-*/
-export type ListWebhookEndpointsQueryPageSize = number | undefined;
-
-/**
- * @description Opaque token for cursor-based pagination.
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string | undefined
-*/
-export type ListWebhookEndpointsQueryPageToken = string | undefined;
+export type ListWebhookEndpointsQuery = {
+    /**
+     * @description Maximum number of items to return (1-100, default 20).
+     * @minLength 1
+     * @maxLength 100
+     * @default 20
+     * @type integer | undefined
+    */
+    page_size?: number;
+    /**
+     * @description Opaque token for cursor-based pagination.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string | undefined
+    */
+    page_token?: string;
+};
 
 /**
  * @description Cursor-paginated list of webhook endpoints for a project.
@@ -65,34 +68,13 @@ export type ListWebhookEndpointsStatus404 = Error;
 */
 export type ListWebhookEndpointsStatus429 = Error;
 
-/**
- * @type object
-*/
-export type ListWebhookEndpointsRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: ListWebhookEndpointsPathProjectId;
-    };
-    /**
-     * @type object | undefined
-    */
-    queryParams?: {
-        page_size?: ListWebhookEndpointsQueryPageSize;
-        page_token?: ListWebhookEndpointsQueryPageToken;
-    };
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/webhooks`;
+export type ListWebhookEndpointsOptions = {
+    body?: never;
+    path: ListWebhookEndpointsPath;
+    query?: ListWebhookEndpointsQuery;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type ListWebhookEndpointsResponses = {
     "200": ListWebhookEndpointsStatus200;
     "400": ListWebhookEndpointsStatus400;

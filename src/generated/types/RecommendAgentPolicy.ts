@@ -3,23 +3,24 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { PolicyRecommendation } from "./PolicyRecommendation";
-import type { PolicyRecommendationInput } from "./PolicyRecommendationInput";
+import type { Error } from './Error'
+import type { PolicyRecommendation } from './PolicyRecommendation'
+import type { PolicyRecommendationInput } from './PolicyRecommendationInput'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type RecommendAgentPolicyPathProjectId = string;
-
-/**
- * @description Unique agent credential identifier (prefixed, e.g. agt_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type RecommendAgentPolicyPathAgentId = string;
+export type RecommendAgentPolicyPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+    /**
+     * @description Unique agent credential identifier (prefixed, e.g. agt_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    agent_id: string;
+};
 
 /**
  * @description A least-privilege policy derived from an agent credential\'s recorded audit history, together with the replay diff that proves the candidate would not newly block any statement the credential legitimately ran. Advisory only: this endpoint never creates, updates, or otherwise mutates a policy or a credential. A good recommendation has replay.summary.newly_blocked == 0.
@@ -61,31 +62,15 @@ export type RecommendAgentPolicyStatus429 = Error;
  * @description Optional parameters for a least-privilege policy recommendation. Every field is optional; an empty body analyzes the last 30 days of the credential\'s audit history.
  * @type object | undefined
 */
-export type RecommendAgentPolicyData = PolicyRecommendationInput | undefined;
+export type RecommendAgentPolicyBody = PolicyRecommendationInput | undefined;
 
-/**
- * @type object
-*/
-export type RecommendAgentPolicyRequestConfig = {
-    data?: RecommendAgentPolicyData;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: RecommendAgentPolicyPathProjectId;
-        agent_id: RecommendAgentPolicyPathAgentId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/agents/${string}/policy-recommendation`;
+export type RecommendAgentPolicyOptions = {
+    body: RecommendAgentPolicyBody;
+    path: RecommendAgentPolicyPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type RecommendAgentPolicyResponses = {
     "200": RecommendAgentPolicyStatus200;
     "400": RecommendAgentPolicyStatus400;

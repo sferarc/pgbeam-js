@@ -3,17 +3,19 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { OrganizationPlan } from "./OrganizationPlan";
-import type { UpdateSpendLimitRequest } from "./UpdateSpendLimitRequest";
+import type { Error } from './Error'
+import type { OrganizationPlan } from './OrganizationPlan'
+import type { UpdateSpendLimitRequest } from './UpdateSpendLimitRequest'
 
-/**
- * @description Unique organization identifier.
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @example org_abc123
- * @type string
-*/
-export type UpdateSpendLimitPathOrgId = string;
+export type UpdateSpendLimitPath = {
+    /**
+     * @description Unique organization identifier.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @example org_abc123
+     * @type string
+    */
+    org_id: string;
+};
 
 /**
  * @description Billing state and plan limits for an organization.
@@ -49,30 +51,15 @@ export type UpdateSpendLimitStatus429 = Error;
  * @description Request body for updating an organization\'s monthly spend cap.
  * @type object
 */
-export type UpdateSpendLimitData = UpdateSpendLimitRequest;
+export type UpdateSpendLimitBody = UpdateSpendLimitRequest;
 
-/**
- * @type object
-*/
-export type UpdateSpendLimitRequestConfig = {
-    data?: UpdateSpendLimitData;
-    /**
-     * @type object
-    */
-    pathParams: {
-        org_id: UpdateSpendLimitPathOrgId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/organizations/${string}/spend-limit`;
+export type UpdateSpendLimitOptions = {
+    body: UpdateSpendLimitBody;
+    path: UpdateSpendLimitPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type UpdateSpendLimitResponses = {
     "200": UpdateSpendLimitStatus200;
     "400": UpdateSpendLimitStatus400;

@@ -3,31 +3,34 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { ListCustomDomainsResponse } from "./ListCustomDomainsResponse";
+import type { Error } from './Error'
+import type { ListCustomDomainsResponse } from './ListCustomDomainsResponse'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type ListCustomDomainsPathProjectId = string;
+export type ListCustomDomainsPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+};
 
-/**
- * @description Maximum number of items to return (1-100, default 20).
- * @minLength 1
- * @maxLength 100
- * @default 20
- * @type integer | undefined
-*/
-export type ListCustomDomainsQueryPageSize = number | undefined;
-
-/**
- * @description Opaque token for cursor-based pagination.
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string | undefined
-*/
-export type ListCustomDomainsQueryPageToken = string | undefined;
+export type ListCustomDomainsQuery = {
+    /**
+     * @description Maximum number of items to return (1-100, default 20).
+     * @minLength 1
+     * @maxLength 100
+     * @default 20
+     * @type integer | undefined
+    */
+    page_size?: number;
+    /**
+     * @description Opaque token for cursor-based pagination.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string | undefined
+    */
+    page_token?: string;
+};
 
 /**
  * @description Cursor-paginated list of custom domains for a project.
@@ -65,34 +68,13 @@ export type ListCustomDomainsStatus404 = Error;
 */
 export type ListCustomDomainsStatus429 = Error;
 
-/**
- * @type object
-*/
-export type ListCustomDomainsRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: ListCustomDomainsPathProjectId;
-    };
-    /**
-     * @type object | undefined
-    */
-    queryParams?: {
-        page_size?: ListCustomDomainsQueryPageSize;
-        page_token?: ListCustomDomainsQueryPageToken;
-    };
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/domains`;
+export type ListCustomDomainsOptions = {
+    body?: never;
+    path: ListCustomDomainsPath;
+    query?: ListCustomDomainsQuery;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type ListCustomDomainsResponses = {
     "200": ListCustomDomainsStatus200;
     "400": ListCustomDomainsStatus400;

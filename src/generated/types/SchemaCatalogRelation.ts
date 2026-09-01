@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { SchemaCatalogColumn } from "./SchemaCatalogColumn";
+import type { SchemaCatalogColumn } from './SchemaCatalogColumn'
 
 export const schemaCatalogRelationKindEnum = {
     table: "table",

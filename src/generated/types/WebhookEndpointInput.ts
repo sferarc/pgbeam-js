@@ -33,7 +33,7 @@ export type WebhookEndpointInput = {
     secret?: string;
     /**
      * @description Payload format for delivered events.
-     * @default "json"
+     * @default 'json'
      * @type string | undefined
     */
     format?: WebhookEndpointInputFormatEnumKey;

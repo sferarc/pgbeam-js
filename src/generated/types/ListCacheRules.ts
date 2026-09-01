@@ -3,38 +3,40 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { ListCacheRulesResponse } from "./ListCacheRulesResponse";
+import type { Error } from './Error'
+import type { ListCacheRulesResponse } from './ListCacheRulesResponse'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type ListCacheRulesPathProjectId = string;
+export type ListCacheRulesPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+    /**
+     * @description Unique database identifier (prefixed, e.g. db_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    database_id: string;
+};
 
-/**
- * @description Unique database identifier (prefixed, e.g. db_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type ListCacheRulesPathDatabaseId = string;
-
-/**
- * @description Maximum number of items to return (1-100, default 20).
- * @minLength 1
- * @maxLength 100
- * @default 20
- * @type integer | undefined
-*/
-export type ListCacheRulesQueryPageSize = number | undefined;
-
-/**
- * @description Opaque token for cursor-based pagination.
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string | undefined
-*/
-export type ListCacheRulesQueryPageToken = string | undefined;
+export type ListCacheRulesQuery = {
+    /**
+     * @description Maximum number of items to return (1-100, default 20).
+     * @minLength 1
+     * @maxLength 100
+     * @default 20
+     * @type integer | undefined
+    */
+    page_size?: number;
+    /**
+     * @description Opaque token for cursor-based pagination.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string | undefined
+    */
+    page_token?: string;
+};
 
 /**
  * @description Cursor-paginated cache-rule entries for a database.
@@ -72,35 +74,13 @@ export type ListCacheRulesStatus404 = Error;
 */
 export type ListCacheRulesStatus429 = Error;
 
-/**
- * @type object
-*/
-export type ListCacheRulesRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: ListCacheRulesPathProjectId;
-        database_id: ListCacheRulesPathDatabaseId;
-    };
-    /**
-     * @type object | undefined
-    */
-    queryParams?: {
-        page_size?: ListCacheRulesQueryPageSize;
-        page_token?: ListCacheRulesQueryPageToken;
-    };
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/databases/${string}/cache-rules`;
+export type ListCacheRulesOptions = {
+    body?: never;
+    path: ListCacheRulesPath;
+    query?: ListCacheRulesQuery;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type ListCacheRulesResponses = {
     "200": ListCacheRulesStatus200;
     "400": ListCacheRulesStatus400;

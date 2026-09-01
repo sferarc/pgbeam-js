@@ -3,23 +3,24 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { Honeytoken } from "./Honeytoken";
-import type { HoneytokenInput } from "./HoneytokenInput";
+import type { Error } from './Error'
+import type { Honeytoken } from './Honeytoken'
+import type { HoneytokenInput } from './HoneytokenInput'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type UpdateHoneytokenPathProjectId = string;
-
-/**
- * @description Unique honeytoken identifier (prefixed, e.g. hnt_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type UpdateHoneytokenPathHoneytokenId = string;
+export type UpdateHoneytokenPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+    /**
+     * @description Unique honeytoken identifier (prefixed, e.g. hnt_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    honeytoken_id: string;
+};
 
 /**
  * @description A decoy (canary) relation. Any agent statement that references it is blocked (fail closed) and recorded as a canary_tripped audit event.\n
@@ -55,31 +56,15 @@ export type UpdateHoneytokenStatus404 = Error;
  * @description Request body for creating or updating a honeytoken.
  * @type object
 */
-export type UpdateHoneytokenData = HoneytokenInput;
+export type UpdateHoneytokenBody = HoneytokenInput;
 
-/**
- * @type object
-*/
-export type UpdateHoneytokenRequestConfig = {
-    data?: UpdateHoneytokenData;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: UpdateHoneytokenPathProjectId;
-        honeytoken_id: UpdateHoneytokenPathHoneytokenId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/honeytokens/${string}`;
+export type UpdateHoneytokenOptions = {
+    body: UpdateHoneytokenBody;
+    path: UpdateHoneytokenPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type UpdateHoneytokenResponses = {
     "200": UpdateHoneytokenStatus200;
     "400": UpdateHoneytokenStatus400;

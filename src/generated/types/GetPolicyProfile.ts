@@ -3,22 +3,23 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { PolicyProfile } from "./PolicyProfile";
+import type { Error } from './Error'
+import type { PolicyProfile } from './PolicyProfile'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type GetPolicyProfilePathProjectId = string;
-
-/**
- * @description Unique policy profile identifier (prefixed, e.g. pol_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type GetPolicyProfilePathPolicyId = string;
+export type GetPolicyProfilePath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+    /**
+     * @description Unique policy profile identifier (prefixed, e.g. pol_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    policy_id: string;
+};
 
 /**
  * @description A named bundle of rules enforced on agent credentials in the data plane.
@@ -50,29 +51,13 @@ export type GetPolicyProfileStatus403 = Error;
 */
 export type GetPolicyProfileStatus404 = Error;
 
-/**
- * @type object
-*/
-export type GetPolicyProfileRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: GetPolicyProfilePathProjectId;
-        policy_id: GetPolicyProfilePathPolicyId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/policies/${string}`;
+export type GetPolicyProfileOptions = {
+    body?: never;
+    path: GetPolicyProfilePath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type GetPolicyProfileResponses = {
     "200": GetPolicyProfileStatus200;
     "400": GetPolicyProfileStatus400;

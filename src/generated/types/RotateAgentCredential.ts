@@ -3,22 +3,23 @@
 * Do not edit manually.
 */
 
-import type { AgentCredentialSecrets } from "./AgentCredentialSecrets";
-import type { Error } from "./Error";
+import type { AgentCredentialSecrets } from './AgentCredentialSecrets'
+import type { Error } from './Error'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type RotateAgentCredentialPathProjectId = string;
-
-/**
- * @description Unique agent credential identifier (prefixed, e.g. agt_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type RotateAgentCredentialPathAgentId = string;
+export type RotateAgentCredentialPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+    /**
+     * @description Unique agent credential identifier (prefixed, e.g. agt_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    agent_id: string;
+};
 
 /**
  * @description One-time secrets returned only at creation. The connection string and MCP token are not retrievable again.
@@ -56,29 +57,13 @@ export type RotateAgentCredentialStatus404 = Error;
 */
 export type RotateAgentCredentialStatus409 = Error;
 
-/**
- * @type object
-*/
-export type RotateAgentCredentialRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: RotateAgentCredentialPathProjectId;
-        agent_id: RotateAgentCredentialPathAgentId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/agents/${string}/rotate`;
+export type RotateAgentCredentialOptions = {
+    body?: never;
+    path: RotateAgentCredentialPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type RotateAgentCredentialResponses = {
     "200": RotateAgentCredentialStatus200;
     "400": RotateAgentCredentialStatus400;

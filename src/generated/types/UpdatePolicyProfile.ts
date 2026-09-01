@@ -3,23 +3,24 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { PolicyProfile } from "./PolicyProfile";
-import type { PolicyProfileInput } from "./PolicyProfileInput";
+import type { Error } from './Error'
+import type { PolicyProfile } from './PolicyProfile'
+import type { PolicyProfileInput } from './PolicyProfileInput'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type UpdatePolicyProfilePathProjectId = string;
-
-/**
- * @description Unique policy profile identifier (prefixed, e.g. pol_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type UpdatePolicyProfilePathPolicyId = string;
+export type UpdatePolicyProfilePath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+    /**
+     * @description Unique policy profile identifier (prefixed, e.g. pol_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    policy_id: string;
+};
 
 /**
  * @description A named bundle of rules enforced on agent credentials in the data plane.
@@ -61,31 +62,15 @@ export type UpdatePolicyProfileStatus429 = Error;
  * @description Mutable fields of a policy profile (used for create and update).
  * @type object
 */
-export type UpdatePolicyProfileData = PolicyProfileInput;
+export type UpdatePolicyProfileBody = PolicyProfileInput;
 
-/**
- * @type object
-*/
-export type UpdatePolicyProfileRequestConfig = {
-    data?: UpdatePolicyProfileData;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: UpdatePolicyProfilePathProjectId;
-        policy_id: UpdatePolicyProfilePathPolicyId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/policies/${string}`;
+export type UpdatePolicyProfileOptions = {
+    body: UpdatePolicyProfileBody;
+    path: UpdatePolicyProfilePath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type UpdatePolicyProfileResponses = {
     "200": UpdatePolicyProfileStatus200;
     "400": UpdatePolicyProfileStatus400;

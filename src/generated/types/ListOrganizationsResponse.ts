@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { OrganizationSummary } from "./OrganizationSummary";
+import type { OrganizationSummary } from './OrganizationSummary'
 
 /**
  * @description Organizations visible to the caller\'s credential.

@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { DryEvalMaskedColumn } from "./DryEvalMaskedColumn";
+import type { DryEvalMaskedColumn } from './DryEvalMaskedColumn'
 
 export const dryEvalResultVerdictEnum = {
     allow: "allow",

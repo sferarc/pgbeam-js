@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { CacheRuleEntry } from "./CacheRuleEntry";
+import type { CacheRuleEntry } from './CacheRuleEntry'
 
 /**
  * @description Cursor-paginated cache-rule entries for a database.

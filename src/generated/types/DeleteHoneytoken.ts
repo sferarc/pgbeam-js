@@ -3,26 +3,24 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
+import type { Error } from './Error'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type DeleteHoneytokenPathProjectId = string;
+export type DeleteHoneytokenPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+    /**
+     * @description Unique honeytoken identifier (prefixed, e.g. hnt_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    honeytoken_id: string;
+};
 
-/**
- * @description Unique honeytoken identifier (prefixed, e.g. hnt_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type DeleteHoneytokenPathHoneytokenId = string;
-
-/**
- * @type any
-*/
-export type DeleteHoneytokenStatus204 = any;
+export type DeleteHoneytokenStatus204 = unknown;
 
 /**
  * @description Standard error response envelope for PgBeam API requests.
@@ -48,29 +46,13 @@ export type DeleteHoneytokenStatus403 = Error;
 */
 export type DeleteHoneytokenStatus404 = Error;
 
-/**
- * @type object
-*/
-export type DeleteHoneytokenRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: DeleteHoneytokenPathProjectId;
-        honeytoken_id: DeleteHoneytokenPathHoneytokenId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/honeytokens/${string}`;
+export type DeleteHoneytokenOptions = {
+    body?: never;
+    path: DeleteHoneytokenPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type DeleteHoneytokenResponses = {
     "204": DeleteHoneytokenStatus204;
     "400": DeleteHoneytokenStatus400;

@@ -3,15 +3,17 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { Project } from "./Project";
+import type { Error } from './Error'
+import type { Project } from './Project'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type GetProjectPathProjectId = string;
+export type GetProjectPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+};
 
 /**
  * @description Project configuration and current control-plane state.
@@ -49,28 +51,13 @@ export type GetProjectStatus404 = Error;
 */
 export type GetProjectStatus429 = Error;
 
-/**
- * @type object
-*/
-export type GetProjectRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: GetProjectPathProjectId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}`;
+export type GetProjectOptions = {
+    body?: never;
+    path: GetProjectPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type GetProjectResponses = {
     "200": GetProjectStatus200;
     "400": GetProjectStatus400;

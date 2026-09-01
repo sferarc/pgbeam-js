@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { ApprovalRequest } from "./ApprovalRequest";
+import type { ApprovalRequest } from './ApprovalRequest'
 
 /**
  * @description Cursor-paginated list of approval requests for a project.

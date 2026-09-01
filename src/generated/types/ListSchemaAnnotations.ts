@@ -3,31 +3,34 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { ListSchemaAnnotationsResponse } from "./ListSchemaAnnotationsResponse";
+import type { Error } from './Error'
+import type { ListSchemaAnnotationsResponse } from './ListSchemaAnnotationsResponse'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type ListSchemaAnnotationsPathProjectId = string;
+export type ListSchemaAnnotationsPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+};
 
-/**
- * @description Maximum number of items to return (1-100, default 20).
- * @minLength 1
- * @maxLength 100
- * @default 20
- * @type integer | undefined
-*/
-export type ListSchemaAnnotationsQueryPageSize = number | undefined;
-
-/**
- * @description Opaque token for cursor-based pagination.
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string | undefined
-*/
-export type ListSchemaAnnotationsQueryPageToken = string | undefined;
+export type ListSchemaAnnotationsQuery = {
+    /**
+     * @description Maximum number of items to return (1-100, default 20).
+     * @minLength 1
+     * @maxLength 100
+     * @default 20
+     * @type integer | undefined
+    */
+    page_size?: number;
+    /**
+     * @description Opaque token for cursor-based pagination.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string | undefined
+    */
+    page_token?: string;
+};
 
 /**
  * @description Cursor-paginated schema annotations for a project.
@@ -65,34 +68,13 @@ export type ListSchemaAnnotationsStatus404 = Error;
 */
 export type ListSchemaAnnotationsStatus429 = Error;
 
-/**
- * @type object
-*/
-export type ListSchemaAnnotationsRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: ListSchemaAnnotationsPathProjectId;
-    };
-    /**
-     * @type object | undefined
-    */
-    queryParams?: {
-        page_size?: ListSchemaAnnotationsQueryPageSize;
-        page_token?: ListSchemaAnnotationsQueryPageToken;
-    };
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/schema-annotations`;
+export type ListSchemaAnnotationsOptions = {
+    body?: never;
+    path: ListSchemaAnnotationsPath;
+    query?: ListSchemaAnnotationsQuery;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type ListSchemaAnnotationsResponses = {
     "200": ListSchemaAnnotationsStatus200;
     "400": ListSchemaAnnotationsStatus400;

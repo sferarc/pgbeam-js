@@ -3,26 +3,24 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
+import type { Error } from './Error'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type DiscardDatabaseBranchPathProjectId = string;
+export type DiscardDatabaseBranchPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+    /**
+     * @description Unique sandbox branch identifier (prefixed, e.g. brn_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    branch_id: string;
+};
 
-/**
- * @description Unique sandbox branch identifier (prefixed, e.g. brn_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type DiscardDatabaseBranchPathBranchId = string;
-
-/**
- * @type any
-*/
-export type DiscardDatabaseBranchStatus204 = any;
+export type DiscardDatabaseBranchStatus204 = unknown;
 
 /**
  * @description Standard error response envelope for PgBeam API requests.
@@ -48,29 +46,13 @@ export type DiscardDatabaseBranchStatus403 = Error;
 */
 export type DiscardDatabaseBranchStatus404 = Error;
 
-/**
- * @type object
-*/
-export type DiscardDatabaseBranchRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: DiscardDatabaseBranchPathProjectId;
-        branch_id: DiscardDatabaseBranchPathBranchId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/branches/${string}`;
+export type DiscardDatabaseBranchOptions = {
+    body?: never;
+    path: DiscardDatabaseBranchPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type DiscardDatabaseBranchResponses = {
     "204": DiscardDatabaseBranchStatus204;
     "400": DiscardDatabaseBranchStatus400;

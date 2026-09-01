@@ -43,11 +43,15 @@ export type VercelResourceStatus = {
     status: VercelResourceStatusStatusEnumKey;
     /**
      * @description Queries this resource has served in the current billing period.
+     *
+     * Format: `int64`
      * @type integer
     */
     period_queries: number;
     /**
      * @description Bytes transferred by this resource in the current billing period.
+     *
+     * Format: `int64`
      * @type integer
     */
     period_bytes: number;

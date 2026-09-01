@@ -3,16 +3,18 @@
 * Do not edit manually.
 */
 
-import type { CreateReplicaRequest } from "./CreateReplicaRequest";
-import type { Error } from "./Error";
-import type { Replica } from "./Replica";
+import type { CreateReplicaRequest } from './CreateReplicaRequest'
+import type { Error } from './Error'
+import type { Replica } from './Replica'
 
-/**
- * @description Unique database identifier (prefixed, e.g. db_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type CreateReplicaPathDatabaseId = string;
+export type CreateReplicaPath = {
+    /**
+     * @description Unique database identifier (prefixed, e.g. db_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    database_id: string;
+};
 
 /**
  * @description Read replica registered for a primary database.
@@ -54,30 +56,15 @@ export type CreateReplicaStatus429 = Error;
  * @description Request body for adding a read replica to a database.
  * @type object
 */
-export type CreateReplicaData = CreateReplicaRequest;
+export type CreateReplicaBody = CreateReplicaRequest;
 
-/**
- * @type object
-*/
-export type CreateReplicaRequestConfig = {
-    data?: CreateReplicaData;
-    /**
-     * @type object
-    */
-    pathParams: {
-        database_id: CreateReplicaPathDatabaseId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/databases/${string}/replicas`;
+export type CreateReplicaOptions = {
+    body: CreateReplicaBody;
+    path: CreateReplicaPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type CreateReplicaResponses = {
     "201": CreateReplicaStatus201;
     "400": CreateReplicaStatus400;

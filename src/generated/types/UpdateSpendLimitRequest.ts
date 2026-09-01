@@ -10,8 +10,10 @@
 export type UpdateSpendLimitRequest = {
     /**
      * @description Monthly spend limit in dollars. Null to remove the limit.
+     *
+     * Format: `double`
      * @example 500
-     * @type number
+     * @type number | undefined
     */
     spend_limit?: number | null;
 };

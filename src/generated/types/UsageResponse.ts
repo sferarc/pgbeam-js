@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { DailyUsage } from "./DailyUsage";
+import type { DailyUsage } from './DailyUsage'
 
 /**
  * @description Response envelope for organization usage queries.

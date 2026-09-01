@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { AnomalyAlert } from "./AnomalyAlert";
+import type { AnomalyAlert } from './AnomalyAlert'
 
 /**
  * @description Cursor-paginated list of anomaly alerts for a project.

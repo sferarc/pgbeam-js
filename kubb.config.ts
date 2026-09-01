@@ -5,11 +5,11 @@ import { defineConfig } from "kubb";
 
 export default defineConfig({
   root: ".",
-  input: { path: "../../../backend/openapi/bundles/public.yaml" },
+  input: "../../../backend/openapi/bundles/public.yaml",
   output: {
     path: "./src/generated",
     clean: true,
-    barrelType: "named",
+    barrel: { type: "named" },
     extension: { ".ts": "" },
     // Disable kubb's built-in Prettier — prettier isn't a direct dependency
     // and the intermittent "Prettier not found" failure kills the whole
@@ -23,7 +23,7 @@ export default defineConfig({
   middleware: [middlewareBarrel()],
   plugins: [
     pluginTs({
-      output: { path: "./types", barrelType: "named" },
+      output: { path: "./types", barrel: { type: "named" } },
       enumType: "asConst",
     }),
   ],

@@ -3,32 +3,44 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { ProjectInsights } from "./ProjectInsights";
+import type { Error } from './Error'
+import type { ProjectInsights } from './ProjectInsights'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type GetProjectInsightsPathProjectId = string;
+export type GetProjectInsightsPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+};
 
-/**
- * @description Time range to query. Defaults to 24h.
- * @default "24h"
- * @example 24h
- * @type string | undefined
-*/
-export type GetProjectInsightsQueryRange = ("1h" | "6h" | "24h" | "7d") | undefined;
+export const getProjectInsightsRange = {
+    "1h": "1h",
+    "6h": "6h",
+    "24h": "24h",
+    "7d": "7d"
+} as const;
 
-/**
- * @description Maximum number of top queries to return (1-100).
- * @minLength 1
- * @maxLength 100
- * @default 20
- * @type integer | undefined
-*/
-export type GetProjectInsightsQueryLimit = number | undefined;
+export type GetProjectInsightsRangeKey = (typeof getProjectInsightsRange)[keyof typeof getProjectInsightsRange];
+
+export type GetProjectInsightsQuery = {
+    /**
+     * @description Time range to query. Defaults to 24h.
+     * @default '24h'
+     * @example 24h
+     * @type string | undefined
+    */
+    range?: GetProjectInsightsRangeKey;
+    /**
+     * @description Maximum number of top queries to return (1-100).
+     * @minLength 1
+     * @maxLength 100
+     * @default 20
+     * @type integer | undefined
+    */
+    limit?: number;
+};
 
 /**
  * @description Query insights, cache performance, and latency for a project.
@@ -60,34 +72,13 @@ export type GetProjectInsightsStatus404 = Error;
 */
 export type GetProjectInsightsStatus429 = Error;
 
-/**
- * @type object
-*/
-export type GetProjectInsightsRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: GetProjectInsightsPathProjectId;
-    };
-    /**
-     * @type object | undefined
-    */
-    queryParams?: {
-        range?: GetProjectInsightsQueryRange;
-        limit?: GetProjectInsightsQueryLimit;
-    };
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/insights`;
+export type GetProjectInsightsOptions = {
+    body?: never;
+    path: GetProjectInsightsPath;
+    query?: GetProjectInsightsQuery;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type GetProjectInsightsResponses = {
     "200": GetProjectInsightsStatus200;
     "400": GetProjectInsightsStatus400;

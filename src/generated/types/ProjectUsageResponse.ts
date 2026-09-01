@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { ProjectDailyUsage } from "./ProjectDailyUsage";
+import type { ProjectDailyUsage } from './ProjectDailyUsage'
 
 /**
  * @description Response envelope for project usage queries.

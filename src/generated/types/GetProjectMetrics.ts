@@ -3,31 +3,34 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { ProjectMetricsResponse } from "./ProjectMetricsResponse";
+import type { Error } from './Error'
+import type { ProjectMetricsResponse } from './ProjectMetricsResponse'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type GetProjectMetricsPathProjectId = string;
+export type GetProjectMetricsPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+};
 
-/**
- * @description Maximum number of recent snapshots to return.
- * @minLength 1
- * @maxLength 1000
- * @default 60
- * @type integer | undefined
-*/
-export type GetProjectMetricsQueryLimit = number | undefined;
-
-/**
- * @description Filter metrics by region code.
- * @example us-east-1
- * @type string | undefined
-*/
-export type GetProjectMetricsQueryRegion = string | undefined;
+export type GetProjectMetricsQuery = {
+    /**
+     * @description Maximum number of recent snapshots to return.
+     * @minLength 1
+     * @maxLength 1000
+     * @default 60
+     * @type integer | undefined
+    */
+    limit?: number;
+    /**
+     * @description Filter metrics by region code.
+     * @example us-east-1
+     * @type string | undefined
+    */
+    region?: string;
+};
 
 /**
  * @description Response envelope for recent project metrics snapshots.
@@ -59,34 +62,13 @@ export type GetProjectMetricsStatus404 = Error;
 */
 export type GetProjectMetricsStatus429 = Error;
 
-/**
- * @type object
-*/
-export type GetProjectMetricsRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: GetProjectMetricsPathProjectId;
-    };
-    /**
-     * @type object | undefined
-    */
-    queryParams?: {
-        limit?: GetProjectMetricsQueryLimit;
-        region?: GetProjectMetricsQueryRegion;
-    };
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/metrics`;
+export type GetProjectMetricsOptions = {
+    body?: never;
+    path: GetProjectMetricsPath;
+    query?: GetProjectMetricsQuery;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type GetProjectMetricsResponses = {
     "200": GetProjectMetricsStatus200;
     "400": GetProjectMetricsStatus400;

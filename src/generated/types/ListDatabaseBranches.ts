@@ -3,37 +3,48 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { ListDatabaseBranchesResponse } from "./ListDatabaseBranchesResponse";
+import type { Error } from './Error'
+import type { ListDatabaseBranchesResponse } from './ListDatabaseBranchesResponse'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type ListDatabaseBranchesPathProjectId = string;
+export type ListDatabaseBranchesPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+};
 
-/**
- * @description Filter to a single status.
- * @type string | undefined
-*/
-export type ListDatabaseBranchesQueryStatus = ("pending" | "ready" | "error" | "discarded") | undefined;
+export const listDatabaseBranchesStatus = {
+    pending: "pending",
+    ready: "ready",
+    error: "error",
+    discarded: "discarded"
+} as const;
 
-/**
- * @description Maximum number of items to return (1-100, default 20).
- * @minLength 1
- * @maxLength 100
- * @default 20
- * @type integer | undefined
-*/
-export type ListDatabaseBranchesQueryPageSize = number | undefined;
+export type ListDatabaseBranchesStatusKey = (typeof listDatabaseBranchesStatus)[keyof typeof listDatabaseBranchesStatus];
 
-/**
- * @description Opaque token for cursor-based pagination.
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string | undefined
-*/
-export type ListDatabaseBranchesQueryPageToken = string | undefined;
+export type ListDatabaseBranchesQuery = {
+    /**
+     * @description Filter to a single status.
+     * @type string | undefined
+    */
+    status?: ListDatabaseBranchesStatusKey;
+    /**
+     * @description Maximum number of items to return (1-100, default 20).
+     * @minLength 1
+     * @maxLength 100
+     * @default 20
+     * @type integer | undefined
+    */
+    page_size?: number;
+    /**
+     * @description Opaque token for cursor-based pagination.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string | undefined
+    */
+    page_token?: string;
+};
 
 /**
  * @description Cursor-paginated list of sandbox branches for a project.
@@ -71,35 +82,13 @@ export type ListDatabaseBranchesStatus404 = Error;
 */
 export type ListDatabaseBranchesStatus429 = Error;
 
-/**
- * @type object
-*/
-export type ListDatabaseBranchesRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: ListDatabaseBranchesPathProjectId;
-    };
-    /**
-     * @type object | undefined
-    */
-    queryParams?: {
-        status?: ListDatabaseBranchesQueryStatus;
-        page_size?: ListDatabaseBranchesQueryPageSize;
-        page_token?: ListDatabaseBranchesQueryPageToken;
-    };
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/branches`;
+export type ListDatabaseBranchesOptions = {
+    body?: never;
+    path: ListDatabaseBranchesPath;
+    query?: ListDatabaseBranchesQuery;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type ListDatabaseBranchesResponses = {
     "200": ListDatabaseBranchesStatus200;
     "400": ListDatabaseBranchesStatus400;

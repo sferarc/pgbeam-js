@@ -3,15 +3,17 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { ListReplicasResponse } from "./ListReplicasResponse";
+import type { Error } from './Error'
+import type { ListReplicasResponse } from './ListReplicasResponse'
 
-/**
- * @description Unique database identifier (prefixed, e.g. db_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type ListReplicasPathDatabaseId = string;
+export type ListReplicasPath = {
+    /**
+     * @description Unique database identifier (prefixed, e.g. db_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    database_id: string;
+};
 
 /**
  * @description Response envelope for listing registered replicas.
@@ -49,28 +51,13 @@ export type ListReplicasStatus404 = Error;
 */
 export type ListReplicasStatus429 = Error;
 
-/**
- * @type object
-*/
-export type ListReplicasRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        database_id: ListReplicasPathDatabaseId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/databases/${string}/replicas`;
+export type ListReplicasOptions = {
+    body?: never;
+    path: ListReplicasPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type ListReplicasResponses = {
     "200": ListReplicasStatus200;
     "400": ListReplicasStatus400;

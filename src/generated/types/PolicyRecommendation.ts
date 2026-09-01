@@ -3,8 +3,8 @@
 * Do not edit manually.
 */
 
-import type { PolicyProfileInput } from "./PolicyProfileInput";
-import type { PolicyReplayResult } from "./PolicyReplayResult";
+import type { PolicyProfileInput } from './PolicyProfileInput'
+import type { PolicyReplayResult } from './PolicyReplayResult'
 
 /**
  * @description A least-privilege policy derived from an agent credential\'s recorded audit history, together with the replay diff that proves the candidate would not newly block any statement the credential legitimately ran. Advisory only: this endpoint never creates, updates, or otherwise mutates a policy or a credential. A good recommendation has replay.summary.newly_blocked == 0.
@@ -38,16 +38,22 @@ export type PolicyRecommendation = {
     observed_queries: number;
     /**
      * @description Recorded audit entries covered by the analyzed window.
+     *
+     * Format: `int64`
      * @type integer
     */
     observed_entries: number;
     /**
      * @description Start of the analyzed traffic window (inclusive).
+     *
+     * Format: `date-time`
      * @type string
     */
     window_start: string;
     /**
      * @description End of the analyzed traffic window (exclusive).
+     *
+     * Format: `date-time`
      * @type string
     */
     window_end: string;

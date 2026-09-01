@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { CacheRuleEntry } from "./CacheRuleEntry";
+import type { CacheRuleEntry } from './CacheRuleEntry'
 
 /**
  * @description Response returned after updating a cache rule.

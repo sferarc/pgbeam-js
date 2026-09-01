@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { SelfHostEnrollment } from "./SelfHostEnrollment";
+import type { SelfHostEnrollment } from './SelfHostEnrollment'
 
 /**
  * @description List of self-host enrollments for an organization.

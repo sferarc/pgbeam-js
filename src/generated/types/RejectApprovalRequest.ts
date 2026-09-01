@@ -3,23 +3,24 @@
 * Do not edit manually.
 */
 
-import type { ApprovalDecisionRequest } from "./ApprovalDecisionRequest";
-import type { ApprovalRequest } from "./ApprovalRequest";
-import type { Error } from "./Error";
+import type { ApprovalDecisionRequest } from './ApprovalDecisionRequest'
+import type { ApprovalRequest } from './ApprovalRequest'
+import type { Error } from './Error'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type RejectApprovalRequestPathProjectId = string;
-
-/**
- * @description Unique approval request identifier (prefixed, e.g. apr_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type RejectApprovalRequestPathApprovalId = string;
+export type RejectApprovalRequestPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+    /**
+     * @description Unique approval request identifier (prefixed, e.g. apr_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    approval_id: string;
+};
 
 /**
  * @description A statement held by the gateway awaiting a human approval decision.
@@ -61,31 +62,15 @@ export type RejectApprovalRequestStatus409 = Error;
  * @description Optional note attached to an approve/reject decision.
  * @type object | undefined
 */
-export type RejectApprovalRequestData = ApprovalDecisionRequest | undefined;
+export type RejectApprovalRequestBody = ApprovalDecisionRequest | undefined;
 
-/**
- * @type object
-*/
-export type RejectApprovalRequestRequestConfig = {
-    data?: RejectApprovalRequestData;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: RejectApprovalRequestPathProjectId;
-        approval_id: RejectApprovalRequestPathApprovalId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/approvals/${string}/reject`;
+export type RejectApprovalRequestOptions = {
+    body: RejectApprovalRequestBody;
+    path: RejectApprovalRequestPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type RejectApprovalRequestResponses = {
     "200": RejectApprovalRequestStatus200;
     "400": RejectApprovalRequestStatus400;

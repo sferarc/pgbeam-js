@@ -3,21 +3,20 @@
 * Do not edit manually.
 */
 
-import type { CancellationFeedbackRequest } from "./CancellationFeedbackRequest";
-import type { Error } from "./Error";
+import type { CancellationFeedbackRequest } from './CancellationFeedbackRequest'
+import type { Error } from './Error'
 
-/**
- * @description Unique organization identifier.
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @example org_abc123
- * @type string
-*/
-export type SubmitCancellationFeedbackPathOrgId = string;
+export type SubmitCancellationFeedbackPath = {
+    /**
+     * @description Unique organization identifier.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @example org_abc123
+     * @type string
+    */
+    org_id: string;
+};
 
-/**
- * @type any
-*/
-export type SubmitCancellationFeedbackStatus204 = any;
+export type SubmitCancellationFeedbackStatus204 = unknown;
 
 /**
  * @description Standard error response envelope for PgBeam API requests.
@@ -47,30 +46,15 @@ export type SubmitCancellationFeedbackStatus429 = Error;
  * @description Request body for capturing cancellation feedback from a user.
  * @type object
 */
-export type SubmitCancellationFeedbackData = CancellationFeedbackRequest;
+export type SubmitCancellationFeedbackBody = CancellationFeedbackRequest;
 
-/**
- * @type object
-*/
-export type SubmitCancellationFeedbackRequestConfig = {
-    data?: SubmitCancellationFeedbackData;
-    /**
-     * @type object
-    */
-    pathParams: {
-        org_id: SubmitCancellationFeedbackPathOrgId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/organizations/${string}/cancellation-feedback`;
+export type SubmitCancellationFeedbackOptions = {
+    body: SubmitCancellationFeedbackBody;
+    path: SubmitCancellationFeedbackPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type SubmitCancellationFeedbackResponses = {
     "204": SubmitCancellationFeedbackStatus204;
     "400": SubmitCancellationFeedbackStatus400;

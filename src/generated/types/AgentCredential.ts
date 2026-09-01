@@ -67,33 +67,41 @@ export type AgentCredential = {
     status: AgentCredentialStatusEnumKey;
     /**
      * @description Whether this credential represents an autonomous agent or a human operator.
-     * @default "agent"
+     * @default 'agent'
      * @type string | undefined
     */
     principal_type?: AgentCredentialPrincipalTypeEnumKey;
     /**
      * @description Postgres auth method the proxy presents for this credential.
-     * @default "scram-sha-256"
+     * @default 'scram-sha-256'
      * @type string | undefined
     */
     readonly auth_method?: AgentCredentialAuthMethodEnumKey;
     /**
      * @description When the credential was last used to connect, if ever.
-     * @type string
+     *
+     * Format: `date-time`
+     * @type string | undefined
     */
     last_used_at?: string | null;
     /**
      * @description When the credential expires and becomes unusable. Null means it never expires. Enforcement is fail-closed in the proxy the instant this time passes, before any cleanup sweep runs.
-     * @type string
+     *
+     * Format: `date-time`
+     * @type string | undefined
     */
     expires_at?: string | null;
     /**
      * @description When the credential was created.
+     *
+     * Format: `date-time`
      * @type string
     */
     created_at: string;
     /**
      * @description When the credential was last updated.
+     *
+     * Format: `date-time`
      * @type string
     */
     updated_at: string;

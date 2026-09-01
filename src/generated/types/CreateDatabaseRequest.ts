@@ -3,10 +3,10 @@
 * Do not edit manually.
 */
 
-import type { CacheConfig } from "./CacheConfig";
-import type { DatabaseRoleKey } from "./DatabaseRole";
-import type { PoolConfig } from "./PoolConfig";
-import type { SSLModeKey } from "./SSLMode";
+import type { CacheConfig } from './CacheConfig'
+import type { DatabaseRoleKey } from './DatabaseRole'
+import type { PoolConfig } from './PoolConfig'
+import type { SSLModeKey } from './SSLMode'
 
 /**
  * @description Request body for registering an upstream database.
@@ -47,6 +47,8 @@ export type CreateDatabaseRequest = {
     username: string;
     /**
      * @description PostgreSQL password. Stored encrypted at rest.
+     *
+     * Format: `password`
      * @minLength 1
      * @pattern ^[^\x00]+$
      * @type string
@@ -60,7 +62,7 @@ export type CreateDatabaseRequest = {
     ssl_mode?: SSLModeKey;
     /**
      * @description Database role. Primary receives writes, replicas receive reads.
-     * @default "primary"
+     * @default 'primary'
      * @type string | undefined
     */
     role?: DatabaseRoleKey;

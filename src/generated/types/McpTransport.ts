@@ -3,9 +3,9 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { McpRequest } from "./McpRequest";
-import type { McpResponse } from "./McpResponse";
+import type { Error } from './Error'
+import type { McpRequest } from './McpRequest'
+import type { McpResponse } from './McpResponse'
 
 /**
  * @description JSON-RPC 2.0 response envelope for MCP over Streamable HTTP.
@@ -29,25 +29,15 @@ export type McpTransportStatus429 = Error;
  * @description JSON-RPC 2.0 request envelope for MCP over Streamable HTTP.
  * @type object
 */
-export type McpTransportData = McpRequest;
+export type McpTransportBody = McpRequest;
 
-/**
- * @type object
-*/
-export type McpTransportRequestConfig = {
-    data?: McpTransportData;
-    pathParams?: never;
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: "/v1/mcp";
+export type McpTransportOptions = {
+    body: McpTransportBody;
+    path?: never;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type McpTransportResponses = {
     "200": McpTransportStatus200;
     "401": McpTransportStatus401;

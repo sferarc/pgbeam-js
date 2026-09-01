@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { SupportCase } from "./SupportCase";
+import type { SupportCase } from './SupportCase'
 
 /**
  * @description Paginated list of support cases.
@@ -17,6 +17,8 @@ export type ListSupportCasesResponse = {
     cases: SupportCase[];
     /**
      * @description Total number of cases matching the filter.
+     *
+     * Format: `int64`
      * @type integer
     */
     total: number;

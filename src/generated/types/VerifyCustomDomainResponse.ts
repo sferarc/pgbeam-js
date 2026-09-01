@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { CustomDomain } from "./CustomDomain";
+import type { CustomDomain } from './CustomDomain'
 
 /**
  * @description Result of checking DNS ownership for a custom domain.

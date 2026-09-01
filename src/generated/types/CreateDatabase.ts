@@ -3,16 +3,18 @@
 * Do not edit manually.
 */
 
-import type { CreateDatabaseRequest } from "./CreateDatabaseRequest";
-import type { Database } from "./Database";
-import type { Error } from "./Error";
+import type { CreateDatabaseRequest } from './CreateDatabaseRequest'
+import type { Database } from './Database'
+import type { Error } from './Error'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type CreateDatabasePathProjectId = string;
+export type CreateDatabasePath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+};
 
 /**
  * @description Registered upstream PostgreSQL database for a project.
@@ -54,30 +56,15 @@ export type CreateDatabaseStatus429 = Error;
  * @description Request body for registering an upstream database.
  * @type object
 */
-export type CreateDatabaseData = CreateDatabaseRequest;
+export type CreateDatabaseBody = CreateDatabaseRequest;
 
-/**
- * @type object
-*/
-export type CreateDatabaseRequestConfig = {
-    data?: CreateDatabaseData;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: CreateDatabasePathProjectId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/databases`;
+export type CreateDatabaseOptions = {
+    body: CreateDatabaseBody;
+    path: CreateDatabasePath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type CreateDatabaseResponses = {
     "201": CreateDatabaseStatus201;
     "400": CreateDatabaseStatus400;

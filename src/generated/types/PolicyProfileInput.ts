@@ -3,9 +3,9 @@
 * Do not edit manually.
 */
 
-import type { MaskingRule } from "./MaskingRule";
-import type { RowFilter } from "./RowFilter";
-import type { StatementRules } from "./StatementRules";
+import type { MaskingRule } from './MaskingRule'
+import type { RowFilter } from './RowFilter'
+import type { StatementRules } from './StatementRules'
 
 export const policyProfileInputAccessModeEnum = {
     read_only: "read_only",
@@ -53,7 +53,7 @@ export type PolicyProfileInput = {
     name: string;
     /**
      * @description read_only blocks all data and schema mutations.
-     * @default "read_only"
+     * @default 'read_only'
      * @type string | undefined
     */
     access_mode?: PolicyProfileInputAccessModeEnumKey;
@@ -112,13 +112,13 @@ export type PolicyProfileInput = {
     row_filters?: RowFilter[];
     /**
      * @description How writes are handled. normal commits, rollback auto-rolls back, sandbox routes to an ephemeral branch.
-     * @default "normal"
+     * @default 'normal'
      * @type string | undefined
     */
     write_mode?: PolicyProfileInputWriteModeEnumKey;
     /**
      * @description Which statement classes require human approval before execution.
-     * @default "off"
+     * @default 'off'
      * @type string | undefined
     */
     approval_mode?: PolicyProfileInputApprovalModeEnumKey;
@@ -138,12 +138,14 @@ export type PolicyProfileInput = {
     approval_timeout_seconds?: number;
     /**
      * @description Migration safety mode. warn surfaces findings, block refuses unsafe DDL.
-     * @default "off"
+     * @default 'off'
      * @type string | undefined
     */
     migration_safety?: PolicyProfileInputMigrationSafetyEnumKey;
     /**
      * @description Per-day egress budget in bytes. 0 means unlimited.
+     *
+     * Format: `int64`
      * @minLength 0
      * @default 0
      * @type integer | undefined

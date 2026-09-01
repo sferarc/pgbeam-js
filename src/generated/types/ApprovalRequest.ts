@@ -32,7 +32,7 @@ export type ApprovalRequest = {
     project_id: string;
     /**
      * @description Agent credential that submitted the statement, if known.
-     * @type string
+     * @type string | undefined
     */
     credential_id?: string | null;
     /**
@@ -67,7 +67,9 @@ export type ApprovalRequest = {
     statement_kind?: string;
     /**
      * @description Best-effort estimate of how many rows the statement would affect, attached by the data plane when the statement was held. Either the planner estimate from EXPLAIN or the exact count observed in a rolled-back trial execution. Null when no estimate could be made; treat it as an estimate, not a guarantee.
-     * @type integer
+     *
+     * Format: `int64`
+     * @type integer | undefined
     */
     estimated_rows?: number | null;
     /**
@@ -87,21 +89,27 @@ export type ApprovalRequest = {
     reason?: string;
     /**
      * @description When the statement was first held.
+     *
+     * Format: `date-time`
      * @type string
     */
     requested_at: string;
     /**
      * @description When a decision was recorded, if any.
-     * @type string
+     *
+     * Format: `date-time`
+     * @type string | undefined
     */
     decided_at?: string | null;
     /**
      * @description User who decided, if any.
-     * @type string
+     * @type string | undefined
     */
     decided_by?: string | null;
     /**
      * @description When the request expires if undecided.
+     *
+     * Format: `date-time`
      * @type string
     */
     expires_at: string;

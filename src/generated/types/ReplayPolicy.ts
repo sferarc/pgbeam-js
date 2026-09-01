@@ -3,16 +3,18 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { PolicyReplayInput } from "./PolicyReplayInput";
-import type { PolicyReplayResult } from "./PolicyReplayResult";
+import type { Error } from './Error'
+import type { PolicyReplayInput } from './PolicyReplayInput'
+import type { PolicyReplayResult } from './PolicyReplayResult'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type ReplayPolicyPathProjectId = string;
+export type ReplayPolicyPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+};
 
 /**
  * @description The outcome of replaying recorded agent traffic against a candidate policy: an aggregate summary plus per-query decisions, changes first.
@@ -54,30 +56,15 @@ export type ReplayPolicyStatus429 = Error;
  * @description A window of recorded agent traffic to replay plus the candidate policy to replay it against. Supply exactly one of policy_id (an existing saved policy) or policy (an unsaved draft, e.g. the in-progress editor form).
  * @type object
 */
-export type ReplayPolicyData = PolicyReplayInput;
+export type ReplayPolicyBody = PolicyReplayInput;
 
-/**
- * @type object
-*/
-export type ReplayPolicyRequestConfig = {
-    data?: ReplayPolicyData;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: ReplayPolicyPathProjectId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/policy-replays`;
+export type ReplayPolicyOptions = {
+    body: ReplayPolicyBody;
+    path: ReplayPolicyPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type ReplayPolicyResponses = {
     "200": ReplayPolicyStatus200;
     "400": ReplayPolicyStatus400;

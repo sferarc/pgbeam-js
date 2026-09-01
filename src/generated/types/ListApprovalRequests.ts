@@ -3,37 +3,50 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { ListApprovalRequestsResponse } from "./ListApprovalRequestsResponse";
+import type { Error } from './Error'
+import type { ListApprovalRequestsResponse } from './ListApprovalRequestsResponse'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type ListApprovalRequestsPathProjectId = string;
+export type ListApprovalRequestsPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+};
 
-/**
- * @description Filter to a single status.
- * @type string | undefined
-*/
-export type ListApprovalRequestsQueryStatus = ("pending" | "approved" | "rejected" | "expired" | "executed" | "failed") | undefined;
+export const listApprovalRequestsStatus = {
+    pending: "pending",
+    approved: "approved",
+    rejected: "rejected",
+    expired: "expired",
+    executed: "executed",
+    failed: "failed"
+} as const;
 
-/**
- * @description Maximum number of items to return (1-100, default 20).
- * @minLength 1
- * @maxLength 100
- * @default 20
- * @type integer | undefined
-*/
-export type ListApprovalRequestsQueryPageSize = number | undefined;
+export type ListApprovalRequestsStatusKey = (typeof listApprovalRequestsStatus)[keyof typeof listApprovalRequestsStatus];
 
-/**
- * @description Opaque token for cursor-based pagination.
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string | undefined
-*/
-export type ListApprovalRequestsQueryPageToken = string | undefined;
+export type ListApprovalRequestsQuery = {
+    /**
+     * @description Filter to a single status.
+     * @type string | undefined
+    */
+    status?: ListApprovalRequestsStatusKey;
+    /**
+     * @description Maximum number of items to return (1-100, default 20).
+     * @minLength 1
+     * @maxLength 100
+     * @default 20
+     * @type integer | undefined
+    */
+    page_size?: number;
+    /**
+     * @description Opaque token for cursor-based pagination.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string | undefined
+    */
+    page_token?: string;
+};
 
 /**
  * @description Cursor-paginated list of approval requests for a project.
@@ -71,35 +84,13 @@ export type ListApprovalRequestsStatus404 = Error;
 */
 export type ListApprovalRequestsStatus429 = Error;
 
-/**
- * @type object
-*/
-export type ListApprovalRequestsRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: ListApprovalRequestsPathProjectId;
-    };
-    /**
-     * @type object | undefined
-    */
-    queryParams?: {
-        status?: ListApprovalRequestsQueryStatus;
-        page_size?: ListApprovalRequestsQueryPageSize;
-        page_token?: ListApprovalRequestsQueryPageToken;
-    };
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/approvals`;
+export type ListApprovalRequestsOptions = {
+    body?: never;
+    path: ListApprovalRequestsPath;
+    query?: ListApprovalRequestsQuery;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type ListApprovalRequestsResponses = {
     "200": ListApprovalRequestsStatus200;
     "400": ListApprovalRequestsStatus400;

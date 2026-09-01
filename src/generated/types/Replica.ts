@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { SSLModeKey } from "./SSLMode";
+import type { SSLModeKey } from './SSLMode'
 
 /**
  * @description Read replica registered for a primary database.
@@ -44,11 +44,15 @@ export type Replica = {
     ssl_mode: SSLModeKey;
     /**
      * @description When the replica was created.
+     *
+     * Format: `date-time`
      * @type string
     */
     created_at: string;
     /**
      * @description When the replica was last updated.
+     *
+     * Format: `date-time`
      * @type string
     */
     updated_at: string;

@@ -34,27 +34,35 @@ export type SelfHostEnrollment = {
     description?: string;
     /**
      * @description User ID that created the enrollment.
-     * @type string
+     * @type string | undefined
     */
     created_by?: string | null;
     /**
      * @description When the enrollment was created.
+     *
+     * Format: `date-time`
      * @type string
     */
     created_at: string;
     /**
      * @description Last time a proxy authenticated with this enrollment.
-     * @type string
+     *
+     * Format: `date-time`
+     * @type string | undefined
     */
     last_seen_at?: string | null;
     /**
      * @description When the enrollment was revoked. Null means active.
-     * @type string
+     *
+     * Format: `date-time`
+     * @type string | undefined
     */
     revoked_at?: string | null;
     /**
      * @description When the enrollment token expires and stops authenticating new proxy connections. Null means it never expires. Enforcement is fail-closed at the gRPC auth gate the instant this time passes.
-     * @type string
+     *
+     * Format: `date-time`
+     * @type string | undefined
     */
     expires_at?: string | null;
 };

@@ -3,26 +3,24 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
+import type { Error } from './Error'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type DeletePolicyProfilePathProjectId = string;
+export type DeletePolicyProfilePath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+    /**
+     * @description Unique policy profile identifier (prefixed, e.g. pol_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    policy_id: string;
+};
 
-/**
- * @description Unique policy profile identifier (prefixed, e.g. pol_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type DeletePolicyProfilePathPolicyId = string;
-
-/**
- * @type any
-*/
-export type DeletePolicyProfileStatus204 = any;
+export type DeletePolicyProfileStatus204 = unknown;
 
 /**
  * @description Standard error response envelope for PgBeam API requests.
@@ -54,29 +52,13 @@ export type DeletePolicyProfileStatus404 = Error;
 */
 export type DeletePolicyProfileStatus409 = Error;
 
-/**
- * @type object
-*/
-export type DeletePolicyProfileRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: DeletePolicyProfilePathProjectId;
-        policy_id: DeletePolicyProfilePathPolicyId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/policies/${string}`;
+export type DeletePolicyProfileOptions = {
+    body?: never;
+    path: DeletePolicyProfilePath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type DeletePolicyProfileResponses = {
     "204": DeletePolicyProfileStatus204;
     "400": DeletePolicyProfileStatus400;

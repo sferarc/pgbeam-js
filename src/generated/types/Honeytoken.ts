@@ -30,7 +30,7 @@ export type Honeytoken = {
     /**
      * @description Optional schema. Null matches the unqualified/public form, mirroring the relation allowlist normalization.\n
      * @example public
-     * @type string
+     * @type string | undefined
     */
     schema_name?: string | null;
     /**
@@ -46,11 +46,15 @@ export type Honeytoken = {
     action: HoneytokenActionEnumKey;
     /**
      * @description When the honeytoken was registered.
+     *
+     * Format: `date-time`
      * @type string
     */
     created_at: string;
     /**
      * @description When the honeytoken was last updated.
+     *
+     * Format: `date-time`
      * @type string
     */
     updated_at: string;

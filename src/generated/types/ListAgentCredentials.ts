@@ -3,31 +3,34 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { ListAgentCredentialsResponse } from "./ListAgentCredentialsResponse";
+import type { Error } from './Error'
+import type { ListAgentCredentialsResponse } from './ListAgentCredentialsResponse'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type ListAgentCredentialsPathProjectId = string;
+export type ListAgentCredentialsPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+};
 
-/**
- * @description Maximum number of items to return (1-100, default 20).
- * @minLength 1
- * @maxLength 100
- * @default 20
- * @type integer | undefined
-*/
-export type ListAgentCredentialsQueryPageSize = number | undefined;
-
-/**
- * @description Opaque token for cursor-based pagination.
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string | undefined
-*/
-export type ListAgentCredentialsQueryPageToken = string | undefined;
+export type ListAgentCredentialsQuery = {
+    /**
+     * @description Maximum number of items to return (1-100, default 20).
+     * @minLength 1
+     * @maxLength 100
+     * @default 20
+     * @type integer | undefined
+    */
+    page_size?: number;
+    /**
+     * @description Opaque token for cursor-based pagination.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string | undefined
+    */
+    page_token?: string;
+};
 
 /**
  * @description Cursor-paginated list of agent credentials for a project.
@@ -65,34 +68,13 @@ export type ListAgentCredentialsStatus404 = Error;
 */
 export type ListAgentCredentialsStatus429 = Error;
 
-/**
- * @type object
-*/
-export type ListAgentCredentialsRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: ListAgentCredentialsPathProjectId;
-    };
-    /**
-     * @type object | undefined
-    */
-    queryParams?: {
-        page_size?: ListAgentCredentialsQueryPageSize;
-        page_token?: ListAgentCredentialsQueryPageToken;
-    };
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/agents`;
+export type ListAgentCredentialsOptions = {
+    body?: never;
+    path: ListAgentCredentialsPath;
+    query?: ListAgentCredentialsQuery;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type ListAgentCredentialsResponses = {
     "200": ListAgentCredentialsStatus200;
     "400": ListAgentCredentialsStatus400;

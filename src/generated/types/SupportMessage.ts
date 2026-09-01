@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { SupportMessageSourceKey } from "./SupportMessageSource";
+import type { SupportMessageSourceKey } from './SupportMessageSource'
 
 /**
  * @description A message within a support case thread.
@@ -33,7 +33,7 @@ export type SupportMessage = {
     author_name: string;
     /**
      * @description URL to the author\'s avatar.
-     * @type string
+     * @type string | undefined
     */
     author_image?: string | null;
     /**
@@ -43,11 +43,13 @@ export type SupportMessage = {
     body: string;
     /**
      * @description Slack user ID (for Slack-sourced messages).
-     * @type string
+     * @type string | undefined
     */
     slack_user_id?: string | null;
     /**
      * @description When the message was created.
+     *
+     * Format: `date-time`
      * @type string
     */
     created_at: string;

@@ -3,32 +3,32 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { UpdateCacheRuleRequest } from "./UpdateCacheRuleRequest";
-import type { UpdateCacheRuleResponse } from "./UpdateCacheRuleResponse";
+import type { Error } from './Error'
+import type { UpdateCacheRuleRequest } from './UpdateCacheRuleRequest'
+import type { UpdateCacheRuleResponse } from './UpdateCacheRuleResponse'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type UpdateCacheRulePathProjectId = string;
-
-/**
- * @description Unique database identifier (prefixed, e.g. db_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type UpdateCacheRulePathDatabaseId = string;
-
-/**
- * @description xxhash64 hex of the normalized SQL.
- * @minLength 16
- * @maxLength 16
- * @pattern ^[a-f0-9]+$
- * @type string
-*/
-export type UpdateCacheRulePathQueryHash = string;
+export type UpdateCacheRulePath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+    /**
+     * @description Unique database identifier (prefixed, e.g. db_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    database_id: string;
+    /**
+     * @description xxhash64 hex of the normalized SQL.
+     * @minLength 16
+     * @maxLength 16
+     * @pattern ^[a-f0-9]+$
+     * @type string
+    */
+    query_hash: string;
+};
 
 /**
  * @description Response returned after updating a cache rule.
@@ -70,32 +70,15 @@ export type UpdateCacheRuleStatus429 = Error;
  * @description Request body for updating cache behavior of a query shape.
  * @type object
 */
-export type UpdateCacheRuleData = UpdateCacheRuleRequest;
+export type UpdateCacheRuleBody = UpdateCacheRuleRequest;
 
-/**
- * @type object
-*/
-export type UpdateCacheRuleRequestConfig = {
-    data?: UpdateCacheRuleData;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: UpdateCacheRulePathProjectId;
-        database_id: UpdateCacheRulePathDatabaseId;
-        query_hash: UpdateCacheRulePathQueryHash;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/databases/${string}/cache-rules/${string}`;
+export type UpdateCacheRuleOptions = {
+    body: UpdateCacheRuleBody;
+    path: UpdateCacheRulePath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type UpdateCacheRuleResponses = {
     "200": UpdateCacheRuleStatus200;
     "400": UpdateCacheRuleStatus400;

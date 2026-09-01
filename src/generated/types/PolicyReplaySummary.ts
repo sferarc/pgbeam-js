@@ -27,6 +27,8 @@ export type PolicyReplaySummary = {
     bound_credentials?: number;
     /**
      * @description Recorded audit entries covered by the replayed queries.
+     *
+     * Format: `int64`
      * @type integer
     */
     entries_scanned: number;

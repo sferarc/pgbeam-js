@@ -3,16 +3,18 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { OrganizationPlan } from "./OrganizationPlan";
+import type { Error } from './Error'
+import type { OrganizationPlan } from './OrganizationPlan'
 
-/**
- * @description Unique organization identifier.
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @example org_abc123
- * @type string
-*/
-export type GetOrganizationPlanPathOrgId = string;
+export type GetOrganizationPlanPath = {
+    /**
+     * @description Unique organization identifier.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @example org_abc123
+     * @type string
+    */
+    org_id: string;
+};
 
 /**
  * @description Billing state and plan limits for an organization.
@@ -44,28 +46,13 @@ export type GetOrganizationPlanStatus403 = Error;
 */
 export type GetOrganizationPlanStatus429 = Error;
 
-/**
- * @type object
-*/
-export type GetOrganizationPlanRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        org_id: GetOrganizationPlanPathOrgId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/organizations/${string}/plan`;
+export type GetOrganizationPlanOptions = {
+    body?: never;
+    path: GetOrganizationPlanPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type GetOrganizationPlanResponses = {
     "200": GetOrganizationPlanStatus200;
     "400": GetOrganizationPlanStatus400;

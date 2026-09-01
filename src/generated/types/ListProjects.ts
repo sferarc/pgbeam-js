@@ -3,40 +3,47 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { ListProjectsResponse } from "./ListProjectsResponse";
+import type { Error } from './Error'
+import type { ListProjectsResponse } from './ListProjectsResponse'
 
-/**
- * @description Organization ID to filter projects.
- * @pattern ^[\x20-\x7E]+$
- * @example org_abc123
- * @type string
-*/
-export type ListProjectsQueryOrgId = string;
+export const listProjectsSortBy = {
+    name: "name",
+    created_at: "created_at",
+    active_connections: "active_connections"
+} as const;
 
-/**
- * @description Maximum number of items to return (1-100, default 20).
- * @minLength 1
- * @maxLength 100
- * @default 20
- * @type integer | undefined
-*/
-export type ListProjectsQueryPageSize = number | undefined;
+export type ListProjectsSortByKey = (typeof listProjectsSortBy)[keyof typeof listProjectsSortBy];
 
-/**
- * @description Opaque token for cursor-based pagination.
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string | undefined
-*/
-export type ListProjectsQueryPageToken = string | undefined;
-
-/**
- * @description Sort field for projects list.
- * @default "created_at"
- * @example created_at
- * @type string | undefined
-*/
-export type ListProjectsQuerySortBy = ("name" | "created_at" | "active_connections") | undefined;
+export type ListProjectsQuery = {
+    /**
+     * @description Organization ID to filter projects.
+     * @pattern ^[\x20-\x7E]+$
+     * @example org_abc123
+     * @type string
+    */
+    org_id: string;
+    /**
+     * @description Maximum number of items to return (1-100, default 20).
+     * @minLength 1
+     * @maxLength 100
+     * @default 20
+     * @type integer | undefined
+    */
+    page_size?: number;
+    /**
+     * @description Opaque token for cursor-based pagination.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string | undefined
+    */
+    page_token?: string;
+    /**
+     * @description Sort field for projects list.
+     * @default 'created_at'
+     * @example created_at
+     * @type string | undefined
+    */
+    sort_by?: ListProjectsSortByKey;
+};
 
 /**
  * @description Cursor-paginated list of projects for an organization.
@@ -68,31 +75,13 @@ export type ListProjectsStatus403 = Error;
 */
 export type ListProjectsStatus429 = Error;
 
-/**
- * @type object
-*/
-export type ListProjectsRequestConfig = {
-    data?: never;
-    pathParams?: never;
-    /**
-     * @type object | undefined
-    */
-    queryParams?: {
-        org_id: ListProjectsQueryOrgId;
-        page_size?: ListProjectsQueryPageSize;
-        page_token?: ListProjectsQueryPageToken;
-        sort_by?: ListProjectsQuerySortBy;
-    };
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: "/v1/projects";
+export type ListProjectsOptions = {
+    body?: never;
+    path?: never;
+    query: ListProjectsQuery;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type ListProjectsResponses = {
     "200": ListProjectsStatus200;
     "400": ListProjectsStatus400;

@@ -23,7 +23,7 @@ export type SchemaAnnotation = {
     /**
      * @description Optional schema. Null matches the unqualified form, mirroring the relation allowlist normalization.\n
      * @example public
-     * @type string
+     * @type string | undefined
     */
     schema_name?: string | null;
     /**
@@ -35,7 +35,7 @@ export type SchemaAnnotation = {
     /**
      * @description Optional column. Null means the annotation describes the table itself.\n
      * @example email
-     * @type string
+     * @type string | undefined
     */
     column_name?: string | null;
     /**
@@ -46,11 +46,15 @@ export type SchemaAnnotation = {
     description: string;
     /**
      * @description When the annotation was created.
+     *
+     * Format: `date-time`
      * @type string
     */
     created_at: string;
     /**
      * @description When the annotation was last updated.
+     *
+     * Format: `date-time`
      * @type string
     */
     updated_at: string;

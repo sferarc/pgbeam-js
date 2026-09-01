@@ -3,8 +3,8 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { ListOrganizationsResponse } from "./ListOrganizationsResponse";
+import type { Error } from './Error'
+import type { ListOrganizationsResponse } from './ListOrganizationsResponse'
 
 /**
  * @description Organizations visible to the caller\'s credential.
@@ -24,23 +24,13 @@ export type ListOrganizationsStatus401 = Error;
 */
 export type ListOrganizationsStatus429 = Error;
 
-/**
- * @type object
-*/
-export type ListOrganizationsRequestConfig = {
-    data?: never;
-    pathParams?: never;
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: "/v1/organizations";
+export type ListOrganizationsOptions = {
+    body?: never;
+    path?: never;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type ListOrganizationsResponses = {
     "200": ListOrganizationsStatus200;
     "401": ListOrganizationsStatus401;

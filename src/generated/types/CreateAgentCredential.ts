@@ -3,16 +3,18 @@
 * Do not edit manually.
 */
 
-import type { AgentCredentialSecrets } from "./AgentCredentialSecrets";
-import type { CreateAgentCredentialRequest } from "./CreateAgentCredentialRequest";
-import type { Error } from "./Error";
+import type { AgentCredentialSecrets } from './AgentCredentialSecrets'
+import type { CreateAgentCredentialRequest } from './CreateAgentCredentialRequest'
+import type { Error } from './Error'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type CreateAgentCredentialPathProjectId = string;
+export type CreateAgentCredentialPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+};
 
 /**
  * @description One-time secrets returned only at creation. The connection string and MCP token are not retrievable again.
@@ -60,30 +62,15 @@ export type CreateAgentCredentialStatus429 = Error;
  * @description Request body for issuing a new agent credential.
  * @type object
 */
-export type CreateAgentCredentialData = CreateAgentCredentialRequest;
+export type CreateAgentCredentialBody = CreateAgentCredentialRequest;
 
-/**
- * @type object
-*/
-export type CreateAgentCredentialRequestConfig = {
-    data?: CreateAgentCredentialData;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: CreateAgentCredentialPathProjectId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/agents`;
+export type CreateAgentCredentialOptions = {
+    body: CreateAgentCredentialBody;
+    path: CreateAgentCredentialPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type CreateAgentCredentialResponses = {
     "201": CreateAgentCredentialStatus201;
     "400": CreateAgentCredentialStatus400;

@@ -3,22 +3,23 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { Honeytoken } from "./Honeytoken";
+import type { Error } from './Error'
+import type { Honeytoken } from './Honeytoken'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type GetHoneytokenPathProjectId = string;
-
-/**
- * @description Unique honeytoken identifier (prefixed, e.g. hnt_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type GetHoneytokenPathHoneytokenId = string;
+export type GetHoneytokenPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+    /**
+     * @description Unique honeytoken identifier (prefixed, e.g. hnt_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    honeytoken_id: string;
+};
 
 /**
  * @description A decoy (canary) relation. Any agent statement that references it is blocked (fail closed) and recorded as a canary_tripped audit event.\n
@@ -50,29 +51,13 @@ export type GetHoneytokenStatus403 = Error;
 */
 export type GetHoneytokenStatus404 = Error;
 
-/**
- * @type object
-*/
-export type GetHoneytokenRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: GetHoneytokenPathProjectId;
-        honeytoken_id: GetHoneytokenPathHoneytokenId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/honeytokens/${string}`;
+export type GetHoneytokenOptions = {
+    body?: never;
+    path: GetHoneytokenPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type GetHoneytokenResponses = {
     "200": GetHoneytokenStatus200;
     "400": GetHoneytokenStatus400;

@@ -3,17 +3,19 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { OnboardingProgress } from "./OnboardingProgress";
-import type { UpdateOnboardingRequest } from "./UpdateOnboardingRequest";
+import type { Error } from './Error'
+import type { OnboardingProgress } from './OnboardingProgress'
+import type { UpdateOnboardingRequest } from './UpdateOnboardingRequest'
 
-/**
- * @description Unique organization identifier.
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @example org_abc123
- * @type string
-*/
-export type UpdateOnboardingProgressPathOrgId = string;
+export type UpdateOnboardingProgressPath = {
+    /**
+     * @description Unique organization identifier.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @example org_abc123
+     * @type string
+    */
+    org_id: string;
+};
 
 /**
  * @description Progress state for the dashboard onboarding checklist.
@@ -55,30 +57,15 @@ export type UpdateOnboardingProgressStatus429 = Error;
  * @description Request body for advancing or dismissing onboarding.
  * @type object
 */
-export type UpdateOnboardingProgressData = UpdateOnboardingRequest;
+export type UpdateOnboardingProgressBody = UpdateOnboardingRequest;
 
-/**
- * @type object
-*/
-export type UpdateOnboardingProgressRequestConfig = {
-    data?: UpdateOnboardingProgressData;
-    /**
-     * @type object
-    */
-    pathParams: {
-        org_id: UpdateOnboardingProgressPathOrgId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/organizations/${string}/onboarding`;
+export type UpdateOnboardingProgressOptions = {
+    body: UpdateOnboardingProgressBody;
+    path: UpdateOnboardingProgressPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type UpdateOnboardingProgressResponses = {
     "200": UpdateOnboardingProgressStatus200;
     "400": UpdateOnboardingProgressStatus400;

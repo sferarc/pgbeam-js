@@ -3,23 +3,24 @@
 * Do not edit manually.
 */
 
-import type { Database } from "./Database";
-import type { Error } from "./Error";
-import type { UpdateDatabaseRequest } from "./UpdateDatabaseRequest";
+import type { Database } from './Database'
+import type { Error } from './Error'
+import type { UpdateDatabaseRequest } from './UpdateDatabaseRequest'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type UpdateDatabasePathProjectId = string;
-
-/**
- * @description Unique database identifier (prefixed, e.g. db_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type UpdateDatabasePathDatabaseId = string;
+export type UpdateDatabasePath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+    /**
+     * @description Unique database identifier (prefixed, e.g. db_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    database_id: string;
+};
 
 /**
  * @description Registered upstream PostgreSQL database for a project.
@@ -61,31 +62,15 @@ export type UpdateDatabaseStatus429 = Error;
  * @description Request body for partially updating an upstream database.
  * @type object
 */
-export type UpdateDatabaseData = UpdateDatabaseRequest;
+export type UpdateDatabaseBody = UpdateDatabaseRequest;
 
-/**
- * @type object
-*/
-export type UpdateDatabaseRequestConfig = {
-    data?: UpdateDatabaseData;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: UpdateDatabasePathProjectId;
-        database_id: UpdateDatabasePathDatabaseId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/databases/${string}`;
+export type UpdateDatabaseOptions = {
+    body: UpdateDatabaseBody;
+    path: UpdateDatabasePath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type UpdateDatabaseResponses = {
     "200": UpdateDatabaseStatus200;
     "400": UpdateDatabaseStatus400;

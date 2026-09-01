@@ -56,11 +56,15 @@ export type WebhookEndpoint = {
     description?: string;
     /**
      * @description When the endpoint was created.
+     *
+     * Format: `date-time`
      * @type string
     */
     created_at: string;
     /**
      * @description When the endpoint was last updated.
+     *
+     * Format: `date-time`
      * @type string
     */
     updated_at: string;

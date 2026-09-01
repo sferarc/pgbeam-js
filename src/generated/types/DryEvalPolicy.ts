@@ -3,16 +3,18 @@
 * Do not edit manually.
 */
 
-import type { DryEvalInput } from "./DryEvalInput";
-import type { DryEvalResult } from "./DryEvalResult";
-import type { Error } from "./Error";
+import type { DryEvalInput } from './DryEvalInput'
+import type { DryEvalResult } from './DryEvalResult'
+import type { Error } from './Error'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type DryEvalPolicyPathProjectId = string;
+export type DryEvalPolicyPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+};
 
 /**
  * @description The decision the proxy would reach for the supplied statement under the supplied policy. verdict is the headline outcome; the remaining fields detail why.
@@ -54,30 +56,15 @@ export type DryEvalPolicyStatus429 = Error;
  * @description A SQL statement to test plus the policy to test it against. Supply exactly one of policy_id (an existing saved policy) or policy (an unsaved draft, e.g. the in-progress editor form).
  * @type object
 */
-export type DryEvalPolicyData = DryEvalInput;
+export type DryEvalPolicyBody = DryEvalInput;
 
-/**
- * @type object
-*/
-export type DryEvalPolicyRequestConfig = {
-    data?: DryEvalPolicyData;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: DryEvalPolicyPathProjectId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/policy-evaluations`;
+export type DryEvalPolicyOptions = {
+    body: DryEvalPolicyBody;
+    path: DryEvalPolicyPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type DryEvalPolicyResponses = {
     "200": DryEvalPolicyStatus200;
     "400": DryEvalPolicyStatus400;

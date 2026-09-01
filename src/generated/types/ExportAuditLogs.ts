@@ -3,58 +3,58 @@
 * Do not edit manually.
 */
 
-import type { AuditDecisionKey } from "./AuditDecision";
-import type { AuditSourceKey } from "./AuditSource";
-import type { Error } from "./Error";
+import type { AuditDecisionKey } from './AuditDecision'
+import type { AuditSourceKey } from './AuditSource'
+import type { Error } from './Error'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type ExportAuditLogsPathProjectId = string;
+export type ExportAuditLogsPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+};
 
-/**
- * @description Filter to a single agent credential.
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string | undefined
-*/
-export type ExportAuditLogsQueryCredentialId = string | undefined;
+export type ExportAuditLogsQuery = {
+    /**
+     * @description Filter to a single agent credential.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string | undefined
+    */
+    credential_id?: string;
+    /**
+     * @description Filter to a single event type (e.g. blocked, masked, query).
+     * @pattern ^[a-z_]+$
+     * @type string | undefined
+    */
+    event?: string;
+    /**
+     * @description Coarse outcome filter that groups events. `allow` = query; `block` = blocked, budget_exhausted, auth_failed, credential_expired; `mask` = masked; `truncate` = truncated.
+     * @type string | undefined
+    */
+    decision?: AuditDecisionKey;
+    /**
+     * @description Filter by statement origin (wire, mcp, rest, or control).
+     * @type string | undefined
+    */
+    source?: AuditSourceKey;
+    /**
+     * @description Return entries at or after this timestamp (inclusive lower bound).
+     *
+     * Format: `date-time`
+     * @type string | undefined
+    */
+    start?: string;
+    /**
+     * @description Return entries strictly older than this timestamp (cursor / upper bound).
+     *
+     * Format: `date-time`
+     * @type string | undefined
+    */
+    end?: string;
+};
 
-/**
- * @description Filter to a single event type (e.g. blocked, masked, query).
- * @pattern ^[a-z_]+$
- * @type string | undefined
-*/
-export type ExportAuditLogsQueryEvent = string | undefined;
-
-/**
- * @description Coarse outcome filter that groups events. `allow` = query; `block` = blocked, budget_exhausted, auth_failed, credential_expired; `mask` = masked; `truncate` = truncated.
- * @type string | undefined
-*/
-export type ExportAuditLogsQueryDecision = AuditDecisionKey | undefined;
-
-/**
- * @description Filter by statement origin (wire, mcp, rest, or control).
- * @type string | undefined
-*/
-export type ExportAuditLogsQuerySource = AuditSourceKey | undefined;
-
-/**
- * @description Return entries at or after this timestamp (inclusive lower bound).
- * @type string | undefined
-*/
-export type ExportAuditLogsQueryStart = string | undefined;
-
-/**
- * @description Return entries strictly older than this timestamp (cursor / upper bound).
- * @type string | undefined
-*/
-export type ExportAuditLogsQueryEnd = string | undefined;
-
-/**
- * @type string
-*/
 export type ExportAuditLogsStatus200 = string;
 
 /**
@@ -87,38 +87,13 @@ export type ExportAuditLogsStatus404 = Error;
 */
 export type ExportAuditLogsStatus429 = Error;
 
-/**
- * @type object
-*/
-export type ExportAuditLogsRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: ExportAuditLogsPathProjectId;
-    };
-    /**
-     * @type object | undefined
-    */
-    queryParams?: {
-        credential_id?: ExportAuditLogsQueryCredentialId;
-        event?: ExportAuditLogsQueryEvent;
-        decision?: ExportAuditLogsQueryDecision;
-        source?: ExportAuditLogsQuerySource;
-        start?: ExportAuditLogsQueryStart;
-        end?: ExportAuditLogsQueryEnd;
-    };
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/audit-logs/export`;
+export type ExportAuditLogsOptions = {
+    body?: never;
+    path: ExportAuditLogsPath;
+    query?: ExportAuditLogsQuery;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type ExportAuditLogsResponses = {
     "200": ExportAuditLogsStatus200;
     "400": ExportAuditLogsStatus400;

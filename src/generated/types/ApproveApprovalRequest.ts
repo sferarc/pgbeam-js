@@ -3,23 +3,24 @@
 * Do not edit manually.
 */
 
-import type { ApprovalDecisionRequest } from "./ApprovalDecisionRequest";
-import type { ApprovalRequest } from "./ApprovalRequest";
-import type { Error } from "./Error";
+import type { ApprovalDecisionRequest } from './ApprovalDecisionRequest'
+import type { ApprovalRequest } from './ApprovalRequest'
+import type { Error } from './Error'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type ApproveApprovalRequestPathProjectId = string;
-
-/**
- * @description Unique approval request identifier (prefixed, e.g. apr_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type ApproveApprovalRequestPathApprovalId = string;
+export type ApproveApprovalRequestPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+    /**
+     * @description Unique approval request identifier (prefixed, e.g. apr_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    approval_id: string;
+};
 
 /**
  * @description A statement held by the gateway awaiting a human approval decision.
@@ -61,31 +62,15 @@ export type ApproveApprovalRequestStatus409 = Error;
  * @description Optional note attached to an approve/reject decision.
  * @type object | undefined
 */
-export type ApproveApprovalRequestData = ApprovalDecisionRequest | undefined;
+export type ApproveApprovalRequestBody = ApprovalDecisionRequest | undefined;
 
-/**
- * @type object
-*/
-export type ApproveApprovalRequestRequestConfig = {
-    data?: ApproveApprovalRequestData;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: ApproveApprovalRequestPathProjectId;
-        approval_id: ApproveApprovalRequestPathApprovalId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/approvals/${string}/approve`;
+export type ApproveApprovalRequestOptions = {
+    body: ApproveApprovalRequestBody;
+    path: ApproveApprovalRequestPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type ApproveApprovalRequestResponses = {
     "200": ApproveApprovalRequestStatus200;
     "400": ApproveApprovalRequestStatus400;

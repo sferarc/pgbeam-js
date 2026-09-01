@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { PolicyProfileInput } from "./PolicyProfileInput";
+import type { PolicyProfileInput } from './PolicyProfileInput'
 
 /**
  * @description A window of recorded agent traffic to replay plus the candidate policy to replay it against. Supply exactly one of policy_id (an existing saved policy) or policy (an unsaved draft, e.g. the in-progress editor form).
@@ -35,11 +35,15 @@ export type PolicyReplayInput = {
     bound_policy_id?: string;
     /**
      * @description Start of the traffic window (inclusive). Defaults to 7 days before end_ts.
+     *
+     * Format: `date-time`
      * @type string | undefined
     */
     start_ts?: string;
     /**
      * @description End of the traffic window (exclusive). Defaults to now.
+     *
+     * Format: `date-time`
      * @type string | undefined
     */
     end_ts?: string;

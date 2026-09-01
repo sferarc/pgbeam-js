@@ -3,13 +3,10 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { SlackEventPayload } from "./SlackEventPayload";
+import type { Error } from './Error'
+import type { SlackEventPayload } from './SlackEventPayload'
 
-/**
- * @type any
-*/
-export type HandleSlackSupportEventStatus200 = any;
+export type HandleSlackSupportEventStatus200 = unknown;
 
 /**
  * @description Standard error response envelope for PgBeam API requests.
@@ -33,25 +30,15 @@ export type HandleSlackSupportEventStatus404 = Error;
  * @description Slack event forwarded from the dashboard webhook handler.
  * @type object
 */
-export type HandleSlackSupportEventData = SlackEventPayload;
+export type HandleSlackSupportEventBody = SlackEventPayload;
 
-/**
- * @type object
-*/
-export type HandleSlackSupportEventRequestConfig = {
-    data?: HandleSlackSupportEventData;
-    pathParams?: never;
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: "/v1/internal/support/slack-event";
+export type HandleSlackSupportEventOptions = {
+    body: HandleSlackSupportEventBody;
+    path?: never;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type HandleSlackSupportEventResponses = {
     "200": HandleSlackSupportEventStatus200;
     "400": HandleSlackSupportEventStatus400;

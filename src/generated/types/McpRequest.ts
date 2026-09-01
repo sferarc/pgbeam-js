@@ -3,12 +3,6 @@
 * Do not edit manually.
 */
 
-export const mcpRequestJsonrpcEnum = {
-    "2.0": "2.0"
-} as const;
-
-export type McpRequestJsonrpcEnumKey = (typeof mcpRequestJsonrpcEnum)[keyof typeof mcpRequestJsonrpcEnum];
-
 export const mcpRequestMethodEnum = {
     initialize: "initialize",
     "notifications/initialized": "notifications/initialized",
@@ -29,7 +23,7 @@ export type McpRequest = {
      * @example 2.0
      * @type string
     */
-    jsonrpc: McpRequestJsonrpcEnumKey;
+    jsonrpc: "2.0";
     /**
      * @description Request identifier. Omit for notifications.
      * @example 1

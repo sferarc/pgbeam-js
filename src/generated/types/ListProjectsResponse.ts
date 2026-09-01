@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { Project } from "./Project";
+import type { Project } from './Project'
 
 /**
  * @description Cursor-paginated list of projects for an organization.

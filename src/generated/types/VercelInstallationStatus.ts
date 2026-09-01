@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { VercelResourceStatus } from "./VercelResourceStatus";
+import type { VercelResourceStatus } from './VercelResourceStatus'
 
 /**
  * @description Vercel Marketplace installation status for an organization, including its resources.
@@ -32,6 +32,8 @@ export type VercelInstallationStatus = {
     status: string;
     /**
      * @description When the installation was created.
+     *
+     * Format: `date-time`
      * @type string | undefined
     */
     created_at?: string;

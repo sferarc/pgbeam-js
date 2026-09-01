@@ -3,22 +3,23 @@
 * Do not edit manually.
 */
 
-import type { AgentCredential } from "./AgentCredential";
-import type { Error } from "./Error";
+import type { AgentCredential } from './AgentCredential'
+import type { Error } from './Error'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type GetAgentCredentialPathProjectId = string;
-
-/**
- * @description Unique agent credential identifier (prefixed, e.g. agt_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type GetAgentCredentialPathAgentId = string;
+export type GetAgentCredentialPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+    /**
+     * @description Unique agent credential identifier (prefixed, e.g. agt_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    agent_id: string;
+};
 
 /**
  * @description A PgBeam-issued, scoped Postgres login plus hosted MCP token for an AI agent.
@@ -50,29 +51,13 @@ export type GetAgentCredentialStatus403 = Error;
 */
 export type GetAgentCredentialStatus404 = Error;
 
-/**
- * @type object
-*/
-export type GetAgentCredentialRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: GetAgentCredentialPathProjectId;
-        agent_id: GetAgentCredentialPathAgentId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/agents/${string}`;
+export type GetAgentCredentialOptions = {
+    body?: never;
+    path: GetAgentCredentialPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type GetAgentCredentialResponses = {
     "200": GetAgentCredentialStatus200;
     "400": GetAgentCredentialStatus400;

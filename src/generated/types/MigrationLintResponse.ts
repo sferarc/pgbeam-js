@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { MigrationFinding } from "./MigrationFinding";
+import type { MigrationFinding } from './MigrationFinding'
 
 /**
  * @description Result of linting a migration script.

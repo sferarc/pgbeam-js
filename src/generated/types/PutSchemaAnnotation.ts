@@ -3,16 +3,18 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { SchemaAnnotation } from "./SchemaAnnotation";
-import type { SchemaAnnotationInput } from "./SchemaAnnotationInput";
+import type { Error } from './Error'
+import type { SchemaAnnotation } from './SchemaAnnotation'
+import type { SchemaAnnotationInput } from './SchemaAnnotationInput'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type PutSchemaAnnotationPathProjectId = string;
+export type PutSchemaAnnotationPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+};
 
 /**
  * @description A human-written description for a table or column, attached by a project operator and surfaced through the agent-facing MCP catalog. When present it takes precedence over the DB-native comment for the same relation or column.\n
@@ -54,30 +56,15 @@ export type PutSchemaAnnotationStatus429 = Error;
  * @description Request body for creating or replacing a schema annotation. Keyed by (schema_name, table_name, column_name); an existing annotation with the same key is replaced.\n
  * @type object
 */
-export type PutSchemaAnnotationData = SchemaAnnotationInput;
+export type PutSchemaAnnotationBody = SchemaAnnotationInput;
 
-/**
- * @type object
-*/
-export type PutSchemaAnnotationRequestConfig = {
-    data?: PutSchemaAnnotationData;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: PutSchemaAnnotationPathProjectId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/schema-annotations`;
+export type PutSchemaAnnotationOptions = {
+    body: PutSchemaAnnotationBody;
+    path: PutSchemaAnnotationPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type PutSchemaAnnotationResponses = {
     "200": PutSchemaAnnotationStatus200;
     "400": PutSchemaAnnotationStatus400;

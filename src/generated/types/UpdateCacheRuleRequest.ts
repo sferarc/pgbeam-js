@@ -18,7 +18,7 @@ export type UpdateCacheRuleRequest = {
      * @minLength 0
      * @maxLength 86400
      * @example 300
-     * @type integer
+     * @type integer | undefined
     */
     cache_ttl_seconds?: number | null;
     /**
@@ -26,7 +26,7 @@ export type UpdateCacheRuleRequest = {
      * @minLength 0
      * @maxLength 86400
      * @example 60
-     * @type integer
+     * @type integer | undefined
     */
     cache_swr_seconds?: number | null;
 };

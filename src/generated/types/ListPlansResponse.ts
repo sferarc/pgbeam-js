@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { PlanInfo } from "./PlanInfo";
+import type { PlanInfo } from './PlanInfo'
 
 /**
  * @description Response envelope for listing available billing plans.

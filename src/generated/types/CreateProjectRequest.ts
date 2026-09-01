@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { CreateDatabaseRequest } from "./CreateDatabaseRequest";
+import type { CreateDatabaseRequest } from './CreateDatabaseRequest'
 
 export const createProjectRequestCloudEnum = {
     aws: "aws",
@@ -44,13 +44,13 @@ export type CreateProjectRequest = {
     description?: string;
     /**
      * @description User-defined labels to attach to the project.
-     * @example production,us-east-1
+     * @example ["production","us-east-1"]
      * @type array | undefined
     */
     tags?: string[];
     /**
      * @description Cloud provider for the project.
-     * @default "aws"
+     * @default 'aws'
      * @type string | undefined
     */
     cloud?: CreateProjectRequestCloudEnumKey;

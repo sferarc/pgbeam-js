@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { CustomDomain } from "./CustomDomain";
+import type { CustomDomain } from './CustomDomain'
 
 /**
  * @description Cursor-paginated list of custom domains for a project.

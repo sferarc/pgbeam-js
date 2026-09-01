@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { AuditLogEntry } from "./AuditLogEntry";
+import type { AuditLogEntry } from './AuditLogEntry'
 
 /**
  * @description Time-ordered page of audit entries (newest first).

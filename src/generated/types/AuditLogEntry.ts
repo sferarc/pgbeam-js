@@ -21,7 +21,7 @@ export type AuditLogEntry = {
     project_id: string;
     /**
      * @description Agent credential that issued the statement, if known.
-     * @type string
+     * @type string | undefined
     */
     credential_id?: string | null;
     /**
@@ -66,11 +66,15 @@ export type AuditLogEntry = {
     reason?: string;
     /**
      * @description Rows returned to the agent.
+     *
+     * Format: `int64`
      * @type integer | undefined
     */
     rows_returned?: number;
     /**
      * @description Bytes sent to the agent.
+     *
+     * Format: `int64`
      * @type integer | undefined
     */
     bytes_out?: number;
@@ -101,11 +105,15 @@ export type AuditLogEntry = {
     source?: string;
     /**
      * @description When the statement executed.
+     *
+     * Format: `date-time`
      * @type string
     */
     ts: string;
     /**
      * @description Monotonic per-project position in the tamper-evident hash chain.
+     *
+     * Format: `int64`
      * @type integer | undefined
     */
     seq?: number;

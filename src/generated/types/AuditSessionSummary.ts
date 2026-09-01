@@ -31,11 +31,15 @@ export type AuditSessionSummary = {
     sources: string[];
     /**
      * @description Timestamp of the session\'s first scanned entry.
+     *
+     * Format: `date-time`
      * @type string
     */
     started_at: string;
     /**
      * @description Timestamp of the session\'s last scanned entry.
+     *
+     * Format: `date-time`
      * @type string
     */
     ended_at: string;
@@ -46,46 +50,64 @@ export type AuditSessionSummary = {
     duration_ms: number;
     /**
      * @description Audit entries read for this session, including non-statement lifecycle events.
+     *
+     * Format: `int64`
      * @type integer
     */
     entries_scanned: number;
     /**
      * @description Entries carrying a statement decision, the sum of allowed, blocked, masked and truncated.
+     *
+     * Format: `int64`
      * @type integer
     */
     statements: number;
     /**
      * @description Statements that ran unmodified (event `query`).
+     *
+     * Format: `int64`
      * @type integer
     */
     allowed: number;
     /**
      * @description Statements refused (events `blocked`, `budget_exhausted`, `auth_failed`, `credential_expired`), the same grouping the audit list\'s `block` decision filter uses.
+     *
+     * Format: `int64`
      * @type integer
     */
     blocked: number;
     /**
      * @description Statements whose results had a column masked (event `masked`). One statement records one event, and truncation outranks masking, so a statement that was both masked and truncated counts under truncated only.
+     *
+     * Format: `int64`
      * @type integer
     */
     masked: number;
     /**
      * @description Statements whose results hit a row cap (event `truncated`).
+     *
+     * Format: `int64`
      * @type integer
     */
     truncated: number;
     /**
      * @description Scanned entries carrying no statement decision, e.g. control-plane lifecycle events recorded against the session.
+     *
+     * Format: `int64`
      * @type integer
     */
     other: number;
     /**
      * @description Rows returned to the agent across the session.
+     *
+     * Format: `int64`
      * @type integer
     */
     rows_returned: number;
     /**
      * @description Bytes sent to the agent across the session.
+     *
+     * Format: `int64`
      * @type integer
     */
     bytes_out: number;
@@ -111,6 +133,8 @@ export type AuditSessionSummary = {
     tables_blocked: string[];
     /**
      * @description Statements whose recorded SQL could not be parsed, because the audit writer truncated it or because it never parsed. Their tables are missing from the three table lists, so a non-zero count means those lists are incomplete.
+     *
+     * Format: `int64`
      * @type integer
     */
     unparsed_statements: number;

@@ -3,16 +3,18 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { WebhookEndpoint } from "./WebhookEndpoint";
-import type { WebhookEndpointInput } from "./WebhookEndpointInput";
+import type { Error } from './Error'
+import type { WebhookEndpoint } from './WebhookEndpoint'
+import type { WebhookEndpointInput } from './WebhookEndpointInput'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type CreateWebhookEndpointPathProjectId = string;
+export type CreateWebhookEndpointPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+};
 
 /**
  * @description A delivery target for project audit/event notifications.
@@ -54,30 +56,15 @@ export type CreateWebhookEndpointStatus429 = Error;
  * @description Mutable fields of a webhook endpoint (used for create and update).
  * @type object
 */
-export type CreateWebhookEndpointData = WebhookEndpointInput;
+export type CreateWebhookEndpointBody = WebhookEndpointInput;
 
-/**
- * @type object
-*/
-export type CreateWebhookEndpointRequestConfig = {
-    data?: CreateWebhookEndpointData;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: CreateWebhookEndpointPathProjectId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/webhooks`;
+export type CreateWebhookEndpointOptions = {
+    body: CreateWebhookEndpointBody;
+    path: CreateWebhookEndpointPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type CreateWebhookEndpointResponses = {
     "201": CreateWebhookEndpointStatus201;
     "400": CreateWebhookEndpointStatus400;

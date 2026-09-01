@@ -10,11 +10,15 @@
 export type LatencySummary = {
     /**
      * @description Average latency in milliseconds across all queries.
+     *
+     * Format: `double`
      * @type number
     */
     avg_ms: number;
     /**
      * @description P99 latency in milliseconds across all queries.
+     *
+     * Format: `double`
      * @type number
     */
     p99_ms: number;

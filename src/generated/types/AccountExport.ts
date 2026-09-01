@@ -25,6 +25,8 @@ export type AccountExport = {
         name: string;
         /**
          * @description Primary account email address.
+         *
+         * Format: `email`
          * @type string
         */
         email: string;
@@ -40,11 +42,15 @@ export type AccountExport = {
         image?: string;
         /**
          * @description When the user account was created.
+         *
+         * Format: `date-time`
          * @type string
         */
         created_at: string;
         /**
          * @description When the user profile was last updated.
+         *
+         * Format: `date-time`
          * @type string
         */
         updated_at: string;
@@ -76,6 +82,8 @@ export type AccountExport = {
         role: string;
         /**
          * @description When the organization membership was created.
+         *
+         * Format: `date-time`
          * @type string
         */
         created_at: string;
@@ -112,6 +120,8 @@ export type AccountExport = {
         status: string;
         /**
          * @description When the project was created.
+         *
+         * Format: `date-time`
          * @type string
         */
         created_at: string;
@@ -158,6 +168,8 @@ export type AccountExport = {
         role: string;
         /**
          * @description When the database registration was created.
+         *
+         * Format: `date-time`
          * @type string
         */
         created_at: string;
@@ -174,11 +186,15 @@ export type AccountExport = {
         id: string;
         /**
          * @description When the session expires.
+         *
+         * Format: `date-time`
          * @type string
         */
         expires_at: string;
         /**
          * @description When the session was created.
+         *
+         * Format: `date-time`
          * @type string
         */
         created_at: string;
@@ -231,6 +247,8 @@ export type AccountExport = {
         document_version: string;
         /**
          * @description When the document was accepted.
+         *
+         * Format: `date-time`
          * @type string
         */
         accepted_at: string;
@@ -272,12 +290,16 @@ export type AccountExport = {
         ip_address?: string;
         /**
          * @description When the audit log entry was recorded.
+         *
+         * Format: `date-time`
          * @type string
         */
         created_at: string;
     }[];
     /**
      * @description When the export was generated.
+     *
+     * Format: `date-time`
      * @type string
     */
     exported_at: string;

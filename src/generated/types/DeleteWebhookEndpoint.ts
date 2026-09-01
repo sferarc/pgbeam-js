@@ -3,26 +3,24 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
+import type { Error } from './Error'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type DeleteWebhookEndpointPathProjectId = string;
+export type DeleteWebhookEndpointPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+    /**
+     * @description Unique webhook endpoint identifier (prefixed, e.g. whk_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    webhook_id: string;
+};
 
-/**
- * @description Unique webhook endpoint identifier (prefixed, e.g. whk_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type DeleteWebhookEndpointPathWebhookId = string;
-
-/**
- * @type any
-*/
-export type DeleteWebhookEndpointStatus204 = any;
+export type DeleteWebhookEndpointStatus204 = unknown;
 
 /**
  * @description Standard error response envelope for PgBeam API requests.
@@ -48,29 +46,13 @@ export type DeleteWebhookEndpointStatus403 = Error;
 */
 export type DeleteWebhookEndpointStatus404 = Error;
 
-/**
- * @type object
-*/
-export type DeleteWebhookEndpointRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: DeleteWebhookEndpointPathProjectId;
-        webhook_id: DeleteWebhookEndpointPathWebhookId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/webhooks/${string}`;
+export type DeleteWebhookEndpointOptions = {
+    body?: never;
+    path: DeleteWebhookEndpointPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type DeleteWebhookEndpointResponses = {
     "204": DeleteWebhookEndpointStatus204;
     "400": DeleteWebhookEndpointStatus400;

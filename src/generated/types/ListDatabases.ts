@@ -3,31 +3,34 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { ListDatabasesResponse } from "./ListDatabasesResponse";
+import type { Error } from './Error'
+import type { ListDatabasesResponse } from './ListDatabasesResponse'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type ListDatabasesPathProjectId = string;
+export type ListDatabasesPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+};
 
-/**
- * @description Maximum number of items to return (1-100, default 20).
- * @minLength 1
- * @maxLength 100
- * @default 20
- * @type integer | undefined
-*/
-export type ListDatabasesQueryPageSize = number | undefined;
-
-/**
- * @description Opaque token for cursor-based pagination.
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string | undefined
-*/
-export type ListDatabasesQueryPageToken = string | undefined;
+export type ListDatabasesQuery = {
+    /**
+     * @description Maximum number of items to return (1-100, default 20).
+     * @minLength 1
+     * @maxLength 100
+     * @default 20
+     * @type integer | undefined
+    */
+    page_size?: number;
+    /**
+     * @description Opaque token for cursor-based pagination.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string | undefined
+    */
+    page_token?: string;
+};
 
 /**
  * @description Cursor-paginated list of databases attached to a project.
@@ -65,34 +68,13 @@ export type ListDatabasesStatus404 = Error;
 */
 export type ListDatabasesStatus429 = Error;
 
-/**
- * @type object
-*/
-export type ListDatabasesRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: ListDatabasesPathProjectId;
-    };
-    /**
-     * @type object | undefined
-    */
-    queryParams?: {
-        page_size?: ListDatabasesQueryPageSize;
-        page_token?: ListDatabasesQueryPageToken;
-    };
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/databases`;
+export type ListDatabasesOptions = {
+    body?: never;
+    path: ListDatabasesPath;
+    query?: ListDatabasesQuery;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type ListDatabasesResponses = {
     "200": ListDatabasesStatus200;
     "400": ListDatabasesStatus400;

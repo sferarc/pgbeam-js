@@ -3,22 +3,23 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { WebhookTestResponse } from "./WebhookTestResponse";
+import type { Error } from './Error'
+import type { WebhookTestResponse } from './WebhookTestResponse'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type TestWebhookEndpointPathProjectId = string;
-
-/**
- * @description Unique webhook endpoint identifier (prefixed, e.g. whk_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type TestWebhookEndpointPathWebhookId = string;
+export type TestWebhookEndpointPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+    /**
+     * @description Unique webhook endpoint identifier (prefixed, e.g. whk_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    webhook_id: string;
+};
 
 /**
  * @description Result of sending a synthetic test event to a webhook endpoint.
@@ -50,29 +51,13 @@ export type TestWebhookEndpointStatus403 = Error;
 */
 export type TestWebhookEndpointStatus404 = Error;
 
-/**
- * @type object
-*/
-export type TestWebhookEndpointRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: TestWebhookEndpointPathProjectId;
-        webhook_id: TestWebhookEndpointPathWebhookId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/webhooks/${string}/test`;
+export type TestWebhookEndpointOptions = {
+    body?: never;
+    path: TestWebhookEndpointPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type TestWebhookEndpointResponses = {
     "202": TestWebhookEndpointStatus202;
     "400": TestWebhookEndpointStatus400;

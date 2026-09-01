@@ -3,17 +3,19 @@
 * Do not edit manually.
 */
 
-import type { CreateSelfHostEnrollmentRequest } from "./CreateSelfHostEnrollmentRequest";
-import type { Error } from "./Error";
-import type { SelfHostEnrollmentSecret } from "./SelfHostEnrollmentSecret";
+import type { CreateSelfHostEnrollmentRequest } from './CreateSelfHostEnrollmentRequest'
+import type { Error } from './Error'
+import type { SelfHostEnrollmentSecret } from './SelfHostEnrollmentSecret'
 
-/**
- * @description Unique organization identifier.
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @example org_abc123
- * @type string
-*/
-export type CreateSelfHostEnrollmentPathOrgId = string;
+export type CreateSelfHostEnrollmentPath = {
+    /**
+     * @description Unique organization identifier.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @example org_abc123
+     * @type string
+    */
+    org_id: string;
+};
 
 /**
  * @description Response returned once when an enrollment is created or its token is rotated. The token is shown a single time and cannot be retrieved again; set it as GRPC_AUTH_TOKEN on the self-hosted proxy.\n
@@ -49,30 +51,15 @@ export type CreateSelfHostEnrollmentStatus429 = Error;
  * @description Request body for issuing a self-host enrollment token.
  * @type object | undefined
 */
-export type CreateSelfHostEnrollmentData = CreateSelfHostEnrollmentRequest | undefined;
+export type CreateSelfHostEnrollmentBody = CreateSelfHostEnrollmentRequest | undefined;
 
-/**
- * @type object
-*/
-export type CreateSelfHostEnrollmentRequestConfig = {
-    data?: CreateSelfHostEnrollmentData;
-    /**
-     * @type object
-    */
-    pathParams: {
-        org_id: CreateSelfHostEnrollmentPathOrgId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/organizations/${string}/self-host-enrollments`;
+export type CreateSelfHostEnrollmentOptions = {
+    body: CreateSelfHostEnrollmentBody;
+    path: CreateSelfHostEnrollmentPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type CreateSelfHostEnrollmentResponses = {
     "201": CreateSelfHostEnrollmentStatus201;
     "400": CreateSelfHostEnrollmentStatus400;

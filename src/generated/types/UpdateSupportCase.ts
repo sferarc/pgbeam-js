@@ -3,24 +3,25 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { SupportCase } from "./SupportCase";
-import type { UpdateSupportCaseRequest } from "./UpdateSupportCaseRequest";
+import type { Error } from './Error'
+import type { SupportCase } from './SupportCase'
+import type { UpdateSupportCaseRequest } from './UpdateSupportCaseRequest'
 
-/**
- * @description Unique organization identifier.
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @example org_abc123
- * @type string
-*/
-export type UpdateSupportCasePathOrgId = string;
-
-/**
- * @description Unique support case identifier (prefixed, e.g. sc_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type UpdateSupportCasePathCaseId = string;
+export type UpdateSupportCasePath = {
+    /**
+     * @description Unique organization identifier.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @example org_abc123
+     * @type string
+    */
+    org_id: string;
+    /**
+     * @description Unique support case identifier (prefixed, e.g. sc_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    case_id: string;
+};
 
 /**
  * @description A support case filed by an organization member.
@@ -56,31 +57,15 @@ export type UpdateSupportCaseStatus404 = Error;
  * @description Request body for updating a support case status.
  * @type object
 */
-export type UpdateSupportCaseData = UpdateSupportCaseRequest;
+export type UpdateSupportCaseBody = UpdateSupportCaseRequest;
 
-/**
- * @type object
-*/
-export type UpdateSupportCaseRequestConfig = {
-    data?: UpdateSupportCaseData;
-    /**
-     * @type object
-    */
-    pathParams: {
-        org_id: UpdateSupportCasePathOrgId;
-        case_id: UpdateSupportCasePathCaseId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/organizations/${string}/support/cases/${string}`;
+export type UpdateSupportCaseOptions = {
+    body: UpdateSupportCaseBody;
+    path: UpdateSupportCasePath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type UpdateSupportCaseResponses = {
     "200": UpdateSupportCaseStatus200;
     "400": UpdateSupportCaseStatus400;

@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { SchemaCatalogRelation } from "./SchemaCatalogRelation";
+import type { SchemaCatalogRelation } from './SchemaCatalogRelation'
 
 /**
  * @description A read-only snapshot of a database\'s user relations (tables and views) and their columns, used to power table/column autocomplete and view-aware warnings in the policy editor. System schemas (pg_catalog, information_schema, pg_toast) are excluded.

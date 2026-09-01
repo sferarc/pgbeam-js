@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { PoolModeKey } from "./PoolMode";
+import type { PoolModeKey } from './PoolMode'
 
 /**
  * @description Connection pool configuration.

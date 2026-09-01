@@ -19,7 +19,7 @@ export type HoneytokenInput = {
      * @description Optional schema. Null or empty matches the unqualified/public form.
      * @maxLength 255
      * @example public
-     * @type string
+     * @type string | undefined
     */
     schema_name?: string | null;
     /**

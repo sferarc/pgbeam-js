@@ -3,24 +3,25 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { SelfHostEnrollmentSecret } from "./SelfHostEnrollmentSecret";
+import type { Error } from './Error'
+import type { SelfHostEnrollmentSecret } from './SelfHostEnrollmentSecret'
 
-/**
- * @description Unique organization identifier.
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @example org_abc123
- * @type string
-*/
-export type RotateSelfHostEnrollmentPathOrgId = string;
-
-/**
- * @description Unique enrollment identifier.
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @example she_01h455vb4pex5vsknk084sn02q
- * @type string
-*/
-export type RotateSelfHostEnrollmentPathEnrollmentId = string;
+export type RotateSelfHostEnrollmentPath = {
+    /**
+     * @description Unique organization identifier.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @example org_abc123
+     * @type string
+    */
+    org_id: string;
+    /**
+     * @description Unique enrollment identifier.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @example she_01h455vb4pex5vsknk084sn02q
+     * @type string
+    */
+    enrollment_id: string;
+};
 
 /**
  * @description Response returned once when an enrollment is created or its token is rotated. The token is shown a single time and cannot be retrieved again; set it as GRPC_AUTH_TOKEN on the self-hosted proxy.\n
@@ -58,29 +59,13 @@ export type RotateSelfHostEnrollmentStatus404 = Error;
 */
 export type RotateSelfHostEnrollmentStatus409 = Error;
 
-/**
- * @type object
-*/
-export type RotateSelfHostEnrollmentRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        org_id: RotateSelfHostEnrollmentPathOrgId;
-        enrollment_id: RotateSelfHostEnrollmentPathEnrollmentId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/organizations/${string}/self-host-enrollments/${string}/rotate`;
+export type RotateSelfHostEnrollmentOptions = {
+    body?: never;
+    path: RotateSelfHostEnrollmentPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type RotateSelfHostEnrollmentResponses = {
     "200": RotateSelfHostEnrollmentStatus200;
     "400": RotateSelfHostEnrollmentStatus400;

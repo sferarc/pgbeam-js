@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { DryEvalResult } from "./DryEvalResult";
+import type { DryEvalResult } from './DryEvalResult'
 
 export const policyReplayItemChangeEnum = {
     newly_blocked: "newly_blocked",
@@ -36,16 +36,22 @@ export type PolicyReplayItem = {
     statement_kind?: string;
     /**
      * @description How many recorded entries share this query shape in the window.
+     *
+     * Format: `int64`
      * @type integer
     */
     occurrences: number;
     /**
      * @description Oldest occurrence in the window.
+     *
+     * Format: `date-time`
      * @type string
     */
     first_seen: string;
     /**
      * @description Newest occurrence in the window.
+     *
+     * Format: `date-time`
      * @type string
     */
     last_seen: string;

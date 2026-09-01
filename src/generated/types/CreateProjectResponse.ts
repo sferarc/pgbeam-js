@@ -3,8 +3,8 @@
 * Do not edit manually.
 */
 
-import type { Database } from "./Database";
-import type { Project } from "./Project";
+import type { Database } from './Database'
+import type { Project } from './Project'
 
 /**
  * @description Response returned after creating a project and its primary database.

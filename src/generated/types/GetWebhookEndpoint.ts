@@ -3,22 +3,23 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { WebhookEndpoint } from "./WebhookEndpoint";
+import type { Error } from './Error'
+import type { WebhookEndpoint } from './WebhookEndpoint'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type GetWebhookEndpointPathProjectId = string;
-
-/**
- * @description Unique webhook endpoint identifier (prefixed, e.g. whk_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type GetWebhookEndpointPathWebhookId = string;
+export type GetWebhookEndpointPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+    /**
+     * @description Unique webhook endpoint identifier (prefixed, e.g. whk_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    webhook_id: string;
+};
 
 /**
  * @description A delivery target for project audit/event notifications.
@@ -50,29 +51,13 @@ export type GetWebhookEndpointStatus403 = Error;
 */
 export type GetWebhookEndpointStatus404 = Error;
 
-/**
- * @type object
-*/
-export type GetWebhookEndpointRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: GetWebhookEndpointPathProjectId;
-        webhook_id: GetWebhookEndpointPathWebhookId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/webhooks/${string}`;
+export type GetWebhookEndpointOptions = {
+    body?: never;
+    path: GetWebhookEndpointPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type GetWebhookEndpointResponses = {
     "200": GetWebhookEndpointStatus200;
     "400": GetWebhookEndpointStatus400;

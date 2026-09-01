@@ -3,27 +3,34 @@
 * Do not edit manually.
 */
 
-import type { AuditChainVerification } from "./AuditChainVerification";
-import type { Error } from "./Error";
+import type { AuditChainVerification } from './AuditChainVerification'
+import type { Error } from './Error'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type VerifyAuditChainPathProjectId = string;
+export type VerifyAuditChainPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+};
 
-/**
- * @description Return entries at or after this timestamp (inclusive lower bound).
- * @type string | undefined
-*/
-export type VerifyAuditChainQueryStart = string | undefined;
-
-/**
- * @description Return entries strictly older than this timestamp (cursor / upper bound).
- * @type string | undefined
-*/
-export type VerifyAuditChainQueryEnd = string | undefined;
+export type VerifyAuditChainQuery = {
+    /**
+     * @description Return entries at or after this timestamp (inclusive lower bound).
+     *
+     * Format: `date-time`
+     * @type string | undefined
+    */
+    start?: string;
+    /**
+     * @description Return entries strictly older than this timestamp (cursor / upper bound).
+     *
+     * Format: `date-time`
+     * @type string | undefined
+    */
+    end?: string;
+};
 
 /**
  * @description Result of recomputing the project\'s tamper-evident audit hash chain over a time range. The chain links each entry to its predecessor, so editing or deleting any row breaks it.
@@ -61,34 +68,13 @@ export type VerifyAuditChainStatus404 = Error;
 */
 export type VerifyAuditChainStatus429 = Error;
 
-/**
- * @type object
-*/
-export type VerifyAuditChainRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: VerifyAuditChainPathProjectId;
-    };
-    /**
-     * @type object | undefined
-    */
-    queryParams?: {
-        start?: VerifyAuditChainQueryStart;
-        end?: VerifyAuditChainQueryEnd;
-    };
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/audit-logs/verify`;
+export type VerifyAuditChainOptions = {
+    body?: never;
+    path: VerifyAuditChainPath;
+    query?: VerifyAuditChainQuery;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type VerifyAuditChainResponses = {
     "200": VerifyAuditChainStatus200;
     "400": VerifyAuditChainStatus400;

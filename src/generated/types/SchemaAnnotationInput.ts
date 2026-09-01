@@ -12,7 +12,7 @@ export type SchemaAnnotationInput = {
      * @description Optional schema. Null or empty matches the unqualified form.
      * @maxLength 255
      * @example public
-     * @type string
+     * @type string | undefined
     */
     schema_name?: string | null;
     /**
@@ -27,7 +27,7 @@ export type SchemaAnnotationInput = {
      * @description Optional column. Null describes the table itself.
      * @maxLength 255
      * @example email
-     * @type string
+     * @type string | undefined
     */
     column_name?: string | null;
     /**

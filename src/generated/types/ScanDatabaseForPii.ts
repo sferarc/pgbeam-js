@@ -3,22 +3,23 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { ScanPiiResult } from "./ScanPiiResult";
+import type { Error } from './Error'
+import type { ScanPiiResult } from './ScanPiiResult'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type ScanDatabaseForPiiPathProjectId = string;
-
-/**
- * @description Unique database identifier (prefixed, e.g. db_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type ScanDatabaseForPiiPathDatabaseId = string;
+export type ScanDatabaseForPiiPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+    /**
+     * @description Unique database identifier (prefixed, e.g. db_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    database_id: string;
+};
 
 /**
  * @description Result of a PII detection scan over a database\'s schema.
@@ -56,29 +57,13 @@ export type ScanDatabaseForPiiStatus404 = Error;
 */
 export type ScanDatabaseForPiiStatus429 = Error;
 
-/**
- * @type object
-*/
-export type ScanDatabaseForPiiRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: ScanDatabaseForPiiPathProjectId;
-        database_id: ScanDatabaseForPiiPathDatabaseId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/databases/${string}/scan-pii`;
+export type ScanDatabaseForPiiOptions = {
+    body?: never;
+    path: ScanDatabaseForPiiPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type ScanDatabaseForPiiResponses = {
     "200": ScanDatabaseForPiiStatus200;
     "400": ScanDatabaseForPiiStatus400;

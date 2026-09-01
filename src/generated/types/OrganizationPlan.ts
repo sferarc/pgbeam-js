@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { PlanLimits } from "./PlanLimits";
+import type { PlanLimits } from './PlanLimits'
 
 export const organizationPlanPlanEnum = {
     starter: "starter",
@@ -65,6 +65,8 @@ export type OrganizationPlan = {
     subscription_status?: OrganizationPlanSubscriptionStatusEnumKey;
     /**
      * @description End of current billing period.
+     *
+     * Format: `date-time`
      * @type string | undefined
     */
     current_period_end?: string;
@@ -80,8 +82,10 @@ export type OrganizationPlan = {
     custom_pricing?: boolean;
     /**
      * @description Monthly spend limit in dollars. Null means no limit.
+     *
+     * Format: `double`
      * @example 500
-     * @type number
+     * @type number | undefined
     */
     spend_limit?: number | null;
     /**
@@ -91,7 +95,9 @@ export type OrganizationPlan = {
     spend_capped?: boolean;
     /**
      * @description When the spend cap was applied. Null when not capped.
-     * @type string
+     *
+     * Format: `date-time`
+     * @type string | undefined
     */
     spend_capped_at?: string | null;
     /**
@@ -101,11 +107,15 @@ export type OrganizationPlan = {
     limits: PlanLimits;
     /**
      * @description When the billing record was created.
+     *
+     * Format: `date-time`
      * @type string | undefined
     */
     created_at?: string;
     /**
      * @description When the billing record was last updated.
+     *
+     * Format: `date-time`
      * @type string | undefined
     */
     updated_at?: string;

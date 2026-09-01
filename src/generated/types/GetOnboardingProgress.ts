@@ -3,16 +3,18 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { OnboardingProgress } from "./OnboardingProgress";
+import type { Error } from './Error'
+import type { OnboardingProgress } from './OnboardingProgress'
 
-/**
- * @description Unique organization identifier.
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @example org_abc123
- * @type string
-*/
-export type GetOnboardingProgressPathOrgId = string;
+export type GetOnboardingProgressPath = {
+    /**
+     * @description Unique organization identifier.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @example org_abc123
+     * @type string
+    */
+    org_id: string;
+};
 
 /**
  * @description Progress state for the dashboard onboarding checklist.
@@ -50,28 +52,13 @@ export type GetOnboardingProgressStatus404 = Error;
 */
 export type GetOnboardingProgressStatus429 = Error;
 
-/**
- * @type object
-*/
-export type GetOnboardingProgressRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        org_id: GetOnboardingProgressPathOrgId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/organizations/${string}/onboarding`;
+export type GetOnboardingProgressOptions = {
+    body?: never;
+    path: GetOnboardingProgressPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type GetOnboardingProgressResponses = {
     "200": GetOnboardingProgressStatus200;
     "400": GetOnboardingProgressStatus400;

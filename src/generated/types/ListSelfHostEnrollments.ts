@@ -3,16 +3,18 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { ListSelfHostEnrollmentsResponse } from "./ListSelfHostEnrollmentsResponse";
+import type { Error } from './Error'
+import type { ListSelfHostEnrollmentsResponse } from './ListSelfHostEnrollmentsResponse'
 
-/**
- * @description Unique organization identifier.
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @example org_abc123
- * @type string
-*/
-export type ListSelfHostEnrollmentsPathOrgId = string;
+export type ListSelfHostEnrollmentsPath = {
+    /**
+     * @description Unique organization identifier.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @example org_abc123
+     * @type string
+    */
+    org_id: string;
+};
 
 /**
  * @description List of self-host enrollments for an organization.
@@ -38,28 +40,13 @@ export type ListSelfHostEnrollmentsStatus401 = Error;
 */
 export type ListSelfHostEnrollmentsStatus403 = Error;
 
-/**
- * @type object
-*/
-export type ListSelfHostEnrollmentsRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        org_id: ListSelfHostEnrollmentsPathOrgId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/organizations/${string}/self-host-enrollments`;
+export type ListSelfHostEnrollmentsOptions = {
+    body?: never;
+    path: ListSelfHostEnrollmentsPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type ListSelfHostEnrollmentsResponses = {
     "200": ListSelfHostEnrollmentsStatus200;
     "400": ListSelfHostEnrollmentsStatus400;

@@ -30,7 +30,7 @@ export type DatabaseBranch = {
     database_id: string;
     /**
      * @description Agent credential that requested the branch, if known.
-     * @type string
+     * @type string | undefined
     */
     credential_id?: string | null;
     /**
@@ -55,17 +55,23 @@ export type DatabaseBranch = {
     error?: string;
     /**
      * @description When the branch was created.
+     *
+     * Format: `date-time`
      * @type string
     */
     created_at: string;
     /**
      * @description When the branch expires, if set.
-     * @type string
+     *
+     * Format: `date-time`
+     * @type string | undefined
     */
     expires_at?: string | null;
     /**
      * @description When the branch was discarded, if any.
-     * @type string
+     *
+     * Format: `date-time`
+     * @type string | undefined
     */
     discarded_at?: string | null;
 };

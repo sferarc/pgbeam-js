@@ -3,10 +3,10 @@
 * Do not edit manually.
 */
 
-import type { CacheConfig } from "./CacheConfig";
-import type { DatabaseRoleKey } from "./DatabaseRole";
-import type { PoolConfig } from "./PoolConfig";
-import type { SSLModeKey } from "./SSLMode";
+import type { CacheConfig } from './CacheConfig'
+import type { DatabaseRoleKey } from './DatabaseRole'
+import type { PoolConfig } from './PoolConfig'
+import type { SSLModeKey } from './SSLMode'
 
 /**
  * @description Registered upstream PostgreSQL database for a project.
@@ -65,7 +65,7 @@ export type Database = {
     ssl_mode: SSLModeKey;
     /**
      * @description Database role. Primary receives writes, replicas receive reads.
-     * @default "primary"
+     * @default 'primary'
      * @type string | undefined
     */
     role?: DatabaseRoleKey;
@@ -101,11 +101,15 @@ export type Database = {
     pool_config: PoolConfig;
     /**
      * @description When the database registration was created.
+     *
+     * Format: `date-time`
      * @type string
     */
     created_at: string;
     /**
      * @description When the database registration was last updated.
+     *
+     * Format: `date-time`
      * @type string
     */
     updated_at: string;

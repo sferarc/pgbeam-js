@@ -3,8 +3,8 @@
 * Do not edit manually.
 */
 
-import type { PolicyReplayItem } from "./PolicyReplayItem";
-import type { PolicyReplaySummary } from "./PolicyReplaySummary";
+import type { PolicyReplayItem } from './PolicyReplayItem'
+import type { PolicyReplaySummary } from './PolicyReplaySummary'
 
 /**
  * @description The outcome of replaying recorded agent traffic against a candidate policy: an aggregate summary plus per-query decisions, changes first.

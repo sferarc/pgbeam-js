@@ -3,28 +3,26 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
+import type { Error } from './Error'
 
-/**
- * @description Unique organization identifier.
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @example org_abc123
- * @type string
-*/
-export type RevokeSelfHostEnrollmentPathOrgId = string;
+export type RevokeSelfHostEnrollmentPath = {
+    /**
+     * @description Unique organization identifier.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @example org_abc123
+     * @type string
+    */
+    org_id: string;
+    /**
+     * @description Unique enrollment identifier.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @example she_01h455vb4pex5vsknk084sn02q
+     * @type string
+    */
+    enrollment_id: string;
+};
 
-/**
- * @description Unique enrollment identifier.
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @example she_01h455vb4pex5vsknk084sn02q
- * @type string
-*/
-export type RevokeSelfHostEnrollmentPathEnrollmentId = string;
-
-/**
- * @type any
-*/
-export type RevokeSelfHostEnrollmentStatus204 = any;
+export type RevokeSelfHostEnrollmentStatus204 = unknown;
 
 /**
  * @description Standard error response envelope for PgBeam API requests.
@@ -50,29 +48,13 @@ export type RevokeSelfHostEnrollmentStatus403 = Error;
 */
 export type RevokeSelfHostEnrollmentStatus404 = Error;
 
-/**
- * @type object
-*/
-export type RevokeSelfHostEnrollmentRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        org_id: RevokeSelfHostEnrollmentPathOrgId;
-        enrollment_id: RevokeSelfHostEnrollmentPathEnrollmentId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/organizations/${string}/self-host-enrollments/${string}`;
+export type RevokeSelfHostEnrollmentOptions = {
+    body?: never;
+    path: RevokeSelfHostEnrollmentPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type RevokeSelfHostEnrollmentResponses = {
     "204": RevokeSelfHostEnrollmentStatus204;
     "400": RevokeSelfHostEnrollmentStatus400;

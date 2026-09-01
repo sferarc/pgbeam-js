@@ -3,9 +3,9 @@
 * Do not edit manually.
 */
 
-import type { MaskingRule } from "./MaskingRule";
-import type { RowFilter } from "./RowFilter";
-import type { StatementRules } from "./StatementRules";
+import type { MaskingRule } from './MaskingRule'
+import type { RowFilter } from './RowFilter'
+import type { StatementRules } from './StatementRules'
 
 export const policyProfileAccessModeEnum = {
     read_only: "read_only",
@@ -118,13 +118,13 @@ export type PolicyProfile = {
     row_filters?: RowFilter[];
     /**
      * @description How writes are handled. normal commits, rollback auto-rolls back, sandbox routes to an ephemeral branch.
-     * @default "normal"
+     * @default 'normal'
      * @type string | undefined
     */
     write_mode?: PolicyProfileWriteModeEnumKey;
     /**
      * @description Which statement classes require human approval before execution.
-     * @default "off"
+     * @default 'off'
      * @type string | undefined
     */
     approval_mode?: PolicyProfileApprovalModeEnumKey;
@@ -144,12 +144,14 @@ export type PolicyProfile = {
     approval_timeout_seconds?: number;
     /**
      * @description Migration safety mode. warn surfaces findings, block refuses unsafe DDL.
-     * @default "off"
+     * @default 'off'
      * @type string | undefined
     */
     migration_safety?: PolicyProfileMigrationSafetyEnumKey;
     /**
      * @description Per-day egress budget in bytes. 0 means unlimited.
+     *
+     * Format: `int64`
      * @minLength 0
      * @default 0
      * @type integer | undefined
@@ -164,11 +166,15 @@ export type PolicyProfile = {
     max_affected_rows?: number;
     /**
      * @description When the policy profile was created.
+     *
+     * Format: `date-time`
      * @type string
     */
     created_at: string;
     /**
      * @description When the policy profile was last updated.
+     *
+     * Format: `date-time`
      * @type string
     */
     updated_at: string;

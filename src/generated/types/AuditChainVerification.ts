@@ -15,41 +15,55 @@ export type AuditChainVerification = {
     ok: boolean;
     /**
      * @description Number of chained entries checked.
+     *
+     * Format: `int64`
      * @type integer
     */
     verified_count: number;
     /**
      * @description How many of the checked entries were signed with an HMAC key rather than hashed unkeyed. An unkeyed entry is still tamper-evident against anyone who cannot write to the database, but a writer can recompute it; a keyed one they cannot. Lower than verified_count over a range that predates the deployment\'s signing key.
+     *
+     * Format: `int64`
      * @type integer
     */
     keyed_count: number;
     /**
      * @description Pre-chain (legacy) entries in the range that predate the hash chain and were skipped rather than treated as tampering.
+     *
+     * Format: `int64`
      * @type integer
     */
     unchained_count: number;
     /**
      * @description Sequence number of the first chained entry checked. Null when none.
-     * @type integer
+     *
+     * Format: `int64`
+     * @type integer | undefined
     */
     chain_start_seq?: number | null;
     /**
      * @description Sequence number of the last chained entry checked. Null when none.
-     * @type integer
+     *
+     * Format: `int64`
+     * @type integer | undefined
     */
     chain_end_seq?: number | null;
     /**
      * @description Sequence number where verification first failed (a tampered or deleted entry). Null when ok.
-     * @type integer
+     *
+     * Format: `int64`
+     * @type integer | undefined
     */
     first_broken_seq?: number | null;
     /**
      * @description Machine-readable failure kind: hash_mismatch (entry content edited), broken_link (prev_hash does not match the predecessor), missing_entry (a sequence number was deleted), unknown_key (the entry was signed with a key this deployment does not hold, so it can be neither confirmed nor called tampered), or key_downgrade (the chain ends in unsigned entries that follow a signed one with nothing signed after them, which is what truncating a signed chain and continuing it without the key looks like). Null when ok.
-     * @type string
+     * @type string | undefined
     */
     failure_reason?: string | null;
     /**
      * @description When verification ran.
+     *
+     * Format: `date-time`
      * @type string
     */
     verified_at: string;

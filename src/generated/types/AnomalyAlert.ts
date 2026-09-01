@@ -37,7 +37,7 @@ export type AnomalyAlert = {
     project_id: string;
     /**
      * @description Agent credential implicated, if any.
-     * @type string
+     * @type string | undefined
     */
     credential_id?: string | null;
     /**
@@ -69,27 +69,35 @@ export type AnomalyAlert = {
     status: AnomalyAlertStatusEnumKey;
     /**
      * @description Start of the observation window, if applicable.
-     * @type string
+     *
+     * Format: `date-time`
+     * @type string | undefined
     */
     window_start?: string | null;
     /**
      * @description End of the observation window, if applicable.
-     * @type string
+     *
+     * Format: `date-time`
+     * @type string | undefined
     */
     window_end?: string | null;
     /**
      * @description When the alert was raised.
+     *
+     * Format: `date-time`
      * @type string
     */
     created_at: string;
     /**
      * @description When the alert was acknowledged, if any.
-     * @type string
+     *
+     * Format: `date-time`
+     * @type string | undefined
     */
     acknowledged_at?: string | null;
     /**
      * @description User who acknowledged the alert, if any.
-     * @type string
+     * @type string | undefined
     */
     acknowledged_by?: string | null;
 };

@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { WebhookEndpoint } from "./WebhookEndpoint";
+import type { WebhookEndpoint } from './WebhookEndpoint'
 
 /**
  * @description Cursor-paginated list of webhook endpoints for a project.

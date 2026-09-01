@@ -3,16 +3,18 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { PolicyProfile } from "./PolicyProfile";
-import type { PolicyProfileInput } from "./PolicyProfileInput";
+import type { Error } from './Error'
+import type { PolicyProfile } from './PolicyProfile'
+import type { PolicyProfileInput } from './PolicyProfileInput'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type CreatePolicyProfilePathProjectId = string;
+export type CreatePolicyProfilePath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+};
 
 /**
  * @description A named bundle of rules enforced on agent credentials in the data plane.
@@ -60,30 +62,15 @@ export type CreatePolicyProfileStatus429 = Error;
  * @description Mutable fields of a policy profile (used for create and update).
  * @type object
 */
-export type CreatePolicyProfileData = PolicyProfileInput;
+export type CreatePolicyProfileBody = PolicyProfileInput;
 
-/**
- * @type object
-*/
-export type CreatePolicyProfileRequestConfig = {
-    data?: CreatePolicyProfileData;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: CreatePolicyProfilePathProjectId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/policies`;
+export type CreatePolicyProfileOptions = {
+    body: CreatePolicyProfileBody;
+    path: CreatePolicyProfilePath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type CreatePolicyProfileResponses = {
     "201": CreatePolicyProfileStatus201;
     "400": CreatePolicyProfileStatus400;

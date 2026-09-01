@@ -3,8 +3,8 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { ListPlansResponse } from "./ListPlansResponse";
+import type { Error } from './Error'
+import type { ListPlansResponse } from './ListPlansResponse'
 
 /**
  * @description Response envelope for listing available billing plans.
@@ -24,23 +24,13 @@ export type ListPlansStatus401 = Error;
 */
 export type ListPlansStatus429 = Error;
 
-/**
- * @type object
-*/
-export type ListPlansRequestConfig = {
-    data?: never;
-    pathParams?: never;
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: "/v1/plans";
+export type ListPlansOptions = {
+    body?: never;
+    path?: never;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type ListPlansResponses = {
     "200": ListPlansStatus200;
     "401": ListPlansStatus401;

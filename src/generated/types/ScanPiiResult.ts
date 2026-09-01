@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { PiiSuggestion } from "./PiiSuggestion";
+import type { PiiSuggestion } from './PiiSuggestion'
 
 /**
  * @description Result of a PII detection scan over a database\'s schema.

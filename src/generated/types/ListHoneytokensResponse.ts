@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { Honeytoken } from "./Honeytoken";
+import type { Honeytoken } from './Honeytoken'
 
 /**
  * @description Cursor-paginated honeytokens for a project.

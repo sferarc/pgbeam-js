@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { PolicyProfile } from "./PolicyProfile";
+import type { PolicyProfile } from './PolicyProfile'
 
 /**
  * @description Cursor-paginated list of policy profiles for a project.

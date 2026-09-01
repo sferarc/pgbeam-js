@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { MetricsSnapshot } from "./MetricsSnapshot";
+import type { MetricsSnapshot } from './MetricsSnapshot'
 
 /**
  * @description Response envelope for recent project metrics snapshots.

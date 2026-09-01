@@ -3,26 +3,24 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
+import type { Error } from './Error'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type RevokeAgentCredentialPathProjectId = string;
+export type RevokeAgentCredentialPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+    /**
+     * @description Unique agent credential identifier (prefixed, e.g. agt_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    agent_id: string;
+};
 
-/**
- * @description Unique agent credential identifier (prefixed, e.g. agt_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type RevokeAgentCredentialPathAgentId = string;
-
-/**
- * @type any
-*/
-export type RevokeAgentCredentialStatus204 = any;
+export type RevokeAgentCredentialStatus204 = unknown;
 
 /**
  * @description Standard error response envelope for PgBeam API requests.
@@ -48,29 +46,13 @@ export type RevokeAgentCredentialStatus403 = Error;
 */
 export type RevokeAgentCredentialStatus404 = Error;
 
-/**
- * @type object
-*/
-export type RevokeAgentCredentialRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: RevokeAgentCredentialPathProjectId;
-        agent_id: RevokeAgentCredentialPathAgentId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/agents/${string}`;
+export type RevokeAgentCredentialOptions = {
+    body?: never;
+    path: RevokeAgentCredentialPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type RevokeAgentCredentialResponses = {
     "204": RevokeAgentCredentialStatus204;
     "400": RevokeAgentCredentialStatus400;

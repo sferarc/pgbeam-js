@@ -3,22 +3,23 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { TestConnectionResult } from "./TestConnectionResult";
+import type { Error } from './Error'
+import type { TestConnectionResult } from './TestConnectionResult'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type TestDatabaseConnectionPathProjectId = string;
-
-/**
- * @description Unique database identifier (prefixed, e.g. db_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type TestDatabaseConnectionPathDatabaseId = string;
+export type TestDatabaseConnectionPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+    /**
+     * @description Unique database identifier (prefixed, e.g. db_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    database_id: string;
+};
 
 /**
  * @description Result of testing connectivity to an upstream database.
@@ -56,29 +57,13 @@ export type TestDatabaseConnectionStatus404 = Error;
 */
 export type TestDatabaseConnectionStatus429 = Error;
 
-/**
- * @type object
-*/
-export type TestDatabaseConnectionRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: TestDatabaseConnectionPathProjectId;
-        database_id: TestDatabaseConnectionPathDatabaseId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/databases/${string}/test-connection`;
+export type TestDatabaseConnectionOptions = {
+    body?: never;
+    path: TestDatabaseConnectionPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type TestDatabaseConnectionResponses = {
     "200": TestDatabaseConnectionStatus200;
     "400": TestDatabaseConnectionStatus400;

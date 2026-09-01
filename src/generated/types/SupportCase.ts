@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { SupportCaseStatusKey } from "./SupportCaseStatus";
+import type { SupportCaseStatusKey } from './SupportCaseStatus'
 
 /**
  * @description A support case filed by an organization member.
@@ -60,21 +60,29 @@ export type SupportCase = {
     slack_thread_ts?: string;
     /**
      * @description When the case was created.
+     *
+     * Format: `date-time`
      * @type string
     */
     created_at: string;
     /**
      * @description When the case was last updated.
+     *
+     * Format: `date-time`
      * @type string
     */
     updated_at: string;
     /**
      * @description When the case was closed, if applicable.
-     * @type string
+     *
+     * Format: `date-time`
+     * @type string | undefined
     */
     closed_at?: string | null;
     /**
      * @description Number of messages in the case.
+     *
+     * Format: `int64`
      * @type integer | undefined
     */
     readonly message_count?: number;

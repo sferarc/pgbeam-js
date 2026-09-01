@@ -3,22 +3,23 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { SchemaCatalog } from "./SchemaCatalog";
+import type { Error } from './Error'
+import type { SchemaCatalog } from './SchemaCatalog'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type GetSchemaCatalogPathProjectId = string;
-
-/**
- * @description Unique database identifier (prefixed, e.g. db_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type GetSchemaCatalogPathDatabaseId = string;
+export type GetSchemaCatalogPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+    /**
+     * @description Unique database identifier (prefixed, e.g. db_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    database_id: string;
+};
 
 /**
  * @description A read-only snapshot of a database\'s user relations (tables and views) and their columns, used to power table/column autocomplete and view-aware warnings in the policy editor. System schemas (pg_catalog, information_schema, pg_toast) are excluded.
@@ -56,29 +57,13 @@ export type GetSchemaCatalogStatus404 = Error;
 */
 export type GetSchemaCatalogStatus429 = Error;
 
-/**
- * @type object
-*/
-export type GetSchemaCatalogRequestConfig = {
-    data?: never;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: GetSchemaCatalogPathProjectId;
-        database_id: GetSchemaCatalogPathDatabaseId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/databases/${string}/schema-catalog`;
+export type GetSchemaCatalogOptions = {
+    body?: never;
+    path: GetSchemaCatalogPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type GetSchemaCatalogResponses = {
     "200": GetSchemaCatalogStatus200;
     "400": GetSchemaCatalogStatus400;

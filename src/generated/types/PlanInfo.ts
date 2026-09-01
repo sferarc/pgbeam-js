@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { PlanLimits } from "./PlanLimits";
+import type { PlanLimits } from './PlanLimits'
 
 /**
  * @description Publicly visible plan metadata and limits.

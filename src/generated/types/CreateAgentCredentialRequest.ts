@@ -29,13 +29,15 @@ export type CreateAgentCredentialRequest = {
     policy_profile_id: string;
     /**
      * @description Whether this credential represents an autonomous agent or a human operator.
-     * @default "agent"
+     * @default 'agent'
      * @type string | undefined
     */
     principal_type?: CreateAgentCredentialRequestPrincipalTypeEnumKey;
     /**
      * @description Optional expiry. When set, the credential becomes unusable at this time (must be in the future). Omit or set null for a credential that never expires.
-     * @type string
+     *
+     * Format: `date-time`
+     * @type string | undefined
     */
     expires_at?: string | null;
 };

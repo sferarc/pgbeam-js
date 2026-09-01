@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { SSLModeKey } from "./SSLMode";
+import type { SSLModeKey } from './SSLMode'
 
 /**
  * @description Request body for adding a read replica to a database.

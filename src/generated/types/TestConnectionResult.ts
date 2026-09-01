@@ -15,7 +15,7 @@ export type TestConnectionResult = {
     ok: boolean;
     /**
      * @description Round-trip connection time in milliseconds.
-     * @type number
+     * @type number | undefined
     */
     latency_ms?: number | null;
     /**

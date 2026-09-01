@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { DatabaseBranch } from "./DatabaseBranch";
+import type { DatabaseBranch } from './DatabaseBranch'
 
 /**
  * @description Cursor-paginated list of sandbox branches for a project.

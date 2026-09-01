@@ -3,9 +3,9 @@
 * Do not edit manually.
 */
 
-import type { CreateProjectRequest } from "./CreateProjectRequest";
-import type { CreateProjectResponse } from "./CreateProjectResponse";
-import type { Error } from "./Error";
+import type { CreateProjectRequest } from './CreateProjectRequest'
+import type { CreateProjectResponse } from './CreateProjectResponse'
+import type { Error } from './Error'
 
 /**
  * @description Response returned after creating a project and its primary database.
@@ -47,25 +47,15 @@ export type CreateProjectStatus429 = Error;
  * @description Request body for creating a project and its primary database, which are created atomically.
  * @type object
 */
-export type CreateProjectData = CreateProjectRequest;
+export type CreateProjectBody = CreateProjectRequest;
 
-/**
- * @type object
-*/
-export type CreateProjectRequestConfig = {
-    data?: CreateProjectData;
-    pathParams?: never;
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: "/v1/projects";
+export type CreateProjectOptions = {
+    body: CreateProjectBody;
+    path?: never;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type CreateProjectResponses = {
     "201": CreateProjectStatus201;
     "400": CreateProjectStatus400;

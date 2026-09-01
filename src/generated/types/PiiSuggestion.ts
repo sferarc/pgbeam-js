@@ -70,13 +70,15 @@ export type PiiSuggestion = {
     mask_kind: PiiSuggestionMaskKindEnumKey;
     /**
      * @description Confidence score in [0,1]. Combines column-name signal and sampled-value signal; higher is stronger evidence.
+     *
+     * Format: `float`
      * @example 0.95
      * @type number
     */
     confidence: number;
     /**
      * @description Human-readable explanations for why the column was flagged.
-     * @example column name matches 'email',8/10 sampled values look like emails
+     * @example ["column name matches 'email'","8/10 sampled values look like emails"]
      * @type array
     */
     reasons: string[];

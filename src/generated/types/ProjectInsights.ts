@@ -3,9 +3,9 @@
 * Do not edit manually.
 */
 
-import type { CacheSummary } from "./CacheSummary";
-import type { LatencySummary } from "./LatencySummary";
-import type { QueryInsight } from "./QueryInsight";
+import type { CacheSummary } from './CacheSummary'
+import type { LatencySummary } from './LatencySummary'
+import type { QueryInsight } from './QueryInsight'
 
 /**
  * @description Query insights, cache performance, and latency for a project.

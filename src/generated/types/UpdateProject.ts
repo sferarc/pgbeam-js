@@ -3,16 +3,18 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { Project } from "./Project";
-import type { UpdateProjectRequest } from "./UpdateProjectRequest";
+import type { Error } from './Error'
+import type { Project } from './Project'
+import type { UpdateProjectRequest } from './UpdateProjectRequest'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type UpdateProjectPathProjectId = string;
+export type UpdateProjectPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+};
 
 /**
  * @description Project configuration and current control-plane state.
@@ -54,30 +56,15 @@ export type UpdateProjectStatus429 = Error;
  * @description Request body for partially updating a project.
  * @type object
 */
-export type UpdateProjectData = UpdateProjectRequest;
+export type UpdateProjectBody = UpdateProjectRequest;
 
-/**
- * @type object
-*/
-export type UpdateProjectRequestConfig = {
-    data?: UpdateProjectData;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: UpdateProjectPathProjectId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}`;
+export type UpdateProjectOptions = {
+    body: UpdateProjectBody;
+    path: UpdateProjectPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type UpdateProjectResponses = {
     "200": UpdateProjectStatus200;
     "400": UpdateProjectStatus400;

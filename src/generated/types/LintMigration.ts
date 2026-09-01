@@ -3,16 +3,18 @@
 * Do not edit manually.
 */
 
-import type { Error } from "./Error";
-import type { MigrationLintRequest } from "./MigrationLintRequest";
-import type { MigrationLintResponse } from "./MigrationLintResponse";
+import type { Error } from './Error'
+import type { MigrationLintRequest } from './MigrationLintRequest'
+import type { MigrationLintResponse } from './MigrationLintResponse'
 
-/**
- * @description Unique project identifier (prefixed, e.g. prj_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type LintMigrationPathProjectId = string;
+export type LintMigrationPath = {
+    /**
+     * @description Unique project identifier (prefixed, e.g. prj_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    project_id: string;
+};
 
 /**
  * @description Result of linting a migration script.
@@ -48,30 +50,15 @@ export type LintMigrationStatus404 = Error;
  * @description A migration script to lint for unsafe schema changes.
  * @type object
 */
-export type LintMigrationData = MigrationLintRequest;
+export type LintMigrationBody = MigrationLintRequest;
 
-/**
- * @type object
-*/
-export type LintMigrationRequestConfig = {
-    data?: LintMigrationData;
-    /**
-     * @type object
-    */
-    pathParams: {
-        project_id: LintMigrationPathProjectId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/projects/${string}/migrations${string}`;
+export type LintMigrationOptions = {
+    body: LintMigrationBody;
+    path: LintMigrationPath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type LintMigrationResponses = {
     "200": LintMigrationStatus200;
     "400": LintMigrationStatus400;

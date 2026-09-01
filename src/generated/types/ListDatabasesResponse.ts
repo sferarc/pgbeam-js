@@ -3,7 +3,7 @@
 * Do not edit manually.
 */
 
-import type { Database } from "./Database";
+import type { Database } from './Database'
 
 /**
  * @description Cursor-paginated list of databases attached to a project.

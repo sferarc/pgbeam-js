@@ -11,9 +11,3 @@ export const auditSource = {
 } as const;
 
 export type AuditSourceKey = (typeof auditSource)[keyof typeof auditSource];
-
-/**
- * @description Filter by statement origin (wire, mcp, rest, or control).
- * @type string | undefined
-*/
-export type AuditSource = AuditSourceKey | undefined;

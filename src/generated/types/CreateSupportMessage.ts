@@ -3,24 +3,25 @@
 * Do not edit manually.
 */
 
-import type { CreateSupportMessageRequest } from "./CreateSupportMessageRequest";
-import type { Error } from "./Error";
-import type { SupportMessage } from "./SupportMessage";
+import type { CreateSupportMessageRequest } from './CreateSupportMessageRequest'
+import type { Error } from './Error'
+import type { SupportMessage } from './SupportMessage'
 
-/**
- * @description Unique organization identifier.
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @example org_abc123
- * @type string
-*/
-export type CreateSupportMessagePathOrgId = string;
-
-/**
- * @description Unique support case identifier (prefixed, e.g. sc_xxx).
- * @pattern ^[a-zA-Z0-9_.-]+$
- * @type string
-*/
-export type CreateSupportMessagePathCaseId = string;
+export type CreateSupportMessagePath = {
+    /**
+     * @description Unique organization identifier.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @example org_abc123
+     * @type string
+    */
+    org_id: string;
+    /**
+     * @description Unique support case identifier (prefixed, e.g. sc_xxx).
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string
+    */
+    case_id: string;
+};
 
 /**
  * @description A message within a support case thread.
@@ -56,31 +57,15 @@ export type CreateSupportMessageStatus404 = Error;
  * @description Request body for adding a message to a support case.
  * @type object
 */
-export type CreateSupportMessageData = CreateSupportMessageRequest;
+export type CreateSupportMessageBody = CreateSupportMessageRequest;
 
-/**
- * @type object
-*/
-export type CreateSupportMessageRequestConfig = {
-    data?: CreateSupportMessageData;
-    /**
-     * @type object
-    */
-    pathParams: {
-        org_id: CreateSupportMessagePathOrgId;
-        case_id: CreateSupportMessagePathCaseId;
-    };
-    queryParams?: never;
-    headerParams?: never;
-    /**
-     * @type string
-    */
-    url: `/v1/organizations/${string}/support/cases/${string}/messages`;
+export type CreateSupportMessageOptions = {
+    body: CreateSupportMessageBody;
+    path: CreateSupportMessagePath;
+    query?: never;
+    headers?: never;
 };
 
-/**
- * @type object
-*/
 export type CreateSupportMessageResponses = {
     "201": CreateSupportMessageStatus201;
     "400": CreateSupportMessageStatus400;
