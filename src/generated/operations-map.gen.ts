@@ -84,6 +84,7 @@ import type { CreateSupportMessageOptions, CreateSupportMessageStatus201 } from 
 import type { HandleSlackSupportEventOptions, HandleSlackSupportEventStatus200 } from "./types/HandleSlackSupportEvent";
 import type { GetOrganizationUsageOptions, GetOrganizationUsageStatus200 } from "./types/GetOrganizationUsage";
 import type { GetProjectUsageOptions, GetProjectUsageStatus200 } from "./types/GetProjectUsage";
+import type { GetAgentUsageBreakdownOptions, GetAgentUsageBreakdownStatus200 } from "./types/GetAgentUsageBreakdown";
 import type { ListWebhookEndpointsOptions, ListWebhookEndpointsStatus200 } from "./types/ListWebhookEndpoints";
 import type { CreateWebhookEndpointOptions, CreateWebhookEndpointStatus201 } from "./types/CreateWebhookEndpoint";
 import type { GetWebhookEndpointOptions, GetWebhookEndpointStatus200 } from "./types/GetWebhookEndpoint";
@@ -109,6 +110,7 @@ export const operationsByTag = {
     exportAuditLogs: { method: "GET", path: "/v1/projects/{project_id}/audit-logs/export" },
     getAuditSessionSummary: { method: "GET", path: "/v1/projects/{project_id}/audit-logs/sessions/{session_id}" },
     verifyAuditChain: { method: "GET", path: "/v1/projects/{project_id}/audit-logs/verify" },
+    getAgentUsageBreakdown: { method: "GET", path: "/v1/projects/{project_id}/usage/agents" },
   },
   policies: {
     recommendAgentPolicy: { method: "POST", path: "/v1/projects/{project_id}/agents/{agent_id}/policy-recommendation" },
@@ -295,6 +297,7 @@ export const operationsByPath = {
   "POST /v1/internal/support/slack-event": { method: "POST", path: "/v1/internal/support/slack-event", operationId: "handleSlackSupportEvent" },
   "GET /v1/organizations/{org_id}/usage": { method: "GET", path: "/v1/organizations/{org_id}/usage", operationId: "getOrganizationUsage" },
   "GET /v1/projects/{project_id}/usage": { method: "GET", path: "/v1/projects/{project_id}/usage", operationId: "getProjectUsage" },
+  "GET /v1/projects/{project_id}/usage/agents": { method: "GET", path: "/v1/projects/{project_id}/usage/agents", operationId: "getAgentUsageBreakdown" },
   "GET /v1/projects/{project_id}/webhooks": { method: "GET", path: "/v1/projects/{project_id}/webhooks", operationId: "listWebhookEndpoints" },
   "POST /v1/projects/{project_id}/webhooks": { method: "POST", path: "/v1/projects/{project_id}/webhooks", operationId: "createWebhookEndpoint" },
   "GET /v1/projects/{project_id}/webhooks/{webhook_id}": { method: "GET", path: "/v1/projects/{project_id}/webhooks/{webhook_id}", operationId: "getWebhookEndpoint" },
@@ -379,6 +382,7 @@ type CreateSupportMessageParams = { pathParams: NonNullable<CreateSupportMessage
 type HandleSlackSupportEventParams = { body: NonNullable<HandleSlackSupportEventOptions["body"]> };
 type GetOrganizationUsageParams = { pathParams: NonNullable<GetOrganizationUsageOptions["path"]>; queryParams: NonNullable<GetOrganizationUsageOptions["query"]> };
 type GetProjectUsageParams = { pathParams: NonNullable<GetProjectUsageOptions["path"]>; queryParams: NonNullable<GetProjectUsageOptions["query"]> };
+type GetAgentUsageBreakdownParams = { pathParams: NonNullable<GetAgentUsageBreakdownOptions["path"]>; queryParams?: NonNullable<GetAgentUsageBreakdownOptions["query"]> };
 type ListWebhookEndpointsParams = { pathParams: NonNullable<ListWebhookEndpointsOptions["path"]>; queryParams?: NonNullable<ListWebhookEndpointsOptions["query"]> };
 type CreateWebhookEndpointParams = { pathParams: NonNullable<CreateWebhookEndpointOptions["path"]>; body: NonNullable<CreateWebhookEndpointOptions["body"]> };
 type GetWebhookEndpointParams = { pathParams: NonNullable<GetWebhookEndpointOptions["path"]> };
@@ -404,6 +408,7 @@ export interface ApiOperations {
     exportAuditLogs(params: ExportAuditLogsParams): Promise<ExportAuditLogsStatus200>;
     getAuditSessionSummary(params: GetAuditSessionSummaryParams): Promise<GetAuditSessionSummaryStatus200>;
     verifyAuditChain(params: VerifyAuditChainParams): Promise<VerifyAuditChainStatus200>;
+    getAgentUsageBreakdown(params: GetAgentUsageBreakdownParams): Promise<GetAgentUsageBreakdownStatus200>;
   };
   policies: {
     recommendAgentPolicy(params: RecommendAgentPolicyParams): Promise<RecommendAgentPolicyStatus200>;
@@ -590,6 +595,7 @@ export interface RequestMap {
   "POST /v1/internal/support/slack-event": { params: HandleSlackSupportEventParams; response: HandleSlackSupportEventStatus200 };
   "GET /v1/organizations/{org_id}/usage": { params: GetOrganizationUsageParams; response: GetOrganizationUsageStatus200 };
   "GET /v1/projects/{project_id}/usage": { params: GetProjectUsageParams; response: GetProjectUsageStatus200 };
+  "GET /v1/projects/{project_id}/usage/agents": { params: GetAgentUsageBreakdownParams; response: GetAgentUsageBreakdownStatus200 };
   "GET /v1/projects/{project_id}/webhooks": { params: ListWebhookEndpointsParams; response: ListWebhookEndpointsStatus200 };
   "POST /v1/projects/{project_id}/webhooks": { params: CreateWebhookEndpointParams; response: CreateWebhookEndpointStatus201 };
   "GET /v1/projects/{project_id}/webhooks/{webhook_id}": { params: GetWebhookEndpointParams; response: GetWebhookEndpointStatus200 };
