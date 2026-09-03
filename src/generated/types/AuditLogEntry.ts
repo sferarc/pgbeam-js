@@ -30,7 +30,7 @@ export type AuditLogEntry = {
     */
     region?: string;
     /**
-     * @description Event type (query, blocked, masked, truncated, budget_exhausted, canary_tripped, rejected, approval_expired, auth_failed, credential_expired, approval_requested, approved, migration_flagged).
+     * @description Event type (query, auto_approved, blocked, masked, truncated, budget_exhausted, canary_tripped, rejected, approval_expired, auth_failed, credential_expired, approval_requested, approved, migration_flagged, entries_dropped). `approved` is a statement a reviewer released from an approval hold, which then runs and records its own outcome; `auto_approved` is a write a policy waved through without a human, and is the only row that write produces.
      * @type string
     */
     event: string;

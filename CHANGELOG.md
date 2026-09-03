@@ -1,5 +1,11 @@
 # pgbeam
 
+## 0.4.8
+
+### Patch Changes
+
+- 6bf2e14: Update the published package description from the pre-pivot pooling-and-caching pitch to the current agent-gateway positioning.
+
 ## 0.4.7
 
 ### Patch Changes
