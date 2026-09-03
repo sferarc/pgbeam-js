@@ -1,5 +1,11 @@
 # pgbeam
 
+## 0.4.9
+
+### Patch Changes
+
+- dd2e970: chore(format): reflow prose to one line per paragraph, and let CI see it
+
 ## 0.4.8
 
 ### Patch Changes
@@ -42,21 +48,9 @@
 
 - 89e2f33: Bound a lazy token by the same timeout as the request it authenticates.
 
-  `PgBeamClient` accepts `token` as a function so a client can resolve a fresh JWT
-  per call. That function is a network call of its own, and it was awaited before
-  `fetcher` was entered, so it sat outside every bound this package applies:
-  `timeoutMs`, `RetryConfig.totalBudgetMs`, and the `NetworkError.timedOut` flag
-  callers branch on. An auth endpoint that accepted the request and never answered
-  left the whole call outstanding with no ceiling at all, which no `try`/`catch` in
-  the token function can prevent, because a request that never answers never
-  rejects.
+  `PgBeamClient` accepts `token` as a function so a client can resolve a fresh JWT per call. That function is a network call of its own, and it was awaited before `fetcher` was entered, so it sat outside every bound this package applies: `timeoutMs`, `RetryConfig.totalBudgetMs`, and the `NetworkError.timedOut` flag callers branch on. An auth endpoint that accepted the request and never answered left the whole call outstanding with no ceiling at all, which no `try`/`catch` in the token function can prevent, because a request that never answers never rejects.
 
-  The token is now resolved inside `fetcher`, under the same per-attempt
-  `timeoutMs` as the request it authenticates, and a stall throws a `NetworkError`
-  with `timedOut` true so existing retry policies keyed on that flag apply
-  unchanged. `timeoutMs: 0` still disables the bound, a token function that rejects
-  still propagates its own error, and the token is still resolved once per call
-  rather than once per retry attempt.
+  The token is now resolved inside `fetcher`, under the same per-attempt `timeoutMs` as the request it authenticates, and a stall throws a `NetworkError` with `timedOut` true so existing retry policies keyed on that flag apply unchanged. `timeoutMs: 0` still disables the bound, a token function that rejects still propagates its own error, and the token is still resolved once per call rather than once per retry attempt.
 
 ## 0.4.1
 
@@ -70,19 +64,9 @@
 
 - 2d6e1ee: Bound every API call with a timeout and a retry budget, and report what failed.
 
-  `fetcher` now aborts an attempt after `timeoutMs` (default 30s, `0` disables it)
-  and stops retrying once `RetryConfig.totalBudgetMs` (default 120s) is spent, so a
-  long backoff ladder against a service that is down cannot outlive the budget. A
-  request that never got an answer throws a `NetworkError` naming the method, URL,
-  attempt count and elapsed time, with the `cause` chain flattened by the new
-  `describeError` export instead of an opaque `TypeError: fetch failed`.
+  `fetcher` now aborts an attempt after `timeoutMs` (default 30s, `0` disables it) and stops retrying once `RetryConfig.totalBudgetMs` (default 120s) is spent, so a long backoff ladder against a service that is down cannot outlive the budget. A request that never got an answer throws a `NetworkError` naming the method, URL, attempt count and elapsed time, with the `cause` chain flattened by the new `describeError` export instead of an opaque `TypeError: fetch failed`.
 
-  The Pulumi provider uses a 15s request timeout and a 60s total budget, down from
-  an unbounded ladder that could spend over five minutes before failing. Its
-  generated `read()` now keeps the last known state when the API gave no considered
-  answer (a refused or timed-out connection, or a gateway status), because a
-  refresh that could not observe a resource has not found drift. Anything the API
-  actually answered still fails the run.
+  The Pulumi provider uses a 15s request timeout and a 60s total budget, down from an unbounded ladder that could spend over five minutes before failing. Its generated `read()` now keeps the last known state when the API gave no considered answer (a refused or timed-out connection, or a gateway status), because a refresh that could not observe a resource has not found drift. Anything the API actually answered still fails the run.
 
 ## 0.3.14
 
@@ -178,9 +162,7 @@
 
 ### Minor Changes
 
-- 728a7a5: Add agent credential expiry (`expires_at`). Credentials can now be issued with an
-  optional expiry; the field is surfaced on agent credentials and on `credential_expired`
-  audit log entries.
+- 728a7a5: Add agent credential expiry (`expires_at`). Credentials can now be issued with an optional expiry; the field is surfaced on agent credentials and on `credential_expired` audit log entries.
 
 ## 0.2.9
 
@@ -204,8 +186,7 @@
 
 ### Patch Changes
 
-- 46b2b4b: feat: redesign IP filtering with labels, IPv6, and structured CIDR
-  input
+- 46b2b4b: feat: redesign IP filtering with labels, IPv6, and structured CIDR input
 - bc47c25: Redesign rate limits page: plan-driven limits with slider overrides
 
 ## 0.2.5
@@ -225,15 +206,13 @@
 ### Patch Changes
 
 - 0115d96: Add IP allowlisting, query timeout, and auto read routing
-- 1dfa672: Add MCP (Model Context Protocol) server with Streamable HTTP
-  transport
+- 1dfa672: Add MCP (Model Context Protocol) server with Streamable HTTP transport
 
 ## 0.2.2
 
 ### Patch Changes
 
-- 4ddbec1: Remove runtime dependency on @swc/helpers by bumping tsconfig target
-  to ES2022
+- 4ddbec1: Remove runtime dependency on @swc/helpers by bumping tsconfig target to ES2022
 
 ## 0.2.1
 
