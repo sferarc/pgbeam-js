@@ -1,5 +1,11 @@
 # pgbeam
 
+## 0.4.6
+
+### Patch Changes
+
+- d3cce03: chore: release packages
+
 ## 0.4.5
 
 ### Patch Changes
