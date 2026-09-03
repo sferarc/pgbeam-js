@@ -9,7 +9,7 @@
 */
 export type AuditChainVerification = {
     /**
-     * @description True when every chained entry in the range links correctly and no tampering or deletion was detected.
+     * @description True when no tampering or deletion was detected: every chained entry in the range recomputes to its stored hash, and every link that could be checked matched. Two links may be uncheckable rather than wrong, and both leave ok true and say so on their own field: the one below the first checked entry when retention has deleted what it follows (link_status), and a signed checkpoint whose range retention has deleted (anchor_status). Read them alongside ok to know how much a pass covers.
      * @type boolean
     */
     ok: boolean;
@@ -56,10 +56,22 @@ export type AuditChainVerification = {
     */
     first_broken_seq?: number | null;
     /**
-     * @description Machine-readable failure kind. Decided by the chain walk: hash_mismatch (entry content edited), broken_link (prev_hash does not match the predecessor), missing_entry (a sequence number was deleted), unknown_key (the entry was signed with a key this deployment does not hold, so it can be neither confirmed nor called tampered), key_downgrade (the chain ends in unsigned entries that follow a signed one with nothing signed after them, which is what truncating a signed chain and continuing it without the key looks like). Decided by the external anchor: truncated (the chain no longer reaches the end of a signed checkpoint range, which is entries deleted from the tip with nothing written after them; retention cannot cause it, because it deletes oldest first), root_mismatch (every entry of a signed range is still stored but they no longer produce the signed Merkle root, so the interior was rewritten), checkpoint_unverifiable (a stored checkpoint does not open under this deployment\'s anchor key, or opens into a range that does not mean anything; reported rather than skipped because an unverifiable claim is not an absent one). Null when ok. Retention having removed the entries a checkpoint covers is not a failure and is reported on anchor_status.
+     * @description Machine-readable failure kind. Decided by the chain walk: hash_mismatch (entry content edited), broken_link (prev_hash does not match the predecessor), missing_entry (a sequence number was deleted), unknown_key (the entry was signed with a key this deployment does not hold, so it can be neither confirmed nor called tampered), key_downgrade (the chain ends in unsigned entries that follow a signed one with nothing signed after them, which is what truncating a signed chain and continuing it without the key looks like). Decided by the external anchor: truncated (the chain no longer reaches the end of a signed checkpoint range, which is entries deleted from the tip with nothing written after them; retention cannot cause it, because it deletes oldest first), root_mismatch (every entry of a signed range is still stored but they no longer produce the signed Merkle root, so the interior was rewritten), checkpoint_unverifiable (a stored checkpoint does not open under this deployment\'s anchor key, or opens into a range that does not mean anything; reported rather than skipped because an unverifiable claim is not an absent one). Null when ok. Retention having removed the entries a checkpoint covers is not a failure and is reported on anchor_status, and retention having removed the entry the first checked one follows is not a failure either and is reported on link_status.
      * @type string | undefined
     */
     failure_reason?: string | null;
+    /**
+     * @description What could be established about the link below the first checked entry, or null when there were no chained entries to check. verified: its prev_hash was compared against something still stored, either the genesis value at the bottom of a chain or the entry immediately below the window. predecessor_expired: the entry it follows is outside the retained window, so that one link could not be checked; ok stays true, because retention deleting the oldest rows it was configured to delete is not evidence of tampering. Only the first checked entry can report this, and only when its predecessor is absent rather than stored: a predecessor that is stored and disagrees is still broken_link, as is any mismatch further up the chain.
+     * @type string | undefined
+    */
+    link_status?: string | null;
+    /**
+     * @description First sequence number whose prev_hash was actually checked against a known predecessor. Equal to chain_start_seq on a chain whose floor is verified, and one above it when link_status is predecessor_expired, so a caller can tell what was checked from what was assumed. Links are checked from here through chain_end_seq. Null when none could be.
+     *
+     * Format: `int64`
+     * @type integer | undefined
+    */
+    link_verified_from_seq?: number | null;
     /**
      * @description What the external anchor concluded, or null when there was nothing to consult (no anchor key configured, or no checkpoint signed for this project yet). A checkpoint commits to one seq range of the chain, and checkpoints chain, each starting where the last ended. verified: the newest signed range, and every older one still fully retained and contiguous with it, was re-derived from the stored entries and matched. checkpoint_range_expired: the newest checkpoint covers entries retention has since deleted, wholly or in part, so its assertion cannot be checked against the live chain; ok stays true, because deleting rows the retention window said to delete is not evidence of tampering. Otherwise it repeats the anchor failure reported in failure_reason.
      * @type string | undefined
