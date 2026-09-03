@@ -1,5 +1,11 @@
 # pgbeam
 
+## 0.4.4
+
+### Patch Changes
+
+- eb3390d: feat(usage): break down project usage by agent credential
+
 ## 0.4.3
 
 ### Patch Changes
