@@ -1,6 +1,6 @@
 {
   "name": "pgbeam",
-  "version": "0.4.9",
+  "version": "0.4.10",
   "description": "TypeScript SDK for the PgBeam API, a Postgres proxy for safe AI agent access with policy enforcement in the wire protocol",
   "type": "module",
   "exports": {

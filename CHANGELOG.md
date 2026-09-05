@@ -1,5 +1,11 @@
 # pgbeam
 
+## 0.4.10
+
+### Patch Changes
+
+- 8b04b38: feat(api): the contract never declared Idempotency-Key, and a reused key with a changed body replayed the wrong response
+
 ## 0.4.9
 
 ### Patch Changes
