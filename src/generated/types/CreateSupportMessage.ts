@@ -23,6 +23,17 @@ export type CreateSupportMessagePath = {
     case_id: string;
 };
 
+export type CreateSupportMessageHeaders = {
+    /**
+     * @description Client-generated key that makes a retry of this request safe. The first request carrying a given key executes normally and its response (status, content type and body) is stored for 24 hours; a later request with the same key returns that stored response without running the operation again, so a retry after a lost or timed-out response cannot create a second resource.\n\nReusing a key with a different request body returns `409 Conflict`: a key is a promise about one specific request, so a changed body is a client bug rather than a retry. Keys are scoped to the calling organization (or to the user, for account-scoped tokens), so one tenant can never read another\'s stored response.\n\nA `5xx`, `408` or `429` is never stored, because those describe a request that produced no settled answer and the next attempt with the same key must run for real. A `4xx` is stored: it is the server\'s settled answer about this exact request.\n\nUse a fresh UUID per logical operation. The PgBeam SDKs generate one per call and reuse it across their own automatic retries.
+     * @minLength 1
+     * @maxLength 255
+     * @example a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d
+     * @type string | undefined
+    */
+    "Idempotency-Key"?: string;
+};
+
 /**
  * @description A message within a support case thread.
  * @type object
@@ -54,6 +65,12 @@ export type CreateSupportMessageStatus403 = Error;
 export type CreateSupportMessageStatus404 = Error;
 
 /**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type CreateSupportMessageStatus409 = Error;
+
+/**
  * @description Request body for adding a message to a support case.
  * @type object
 */
@@ -63,7 +80,7 @@ export type CreateSupportMessageOptions = {
     body: CreateSupportMessageBody;
     path: CreateSupportMessagePath;
     query?: never;
-    headers?: never;
+    headers?: CreateSupportMessageHeaders;
 };
 
 export type CreateSupportMessageResponses = {
@@ -72,9 +89,10 @@ export type CreateSupportMessageResponses = {
     "401": CreateSupportMessageStatus401;
     "403": CreateSupportMessageStatus403;
     "404": CreateSupportMessageStatus404;
+    "409": CreateSupportMessageStatus409;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type CreateSupportMessageResponse = (CreateSupportMessageStatus201 | CreateSupportMessageStatus400 | CreateSupportMessageStatus401 | CreateSupportMessageStatus403 | CreateSupportMessageStatus404);
+export type CreateSupportMessageResponse = (CreateSupportMessageStatus201 | CreateSupportMessageStatus400 | CreateSupportMessageStatus401 | CreateSupportMessageStatus403 | CreateSupportMessageStatus404 | CreateSupportMessageStatus409);
