@@ -45,6 +45,12 @@ export type UpdateSpendLimitStatus403 = Error;
  * @description Standard error response envelope for PgBeam API requests.
  * @type object
 */
+export type UpdateSpendLimitStatus404 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
 export type UpdateSpendLimitStatus429 = Error;
 
 /**
@@ -65,10 +71,11 @@ export type UpdateSpendLimitResponses = {
     "400": UpdateSpendLimitStatus400;
     "401": UpdateSpendLimitStatus401;
     "403": UpdateSpendLimitStatus403;
+    "404": UpdateSpendLimitStatus404;
     "429": UpdateSpendLimitStatus429;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type UpdateSpendLimitResponse = (UpdateSpendLimitStatus200 | UpdateSpendLimitStatus400 | UpdateSpendLimitStatus401 | UpdateSpendLimitStatus403 | UpdateSpendLimitStatus429);
+export type UpdateSpendLimitResponse = (UpdateSpendLimitStatus200 | UpdateSpendLimitStatus400 | UpdateSpendLimitStatus401 | UpdateSpendLimitStatus403 | UpdateSpendLimitStatus404 | UpdateSpendLimitStatus429);
