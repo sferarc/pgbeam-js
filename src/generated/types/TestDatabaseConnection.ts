@@ -28,34 +28,40 @@ export type TestDatabaseConnectionPath = {
 export type TestDatabaseConnectionStatus200 = TestConnectionResult;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type TestDatabaseConnectionStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type TestDatabaseConnectionStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type TestDatabaseConnectionStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type TestDatabaseConnectionStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type TestDatabaseConnectionStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type TestDatabaseConnectionStatus500 = Error;
 
 export type TestDatabaseConnectionOptions = {
     body?: never;
@@ -71,9 +77,10 @@ export type TestDatabaseConnectionResponses = {
     "403": TestDatabaseConnectionStatus403;
     "404": TestDatabaseConnectionStatus404;
     "429": TestDatabaseConnectionStatus429;
+    "500": TestDatabaseConnectionStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type TestDatabaseConnectionResponse = (TestDatabaseConnectionStatus200 | TestDatabaseConnectionStatus400 | TestDatabaseConnectionStatus401 | TestDatabaseConnectionStatus403 | TestDatabaseConnectionStatus404 | TestDatabaseConnectionStatus429);
+export type TestDatabaseConnectionResponse = (TestDatabaseConnectionStatus200 | TestDatabaseConnectionStatus400 | TestDatabaseConnectionStatus401 | TestDatabaseConnectionStatus403 | TestDatabaseConnectionStatus404 | TestDatabaseConnectionStatus429 | TestDatabaseConnectionStatus500);

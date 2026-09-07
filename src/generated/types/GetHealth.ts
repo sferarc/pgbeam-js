@@ -26,16 +26,22 @@ export type GetHealthStatus200 = HealthResponse;
 export type GetHealthStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetHealthStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetHealthStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type GetHealthStatus500 = Error;
 
 export type GetHealthOptions = {
     body?: never;
@@ -49,9 +55,10 @@ export type GetHealthResponses = {
     "304": GetHealthStatus304;
     "400": GetHealthStatus400;
     "429": GetHealthStatus429;
+    "500": GetHealthStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type GetHealthResponse = (GetHealthStatus200 | GetHealthStatus304 | GetHealthStatus400 | GetHealthStatus429);
+export type GetHealthResponse = (GetHealthStatus200 | GetHealthStatus304 | GetHealthStatus400 | GetHealthStatus429 | GetHealthStatus500);

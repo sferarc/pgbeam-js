@@ -23,28 +23,34 @@ export type RevokeAgentCredentialPath = {
 export type RevokeAgentCredentialStatus204 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type RevokeAgentCredentialStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type RevokeAgentCredentialStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type RevokeAgentCredentialStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type RevokeAgentCredentialStatus404 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type RevokeAgentCredentialStatus500 = Error;
 
 export type RevokeAgentCredentialOptions = {
     body?: never;
@@ -59,9 +65,10 @@ export type RevokeAgentCredentialResponses = {
     "401": RevokeAgentCredentialStatus401;
     "403": RevokeAgentCredentialStatus403;
     "404": RevokeAgentCredentialStatus404;
+    "500": RevokeAgentCredentialStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type RevokeAgentCredentialResponse = (RevokeAgentCredentialStatus204 | RevokeAgentCredentialStatus400 | RevokeAgentCredentialStatus401 | RevokeAgentCredentialStatus403 | RevokeAgentCredentialStatus404);
+export type RevokeAgentCredentialResponse = (RevokeAgentCredentialStatus204 | RevokeAgentCredentialStatus400 | RevokeAgentCredentialStatus401 | RevokeAgentCredentialStatus403 | RevokeAgentCredentialStatus404 | RevokeAgentCredentialStatus500);

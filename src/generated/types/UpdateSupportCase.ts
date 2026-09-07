@@ -30,28 +30,46 @@ export type UpdateSupportCasePath = {
 export type UpdateSupportCaseStatus200 = SupportCase;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateSupportCaseStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateSupportCaseStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateSupportCaseStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateSupportCaseStatus404 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type UpdateSupportCaseStatus413 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type UpdateSupportCaseStatus415 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type UpdateSupportCaseStatus500 = Error;
 
 /**
  * @description Request body for updating a support case status.
@@ -72,9 +90,12 @@ export type UpdateSupportCaseResponses = {
     "401": UpdateSupportCaseStatus401;
     "403": UpdateSupportCaseStatus403;
     "404": UpdateSupportCaseStatus404;
+    "413": UpdateSupportCaseStatus413;
+    "415": UpdateSupportCaseStatus415;
+    "500": UpdateSupportCaseStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type UpdateSupportCaseResponse = (UpdateSupportCaseStatus200 | UpdateSupportCaseStatus400 | UpdateSupportCaseStatus401 | UpdateSupportCaseStatus403 | UpdateSupportCaseStatus404);
+export type UpdateSupportCaseResponse = (UpdateSupportCaseStatus200 | UpdateSupportCaseStatus400 | UpdateSupportCaseStatus401 | UpdateSupportCaseStatus403 | UpdateSupportCaseStatus404 | UpdateSupportCaseStatus413 | UpdateSupportCaseStatus415 | UpdateSupportCaseStatus500);

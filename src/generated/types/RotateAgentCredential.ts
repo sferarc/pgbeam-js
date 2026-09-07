@@ -39,34 +39,40 @@ export type RotateAgentCredentialHeaders = {
 export type RotateAgentCredentialStatus200 = AgentCredentialSecrets;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type RotateAgentCredentialStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type RotateAgentCredentialStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type RotateAgentCredentialStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type RotateAgentCredentialStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type RotateAgentCredentialStatus409 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type RotateAgentCredentialStatus500 = Error;
 
 export type RotateAgentCredentialOptions = {
     body?: never;
@@ -82,9 +88,10 @@ export type RotateAgentCredentialResponses = {
     "403": RotateAgentCredentialStatus403;
     "404": RotateAgentCredentialStatus404;
     "409": RotateAgentCredentialStatus409;
+    "500": RotateAgentCredentialStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type RotateAgentCredentialResponse = (RotateAgentCredentialStatus200 | RotateAgentCredentialStatus400 | RotateAgentCredentialStatus401 | RotateAgentCredentialStatus403 | RotateAgentCredentialStatus404 | RotateAgentCredentialStatus409);
+export type RotateAgentCredentialResponse = (RotateAgentCredentialStatus200 | RotateAgentCredentialStatus400 | RotateAgentCredentialStatus401 | RotateAgentCredentialStatus403 | RotateAgentCredentialStatus404 | RotateAgentCredentialStatus409 | RotateAgentCredentialStatus500);

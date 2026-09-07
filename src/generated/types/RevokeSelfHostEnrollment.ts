@@ -25,28 +25,34 @@ export type RevokeSelfHostEnrollmentPath = {
 export type RevokeSelfHostEnrollmentStatus204 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type RevokeSelfHostEnrollmentStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type RevokeSelfHostEnrollmentStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type RevokeSelfHostEnrollmentStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type RevokeSelfHostEnrollmentStatus404 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type RevokeSelfHostEnrollmentStatus500 = Error;
 
 export type RevokeSelfHostEnrollmentOptions = {
     body?: never;
@@ -61,9 +67,10 @@ export type RevokeSelfHostEnrollmentResponses = {
     "401": RevokeSelfHostEnrollmentStatus401;
     "403": RevokeSelfHostEnrollmentStatus403;
     "404": RevokeSelfHostEnrollmentStatus404;
+    "500": RevokeSelfHostEnrollmentStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type RevokeSelfHostEnrollmentResponse = (RevokeSelfHostEnrollmentStatus204 | RevokeSelfHostEnrollmentStatus400 | RevokeSelfHostEnrollmentStatus401 | RevokeSelfHostEnrollmentStatus403 | RevokeSelfHostEnrollmentStatus404);
+export type RevokeSelfHostEnrollmentResponse = (RevokeSelfHostEnrollmentStatus204 | RevokeSelfHostEnrollmentStatus400 | RevokeSelfHostEnrollmentStatus401 | RevokeSelfHostEnrollmentStatus403 | RevokeSelfHostEnrollmentStatus404 | RevokeSelfHostEnrollmentStatus500);

@@ -26,22 +26,28 @@ export type ListRegionsStatus200 = ListRegionsResponse;
 export type ListRegionsStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListRegionsStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListRegionsStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListRegionsStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type ListRegionsStatus500 = Error;
 
 export type ListRegionsOptions = {
     body?: never;
@@ -56,4 +62,5 @@ export type ListRegionsResponses = {
     "400": ListRegionsStatus400;
     "401": ListRegionsStatus401;
     "429": ListRegionsStatus429;
+    "500": ListRegionsStatus500;
 };

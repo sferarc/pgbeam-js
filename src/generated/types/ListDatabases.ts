@@ -52,34 +52,40 @@ export type ListDatabasesStatus200 = ListDatabasesResponse;
 export type ListDatabasesStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListDatabasesStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListDatabasesStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListDatabasesStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListDatabasesStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListDatabasesStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type ListDatabasesStatus500 = Error;
 
 export type ListDatabasesOptions = {
     body?: never;
@@ -96,4 +102,5 @@ export type ListDatabasesResponses = {
     "403": ListDatabasesStatus403;
     "404": ListDatabasesStatus404;
     "429": ListDatabasesStatus429;
+    "500": ListDatabasesStatus500;
 };

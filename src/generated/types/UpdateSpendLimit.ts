@@ -24,34 +24,52 @@ export type UpdateSpendLimitPath = {
 export type UpdateSpendLimitStatus200 = OrganizationPlan;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateSpendLimitStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateSpendLimitStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateSpendLimitStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateSpendLimitStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type UpdateSpendLimitStatus413 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type UpdateSpendLimitStatus415 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateSpendLimitStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type UpdateSpendLimitStatus500 = Error;
 
 /**
  * @description Request body for updating an organization\'s monthly spend cap.
@@ -72,10 +90,13 @@ export type UpdateSpendLimitResponses = {
     "401": UpdateSpendLimitStatus401;
     "403": UpdateSpendLimitStatus403;
     "404": UpdateSpendLimitStatus404;
+    "413": UpdateSpendLimitStatus413;
+    "415": UpdateSpendLimitStatus415;
     "429": UpdateSpendLimitStatus429;
+    "500": UpdateSpendLimitStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type UpdateSpendLimitResponse = (UpdateSpendLimitStatus200 | UpdateSpendLimitStatus400 | UpdateSpendLimitStatus401 | UpdateSpendLimitStatus403 | UpdateSpendLimitStatus404 | UpdateSpendLimitStatus429);
+export type UpdateSpendLimitResponse = (UpdateSpendLimitStatus200 | UpdateSpendLimitStatus400 | UpdateSpendLimitStatus401 | UpdateSpendLimitStatus403 | UpdateSpendLimitStatus404 | UpdateSpendLimitStatus413 | UpdateSpendLimitStatus415 | UpdateSpendLimitStatus429 | UpdateSpendLimitStatus500);

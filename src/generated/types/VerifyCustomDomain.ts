@@ -28,34 +28,40 @@ export type VerifyCustomDomainPath = {
 export type VerifyCustomDomainStatus200 = VerifyCustomDomainResponse;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type VerifyCustomDomainStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type VerifyCustomDomainStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type VerifyCustomDomainStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type VerifyCustomDomainStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type VerifyCustomDomainStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type VerifyCustomDomainStatus500 = Error;
 
 export type VerifyCustomDomainOptions = {
     body?: never;
@@ -71,4 +77,5 @@ export type VerifyCustomDomainResponses = {
     "403": VerifyCustomDomainStatus403;
     "404": VerifyCustomDomainStatus404;
     "429": VerifyCustomDomainStatus429;
+    "500": VerifyCustomDomainStatus500;
 };

@@ -15,7 +15,7 @@ import type { Error } from './Error'
 export type CreateDemoCredentialStatus201 = DemoCredential;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateDemoCredentialStatus400 = Error;
@@ -27,13 +27,13 @@ export type CreateDemoCredentialStatus400 = Error;
 export type CreateDemoCredentialStatus402 = DemoPaymentChallenge;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateDemoCredentialStatus429 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateDemoCredentialStatus503 = Error;

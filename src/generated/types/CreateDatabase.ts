@@ -34,40 +34,58 @@ export type CreateDatabaseHeaders = {
 export type CreateDatabaseStatus201 = Database;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateDatabaseStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateDatabaseStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateDatabaseStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateDatabaseStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateDatabaseStatus409 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type CreateDatabaseStatus413 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type CreateDatabaseStatus415 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateDatabaseStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type CreateDatabaseStatus500 = Error;
 
 /**
  * @description Request body for registering an upstream database.
@@ -89,10 +107,13 @@ export type CreateDatabaseResponses = {
     "403": CreateDatabaseStatus403;
     "404": CreateDatabaseStatus404;
     "409": CreateDatabaseStatus409;
+    "413": CreateDatabaseStatus413;
+    "415": CreateDatabaseStatus415;
     "429": CreateDatabaseStatus429;
+    "500": CreateDatabaseStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type CreateDatabaseResponse = (CreateDatabaseStatus201 | CreateDatabaseStatus400 | CreateDatabaseStatus401 | CreateDatabaseStatus403 | CreateDatabaseStatus404 | CreateDatabaseStatus409 | CreateDatabaseStatus429);
+export type CreateDatabaseResponse = (CreateDatabaseStatus201 | CreateDatabaseStatus400 | CreateDatabaseStatus401 | CreateDatabaseStatus403 | CreateDatabaseStatus404 | CreateDatabaseStatus409 | CreateDatabaseStatus413 | CreateDatabaseStatus415 | CreateDatabaseStatus429 | CreateDatabaseStatus500);

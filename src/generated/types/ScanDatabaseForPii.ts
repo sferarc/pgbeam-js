@@ -28,34 +28,40 @@ export type ScanDatabaseForPiiPath = {
 export type ScanDatabaseForPiiStatus200 = ScanPiiResult;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ScanDatabaseForPiiStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ScanDatabaseForPiiStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ScanDatabaseForPiiStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ScanDatabaseForPiiStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ScanDatabaseForPiiStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type ScanDatabaseForPiiStatus500 = Error;
 
 export type ScanDatabaseForPiiOptions = {
     body?: never;
@@ -71,9 +77,10 @@ export type ScanDatabaseForPiiResponses = {
     "403": ScanDatabaseForPiiStatus403;
     "404": ScanDatabaseForPiiStatus404;
     "429": ScanDatabaseForPiiStatus429;
+    "500": ScanDatabaseForPiiStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type ScanDatabaseForPiiResponse = (ScanDatabaseForPiiStatus200 | ScanDatabaseForPiiStatus400 | ScanDatabaseForPiiStatus401 | ScanDatabaseForPiiStatus403 | ScanDatabaseForPiiStatus404 | ScanDatabaseForPiiStatus429);
+export type ScanDatabaseForPiiResponse = (ScanDatabaseForPiiStatus200 | ScanDatabaseForPiiStatus400 | ScanDatabaseForPiiStatus401 | ScanDatabaseForPiiStatus403 | ScanDatabaseForPiiStatus404 | ScanDatabaseForPiiStatus429 | ScanDatabaseForPiiStatus500);

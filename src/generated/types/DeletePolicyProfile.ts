@@ -23,34 +23,40 @@ export type DeletePolicyProfilePath = {
 export type DeletePolicyProfileStatus204 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeletePolicyProfileStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeletePolicyProfileStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeletePolicyProfileStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeletePolicyProfileStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeletePolicyProfileStatus409 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type DeletePolicyProfileStatus500 = Error;
 
 export type DeletePolicyProfileOptions = {
     body?: never;
@@ -66,9 +72,10 @@ export type DeletePolicyProfileResponses = {
     "403": DeletePolicyProfileStatus403;
     "404": DeletePolicyProfileStatus404;
     "409": DeletePolicyProfileStatus409;
+    "500": DeletePolicyProfileStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type DeletePolicyProfileResponse = (DeletePolicyProfileStatus204 | DeletePolicyProfileStatus400 | DeletePolicyProfileStatus401 | DeletePolicyProfileStatus403 | DeletePolicyProfileStatus404 | DeletePolicyProfileStatus409);
+export type DeletePolicyProfileResponse = (DeletePolicyProfileStatus204 | DeletePolicyProfileStatus400 | DeletePolicyProfileStatus401 | DeletePolicyProfileStatus403 | DeletePolicyProfileStatus404 | DeletePolicyProfileStatus409 | DeletePolicyProfileStatus500);

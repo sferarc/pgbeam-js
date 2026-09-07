@@ -26,28 +26,34 @@ export type ExportAccountDataStatus200 = AccountExport;
 export type ExportAccountDataStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ExportAccountDataStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ExportAccountDataStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ExportAccountDataStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ExportAccountDataStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type ExportAccountDataStatus500 = Error;
 
 export type ExportAccountDataOptions = {
     body?: never;
@@ -63,9 +69,10 @@ export type ExportAccountDataResponses = {
     "401": ExportAccountDataStatus401;
     "404": ExportAccountDataStatus404;
     "429": ExportAccountDataStatus429;
+    "500": ExportAccountDataStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type ExportAccountDataResponse = (ExportAccountDataStatus200 | ExportAccountDataStatus304 | ExportAccountDataStatus400 | ExportAccountDataStatus401 | ExportAccountDataStatus404 | ExportAccountDataStatus429);
+export type ExportAccountDataResponse = (ExportAccountDataStatus200 | ExportAccountDataStatus304 | ExportAccountDataStatus400 | ExportAccountDataStatus401 | ExportAccountDataStatus404 | ExportAccountDataStatus429 | ExportAccountDataStatus500);

@@ -23,28 +23,34 @@ export type DiscardDatabaseBranchPath = {
 export type DiscardDatabaseBranchStatus204 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DiscardDatabaseBranchStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DiscardDatabaseBranchStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DiscardDatabaseBranchStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DiscardDatabaseBranchStatus404 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type DiscardDatabaseBranchStatus500 = Error;
 
 export type DiscardDatabaseBranchOptions = {
     body?: never;
@@ -59,9 +65,10 @@ export type DiscardDatabaseBranchResponses = {
     "401": DiscardDatabaseBranchStatus401;
     "403": DiscardDatabaseBranchStatus403;
     "404": DiscardDatabaseBranchStatus404;
+    "500": DiscardDatabaseBranchStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type DiscardDatabaseBranchResponse = (DiscardDatabaseBranchStatus204 | DiscardDatabaseBranchStatus400 | DiscardDatabaseBranchStatus401 | DiscardDatabaseBranchStatus403 | DiscardDatabaseBranchStatus404);
+export type DiscardDatabaseBranchResponse = (DiscardDatabaseBranchStatus204 | DiscardDatabaseBranchStatus400 | DiscardDatabaseBranchStatus401 | DiscardDatabaseBranchStatus403 | DiscardDatabaseBranchStatus404 | DiscardDatabaseBranchStatus500);

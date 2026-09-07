@@ -29,34 +29,52 @@ export type RejectApprovalRequestPath = {
 export type RejectApprovalRequestStatus200 = ApprovalRequest;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type RejectApprovalRequestStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type RejectApprovalRequestStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type RejectApprovalRequestStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type RejectApprovalRequestStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type RejectApprovalRequestStatus409 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type RejectApprovalRequestStatus413 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type RejectApprovalRequestStatus415 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type RejectApprovalRequestStatus500 = Error;
 
 /**
  * @description Optional note attached to an approve/reject decision.
@@ -78,9 +96,12 @@ export type RejectApprovalRequestResponses = {
     "403": RejectApprovalRequestStatus403;
     "404": RejectApprovalRequestStatus404;
     "409": RejectApprovalRequestStatus409;
+    "413": RejectApprovalRequestStatus413;
+    "415": RejectApprovalRequestStatus415;
+    "500": RejectApprovalRequestStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type RejectApprovalRequestResponse = (RejectApprovalRequestStatus200 | RejectApprovalRequestStatus400 | RejectApprovalRequestStatus401 | RejectApprovalRequestStatus403 | RejectApprovalRequestStatus404 | RejectApprovalRequestStatus409);
+export type RejectApprovalRequestResponse = (RejectApprovalRequestStatus200 | RejectApprovalRequestStatus400 | RejectApprovalRequestStatus401 | RejectApprovalRequestStatus403 | RejectApprovalRequestStatus404 | RejectApprovalRequestStatus409 | RejectApprovalRequestStatus413 | RejectApprovalRequestStatus415 | RejectApprovalRequestStatus500);

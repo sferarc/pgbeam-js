@@ -41,28 +41,34 @@ export type GetHoneytokenStatus200 = Honeytoken;
 export type GetHoneytokenStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetHoneytokenStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetHoneytokenStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetHoneytokenStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetHoneytokenStatus404 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type GetHoneytokenStatus500 = Error;
 
 export type GetHoneytokenOptions = {
     body?: never;
@@ -78,9 +84,10 @@ export type GetHoneytokenResponses = {
     "401": GetHoneytokenStatus401;
     "403": GetHoneytokenStatus403;
     "404": GetHoneytokenStatus404;
+    "500": GetHoneytokenStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type GetHoneytokenResponse = (GetHoneytokenStatus200 | GetHoneytokenStatus304 | GetHoneytokenStatus400 | GetHoneytokenStatus401 | GetHoneytokenStatus403 | GetHoneytokenStatus404);
+export type GetHoneytokenResponse = (GetHoneytokenStatus200 | GetHoneytokenStatus304 | GetHoneytokenStatus400 | GetHoneytokenStatus401 | GetHoneytokenStatus403 | GetHoneytokenStatus404 | GetHoneytokenStatus500);

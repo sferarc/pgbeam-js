@@ -52,34 +52,40 @@ export type ListAgentCredentialsStatus200 = ListAgentCredentialsResponse;
 export type ListAgentCredentialsStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListAgentCredentialsStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListAgentCredentialsStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListAgentCredentialsStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListAgentCredentialsStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListAgentCredentialsStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type ListAgentCredentialsStatus500 = Error;
 
 export type ListAgentCredentialsOptions = {
     body?: never;
@@ -96,4 +102,5 @@ export type ListAgentCredentialsResponses = {
     "403": ListAgentCredentialsStatus403;
     "404": ListAgentCredentialsStatus404;
     "429": ListAgentCredentialsStatus429;
+    "500": ListAgentCredentialsStatus500;
 };

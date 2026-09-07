@@ -5,7 +5,75 @@ import { ApiError, describeError, extractMessage, fetcher, NetworkError } from "
 // ApiError
 // ---------------------------------------------------------------------------
 describe("ApiError", () => {
-  it("sets message from body.error.message when present", () => {
+  // The shape the control plane actually answers with.
+  const problem = {
+    type: "https://pgbeam.com/docs/api/errors/plan-limit-reached",
+    title: "Plan limit reached",
+    status: 403,
+    detail: "project limit reached: your plan allows 3 projects",
+    instance: "/v1/projects",
+    code: "PLAN_LIMIT_REACHED",
+    request_id: "9f8a1c2b3d4e5f60",
+  };
+
+  it("lifts the problem document onto the error", () => {
+    const err = new ApiError(403, "Forbidden", problem);
+
+    expect(err.message).toBe("project limit reached: your plan allows 3 projects");
+    expect(err.code).toBe("PLAN_LIMIT_REACHED");
+    expect(err.type).toBe("https://pgbeam.com/docs/api/errors/plan-limit-reached");
+    expect(err.title).toBe("Plan limit reached");
+    expect(err.detail).toBe("project limit reached: your plan allows 3 projects");
+    expect(err.instance).toBe("/v1/projects");
+    expect(err.requestId).toBe("9f8a1c2b3d4e5f60");
+    expect(err.body).toBe(problem);
+  });
+
+  // The whole point of the code: two conditions share the 403, and a caller
+  // that branched on the status alone would send someone to the wrong fix.
+  it("distinguishes the two 403s by code", () => {
+    const planned = new ApiError(403, "Forbidden", problem);
+    const role = new ApiError(403, "Forbidden", {
+      ...problem,
+      code: "FORBIDDEN",
+      title: "Forbidden",
+      type: "https://pgbeam.com/docs/api/errors/forbidden",
+    });
+
+    expect(planned.status).toBe(role.status);
+    expect(planned.code).not.toBe(role.code);
+  });
+
+  it("exposes field errors from a validation problem", () => {
+    const err = new ApiError(400, "Bad Request", {
+      type: "https://pgbeam.com/docs/api/errors/invalid-input",
+      title: "Invalid input",
+      status: 400,
+      detail: "database host is required",
+      code: "INVALID_INPUT",
+      errors: [{ field: "database.host", detail: "database host is required" }],
+    });
+
+    expect(err.errors).toEqual([{ field: "database.host", detail: "database host is required" }]);
+  });
+
+  it("drops malformed field errors rather than surfacing half of one", () => {
+    const err = new ApiError(400, "Bad Request", {
+      code: "INVALID_INPUT",
+      errors: [{ field: "a" }, "nope", { field: "b", detail: "bad" }],
+    });
+
+    expect(err.errors).toEqual([{ field: "b", detail: "bad" }]);
+  });
+
+  it("leaves the problem fields undefined when the body is not one", () => {
+    const err = new ApiError(500, "Internal Server Error", null);
+
+    expect(err.code).toBeUndefined();
+    expect(err.errors).toBeUndefined();
+  });
+
+  it("still reads the legacy envelope the edge MCP endpoint answers with", () => {
     const body = { error: { code: "NOT_FOUND", message: "Project not found" } };
     const err = new ApiError(404, "Not Found", body);
 

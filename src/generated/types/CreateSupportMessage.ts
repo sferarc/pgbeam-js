@@ -41,34 +41,52 @@ export type CreateSupportMessageHeaders = {
 export type CreateSupportMessageStatus201 = SupportMessage;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateSupportMessageStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateSupportMessageStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateSupportMessageStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateSupportMessageStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateSupportMessageStatus409 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type CreateSupportMessageStatus413 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type CreateSupportMessageStatus415 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type CreateSupportMessageStatus500 = Error;
 
 /**
  * @description Request body for adding a message to a support case.
@@ -90,9 +108,12 @@ export type CreateSupportMessageResponses = {
     "403": CreateSupportMessageStatus403;
     "404": CreateSupportMessageStatus404;
     "409": CreateSupportMessageStatus409;
+    "413": CreateSupportMessageStatus413;
+    "415": CreateSupportMessageStatus415;
+    "500": CreateSupportMessageStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type CreateSupportMessageResponse = (CreateSupportMessageStatus201 | CreateSupportMessageStatus400 | CreateSupportMessageStatus401 | CreateSupportMessageStatus403 | CreateSupportMessageStatus404 | CreateSupportMessageStatus409);
+export type CreateSupportMessageResponse = (CreateSupportMessageStatus201 | CreateSupportMessageStatus400 | CreateSupportMessageStatus401 | CreateSupportMessageStatus403 | CreateSupportMessageStatus404 | CreateSupportMessageStatus409 | CreateSupportMessageStatus413 | CreateSupportMessageStatus415 | CreateSupportMessageStatus500);

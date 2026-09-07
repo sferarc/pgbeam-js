@@ -41,34 +41,40 @@ export type RotateSelfHostEnrollmentHeaders = {
 export type RotateSelfHostEnrollmentStatus200 = SelfHostEnrollmentSecret;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type RotateSelfHostEnrollmentStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type RotateSelfHostEnrollmentStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type RotateSelfHostEnrollmentStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type RotateSelfHostEnrollmentStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type RotateSelfHostEnrollmentStatus409 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type RotateSelfHostEnrollmentStatus500 = Error;
 
 export type RotateSelfHostEnrollmentOptions = {
     body?: never;
@@ -84,9 +90,10 @@ export type RotateSelfHostEnrollmentResponses = {
     "403": RotateSelfHostEnrollmentStatus403;
     "404": RotateSelfHostEnrollmentStatus404;
     "409": RotateSelfHostEnrollmentStatus409;
+    "500": RotateSelfHostEnrollmentStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type RotateSelfHostEnrollmentResponse = (RotateSelfHostEnrollmentStatus200 | RotateSelfHostEnrollmentStatus400 | RotateSelfHostEnrollmentStatus401 | RotateSelfHostEnrollmentStatus403 | RotateSelfHostEnrollmentStatus404 | RotateSelfHostEnrollmentStatus409);
+export type RotateSelfHostEnrollmentResponse = (RotateSelfHostEnrollmentStatus200 | RotateSelfHostEnrollmentStatus400 | RotateSelfHostEnrollmentStatus401 | RotateSelfHostEnrollmentStatus403 | RotateSelfHostEnrollmentStatus404 | RotateSelfHostEnrollmentStatus409 | RotateSelfHostEnrollmentStatus500);

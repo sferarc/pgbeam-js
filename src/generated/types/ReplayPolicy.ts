@@ -23,34 +23,52 @@ export type ReplayPolicyPath = {
 export type ReplayPolicyStatus200 = PolicyReplayResult;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ReplayPolicyStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ReplayPolicyStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ReplayPolicyStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ReplayPolicyStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type ReplayPolicyStatus413 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type ReplayPolicyStatus415 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ReplayPolicyStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type ReplayPolicyStatus500 = Error;
 
 /**
  * @description A window of recorded agent traffic to replay plus the candidate policy to replay it against. Supply exactly one of policy_id (an existing saved policy) or policy (an unsaved draft, e.g. the in-progress editor form).
@@ -71,10 +89,13 @@ export type ReplayPolicyResponses = {
     "401": ReplayPolicyStatus401;
     "403": ReplayPolicyStatus403;
     "404": ReplayPolicyStatus404;
+    "413": ReplayPolicyStatus413;
+    "415": ReplayPolicyStatus415;
     "429": ReplayPolicyStatus429;
+    "500": ReplayPolicyStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type ReplayPolicyResponse = (ReplayPolicyStatus200 | ReplayPolicyStatus400 | ReplayPolicyStatus401 | ReplayPolicyStatus403 | ReplayPolicyStatus404 | ReplayPolicyStatus429);
+export type ReplayPolicyResponse = (ReplayPolicyStatus200 | ReplayPolicyStatus400 | ReplayPolicyStatus401 | ReplayPolicyStatus403 | ReplayPolicyStatus404 | ReplayPolicyStatus413 | ReplayPolicyStatus415 | ReplayPolicyStatus429 | ReplayPolicyStatus500);

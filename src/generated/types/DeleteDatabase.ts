@@ -23,34 +23,40 @@ export type DeleteDatabasePath = {
 export type DeleteDatabaseStatus204 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeleteDatabaseStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeleteDatabaseStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeleteDatabaseStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeleteDatabaseStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeleteDatabaseStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type DeleteDatabaseStatus500 = Error;
 
 export type DeleteDatabaseOptions = {
     body?: never;
@@ -66,9 +72,10 @@ export type DeleteDatabaseResponses = {
     "403": DeleteDatabaseStatus403;
     "404": DeleteDatabaseStatus404;
     "429": DeleteDatabaseStatus429;
+    "500": DeleteDatabaseStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type DeleteDatabaseResponse = (DeleteDatabaseStatus204 | DeleteDatabaseStatus400 | DeleteDatabaseStatus401 | DeleteDatabaseStatus403 | DeleteDatabaseStatus404 | DeleteDatabaseStatus429);
+export type DeleteDatabaseResponse = (DeleteDatabaseStatus204 | DeleteDatabaseStatus400 | DeleteDatabaseStatus401 | DeleteDatabaseStatus403 | DeleteDatabaseStatus404 | DeleteDatabaseStatus429 | DeleteDatabaseStatus500);

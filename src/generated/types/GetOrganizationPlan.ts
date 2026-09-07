@@ -36,28 +36,34 @@ export type GetOrganizationPlanStatus200 = OrganizationPlan;
 export type GetOrganizationPlanStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetOrganizationPlanStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetOrganizationPlanStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetOrganizationPlanStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetOrganizationPlanStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type GetOrganizationPlanStatus500 = Error;
 
 export type GetOrganizationPlanOptions = {
     body?: never;
@@ -73,9 +79,10 @@ export type GetOrganizationPlanResponses = {
     "401": GetOrganizationPlanStatus401;
     "403": GetOrganizationPlanStatus403;
     "429": GetOrganizationPlanStatus429;
+    "500": GetOrganizationPlanStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type GetOrganizationPlanResponse = (GetOrganizationPlanStatus200 | GetOrganizationPlanStatus304 | GetOrganizationPlanStatus400 | GetOrganizationPlanStatus401 | GetOrganizationPlanStatus403 | GetOrganizationPlanStatus429);
+export type GetOrganizationPlanResponse = (GetOrganizationPlanStatus200 | GetOrganizationPlanStatus304 | GetOrganizationPlanStatus400 | GetOrganizationPlanStatus401 | GetOrganizationPlanStatus403 | GetOrganizationPlanStatus429 | GetOrganizationPlanStatus500);

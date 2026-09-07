@@ -41,34 +41,40 @@ export type GetSchemaCatalogStatus200 = SchemaCatalog;
 export type GetSchemaCatalogStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetSchemaCatalogStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetSchemaCatalogStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetSchemaCatalogStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetSchemaCatalogStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetSchemaCatalogStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type GetSchemaCatalogStatus500 = Error;
 
 export type GetSchemaCatalogOptions = {
     body?: never;
@@ -85,9 +91,10 @@ export type GetSchemaCatalogResponses = {
     "403": GetSchemaCatalogStatus403;
     "404": GetSchemaCatalogStatus404;
     "429": GetSchemaCatalogStatus429;
+    "500": GetSchemaCatalogStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type GetSchemaCatalogResponse = (GetSchemaCatalogStatus200 | GetSchemaCatalogStatus304 | GetSchemaCatalogStatus400 | GetSchemaCatalogStatus401 | GetSchemaCatalogStatus403 | GetSchemaCatalogStatus404 | GetSchemaCatalogStatus429);
+export type GetSchemaCatalogResponse = (GetSchemaCatalogStatus200 | GetSchemaCatalogStatus304 | GetSchemaCatalogStatus400 | GetSchemaCatalogStatus401 | GetSchemaCatalogStatus403 | GetSchemaCatalogStatus404 | GetSchemaCatalogStatus429 | GetSchemaCatalogStatus500);

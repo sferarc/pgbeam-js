@@ -14,16 +14,34 @@ import type { McpResponse } from './McpResponse'
 export type McpTransportStatus200 = McpResponse;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type McpTransportStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type McpTransportStatus413 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type McpTransportStatus415 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type McpTransportStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type McpTransportStatus500 = Error;
 
 /**
  * @description JSON-RPC 2.0 request envelope for MCP over Streamable HTTP.
@@ -41,10 +59,13 @@ export type McpTransportOptions = {
 export type McpTransportResponses = {
     "200": McpTransportStatus200;
     "401": McpTransportStatus401;
+    "413": McpTransportStatus413;
+    "415": McpTransportStatus415;
     "429": McpTransportStatus429;
+    "500": McpTransportStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type McpTransportResponse = (McpTransportStatus200 | McpTransportStatus401 | McpTransportStatus429);
+export type McpTransportResponse = (McpTransportStatus200 | McpTransportStatus401 | McpTransportStatus413 | McpTransportStatus415 | McpTransportStatus429 | McpTransportStatus500);

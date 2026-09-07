@@ -34,40 +34,58 @@ export type CreateAgentCredentialHeaders = {
 export type CreateAgentCredentialStatus201 = AgentCredentialSecrets;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateAgentCredentialStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateAgentCredentialStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateAgentCredentialStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateAgentCredentialStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateAgentCredentialStatus409 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type CreateAgentCredentialStatus413 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type CreateAgentCredentialStatus415 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateAgentCredentialStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type CreateAgentCredentialStatus500 = Error;
 
 /**
  * @description Request body for issuing a new agent credential.
@@ -89,10 +107,13 @@ export type CreateAgentCredentialResponses = {
     "403": CreateAgentCredentialStatus403;
     "404": CreateAgentCredentialStatus404;
     "409": CreateAgentCredentialStatus409;
+    "413": CreateAgentCredentialStatus413;
+    "415": CreateAgentCredentialStatus415;
     "429": CreateAgentCredentialStatus429;
+    "500": CreateAgentCredentialStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type CreateAgentCredentialResponse = (CreateAgentCredentialStatus201 | CreateAgentCredentialStatus400 | CreateAgentCredentialStatus401 | CreateAgentCredentialStatus403 | CreateAgentCredentialStatus404 | CreateAgentCredentialStatus409 | CreateAgentCredentialStatus429);
+export type CreateAgentCredentialResponse = (CreateAgentCredentialStatus201 | CreateAgentCredentialStatus400 | CreateAgentCredentialStatus401 | CreateAgentCredentialStatus403 | CreateAgentCredentialStatus404 | CreateAgentCredentialStatus409 | CreateAgentCredentialStatus413 | CreateAgentCredentialStatus415 | CreateAgentCredentialStatus429 | CreateAgentCredentialStatus500);

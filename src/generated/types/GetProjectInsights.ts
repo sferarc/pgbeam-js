@@ -62,28 +62,34 @@ export type GetProjectInsightsStatus200 = ProjectInsights;
 export type GetProjectInsightsStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetProjectInsightsStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetProjectInsightsStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetProjectInsightsStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetProjectInsightsStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type GetProjectInsightsStatus500 = Error;
 
 export type GetProjectInsightsOptions = {
     body?: never;
@@ -99,9 +105,10 @@ export type GetProjectInsightsResponses = {
     "401": GetProjectInsightsStatus401;
     "404": GetProjectInsightsStatus404;
     "429": GetProjectInsightsStatus429;
+    "500": GetProjectInsightsStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type GetProjectInsightsResponse = (GetProjectInsightsStatus200 | GetProjectInsightsStatus304 | GetProjectInsightsStatus400 | GetProjectInsightsStatus401 | GetProjectInsightsStatus404 | GetProjectInsightsStatus429);
+export type GetProjectInsightsResponse = (GetProjectInsightsStatus200 | GetProjectInsightsStatus304 | GetProjectInsightsStatus400 | GetProjectInsightsStatus401 | GetProjectInsightsStatus404 | GetProjectInsightsStatus429 | GetProjectInsightsStatus500);

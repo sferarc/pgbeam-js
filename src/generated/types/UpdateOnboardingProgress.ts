@@ -24,34 +24,52 @@ export type UpdateOnboardingProgressPath = {
 export type UpdateOnboardingProgressStatus200 = OnboardingProgress;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateOnboardingProgressStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateOnboardingProgressStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateOnboardingProgressStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateOnboardingProgressStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type UpdateOnboardingProgressStatus413 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type UpdateOnboardingProgressStatus415 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateOnboardingProgressStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type UpdateOnboardingProgressStatus500 = Error;
 
 /**
  * @description Request body for advancing or dismissing onboarding.
@@ -72,10 +90,13 @@ export type UpdateOnboardingProgressResponses = {
     "401": UpdateOnboardingProgressStatus401;
     "403": UpdateOnboardingProgressStatus403;
     "404": UpdateOnboardingProgressStatus404;
+    "413": UpdateOnboardingProgressStatus413;
+    "415": UpdateOnboardingProgressStatus415;
     "429": UpdateOnboardingProgressStatus429;
+    "500": UpdateOnboardingProgressStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type UpdateOnboardingProgressResponse = (UpdateOnboardingProgressStatus200 | UpdateOnboardingProgressStatus400 | UpdateOnboardingProgressStatus401 | UpdateOnboardingProgressStatus403 | UpdateOnboardingProgressStatus404 | UpdateOnboardingProgressStatus429);
+export type UpdateOnboardingProgressResponse = (UpdateOnboardingProgressStatus200 | UpdateOnboardingProgressStatus400 | UpdateOnboardingProgressStatus401 | UpdateOnboardingProgressStatus403 | UpdateOnboardingProgressStatus404 | UpdateOnboardingProgressStatus413 | UpdateOnboardingProgressStatus415 | UpdateOnboardingProgressStatus429 | UpdateOnboardingProgressStatus500);

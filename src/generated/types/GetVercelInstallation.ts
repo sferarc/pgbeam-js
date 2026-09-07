@@ -36,34 +36,40 @@ export type GetVercelInstallationStatus200 = VercelInstallationStatus;
 export type GetVercelInstallationStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetVercelInstallationStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetVercelInstallationStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetVercelInstallationStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetVercelInstallationStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetVercelInstallationStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type GetVercelInstallationStatus500 = Error;
 
 export type GetVercelInstallationOptions = {
     body?: never;
@@ -80,9 +86,10 @@ export type GetVercelInstallationResponses = {
     "403": GetVercelInstallationStatus403;
     "404": GetVercelInstallationStatus404;
     "429": GetVercelInstallationStatus429;
+    "500": GetVercelInstallationStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type GetVercelInstallationResponse = (GetVercelInstallationStatus200 | GetVercelInstallationStatus304 | GetVercelInstallationStatus400 | GetVercelInstallationStatus401 | GetVercelInstallationStatus403 | GetVercelInstallationStatus404 | GetVercelInstallationStatus429);
+export type GetVercelInstallationResponse = (GetVercelInstallationStatus200 | GetVercelInstallationStatus304 | GetVercelInstallationStatus400 | GetVercelInstallationStatus401 | GetVercelInstallationStatus403 | GetVercelInstallationStatus404 | GetVercelInstallationStatus429 | GetVercelInstallationStatus500);

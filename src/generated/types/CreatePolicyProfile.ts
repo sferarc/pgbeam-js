@@ -34,40 +34,58 @@ export type CreatePolicyProfileHeaders = {
 export type CreatePolicyProfileStatus201 = PolicyProfile;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreatePolicyProfileStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreatePolicyProfileStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreatePolicyProfileStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreatePolicyProfileStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreatePolicyProfileStatus409 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type CreatePolicyProfileStatus413 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type CreatePolicyProfileStatus415 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreatePolicyProfileStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type CreatePolicyProfileStatus500 = Error;
 
 /**
  * @description Mutable fields of a policy profile (used for create and update).
@@ -89,10 +107,13 @@ export type CreatePolicyProfileResponses = {
     "403": CreatePolicyProfileStatus403;
     "404": CreatePolicyProfileStatus404;
     "409": CreatePolicyProfileStatus409;
+    "413": CreatePolicyProfileStatus413;
+    "415": CreatePolicyProfileStatus415;
     "429": CreatePolicyProfileStatus429;
+    "500": CreatePolicyProfileStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type CreatePolicyProfileResponse = (CreatePolicyProfileStatus201 | CreatePolicyProfileStatus400 | CreatePolicyProfileStatus401 | CreatePolicyProfileStatus403 | CreatePolicyProfileStatus404 | CreatePolicyProfileStatus409 | CreatePolicyProfileStatus429);
+export type CreatePolicyProfileResponse = (CreatePolicyProfileStatus201 | CreatePolicyProfileStatus400 | CreatePolicyProfileStatus401 | CreatePolicyProfileStatus403 | CreatePolicyProfileStatus404 | CreatePolicyProfileStatus409 | CreatePolicyProfileStatus413 | CreatePolicyProfileStatus415 | CreatePolicyProfileStatus429 | CreatePolicyProfileStatus500);

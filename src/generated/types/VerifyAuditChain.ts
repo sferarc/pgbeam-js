@@ -52,34 +52,40 @@ export type VerifyAuditChainStatus200 = AuditChainVerification;
 export type VerifyAuditChainStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type VerifyAuditChainStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type VerifyAuditChainStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type VerifyAuditChainStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type VerifyAuditChainStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type VerifyAuditChainStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type VerifyAuditChainStatus500 = Error;
 
 export type VerifyAuditChainOptions = {
     body?: never;
@@ -96,9 +102,10 @@ export type VerifyAuditChainResponses = {
     "403": VerifyAuditChainStatus403;
     "404": VerifyAuditChainStatus404;
     "429": VerifyAuditChainStatus429;
+    "500": VerifyAuditChainStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type VerifyAuditChainResponse = (VerifyAuditChainStatus200 | VerifyAuditChainStatus304 | VerifyAuditChainStatus400 | VerifyAuditChainStatus401 | VerifyAuditChainStatus403 | VerifyAuditChainStatus404 | VerifyAuditChainStatus429);
+export type VerifyAuditChainResponse = (VerifyAuditChainStatus200 | VerifyAuditChainStatus304 | VerifyAuditChainStatus400 | VerifyAuditChainStatus401 | VerifyAuditChainStatus403 | VerifyAuditChainStatus404 | VerifyAuditChainStatus429 | VerifyAuditChainStatus500);

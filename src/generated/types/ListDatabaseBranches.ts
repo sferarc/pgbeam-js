@@ -66,34 +66,40 @@ export type ListDatabaseBranchesStatus200 = ListDatabaseBranchesResponse;
 export type ListDatabaseBranchesStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListDatabaseBranchesStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListDatabaseBranchesStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListDatabaseBranchesStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListDatabaseBranchesStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListDatabaseBranchesStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type ListDatabaseBranchesStatus500 = Error;
 
 export type ListDatabaseBranchesOptions = {
     body?: never;
@@ -110,4 +116,5 @@ export type ListDatabaseBranchesResponses = {
     "403": ListDatabaseBranchesStatus403;
     "404": ListDatabaseBranchesStatus404;
     "429": ListDatabaseBranchesStatus429;
+    "500": ListDatabaseBranchesStatus500;
 };

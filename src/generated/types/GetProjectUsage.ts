@@ -54,28 +54,34 @@ export type GetProjectUsageStatus200 = ProjectUsageResponse;
 export type GetProjectUsageStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetProjectUsageStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetProjectUsageStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetProjectUsageStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetProjectUsageStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type GetProjectUsageStatus500 = Error;
 
 export type GetProjectUsageOptions = {
     body?: never;
@@ -91,9 +97,10 @@ export type GetProjectUsageResponses = {
     "401": GetProjectUsageStatus401;
     "404": GetProjectUsageStatus404;
     "429": GetProjectUsageStatus429;
+    "500": GetProjectUsageStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type GetProjectUsageResponse = (GetProjectUsageStatus200 | GetProjectUsageStatus304 | GetProjectUsageStatus400 | GetProjectUsageStatus401 | GetProjectUsageStatus404 | GetProjectUsageStatus429);
+export type GetProjectUsageResponse = (GetProjectUsageStatus200 | GetProjectUsageStatus304 | GetProjectUsageStatus400 | GetProjectUsageStatus401 | GetProjectUsageStatus404 | GetProjectUsageStatus429 | GetProjectUsageStatus500);

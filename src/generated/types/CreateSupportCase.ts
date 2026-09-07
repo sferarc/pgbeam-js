@@ -35,28 +35,46 @@ export type CreateSupportCaseHeaders = {
 export type CreateSupportCaseStatus201 = SupportCase;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateSupportCaseStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateSupportCaseStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateSupportCaseStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateSupportCaseStatus409 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type CreateSupportCaseStatus413 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type CreateSupportCaseStatus415 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type CreateSupportCaseStatus500 = Error;
 
 /**
  * @description Request body for creating a support case.
@@ -77,9 +95,12 @@ export type CreateSupportCaseResponses = {
     "401": CreateSupportCaseStatus401;
     "403": CreateSupportCaseStatus403;
     "409": CreateSupportCaseStatus409;
+    "413": CreateSupportCaseStatus413;
+    "415": CreateSupportCaseStatus415;
+    "500": CreateSupportCaseStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type CreateSupportCaseResponse = (CreateSupportCaseStatus201 | CreateSupportCaseStatus400 | CreateSupportCaseStatus401 | CreateSupportCaseStatus403 | CreateSupportCaseStatus409);
+export type CreateSupportCaseResponse = (CreateSupportCaseStatus201 | CreateSupportCaseStatus400 | CreateSupportCaseStatus401 | CreateSupportCaseStatus403 | CreateSupportCaseStatus409 | CreateSupportCaseStatus413 | CreateSupportCaseStatus415 | CreateSupportCaseStatus500);

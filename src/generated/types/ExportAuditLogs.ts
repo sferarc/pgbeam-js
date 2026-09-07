@@ -58,34 +58,40 @@ export type ExportAuditLogsQuery = {
 export type ExportAuditLogsStatus200 = string;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ExportAuditLogsStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ExportAuditLogsStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ExportAuditLogsStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ExportAuditLogsStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ExportAuditLogsStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type ExportAuditLogsStatus500 = Error;
 
 export type ExportAuditLogsOptions = {
     body?: never;
@@ -101,9 +107,10 @@ export type ExportAuditLogsResponses = {
     "403": ExportAuditLogsStatus403;
     "404": ExportAuditLogsStatus404;
     "429": ExportAuditLogsStatus429;
+    "500": ExportAuditLogsStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type ExportAuditLogsResponse = (ExportAuditLogsStatus200 | ExportAuditLogsStatus400 | ExportAuditLogsStatus401 | ExportAuditLogsStatus403 | ExportAuditLogsStatus404 | ExportAuditLogsStatus429);
+export type ExportAuditLogsResponse = (ExportAuditLogsStatus200 | ExportAuditLogsStatus400 | ExportAuditLogsStatus401 | ExportAuditLogsStatus403 | ExportAuditLogsStatus404 | ExportAuditLogsStatus429 | ExportAuditLogsStatus500);

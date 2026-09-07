@@ -23,34 +23,40 @@ export type DeleteCustomDomainPath = {
 export type DeleteCustomDomainStatus204 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeleteCustomDomainStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeleteCustomDomainStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeleteCustomDomainStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeleteCustomDomainStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeleteCustomDomainStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type DeleteCustomDomainStatus500 = Error;
 
 export type DeleteCustomDomainOptions = {
     body?: never;
@@ -66,9 +72,10 @@ export type DeleteCustomDomainResponses = {
     "403": DeleteCustomDomainStatus403;
     "404": DeleteCustomDomainStatus404;
     "429": DeleteCustomDomainStatus429;
+    "500": DeleteCustomDomainStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type DeleteCustomDomainResponse = (DeleteCustomDomainStatus204 | DeleteCustomDomainStatus400 | DeleteCustomDomainStatus401 | DeleteCustomDomainStatus403 | DeleteCustomDomainStatus404 | DeleteCustomDomainStatus429);
+export type DeleteCustomDomainResponse = (DeleteCustomDomainStatus204 | DeleteCustomDomainStatus400 | DeleteCustomDomainStatus401 | DeleteCustomDomainStatus403 | DeleteCustomDomainStatus404 | DeleteCustomDomainStatus429 | DeleteCustomDomainStatus500);

@@ -23,28 +23,46 @@ export type LintMigrationPath = {
 export type LintMigrationStatus200 = MigrationLintResponse;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type LintMigrationStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type LintMigrationStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type LintMigrationStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type LintMigrationStatus404 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type LintMigrationStatus413 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type LintMigrationStatus415 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type LintMigrationStatus500 = Error;
 
 /**
  * @description A migration script to lint for unsafe schema changes.
@@ -65,9 +83,12 @@ export type LintMigrationResponses = {
     "401": LintMigrationStatus401;
     "403": LintMigrationStatus403;
     "404": LintMigrationStatus404;
+    "413": LintMigrationStatus413;
+    "415": LintMigrationStatus415;
+    "500": LintMigrationStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type LintMigrationResponse = (LintMigrationStatus200 | LintMigrationStatus400 | LintMigrationStatus401 | LintMigrationStatus403 | LintMigrationStatus404);
+export type LintMigrationResponse = (LintMigrationStatus200 | LintMigrationStatus400 | LintMigrationStatus401 | LintMigrationStatus403 | LintMigrationStatus404 | LintMigrationStatus413 | LintMigrationStatus415 | LintMigrationStatus500);

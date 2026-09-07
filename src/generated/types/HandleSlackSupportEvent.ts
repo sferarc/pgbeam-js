@@ -9,22 +9,40 @@ import type { SlackEventPayload } from './SlackEventPayload'
 export type HandleSlackSupportEventStatus200 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type HandleSlackSupportEventStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type HandleSlackSupportEventStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type HandleSlackSupportEventStatus404 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type HandleSlackSupportEventStatus413 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type HandleSlackSupportEventStatus415 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type HandleSlackSupportEventStatus500 = Error;
 
 /**
  * @description Slack event forwarded from the dashboard webhook handler.
@@ -44,9 +62,12 @@ export type HandleSlackSupportEventResponses = {
     "400": HandleSlackSupportEventStatus400;
     "401": HandleSlackSupportEventStatus401;
     "404": HandleSlackSupportEventStatus404;
+    "413": HandleSlackSupportEventStatus413;
+    "415": HandleSlackSupportEventStatus415;
+    "500": HandleSlackSupportEventStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type HandleSlackSupportEventResponse = (HandleSlackSupportEventStatus200 | HandleSlackSupportEventStatus400 | HandleSlackSupportEventStatus401 | HandleSlackSupportEventStatus404);
+export type HandleSlackSupportEventResponse = (HandleSlackSupportEventStatus200 | HandleSlackSupportEventStatus400 | HandleSlackSupportEventStatus401 | HandleSlackSupportEventStatus404 | HandleSlackSupportEventStatus413 | HandleSlackSupportEventStatus415 | HandleSlackSupportEventStatus500);

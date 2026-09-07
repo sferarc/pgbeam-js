@@ -23,34 +23,52 @@ export type DryEvalPolicyPath = {
 export type DryEvalPolicyStatus200 = DryEvalResult;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DryEvalPolicyStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DryEvalPolicyStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DryEvalPolicyStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DryEvalPolicyStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type DryEvalPolicyStatus413 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type DryEvalPolicyStatus415 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DryEvalPolicyStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type DryEvalPolicyStatus500 = Error;
 
 /**
  * @description A SQL statement to test plus the policy to test it against. Supply exactly one of policy_id (an existing saved policy) or policy (an unsaved draft, e.g. the in-progress editor form).
@@ -71,10 +89,13 @@ export type DryEvalPolicyResponses = {
     "401": DryEvalPolicyStatus401;
     "403": DryEvalPolicyStatus403;
     "404": DryEvalPolicyStatus404;
+    "413": DryEvalPolicyStatus413;
+    "415": DryEvalPolicyStatus415;
     "429": DryEvalPolicyStatus429;
+    "500": DryEvalPolicyStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type DryEvalPolicyResponse = (DryEvalPolicyStatus200 | DryEvalPolicyStatus400 | DryEvalPolicyStatus401 | DryEvalPolicyStatus403 | DryEvalPolicyStatus404 | DryEvalPolicyStatus429);
+export type DryEvalPolicyResponse = (DryEvalPolicyStatus200 | DryEvalPolicyStatus400 | DryEvalPolicyStatus401 | DryEvalPolicyStatus403 | DryEvalPolicyStatus404 | DryEvalPolicyStatus413 | DryEvalPolicyStatus415 | DryEvalPolicyStatus429 | DryEvalPolicyStatus500);

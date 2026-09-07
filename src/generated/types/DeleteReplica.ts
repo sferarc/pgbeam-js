@@ -23,34 +23,40 @@ export type DeleteReplicaPath = {
 export type DeleteReplicaStatus204 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeleteReplicaStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeleteReplicaStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeleteReplicaStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeleteReplicaStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeleteReplicaStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type DeleteReplicaStatus500 = Error;
 
 export type DeleteReplicaOptions = {
     body?: never;
@@ -66,9 +72,10 @@ export type DeleteReplicaResponses = {
     "403": DeleteReplicaStatus403;
     "404": DeleteReplicaStatus404;
     "429": DeleteReplicaStatus429;
+    "500": DeleteReplicaStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type DeleteReplicaResponse = (DeleteReplicaStatus204 | DeleteReplicaStatus400 | DeleteReplicaStatus401 | DeleteReplicaStatus403 | DeleteReplicaStatus404 | DeleteReplicaStatus429);
+export type DeleteReplicaResponse = (DeleteReplicaStatus204 | DeleteReplicaStatus400 | DeleteReplicaStatus401 | DeleteReplicaStatus403 | DeleteReplicaStatus404 | DeleteReplicaStatus429 | DeleteReplicaStatus500);

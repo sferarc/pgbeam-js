@@ -17,34 +17,40 @@ export type DeleteProjectPath = {
 export type DeleteProjectStatus204 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeleteProjectStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeleteProjectStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeleteProjectStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeleteProjectStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeleteProjectStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type DeleteProjectStatus500 = Error;
 
 export type DeleteProjectOptions = {
     body?: never;
@@ -60,9 +66,10 @@ export type DeleteProjectResponses = {
     "403": DeleteProjectStatus403;
     "404": DeleteProjectStatus404;
     "429": DeleteProjectStatus429;
+    "500": DeleteProjectStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type DeleteProjectResponse = (DeleteProjectStatus204 | DeleteProjectStatus400 | DeleteProjectStatus401 | DeleteProjectStatus403 | DeleteProjectStatus404 | DeleteProjectStatus429);
+export type DeleteProjectResponse = (DeleteProjectStatus204 | DeleteProjectStatus400 | DeleteProjectStatus401 | DeleteProjectStatus403 | DeleteProjectStatus404 | DeleteProjectStatus429 | DeleteProjectStatus500);

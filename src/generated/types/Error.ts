@@ -3,25 +3,61 @@
 * Do not edit manually.
 */
 
+import type { ErrorCodeKey } from './ErrorCode'
+import type { FieldError } from './FieldError'
+
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type Error = {
     /**
-     * @description Error metadata for the failed request.
-     * @type object
+     * @description URI identifying the error condition. It resolves to that condition\'s entry in the published error catalog. This is the RFC 9457 identifier; `code` is the same identity as a short token.
+     *
+     * Format: `uri`
+     * @example https://pgbeam.com/docs/api/errors/plan-limit-reached
+     * @type string
     */
-    error: {
-        /**
-         * @description Machine-readable error code.
-         * @type string
-        */
-        code: string;
-        /**
-         * @description Human-readable error message.
-         * @type string
-        */
-        message: string;
-    };
+    type: string;
+    /**
+     * @description Short human-readable summary of the error condition.
+     * @example Plan limit reached
+     * @type string
+    */
+    title: string;
+    /**
+     * @description HTTP status code, repeated here so the document is self-contained.
+     * @example 403
+     * @type integer
+    */
+    status: number;
+    /**
+     * @description Human-readable explanation specific to this occurrence. Written for a person; branch on `code` or `type` rather than on this string.
+     * @example project limit reached: your plan allows 3 projects
+     * @type string | undefined
+    */
+    detail?: string;
+    /**
+     * @description Path of the request that produced the error.
+     * @example /v1/projects
+     * @type string | undefined
+    */
+    instance?: string;
+    /**
+     * @description Machine-readable identity of the error condition. This is the value to branch on: it is stable across wording changes, and it distinguishes conditions that share a status code (a permissions denial from a plan limit, a duplicate name from a state conflict). New codes are added for new conditions, so treat the set as open and fall back on the status.
+     * @example PLAN_LIMIT_REACHED
+     * @type string
+    */
+    code: ErrorCodeKey;
+    /**
+     * @description Correlation id for this request, also returned in the `X-Request-Id` header. Quote it when reporting a problem.
+     * @example 9f8a1c2b3d4e5f60
+     * @type string | undefined
+    */
+    request_id?: string;
+    /**
+     * @description Field-level detail, present when the request failed validation. Each entry names the part of the request that was rejected.
+     * @type array | undefined
+    */
+    errors?: FieldError[];
 };

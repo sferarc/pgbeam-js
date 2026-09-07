@@ -41,28 +41,34 @@ export type GetWebhookEndpointStatus200 = WebhookEndpoint;
 export type GetWebhookEndpointStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetWebhookEndpointStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetWebhookEndpointStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetWebhookEndpointStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetWebhookEndpointStatus404 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type GetWebhookEndpointStatus500 = Error;
 
 export type GetWebhookEndpointOptions = {
     body?: never;
@@ -78,9 +84,10 @@ export type GetWebhookEndpointResponses = {
     "401": GetWebhookEndpointStatus401;
     "403": GetWebhookEndpointStatus403;
     "404": GetWebhookEndpointStatus404;
+    "500": GetWebhookEndpointStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type GetWebhookEndpointResponse = (GetWebhookEndpointStatus200 | GetWebhookEndpointStatus304 | GetWebhookEndpointStatus400 | GetWebhookEndpointStatus401 | GetWebhookEndpointStatus403 | GetWebhookEndpointStatus404);
+export type GetWebhookEndpointResponse = (GetWebhookEndpointStatus200 | GetWebhookEndpointStatus304 | GetWebhookEndpointStatus400 | GetWebhookEndpointStatus401 | GetWebhookEndpointStatus403 | GetWebhookEndpointStatus404 | GetWebhookEndpointStatus500);

@@ -35,34 +35,52 @@ export type CreateSelfHostEnrollmentHeaders = {
 export type CreateSelfHostEnrollmentStatus201 = SelfHostEnrollmentSecret;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateSelfHostEnrollmentStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateSelfHostEnrollmentStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateSelfHostEnrollmentStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateSelfHostEnrollmentStatus409 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type CreateSelfHostEnrollmentStatus413 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type CreateSelfHostEnrollmentStatus415 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateSelfHostEnrollmentStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type CreateSelfHostEnrollmentStatus500 = Error;
 
 /**
  * @description Request body for issuing a self-host enrollment token.
@@ -83,10 +101,13 @@ export type CreateSelfHostEnrollmentResponses = {
     "401": CreateSelfHostEnrollmentStatus401;
     "403": CreateSelfHostEnrollmentStatus403;
     "409": CreateSelfHostEnrollmentStatus409;
+    "413": CreateSelfHostEnrollmentStatus413;
+    "415": CreateSelfHostEnrollmentStatus415;
     "429": CreateSelfHostEnrollmentStatus429;
+    "500": CreateSelfHostEnrollmentStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type CreateSelfHostEnrollmentResponse = (CreateSelfHostEnrollmentStatus201 | CreateSelfHostEnrollmentStatus400 | CreateSelfHostEnrollmentStatus401 | CreateSelfHostEnrollmentStatus403 | CreateSelfHostEnrollmentStatus409 | CreateSelfHostEnrollmentStatus429);
+export type CreateSelfHostEnrollmentResponse = (CreateSelfHostEnrollmentStatus201 | CreateSelfHostEnrollmentStatus400 | CreateSelfHostEnrollmentStatus401 | CreateSelfHostEnrollmentStatus403 | CreateSelfHostEnrollmentStatus409 | CreateSelfHostEnrollmentStatus413 | CreateSelfHostEnrollmentStatus415 | CreateSelfHostEnrollmentStatus429 | CreateSelfHostEnrollmentStatus500);

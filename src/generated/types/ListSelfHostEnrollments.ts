@@ -53,22 +53,28 @@ export type ListSelfHostEnrollmentsStatus200 = ListSelfHostEnrollmentsResponse;
 export type ListSelfHostEnrollmentsStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListSelfHostEnrollmentsStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListSelfHostEnrollmentsStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListSelfHostEnrollmentsStatus403 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type ListSelfHostEnrollmentsStatus500 = Error;
 
 export type ListSelfHostEnrollmentsOptions = {
     body?: never;
@@ -83,4 +89,5 @@ export type ListSelfHostEnrollmentsResponses = {
     "400": ListSelfHostEnrollmentsStatus400;
     "401": ListSelfHostEnrollmentsStatus401;
     "403": ListSelfHostEnrollmentsStatus403;
+    "500": ListSelfHostEnrollmentsStatus500;
 };

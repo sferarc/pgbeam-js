@@ -29,34 +29,52 @@ export type ApproveApprovalRequestPath = {
 export type ApproveApprovalRequestStatus200 = ApprovalRequest;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ApproveApprovalRequestStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ApproveApprovalRequestStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ApproveApprovalRequestStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ApproveApprovalRequestStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ApproveApprovalRequestStatus409 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type ApproveApprovalRequestStatus413 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type ApproveApprovalRequestStatus415 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type ApproveApprovalRequestStatus500 = Error;
 
 /**
  * @description Optional note attached to an approve/reject decision.
@@ -78,9 +96,12 @@ export type ApproveApprovalRequestResponses = {
     "403": ApproveApprovalRequestStatus403;
     "404": ApproveApprovalRequestStatus404;
     "409": ApproveApprovalRequestStatus409;
+    "413": ApproveApprovalRequestStatus413;
+    "415": ApproveApprovalRequestStatus415;
+    "500": ApproveApprovalRequestStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type ApproveApprovalRequestResponse = (ApproveApprovalRequestStatus200 | ApproveApprovalRequestStatus400 | ApproveApprovalRequestStatus401 | ApproveApprovalRequestStatus403 | ApproveApprovalRequestStatus404 | ApproveApprovalRequestStatus409);
+export type ApproveApprovalRequestResponse = (ApproveApprovalRequestStatus200 | ApproveApprovalRequestStatus400 | ApproveApprovalRequestStatus401 | ApproveApprovalRequestStatus403 | ApproveApprovalRequestStatus404 | ApproveApprovalRequestStatus409 | ApproveApprovalRequestStatus413 | ApproveApprovalRequestStatus415 | ApproveApprovalRequestStatus500);

@@ -41,28 +41,34 @@ export type GetPolicyProfileStatus200 = PolicyProfile;
 export type GetPolicyProfileStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetPolicyProfileStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetPolicyProfileStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetPolicyProfileStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetPolicyProfileStatus404 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type GetPolicyProfileStatus500 = Error;
 
 export type GetPolicyProfileOptions = {
     body?: never;
@@ -78,9 +84,10 @@ export type GetPolicyProfileResponses = {
     "401": GetPolicyProfileStatus401;
     "403": GetPolicyProfileStatus403;
     "404": GetPolicyProfileStatus404;
+    "500": GetPolicyProfileStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type GetPolicyProfileResponse = (GetPolicyProfileStatus200 | GetPolicyProfileStatus304 | GetPolicyProfileStatus400 | GetPolicyProfileStatus401 | GetPolicyProfileStatus403 | GetPolicyProfileStatus404);
+export type GetPolicyProfileResponse = (GetPolicyProfileStatus200 | GetPolicyProfileStatus304 | GetPolicyProfileStatus400 | GetPolicyProfileStatus401 | GetPolicyProfileStatus403 | GetPolicyProfileStatus404 | GetPolicyProfileStatus500);

@@ -52,34 +52,40 @@ export type GetAgentUsageBreakdownStatus200 = AgentUsageReport;
 export type GetAgentUsageBreakdownStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetAgentUsageBreakdownStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetAgentUsageBreakdownStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetAgentUsageBreakdownStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetAgentUsageBreakdownStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetAgentUsageBreakdownStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type GetAgentUsageBreakdownStatus500 = Error;
 
 export type GetAgentUsageBreakdownOptions = {
     body?: never;
@@ -96,9 +102,10 @@ export type GetAgentUsageBreakdownResponses = {
     "403": GetAgentUsageBreakdownStatus403;
     "404": GetAgentUsageBreakdownStatus404;
     "429": GetAgentUsageBreakdownStatus429;
+    "500": GetAgentUsageBreakdownStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type GetAgentUsageBreakdownResponse = (GetAgentUsageBreakdownStatus200 | GetAgentUsageBreakdownStatus304 | GetAgentUsageBreakdownStatus400 | GetAgentUsageBreakdownStatus401 | GetAgentUsageBreakdownStatus403 | GetAgentUsageBreakdownStatus404 | GetAgentUsageBreakdownStatus429);
+export type GetAgentUsageBreakdownResponse = (GetAgentUsageBreakdownStatus200 | GetAgentUsageBreakdownStatus304 | GetAgentUsageBreakdownStatus400 | GetAgentUsageBreakdownStatus401 | GetAgentUsageBreakdownStatus403 | GetAgentUsageBreakdownStatus404 | GetAgentUsageBreakdownStatus429 | GetAgentUsageBreakdownStatus500);

@@ -68,34 +68,40 @@ export type ListApprovalRequestsStatus200 = ListApprovalRequestsResponse;
 export type ListApprovalRequestsStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListApprovalRequestsStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListApprovalRequestsStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListApprovalRequestsStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListApprovalRequestsStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListApprovalRequestsStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type ListApprovalRequestsStatus500 = Error;
 
 export type ListApprovalRequestsOptions = {
     body?: never;
@@ -112,4 +118,5 @@ export type ListApprovalRequestsResponses = {
     "403": ListApprovalRequestsStatus403;
     "404": ListApprovalRequestsStatus404;
     "429": ListApprovalRequestsStatus429;
+    "500": ListApprovalRequestsStatus500;
 };

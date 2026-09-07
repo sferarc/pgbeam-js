@@ -40,34 +40,52 @@ export type UpdateWebhookEndpointHeaders = {
 export type UpdateWebhookEndpointStatus200 = WebhookEndpoint;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateWebhookEndpointStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateWebhookEndpointStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateWebhookEndpointStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateWebhookEndpointStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateWebhookEndpointStatus412 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type UpdateWebhookEndpointStatus413 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type UpdateWebhookEndpointStatus415 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type UpdateWebhookEndpointStatus500 = Error;
 
 /**
  * @description Mutable fields of a webhook endpoint (used for create and update).
@@ -89,9 +107,12 @@ export type UpdateWebhookEndpointResponses = {
     "403": UpdateWebhookEndpointStatus403;
     "404": UpdateWebhookEndpointStatus404;
     "412": UpdateWebhookEndpointStatus412;
+    "413": UpdateWebhookEndpointStatus413;
+    "415": UpdateWebhookEndpointStatus415;
+    "500": UpdateWebhookEndpointStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type UpdateWebhookEndpointResponse = (UpdateWebhookEndpointStatus200 | UpdateWebhookEndpointStatus400 | UpdateWebhookEndpointStatus401 | UpdateWebhookEndpointStatus403 | UpdateWebhookEndpointStatus404 | UpdateWebhookEndpointStatus412);
+export type UpdateWebhookEndpointResponse = (UpdateWebhookEndpointStatus200 | UpdateWebhookEndpointStatus400 | UpdateWebhookEndpointStatus401 | UpdateWebhookEndpointStatus403 | UpdateWebhookEndpointStatus404 | UpdateWebhookEndpointStatus412 | UpdateWebhookEndpointStatus413 | UpdateWebhookEndpointStatus415 | UpdateWebhookEndpointStatus500);

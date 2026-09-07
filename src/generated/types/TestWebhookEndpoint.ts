@@ -28,28 +28,34 @@ export type TestWebhookEndpointPath = {
 export type TestWebhookEndpointStatus202 = WebhookTestResponse;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type TestWebhookEndpointStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type TestWebhookEndpointStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type TestWebhookEndpointStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type TestWebhookEndpointStatus404 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type TestWebhookEndpointStatus500 = Error;
 
 export type TestWebhookEndpointOptions = {
     body?: never;
@@ -64,9 +70,10 @@ export type TestWebhookEndpointResponses = {
     "401": TestWebhookEndpointStatus401;
     "403": TestWebhookEndpointStatus403;
     "404": TestWebhookEndpointStatus404;
+    "500": TestWebhookEndpointStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type TestWebhookEndpointResponse = (TestWebhookEndpointStatus202 | TestWebhookEndpointStatus400 | TestWebhookEndpointStatus401 | TestWebhookEndpointStatus403 | TestWebhookEndpointStatus404);
+export type TestWebhookEndpointResponse = (TestWebhookEndpointStatus202 | TestWebhookEndpointStatus400 | TestWebhookEndpointStatus401 | TestWebhookEndpointStatus403 | TestWebhookEndpointStatus404 | TestWebhookEndpointStatus500);

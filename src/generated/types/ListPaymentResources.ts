@@ -13,13 +13,13 @@ import type { ListPaymentResourcesResponse } from './ListPaymentResourcesRespons
 export type ListPaymentResourcesStatus200 = ListPaymentResourcesResponse;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListPaymentResourcesStatus429 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListPaymentResourcesStatus503 = Error;

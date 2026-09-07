@@ -65,34 +65,40 @@ export type ListAnomalyAlertsStatus200 = ListAnomalyAlertsResponse;
 export type ListAnomalyAlertsStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListAnomalyAlertsStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListAnomalyAlertsStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListAnomalyAlertsStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListAnomalyAlertsStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListAnomalyAlertsStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type ListAnomalyAlertsStatus500 = Error;
 
 export type ListAnomalyAlertsOptions = {
     body?: never;
@@ -109,4 +115,5 @@ export type ListAnomalyAlertsResponses = {
     "403": ListAnomalyAlertsStatus403;
     "404": ListAnomalyAlertsStatus404;
     "429": ListAnomalyAlertsStatus429;
+    "500": ListAnomalyAlertsStatus500;
 };

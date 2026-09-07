@@ -23,28 +23,34 @@ export type DeleteWebhookEndpointPath = {
 export type DeleteWebhookEndpointStatus204 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeleteWebhookEndpointStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeleteWebhookEndpointStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeleteWebhookEndpointStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeleteWebhookEndpointStatus404 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type DeleteWebhookEndpointStatus500 = Error;
 
 export type DeleteWebhookEndpointOptions = {
     body?: never;
@@ -59,9 +65,10 @@ export type DeleteWebhookEndpointResponses = {
     "401": DeleteWebhookEndpointStatus401;
     "403": DeleteWebhookEndpointStatus403;
     "404": DeleteWebhookEndpointStatus404;
+    "500": DeleteWebhookEndpointStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type DeleteWebhookEndpointResponse = (DeleteWebhookEndpointStatus204 | DeleteWebhookEndpointStatus400 | DeleteWebhookEndpointStatus401 | DeleteWebhookEndpointStatus403 | DeleteWebhookEndpointStatus404);
+export type DeleteWebhookEndpointResponse = (DeleteWebhookEndpointStatus204 | DeleteWebhookEndpointStatus400 | DeleteWebhookEndpointStatus401 | DeleteWebhookEndpointStatus403 | DeleteWebhookEndpointStatus404 | DeleteWebhookEndpointStatus500);

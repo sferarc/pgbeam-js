@@ -35,34 +35,40 @@ export type GetProjectStatus200 = Project;
 export type GetProjectStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetProjectStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetProjectStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetProjectStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetProjectStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetProjectStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type GetProjectStatus500 = Error;
 
 export type GetProjectOptions = {
     body?: never;
@@ -79,9 +85,10 @@ export type GetProjectResponses = {
     "403": GetProjectStatus403;
     "404": GetProjectStatus404;
     "429": GetProjectStatus429;
+    "500": GetProjectStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type GetProjectResponse = (GetProjectStatus200 | GetProjectStatus304 | GetProjectStatus400 | GetProjectStatus401 | GetProjectStatus403 | GetProjectStatus404 | GetProjectStatus429);
+export type GetProjectResponse = (GetProjectStatus200 | GetProjectStatus304 | GetProjectStatus400 | GetProjectStatus401 | GetProjectStatus403 | GetProjectStatus404 | GetProjectStatus429 | GetProjectStatus500);

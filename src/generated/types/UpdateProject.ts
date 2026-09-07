@@ -34,46 +34,64 @@ export type UpdateProjectHeaders = {
 export type UpdateProjectStatus200 = Project;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateProjectStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateProjectStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateProjectStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateProjectStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateProjectStatus409 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateProjectStatus412 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type UpdateProjectStatus413 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type UpdateProjectStatus415 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateProjectStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type UpdateProjectStatus500 = Error;
 
 /**
  * @description Request body for partially updating a project.
@@ -96,10 +114,13 @@ export type UpdateProjectResponses = {
     "404": UpdateProjectStatus404;
     "409": UpdateProjectStatus409;
     "412": UpdateProjectStatus412;
+    "413": UpdateProjectStatus413;
+    "415": UpdateProjectStatus415;
     "429": UpdateProjectStatus429;
+    "500": UpdateProjectStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type UpdateProjectResponse = (UpdateProjectStatus200 | UpdateProjectStatus400 | UpdateProjectStatus401 | UpdateProjectStatus403 | UpdateProjectStatus404 | UpdateProjectStatus409 | UpdateProjectStatus412 | UpdateProjectStatus429);
+export type UpdateProjectResponse = (UpdateProjectStatus200 | UpdateProjectStatus400 | UpdateProjectStatus401 | UpdateProjectStatus403 | UpdateProjectStatus404 | UpdateProjectStatus409 | UpdateProjectStatus412 | UpdateProjectStatus413 | UpdateProjectStatus415 | UpdateProjectStatus429 | UpdateProjectStatus500);

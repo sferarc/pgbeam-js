@@ -55,28 +55,34 @@ export type GetOrganizationUsageStatus200 = UsageResponse;
 export type GetOrganizationUsageStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetOrganizationUsageStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetOrganizationUsageStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetOrganizationUsageStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetOrganizationUsageStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type GetOrganizationUsageStatus500 = Error;
 
 export type GetOrganizationUsageOptions = {
     body?: never;
@@ -92,9 +98,10 @@ export type GetOrganizationUsageResponses = {
     "401": GetOrganizationUsageStatus401;
     "403": GetOrganizationUsageStatus403;
     "429": GetOrganizationUsageStatus429;
+    "500": GetOrganizationUsageStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type GetOrganizationUsageResponse = (GetOrganizationUsageStatus200 | GetOrganizationUsageStatus304 | GetOrganizationUsageStatus400 | GetOrganizationUsageStatus401 | GetOrganizationUsageStatus403 | GetOrganizationUsageStatus429);
+export type GetOrganizationUsageResponse = (GetOrganizationUsageStatus200 | GetOrganizationUsageStatus304 | GetOrganizationUsageStatus400 | GetOrganizationUsageStatus401 | GetOrganizationUsageStatus403 | GetOrganizationUsageStatus429 | GetOrganizationUsageStatus500);

@@ -52,34 +52,40 @@ export type ListCustomDomainsStatus200 = ListCustomDomainsResponse;
 export type ListCustomDomainsStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListCustomDomainsStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListCustomDomainsStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListCustomDomainsStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListCustomDomainsStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListCustomDomainsStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type ListCustomDomainsStatus500 = Error;
 
 export type ListCustomDomainsOptions = {
     body?: never;
@@ -96,4 +102,5 @@ export type ListCustomDomainsResponses = {
     "403": ListCustomDomainsStatus403;
     "404": ListCustomDomainsStatus404;
     "429": ListCustomDomainsStatus429;
+    "500": ListCustomDomainsStatus500;
 };

@@ -37,34 +37,52 @@ export type UpdateCacheRulePath = {
 export type UpdateCacheRuleStatus200 = UpdateCacheRuleResponse;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateCacheRuleStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateCacheRuleStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateCacheRuleStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateCacheRuleStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type UpdateCacheRuleStatus413 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type UpdateCacheRuleStatus415 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateCacheRuleStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type UpdateCacheRuleStatus500 = Error;
 
 /**
  * @description Request body for updating cache behavior of a query shape.
@@ -85,5 +103,8 @@ export type UpdateCacheRuleResponses = {
     "401": UpdateCacheRuleStatus401;
     "403": UpdateCacheRuleStatus403;
     "404": UpdateCacheRuleStatus404;
+    "413": UpdateCacheRuleStatus413;
+    "415": UpdateCacheRuleStatus415;
     "429": UpdateCacheRuleStatus429;
+    "500": UpdateCacheRuleStatus500;
 };

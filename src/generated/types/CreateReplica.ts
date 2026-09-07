@@ -34,40 +34,58 @@ export type CreateReplicaHeaders = {
 export type CreateReplicaStatus201 = Replica;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateReplicaStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateReplicaStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateReplicaStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateReplicaStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateReplicaStatus409 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type CreateReplicaStatus413 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type CreateReplicaStatus415 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateReplicaStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type CreateReplicaStatus500 = Error;
 
 /**
  * @description Request body for adding a read replica to a database.
@@ -89,10 +107,13 @@ export type CreateReplicaResponses = {
     "403": CreateReplicaStatus403;
     "404": CreateReplicaStatus404;
     "409": CreateReplicaStatus409;
+    "413": CreateReplicaStatus413;
+    "415": CreateReplicaStatus415;
     "429": CreateReplicaStatus429;
+    "500": CreateReplicaStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type CreateReplicaResponse = (CreateReplicaStatus201 | CreateReplicaStatus400 | CreateReplicaStatus401 | CreateReplicaStatus403 | CreateReplicaStatus404 | CreateReplicaStatus409 | CreateReplicaStatus429);
+export type CreateReplicaResponse = (CreateReplicaStatus201 | CreateReplicaStatus400 | CreateReplicaStatus401 | CreateReplicaStatus403 | CreateReplicaStatus404 | CreateReplicaStatus409 | CreateReplicaStatus413 | CreateReplicaStatus415 | CreateReplicaStatus429 | CreateReplicaStatus500);

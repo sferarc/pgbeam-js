@@ -41,28 +41,34 @@ export type GetAgentCredentialStatus200 = AgentCredential;
 export type GetAgentCredentialStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetAgentCredentialStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetAgentCredentialStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetAgentCredentialStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetAgentCredentialStatus404 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type GetAgentCredentialStatus500 = Error;
 
 export type GetAgentCredentialOptions = {
     body?: never;
@@ -78,9 +84,10 @@ export type GetAgentCredentialResponses = {
     "401": GetAgentCredentialStatus401;
     "403": GetAgentCredentialStatus403;
     "404": GetAgentCredentialStatus404;
+    "500": GetAgentCredentialStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type GetAgentCredentialResponse = (GetAgentCredentialStatus200 | GetAgentCredentialStatus304 | GetAgentCredentialStatus400 | GetAgentCredentialStatus401 | GetAgentCredentialStatus403 | GetAgentCredentialStatus404);
+export type GetAgentCredentialResponse = (GetAgentCredentialStatus200 | GetAgentCredentialStatus304 | GetAgentCredentialStatus400 | GetAgentCredentialStatus401 | GetAgentCredentialStatus403 | GetAgentCredentialStatus404 | GetAgentCredentialStatus500);

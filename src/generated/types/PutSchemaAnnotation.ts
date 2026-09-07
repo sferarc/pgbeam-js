@@ -23,34 +23,52 @@ export type PutSchemaAnnotationPath = {
 export type PutSchemaAnnotationStatus200 = SchemaAnnotation;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type PutSchemaAnnotationStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type PutSchemaAnnotationStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type PutSchemaAnnotationStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type PutSchemaAnnotationStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type PutSchemaAnnotationStatus413 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type PutSchemaAnnotationStatus415 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type PutSchemaAnnotationStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type PutSchemaAnnotationStatus500 = Error;
 
 /**
  * @description Request body for creating or replacing a schema annotation. Keyed by (schema_name, table_name, column_name); an existing annotation with the same key is replaced.\n
@@ -71,10 +89,13 @@ export type PutSchemaAnnotationResponses = {
     "401": PutSchemaAnnotationStatus401;
     "403": PutSchemaAnnotationStatus403;
     "404": PutSchemaAnnotationStatus404;
+    "413": PutSchemaAnnotationStatus413;
+    "415": PutSchemaAnnotationStatus415;
     "429": PutSchemaAnnotationStatus429;
+    "500": PutSchemaAnnotationStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type PutSchemaAnnotationResponse = (PutSchemaAnnotationStatus200 | PutSchemaAnnotationStatus400 | PutSchemaAnnotationStatus401 | PutSchemaAnnotationStatus403 | PutSchemaAnnotationStatus404 | PutSchemaAnnotationStatus429);
+export type PutSchemaAnnotationResponse = (PutSchemaAnnotationStatus200 | PutSchemaAnnotationStatus400 | PutSchemaAnnotationStatus401 | PutSchemaAnnotationStatus403 | PutSchemaAnnotationStatus404 | PutSchemaAnnotationStatus413 | PutSchemaAnnotationStatus415 | PutSchemaAnnotationStatus429 | PutSchemaAnnotationStatus500);

@@ -1,7 +1,43 @@
+/** One field the request got wrong, from a problem document's `errors`. */
+export type ApiFieldError = {
+  /** Dotted path into the request body, e.g. `database.host`. */
+  field: string;
+  /** What is wrong with that field. */
+  detail: string;
+};
+
+/**
+ * An error the server answered with.
+ *
+ * The API answers every error with an RFC 9457 problem document
+ * (`application/problem+json`), so the fields of that document are lifted onto
+ * the error rather than left for the caller to dig out of `body`.
+ *
+ * Branch on `code`, not on `message`. `code` is the stable identity of the
+ * condition and distinguishes cases that share a status: a `403` is either
+ * `FORBIDDEN` (ask an admin for a role) or `PLAN_LIMIT_REACHED` (change plan),
+ * and those are resolved in completely different ways. `message` is prose and
+ * is free to change between releases.
+ */
 export class ApiError extends Error {
   status: number;
   statusText: string;
   body: unknown;
+
+  /** Stable machine-readable identity of the condition, e.g. `NOT_FOUND`. */
+  readonly code?: string;
+  /** The same identity as a URI, resolving to the published error catalog. */
+  readonly type?: string;
+  /** Short human-readable summary of the condition. */
+  readonly title?: string;
+  /** Explanation specific to this occurrence. Same value as `message`. */
+  readonly detail?: string;
+  /** Path of the request that produced the error. */
+  readonly instance?: string;
+  /** Correlation id, also returned in the `X-Request-Id` header. */
+  readonly requestId?: string;
+  /** Field-level detail, present when the request failed validation. */
+  readonly errors?: ApiFieldError[];
 
   constructor(status: number, statusText: string, body: unknown) {
     const message =
@@ -11,19 +47,62 @@ export class ApiError extends Error {
     this.status = status;
     this.statusText = statusText;
     this.body = body;
+
+    const problem = asRecord(body);
+    if (problem) {
+      this.code = str(problem.code);
+      this.type = str(problem.type);
+      this.title = str(problem.title);
+      this.detail = str(problem.detail);
+      this.instance = str(problem.instance);
+      this.requestId = str(problem.request_id);
+      this.errors = fieldErrors(problem.errors);
+    }
   }
 }
 
-/** Extract a human-readable message from an API error body. */
+function asRecord(value: unknown): Record<string, unknown> | undefined {
+  return typeof value === "object" && value !== null
+    ? (value as Record<string, unknown>)
+    : undefined;
+}
+
+function str(value: unknown): string | undefined {
+  return typeof value === "string" ? value : undefined;
+}
+
+function fieldErrors(value: unknown): ApiFieldError[] | undefined {
+  if (!Array.isArray(value)) return undefined;
+  const parsed = value.flatMap((entry) => {
+    const obj = asRecord(entry);
+    const field = str(obj?.field);
+    const detail = str(obj?.detail);
+    return field !== undefined && detail !== undefined ? [{ field, detail }] : [];
+  });
+  return parsed.length > 0 ? parsed : undefined;
+}
+
+/**
+ * Extract a human-readable message from an API error body.
+ *
+ * The control plane answers with a problem document, whose human-readable
+ * explanation is `detail`. The two older shapes are still read because not
+ * everything a client talks to is the control plane: the edge MCP endpoint
+ * still answers `{ error: { code, message } }`, and Echo's own default is
+ * `{ message }`.
+ */
 export function extractMessage(body: unknown): string | undefined {
-  if (typeof body !== "object" || body === null) return undefined;
-  const obj = body as Record<string, unknown>;
-  // API returns { error: { code, message } }
-  if (typeof obj.error === "object" && obj.error !== null) {
-    const inner = obj.error as Record<string, unknown>;
-    if (typeof inner.message === "string") return inner.message;
-  }
+  const obj = asRecord(body);
+  if (!obj) return undefined;
+  // RFC 9457 problem document.
+  if (typeof obj.detail === "string") return obj.detail;
+  // Legacy envelope: { error: { code, message } }.
+  const inner = asRecord(obj.error);
+  if (inner && typeof inner.message === "string") return inner.message;
   if (typeof obj.message === "string") return obj.message;
+  // A problem document with no `detail` still has a `title`, which beats
+  // falling all the way back to the status line.
+  if (typeof obj.title === "string" && typeof obj.status === "number") return obj.title;
   return undefined;
 }
 

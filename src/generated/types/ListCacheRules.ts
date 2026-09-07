@@ -58,34 +58,40 @@ export type ListCacheRulesStatus200 = ListCacheRulesResponse;
 export type ListCacheRulesStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListCacheRulesStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListCacheRulesStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListCacheRulesStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListCacheRulesStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListCacheRulesStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type ListCacheRulesStatus500 = Error;
 
 export type ListCacheRulesOptions = {
     body?: never;
@@ -102,4 +108,5 @@ export type ListCacheRulesResponses = {
     "403": ListCacheRulesStatus403;
     "404": ListCacheRulesStatus404;
     "429": ListCacheRulesStatus429;
+    "500": ListCacheRulesStatus500;
 };

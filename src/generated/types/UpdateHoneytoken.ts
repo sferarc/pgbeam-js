@@ -40,40 +40,58 @@ export type UpdateHoneytokenHeaders = {
 export type UpdateHoneytokenStatus200 = Honeytoken;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateHoneytokenStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateHoneytokenStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateHoneytokenStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateHoneytokenStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateHoneytokenStatus409 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateHoneytokenStatus412 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type UpdateHoneytokenStatus413 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type UpdateHoneytokenStatus415 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type UpdateHoneytokenStatus500 = Error;
 
 /**
  * @description Request body for creating or updating a honeytoken.
@@ -96,9 +114,12 @@ export type UpdateHoneytokenResponses = {
     "404": UpdateHoneytokenStatus404;
     "409": UpdateHoneytokenStatus409;
     "412": UpdateHoneytokenStatus412;
+    "413": UpdateHoneytokenStatus413;
+    "415": UpdateHoneytokenStatus415;
+    "500": UpdateHoneytokenStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type UpdateHoneytokenResponse = (UpdateHoneytokenStatus200 | UpdateHoneytokenStatus400 | UpdateHoneytokenStatus401 | UpdateHoneytokenStatus403 | UpdateHoneytokenStatus404 | UpdateHoneytokenStatus409 | UpdateHoneytokenStatus412);
+export type UpdateHoneytokenResponse = (UpdateHoneytokenStatus200 | UpdateHoneytokenStatus400 | UpdateHoneytokenStatus401 | UpdateHoneytokenStatus403 | UpdateHoneytokenStatus404 | UpdateHoneytokenStatus409 | UpdateHoneytokenStatus412 | UpdateHoneytokenStatus413 | UpdateHoneytokenStatus415 | UpdateHoneytokenStatus500);

@@ -41,34 +41,40 @@ export type GetDatabaseStatus200 = Database;
 export type GetDatabaseStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetDatabaseStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetDatabaseStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetDatabaseStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetDatabaseStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetDatabaseStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type GetDatabaseStatus500 = Error;
 
 export type GetDatabaseOptions = {
     body?: never;
@@ -85,9 +91,10 @@ export type GetDatabaseResponses = {
     "403": GetDatabaseStatus403;
     "404": GetDatabaseStatus404;
     "429": GetDatabaseStatus429;
+    "500": GetDatabaseStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type GetDatabaseResponse = (GetDatabaseStatus200 | GetDatabaseStatus304 | GetDatabaseStatus400 | GetDatabaseStatus401 | GetDatabaseStatus403 | GetDatabaseStatus404 | GetDatabaseStatus429);
+export type GetDatabaseResponse = (GetDatabaseStatus200 | GetDatabaseStatus304 | GetDatabaseStatus400 | GetDatabaseStatus401 | GetDatabaseStatus403 | GetDatabaseStatus404 | GetDatabaseStatus429 | GetDatabaseStatus500);

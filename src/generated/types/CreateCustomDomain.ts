@@ -34,40 +34,58 @@ export type CreateCustomDomainHeaders = {
 export type CreateCustomDomainStatus201 = CustomDomain;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateCustomDomainStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateCustomDomainStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateCustomDomainStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateCustomDomainStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateCustomDomainStatus409 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type CreateCustomDomainStatus413 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type CreateCustomDomainStatus415 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateCustomDomainStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type CreateCustomDomainStatus500 = Error;
 
 /**
  * @description Request body for attaching a custom domain to a project.
@@ -89,10 +107,13 @@ export type CreateCustomDomainResponses = {
     "403": CreateCustomDomainStatus403;
     "404": CreateCustomDomainStatus404;
     "409": CreateCustomDomainStatus409;
+    "413": CreateCustomDomainStatus413;
+    "415": CreateCustomDomainStatus415;
     "429": CreateCustomDomainStatus429;
+    "500": CreateCustomDomainStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type CreateCustomDomainResponse = (CreateCustomDomainStatus201 | CreateCustomDomainStatus400 | CreateCustomDomainStatus401 | CreateCustomDomainStatus403 | CreateCustomDomainStatus404 | CreateCustomDomainStatus409 | CreateCustomDomainStatus429);
+export type CreateCustomDomainResponse = (CreateCustomDomainStatus201 | CreateCustomDomainStatus400 | CreateCustomDomainStatus401 | CreateCustomDomainStatus403 | CreateCustomDomainStatus404 | CreateCustomDomainStatus409 | CreateCustomDomainStatus413 | CreateCustomDomainStatus415 | CreateCustomDomainStatus429 | CreateCustomDomainStatus500);

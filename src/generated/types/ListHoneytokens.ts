@@ -52,34 +52,40 @@ export type ListHoneytokensStatus200 = ListHoneytokensResponse;
 export type ListHoneytokensStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListHoneytokensStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListHoneytokensStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListHoneytokensStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListHoneytokensStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListHoneytokensStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type ListHoneytokensStatus500 = Error;
 
 export type ListHoneytokensOptions = {
     body?: never;
@@ -96,4 +102,5 @@ export type ListHoneytokensResponses = {
     "403": ListHoneytokensStatus403;
     "404": ListHoneytokensStatus404;
     "429": ListHoneytokensStatus429;
+    "500": ListHoneytokensStatus500;
 };

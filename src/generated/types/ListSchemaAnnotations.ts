@@ -52,34 +52,40 @@ export type ListSchemaAnnotationsStatus200 = ListSchemaAnnotationsResponse;
 export type ListSchemaAnnotationsStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListSchemaAnnotationsStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListSchemaAnnotationsStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListSchemaAnnotationsStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListSchemaAnnotationsStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListSchemaAnnotationsStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type ListSchemaAnnotationsStatus500 = Error;
 
 export type ListSchemaAnnotationsOptions = {
     body?: never;
@@ -96,4 +102,5 @@ export type ListSchemaAnnotationsResponses = {
     "403": ListSchemaAnnotationsStatus403;
     "404": ListSchemaAnnotationsStatus404;
     "429": ListSchemaAnnotationsStatus429;
+    "500": ListSchemaAnnotationsStatus500;
 };

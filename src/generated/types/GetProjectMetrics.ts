@@ -52,28 +52,34 @@ export type GetProjectMetricsStatus200 = ProjectMetricsResponse;
 export type GetProjectMetricsStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetProjectMetricsStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetProjectMetricsStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetProjectMetricsStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetProjectMetricsStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type GetProjectMetricsStatus500 = Error;
 
 export type GetProjectMetricsOptions = {
     body?: never;
@@ -89,9 +95,10 @@ export type GetProjectMetricsResponses = {
     "401": GetProjectMetricsStatus401;
     "404": GetProjectMetricsStatus404;
     "429": GetProjectMetricsStatus429;
+    "500": GetProjectMetricsStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type GetProjectMetricsResponse = (GetProjectMetricsStatus200 | GetProjectMetricsStatus304 | GetProjectMetricsStatus400 | GetProjectMetricsStatus401 | GetProjectMetricsStatus404 | GetProjectMetricsStatus429);
+export type GetProjectMetricsResponse = (GetProjectMetricsStatus200 | GetProjectMetricsStatus304 | GetProjectMetricsStatus400 | GetProjectMetricsStatus401 | GetProjectMetricsStatus404 | GetProjectMetricsStatus429 | GetProjectMetricsStatus500);

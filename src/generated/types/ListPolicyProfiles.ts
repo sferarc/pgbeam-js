@@ -52,34 +52,40 @@ export type ListPolicyProfilesStatus200 = ListPolicyProfilesResponse;
 export type ListPolicyProfilesStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListPolicyProfilesStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListPolicyProfilesStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListPolicyProfilesStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListPolicyProfilesStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListPolicyProfilesStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type ListPolicyProfilesStatus500 = Error;
 
 export type ListPolicyProfilesOptions = {
     body?: never;
@@ -96,4 +102,5 @@ export type ListPolicyProfilesResponses = {
     "403": ListPolicyProfilesStatus403;
     "404": ListPolicyProfilesStatus404;
     "429": ListPolicyProfilesStatus429;
+    "500": ListPolicyProfilesStatus500;
 };

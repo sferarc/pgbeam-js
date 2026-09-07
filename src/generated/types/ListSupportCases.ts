@@ -71,22 +71,28 @@ export type ListSupportCasesStatus200 = ListSupportCasesResponse;
 export type ListSupportCasesStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListSupportCasesStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListSupportCasesStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListSupportCasesStatus403 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type ListSupportCasesStatus500 = Error;
 
 export type ListSupportCasesOptions = {
     body?: never;
@@ -101,4 +107,5 @@ export type ListSupportCasesResponses = {
     "400": ListSupportCasesStatus400;
     "401": ListSupportCasesStatus401;
     "403": ListSupportCasesStatus403;
+    "500": ListSupportCasesStatus500;
 };

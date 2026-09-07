@@ -39,28 +39,34 @@ export type DeleteSchemaAnnotationQuery = {
 export type DeleteSchemaAnnotationStatus204 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeleteSchemaAnnotationStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeleteSchemaAnnotationStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeleteSchemaAnnotationStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeleteSchemaAnnotationStatus404 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type DeleteSchemaAnnotationStatus500 = Error;
 
 export type DeleteSchemaAnnotationOptions = {
     body?: never;
@@ -75,9 +81,10 @@ export type DeleteSchemaAnnotationResponses = {
     "401": DeleteSchemaAnnotationStatus401;
     "403": DeleteSchemaAnnotationStatus403;
     "404": DeleteSchemaAnnotationStatus404;
+    "500": DeleteSchemaAnnotationStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type DeleteSchemaAnnotationResponse = (DeleteSchemaAnnotationStatus204 | DeleteSchemaAnnotationStatus400 | DeleteSchemaAnnotationStatus401 | DeleteSchemaAnnotationStatus403 | DeleteSchemaAnnotationStatus404);
+export type DeleteSchemaAnnotationResponse = (DeleteSchemaAnnotationStatus204 | DeleteSchemaAnnotationStatus400 | DeleteSchemaAnnotationStatus401 | DeleteSchemaAnnotationStatus403 | DeleteSchemaAnnotationStatus404 | DeleteSchemaAnnotationStatus500);

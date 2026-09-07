@@ -58,34 +58,40 @@ export type GetAuditSessionSummaryStatus200 = AuditSessionSummary;
 export type GetAuditSessionSummaryStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetAuditSessionSummaryStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetAuditSessionSummaryStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetAuditSessionSummaryStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetAuditSessionSummaryStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetAuditSessionSummaryStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type GetAuditSessionSummaryStatus500 = Error;
 
 export type GetAuditSessionSummaryOptions = {
     body?: never;
@@ -102,9 +108,10 @@ export type GetAuditSessionSummaryResponses = {
     "403": GetAuditSessionSummaryStatus403;
     "404": GetAuditSessionSummaryStatus404;
     "429": GetAuditSessionSummaryStatus429;
+    "500": GetAuditSessionSummaryStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type GetAuditSessionSummaryResponse = (GetAuditSessionSummaryStatus200 | GetAuditSessionSummaryStatus304 | GetAuditSessionSummaryStatus400 | GetAuditSessionSummaryStatus401 | GetAuditSessionSummaryStatus403 | GetAuditSessionSummaryStatus404 | GetAuditSessionSummaryStatus429);
+export type GetAuditSessionSummaryResponse = (GetAuditSessionSummaryStatus200 | GetAuditSessionSummaryStatus304 | GetAuditSessionSummaryStatus400 | GetAuditSessionSummaryStatus401 | GetAuditSessionSummaryStatus403 | GetAuditSessionSummaryStatus404 | GetAuditSessionSummaryStatus429 | GetAuditSessionSummaryStatus500);

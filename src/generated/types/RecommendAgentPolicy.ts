@@ -29,34 +29,52 @@ export type RecommendAgentPolicyPath = {
 export type RecommendAgentPolicyStatus200 = PolicyRecommendation;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type RecommendAgentPolicyStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type RecommendAgentPolicyStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type RecommendAgentPolicyStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type RecommendAgentPolicyStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type RecommendAgentPolicyStatus413 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type RecommendAgentPolicyStatus415 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type RecommendAgentPolicyStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type RecommendAgentPolicyStatus500 = Error;
 
 /**
  * @description Optional parameters for a least-privilege policy recommendation. Every field is optional; an empty body analyzes the last 30 days of the credential\'s audit history.
@@ -77,10 +95,13 @@ export type RecommendAgentPolicyResponses = {
     "401": RecommendAgentPolicyStatus401;
     "403": RecommendAgentPolicyStatus403;
     "404": RecommendAgentPolicyStatus404;
+    "413": RecommendAgentPolicyStatus413;
+    "415": RecommendAgentPolicyStatus415;
     "429": RecommendAgentPolicyStatus429;
+    "500": RecommendAgentPolicyStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type RecommendAgentPolicyResponse = (RecommendAgentPolicyStatus200 | RecommendAgentPolicyStatus400 | RecommendAgentPolicyStatus401 | RecommendAgentPolicyStatus403 | RecommendAgentPolicyStatus404 | RecommendAgentPolicyStatus429);
+export type RecommendAgentPolicyResponse = (RecommendAgentPolicyStatus200 | RecommendAgentPolicyStatus400 | RecommendAgentPolicyStatus401 | RecommendAgentPolicyStatus403 | RecommendAgentPolicyStatus404 | RecommendAgentPolicyStatus413 | RecommendAgentPolicyStatus415 | RecommendAgentPolicyStatus429 | RecommendAgentPolicyStatus500);

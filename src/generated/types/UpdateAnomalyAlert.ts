@@ -29,28 +29,46 @@ export type UpdateAnomalyAlertPath = {
 export type UpdateAnomalyAlertStatus200 = AnomalyAlert;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateAnomalyAlertStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateAnomalyAlertStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateAnomalyAlertStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type UpdateAnomalyAlertStatus404 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type UpdateAnomalyAlertStatus413 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type UpdateAnomalyAlertStatus415 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type UpdateAnomalyAlertStatus500 = Error;
 
 /**
  * @description Request body for triaging an anomaly alert.
@@ -71,9 +89,12 @@ export type UpdateAnomalyAlertResponses = {
     "401": UpdateAnomalyAlertStatus401;
     "403": UpdateAnomalyAlertStatus403;
     "404": UpdateAnomalyAlertStatus404;
+    "413": UpdateAnomalyAlertStatus413;
+    "415": UpdateAnomalyAlertStatus415;
+    "500": UpdateAnomalyAlertStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type UpdateAnomalyAlertResponse = (UpdateAnomalyAlertStatus200 | UpdateAnomalyAlertStatus400 | UpdateAnomalyAlertStatus401 | UpdateAnomalyAlertStatus403 | UpdateAnomalyAlertStatus404);
+export type UpdateAnomalyAlertResponse = (UpdateAnomalyAlertStatus200 | UpdateAnomalyAlertStatus400 | UpdateAnomalyAlertStatus401 | UpdateAnomalyAlertStatus403 | UpdateAnomalyAlertStatus404 | UpdateAnomalyAlertStatus413 | UpdateAnomalyAlertStatus415 | UpdateAnomalyAlertStatus500);

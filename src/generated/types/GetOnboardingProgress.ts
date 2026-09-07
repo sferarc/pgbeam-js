@@ -36,34 +36,40 @@ export type GetOnboardingProgressStatus200 = OnboardingProgress;
 export type GetOnboardingProgressStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetOnboardingProgressStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetOnboardingProgressStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetOnboardingProgressStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetOnboardingProgressStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type GetOnboardingProgressStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type GetOnboardingProgressStatus500 = Error;
 
 export type GetOnboardingProgressOptions = {
     body?: never;
@@ -80,9 +86,10 @@ export type GetOnboardingProgressResponses = {
     "403": GetOnboardingProgressStatus403;
     "404": GetOnboardingProgressStatus404;
     "429": GetOnboardingProgressStatus429;
+    "500": GetOnboardingProgressStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type GetOnboardingProgressResponse = (GetOnboardingProgressStatus200 | GetOnboardingProgressStatus304 | GetOnboardingProgressStatus400 | GetOnboardingProgressStatus401 | GetOnboardingProgressStatus403 | GetOnboardingProgressStatus404 | GetOnboardingProgressStatus429);
+export type GetOnboardingProgressResponse = (GetOnboardingProgressStatus200 | GetOnboardingProgressStatus304 | GetOnboardingProgressStatus400 | GetOnboardingProgressStatus401 | GetOnboardingProgressStatus403 | GetOnboardingProgressStatus404 | GetOnboardingProgressStatus429 | GetOnboardingProgressStatus500);

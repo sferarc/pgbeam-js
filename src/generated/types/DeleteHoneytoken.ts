@@ -23,28 +23,34 @@ export type DeleteHoneytokenPath = {
 export type DeleteHoneytokenStatus204 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeleteHoneytokenStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeleteHoneytokenStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeleteHoneytokenStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type DeleteHoneytokenStatus404 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type DeleteHoneytokenStatus500 = Error;
 
 export type DeleteHoneytokenOptions = {
     body?: never;
@@ -59,9 +65,10 @@ export type DeleteHoneytokenResponses = {
     "401": DeleteHoneytokenStatus401;
     "403": DeleteHoneytokenStatus403;
     "404": DeleteHoneytokenStatus404;
+    "500": DeleteHoneytokenStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type DeleteHoneytokenResponse = (DeleteHoneytokenStatus204 | DeleteHoneytokenStatus400 | DeleteHoneytokenStatus401 | DeleteHoneytokenStatus403 | DeleteHoneytokenStatus404);
+export type DeleteHoneytokenResponse = (DeleteHoneytokenStatus204 | DeleteHoneytokenStatus400 | DeleteHoneytokenStatus401 | DeleteHoneytokenStatus403 | DeleteHoneytokenStatus404 | DeleteHoneytokenStatus500);

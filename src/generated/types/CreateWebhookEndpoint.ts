@@ -34,40 +34,58 @@ export type CreateWebhookEndpointHeaders = {
 export type CreateWebhookEndpointStatus201 = WebhookEndpoint;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateWebhookEndpointStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateWebhookEndpointStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateWebhookEndpointStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateWebhookEndpointStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateWebhookEndpointStatus409 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type CreateWebhookEndpointStatus413 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type CreateWebhookEndpointStatus415 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type CreateWebhookEndpointStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type CreateWebhookEndpointStatus500 = Error;
 
 /**
  * @description Mutable fields of a webhook endpoint (used for create and update).
@@ -89,10 +107,13 @@ export type CreateWebhookEndpointResponses = {
     "403": CreateWebhookEndpointStatus403;
     "404": CreateWebhookEndpointStatus404;
     "409": CreateWebhookEndpointStatus409;
+    "413": CreateWebhookEndpointStatus413;
+    "415": CreateWebhookEndpointStatus415;
     "429": CreateWebhookEndpointStatus429;
+    "500": CreateWebhookEndpointStatus500;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type CreateWebhookEndpointResponse = (CreateWebhookEndpointStatus201 | CreateWebhookEndpointStatus400 | CreateWebhookEndpointStatus401 | CreateWebhookEndpointStatus403 | CreateWebhookEndpointStatus404 | CreateWebhookEndpointStatus409 | CreateWebhookEndpointStatus429);
+export type CreateWebhookEndpointResponse = (CreateWebhookEndpointStatus201 | CreateWebhookEndpointStatus400 | CreateWebhookEndpointStatus401 | CreateWebhookEndpointStatus403 | CreateWebhookEndpointStatus404 | CreateWebhookEndpointStatus409 | CreateWebhookEndpointStatus413 | CreateWebhookEndpointStatus415 | CreateWebhookEndpointStatus429 | CreateWebhookEndpointStatus500);

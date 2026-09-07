@@ -26,22 +26,28 @@ export type ListOrganizationsStatus200 = ListOrganizationsResponse;
 export type ListOrganizationsStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListOrganizationsStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListOrganizationsStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListOrganizationsStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type ListOrganizationsStatus500 = Error;
 
 export type ListOrganizationsOptions = {
     body?: never;
@@ -56,4 +62,5 @@ export type ListOrganizationsResponses = {
     "400": ListOrganizationsStatus400;
     "401": ListOrganizationsStatus401;
     "429": ListOrganizationsStatus429;
+    "500": ListOrganizationsStatus500;
 };

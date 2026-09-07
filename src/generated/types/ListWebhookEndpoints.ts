@@ -52,34 +52,40 @@ export type ListWebhookEndpointsStatus200 = ListWebhookEndpointsResponse;
 export type ListWebhookEndpointsStatus304 = unknown;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListWebhookEndpointsStatus400 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListWebhookEndpointsStatus401 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListWebhookEndpointsStatus403 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListWebhookEndpointsStatus404 = Error;
 
 /**
- * @description Standard error response envelope for PgBeam API requests.
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
 */
 export type ListWebhookEndpointsStatus429 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+*/
+export type ListWebhookEndpointsStatus500 = Error;
 
 export type ListWebhookEndpointsOptions = {
     body?: never;
@@ -96,4 +102,5 @@ export type ListWebhookEndpointsResponses = {
     "403": ListWebhookEndpointsStatus403;
     "404": ListWebhookEndpointsStatus404;
     "429": ListWebhookEndpointsStatus429;
+    "500": ListWebhookEndpointsStatus500;
 };
