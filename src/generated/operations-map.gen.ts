@@ -20,6 +20,7 @@ import type { ListAuditLogsOptions, ListAuditLogsStatus200 } from "./types/ListA
 import type { ExportAuditLogsOptions, ExportAuditLogsStatus200 } from "./types/ExportAuditLogs";
 import type { GetAuditSessionSummaryOptions, GetAuditSessionSummaryStatus200 } from "./types/GetAuditSessionSummary";
 import type { VerifyAuditChainOptions, VerifyAuditChainStatus200 } from "./types/VerifyAuditChain";
+import type { ExecuteBatchOptions, ExecuteBatchStatus200 } from "./types/ExecuteBatch";
 import type { ListPlansStatus200 } from "./types/ListPlans";
 import type { GetOrganizationPlanOptions, GetOrganizationPlanStatus200 } from "./types/GetOrganizationPlan";
 import type { GetVercelInstallationOptions, GetVercelInstallationStatus200 } from "./types/GetVercelInstallation";
@@ -146,6 +147,9 @@ export const operationsByTag = {
     approveApprovalRequest: { method: "POST", path: "/v1/projects/{project_id}/approvals/{approval_id}/approve" },
     rejectApprovalRequest: { method: "POST", path: "/v1/projects/{project_id}/approvals/{approval_id}/reject" },
   },
+  batch: {
+    executeBatch: { method: "POST", path: "/v1/projects/{project_id}/batch" },
+  },
   analytics: {
     listPlans: { method: "GET", path: "/v1/plans" },
     getOrganizationPlan: { method: "GET", path: "/v1/organizations/{org_id}/plan" },
@@ -253,6 +257,7 @@ export const operationsByPath = {
   "GET /v1/projects/{project_id}/audit-logs/export": { method: "GET", path: "/v1/projects/{project_id}/audit-logs/export", operationId: "exportAuditLogs" },
   "GET /v1/projects/{project_id}/audit-logs/sessions/{session_id}": { method: "GET", path: "/v1/projects/{project_id}/audit-logs/sessions/{session_id}", operationId: "getAuditSessionSummary" },
   "GET /v1/projects/{project_id}/audit-logs/verify": { method: "GET", path: "/v1/projects/{project_id}/audit-logs/verify", operationId: "verifyAuditChain" },
+  "POST /v1/projects/{project_id}/batch": { method: "POST", path: "/v1/projects/{project_id}/batch", operationId: "executeBatch" },
   "GET /v1/plans": { method: "GET", path: "/v1/plans", operationId: "listPlans" },
   "GET /v1/organizations/{org_id}/plan": { method: "GET", path: "/v1/organizations/{org_id}/plan", operationId: "getOrganizationPlan" },
   "GET /v1/organizations/{org_id}/vercel-installation": { method: "GET", path: "/v1/organizations/{org_id}/vercel-installation", operationId: "getVercelInstallation" },
@@ -351,6 +356,7 @@ type ListAuditLogsParams = { pathParams: NonNullable<ListAuditLogsOptions["path"
 type ExportAuditLogsParams = { pathParams: NonNullable<ExportAuditLogsOptions["path"]>; queryParams?: NonNullable<ExportAuditLogsOptions["query"]> };
 type GetAuditSessionSummaryParams = { pathParams: NonNullable<GetAuditSessionSummaryOptions["path"]>; queryParams?: NonNullable<GetAuditSessionSummaryOptions["query"]> };
 type VerifyAuditChainParams = { pathParams: NonNullable<VerifyAuditChainOptions["path"]>; queryParams?: NonNullable<VerifyAuditChainOptions["query"]> };
+type ExecuteBatchParams = { pathParams: NonNullable<ExecuteBatchOptions["path"]>; body: NonNullable<ExecuteBatchOptions["body"]> };
 type GetOrganizationPlanParams = { pathParams: NonNullable<GetOrganizationPlanOptions["path"]> };
 type GetVercelInstallationParams = { pathParams: NonNullable<GetVercelInstallationOptions["path"]> };
 type UpdateSpendLimitParams = { pathParams: NonNullable<UpdateSpendLimitOptions["path"]>; body: NonNullable<UpdateSpendLimitOptions["body"]> };
@@ -472,6 +478,9 @@ export interface ApiOperations {
     approveApprovalRequest(params: ApproveApprovalRequestParams): Promise<ApproveApprovalRequestStatus200>;
     rejectApprovalRequest(params: RejectApprovalRequestParams): Promise<RejectApprovalRequestStatus200>;
   };
+  batch: {
+    executeBatch(params: ExecuteBatchParams): Promise<ExecuteBatchStatus200>;
+  };
   analytics: {
     listPlans(): Promise<ListPlansStatus200>;
     getOrganizationPlan(params: GetOrganizationPlanParams): Promise<GetOrganizationPlanStatus200>;
@@ -579,6 +588,7 @@ export interface RequestMap {
   "GET /v1/projects/{project_id}/audit-logs/export": { params: ExportAuditLogsParams; response: ExportAuditLogsStatus200 };
   "GET /v1/projects/{project_id}/audit-logs/sessions/{session_id}": { params: GetAuditSessionSummaryParams; response: GetAuditSessionSummaryStatus200 };
   "GET /v1/projects/{project_id}/audit-logs/verify": { params: VerifyAuditChainParams; response: VerifyAuditChainStatus200 };
+  "POST /v1/projects/{project_id}/batch": { params: ExecuteBatchParams; response: ExecuteBatchStatus200 };
   "GET /v1/plans": { params?: undefined; response: ListPlansStatus200 };
   "GET /v1/organizations/{org_id}/plan": { params: GetOrganizationPlanParams; response: GetOrganizationPlanStatus200 };
   "GET /v1/organizations/{org_id}/vercel-installation": { params: GetVercelInstallationParams; response: GetVercelInstallationStatus200 };
