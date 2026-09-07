@@ -48,6 +48,12 @@ import type { GetHoneytokenOptions, GetHoneytokenStatus200 } from "./types/GetHo
 import type { UpdateHoneytokenOptions, UpdateHoneytokenStatus200 } from "./types/UpdateHoneytoken";
 import type { DeleteHoneytokenOptions } from "./types/DeleteHoneytoken";
 import type { GetProjectInsightsOptions, GetProjectInsightsStatus200 } from "./types/GetProjectInsights";
+import type { ListOrgMembersOptions, ListOrgMembersStatus200 } from "./types/ListOrgMembers";
+import type { UpdateOrgMemberRoleOptions, UpdateOrgMemberRoleStatus200 } from "./types/UpdateOrgMemberRole";
+import type { RemoveOrgMemberOptions } from "./types/RemoveOrgMember";
+import type { ListOrgInvitationsOptions, ListOrgInvitationsStatus200 } from "./types/ListOrgInvitations";
+import type { CreateOrgInvitationOptions, CreateOrgInvitationStatus201 } from "./types/CreateOrgInvitation";
+import type { RevokeOrgInvitationOptions } from "./types/RevokeOrgInvitation";
 import type { LintMigrationOptions, LintMigrationStatus200 } from "./types/LintMigration";
 import type { GetOnboardingProgressOptions, GetOnboardingProgressStatus200 } from "./types/GetOnboardingProgress";
 import type { UpdateOnboardingProgressOptions, UpdateOnboardingProgressStatus200 } from "./types/UpdateOnboardingProgress";
@@ -95,6 +101,12 @@ import type { TestWebhookEndpointOptions, TestWebhookEndpointStatus202 } from ".
 export const operationsByTag = {
   account: {
     exportAccountData: { method: "GET", path: "/v1/account/export" },
+    listOrgMembers: { method: "GET", path: "/v1/organizations/{org_id}/members" },
+    updateOrgMemberRole: { method: "PATCH", path: "/v1/organizations/{org_id}/members/{member_id}" },
+    removeOrgMember: { method: "DELETE", path: "/v1/organizations/{org_id}/members/{member_id}" },
+    listOrgInvitations: { method: "GET", path: "/v1/organizations/{org_id}/invitations" },
+    createOrgInvitation: { method: "POST", path: "/v1/organizations/{org_id}/invitations" },
+    revokeOrgInvitation: { method: "DELETE", path: "/v1/organizations/{org_id}/invitations/{invitation_id}" },
     getOnboardingProgress: { method: "GET", path: "/v1/organizations/{org_id}/onboarding" },
     updateOnboardingProgress: { method: "PATCH", path: "/v1/organizations/{org_id}/onboarding" },
     listOrganizations: { method: "GET", path: "/v1/organizations" },
@@ -261,6 +273,12 @@ export const operationsByPath = {
   "PUT /v1/projects/{project_id}/honeytokens/{honeytoken_id}": { method: "PUT", path: "/v1/projects/{project_id}/honeytokens/{honeytoken_id}", operationId: "updateHoneytoken" },
   "DELETE /v1/projects/{project_id}/honeytokens/{honeytoken_id}": { method: "DELETE", path: "/v1/projects/{project_id}/honeytokens/{honeytoken_id}", operationId: "deleteHoneytoken" },
   "GET /v1/projects/{project_id}/insights": { method: "GET", path: "/v1/projects/{project_id}/insights", operationId: "getProjectInsights" },
+  "GET /v1/organizations/{org_id}/members": { method: "GET", path: "/v1/organizations/{org_id}/members", operationId: "listOrgMembers" },
+  "PATCH /v1/organizations/{org_id}/members/{member_id}": { method: "PATCH", path: "/v1/organizations/{org_id}/members/{member_id}", operationId: "updateOrgMemberRole" },
+  "DELETE /v1/organizations/{org_id}/members/{member_id}": { method: "DELETE", path: "/v1/organizations/{org_id}/members/{member_id}", operationId: "removeOrgMember" },
+  "GET /v1/organizations/{org_id}/invitations": { method: "GET", path: "/v1/organizations/{org_id}/invitations", operationId: "listOrgInvitations" },
+  "POST /v1/organizations/{org_id}/invitations": { method: "POST", path: "/v1/organizations/{org_id}/invitations", operationId: "createOrgInvitation" },
+  "DELETE /v1/organizations/{org_id}/invitations/{invitation_id}": { method: "DELETE", path: "/v1/organizations/{org_id}/invitations/{invitation_id}", operationId: "revokeOrgInvitation" },
   "POST /v1/projects/{project_id}/migrations:lint": { method: "POST", path: "/v1/projects/{project_id}/migrations:lint", operationId: "lintMigration" },
   "GET /v1/organizations/{org_id}/onboarding": { method: "GET", path: "/v1/organizations/{org_id}/onboarding", operationId: "getOnboardingProgress" },
   "PATCH /v1/organizations/{org_id}/onboarding": { method: "PATCH", path: "/v1/organizations/{org_id}/onboarding", operationId: "updateOnboardingProgress" },
@@ -348,6 +366,12 @@ type GetHoneytokenParams = { pathParams: NonNullable<GetHoneytokenOptions["path"
 type UpdateHoneytokenParams = { pathParams: NonNullable<UpdateHoneytokenOptions["path"]>; body: NonNullable<UpdateHoneytokenOptions["body"]> };
 type DeleteHoneytokenParams = { pathParams: NonNullable<DeleteHoneytokenOptions["path"]> };
 type GetProjectInsightsParams = { pathParams: NonNullable<GetProjectInsightsOptions["path"]>; queryParams?: NonNullable<GetProjectInsightsOptions["query"]> };
+type ListOrgMembersParams = { pathParams: NonNullable<ListOrgMembersOptions["path"]>; queryParams?: NonNullable<ListOrgMembersOptions["query"]> };
+type UpdateOrgMemberRoleParams = { pathParams: NonNullable<UpdateOrgMemberRoleOptions["path"]>; body: NonNullable<UpdateOrgMemberRoleOptions["body"]> };
+type RemoveOrgMemberParams = { pathParams: NonNullable<RemoveOrgMemberOptions["path"]> };
+type ListOrgInvitationsParams = { pathParams: NonNullable<ListOrgInvitationsOptions["path"]>; queryParams?: NonNullable<ListOrgInvitationsOptions["query"]> };
+type CreateOrgInvitationParams = { pathParams: NonNullable<CreateOrgInvitationOptions["path"]>; body: NonNullable<CreateOrgInvitationOptions["body"]> };
+type RevokeOrgInvitationParams = { pathParams: NonNullable<RevokeOrgInvitationOptions["path"]> };
 type LintMigrationParams = { pathParams: NonNullable<LintMigrationOptions["path"]>; body: NonNullable<LintMigrationOptions["body"]> };
 type GetOnboardingProgressParams = { pathParams: NonNullable<GetOnboardingProgressOptions["path"]> };
 type UpdateOnboardingProgressParams = { pathParams: NonNullable<UpdateOnboardingProgressOptions["path"]>; body: NonNullable<UpdateOnboardingProgressOptions["body"]> };
@@ -393,6 +417,12 @@ type TestWebhookEndpointParams = { pathParams: NonNullable<TestWebhookEndpointOp
 export interface ApiOperations {
   account: {
     exportAccountData(): Promise<ExportAccountDataStatus200>;
+    listOrgMembers(params: ListOrgMembersParams): Promise<ListOrgMembersStatus200>;
+    updateOrgMemberRole(params: UpdateOrgMemberRoleParams): Promise<UpdateOrgMemberRoleStatus200>;
+    removeOrgMember(params: RemoveOrgMemberParams): Promise<void>;
+    listOrgInvitations(params: ListOrgInvitationsParams): Promise<ListOrgInvitationsStatus200>;
+    createOrgInvitation(params: CreateOrgInvitationParams): Promise<CreateOrgInvitationStatus201>;
+    revokeOrgInvitation(params: RevokeOrgInvitationParams): Promise<void>;
     getOnboardingProgress(params: GetOnboardingProgressParams): Promise<GetOnboardingProgressStatus200>;
     updateOnboardingProgress(params: UpdateOnboardingProgressParams): Promise<UpdateOnboardingProgressStatus200>;
     listOrganizations(): Promise<ListOrganizationsStatus200>;
@@ -559,6 +589,12 @@ export interface RequestMap {
   "PUT /v1/projects/{project_id}/honeytokens/{honeytoken_id}": { params: UpdateHoneytokenParams; response: UpdateHoneytokenStatus200 };
   "DELETE /v1/projects/{project_id}/honeytokens/{honeytoken_id}": { params: DeleteHoneytokenParams; response: void };
   "GET /v1/projects/{project_id}/insights": { params: GetProjectInsightsParams; response: GetProjectInsightsStatus200 };
+  "GET /v1/organizations/{org_id}/members": { params: ListOrgMembersParams; response: ListOrgMembersStatus200 };
+  "PATCH /v1/organizations/{org_id}/members/{member_id}": { params: UpdateOrgMemberRoleParams; response: UpdateOrgMemberRoleStatus200 };
+  "DELETE /v1/organizations/{org_id}/members/{member_id}": { params: RemoveOrgMemberParams; response: void };
+  "GET /v1/organizations/{org_id}/invitations": { params: ListOrgInvitationsParams; response: ListOrgInvitationsStatus200 };
+  "POST /v1/organizations/{org_id}/invitations": { params: CreateOrgInvitationParams; response: CreateOrgInvitationStatus201 };
+  "DELETE /v1/organizations/{org_id}/invitations/{invitation_id}": { params: RevokeOrgInvitationParams; response: void };
   "POST /v1/projects/{project_id}/migrations:lint": { params: LintMigrationParams; response: LintMigrationStatus200 };
   "GET /v1/organizations/{org_id}/onboarding": { params: GetOnboardingProgressParams; response: GetOnboardingProgressStatus200 };
   "PATCH /v1/organizations/{org_id}/onboarding": { params: UpdateOnboardingProgressParams; response: UpdateOnboardingProgressStatus200 };
