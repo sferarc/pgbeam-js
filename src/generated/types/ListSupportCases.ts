@@ -37,6 +37,12 @@ export type ListSupportCasesQuery = {
     */
     page_size?: number;
     /**
+     * @description Opaque token for cursor-based pagination.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string | undefined
+    */
+    page_token?: string;
+    /**
      * @description Page number (1-based, default 1).
      * @minLength 1
      * @default 1

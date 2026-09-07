@@ -69,6 +69,12 @@ export type ListAuditLogsQuery = {
      * @type integer | undefined
     */
     page_size?: number;
+    /**
+     * @description Opaque token for cursor-based pagination.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string | undefined
+    */
+    page_token?: string;
 };
 
 export type ListAuditLogsHeaders = {

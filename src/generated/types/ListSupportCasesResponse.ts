@@ -11,6 +11,12 @@ import type { SupportCase } from './SupportCase'
 */
 export type ListSupportCasesResponse = {
     /**
+     * @description Opaque token for cursor-based pagination.
+     * @example 20
+     * @type string | undefined
+    */
+    next_page_token?: string;
+    /**
      * @description Support cases for the current page.
      * @type array
     */
