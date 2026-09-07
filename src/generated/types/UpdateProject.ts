@@ -61,6 +61,12 @@ export type UpdateProjectStatus404 = Error;
  * @description Standard error response envelope for PgBeam API requests.
  * @type object
 */
+export type UpdateProjectStatus409 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
 export type UpdateProjectStatus412 = Error;
 
 /**
@@ -88,6 +94,7 @@ export type UpdateProjectResponses = {
     "401": UpdateProjectStatus401;
     "403": UpdateProjectStatus403;
     "404": UpdateProjectStatus404;
+    "409": UpdateProjectStatus409;
     "412": UpdateProjectStatus412;
     "429": UpdateProjectStatus429;
 };
@@ -95,4 +102,4 @@ export type UpdateProjectResponses = {
 /**
  * @description Union of all possible responses
 */
-export type UpdateProjectResponse = (UpdateProjectStatus200 | UpdateProjectStatus400 | UpdateProjectStatus401 | UpdateProjectStatus403 | UpdateProjectStatus404 | UpdateProjectStatus412 | UpdateProjectStatus429);
+export type UpdateProjectResponse = (UpdateProjectStatus200 | UpdateProjectStatus400 | UpdateProjectStatus401 | UpdateProjectStatus403 | UpdateProjectStatus404 | UpdateProjectStatus409 | UpdateProjectStatus412 | UpdateProjectStatus429);

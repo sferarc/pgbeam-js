@@ -62,6 +62,8 @@ import type { LintMigrationOptions, LintMigrationStatus200 } from "./types/LintM
 import type { GetOnboardingProgressOptions, GetOnboardingProgressStatus200 } from "./types/GetOnboardingProgress";
 import type { UpdateOnboardingProgressOptions, UpdateOnboardingProgressStatus200 } from "./types/UpdateOnboardingProgress";
 import type { ListOrganizationsStatus200 } from "./types/ListOrganizations";
+import type { ListPaymentResourcesStatus200 } from "./types/ListPaymentResources";
+import type { CreateBudgetTopupOptions, CreateBudgetTopupStatus201 } from "./types/CreateBudgetTopup";
 import type { ListPolicyProfilesOptions, ListPolicyProfilesStatus200 } from "./types/ListPolicyProfiles";
 import type { CreatePolicyProfileOptions, CreatePolicyProfileStatus201 } from "./types/CreatePolicyProfile";
 import type { GetPolicyProfileOptions, GetPolicyProfileStatus200 } from "./types/GetPolicyProfile";
@@ -216,6 +218,10 @@ export const operationsByTag = {
   migrations: {
     lintMigration: { method: "POST", path: "/v1/projects/{project_id}/migrations:lint" },
   },
+  payments: {
+    listPaymentResources: { method: "GET", path: "/v1/payments/resources" },
+    createBudgetTopup: { method: "POST", path: "/v1/payments/budget-topups" },
+  },
   schemaAnnotations: {
     listSchemaAnnotations: { method: "GET", path: "/v1/projects/{project_id}/schema-annotations" },
     putSchemaAnnotation: { method: "PUT", path: "/v1/projects/{project_id}/schema-annotations" },
@@ -301,6 +307,8 @@ export const operationsByPath = {
   "GET /v1/organizations/{org_id}/onboarding": { method: "GET", path: "/v1/organizations/{org_id}/onboarding", operationId: "getOnboardingProgress" },
   "PATCH /v1/organizations/{org_id}/onboarding": { method: "PATCH", path: "/v1/organizations/{org_id}/onboarding", operationId: "updateOnboardingProgress" },
   "GET /v1/organizations": { method: "GET", path: "/v1/organizations", operationId: "listOrganizations" },
+  "GET /v1/payments/resources": { method: "GET", path: "/v1/payments/resources", operationId: "listPaymentResources" },
+  "POST /v1/payments/budget-topups": { method: "POST", path: "/v1/payments/budget-topups", operationId: "createBudgetTopup" },
   "GET /v1/projects/{project_id}/policies": { method: "GET", path: "/v1/projects/{project_id}/policies", operationId: "listPolicyProfiles" },
   "POST /v1/projects/{project_id}/policies": { method: "POST", path: "/v1/projects/{project_id}/policies", operationId: "createPolicyProfile" },
   "GET /v1/projects/{project_id}/policies/{policy_id}": { method: "GET", path: "/v1/projects/{project_id}/policies/{policy_id}", operationId: "getPolicyProfile" },
@@ -397,6 +405,7 @@ type RevokeOrgInvitationParams = { pathParams: NonNullable<RevokeOrgInvitationOp
 type LintMigrationParams = { pathParams: NonNullable<LintMigrationOptions["path"]>; body: NonNullable<LintMigrationOptions["body"]> };
 type GetOnboardingProgressParams = { pathParams: NonNullable<GetOnboardingProgressOptions["path"]> };
 type UpdateOnboardingProgressParams = { pathParams: NonNullable<UpdateOnboardingProgressOptions["path"]>; body: NonNullable<UpdateOnboardingProgressOptions["body"]> };
+type CreateBudgetTopupParams = { body: NonNullable<CreateBudgetTopupOptions["body"]> };
 type ListPolicyProfilesParams = { pathParams: NonNullable<ListPolicyProfilesOptions["path"]>; queryParams?: NonNullable<ListPolicyProfilesOptions["query"]> };
 type CreatePolicyProfileParams = { pathParams: NonNullable<CreatePolicyProfileOptions["path"]>; body: NonNullable<CreatePolicyProfileOptions["body"]> };
 type GetPolicyProfileParams = { pathParams: NonNullable<GetPolicyProfileOptions["path"]> };
@@ -550,6 +559,10 @@ export interface ApiOperations {
   migrations: {
     lintMigration(params: LintMigrationParams): Promise<LintMigrationStatus200>;
   };
+  payments: {
+    listPaymentResources(): Promise<ListPaymentResourcesStatus200>;
+    createBudgetTopup(params: CreateBudgetTopupParams): Promise<CreateBudgetTopupStatus201>;
+  };
   schemaAnnotations: {
     listSchemaAnnotations(params: ListSchemaAnnotationsParams): Promise<ListSchemaAnnotationsStatus200>;
     putSchemaAnnotation(params: PutSchemaAnnotationParams): Promise<PutSchemaAnnotationStatus200>;
@@ -635,6 +648,8 @@ export interface RequestMap {
   "GET /v1/organizations/{org_id}/onboarding": { params: GetOnboardingProgressParams; response: GetOnboardingProgressStatus200 };
   "PATCH /v1/organizations/{org_id}/onboarding": { params: UpdateOnboardingProgressParams; response: UpdateOnboardingProgressStatus200 };
   "GET /v1/organizations": { params?: undefined; response: ListOrganizationsStatus200 };
+  "GET /v1/payments/resources": { params?: undefined; response: ListPaymentResourcesStatus200 };
+  "POST /v1/payments/budget-topups": { params: CreateBudgetTopupParams; response: CreateBudgetTopupStatus201 };
   "GET /v1/projects/{project_id}/policies": { params: ListPolicyProfilesParams; response: ListPolicyProfilesStatus200 };
   "POST /v1/projects/{project_id}/policies": { params: CreatePolicyProfileParams; response: CreatePolicyProfileStatus201 };
   "GET /v1/projects/{project_id}/policies/{policy_id}": { params: GetPolicyProfileParams; response: GetPolicyProfileStatus200 };

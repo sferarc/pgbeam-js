@@ -67,6 +67,12 @@ export type UpdateHoneytokenStatus404 = Error;
  * @description Standard error response envelope for PgBeam API requests.
  * @type object
 */
+export type UpdateHoneytokenStatus409 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
 export type UpdateHoneytokenStatus412 = Error;
 
 /**
@@ -88,10 +94,11 @@ export type UpdateHoneytokenResponses = {
     "401": UpdateHoneytokenStatus401;
     "403": UpdateHoneytokenStatus403;
     "404": UpdateHoneytokenStatus404;
+    "409": UpdateHoneytokenStatus409;
     "412": UpdateHoneytokenStatus412;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type UpdateHoneytokenResponse = (UpdateHoneytokenStatus200 | UpdateHoneytokenStatus400 | UpdateHoneytokenStatus401 | UpdateHoneytokenStatus403 | UpdateHoneytokenStatus404 | UpdateHoneytokenStatus412);
+export type UpdateHoneytokenResponse = (UpdateHoneytokenStatus200 | UpdateHoneytokenStatus400 | UpdateHoneytokenStatus401 | UpdateHoneytokenStatus403 | UpdateHoneytokenStatus404 | UpdateHoneytokenStatus409 | UpdateHoneytokenStatus412);
