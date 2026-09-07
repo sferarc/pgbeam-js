@@ -1,5 +1,27 @@
 # pgbeam
 
+## 0.4.11
+
+### Patch Changes
+
+- bd2d132: feat(api): an agent revoking fifty credentials had to make fifty calls
+- 58d0ed0: feat(api): every write was last-writer-wins, so an agent's read-modify-write silently discarded whatever landed in between
+- 43acb8e: feat(api): publish organization membership endpoints, split out of #2079
+- 379b817: feat(webhooks): publish delivery contract and validate event types
+- 7a26954: fix(api): a revoked agent credential could be put back to active, and the revoked password worked again
+- 8deebf2: fix(ci): the conformance job reported a failure it could not name, on one run in three
+- 43acb8e: fix(api): the member API contract claimed two things the server refuses
+
+  `UpdateOrgMemberRoleRequest.role` and `CreateOrgInvitationRequest.role` now use a new `AssignableOrgRole` enum, which is `OrgRole` without `owner`. The server has always rejected `owner` on both paths with a 400, so every generated client, the CLI help and the reference pages were advertising a call that never works. Responses keep the full `OrgRole`, because a member really can be an owner. `role` is also no longer required on an invitation, matching the server, which defaults an absent role to `member`.
+
+  `listOrgMembers` and `listOrgInvitations` now enforce the `page_size` range they declare. They read the query string directly and clamped anything outside 1 to 100 back to the default of 20, so `?page_size=500` was a documented 400 everywhere else in the API and a silent 20 here.
+
+  `listOrgInvitations` now enforces the `status` enum it declares. Anything outside `pending`, `accepted`, `rejected` and `canceled` went to the database as a literal filter and came back as an empty page with a 200, so a caller who mistyped the status was told the organization has no invitations. It is a 400 now, as the contract has always said. `?status=` with no value is also a 400 rather than the unfiltered list; omit the parameter to list everything.
+
+  `removeOrgMember`'s published description said "An owner cannot be removed; demote them first", and the server does neither half of that. It refuses only when the organization is down to its last owner, so removing any other owner returns 204, and demoting the last owner hits the same guard and returns the same 409. The description now says what the guard does: the last remaining owner cannot be removed or demoted, so transfer ownership first, which is the advice the 409 itself gives.
+
+  Go SDK callers: nothing to migrate. `OrgRole` and `AssignableOrgRole` are both new types in `go.pgbeam.com/sdk` as of this release, which is what the minor bump is for.
+
 ## 0.4.10
 
 ### Patch Changes
