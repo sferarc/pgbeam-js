@@ -21,11 +21,24 @@ export type GetWebhookEndpointPath = {
     webhook_id: string;
 };
 
+export type GetWebhookEndpointHeaders = {
+    /**
+     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
+     * @minLength 1
+     * @maxLength 1024
+     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+     * @type string | undefined
+    */
+    "If-None-Match"?: string;
+};
+
 /**
  * @description A delivery target for project audit/event notifications.
  * @type object
 */
 export type GetWebhookEndpointStatus200 = WebhookEndpoint;
+
+export type GetWebhookEndpointStatus304 = unknown;
 
 /**
  * @description Standard error response envelope for PgBeam API requests.
@@ -55,11 +68,12 @@ export type GetWebhookEndpointOptions = {
     body?: never;
     path: GetWebhookEndpointPath;
     query?: never;
-    headers?: never;
+    headers?: GetWebhookEndpointHeaders;
 };
 
 export type GetWebhookEndpointResponses = {
     "200": GetWebhookEndpointStatus200;
+    "304": GetWebhookEndpointStatus304;
     "400": GetWebhookEndpointStatus400;
     "401": GetWebhookEndpointStatus401;
     "403": GetWebhookEndpointStatus403;
@@ -69,4 +83,4 @@ export type GetWebhookEndpointResponses = {
 /**
  * @description Union of all possible responses
 */
-export type GetWebhookEndpointResponse = (GetWebhookEndpointStatus200 | GetWebhookEndpointStatus400 | GetWebhookEndpointStatus401 | GetWebhookEndpointStatus403 | GetWebhookEndpointStatus404);
+export type GetWebhookEndpointResponse = (GetWebhookEndpointStatus200 | GetWebhookEndpointStatus304 | GetWebhookEndpointStatus400 | GetWebhookEndpointStatus401 | GetWebhookEndpointStatus403 | GetWebhookEndpointStatus404);

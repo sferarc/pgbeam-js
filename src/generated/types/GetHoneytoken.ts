@@ -21,11 +21,24 @@ export type GetHoneytokenPath = {
     honeytoken_id: string;
 };
 
+export type GetHoneytokenHeaders = {
+    /**
+     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
+     * @minLength 1
+     * @maxLength 1024
+     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+     * @type string | undefined
+    */
+    "If-None-Match"?: string;
+};
+
 /**
  * @description A decoy (canary) relation. Any agent statement that references it is blocked (fail closed) and recorded as a canary_tripped audit event.\n
  * @type object
 */
 export type GetHoneytokenStatus200 = Honeytoken;
+
+export type GetHoneytokenStatus304 = unknown;
 
 /**
  * @description Standard error response envelope for PgBeam API requests.
@@ -55,11 +68,12 @@ export type GetHoneytokenOptions = {
     body?: never;
     path: GetHoneytokenPath;
     query?: never;
-    headers?: never;
+    headers?: GetHoneytokenHeaders;
 };
 
 export type GetHoneytokenResponses = {
     "200": GetHoneytokenStatus200;
+    "304": GetHoneytokenStatus304;
     "400": GetHoneytokenStatus400;
     "401": GetHoneytokenStatus401;
     "403": GetHoneytokenStatus403;
@@ -69,4 +83,4 @@ export type GetHoneytokenResponses = {
 /**
  * @description Union of all possible responses
 */
-export type GetHoneytokenResponse = (GetHoneytokenStatus200 | GetHoneytokenStatus400 | GetHoneytokenStatus401 | GetHoneytokenStatus403 | GetHoneytokenStatus404);
+export type GetHoneytokenResponse = (GetHoneytokenStatus200 | GetHoneytokenStatus304 | GetHoneytokenStatus400 | GetHoneytokenStatus401 | GetHoneytokenStatus403 | GetHoneytokenStatus404);

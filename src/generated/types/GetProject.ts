@@ -15,11 +15,24 @@ export type GetProjectPath = {
     project_id: string;
 };
 
+export type GetProjectHeaders = {
+    /**
+     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
+     * @minLength 1
+     * @maxLength 1024
+     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+     * @type string | undefined
+    */
+    "If-None-Match"?: string;
+};
+
 /**
  * @description Project configuration and current control-plane state.
  * @type object
 */
 export type GetProjectStatus200 = Project;
+
+export type GetProjectStatus304 = unknown;
 
 /**
  * @description Standard error response envelope for PgBeam API requests.
@@ -55,11 +68,12 @@ export type GetProjectOptions = {
     body?: never;
     path: GetProjectPath;
     query?: never;
-    headers?: never;
+    headers?: GetProjectHeaders;
 };
 
 export type GetProjectResponses = {
     "200": GetProjectStatus200;
+    "304": GetProjectStatus304;
     "400": GetProjectStatus400;
     "401": GetProjectStatus401;
     "403": GetProjectStatus403;
@@ -70,4 +84,4 @@ export type GetProjectResponses = {
 /**
  * @description Union of all possible responses
 */
-export type GetProjectResponse = (GetProjectStatus200 | GetProjectStatus400 | GetProjectStatus401 | GetProjectStatus403 | GetProjectStatus404 | GetProjectStatus429);
+export type GetProjectResponse = (GetProjectStatus200 | GetProjectStatus304 | GetProjectStatus400 | GetProjectStatus401 | GetProjectStatus403 | GetProjectStatus404 | GetProjectStatus429);

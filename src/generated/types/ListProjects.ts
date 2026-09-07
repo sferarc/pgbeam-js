@@ -45,11 +45,24 @@ export type ListProjectsQuery = {
     sort_by?: ListProjectsSortByKey;
 };
 
+export type ListProjectsHeaders = {
+    /**
+     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
+     * @minLength 1
+     * @maxLength 1024
+     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+     * @type string | undefined
+    */
+    "If-None-Match"?: string;
+};
+
 /**
  * @description Cursor-paginated list of projects for an organization.
  * @type object
 */
 export type ListProjectsStatus200 = ListProjectsResponse;
+
+export type ListProjectsStatus304 = unknown;
 
 /**
  * @description Standard error response envelope for PgBeam API requests.
@@ -79,11 +92,12 @@ export type ListProjectsOptions = {
     body?: never;
     path?: never;
     query: ListProjectsQuery;
-    headers?: never;
+    headers?: ListProjectsHeaders;
 };
 
 export type ListProjectsResponses = {
     "200": ListProjectsStatus200;
+    "304": ListProjectsStatus304;
     "400": ListProjectsStatus400;
     "401": ListProjectsStatus401;
     "403": ListProjectsStatus403;

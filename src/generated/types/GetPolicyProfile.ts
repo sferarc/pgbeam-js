@@ -21,11 +21,24 @@ export type GetPolicyProfilePath = {
     policy_id: string;
 };
 
+export type GetPolicyProfileHeaders = {
+    /**
+     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
+     * @minLength 1
+     * @maxLength 1024
+     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+     * @type string | undefined
+    */
+    "If-None-Match"?: string;
+};
+
 /**
  * @description A named bundle of rules enforced on agent credentials in the data plane.
  * @type object
 */
 export type GetPolicyProfileStatus200 = PolicyProfile;
+
+export type GetPolicyProfileStatus304 = unknown;
 
 /**
  * @description Standard error response envelope for PgBeam API requests.
@@ -55,11 +68,12 @@ export type GetPolicyProfileOptions = {
     body?: never;
     path: GetPolicyProfilePath;
     query?: never;
-    headers?: never;
+    headers?: GetPolicyProfileHeaders;
 };
 
 export type GetPolicyProfileResponses = {
     "200": GetPolicyProfileStatus200;
+    "304": GetPolicyProfileStatus304;
     "400": GetPolicyProfileStatus400;
     "401": GetPolicyProfileStatus401;
     "403": GetPolicyProfileStatus403;
@@ -69,4 +83,4 @@ export type GetPolicyProfileResponses = {
 /**
  * @description Union of all possible responses
 */
-export type GetPolicyProfileResponse = (GetPolicyProfileStatus200 | GetPolicyProfileStatus400 | GetPolicyProfileStatus401 | GetPolicyProfileStatus403 | GetPolicyProfileStatus404);
+export type GetPolicyProfileResponse = (GetPolicyProfileStatus200 | GetPolicyProfileStatus304 | GetPolicyProfileStatus400 | GetPolicyProfileStatus401 | GetPolicyProfileStatus403 | GetPolicyProfileStatus404);

@@ -22,6 +22,17 @@ export type UpdatePolicyProfilePath = {
     policy_id: string;
 };
 
+export type UpdatePolicyProfileHeaders = {
+    /**
+     * @description Entity tag the write is based on, taken from the `ETag` of the read that produced the values being sent. The write proceeds only if it still matches the current representation; otherwise it is refused with `412 Precondition Failed` and nothing is changed.\n\nThis is what makes a read-modify-write safe. Without it the last writer wins and a concurrent edit is silently discarded, which is the failure an agent is most likely to cause and least likely to notice. The `412` response carries the current `ETag`, so a caller can re-read, re-apply its change and retry.\n\nOmitting the header keeps the old unconditional behaviour. `*` matches any current representation, which asserts only that the resource exists.
+     * @minLength 1
+     * @maxLength 1024
+     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+     * @type string | undefined
+    */
+    "If-Match"?: string;
+};
+
 /**
  * @description A named bundle of rules enforced on agent credentials in the data plane.
  * @type object
@@ -56,6 +67,12 @@ export type UpdatePolicyProfileStatus404 = Error;
  * @description Standard error response envelope for PgBeam API requests.
  * @type object
 */
+export type UpdatePolicyProfileStatus412 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
 export type UpdatePolicyProfileStatus429 = Error;
 
 /**
@@ -68,7 +85,7 @@ export type UpdatePolicyProfileOptions = {
     body: UpdatePolicyProfileBody;
     path: UpdatePolicyProfilePath;
     query?: never;
-    headers?: never;
+    headers?: UpdatePolicyProfileHeaders;
 };
 
 export type UpdatePolicyProfileResponses = {
@@ -77,10 +94,11 @@ export type UpdatePolicyProfileResponses = {
     "401": UpdatePolicyProfileStatus401;
     "403": UpdatePolicyProfileStatus403;
     "404": UpdatePolicyProfileStatus404;
+    "412": UpdatePolicyProfileStatus412;
     "429": UpdatePolicyProfileStatus429;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type UpdatePolicyProfileResponse = (UpdatePolicyProfileStatus200 | UpdatePolicyProfileStatus400 | UpdatePolicyProfileStatus401 | UpdatePolicyProfileStatus403 | UpdatePolicyProfileStatus404 | UpdatePolicyProfileStatus429);
+export type UpdatePolicyProfileResponse = (UpdatePolicyProfileStatus200 | UpdatePolicyProfileStatus400 | UpdatePolicyProfileStatus401 | UpdatePolicyProfileStatus403 | UpdatePolicyProfileStatus404 | UpdatePolicyProfileStatus412 | UpdatePolicyProfileStatus429);

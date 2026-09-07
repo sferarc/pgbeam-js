@@ -35,11 +35,24 @@ export type GetOrganizationUsageQuery = {
     end_date: string;
 };
 
+export type GetOrganizationUsageHeaders = {
+    /**
+     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
+     * @minLength 1
+     * @maxLength 1024
+     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+     * @type string | undefined
+    */
+    "If-None-Match"?: string;
+};
+
 /**
  * @description Response envelope for organization usage queries.
  * @type object
 */
 export type GetOrganizationUsageStatus200 = UsageResponse;
+
+export type GetOrganizationUsageStatus304 = unknown;
 
 /**
  * @description Standard error response envelope for PgBeam API requests.
@@ -69,11 +82,12 @@ export type GetOrganizationUsageOptions = {
     body?: never;
     path: GetOrganizationUsagePath;
     query: GetOrganizationUsageQuery;
-    headers?: never;
+    headers?: GetOrganizationUsageHeaders;
 };
 
 export type GetOrganizationUsageResponses = {
     "200": GetOrganizationUsageStatus200;
+    "304": GetOrganizationUsageStatus304;
     "400": GetOrganizationUsageStatus400;
     "401": GetOrganizationUsageStatus401;
     "403": GetOrganizationUsageStatus403;
@@ -83,4 +97,4 @@ export type GetOrganizationUsageResponses = {
 /**
  * @description Union of all possible responses
 */
-export type GetOrganizationUsageResponse = (GetOrganizationUsageStatus200 | GetOrganizationUsageStatus400 | GetOrganizationUsageStatus401 | GetOrganizationUsageStatus403 | GetOrganizationUsageStatus429);
+export type GetOrganizationUsageResponse = (GetOrganizationUsageStatus200 | GetOrganizationUsageStatus304 | GetOrganizationUsageStatus400 | GetOrganizationUsageStatus401 | GetOrganizationUsageStatus403 | GetOrganizationUsageStatus429);

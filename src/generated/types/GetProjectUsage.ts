@@ -34,11 +34,24 @@ export type GetProjectUsageQuery = {
     end_date: string;
 };
 
+export type GetProjectUsageHeaders = {
+    /**
+     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
+     * @minLength 1
+     * @maxLength 1024
+     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+     * @type string | undefined
+    */
+    "If-None-Match"?: string;
+};
+
 /**
  * @description Response envelope for project usage queries.
  * @type object
 */
 export type GetProjectUsageStatus200 = ProjectUsageResponse;
+
+export type GetProjectUsageStatus304 = unknown;
 
 /**
  * @description Standard error response envelope for PgBeam API requests.
@@ -68,11 +81,12 @@ export type GetProjectUsageOptions = {
     body?: never;
     path: GetProjectUsagePath;
     query: GetProjectUsageQuery;
-    headers?: never;
+    headers?: GetProjectUsageHeaders;
 };
 
 export type GetProjectUsageResponses = {
     "200": GetProjectUsageStatus200;
+    "304": GetProjectUsageStatus304;
     "400": GetProjectUsageStatus400;
     "401": GetProjectUsageStatus401;
     "404": GetProjectUsageStatus404;
@@ -82,4 +96,4 @@ export type GetProjectUsageResponses = {
 /**
  * @description Union of all possible responses
 */
-export type GetProjectUsageResponse = (GetProjectUsageStatus200 | GetProjectUsageStatus400 | GetProjectUsageStatus401 | GetProjectUsageStatus404 | GetProjectUsageStatus429);
+export type GetProjectUsageResponse = (GetProjectUsageStatus200 | GetProjectUsageStatus304 | GetProjectUsageStatus400 | GetProjectUsageStatus401 | GetProjectUsageStatus404 | GetProjectUsageStatus429);

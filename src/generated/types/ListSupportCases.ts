@@ -45,11 +45,24 @@ export type ListSupportCasesQuery = {
     page?: number;
 };
 
+export type ListSupportCasesHeaders = {
+    /**
+     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
+     * @minLength 1
+     * @maxLength 1024
+     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+     * @type string | undefined
+    */
+    "If-None-Match"?: string;
+};
+
 /**
  * @description Paginated list of support cases.
  * @type object
 */
 export type ListSupportCasesStatus200 = ListSupportCasesResponse;
+
+export type ListSupportCasesStatus304 = unknown;
 
 /**
  * @description Standard error response envelope for PgBeam API requests.
@@ -73,11 +86,12 @@ export type ListSupportCasesOptions = {
     body?: never;
     path: ListSupportCasesPath;
     query?: ListSupportCasesQuery;
-    headers?: never;
+    headers?: ListSupportCasesHeaders;
 };
 
 export type ListSupportCasesResponses = {
     "200": ListSupportCasesStatus200;
+    "304": ListSupportCasesStatus304;
     "400": ListSupportCasesStatus400;
     "401": ListSupportCasesStatus401;
     "403": ListSupportCasesStatus403;

@@ -47,11 +47,24 @@ export type ListOrgInvitationsQuery = {
     page_token?: string;
 };
 
+export type ListOrgInvitationsHeaders = {
+    /**
+     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
+     * @minLength 1
+     * @maxLength 1024
+     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+     * @type string | undefined
+    */
+    "If-None-Match"?: string;
+};
+
 /**
  * @description A page of pending invitations.
  * @type object
 */
 export type ListOrgInvitationsStatus200 = ListOrgInvitationsResponse;
+
+export type ListOrgInvitationsStatus304 = unknown;
 
 /**
  * @description Standard error response envelope for PgBeam API requests.
@@ -87,11 +100,12 @@ export type ListOrgInvitationsOptions = {
     body?: never;
     path: ListOrgInvitationsPath;
     query?: ListOrgInvitationsQuery;
-    headers?: never;
+    headers?: ListOrgInvitationsHeaders;
 };
 
 export type ListOrgInvitationsResponses = {
     "200": ListOrgInvitationsStatus200;
+    "304": ListOrgInvitationsStatus304;
     "400": ListOrgInvitationsStatus400;
     "401": ListOrgInvitationsStatus401;
     "403": ListOrgInvitationsStatus403;

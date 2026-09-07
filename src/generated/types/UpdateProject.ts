@@ -16,6 +16,17 @@ export type UpdateProjectPath = {
     project_id: string;
 };
 
+export type UpdateProjectHeaders = {
+    /**
+     * @description Entity tag the write is based on, taken from the `ETag` of the read that produced the values being sent. The write proceeds only if it still matches the current representation; otherwise it is refused with `412 Precondition Failed` and nothing is changed.\n\nThis is what makes a read-modify-write safe. Without it the last writer wins and a concurrent edit is silently discarded, which is the failure an agent is most likely to cause and least likely to notice. The `412` response carries the current `ETag`, so a caller can re-read, re-apply its change and retry.\n\nOmitting the header keeps the old unconditional behaviour. `*` matches any current representation, which asserts only that the resource exists.
+     * @minLength 1
+     * @maxLength 1024
+     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+     * @type string | undefined
+    */
+    "If-Match"?: string;
+};
+
 /**
  * @description Project configuration and current control-plane state.
  * @type object
@@ -50,6 +61,12 @@ export type UpdateProjectStatus404 = Error;
  * @description Standard error response envelope for PgBeam API requests.
  * @type object
 */
+export type UpdateProjectStatus412 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
 export type UpdateProjectStatus429 = Error;
 
 /**
@@ -62,7 +79,7 @@ export type UpdateProjectOptions = {
     body: UpdateProjectBody;
     path: UpdateProjectPath;
     query?: never;
-    headers?: never;
+    headers?: UpdateProjectHeaders;
 };
 
 export type UpdateProjectResponses = {
@@ -71,10 +88,11 @@ export type UpdateProjectResponses = {
     "401": UpdateProjectStatus401;
     "403": UpdateProjectStatus403;
     "404": UpdateProjectStatus404;
+    "412": UpdateProjectStatus412;
     "429": UpdateProjectStatus429;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type UpdateProjectResponse = (UpdateProjectStatus200 | UpdateProjectStatus400 | UpdateProjectStatus401 | UpdateProjectStatus403 | UpdateProjectStatus404 | UpdateProjectStatus429);
+export type UpdateProjectResponse = (UpdateProjectStatus200 | UpdateProjectStatus400 | UpdateProjectStatus401 | UpdateProjectStatus403 | UpdateProjectStatus404 | UpdateProjectStatus412 | UpdateProjectStatus429);

@@ -22,6 +22,17 @@ export type UpdateDatabasePath = {
     database_id: string;
 };
 
+export type UpdateDatabaseHeaders = {
+    /**
+     * @description Entity tag the write is based on, taken from the `ETag` of the read that produced the values being sent. The write proceeds only if it still matches the current representation; otherwise it is refused with `412 Precondition Failed` and nothing is changed.\n\nThis is what makes a read-modify-write safe. Without it the last writer wins and a concurrent edit is silently discarded, which is the failure an agent is most likely to cause and least likely to notice. The `412` response carries the current `ETag`, so a caller can re-read, re-apply its change and retry.\n\nOmitting the header keeps the old unconditional behaviour. `*` matches any current representation, which asserts only that the resource exists.
+     * @minLength 1
+     * @maxLength 1024
+     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+     * @type string | undefined
+    */
+    "If-Match"?: string;
+};
+
 /**
  * @description Registered upstream PostgreSQL database for a project.
  * @type object
@@ -56,6 +67,12 @@ export type UpdateDatabaseStatus404 = Error;
  * @description Standard error response envelope for PgBeam API requests.
  * @type object
 */
+export type UpdateDatabaseStatus412 = Error;
+
+/**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
 export type UpdateDatabaseStatus429 = Error;
 
 /**
@@ -68,7 +85,7 @@ export type UpdateDatabaseOptions = {
     body: UpdateDatabaseBody;
     path: UpdateDatabasePath;
     query?: never;
-    headers?: never;
+    headers?: UpdateDatabaseHeaders;
 };
 
 export type UpdateDatabaseResponses = {
@@ -77,10 +94,11 @@ export type UpdateDatabaseResponses = {
     "401": UpdateDatabaseStatus401;
     "403": UpdateDatabaseStatus403;
     "404": UpdateDatabaseStatus404;
+    "412": UpdateDatabaseStatus412;
     "429": UpdateDatabaseStatus429;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type UpdateDatabaseResponse = (UpdateDatabaseStatus200 | UpdateDatabaseStatus400 | UpdateDatabaseStatus401 | UpdateDatabaseStatus403 | UpdateDatabaseStatus404 | UpdateDatabaseStatus429);
+export type UpdateDatabaseResponse = (UpdateDatabaseStatus200 | UpdateDatabaseStatus400 | UpdateDatabaseStatus401 | UpdateDatabaseStatus403 | UpdateDatabaseStatus404 | UpdateDatabaseStatus412 | UpdateDatabaseStatus429);

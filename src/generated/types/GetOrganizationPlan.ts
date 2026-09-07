@@ -16,11 +16,24 @@ export type GetOrganizationPlanPath = {
     org_id: string;
 };
 
+export type GetOrganizationPlanHeaders = {
+    /**
+     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
+     * @minLength 1
+     * @maxLength 1024
+     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+     * @type string | undefined
+    */
+    "If-None-Match"?: string;
+};
+
 /**
  * @description Billing state and plan limits for an organization.
  * @type object
 */
 export type GetOrganizationPlanStatus200 = OrganizationPlan;
+
+export type GetOrganizationPlanStatus304 = unknown;
 
 /**
  * @description Standard error response envelope for PgBeam API requests.
@@ -50,11 +63,12 @@ export type GetOrganizationPlanOptions = {
     body?: never;
     path: GetOrganizationPlanPath;
     query?: never;
-    headers?: never;
+    headers?: GetOrganizationPlanHeaders;
 };
 
 export type GetOrganizationPlanResponses = {
     "200": GetOrganizationPlanStatus200;
+    "304": GetOrganizationPlanStatus304;
     "400": GetOrganizationPlanStatus400;
     "401": GetOrganizationPlanStatus401;
     "403": GetOrganizationPlanStatus403;
@@ -64,4 +78,4 @@ export type GetOrganizationPlanResponses = {
 /**
  * @description Union of all possible responses
 */
-export type GetOrganizationPlanResponse = (GetOrganizationPlanStatus200 | GetOrganizationPlanStatus400 | GetOrganizationPlanStatus401 | GetOrganizationPlanStatus403 | GetOrganizationPlanStatus429);
+export type GetOrganizationPlanResponse = (GetOrganizationPlanStatus200 | GetOrganizationPlanStatus304 | GetOrganizationPlanStatus400 | GetOrganizationPlanStatus401 | GetOrganizationPlanStatus403 | GetOrganizationPlanStatus429);

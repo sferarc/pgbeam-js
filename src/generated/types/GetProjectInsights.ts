@@ -42,11 +42,24 @@ export type GetProjectInsightsQuery = {
     limit?: number;
 };
 
+export type GetProjectInsightsHeaders = {
+    /**
+     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
+     * @minLength 1
+     * @maxLength 1024
+     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+     * @type string | undefined
+    */
+    "If-None-Match"?: string;
+};
+
 /**
  * @description Query insights, cache performance, and latency for a project.
  * @type object
 */
 export type GetProjectInsightsStatus200 = ProjectInsights;
+
+export type GetProjectInsightsStatus304 = unknown;
 
 /**
  * @description Standard error response envelope for PgBeam API requests.
@@ -76,11 +89,12 @@ export type GetProjectInsightsOptions = {
     body?: never;
     path: GetProjectInsightsPath;
     query?: GetProjectInsightsQuery;
-    headers?: never;
+    headers?: GetProjectInsightsHeaders;
 };
 
 export type GetProjectInsightsResponses = {
     "200": GetProjectInsightsStatus200;
+    "304": GetProjectInsightsStatus304;
     "400": GetProjectInsightsStatus400;
     "401": GetProjectInsightsStatus401;
     "404": GetProjectInsightsStatus404;
@@ -90,4 +104,4 @@ export type GetProjectInsightsResponses = {
 /**
  * @description Union of all possible responses
 */
-export type GetProjectInsightsResponse = (GetProjectInsightsStatus200 | GetProjectInsightsStatus400 | GetProjectInsightsStatus401 | GetProjectInsightsStatus404 | GetProjectInsightsStatus429);
+export type GetProjectInsightsResponse = (GetProjectInsightsStatus200 | GetProjectInsightsStatus304 | GetProjectInsightsStatus400 | GetProjectInsightsStatus401 | GetProjectInsightsStatus404 | GetProjectInsightsStatus429);

@@ -22,6 +22,17 @@ export type UpdateHoneytokenPath = {
     honeytoken_id: string;
 };
 
+export type UpdateHoneytokenHeaders = {
+    /**
+     * @description Entity tag the write is based on, taken from the `ETag` of the read that produced the values being sent. The write proceeds only if it still matches the current representation; otherwise it is refused with `412 Precondition Failed` and nothing is changed.\n\nThis is what makes a read-modify-write safe. Without it the last writer wins and a concurrent edit is silently discarded, which is the failure an agent is most likely to cause and least likely to notice. The `412` response carries the current `ETag`, so a caller can re-read, re-apply its change and retry.\n\nOmitting the header keeps the old unconditional behaviour. `*` matches any current representation, which asserts only that the resource exists.
+     * @minLength 1
+     * @maxLength 1024
+     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+     * @type string | undefined
+    */
+    "If-Match"?: string;
+};
+
 /**
  * @description A decoy (canary) relation. Any agent statement that references it is blocked (fail closed) and recorded as a canary_tripped audit event.\n
  * @type object
@@ -53,6 +64,12 @@ export type UpdateHoneytokenStatus403 = Error;
 export type UpdateHoneytokenStatus404 = Error;
 
 /**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type UpdateHoneytokenStatus412 = Error;
+
+/**
  * @description Request body for creating or updating a honeytoken.
  * @type object
 */
@@ -62,7 +79,7 @@ export type UpdateHoneytokenOptions = {
     body: UpdateHoneytokenBody;
     path: UpdateHoneytokenPath;
     query?: never;
-    headers?: never;
+    headers?: UpdateHoneytokenHeaders;
 };
 
 export type UpdateHoneytokenResponses = {
@@ -71,9 +88,10 @@ export type UpdateHoneytokenResponses = {
     "401": UpdateHoneytokenStatus401;
     "403": UpdateHoneytokenStatus403;
     "404": UpdateHoneytokenStatus404;
+    "412": UpdateHoneytokenStatus412;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type UpdateHoneytokenResponse = (UpdateHoneytokenStatus200 | UpdateHoneytokenStatus400 | UpdateHoneytokenStatus401 | UpdateHoneytokenStatus403 | UpdateHoneytokenStatus404);
+export type UpdateHoneytokenResponse = (UpdateHoneytokenStatus200 | UpdateHoneytokenStatus400 | UpdateHoneytokenStatus401 | UpdateHoneytokenStatus403 | UpdateHoneytokenStatus404 | UpdateHoneytokenStatus412);

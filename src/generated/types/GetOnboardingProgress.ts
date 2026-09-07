@@ -16,11 +16,24 @@ export type GetOnboardingProgressPath = {
     org_id: string;
 };
 
+export type GetOnboardingProgressHeaders = {
+    /**
+     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
+     * @minLength 1
+     * @maxLength 1024
+     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+     * @type string | undefined
+    */
+    "If-None-Match"?: string;
+};
+
 /**
  * @description Progress state for the dashboard onboarding checklist.
  * @type object
 */
 export type GetOnboardingProgressStatus200 = OnboardingProgress;
+
+export type GetOnboardingProgressStatus304 = unknown;
 
 /**
  * @description Standard error response envelope for PgBeam API requests.
@@ -56,11 +69,12 @@ export type GetOnboardingProgressOptions = {
     body?: never;
     path: GetOnboardingProgressPath;
     query?: never;
-    headers?: never;
+    headers?: GetOnboardingProgressHeaders;
 };
 
 export type GetOnboardingProgressResponses = {
     "200": GetOnboardingProgressStatus200;
+    "304": GetOnboardingProgressStatus304;
     "400": GetOnboardingProgressStatus400;
     "401": GetOnboardingProgressStatus401;
     "403": GetOnboardingProgressStatus403;
@@ -71,4 +85,4 @@ export type GetOnboardingProgressResponses = {
 /**
  * @description Union of all possible responses
 */
-export type GetOnboardingProgressResponse = (GetOnboardingProgressStatus200 | GetOnboardingProgressStatus400 | GetOnboardingProgressStatus401 | GetOnboardingProgressStatus403 | GetOnboardingProgressStatus404 | GetOnboardingProgressStatus429);
+export type GetOnboardingProgressResponse = (GetOnboardingProgressStatus200 | GetOnboardingProgressStatus304 | GetOnboardingProgressStatus400 | GetOnboardingProgressStatus401 | GetOnboardingProgressStatus403 | GetOnboardingProgressStatus404 | GetOnboardingProgressStatus429);

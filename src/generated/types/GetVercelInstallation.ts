@@ -16,11 +16,24 @@ export type GetVercelInstallationPath = {
     org_id: string;
 };
 
+export type GetVercelInstallationHeaders = {
+    /**
+     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
+     * @minLength 1
+     * @maxLength 1024
+     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+     * @type string | undefined
+    */
+    "If-None-Match"?: string;
+};
+
 /**
  * @description Vercel Marketplace installation status for an organization, including its resources.
  * @type object
 */
 export type GetVercelInstallationStatus200 = VercelInstallationStatus;
+
+export type GetVercelInstallationStatus304 = unknown;
 
 /**
  * @description Standard error response envelope for PgBeam API requests.
@@ -56,11 +69,12 @@ export type GetVercelInstallationOptions = {
     body?: never;
     path: GetVercelInstallationPath;
     query?: never;
-    headers?: never;
+    headers?: GetVercelInstallationHeaders;
 };
 
 export type GetVercelInstallationResponses = {
     "200": GetVercelInstallationStatus200;
+    "304": GetVercelInstallationStatus304;
     "400": GetVercelInstallationStatus400;
     "401": GetVercelInstallationStatus401;
     "403": GetVercelInstallationStatus403;
@@ -71,4 +85,4 @@ export type GetVercelInstallationResponses = {
 /**
  * @description Union of all possible responses
 */
-export type GetVercelInstallationResponse = (GetVercelInstallationStatus200 | GetVercelInstallationStatus400 | GetVercelInstallationStatus401 | GetVercelInstallationStatus403 | GetVercelInstallationStatus404 | GetVercelInstallationStatus429);
+export type GetVercelInstallationResponse = (GetVercelInstallationStatus200 | GetVercelInstallationStatus304 | GetVercelInstallationStatus400 | GetVercelInstallationStatus401 | GetVercelInstallationStatus403 | GetVercelInstallationStatus404 | GetVercelInstallationStatus429);

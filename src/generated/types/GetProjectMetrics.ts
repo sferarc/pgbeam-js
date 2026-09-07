@@ -32,11 +32,24 @@ export type GetProjectMetricsQuery = {
     region?: string;
 };
 
+export type GetProjectMetricsHeaders = {
+    /**
+     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
+     * @minLength 1
+     * @maxLength 1024
+     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+     * @type string | undefined
+    */
+    "If-None-Match"?: string;
+};
+
 /**
  * @description Response envelope for recent project metrics snapshots.
  * @type object
 */
 export type GetProjectMetricsStatus200 = ProjectMetricsResponse;
+
+export type GetProjectMetricsStatus304 = unknown;
 
 /**
  * @description Standard error response envelope for PgBeam API requests.
@@ -66,11 +79,12 @@ export type GetProjectMetricsOptions = {
     body?: never;
     path: GetProjectMetricsPath;
     query?: GetProjectMetricsQuery;
-    headers?: never;
+    headers?: GetProjectMetricsHeaders;
 };
 
 export type GetProjectMetricsResponses = {
     "200": GetProjectMetricsStatus200;
+    "304": GetProjectMetricsStatus304;
     "400": GetProjectMetricsStatus400;
     "401": GetProjectMetricsStatus401;
     "404": GetProjectMetricsStatus404;
@@ -80,4 +94,4 @@ export type GetProjectMetricsResponses = {
 /**
  * @description Union of all possible responses
 */
-export type GetProjectMetricsResponse = (GetProjectMetricsStatus200 | GetProjectMetricsStatus400 | GetProjectMetricsStatus401 | GetProjectMetricsStatus404 | GetProjectMetricsStatus429);
+export type GetProjectMetricsResponse = (GetProjectMetricsStatus200 | GetProjectMetricsStatus304 | GetProjectMetricsStatus400 | GetProjectMetricsStatus401 | GetProjectMetricsStatus404 | GetProjectMetricsStatus429);

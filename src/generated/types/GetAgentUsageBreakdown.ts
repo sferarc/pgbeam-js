@@ -32,11 +32,24 @@ export type GetAgentUsageBreakdownQuery = {
     end?: string;
 };
 
+export type GetAgentUsageBreakdownHeaders = {
+    /**
+     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
+     * @minLength 1
+     * @maxLength 1024
+     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+     * @type string | undefined
+    */
+    "If-None-Match"?: string;
+};
+
 /**
  * @description Per-agent usage for one project over a window, derived from the audit trail. Reports usage, not money: see the endpoint description for why no dollar figure is attributed to an agent.
  * @type object
 */
 export type GetAgentUsageBreakdownStatus200 = AgentUsageReport;
+
+export type GetAgentUsageBreakdownStatus304 = unknown;
 
 /**
  * @description Standard error response envelope for PgBeam API requests.
@@ -72,11 +85,12 @@ export type GetAgentUsageBreakdownOptions = {
     body?: never;
     path: GetAgentUsageBreakdownPath;
     query?: GetAgentUsageBreakdownQuery;
-    headers?: never;
+    headers?: GetAgentUsageBreakdownHeaders;
 };
 
 export type GetAgentUsageBreakdownResponses = {
     "200": GetAgentUsageBreakdownStatus200;
+    "304": GetAgentUsageBreakdownStatus304;
     "400": GetAgentUsageBreakdownStatus400;
     "401": GetAgentUsageBreakdownStatus401;
     "403": GetAgentUsageBreakdownStatus403;
@@ -87,4 +101,4 @@ export type GetAgentUsageBreakdownResponses = {
 /**
  * @description Union of all possible responses
 */
-export type GetAgentUsageBreakdownResponse = (GetAgentUsageBreakdownStatus200 | GetAgentUsageBreakdownStatus400 | GetAgentUsageBreakdownStatus401 | GetAgentUsageBreakdownStatus403 | GetAgentUsageBreakdownStatus404 | GetAgentUsageBreakdownStatus429);
+export type GetAgentUsageBreakdownResponse = (GetAgentUsageBreakdownStatus200 | GetAgentUsageBreakdownStatus304 | GetAgentUsageBreakdownStatus400 | GetAgentUsageBreakdownStatus401 | GetAgentUsageBreakdownStatus403 | GetAgentUsageBreakdownStatus404 | GetAgentUsageBreakdownStatus429);
