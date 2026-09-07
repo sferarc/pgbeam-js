@@ -15,4 +15,9 @@ export type ListSelfHostEnrollmentsResponse = {
      * @type array
     */
     enrollments: SelfHostEnrollment[];
+    /**
+     * @description Opaque token for cursor-based pagination.
+     * @type string | undefined
+    */
+    next_page_token?: string;
 };

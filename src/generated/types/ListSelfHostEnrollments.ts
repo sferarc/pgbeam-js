@@ -16,6 +16,23 @@ export type ListSelfHostEnrollmentsPath = {
     org_id: string;
 };
 
+export type ListSelfHostEnrollmentsQuery = {
+    /**
+     * @description Maximum number of items to return (1-100, default 20).
+     * @minLength 1
+     * @maxLength 100
+     * @default 20
+     * @type integer | undefined
+    */
+    page_size?: number;
+    /**
+     * @description Opaque token for cursor-based pagination.
+     * @pattern ^[a-zA-Z0-9_.-]+$
+     * @type string | undefined
+    */
+    page_token?: string;
+};
+
 export type ListSelfHostEnrollmentsHeaders = {
     /**
      * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
@@ -56,7 +73,7 @@ export type ListSelfHostEnrollmentsStatus403 = Error;
 export type ListSelfHostEnrollmentsOptions = {
     body?: never;
     path: ListSelfHostEnrollmentsPath;
-    query?: never;
+    query?: ListSelfHostEnrollmentsQuery;
     headers?: ListSelfHostEnrollmentsHeaders;
 };
 
