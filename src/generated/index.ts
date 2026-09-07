@@ -229,6 +229,7 @@ export type { VerifyCustomDomainOptions, VerifyCustomDomainPath, VerifyCustomDom
 export type { VerifyCustomDomainResponse } from './types/VerifyCustomDomainResponse'
 export type { WebhookEndpoint, WebhookEndpointFormatEnumKey } from './types/WebhookEndpoint'
 export type { WebhookEndpointInput, WebhookEndpointInputFormatEnumKey } from './types/WebhookEndpointInput'
+export type { WebhookEventTypeKey } from './types/WebhookEventType'
 export type { WebhookTestResponse } from './types/WebhookTestResponse'
 export { agentCredentialAuthMethodEnum, agentCredentialPrincipalTypeEnum, agentCredentialStatusEnum } from './types/AgentCredential'
 export { anomalyAlertSeverityEnum, anomalyAlertStatusEnum } from './types/AnomalyAlert'
@@ -278,3 +279,4 @@ export { updateOnboardingRequestStepEnum } from './types/UpdateOnboardingRequest
 export { vercelResourceStatusStatusEnum } from './types/VercelResourceStatus'
 export { webhookEndpointFormatEnum } from './types/WebhookEndpoint'
 export { webhookEndpointInputFormatEnum } from './types/WebhookEndpointInput'
+export { webhookEventType } from './types/WebhookEventType'

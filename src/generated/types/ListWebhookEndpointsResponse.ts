@@ -17,6 +17,7 @@ export type ListWebhookEndpointsResponse = {
     webhooks: WebhookEndpoint[];
     /**
      * @description Token for the next page. Empty if no more results.
+     * @example eyJpZCI6InByal8wMWo5eDh5N3o2In0
      * @type string | undefined
     */
     next_page_token?: string;

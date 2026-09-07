@@ -10,6 +10,7 @@
 export type WebhookTestResponse = {
     /**
      * @description Identifier of the test delivery.
+     * @example id_01j9x8y7z6w5v4u3t2s1r0q9p8
      * @type string
     */
     delivery_id: string;
@@ -20,6 +21,7 @@ export type WebhookTestResponse = {
     status: string;
     /**
      * @description HTTP status code returned by the endpoint, if a response was received.
+     * @example 10
      * @type integer | undefined
     */
     status_code?: number;

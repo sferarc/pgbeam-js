@@ -3,6 +3,8 @@
 * Do not edit manually.
 */
 
+import type { WebhookEventTypeKey } from './WebhookEventType'
+
 export const webhookEndpointInputFormatEnum = {
     json: "json",
     splunk_hec: "splunk_hec",
@@ -28,29 +30,34 @@ export type WebhookEndpointInput = {
     /**
      * @description Shared secret used to sign delivery payloads. Write-only.
      * @maxLength 256
+     * @example whsec_do-not-log-this
      * @type string | undefined
     */
     secret?: string;
     /**
      * @description Payload format for delivered events.
      * @default 'json'
+     * @example json
      * @type string | undefined
     */
     format?: WebhookEndpointInputFormatEnumKey;
     /**
      * @description Event types to deliver. Empty means all events.
+     * @example ["query_blocked","canary_tripped"]
      * @type array | undefined
     */
-    event_types?: string[];
+    event_types?: WebhookEventTypeKey[];
     /**
      * @description Whether deliveries are active for this endpoint.
      * @default true
+     * @example true
      * @type boolean | undefined
     */
     enabled?: boolean;
     /**
      * @description Human-readable label for the endpoint.
      * @maxLength 256
+     * @example Read-only access for the reporting agent
      * @type string | undefined
     */
     description?: string;
