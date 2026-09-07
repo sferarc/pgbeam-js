@@ -37,6 +37,9 @@ import type { DeleteDatabaseOptions } from "./types/DeleteDatabase";
 import type { TestDatabaseConnectionOptions, TestDatabaseConnectionStatus200 } from "./types/TestDatabaseConnection";
 import type { ScanDatabaseForPiiOptions, ScanDatabaseForPiiStatus200 } from "./types/ScanDatabaseForPii";
 import type { GetSchemaCatalogOptions, GetSchemaCatalogStatus200 } from "./types/GetSchemaCatalog";
+import type { GetDemoStatus200 } from "./types/GetDemo";
+import type { CreateDemoCredentialOptions, CreateDemoCredentialStatus201 } from "./types/CreateDemoCredential";
+import type { ReleaseDemoCredentialOptions, ReleaseDemoCredentialStatus200 } from "./types/ReleaseDemoCredential";
 import type { ListCustomDomainsOptions, ListCustomDomainsStatus200 } from "./types/ListCustomDomains";
 import type { CreateCustomDomainOptions, CreateCustomDomainStatus201 } from "./types/CreateCustomDomain";
 import type { DeleteCustomDomainOptions } from "./types/DeleteCustomDomain";
@@ -184,6 +187,11 @@ export const operationsByTag = {
     scanDatabaseForPii: { method: "POST", path: "/v1/projects/{project_id}/databases/{database_id}/scan-pii" },
     getSchemaCatalog: { method: "GET", path: "/v1/projects/{project_id}/databases/{database_id}/schema-catalog" },
   },
+  demo: {
+    getDemo: { method: "GET", path: "/v1/demo" },
+    createDemoCredential: { method: "POST", path: "/v1/demo/credentials" },
+    releaseDemoCredential: { method: "POST", path: "/v1/demo/credentials/{session_id}/release" },
+  },
   platform: {
     getHealth: { method: "GET", path: "/v1/health" },
     listRegions: { method: "GET", path: "/v1/regions" },
@@ -262,6 +270,9 @@ export const operationsByPath = {
   "POST /v1/projects/{project_id}/databases/{database_id}/test-connection": { method: "POST", path: "/v1/projects/{project_id}/databases/{database_id}/test-connection", operationId: "testDatabaseConnection" },
   "POST /v1/projects/{project_id}/databases/{database_id}/scan-pii": { method: "POST", path: "/v1/projects/{project_id}/databases/{database_id}/scan-pii", operationId: "scanDatabaseForPii" },
   "GET /v1/projects/{project_id}/databases/{database_id}/schema-catalog": { method: "GET", path: "/v1/projects/{project_id}/databases/{database_id}/schema-catalog", operationId: "getSchemaCatalog" },
+  "GET /v1/demo": { method: "GET", path: "/v1/demo", operationId: "getDemo" },
+  "POST /v1/demo/credentials": { method: "POST", path: "/v1/demo/credentials", operationId: "createDemoCredential" },
+  "POST /v1/demo/credentials/{session_id}/release": { method: "POST", path: "/v1/demo/credentials/{session_id}/release", operationId: "releaseDemoCredential" },
   "GET /v1/projects/{project_id}/domains": { method: "GET", path: "/v1/projects/{project_id}/domains", operationId: "listCustomDomains" },
   "POST /v1/projects/{project_id}/domains": { method: "POST", path: "/v1/projects/{project_id}/domains", operationId: "createCustomDomain" },
   "DELETE /v1/projects/{project_id}/domains/{domain_id}": { method: "DELETE", path: "/v1/projects/{project_id}/domains/{domain_id}", operationId: "deleteCustomDomain" },
@@ -356,6 +367,8 @@ type DeleteDatabaseParams = { pathParams: NonNullable<DeleteDatabaseOptions["pat
 type TestDatabaseConnectionParams = { pathParams: NonNullable<TestDatabaseConnectionOptions["path"]> };
 type ScanDatabaseForPiiParams = { pathParams: NonNullable<ScanDatabaseForPiiOptions["path"]> };
 type GetSchemaCatalogParams = { pathParams: NonNullable<GetSchemaCatalogOptions["path"]> };
+type CreateDemoCredentialParams = { body: NonNullable<CreateDemoCredentialOptions["body"]> };
+type ReleaseDemoCredentialParams = { pathParams: NonNullable<ReleaseDemoCredentialOptions["path"]>; body: NonNullable<ReleaseDemoCredentialOptions["body"]> };
 type ListCustomDomainsParams = { pathParams: NonNullable<ListCustomDomainsOptions["path"]>; queryParams?: NonNullable<ListCustomDomainsOptions["query"]> };
 type CreateCustomDomainParams = { pathParams: NonNullable<CreateCustomDomainOptions["path"]>; body: NonNullable<CreateCustomDomainOptions["body"]> };
 type DeleteCustomDomainParams = { pathParams: NonNullable<DeleteCustomDomainOptions["path"]> };
@@ -500,6 +513,11 @@ export interface ApiOperations {
     scanDatabaseForPii(params: ScanDatabaseForPiiParams): Promise<ScanDatabaseForPiiStatus200>;
     getSchemaCatalog(params: GetSchemaCatalogParams): Promise<GetSchemaCatalogStatus200>;
   };
+  demo: {
+    getDemo(): Promise<GetDemoStatus200>;
+    createDemoCredential(params: CreateDemoCredentialParams): Promise<CreateDemoCredentialStatus201>;
+    releaseDemoCredential(params: ReleaseDemoCredentialParams): Promise<ReleaseDemoCredentialStatus200>;
+  };
   platform: {
     getHealth(): Promise<GetHealthStatus200>;
     listRegions(): Promise<ListRegionsStatus200>;
@@ -578,6 +596,9 @@ export interface RequestMap {
   "POST /v1/projects/{project_id}/databases/{database_id}/test-connection": { params: TestDatabaseConnectionParams; response: TestDatabaseConnectionStatus200 };
   "POST /v1/projects/{project_id}/databases/{database_id}/scan-pii": { params: ScanDatabaseForPiiParams; response: ScanDatabaseForPiiStatus200 };
   "GET /v1/projects/{project_id}/databases/{database_id}/schema-catalog": { params: GetSchemaCatalogParams; response: GetSchemaCatalogStatus200 };
+  "GET /v1/demo": { params?: undefined; response: GetDemoStatus200 };
+  "POST /v1/demo/credentials": { params: CreateDemoCredentialParams; response: CreateDemoCredentialStatus201 };
+  "POST /v1/demo/credentials/{session_id}/release": { params: ReleaseDemoCredentialParams; response: ReleaseDemoCredentialStatus200 };
   "GET /v1/projects/{project_id}/domains": { params: ListCustomDomainsParams; response: ListCustomDomainsStatus200 };
   "POST /v1/projects/{project_id}/domains": { params: CreateCustomDomainParams; response: CreateCustomDomainStatus201 };
   "DELETE /v1/projects/{project_id}/domains/{domain_id}": { params: DeleteCustomDomainParams; response: void };
