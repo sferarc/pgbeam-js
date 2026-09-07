@@ -92,6 +92,7 @@ import type { GetSupportCaseOptions, GetSupportCaseStatus200 } from "./types/Get
 import type { UpdateSupportCaseOptions, UpdateSupportCaseStatus200 } from "./types/UpdateSupportCase";
 import type { CreateSupportMessageOptions, CreateSupportMessageStatus201 } from "./types/CreateSupportMessage";
 import type { HandleSlackSupportEventOptions, HandleSlackSupportEventStatus200 } from "./types/HandleSlackSupportEvent";
+import type { ScanTextOptions, ScanTextStatus200 } from "./types/ScanText";
 import type { GetOrganizationUsageOptions, GetOrganizationUsageStatus200 } from "./types/GetOrganizationUsage";
 import type { GetProjectUsageOptions, GetProjectUsageStatus200 } from "./types/GetProjectUsage";
 import type { GetAgentUsageBreakdownOptions, GetAgentUsageBreakdownStatus200 } from "./types/GetAgentUsageBreakdown";
@@ -203,6 +204,7 @@ export const operationsByTag = {
     createSelfHostEnrollment: { method: "POST", path: "/v1/organizations/{org_id}/self-host-enrollments" },
     revokeSelfHostEnrollment: { method: "DELETE", path: "/v1/organizations/{org_id}/self-host-enrollments/{enrollment_id}" },
     rotateSelfHostEnrollment: { method: "POST", path: "/v1/organizations/{org_id}/self-host-enrollments/{enrollment_id}/rotate" },
+    scanText: { method: "POST", path: "/v1/scan/text" },
   },
   honeytokens: {
     listHoneytokens: { method: "GET", path: "/v1/projects/{project_id}/honeytokens" },
@@ -329,6 +331,7 @@ export const operationsByPath = {
   "PATCH /v1/organizations/{org_id}/support/cases/{case_id}": { method: "PATCH", path: "/v1/organizations/{org_id}/support/cases/{case_id}", operationId: "updateSupportCase" },
   "POST /v1/organizations/{org_id}/support/cases/{case_id}/messages": { method: "POST", path: "/v1/organizations/{org_id}/support/cases/{case_id}/messages", operationId: "createSupportMessage" },
   "POST /v1/internal/support/slack-event": { method: "POST", path: "/v1/internal/support/slack-event", operationId: "handleSlackSupportEvent" },
+  "POST /v1/scan/text": { method: "POST", path: "/v1/scan/text", operationId: "scanText" },
   "GET /v1/organizations/{org_id}/usage": { method: "GET", path: "/v1/organizations/{org_id}/usage", operationId: "getOrganizationUsage" },
   "GET /v1/projects/{project_id}/usage": { method: "GET", path: "/v1/projects/{project_id}/usage", operationId: "getProjectUsage" },
   "GET /v1/projects/{project_id}/usage/agents": { method: "GET", path: "/v1/projects/{project_id}/usage/agents", operationId: "getAgentUsageBreakdown" },
@@ -423,6 +426,7 @@ type GetSupportCaseParams = { pathParams: NonNullable<GetSupportCaseOptions["pat
 type UpdateSupportCaseParams = { pathParams: NonNullable<UpdateSupportCaseOptions["path"]>; body: NonNullable<UpdateSupportCaseOptions["body"]> };
 type CreateSupportMessageParams = { pathParams: NonNullable<CreateSupportMessageOptions["path"]>; body: NonNullable<CreateSupportMessageOptions["body"]> };
 type HandleSlackSupportEventParams = { body: NonNullable<HandleSlackSupportEventOptions["body"]> };
+type ScanTextParams = { body: NonNullable<ScanTextOptions["body"]> };
 type GetOrganizationUsageParams = { pathParams: NonNullable<GetOrganizationUsageOptions["path"]>; queryParams: NonNullable<GetOrganizationUsageOptions["query"]> };
 type GetProjectUsageParams = { pathParams: NonNullable<GetProjectUsageOptions["path"]>; queryParams: NonNullable<GetProjectUsageOptions["query"]> };
 type GetAgentUsageBreakdownParams = { pathParams: NonNullable<GetAgentUsageBreakdownOptions["path"]>; queryParams?: NonNullable<GetAgentUsageBreakdownOptions["query"]> };
@@ -534,6 +538,7 @@ export interface ApiOperations {
     createSelfHostEnrollment(params: CreateSelfHostEnrollmentParams): Promise<CreateSelfHostEnrollmentStatus201>;
     revokeSelfHostEnrollment(params: RevokeSelfHostEnrollmentParams): Promise<void>;
     rotateSelfHostEnrollment(params: RotateSelfHostEnrollmentParams): Promise<RotateSelfHostEnrollmentStatus200>;
+    scanText(params: ScanTextParams): Promise<ScanTextStatus200>;
   };
   honeytokens: {
     listHoneytokens(params: ListHoneytokensParams): Promise<ListHoneytokensStatus200>;
@@ -660,6 +665,7 @@ export interface RequestMap {
   "PATCH /v1/organizations/{org_id}/support/cases/{case_id}": { params: UpdateSupportCaseParams; response: UpdateSupportCaseStatus200 };
   "POST /v1/organizations/{org_id}/support/cases/{case_id}/messages": { params: CreateSupportMessageParams; response: CreateSupportMessageStatus201 };
   "POST /v1/internal/support/slack-event": { params: HandleSlackSupportEventParams; response: HandleSlackSupportEventStatus200 };
+  "POST /v1/scan/text": { params: ScanTextParams; response: ScanTextStatus200 };
   "GET /v1/organizations/{org_id}/usage": { params: GetOrganizationUsageParams; response: GetOrganizationUsageStatus200 };
   "GET /v1/projects/{project_id}/usage": { params: GetProjectUsageParams; response: GetProjectUsageStatus200 };
   "GET /v1/projects/{project_id}/usage/agents": { params: GetAgentUsageBreakdownParams; response: GetAgentUsageBreakdownStatus200 };
