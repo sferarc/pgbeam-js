@@ -53,6 +53,12 @@ export type UpdateAgentCredentialStatusStatus403 = Error;
 export type UpdateAgentCredentialStatusStatus404 = Error;
 
 /**
+ * @description Standard error response envelope for PgBeam API requests.
+ * @type object
+*/
+export type UpdateAgentCredentialStatusStatus409 = Error;
+
+/**
  * @description Request body for enabling or disabling an agent credential.
  * @type object
 */
@@ -71,9 +77,10 @@ export type UpdateAgentCredentialStatusResponses = {
     "401": UpdateAgentCredentialStatusStatus401;
     "403": UpdateAgentCredentialStatusStatus403;
     "404": UpdateAgentCredentialStatusStatus404;
+    "409": UpdateAgentCredentialStatusStatus409;
 };
 
 /**
  * @description Union of all possible responses
 */
-export type UpdateAgentCredentialStatusResponse = (UpdateAgentCredentialStatusStatus200 | UpdateAgentCredentialStatusStatus400 | UpdateAgentCredentialStatusStatus401 | UpdateAgentCredentialStatusStatus403 | UpdateAgentCredentialStatusStatus404);
+export type UpdateAgentCredentialStatusResponse = (UpdateAgentCredentialStatusStatus200 | UpdateAgentCredentialStatusStatus400 | UpdateAgentCredentialStatusStatus401 | UpdateAgentCredentialStatusStatus403 | UpdateAgentCredentialStatusStatus404 | UpdateAgentCredentialStatusStatus409);
