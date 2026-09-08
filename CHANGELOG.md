@@ -1,5 +1,18 @@
 # pgbeam
 
+## 0.4.12
+
+### Patch Changes
+
+- 3f33063: feat(api): split errors into RFC 9457 problem documents
+- 022577d: feat(api): the audit log handed out a cursor with nowhere to put it, so a generated client could not page it at all
+- eca3f27: feat(payments): an agent whose query budget runs out can buy more over HTTP 402
+- c1fa878: feat(scan): the hostile-text detector was a library nobody could call without running Postgres through us
+- 9818ecf: fix(api): a caller could tell whether a project existed in someone else's tenant, and two collections had no bound at all
+- 3f33063: fix(sdk,cli): read the API's RFC 9457 problem documents
+
+  `ApiError` now exposes `code`, `type`, `title`, `detail`, `instance`, `requestId` and `errors`, and its `message` comes from the document's `detail` rather than falling through to the status text. Branch on `code`: two conditions can share a status, and a 403 is either a permissions problem or a billing one. The CLI puts the code on the error line, lists field errors under it, and carries both in `--json` output.
+
 ## 0.4.11
 
 ### Patch Changes
