@@ -1,5 +1,11 @@
 # pgbeam
 
+## 0.4.13
+
+### Patch Changes
+
+- 3342c65: feat(policy): content_scan_mode and content_scan_max_bytes on the policy profile
+
 ## 0.4.12
 
 ### Patch Changes
