@@ -39,6 +39,14 @@ export const policyProfileInputMigrationSafetyEnum = {
 
 export type PolicyProfileInputMigrationSafetyEnumKey = (typeof policyProfileInputMigrationSafetyEnum)[keyof typeof policyProfileInputMigrationSafetyEnum];
 
+export const policyProfileInputContentScanModeEnum = {
+    off: "off",
+    annotate: "annotate",
+    block: "block"
+} as const;
+
+export type PolicyProfileInputContentScanModeEnumKey = (typeof policyProfileInputContentScanModeEnum)[keyof typeof policyProfileInputContentScanModeEnum];
+
 /**
  * @description Mutable fields of a policy profile (used for create and update).
  * @type object
@@ -158,4 +166,19 @@ export type PolicyProfileInput = {
      * @type integer | undefined
     */
     max_affected_rows?: number;
+    /**
+     * @description Result-content scanning, accepted and stored but not yet enforced: no released proxy build reads this field, so today every value behaves like off. Once enforcement ships on the data-plane relay path, values on their way out to an agent will be checked for instruction-shaped content (stored prompt injection). off will scan nothing and cost nothing. annotate will forward every value unchanged and record what it found. block will additionally refuse the statement with an error naming the column, and never drop a row silently. A proxy build without result-content scanning ignores this field.
+     * @default 'off'
+     * @type string | undefined
+    */
+    content_scan_mode?: PolicyProfileInputContentScanModeEnumKey;
+    /**
+     * @description Byte budget for one statement\'s content scan, spanning all values in the result. Stored but not yet read by any released proxy build, like content_scan_mode. Once enforced, values past it are reported unscannable rather than skipped quietly. 0 uses the scanner default (4 MiB), which covers an interactive result set and deliberately does not cover a bulk export.
+     *
+     * Format: `int64`
+     * @minLength 0
+     * @default 0
+     * @type integer | undefined
+    */
+    content_scan_max_bytes?: number;
 };
