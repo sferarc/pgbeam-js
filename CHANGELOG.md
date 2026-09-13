@@ -1,5 +1,11 @@
 # pgbeam
 
+## 0.4.14
+
+### Patch Changes
+
+- a5fbfca: feat(proxy): scan result content on the wire for agent-directed text
+
 ## 0.4.13
 
 ### Patch Changes
