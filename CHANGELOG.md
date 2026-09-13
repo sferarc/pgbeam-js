@@ -1,5 +1,11 @@
 # pgbeam
 
+## 0.4.15
+
+### Patch Changes
+
+- 631f106: feat(contentscan): a flagged result records a content_flagged audit entry
+
 ## 0.4.14
 
 ### Patch Changes
