@@ -1,5 +1,11 @@
 # pgbeam
 
+## 0.4.16
+
+### Patch Changes
+
+- 40af2fb: feat(proxy,api): raise an anomaly alert for a high-confidence content-scan finding
+
 ## 0.4.15
 
 ### Patch Changes
