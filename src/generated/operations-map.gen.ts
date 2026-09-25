@@ -13,6 +13,11 @@ import type { RotateAgentCredentialOptions, RotateAgentCredentialStatus200 } fro
 import type { RecommendAgentPolicyOptions, RecommendAgentPolicyStatus200 } from "./types/RecommendAgentPolicy";
 import type { ListAnomalyAlertsOptions, ListAnomalyAlertsStatus200 } from "./types/ListAnomalyAlerts";
 import type { UpdateAnomalyAlertOptions, UpdateAnomalyAlertStatus200 } from "./types/UpdateAnomalyAlert";
+import type { ListAnomalyRulesOptions, ListAnomalyRulesStatus200 } from "./types/ListAnomalyRules";
+import type { CreateAnomalyRuleOptions, CreateAnomalyRuleStatus201 } from "./types/CreateAnomalyRule";
+import type { GetAnomalyRuleOptions, GetAnomalyRuleStatus200 } from "./types/GetAnomalyRule";
+import type { UpdateAnomalyRuleOptions, UpdateAnomalyRuleStatus200 } from "./types/UpdateAnomalyRule";
+import type { DeleteAnomalyRuleOptions } from "./types/DeleteAnomalyRule";
 import type { ListApprovalRequestsOptions, ListApprovalRequestsStatus200 } from "./types/ListApprovalRequests";
 import type { ApproveApprovalRequestOptions, ApproveApprovalRequestStatus200 } from "./types/ApproveApprovalRequest";
 import type { RejectApprovalRequestOptions, RejectApprovalRequestStatus200 } from "./types/RejectApprovalRequest";
@@ -144,6 +149,11 @@ export const operationsByTag = {
   anomalies: {
     listAnomalyAlerts: { method: "GET", path: "/v1/projects/{project_id}/anomalies" },
     updateAnomalyAlert: { method: "PATCH", path: "/v1/projects/{project_id}/anomalies/{anomaly_id}" },
+    listAnomalyRules: { method: "GET", path: "/v1/projects/{project_id}/anomaly-rules" },
+    createAnomalyRule: { method: "POST", path: "/v1/projects/{project_id}/anomaly-rules" },
+    getAnomalyRule: { method: "GET", path: "/v1/projects/{project_id}/anomaly-rules/{anomaly_rule_id}" },
+    updateAnomalyRule: { method: "PUT", path: "/v1/projects/{project_id}/anomaly-rules/{anomaly_rule_id}" },
+    deleteAnomalyRule: { method: "DELETE", path: "/v1/projects/{project_id}/anomaly-rules/{anomaly_rule_id}" },
   },
   approvals: {
     listApprovalRequests: { method: "GET", path: "/v1/projects/{project_id}/approvals" },
@@ -258,6 +268,11 @@ export const operationsByPath = {
   "POST /v1/projects/{project_id}/agents/{agent_id}/policy-recommendation": { method: "POST", path: "/v1/projects/{project_id}/agents/{agent_id}/policy-recommendation", operationId: "recommendAgentPolicy" },
   "GET /v1/projects/{project_id}/anomalies": { method: "GET", path: "/v1/projects/{project_id}/anomalies", operationId: "listAnomalyAlerts" },
   "PATCH /v1/projects/{project_id}/anomalies/{anomaly_id}": { method: "PATCH", path: "/v1/projects/{project_id}/anomalies/{anomaly_id}", operationId: "updateAnomalyAlert" },
+  "GET /v1/projects/{project_id}/anomaly-rules": { method: "GET", path: "/v1/projects/{project_id}/anomaly-rules", operationId: "listAnomalyRules" },
+  "POST /v1/projects/{project_id}/anomaly-rules": { method: "POST", path: "/v1/projects/{project_id}/anomaly-rules", operationId: "createAnomalyRule" },
+  "GET /v1/projects/{project_id}/anomaly-rules/{anomaly_rule_id}": { method: "GET", path: "/v1/projects/{project_id}/anomaly-rules/{anomaly_rule_id}", operationId: "getAnomalyRule" },
+  "PUT /v1/projects/{project_id}/anomaly-rules/{anomaly_rule_id}": { method: "PUT", path: "/v1/projects/{project_id}/anomaly-rules/{anomaly_rule_id}", operationId: "updateAnomalyRule" },
+  "DELETE /v1/projects/{project_id}/anomaly-rules/{anomaly_rule_id}": { method: "DELETE", path: "/v1/projects/{project_id}/anomaly-rules/{anomaly_rule_id}", operationId: "deleteAnomalyRule" },
   "GET /v1/projects/{project_id}/approvals": { method: "GET", path: "/v1/projects/{project_id}/approvals", operationId: "listApprovalRequests" },
   "POST /v1/projects/{project_id}/approvals/{approval_id}/approve": { method: "POST", path: "/v1/projects/{project_id}/approvals/{approval_id}/approve", operationId: "approveApprovalRequest" },
   "POST /v1/projects/{project_id}/approvals/{approval_id}/reject": { method: "POST", path: "/v1/projects/{project_id}/approvals/{approval_id}/reject", operationId: "rejectApprovalRequest" },
@@ -360,6 +375,11 @@ type RotateAgentCredentialParams = { pathParams: NonNullable<RotateAgentCredenti
 type RecommendAgentPolicyParams = { pathParams: NonNullable<RecommendAgentPolicyOptions["path"]>; body: NonNullable<RecommendAgentPolicyOptions["body"]> };
 type ListAnomalyAlertsParams = { pathParams: NonNullable<ListAnomalyAlertsOptions["path"]>; queryParams?: NonNullable<ListAnomalyAlertsOptions["query"]> };
 type UpdateAnomalyAlertParams = { pathParams: NonNullable<UpdateAnomalyAlertOptions["path"]>; body: NonNullable<UpdateAnomalyAlertOptions["body"]> };
+type ListAnomalyRulesParams = { pathParams: NonNullable<ListAnomalyRulesOptions["path"]>; queryParams?: NonNullable<ListAnomalyRulesOptions["query"]> };
+type CreateAnomalyRuleParams = { pathParams: NonNullable<CreateAnomalyRuleOptions["path"]>; body: NonNullable<CreateAnomalyRuleOptions["body"]> };
+type GetAnomalyRuleParams = { pathParams: NonNullable<GetAnomalyRuleOptions["path"]> };
+type UpdateAnomalyRuleParams = { pathParams: NonNullable<UpdateAnomalyRuleOptions["path"]>; body: NonNullable<UpdateAnomalyRuleOptions["body"]> };
+type DeleteAnomalyRuleParams = { pathParams: NonNullable<DeleteAnomalyRuleOptions["path"]> };
 type ListApprovalRequestsParams = { pathParams: NonNullable<ListApprovalRequestsOptions["path"]>; queryParams?: NonNullable<ListApprovalRequestsOptions["query"]> };
 type ApproveApprovalRequestParams = { pathParams: NonNullable<ApproveApprovalRequestOptions["path"]>; body: NonNullable<ApproveApprovalRequestOptions["body"]> };
 type RejectApprovalRequestParams = { pathParams: NonNullable<RejectApprovalRequestOptions["path"]>; body: NonNullable<RejectApprovalRequestOptions["body"]> };
@@ -485,6 +505,11 @@ export interface ApiOperations {
   anomalies: {
     listAnomalyAlerts(params: ListAnomalyAlertsParams): Promise<ListAnomalyAlertsStatus200>;
     updateAnomalyAlert(params: UpdateAnomalyAlertParams): Promise<UpdateAnomalyAlertStatus200>;
+    listAnomalyRules(params: ListAnomalyRulesParams): Promise<ListAnomalyRulesStatus200>;
+    createAnomalyRule(params: CreateAnomalyRuleParams): Promise<CreateAnomalyRuleStatus201>;
+    getAnomalyRule(params: GetAnomalyRuleParams): Promise<GetAnomalyRuleStatus200>;
+    updateAnomalyRule(params: UpdateAnomalyRuleParams): Promise<UpdateAnomalyRuleStatus200>;
+    deleteAnomalyRule(params: DeleteAnomalyRuleParams): Promise<void>;
   };
   approvals: {
     listApprovalRequests(params: ListApprovalRequestsParams): Promise<ListApprovalRequestsStatus200>;
@@ -599,6 +624,11 @@ export interface RequestMap {
   "POST /v1/projects/{project_id}/agents/{agent_id}/policy-recommendation": { params: RecommendAgentPolicyParams; response: RecommendAgentPolicyStatus200 };
   "GET /v1/projects/{project_id}/anomalies": { params: ListAnomalyAlertsParams; response: ListAnomalyAlertsStatus200 };
   "PATCH /v1/projects/{project_id}/anomalies/{anomaly_id}": { params: UpdateAnomalyAlertParams; response: UpdateAnomalyAlertStatus200 };
+  "GET /v1/projects/{project_id}/anomaly-rules": { params: ListAnomalyRulesParams; response: ListAnomalyRulesStatus200 };
+  "POST /v1/projects/{project_id}/anomaly-rules": { params: CreateAnomalyRuleParams; response: CreateAnomalyRuleStatus201 };
+  "GET /v1/projects/{project_id}/anomaly-rules/{anomaly_rule_id}": { params: GetAnomalyRuleParams; response: GetAnomalyRuleStatus200 };
+  "PUT /v1/projects/{project_id}/anomaly-rules/{anomaly_rule_id}": { params: UpdateAnomalyRuleParams; response: UpdateAnomalyRuleStatus200 };
+  "DELETE /v1/projects/{project_id}/anomaly-rules/{anomaly_rule_id}": { params: DeleteAnomalyRuleParams; response: void };
   "GET /v1/projects/{project_id}/approvals": { params: ListApprovalRequestsParams; response: ListApprovalRequestsStatus200 };
   "POST /v1/projects/{project_id}/approvals/{approval_id}/approve": { params: ApproveApprovalRequestParams; response: ApproveApprovalRequestStatus200 };
   "POST /v1/projects/{project_id}/approvals/{approval_id}/reject": { params: RejectApprovalRequestParams; response: RejectApprovalRequestStatus200 };
