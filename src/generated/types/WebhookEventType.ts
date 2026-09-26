@@ -12,6 +12,7 @@ export const webhookEventType = {
     approval_requested: "approval_requested",
     anomaly_alert: "anomaly_alert",
     canary_tripped: "canary_tripped",
+    content_flagged: "content_flagged",
     audit_checkpoint: "audit_checkpoint",
     "webhook.test": "webhook.test"
 } as const;
