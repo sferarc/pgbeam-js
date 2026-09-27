@@ -1,5 +1,11 @@
 # pgbeam
 
+## 0.4.18
+
+### Patch Changes
+
+- 16ed7f3: feat(proxy): content_scan_mode=block now blocks, and it does it out loud (roadmap item 7, rung 3)
+
 ## 0.4.17
 
 ### Patch Changes
