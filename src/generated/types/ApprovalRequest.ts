@@ -78,6 +78,11 @@ export type ApprovalRequest = {
     */
     target_tables?: string[];
     /**
+     * @description Name of the approval rule that held the statement, as it was named when the statement was held. Null when the policy profile\'s approval_mode held it rather than a rule.
+     * @type string | undefined
+    */
+    approval_rule_name?: string | null;
+    /**
      * @description Current state of the approval request.
      * @type string
     */
