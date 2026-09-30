@@ -21,7 +21,7 @@ export type SchemaCatalogColumn = {
     */
     data_type: string;
     /**
-     * @description True for binary-typed columns (e.g. bytea). Masking a binary column always returns NULL — a redact/hash token would corrupt the wire type — so the editor warns when a masking rule targets one.
+     * @description True for binary-typed columns (e.g. bytea). Masking a binary column always returns NULL, because a redact/hash token would corrupt the wire type, so the editor warns when a masking rule targets one.
      * @type boolean
     */
     is_binary: boolean;

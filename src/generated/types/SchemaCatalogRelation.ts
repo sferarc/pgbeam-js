@@ -32,7 +32,7 @@ export type SchemaCatalogRelation = {
     */
     name: string;
     /**
-     * @description Relation kind. Allowlists, masking, and row-filters are enforced against the named relation itself, NOT through a view to its base tables — so a view over a row-filtered base table can leak. The editor warns when a policy entry targets a view.
+     * @description Relation kind. Allowlists, masking, and row-filters are enforced against the named relation itself, NOT through a view to its base tables, so a view over a row-filtered base table can leak. The editor warns when a policy entry targets a view.
      * @type string
     */
     kind: SchemaCatalogRelationKindEnumKey;

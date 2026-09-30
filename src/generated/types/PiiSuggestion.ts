@@ -30,7 +30,7 @@ export const piiSuggestionMaskKindEnum = {
 export type PiiSuggestionMaskKindEnumKey = (typeof piiSuggestionMaskKindEnum)[keyof typeof piiSuggestionMaskKindEnum];
 
 /**
- * @description A single likely-PII column detected by the scanner, with a recommended masking rule. Suggestions are advisory only — nothing is applied until the operator reviews and adds it to a policy profile.
+ * @description A single likely-PII column detected by the scanner, with a recommended masking rule. Suggestions are advisory only: nothing is applied until the operator reviews and adds it to a policy profile.
  * @type object
 */
 export type PiiSuggestion = {

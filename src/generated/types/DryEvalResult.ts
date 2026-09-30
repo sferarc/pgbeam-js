@@ -20,7 +20,7 @@ export type DryEvalResultVerdictEnumKey = (typeof dryEvalResultVerdictEnum)[keyo
 */
 export type DryEvalResult = {
     /**
-     * @description allow — permitted unchanged; block — rejected; mask — permitted but listed result columns are masked; row-filter — permitted but a WHERE predicate is injected (and any listed columns are also masked).
+     * @description allow: permitted unchanged; block: rejected; mask: permitted but listed result columns are masked; row-filter: permitted but a WHERE predicate is injected (and any listed columns are also masked).
      * @type string
     */
     verdict: DryEvalResultVerdictEnumKey;
