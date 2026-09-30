@@ -41,7 +41,7 @@ export type AnomalyAlert = {
     */
     credential_id?: string | null;
     /**
-     * @description Machine-readable anomaly kind (e.g. egress_spike, novel_query_shape).
+     * @description Machine-readable anomaly kind, one of the AnomalyKind values (e.g. egress_spike, new_query_shape). A string rather than the enum so a client built before a new kind ships still reads the alert.
      * @type string
     */
     kind: string;

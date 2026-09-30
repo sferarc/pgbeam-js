@@ -3,6 +3,7 @@
 * Do not edit manually.
 */
 
+import type { AnomalyKindKey } from './AnomalyKind'
 import type { Error } from './Error'
 import type { ListAnomalyAlertsResponse } from './ListAnomalyAlertsResponse'
 
@@ -29,6 +30,12 @@ export type ListAnomalyAlertsQuery = {
      * @type string | undefined
     */
     status?: ListAnomalyAlertsStatusKey;
+    /**
+     * @description Filter to a single anomaly kind.
+     * @example egress_spike
+     * @type string | undefined
+    */
+    kind?: AnomalyKindKey;
     /**
      * @description Maximum number of items to return (1-100, default 20).
      * @minLength 1
