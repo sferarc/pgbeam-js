@@ -1,5 +1,11 @@
 # pgbeam
 
+## 0.4.19
+
+### Patch Changes
+
+- b821f90: Approval requests carry `approval_rule_name`, the approval rule that held the statement.
+
 ## 0.4.18
 
 ### Patch Changes
