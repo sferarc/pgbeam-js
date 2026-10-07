@@ -3,6 +3,8 @@
 * Do not edit manually.
 */
 
+import type { AuditSessionAnomalies } from './AuditSessionAnomalies'
+
 /**
  * @description Deterministic summary of one agent session\'s recorded statements: what it touched, how much it moved, and how often the policy engine stepped in. Computed from the project\'s audit log with no model in the loop, so the same entries always summarize the same way. Carries schema metadata (table names) and counts only, never row values.
  * @type object
@@ -143,4 +145,9 @@ export type AuditSessionSummary = {
      * @type boolean
     */
     scan_truncated: boolean;
+    /**
+     * @description Anomaly alerts related to the session, split by how they relate to it. Absent from the summary when the caller\'s role does not hold anomaly:read, because alerts are read under that permission everywhere else and the summary is gated on audit:read.
+     * @type object | undefined
+    */
+    anomalies?: AuditSessionAnomalies;
 };
