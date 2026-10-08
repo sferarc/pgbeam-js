@@ -18,6 +18,11 @@ import type { CreateAnomalyRuleOptions, CreateAnomalyRuleStatus201 } from "./typ
 import type { GetAnomalyRuleOptions, GetAnomalyRuleStatus200 } from "./types/GetAnomalyRule";
 import type { UpdateAnomalyRuleOptions, UpdateAnomalyRuleStatus200 } from "./types/UpdateAnomalyRule";
 import type { DeleteAnomalyRuleOptions } from "./types/DeleteAnomalyRule";
+import type { ListApprovalRulesOptions, ListApprovalRulesStatus200 } from "./types/ListApprovalRules";
+import type { CreateApprovalRuleOptions, CreateApprovalRuleStatus201 } from "./types/CreateApprovalRule";
+import type { GetApprovalRuleOptions, GetApprovalRuleStatus200 } from "./types/GetApprovalRule";
+import type { UpdateApprovalRuleOptions, UpdateApprovalRuleStatus200 } from "./types/UpdateApprovalRule";
+import type { DeleteApprovalRuleOptions } from "./types/DeleteApprovalRule";
 import type { ListApprovalRequestsOptions, ListApprovalRequestsStatus200 } from "./types/ListApprovalRequests";
 import type { ApproveApprovalRequestOptions, ApproveApprovalRequestStatus200 } from "./types/ApproveApprovalRequest";
 import type { RejectApprovalRequestOptions, RejectApprovalRequestStatus200 } from "./types/RejectApprovalRequest";
@@ -156,6 +161,11 @@ export const operationsByTag = {
     deleteAnomalyRule: { method: "DELETE", path: "/v1/projects/{project_id}/anomaly-rules/{anomaly_rule_id}" },
   },
   approvals: {
+    listApprovalRules: { method: "GET", path: "/v1/projects/{project_id}/approval-rules" },
+    createApprovalRule: { method: "POST", path: "/v1/projects/{project_id}/approval-rules" },
+    getApprovalRule: { method: "GET", path: "/v1/projects/{project_id}/approval-rules/{approval_rule_id}" },
+    updateApprovalRule: { method: "PUT", path: "/v1/projects/{project_id}/approval-rules/{approval_rule_id}" },
+    deleteApprovalRule: { method: "DELETE", path: "/v1/projects/{project_id}/approval-rules/{approval_rule_id}" },
     listApprovalRequests: { method: "GET", path: "/v1/projects/{project_id}/approvals" },
     approveApprovalRequest: { method: "POST", path: "/v1/projects/{project_id}/approvals/{approval_id}/approve" },
     rejectApprovalRequest: { method: "POST", path: "/v1/projects/{project_id}/approvals/{approval_id}/reject" },
@@ -273,6 +283,11 @@ export const operationsByPath = {
   "GET /v1/projects/{project_id}/anomaly-rules/{anomaly_rule_id}": { method: "GET", path: "/v1/projects/{project_id}/anomaly-rules/{anomaly_rule_id}", operationId: "getAnomalyRule" },
   "PUT /v1/projects/{project_id}/anomaly-rules/{anomaly_rule_id}": { method: "PUT", path: "/v1/projects/{project_id}/anomaly-rules/{anomaly_rule_id}", operationId: "updateAnomalyRule" },
   "DELETE /v1/projects/{project_id}/anomaly-rules/{anomaly_rule_id}": { method: "DELETE", path: "/v1/projects/{project_id}/anomaly-rules/{anomaly_rule_id}", operationId: "deleteAnomalyRule" },
+  "GET /v1/projects/{project_id}/approval-rules": { method: "GET", path: "/v1/projects/{project_id}/approval-rules", operationId: "listApprovalRules" },
+  "POST /v1/projects/{project_id}/approval-rules": { method: "POST", path: "/v1/projects/{project_id}/approval-rules", operationId: "createApprovalRule" },
+  "GET /v1/projects/{project_id}/approval-rules/{approval_rule_id}": { method: "GET", path: "/v1/projects/{project_id}/approval-rules/{approval_rule_id}", operationId: "getApprovalRule" },
+  "PUT /v1/projects/{project_id}/approval-rules/{approval_rule_id}": { method: "PUT", path: "/v1/projects/{project_id}/approval-rules/{approval_rule_id}", operationId: "updateApprovalRule" },
+  "DELETE /v1/projects/{project_id}/approval-rules/{approval_rule_id}": { method: "DELETE", path: "/v1/projects/{project_id}/approval-rules/{approval_rule_id}", operationId: "deleteApprovalRule" },
   "GET /v1/projects/{project_id}/approvals": { method: "GET", path: "/v1/projects/{project_id}/approvals", operationId: "listApprovalRequests" },
   "POST /v1/projects/{project_id}/approvals/{approval_id}/approve": { method: "POST", path: "/v1/projects/{project_id}/approvals/{approval_id}/approve", operationId: "approveApprovalRequest" },
   "POST /v1/projects/{project_id}/approvals/{approval_id}/reject": { method: "POST", path: "/v1/projects/{project_id}/approvals/{approval_id}/reject", operationId: "rejectApprovalRequest" },
@@ -380,6 +395,11 @@ type CreateAnomalyRuleParams = { pathParams: NonNullable<CreateAnomalyRuleOption
 type GetAnomalyRuleParams = { pathParams: NonNullable<GetAnomalyRuleOptions["path"]> };
 type UpdateAnomalyRuleParams = { pathParams: NonNullable<UpdateAnomalyRuleOptions["path"]>; body: NonNullable<UpdateAnomalyRuleOptions["body"]> };
 type DeleteAnomalyRuleParams = { pathParams: NonNullable<DeleteAnomalyRuleOptions["path"]> };
+type ListApprovalRulesParams = { pathParams: NonNullable<ListApprovalRulesOptions["path"]>; queryParams?: NonNullable<ListApprovalRulesOptions["query"]> };
+type CreateApprovalRuleParams = { pathParams: NonNullable<CreateApprovalRuleOptions["path"]>; body: NonNullable<CreateApprovalRuleOptions["body"]> };
+type GetApprovalRuleParams = { pathParams: NonNullable<GetApprovalRuleOptions["path"]> };
+type UpdateApprovalRuleParams = { pathParams: NonNullable<UpdateApprovalRuleOptions["path"]>; body: NonNullable<UpdateApprovalRuleOptions["body"]> };
+type DeleteApprovalRuleParams = { pathParams: NonNullable<DeleteApprovalRuleOptions["path"]> };
 type ListApprovalRequestsParams = { pathParams: NonNullable<ListApprovalRequestsOptions["path"]>; queryParams?: NonNullable<ListApprovalRequestsOptions["query"]> };
 type ApproveApprovalRequestParams = { pathParams: NonNullable<ApproveApprovalRequestOptions["path"]>; body: NonNullable<ApproveApprovalRequestOptions["body"]> };
 type RejectApprovalRequestParams = { pathParams: NonNullable<RejectApprovalRequestOptions["path"]>; body: NonNullable<RejectApprovalRequestOptions["body"]> };
@@ -512,6 +532,11 @@ export interface ApiOperations {
     deleteAnomalyRule(params: DeleteAnomalyRuleParams): Promise<void>;
   };
   approvals: {
+    listApprovalRules(params: ListApprovalRulesParams): Promise<ListApprovalRulesStatus200>;
+    createApprovalRule(params: CreateApprovalRuleParams): Promise<CreateApprovalRuleStatus201>;
+    getApprovalRule(params: GetApprovalRuleParams): Promise<GetApprovalRuleStatus200>;
+    updateApprovalRule(params: UpdateApprovalRuleParams): Promise<UpdateApprovalRuleStatus200>;
+    deleteApprovalRule(params: DeleteApprovalRuleParams): Promise<void>;
     listApprovalRequests(params: ListApprovalRequestsParams): Promise<ListApprovalRequestsStatus200>;
     approveApprovalRequest(params: ApproveApprovalRequestParams): Promise<ApproveApprovalRequestStatus200>;
     rejectApprovalRequest(params: RejectApprovalRequestParams): Promise<RejectApprovalRequestStatus200>;
@@ -629,6 +654,11 @@ export interface RequestMap {
   "GET /v1/projects/{project_id}/anomaly-rules/{anomaly_rule_id}": { params: GetAnomalyRuleParams; response: GetAnomalyRuleStatus200 };
   "PUT /v1/projects/{project_id}/anomaly-rules/{anomaly_rule_id}": { params: UpdateAnomalyRuleParams; response: UpdateAnomalyRuleStatus200 };
   "DELETE /v1/projects/{project_id}/anomaly-rules/{anomaly_rule_id}": { params: DeleteAnomalyRuleParams; response: void };
+  "GET /v1/projects/{project_id}/approval-rules": { params: ListApprovalRulesParams; response: ListApprovalRulesStatus200 };
+  "POST /v1/projects/{project_id}/approval-rules": { params: CreateApprovalRuleParams; response: CreateApprovalRuleStatus201 };
+  "GET /v1/projects/{project_id}/approval-rules/{approval_rule_id}": { params: GetApprovalRuleParams; response: GetApprovalRuleStatus200 };
+  "PUT /v1/projects/{project_id}/approval-rules/{approval_rule_id}": { params: UpdateApprovalRuleParams; response: UpdateApprovalRuleStatus200 };
+  "DELETE /v1/projects/{project_id}/approval-rules/{approval_rule_id}": { params: DeleteApprovalRuleParams; response: void };
   "GET /v1/projects/{project_id}/approvals": { params: ListApprovalRequestsParams; response: ListApprovalRequestsStatus200 };
   "POST /v1/projects/{project_id}/approvals/{approval_id}/approve": { params: ApproveApprovalRequestParams; response: ApproveApprovalRequestStatus200 };
   "POST /v1/projects/{project_id}/approvals/{approval_id}/reject": { params: RejectApprovalRequestParams; response: RejectApprovalRequestStatus200 };
