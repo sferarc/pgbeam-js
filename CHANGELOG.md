@@ -1,5 +1,11 @@
 # pgbeam
 
+## 0.4.21
+
+### Patch Changes
+
+- 14df323: Approval rules can be authored: five operations under `/v1/projects/{project_id}/approval-rules` and `pgbeam approvals rules {list,create,show,update,delete}`.
+
 ## 0.4.20
 
 ### Patch Changes
