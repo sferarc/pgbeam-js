@@ -12,6 +12,8 @@ export type { ApiClient };
 export interface OperationMeta {
   method: string;
   path: string;
+  /** The server answers 400 to an Idempotency-Key on this operation. */
+  refusesIdempotencyKey?: boolean;
 }
 
 /**
@@ -57,7 +59,7 @@ export interface PgBeamClientOptions {
   operations?: OperationRegistry;
 }
 
-export class PgBeamClient<TApi = ApiClient> {
+export class PgBeamClient<TApi extends object = ApiClient> {
   private _baseUrl: string;
   private _tokenOrFn: string | null | (() => Promise<string | null>);
   private _fetchImpl?: typeof globalThis.fetch;
@@ -95,6 +97,7 @@ export class PgBeamClient<TApi = ApiClient> {
       pathParams: params.pathParams,
       queryParams: params.queryParams,
       body: params.body,
+      refusesIdempotencyKey: meta.refusesIdempotencyKey,
       baseUrl: this._baseUrl,
       token: this._tokenOrFn,
       fetchImpl: this._fetchImpl,

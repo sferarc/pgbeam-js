@@ -226,7 +226,7 @@ export const operationsByTag = {
     createSelfHostEnrollment: { method: "POST", path: "/v1/organizations/{org_id}/self-host-enrollments" },
     revokeSelfHostEnrollment: { method: "DELETE", path: "/v1/organizations/{org_id}/self-host-enrollments/{enrollment_id}" },
     rotateSelfHostEnrollment: { method: "POST", path: "/v1/organizations/{org_id}/self-host-enrollments/{enrollment_id}/rotate" },
-    scanText: { method: "POST", path: "/v1/scan/text" },
+    scanText: { method: "POST", path: "/v1/scan/text", refusesIdempotencyKey: true },
   },
   honeytokens: {
     listHoneytokens: { method: "GET", path: "/v1/projects/{project_id}/honeytokens" },
@@ -369,7 +369,7 @@ export const operationsByPath = {
   "PATCH /v1/organizations/{org_id}/support/cases/{case_id}": { method: "PATCH", path: "/v1/organizations/{org_id}/support/cases/{case_id}", operationId: "updateSupportCase" },
   "POST /v1/organizations/{org_id}/support/cases/{case_id}/messages": { method: "POST", path: "/v1/organizations/{org_id}/support/cases/{case_id}/messages", operationId: "createSupportMessage" },
   "POST /v1/internal/support/slack-event": { method: "POST", path: "/v1/internal/support/slack-event", operationId: "handleSlackSupportEvent" },
-  "POST /v1/scan/text": { method: "POST", path: "/v1/scan/text", operationId: "scanText" },
+  "POST /v1/scan/text": { method: "POST", path: "/v1/scan/text", operationId: "scanText", refusesIdempotencyKey: true },
   "GET /v1/organizations/{org_id}/usage": { method: "GET", path: "/v1/organizations/{org_id}/usage", operationId: "getOrganizationUsage" },
   "GET /v1/projects/{project_id}/usage": { method: "GET", path: "/v1/projects/{project_id}/usage", operationId: "getProjectUsage" },
   "GET /v1/projects/{project_id}/usage/agents": { method: "GET", path: "/v1/projects/{project_id}/usage/agents", operationId: "getAgentUsageBreakdown" },

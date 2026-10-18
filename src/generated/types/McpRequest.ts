@@ -37,7 +37,7 @@ export type McpRequest = {
     */
     method: McpRequestMethodEnumKey;
     /**
-     * @description Method-specific parameters.
+     * @description Method-specific parameters. For `tools/call`, `name` is one of the six registered tools (`search_endpoints`, `describe_endpoint`, `call_endpoint`, `list_skills`, `get_skill`, `install_skill`) and `arguments` holds its input; API operations are reached through `call_endpoint`, not called by name.
      * @type object | undefined
     */
     params?: object;

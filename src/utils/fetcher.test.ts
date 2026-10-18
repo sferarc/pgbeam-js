@@ -350,6 +350,37 @@ describe("fetcher", () => {
     expect(parsed.searchParams.has("sort")).toBe(false);
   });
 
+  it("sends a Date query parameter as ISO 8601", async () => {
+    mockFetch.mockResolvedValue(jsonResponse([]));
+
+    await fetcher({
+      method: "GET",
+      path: "/v1/audit-logs",
+      queryParams: { since: new Date(Date.UTC(2026, 9, 13, 8, 30)) },
+      baseUrl: "https://api.example.com",
+      token: null,
+    });
+
+    const parsed = new URL(mockFetch.mock.calls[0][0]);
+    expect(parsed.searchParams.get("since")).toBe("2026-10-13T08:30:00.000Z");
+  });
+
+  it("sends an array query parameter as repeated keys", async () => {
+    mockFetch.mockResolvedValue(jsonResponse([]));
+
+    await fetcher({
+      method: "GET",
+      path: "/v1/items",
+      queryParams: { status: ["active", "paused"], tag: [] },
+      baseUrl: "https://api.example.com",
+      token: null,
+    });
+
+    const parsed = new URL(mockFetch.mock.calls[0][0]);
+    expect(parsed.searchParams.getAll("status")).toEqual(["active", "paused"]);
+    expect(parsed.searchParams.has("tag")).toBe(false);
+  });
+
   // -- Auth headers --
 
   it("sets Authorization header when token is provided", async () => {
@@ -765,11 +796,33 @@ describe("fetcher", () => {
         path: "/v1/test",
         baseUrl: "https://api.example.com",
         token: null,
-        retry: { maxRetries: 3, initialDelayMs: 10, maxDelayMs: 100 },
+        retry: { maxRetries: 3, initialDelayMs: 10, maxDelayMs: 2_000 },
       });
 
       expect(mockFetch).toHaveBeenCalledTimes(2);
       expect(result).toEqual({ ok: true });
+    });
+
+    it("surfaces a 429 whose Retry-After is longer than maxDelayMs", async () => {
+      mockFetch.mockResolvedValue(
+        jsonResponse(null, {
+          status: 429,
+          statusText: "Too Many Requests",
+          headers: { "content-type": "application/json", "Retry-After": "60" },
+        }),
+      );
+
+      await expect(
+        fetcher({
+          method: "GET",
+          path: "/v1/test",
+          baseUrl: "https://api.example.com",
+          token: null,
+          retry: { maxRetries: 3, initialDelayMs: 10, maxDelayMs: 1_000 },
+        }),
+      ).rejects.toThrow(ApiError);
+
+      expect(mockFetch).toHaveBeenCalledTimes(1);
     });
 
     it("does not retry on 400 Bad Request", async () => {
@@ -842,6 +895,105 @@ describe("fetcher", () => {
 
       // Same key on both attempts
       expect(firstInit.headers["Idempotency-Key"]).toBe(secondInit.headers["Idempotency-Key"]);
+    });
+
+    describe("a write sent without an Idempotency-Key", () => {
+      const timeout = () =>
+        Object.assign(new Error("The operation was aborted due to timeout"), {
+          name: "TimeoutError",
+        });
+      const unkeyedPost = () =>
+        fetcher({
+          method: "POST",
+          path: "/v1/projects",
+          body: { name: "test" },
+          baseUrl: "https://api.example.com",
+          token: "tok",
+          retry: { maxRetries: 3, initialDelayMs: 10, maxDelayMs: 100, idempotencyKeys: false },
+        });
+
+      it("is not retried after a timeout, since the server may have run it", async () => {
+        mockFetch.mockRejectedValue(timeout());
+
+        const err = await unkeyedPost().catch((e: unknown) => e);
+
+        expect(err).toBeInstanceOf(NetworkError);
+        expect((err as NetworkError).attempts).toBe(1);
+        expect((err as NetworkError).timedOut).toBe(true);
+        expect(mockFetch).toHaveBeenCalledTimes(1);
+        expect(mockFetch.mock.calls[0][1].headers).not.toHaveProperty("Idempotency-Key");
+      });
+
+      it("is not retried after a 502 or 504", async () => {
+        for (const status of [502, 504]) {
+          mockFetch.mockReset();
+          mockFetch.mockResolvedValue(jsonResponse(null, { status, statusText: "Gateway" }));
+
+          await expect(unkeyedPost()).rejects.toMatchObject({ status });
+          expect(mockFetch).toHaveBeenCalledTimes(1);
+        }
+      });
+
+      it("is retried on 503, which means the server refused it", async () => {
+        mockFetch
+          .mockResolvedValueOnce(
+            jsonResponse(null, { status: 503, statusText: "Service Unavailable" }),
+          )
+          .mockResolvedValueOnce(
+            jsonResponse({ id: "p1" }, { status: 201, statusText: "Created" }),
+          );
+
+        await expect(unkeyedPost()).resolves.toEqual({ id: "p1" });
+        expect(mockFetch).toHaveBeenCalledTimes(2);
+      });
+
+      it("is retried when the connection failed before an answer", async () => {
+        mockFetch
+          .mockRejectedValueOnce(new TypeError("fetch failed"))
+          .mockResolvedValueOnce(
+            jsonResponse({ id: "p1" }, { status: 201, statusText: "Created" }),
+          );
+
+        await expect(unkeyedPost()).resolves.toEqual({ id: "p1" });
+        expect(mockFetch).toHaveBeenCalledTimes(2);
+      });
+
+      it("keeps retrying a keyed write after a timeout", async () => {
+        mockFetch
+          .mockRejectedValueOnce(timeout())
+          .mockResolvedValueOnce(
+            jsonResponse({ id: "p1" }, { status: 201, statusText: "Created" }),
+          );
+
+        await fetcher({
+          method: "POST",
+          path: "/v1/projects",
+          body: { name: "test" },
+          baseUrl: "https://api.example.com",
+          token: "tok",
+          retry: { maxRetries: 3, initialDelayMs: 10, maxDelayMs: 100 },
+        });
+
+        expect(mockFetch).toHaveBeenCalledTimes(2);
+        expect(mockFetch.mock.calls[1][1].headers).toHaveProperty("Idempotency-Key");
+      });
+
+      it("leaves a GET retrying after a timeout and a 504", async () => {
+        mockFetch
+          .mockRejectedValueOnce(timeout())
+          .mockResolvedValueOnce(jsonResponse(null, { status: 504, statusText: "Gateway Timeout" }))
+          .mockResolvedValueOnce(jsonResponse({ ok: true }));
+
+        await fetcher({
+          method: "GET",
+          path: "/v1/projects",
+          baseUrl: "https://api.example.com",
+          token: "tok",
+          retry: { maxRetries: 3, initialDelayMs: 10, maxDelayMs: 100 },
+        });
+
+        expect(mockFetch).toHaveBeenCalledTimes(3);
+      });
     });
 
     it("does not send Idempotency-Key header on GET retry", async () => {

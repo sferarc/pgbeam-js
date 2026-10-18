@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, type Mock, vi } from "vitest";
 import { PgBeamClient } from "./client";
 import { NetworkError } from "./utils/fetcher";
 
@@ -31,10 +31,14 @@ function emptyResponse(status = 204): Response {
 // PgBeamClient construction
 // ---------------------------------------------------------------------------
 describe("PgBeamClient", () => {
-  let mockFetch: ReturnType<typeof vi.fn>;
+  // The client always calls fetch with a string URL and a plain headers object.
+  let mockFetch: Mock<
+    (url: string, init: RequestInit & { headers: Record<string, string> }) => Promise<Response>
+  > &
+    typeof fetch;
 
   beforeEach(() => {
-    mockFetch = vi.fn().mockResolvedValue(jsonResponse({ ok: true }));
+    mockFetch = vi.fn().mockResolvedValue(jsonResponse({ ok: true })) as typeof mockFetch;
   });
 
   afterEach(() => {
@@ -104,7 +108,7 @@ describe("PgBeamClient", () => {
       });
 
       // Access an unknown tag — should be undefined
-      const unknown = (client.api as Record<string, unknown>).nonExistentTag;
+      const unknown = (client.api as unknown as Record<string, unknown>).nonExistentTag;
       expect(unknown).toBeUndefined();
     });
 
@@ -187,7 +191,11 @@ describe("PgBeamClient", () => {
         fetch: mockFetch,
       });
 
-      const body = { name: "New Project", org_id: "org-1", region: "us-east-1" };
+      const body = {
+        name: "New Project",
+        org_id: "org-1",
+        database: { host: "db.example.com", port: 5432, name: "app", username: "u", password: "p" },
+      };
       await client.api.projects.createProject({ body });
 
       const [, init] = mockFetch.mock.calls[0];
@@ -263,7 +271,11 @@ describe("PgBeamClient", () => {
         fetch: mockFetch,
       });
 
-      const body = { name: "P1", org_id: "org-1", region: "us-east-1" };
+      const body = {
+        name: "P1",
+        org_id: "org-1",
+        database: { host: "db.example.com", port: 5432, name: "app", username: "u", password: "p" },
+      };
       await client.api.request("POST /v1/projects", { body });
 
       const [, init] = mockFetch.mock.calls[0];
@@ -428,6 +440,84 @@ describe("PgBeamClient", () => {
       await client.api.request("GET /v1/health");
 
       expect(onResponse).toHaveBeenCalledOnce();
+    });
+  });
+
+  // ---------------------------------------------------------------------------
+  // Idempotency-Key under the client's default retry config
+  // ---------------------------------------------------------------------------
+  describe("Idempotency-Key", () => {
+    function unavailable(): Response {
+      return {
+        ok: false,
+        status: 503,
+        statusText: "Service Unavailable",
+        headers: new Headers({ "content-type": "application/json", "Retry-After": "0" }),
+        json: () => Promise.resolve({}),
+        text: () => Promise.resolve("{}"),
+      } as unknown as Response;
+    }
+
+    it("omits the key on every scanText attempt", async () => {
+      mockFetch
+        .mockResolvedValueOnce(unavailable())
+        .mockResolvedValueOnce(jsonResponse({ action: "allow" }));
+      const client = new PgBeamClient({
+        token: "tok",
+        baseUrl: "https://api.example.com",
+        fetch: mockFetch,
+      });
+
+      await client.api.platform.scanText({ body: { text: "hello" } });
+
+      expect(mockFetch).toHaveBeenCalledTimes(2);
+      for (const [, init] of mockFetch.mock.calls) {
+        expect(init.headers).not.toHaveProperty("Idempotency-Key");
+      }
+    });
+
+    it("omits the key on scanText reached through request()", async () => {
+      mockFetch.mockResolvedValue(jsonResponse({ action: "allow" }));
+      const client = new PgBeamClient({
+        token: "tok",
+        baseUrl: "https://api.example.com",
+        fetch: mockFetch,
+      });
+
+      await client.api.request("POST /v1/scan/text", { body: { text: "hello" } });
+
+      const [, init] = mockFetch.mock.calls[0];
+      expect(init.headers).not.toHaveProperty("Idempotency-Key");
+    });
+
+    it("reuses one key across retries of another POST", async () => {
+      mockFetch
+        .mockResolvedValueOnce(unavailable())
+        .mockResolvedValueOnce(jsonResponse({ id: "proj-new" }, 201));
+      const client = new PgBeamClient({
+        token: "tok",
+        baseUrl: "https://api.example.com",
+        fetch: mockFetch,
+      });
+
+      await client.api.projects.createProject({
+        body: {
+          name: "New Project",
+          org_id: "org-1",
+          database: {
+            host: "db.example.com",
+            port: 5432,
+            name: "app",
+            username: "app",
+            password: "pw",
+          },
+        },
+      });
+
+      expect(mockFetch).toHaveBeenCalledTimes(2);
+      const [[, first], [, second]] = mockFetch.mock.calls;
+      expect(first.headers["Idempotency-Key"]).toBeTruthy();
+      expect(second.headers["Idempotency-Key"]).toBe(first.headers["Idempotency-Key"]);
     });
   });
 

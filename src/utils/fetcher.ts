@@ -198,9 +198,16 @@ export interface RetryConfig {
   maxRetries?: number;
   /** Initial backoff in ms (default: 500). */
   initialDelayMs?: number;
-  /** Max backoff in ms (default: 30_000). */
+  /**
+   * Max wait between attempts in ms (default: 30_000). A `Retry-After` longer
+   * than this surfaces the error instead of retrying early or waiting longer.
+   */
   maxDelayMs?: number;
-  /** Auto-send Idempotency-Key on mutating retries (default: true). */
+  /**
+   * Auto-send Idempotency-Key on mutating retries (default: true). A POST or
+   * PATCH sent without one is retried only when the server cannot have run it:
+   * on 408, 429 or 503, or on a connection failure that is not a timeout.
+   */
   idempotencyKeys?: boolean;
   /**
    * Ceiling for the whole call, measured from the first attempt and including
@@ -217,6 +224,8 @@ export interface FetcherOptions {
   pathParams?: Record<string, string>;
   queryParams?: Record<string, unknown>;
   body?: unknown;
+  /** Withhold the automatic Idempotency-Key, for operations the server rejects it on. */
+  refusesIdempotencyKey?: boolean;
   baseUrl: string;
   /**
    * A JWT, or a function resolving one. The function form is resolved here,
@@ -236,6 +245,10 @@ export interface FetcherOptions {
 }
 
 const RETRYABLE_STATUS_CODES = [408, 429, 502, 503, 504];
+
+// A 502 or 504 can arrive after the origin ran the request, so an unkeyed write
+// is only retried on answers that mean it was refused.
+const UNKEYED_WRITE_RETRYABLE_STATUS_CODES = [408, 429, 503];
 
 /**
  * Long enough for the slowest legitimate call (an audit-log CSV export), short
@@ -377,8 +390,10 @@ export async function fetcher<T>(options: FetcherOptions): Promise<T> {
 
   if (options.queryParams) {
     for (const [key, value] of Object.entries(options.queryParams)) {
-      if (value !== undefined && value !== null) {
-        fullUrl.searchParams.set(key, String(value));
+      for (const item of Array.isArray(value) ? value : [value]) {
+        if (item !== undefined && item !== null) {
+          fullUrl.searchParams.append(key, queryValue(item));
+        }
       }
     }
   }
@@ -409,9 +424,16 @@ export async function fetcher<T>(options: FetcherOptions): Promise<T> {
 
   // Generate idempotency key once, reused across all retry attempts.
   const idempotencyKey =
-    retry.maxRetries > 0 && retry.idempotencyKeys && isMutatingMethod(options.method)
+    retry.maxRetries > 0 &&
+    retry.idempotencyKeys &&
+    !options.refusesIdempotencyKey &&
+    isMutatingMethod(options.method)
       ? generateUUID()
       : undefined;
+  const unkeyedWrite = isMutatingMethod(options.method) && !idempotencyKey;
+  const retryableStatuses = unkeyedWrite
+    ? UNKEYED_WRITE_RETRYABLE_STATUS_CODES
+    : RETRYABLE_STATUS_CODES;
 
   for (let attempt = 0; attempt <= retry.maxRetries; attempt++) {
     const reqHeaders = { ...headers };
@@ -442,13 +464,17 @@ export async function fetcher<T>(options: FetcherOptions): Promise<T> {
         return parseResponseBody<T>(response);
       }
 
+      const retryAfter = parseRetryAfter(response);
       const retryable =
-        RETRYABLE_STATUS_CODES.includes(response.status) && attempt < retry.maxRetries;
+        retryableStatuses.includes(response.status) &&
+        attempt < retry.maxRetries &&
+        (retryAfter === undefined || retryAfter <= retry.maxDelayMs);
       const delay = retryable
-        ? (parseRetryAfter(response) ?? backoff(attempt, retry.initialDelayMs, retry.maxDelayMs))
+        ? (retryAfter ?? backoff(attempt, retry.initialDelayMs, retry.maxDelayMs))
         : 0;
 
-      // Not retryable, out of attempts, or the wait would outlive the budget.
+      // Not retryable, out of attempts, asked to wait longer than maxDelayMs,
+      // or the wait would outlive the budget.
       if (!retryable || outOfBudget(startedAt, delay, retry.totalBudgetMs)) {
         const errorBody = await response.json().catch(() => null);
         throw new ApiError(response.status, response.statusText, errorBody);
@@ -460,9 +486,16 @@ export async function fetcher<T>(options: FetcherOptions): Promise<T> {
       if (err instanceof ApiError) throw err;
 
       // The request never got an answer. Retry while attempts and budget last,
-      // then report the endpoint and the real underlying cause.
+      // then report the endpoint and the real underlying cause. An unkeyed
+      // write that timed out or was answered may already have run, so it is
+      // never sent twice.
       const delay = backoff(attempt, retry.initialDelayMs, retry.maxDelayMs);
-      if (attempt === retry.maxRetries || outOfBudget(startedAt, delay, retry.totalBudgetMs)) {
+      const mayHaveRun = unkeyedWrite && (answered || isAbortError(err));
+      if (
+        mayHaveRun ||
+        attempt === retry.maxRetries ||
+        outOfBudget(startedAt, delay, retry.totalBudgetMs)
+      ) {
         // The server did answer, so this is not a reachability problem. Report
         // it as it came rather than dressing it up as one.
         if (answered) throw err;
@@ -483,6 +516,11 @@ export async function fetcher<T>(options: FetcherOptions): Promise<T> {
 
   // Unreachable — the loop either returns or throws.
   throw new Error("fetcher: exhausted all retry attempts");
+}
+
+/** Dates go out as ISO 8601, which is what the API's `date-time` parameters parse. */
+function queryValue(value: unknown): string {
+  return value instanceof Date ? value.toISOString() : String(value);
 }
 
 async function parseResponseBody<T>(response: Response): Promise<T> {
