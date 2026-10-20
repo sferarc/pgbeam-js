@@ -87,6 +87,11 @@ import type { GetProjectOptions, GetProjectStatus200 } from "./types/GetProject"
 import type { UpdateProjectOptions, UpdateProjectStatus200 } from "./types/UpdateProject";
 import type { DeleteProjectOptions } from "./types/DeleteProject";
 import type { GetProjectMetricsOptions, GetProjectMetricsStatus200 } from "./types/GetProjectMetrics";
+import type { ListQueryTemplatesOptions, ListQueryTemplatesStatus200 } from "./types/ListQueryTemplates";
+import type { CreateQueryTemplateOptions, CreateQueryTemplateStatus201 } from "./types/CreateQueryTemplate";
+import type { GetQueryTemplateOptions, GetQueryTemplateStatus200 } from "./types/GetQueryTemplate";
+import type { UpdateQueryTemplateOptions, UpdateQueryTemplateStatus200 } from "./types/UpdateQueryTemplate";
+import type { DeleteQueryTemplateOptions } from "./types/DeleteQueryTemplate";
 import type { ListRegionsStatus200 } from "./types/ListRegions";
 import type { ListReplicasOptions, ListReplicasStatus200 } from "./types/ListReplicas";
 import type { CreateReplicaOptions, CreateReplicaStatus201 } from "./types/CreateReplica";
@@ -150,6 +155,11 @@ export const operationsByTag = {
     deletePolicyProfile: { method: "DELETE", path: "/v1/projects/{project_id}/policies/{policy_id}" },
     dryEvalPolicy: { method: "POST", path: "/v1/projects/{project_id}/policy-evaluations" },
     replayPolicy: { method: "POST", path: "/v1/projects/{project_id}/policy-replays" },
+    listQueryTemplates: { method: "GET", path: "/v1/projects/{project_id}/query-templates" },
+    createQueryTemplate: { method: "POST", path: "/v1/projects/{project_id}/query-templates" },
+    getQueryTemplate: { method: "GET", path: "/v1/projects/{project_id}/query-templates/{query_template_id}" },
+    updateQueryTemplate: { method: "PUT", path: "/v1/projects/{project_id}/query-templates/{query_template_id}" },
+    deleteQueryTemplate: { method: "DELETE", path: "/v1/projects/{project_id}/query-templates/{query_template_id}" },
   },
   anomalies: {
     listAnomalyAlerts: { method: "GET", path: "/v1/projects/{project_id}/anomalies" },
@@ -352,6 +362,11 @@ export const operationsByPath = {
   "PATCH /v1/projects/{project_id}": { method: "PATCH", path: "/v1/projects/{project_id}", operationId: "updateProject" },
   "DELETE /v1/projects/{project_id}": { method: "DELETE", path: "/v1/projects/{project_id}", operationId: "deleteProject" },
   "GET /v1/projects/{project_id}/metrics": { method: "GET", path: "/v1/projects/{project_id}/metrics", operationId: "getProjectMetrics" },
+  "GET /v1/projects/{project_id}/query-templates": { method: "GET", path: "/v1/projects/{project_id}/query-templates", operationId: "listQueryTemplates" },
+  "POST /v1/projects/{project_id}/query-templates": { method: "POST", path: "/v1/projects/{project_id}/query-templates", operationId: "createQueryTemplate" },
+  "GET /v1/projects/{project_id}/query-templates/{query_template_id}": { method: "GET", path: "/v1/projects/{project_id}/query-templates/{query_template_id}", operationId: "getQueryTemplate" },
+  "PUT /v1/projects/{project_id}/query-templates/{query_template_id}": { method: "PUT", path: "/v1/projects/{project_id}/query-templates/{query_template_id}", operationId: "updateQueryTemplate" },
+  "DELETE /v1/projects/{project_id}/query-templates/{query_template_id}": { method: "DELETE", path: "/v1/projects/{project_id}/query-templates/{query_template_id}", operationId: "deleteQueryTemplate" },
   "GET /v1/regions": { method: "GET", path: "/v1/regions", operationId: "listRegions" },
   "GET /v1/databases/{database_id}/replicas": { method: "GET", path: "/v1/databases/{database_id}/replicas", operationId: "listReplicas" },
   "POST /v1/databases/{database_id}/replicas": { method: "POST", path: "/v1/databases/{database_id}/replicas", operationId: "createReplica" },
@@ -459,6 +474,11 @@ type GetProjectParams = { pathParams: NonNullable<GetProjectOptions["path"]> };
 type UpdateProjectParams = { pathParams: NonNullable<UpdateProjectOptions["path"]>; body: NonNullable<UpdateProjectOptions["body"]> };
 type DeleteProjectParams = { pathParams: NonNullable<DeleteProjectOptions["path"]> };
 type GetProjectMetricsParams = { pathParams: NonNullable<GetProjectMetricsOptions["path"]>; queryParams?: NonNullable<GetProjectMetricsOptions["query"]> };
+type ListQueryTemplatesParams = { pathParams: NonNullable<ListQueryTemplatesOptions["path"]>; queryParams?: NonNullable<ListQueryTemplatesOptions["query"]> };
+type CreateQueryTemplateParams = { pathParams: NonNullable<CreateQueryTemplateOptions["path"]>; body: NonNullable<CreateQueryTemplateOptions["body"]> };
+type GetQueryTemplateParams = { pathParams: NonNullable<GetQueryTemplateOptions["path"]> };
+type UpdateQueryTemplateParams = { pathParams: NonNullable<UpdateQueryTemplateOptions["path"]>; body: NonNullable<UpdateQueryTemplateOptions["body"]> };
+type DeleteQueryTemplateParams = { pathParams: NonNullable<DeleteQueryTemplateOptions["path"]> };
 type ListReplicasParams = { pathParams: NonNullable<ListReplicasOptions["path"]>; queryParams?: NonNullable<ListReplicasOptions["query"]> };
 type CreateReplicaParams = { pathParams: NonNullable<CreateReplicaOptions["path"]>; body: NonNullable<CreateReplicaOptions["body"]> };
 type DeleteReplicaParams = { pathParams: NonNullable<DeleteReplicaOptions["path"]> };
@@ -521,6 +541,11 @@ export interface ApiOperations {
     deletePolicyProfile(params: DeletePolicyProfileParams): Promise<void>;
     dryEvalPolicy(params: DryEvalPolicyParams): Promise<DryEvalPolicyStatus200>;
     replayPolicy(params: ReplayPolicyParams): Promise<ReplayPolicyStatus200>;
+    listQueryTemplates(params: ListQueryTemplatesParams): Promise<ListQueryTemplatesStatus200>;
+    createQueryTemplate(params: CreateQueryTemplateParams): Promise<CreateQueryTemplateStatus201>;
+    getQueryTemplate(params: GetQueryTemplateParams): Promise<GetQueryTemplateStatus200>;
+    updateQueryTemplate(params: UpdateQueryTemplateParams): Promise<UpdateQueryTemplateStatus200>;
+    deleteQueryTemplate(params: DeleteQueryTemplateParams): Promise<void>;
   };
   anomalies: {
     listAnomalyAlerts(params: ListAnomalyAlertsParams): Promise<ListAnomalyAlertsStatus200>;
@@ -723,6 +748,11 @@ export interface RequestMap {
   "PATCH /v1/projects/{project_id}": { params: UpdateProjectParams; response: UpdateProjectStatus200 };
   "DELETE /v1/projects/{project_id}": { params: DeleteProjectParams; response: void };
   "GET /v1/projects/{project_id}/metrics": { params: GetProjectMetricsParams; response: GetProjectMetricsStatus200 };
+  "GET /v1/projects/{project_id}/query-templates": { params: ListQueryTemplatesParams; response: ListQueryTemplatesStatus200 };
+  "POST /v1/projects/{project_id}/query-templates": { params: CreateQueryTemplateParams; response: CreateQueryTemplateStatus201 };
+  "GET /v1/projects/{project_id}/query-templates/{query_template_id}": { params: GetQueryTemplateParams; response: GetQueryTemplateStatus200 };
+  "PUT /v1/projects/{project_id}/query-templates/{query_template_id}": { params: UpdateQueryTemplateParams; response: UpdateQueryTemplateStatus200 };
+  "DELETE /v1/projects/{project_id}/query-templates/{query_template_id}": { params: DeleteQueryTemplateParams; response: void };
   "GET /v1/regions": { params?: undefined; response: ListRegionsStatus200 };
   "GET /v1/databases/{database_id}/replicas": { params: ListReplicasParams; response: ListReplicasStatus200 };
   "POST /v1/databases/{database_id}/replicas": { params: CreateReplicaParams; response: CreateReplicaStatus201 };
