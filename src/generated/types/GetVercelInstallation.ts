@@ -92,4 +92,4 @@ export type GetVercelInstallationResponses = {
 /**
  * @description Union of all possible responses
 */
-export type GetVercelInstallationResponse = (GetVercelInstallationStatus200 | GetVercelInstallationStatus304 | GetVercelInstallationStatus400 | GetVercelInstallationStatus401 | GetVercelInstallationStatus403 | GetVercelInstallationStatus404 | GetVercelInstallationStatus429 | GetVercelInstallationStatus500);
+export type GetVercelInstallationResponse = GetVercelInstallationStatus200;

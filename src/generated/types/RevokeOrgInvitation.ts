@@ -73,4 +73,4 @@ export type RevokeOrgInvitationResponses = {
 /**
  * @description Union of all possible responses
 */
-export type RevokeOrgInvitationResponse = (RevokeOrgInvitationStatus204 | RevokeOrgInvitationStatus400 | RevokeOrgInvitationStatus401 | RevokeOrgInvitationStatus403 | RevokeOrgInvitationStatus404 | RevokeOrgInvitationStatus429);
+export type RevokeOrgInvitationResponse = RevokeOrgInvitationStatus204;

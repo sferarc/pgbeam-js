@@ -116,4 +116,4 @@ export type CreateReplicaResponses = {
 /**
  * @description Union of all possible responses
 */
-export type CreateReplicaResponse = (CreateReplicaStatus201 | CreateReplicaStatus400 | CreateReplicaStatus401 | CreateReplicaStatus403 | CreateReplicaStatus404 | CreateReplicaStatus409 | CreateReplicaStatus413 | CreateReplicaStatus415 | CreateReplicaStatus429 | CreateReplicaStatus500);
+export type CreateReplicaResponse = CreateReplicaStatus201;

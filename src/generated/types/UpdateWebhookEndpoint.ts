@@ -115,4 +115,4 @@ export type UpdateWebhookEndpointResponses = {
 /**
  * @description Union of all possible responses
 */
-export type UpdateWebhookEndpointResponse = (UpdateWebhookEndpointStatus200 | UpdateWebhookEndpointStatus400 | UpdateWebhookEndpointStatus401 | UpdateWebhookEndpointStatus403 | UpdateWebhookEndpointStatus404 | UpdateWebhookEndpointStatus412 | UpdateWebhookEndpointStatus413 | UpdateWebhookEndpointStatus415 | UpdateWebhookEndpointStatus500);
+export type UpdateWebhookEndpointResponse = UpdateWebhookEndpointStatus200;

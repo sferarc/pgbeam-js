@@ -90,4 +90,4 @@ export type GetQueryTemplateResponses = {
 /**
  * @description Union of all possible responses
 */
-export type GetQueryTemplateResponse = (GetQueryTemplateStatus200 | GetQueryTemplateStatus304 | GetQueryTemplateStatus400 | GetQueryTemplateStatus401 | GetQueryTemplateStatus403 | GetQueryTemplateStatus404 | GetQueryTemplateStatus500);
+export type GetQueryTemplateResponse = GetQueryTemplateStatus200;

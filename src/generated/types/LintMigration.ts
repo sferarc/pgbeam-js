@@ -91,4 +91,4 @@ export type LintMigrationResponses = {
 /**
  * @description Union of all possible responses
 */
-export type LintMigrationResponse = (LintMigrationStatus200 | LintMigrationStatus400 | LintMigrationStatus401 | LintMigrationStatus403 | LintMigrationStatus404 | LintMigrationStatus413 | LintMigrationStatus415 | LintMigrationStatus500);
+export type LintMigrationResponse = LintMigrationStatus200;

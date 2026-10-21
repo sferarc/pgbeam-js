@@ -61,4 +61,4 @@ export type GetHealthResponses = {
 /**
  * @description Union of all possible responses
 */
-export type GetHealthResponse = (GetHealthStatus200 | GetHealthStatus304 | GetHealthStatus400 | GetHealthStatus429 | GetHealthStatus500);
+export type GetHealthResponse = GetHealthStatus200;

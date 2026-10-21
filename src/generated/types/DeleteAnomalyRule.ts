@@ -71,4 +71,4 @@ export type DeleteAnomalyRuleResponses = {
 /**
  * @description Union of all possible responses
 */
-export type DeleteAnomalyRuleResponse = (DeleteAnomalyRuleStatus204 | DeleteAnomalyRuleStatus400 | DeleteAnomalyRuleStatus401 | DeleteAnomalyRuleStatus403 | DeleteAnomalyRuleStatus404 | DeleteAnomalyRuleStatus500);
+export type DeleteAnomalyRuleResponse = DeleteAnomalyRuleStatus204;

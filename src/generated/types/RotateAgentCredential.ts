@@ -94,4 +94,4 @@ export type RotateAgentCredentialResponses = {
 /**
  * @description Union of all possible responses
 */
-export type RotateAgentCredentialResponse = (RotateAgentCredentialStatus200 | RotateAgentCredentialStatus400 | RotateAgentCredentialStatus401 | RotateAgentCredentialStatus403 | RotateAgentCredentialStatus404 | RotateAgentCredentialStatus409 | RotateAgentCredentialStatus500);
+export type RotateAgentCredentialResponse = RotateAgentCredentialStatus200;

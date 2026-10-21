@@ -110,4 +110,4 @@ export type CreateSelfHostEnrollmentResponses = {
 /**
  * @description Union of all possible responses
 */
-export type CreateSelfHostEnrollmentResponse = (CreateSelfHostEnrollmentStatus201 | CreateSelfHostEnrollmentStatus400 | CreateSelfHostEnrollmentStatus401 | CreateSelfHostEnrollmentStatus403 | CreateSelfHostEnrollmentStatus409 | CreateSelfHostEnrollmentStatus413 | CreateSelfHostEnrollmentStatus415 | CreateSelfHostEnrollmentStatus429 | CreateSelfHostEnrollmentStatus500);
+export type CreateSelfHostEnrollmentResponse = CreateSelfHostEnrollmentStatus201;

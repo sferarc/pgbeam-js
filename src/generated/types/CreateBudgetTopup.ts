@@ -96,4 +96,4 @@ export type CreateBudgetTopupResponses = {
 /**
  * @description Union of all possible responses
 */
-export type CreateBudgetTopupResponse = (CreateBudgetTopupStatus201 | CreateBudgetTopupStatus400 | CreateBudgetTopupStatus401 | CreateBudgetTopupStatus402 | CreateBudgetTopupStatus403 | CreateBudgetTopupStatus404 | CreateBudgetTopupStatus429 | CreateBudgetTopupStatus503);
+export type CreateBudgetTopupResponse = CreateBudgetTopupStatus201;

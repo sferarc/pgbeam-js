@@ -122,4 +122,4 @@ export type UpdatePolicyProfileResponses = {
 /**
  * @description Union of all possible responses
 */
-export type UpdatePolicyProfileResponse = (UpdatePolicyProfileStatus200 | UpdatePolicyProfileStatus400 | UpdatePolicyProfileStatus401 | UpdatePolicyProfileStatus403 | UpdatePolicyProfileStatus404 | UpdatePolicyProfileStatus412 | UpdatePolicyProfileStatus413 | UpdatePolicyProfileStatus415 | UpdatePolicyProfileStatus429 | UpdatePolicyProfileStatus500);
+export type UpdatePolicyProfileResponse = UpdatePolicyProfileStatus200;

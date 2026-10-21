@@ -33,4 +33,4 @@ export type GetDemoResponses = {
 /**
  * @description Union of all possible responses
 */
-export type GetDemoResponse = (GetDemoStatus200 | GetDemoStatus429);
+export type GetDemoResponse = GetDemoStatus200;

@@ -98,4 +98,4 @@ export type DryEvalPolicyResponses = {
 /**
  * @description Union of all possible responses
 */
-export type DryEvalPolicyResponse = (DryEvalPolicyStatus200 | DryEvalPolicyStatus400 | DryEvalPolicyStatus401 | DryEvalPolicyStatus403 | DryEvalPolicyStatus404 | DryEvalPolicyStatus413 | DryEvalPolicyStatus415 | DryEvalPolicyStatus429 | DryEvalPolicyStatus500);
+export type DryEvalPolicyResponse = DryEvalPolicyStatus200;

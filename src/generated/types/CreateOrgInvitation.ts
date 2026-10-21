@@ -85,4 +85,4 @@ export type CreateOrgInvitationResponses = {
 /**
  * @description Union of all possible responses
 */
-export type CreateOrgInvitationResponse = (CreateOrgInvitationStatus201 | CreateOrgInvitationStatus400 | CreateOrgInvitationStatus401 | CreateOrgInvitationStatus403 | CreateOrgInvitationStatus404 | CreateOrgInvitationStatus409 | CreateOrgInvitationStatus429);
+export type CreateOrgInvitationResponse = CreateOrgInvitationStatus201;

@@ -83,4 +83,4 @@ export type TestDatabaseConnectionResponses = {
 /**
  * @description Union of all possible responses
 */
-export type TestDatabaseConnectionResponse = (TestDatabaseConnectionStatus200 | TestDatabaseConnectionStatus400 | TestDatabaseConnectionStatus401 | TestDatabaseConnectionStatus403 | TestDatabaseConnectionStatus404 | TestDatabaseConnectionStatus429 | TestDatabaseConnectionStatus500);
+export type TestDatabaseConnectionResponse = TestDatabaseConnectionStatus200;

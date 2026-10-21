@@ -85,4 +85,4 @@ export type GetOrganizationPlanResponses = {
 /**
  * @description Union of all possible responses
 */
-export type GetOrganizationPlanResponse = (GetOrganizationPlanStatus200 | GetOrganizationPlanStatus304 | GetOrganizationPlanStatus400 | GetOrganizationPlanStatus401 | GetOrganizationPlanStatus403 | GetOrganizationPlanStatus429 | GetOrganizationPlanStatus500);
+export type GetOrganizationPlanResponse = GetOrganizationPlanStatus200;

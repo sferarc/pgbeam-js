@@ -78,4 +78,4 @@ export type DeleteCustomDomainResponses = {
 /**
  * @description Union of all possible responses
 */
-export type DeleteCustomDomainResponse = (DeleteCustomDomainStatus204 | DeleteCustomDomainStatus400 | DeleteCustomDomainStatus401 | DeleteCustomDomainStatus403 | DeleteCustomDomainStatus404 | DeleteCustomDomainStatus429 | DeleteCustomDomainStatus500);
+export type DeleteCustomDomainResponse = DeleteCustomDomainStatus204;

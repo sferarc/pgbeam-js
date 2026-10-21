@@ -103,4 +103,4 @@ export type CreateSupportCaseResponses = {
 /**
  * @description Union of all possible responses
 */
-export type CreateSupportCaseResponse = (CreateSupportCaseStatus201 | CreateSupportCaseStatus400 | CreateSupportCaseStatus401 | CreateSupportCaseStatus403 | CreateSupportCaseStatus409 | CreateSupportCaseStatus413 | CreateSupportCaseStatus415 | CreateSupportCaseStatus500);
+export type CreateSupportCaseResponse = CreateSupportCaseStatus201;

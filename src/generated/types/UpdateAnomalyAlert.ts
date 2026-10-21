@@ -97,4 +97,4 @@ export type UpdateAnomalyAlertResponses = {
 /**
  * @description Union of all possible responses
 */
-export type UpdateAnomalyAlertResponse = (UpdateAnomalyAlertStatus200 | UpdateAnomalyAlertStatus400 | UpdateAnomalyAlertStatus401 | UpdateAnomalyAlertStatus403 | UpdateAnomalyAlertStatus404 | UpdateAnomalyAlertStatus413 | UpdateAnomalyAlertStatus415 | UpdateAnomalyAlertStatus500);
+export type UpdateAnomalyAlertResponse = UpdateAnomalyAlertStatus200;

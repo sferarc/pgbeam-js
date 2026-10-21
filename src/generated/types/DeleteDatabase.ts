@@ -78,4 +78,4 @@ export type DeleteDatabaseResponses = {
 /**
  * @description Union of all possible responses
 */
-export type DeleteDatabaseResponse = (DeleteDatabaseStatus204 | DeleteDatabaseStatus400 | DeleteDatabaseStatus401 | DeleteDatabaseStatus403 | DeleteDatabaseStatus404 | DeleteDatabaseStatus429 | DeleteDatabaseStatus500);
+export type DeleteDatabaseResponse = DeleteDatabaseStatus204;

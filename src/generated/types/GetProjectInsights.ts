@@ -111,4 +111,4 @@ export type GetProjectInsightsResponses = {
 /**
  * @description Union of all possible responses
 */
-export type GetProjectInsightsResponse = (GetProjectInsightsStatus200 | GetProjectInsightsStatus304 | GetProjectInsightsStatus400 | GetProjectInsightsStatus401 | GetProjectInsightsStatus404 | GetProjectInsightsStatus429 | GetProjectInsightsStatus500);
+export type GetProjectInsightsResponse = GetProjectInsightsStatus200;

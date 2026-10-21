@@ -114,4 +114,4 @@ export type GetAuditSessionSummaryResponses = {
 /**
  * @description Union of all possible responses
 */
-export type GetAuditSessionSummaryResponse = (GetAuditSessionSummaryStatus200 | GetAuditSessionSummaryStatus304 | GetAuditSessionSummaryStatus400 | GetAuditSessionSummaryStatus401 | GetAuditSessionSummaryStatus403 | GetAuditSessionSummaryStatus404 | GetAuditSessionSummaryStatus429 | GetAuditSessionSummaryStatus500);
+export type GetAuditSessionSummaryResponse = GetAuditSessionSummaryStatus200;

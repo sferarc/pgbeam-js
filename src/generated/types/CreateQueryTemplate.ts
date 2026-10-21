@@ -116,4 +116,4 @@ export type CreateQueryTemplateResponses = {
 /**
  * @description Union of all possible responses
 */
-export type CreateQueryTemplateResponse = (CreateQueryTemplateStatus201 | CreateQueryTemplateStatus400 | CreateQueryTemplateStatus401 | CreateQueryTemplateStatus403 | CreateQueryTemplateStatus404 | CreateQueryTemplateStatus409 | CreateQueryTemplateStatus413 | CreateQueryTemplateStatus415 | CreateQueryTemplateStatus429 | CreateQueryTemplateStatus500);
+export type CreateQueryTemplateResponse = CreateQueryTemplateStatus201;

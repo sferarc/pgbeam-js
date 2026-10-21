@@ -76,4 +76,4 @@ export type ReleaseDemoCredentialResponses = {
 /**
  * @description Union of all possible responses
 */
-export type ReleaseDemoCredentialResponse = (ReleaseDemoCredentialStatus200 | ReleaseDemoCredentialStatus400 | ReleaseDemoCredentialStatus401 | ReleaseDemoCredentialStatus404 | ReleaseDemoCredentialStatus429 | ReleaseDemoCredentialStatus503);
+export type ReleaseDemoCredentialResponse = ReleaseDemoCredentialStatus200;

@@ -116,4 +116,4 @@ export type CreateSupportMessageResponses = {
 /**
  * @description Union of all possible responses
 */
-export type CreateSupportMessageResponse = (CreateSupportMessageStatus201 | CreateSupportMessageStatus400 | CreateSupportMessageStatus401 | CreateSupportMessageStatus403 | CreateSupportMessageStatus404 | CreateSupportMessageStatus409 | CreateSupportMessageStatus413 | CreateSupportMessageStatus415 | CreateSupportMessageStatus500);
+export type CreateSupportMessageResponse = CreateSupportMessageStatus201;

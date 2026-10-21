@@ -71,4 +71,4 @@ export type DeleteHoneytokenResponses = {
 /**
  * @description Union of all possible responses
 */
-export type DeleteHoneytokenResponse = (DeleteHoneytokenStatus204 | DeleteHoneytokenStatus400 | DeleteHoneytokenStatus401 | DeleteHoneytokenStatus403 | DeleteHoneytokenStatus404 | DeleteHoneytokenStatus500);
+export type DeleteHoneytokenResponse = DeleteHoneytokenStatus204;

@@ -71,4 +71,4 @@ export type DeleteApprovalRuleResponses = {
 /**
  * @description Union of all possible responses
 */
-export type DeleteApprovalRuleResponse = (DeleteApprovalRuleStatus204 | DeleteApprovalRuleStatus400 | DeleteApprovalRuleStatus401 | DeleteApprovalRuleStatus403 | DeleteApprovalRuleStatus404 | DeleteApprovalRuleStatus500);
+export type DeleteApprovalRuleResponse = DeleteApprovalRuleStatus204;

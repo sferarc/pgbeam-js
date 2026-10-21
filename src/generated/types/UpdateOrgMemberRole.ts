@@ -91,4 +91,4 @@ export type UpdateOrgMemberRoleResponses = {
 /**
  * @description Union of all possible responses
 */
-export type UpdateOrgMemberRoleResponse = (UpdateOrgMemberRoleStatus200 | UpdateOrgMemberRoleStatus400 | UpdateOrgMemberRoleStatus401 | UpdateOrgMemberRoleStatus403 | UpdateOrgMemberRoleStatus404 | UpdateOrgMemberRoleStatus409 | UpdateOrgMemberRoleStatus429);
+export type UpdateOrgMemberRoleResponse = UpdateOrgMemberRoleStatus200;

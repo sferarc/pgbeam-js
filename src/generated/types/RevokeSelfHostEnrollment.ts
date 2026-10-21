@@ -73,4 +73,4 @@ export type RevokeSelfHostEnrollmentResponses = {
 /**
  * @description Union of all possible responses
 */
-export type RevokeSelfHostEnrollmentResponse = (RevokeSelfHostEnrollmentStatus204 | RevokeSelfHostEnrollmentStatus400 | RevokeSelfHostEnrollmentStatus401 | RevokeSelfHostEnrollmentStatus403 | RevokeSelfHostEnrollmentStatus404 | RevokeSelfHostEnrollmentStatus500);
+export type RevokeSelfHostEnrollmentResponse = RevokeSelfHostEnrollmentStatus204;

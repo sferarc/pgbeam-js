@@ -76,4 +76,4 @@ export type TestWebhookEndpointResponses = {
 /**
  * @description Union of all possible responses
 */
-export type TestWebhookEndpointResponse = (TestWebhookEndpointStatus202 | TestWebhookEndpointStatus400 | TestWebhookEndpointStatus401 | TestWebhookEndpointStatus403 | TestWebhookEndpointStatus404 | TestWebhookEndpointStatus500);
+export type TestWebhookEndpointResponse = TestWebhookEndpointStatus202;

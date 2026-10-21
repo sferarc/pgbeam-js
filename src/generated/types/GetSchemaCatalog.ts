@@ -97,4 +97,4 @@ export type GetSchemaCatalogResponses = {
 /**
  * @description Union of all possible responses
 */
-export type GetSchemaCatalogResponse = (GetSchemaCatalogStatus200 | GetSchemaCatalogStatus304 | GetSchemaCatalogStatus400 | GetSchemaCatalogStatus401 | GetSchemaCatalogStatus403 | GetSchemaCatalogStatus404 | GetSchemaCatalogStatus429 | GetSchemaCatalogStatus500);
+export type GetSchemaCatalogResponse = GetSchemaCatalogStatus200;

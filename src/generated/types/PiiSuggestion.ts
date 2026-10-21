@@ -72,6 +72,8 @@ export type PiiSuggestion = {
      * @description Confidence score in [0,1]. Combines column-name signal and sampled-value signal; higher is stronger evidence.
      *
      * Format: `float`
+     * @minLength 0
+     * @maxLength 1
      * @example 0.95
      * @type number
     */

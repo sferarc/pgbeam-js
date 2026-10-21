@@ -75,4 +75,4 @@ export type ExportAccountDataResponses = {
 /**
  * @description Union of all possible responses
 */
-export type ExportAccountDataResponse = (ExportAccountDataStatus200 | ExportAccountDataStatus304 | ExportAccountDataStatus400 | ExportAccountDataStatus401 | ExportAccountDataStatus404 | ExportAccountDataStatus429 | ExportAccountDataStatus500);
+export type ExportAccountDataResponse = ExportAccountDataStatus200;

@@ -78,4 +78,4 @@ export type DeletePolicyProfileResponses = {
 /**
  * @description Union of all possible responses
 */
-export type DeletePolicyProfileResponse = (DeletePolicyProfileStatus204 | DeletePolicyProfileStatus400 | DeletePolicyProfileStatus401 | DeletePolicyProfileStatus403 | DeletePolicyProfileStatus404 | DeletePolicyProfileStatus409 | DeletePolicyProfileStatus500);
+export type DeletePolicyProfileResponse = DeletePolicyProfileStatus204;

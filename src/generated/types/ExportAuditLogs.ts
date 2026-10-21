@@ -113,4 +113,4 @@ export type ExportAuditLogsResponses = {
 /**
  * @description Union of all possible responses
 */
-export type ExportAuditLogsResponse = (ExportAuditLogsStatus200 | ExportAuditLogsStatus400 | ExportAuditLogsStatus401 | ExportAuditLogsStatus403 | ExportAuditLogsStatus404 | ExportAuditLogsStatus429 | ExportAuditLogsStatus500);
+export type ExportAuditLogsResponse = ExportAuditLogsStatus200;

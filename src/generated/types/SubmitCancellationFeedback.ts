@@ -87,4 +87,4 @@ export type SubmitCancellationFeedbackResponses = {
 /**
  * @description Union of all possible responses
 */
-export type SubmitCancellationFeedbackResponse = (SubmitCancellationFeedbackStatus204 | SubmitCancellationFeedbackStatus400 | SubmitCancellationFeedbackStatus401 | SubmitCancellationFeedbackStatus403 | SubmitCancellationFeedbackStatus413 | SubmitCancellationFeedbackStatus415 | SubmitCancellationFeedbackStatus429 | SubmitCancellationFeedbackStatus500);
+export type SubmitCancellationFeedbackResponse = SubmitCancellationFeedbackStatus204;

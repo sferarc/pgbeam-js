@@ -122,4 +122,4 @@ export type UpdateQueryTemplateResponses = {
 /**
  * @description Union of all possible responses
 */
-export type UpdateQueryTemplateResponse = (UpdateQueryTemplateStatus200 | UpdateQueryTemplateStatus400 | UpdateQueryTemplateStatus401 | UpdateQueryTemplateStatus403 | UpdateQueryTemplateStatus404 | UpdateQueryTemplateStatus409 | UpdateQueryTemplateStatus412 | UpdateQueryTemplateStatus413 | UpdateQueryTemplateStatus415 | UpdateQueryTemplateStatus500);
+export type UpdateQueryTemplateResponse = UpdateQueryTemplateStatus200;

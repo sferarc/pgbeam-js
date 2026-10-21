@@ -104,4 +104,4 @@ export type ApproveApprovalRequestResponses = {
 /**
  * @description Union of all possible responses
 */
-export type ApproveApprovalRequestResponse = (ApproveApprovalRequestStatus200 | ApproveApprovalRequestStatus400 | ApproveApprovalRequestStatus401 | ApproveApprovalRequestStatus403 | ApproveApprovalRequestStatus404 | ApproveApprovalRequestStatus409 | ApproveApprovalRequestStatus413 | ApproveApprovalRequestStatus415 | ApproveApprovalRequestStatus500);
+export type ApproveApprovalRequestResponse = ApproveApprovalRequestStatus200;

@@ -116,4 +116,4 @@ export type CreateAgentCredentialResponses = {
 /**
  * @description Union of all possible responses
 */
-export type CreateAgentCredentialResponse = (CreateAgentCredentialStatus201 | CreateAgentCredentialStatus400 | CreateAgentCredentialStatus401 | CreateAgentCredentialStatus403 | CreateAgentCredentialStatus404 | CreateAgentCredentialStatus409 | CreateAgentCredentialStatus413 | CreateAgentCredentialStatus415 | CreateAgentCredentialStatus429 | CreateAgentCredentialStatus500);
+export type CreateAgentCredentialResponse = CreateAgentCredentialStatus201;

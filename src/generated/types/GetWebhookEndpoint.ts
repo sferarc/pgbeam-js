@@ -90,4 +90,4 @@ export type GetWebhookEndpointResponses = {
 /**
  * @description Union of all possible responses
 */
-export type GetWebhookEndpointResponse = (GetWebhookEndpointStatus200 | GetWebhookEndpointStatus304 | GetWebhookEndpointStatus400 | GetWebhookEndpointStatus401 | GetWebhookEndpointStatus403 | GetWebhookEndpointStatus404 | GetWebhookEndpointStatus500);
+export type GetWebhookEndpointResponse = GetWebhookEndpointStatus200;

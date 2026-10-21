@@ -116,4 +116,4 @@ export type CreateDatabaseResponses = {
 /**
  * @description Union of all possible responses
 */
-export type CreateDatabaseResponse = (CreateDatabaseStatus201 | CreateDatabaseStatus400 | CreateDatabaseStatus401 | CreateDatabaseStatus403 | CreateDatabaseStatus404 | CreateDatabaseStatus409 | CreateDatabaseStatus413 | CreateDatabaseStatus415 | CreateDatabaseStatus429 | CreateDatabaseStatus500);
+export type CreateDatabaseResponse = CreateDatabaseStatus201;

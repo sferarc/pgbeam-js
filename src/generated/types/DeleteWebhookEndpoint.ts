@@ -71,4 +71,4 @@ export type DeleteWebhookEndpointResponses = {
 /**
  * @description Union of all possible responses
 */
-export type DeleteWebhookEndpointResponse = (DeleteWebhookEndpointStatus204 | DeleteWebhookEndpointStatus400 | DeleteWebhookEndpointStatus401 | DeleteWebhookEndpointStatus403 | DeleteWebhookEndpointStatus404 | DeleteWebhookEndpointStatus500);
+export type DeleteWebhookEndpointResponse = DeleteWebhookEndpointStatus204;

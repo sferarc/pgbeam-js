@@ -72,4 +72,4 @@ export type DeleteProjectResponses = {
 /**
  * @description Union of all possible responses
 */
-export type DeleteProjectResponse = (DeleteProjectStatus204 | DeleteProjectStatus400 | DeleteProjectStatus401 | DeleteProjectStatus403 | DeleteProjectStatus404 | DeleteProjectStatus429 | DeleteProjectStatus500);
+export type DeleteProjectResponse = DeleteProjectStatus204;

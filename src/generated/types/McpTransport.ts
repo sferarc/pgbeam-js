@@ -68,4 +68,4 @@ export type McpTransportResponses = {
 /**
  * @description Union of all possible responses
 */
-export type McpTransportResponse = (McpTransportStatus200 | McpTransportStatus401 | McpTransportStatus413 | McpTransportStatus415 | McpTransportStatus429 | McpTransportStatus500);
+export type McpTransportResponse = McpTransportStatus200;

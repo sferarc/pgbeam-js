@@ -90,4 +90,4 @@ export type GetPolicyProfileResponses = {
 /**
  * @description Union of all possible responses
 */
-export type GetPolicyProfileResponse = (GetPolicyProfileStatus200 | GetPolicyProfileStatus304 | GetPolicyProfileStatus400 | GetPolicyProfileStatus401 | GetPolicyProfileStatus403 | GetPolicyProfileStatus404 | GetPolicyProfileStatus500);
+export type GetPolicyProfileResponse = GetPolicyProfileStatus200;

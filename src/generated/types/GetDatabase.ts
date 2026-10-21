@@ -97,4 +97,4 @@ export type GetDatabaseResponses = {
 /**
  * @description Union of all possible responses
 */
-export type GetDatabaseResponse = (GetDatabaseStatus200 | GetDatabaseStatus304 | GetDatabaseStatus400 | GetDatabaseStatus401 | GetDatabaseStatus403 | GetDatabaseStatus404 | GetDatabaseStatus429 | GetDatabaseStatus500);
+export type GetDatabaseResponse = GetDatabaseStatus200;

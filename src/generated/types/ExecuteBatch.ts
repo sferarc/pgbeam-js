@@ -84,4 +84,4 @@ export type ExecuteBatchResponses = {
 /**
  * @description Union of all possible responses
 */
-export type ExecuteBatchResponse = (ExecuteBatchStatus200 | ExecuteBatchStatus400 | ExecuteBatchStatus401 | ExecuteBatchStatus403 | ExecuteBatchStatus404 | ExecuteBatchStatus409 | ExecuteBatchStatus429);
+export type ExecuteBatchResponse = ExecuteBatchStatus200;

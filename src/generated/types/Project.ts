@@ -73,6 +73,8 @@ export type Project = {
      * @description Maximum queries per second for this project. 0 means unlimited.
      *
      * Format: `int32`
+     * @minLength 0
+     * @maxLength 2147483647
      * @example 1000
      * @type integer | undefined
     */
@@ -81,6 +83,8 @@ export type Project = {
      * @description Burst allowance above the steady-state rate. 0 uses queries_per_second as burst.
      *
      * Format: `int32`
+     * @minLength 0
+     * @maxLength 2147483647
      * @example 200
      * @type integer | undefined
     */
@@ -89,6 +93,8 @@ export type Project = {
      * @description Maximum concurrent proxy connections. 0 means unlimited.
      *
      * Format: `int32`
+     * @minLength 0
+     * @maxLength 2147483647
      * @example 500
      * @type integer | undefined
     */

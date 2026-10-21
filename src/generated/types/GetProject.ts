@@ -91,4 +91,4 @@ export type GetProjectResponses = {
 /**
  * @description Union of all possible responses
 */
-export type GetProjectResponse = (GetProjectStatus200 | GetProjectStatus304 | GetProjectStatus400 | GetProjectStatus401 | GetProjectStatus403 | GetProjectStatus404 | GetProjectStatus429 | GetProjectStatus500);
+export type GetProjectResponse = GetProjectStatus200;

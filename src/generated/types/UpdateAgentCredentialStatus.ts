@@ -122,4 +122,4 @@ export type UpdateAgentCredentialStatusResponses = {
 /**
  * @description Union of all possible responses
 */
-export type UpdateAgentCredentialStatusResponse = (UpdateAgentCredentialStatusStatus200 | UpdateAgentCredentialStatusStatus400 | UpdateAgentCredentialStatusStatus401 | UpdateAgentCredentialStatusStatus403 | UpdateAgentCredentialStatusStatus404 | UpdateAgentCredentialStatusStatus409 | UpdateAgentCredentialStatusStatus412 | UpdateAgentCredentialStatusStatus413 | UpdateAgentCredentialStatusStatus415 | UpdateAgentCredentialStatusStatus500);
+export type UpdateAgentCredentialStatusResponse = UpdateAgentCredentialStatusStatus200;

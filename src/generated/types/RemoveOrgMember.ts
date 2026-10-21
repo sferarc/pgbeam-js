@@ -79,4 +79,4 @@ export type RemoveOrgMemberResponses = {
 /**
  * @description Union of all possible responses
 */
-export type RemoveOrgMemberResponse = (RemoveOrgMemberStatus204 | RemoveOrgMemberStatus400 | RemoveOrgMemberStatus401 | RemoveOrgMemberStatus403 | RemoveOrgMemberStatus404 | RemoveOrgMemberStatus409 | RemoveOrgMemberStatus429);
+export type RemoveOrgMemberResponse = RemoveOrgMemberStatus204;

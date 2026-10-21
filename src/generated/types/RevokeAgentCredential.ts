@@ -71,4 +71,4 @@ export type RevokeAgentCredentialResponses = {
 /**
  * @description Union of all possible responses
 */
-export type RevokeAgentCredentialResponse = (RevokeAgentCredentialStatus204 | RevokeAgentCredentialStatus400 | RevokeAgentCredentialStatus401 | RevokeAgentCredentialStatus403 | RevokeAgentCredentialStatus404 | RevokeAgentCredentialStatus500);
+export type RevokeAgentCredentialResponse = RevokeAgentCredentialStatus204;

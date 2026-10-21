@@ -71,4 +71,4 @@ export type DeleteQueryTemplateResponses = {
 /**
  * @description Union of all possible responses
 */
-export type DeleteQueryTemplateResponse = (DeleteQueryTemplateStatus204 | DeleteQueryTemplateStatus400 | DeleteQueryTemplateStatus401 | DeleteQueryTemplateStatus403 | DeleteQueryTemplateStatus404 | DeleteQueryTemplateStatus500);
+export type DeleteQueryTemplateResponse = DeleteQueryTemplateStatus204;

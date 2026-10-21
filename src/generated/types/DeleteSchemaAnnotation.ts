@@ -87,4 +87,4 @@ export type DeleteSchemaAnnotationResponses = {
 /**
  * @description Union of all possible responses
 */
-export type DeleteSchemaAnnotationResponse = (DeleteSchemaAnnotationStatus204 | DeleteSchemaAnnotationStatus400 | DeleteSchemaAnnotationStatus401 | DeleteSchemaAnnotationStatus403 | DeleteSchemaAnnotationStatus404 | DeleteSchemaAnnotationStatus500);
+export type DeleteSchemaAnnotationResponse = DeleteSchemaAnnotationStatus204;

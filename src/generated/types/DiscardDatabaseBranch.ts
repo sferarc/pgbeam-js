@@ -71,4 +71,4 @@ export type DiscardDatabaseBranchResponses = {
 /**
  * @description Union of all possible responses
 */
-export type DiscardDatabaseBranchResponse = (DiscardDatabaseBranchStatus204 | DiscardDatabaseBranchStatus400 | DiscardDatabaseBranchStatus401 | DiscardDatabaseBranchStatus403 | DiscardDatabaseBranchStatus404 | DiscardDatabaseBranchStatus500);
+export type DiscardDatabaseBranchResponse = DiscardDatabaseBranchStatus204;

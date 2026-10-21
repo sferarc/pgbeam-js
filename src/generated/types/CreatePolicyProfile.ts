@@ -116,4 +116,4 @@ export type CreatePolicyProfileResponses = {
 /**
  * @description Union of all possible responses
 */
-export type CreatePolicyProfileResponse = (CreatePolicyProfileStatus201 | CreatePolicyProfileStatus400 | CreatePolicyProfileStatus401 | CreatePolicyProfileStatus403 | CreatePolicyProfileStatus404 | CreatePolicyProfileStatus409 | CreatePolicyProfileStatus413 | CreatePolicyProfileStatus415 | CreatePolicyProfileStatus429 | CreatePolicyProfileStatus500);
+export type CreatePolicyProfileResponse = CreatePolicyProfileStatus201;

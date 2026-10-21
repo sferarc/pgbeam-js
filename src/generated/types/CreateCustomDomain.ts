@@ -116,4 +116,4 @@ export type CreateCustomDomainResponses = {
 /**
  * @description Union of all possible responses
 */
-export type CreateCustomDomainResponse = (CreateCustomDomainStatus201 | CreateCustomDomainStatus400 | CreateCustomDomainStatus401 | CreateCustomDomainStatus403 | CreateCustomDomainStatus404 | CreateCustomDomainStatus409 | CreateCustomDomainStatus413 | CreateCustomDomainStatus415 | CreateCustomDomainStatus429 | CreateCustomDomainStatus500);
+export type CreateCustomDomainResponse = CreateCustomDomainStatus201;

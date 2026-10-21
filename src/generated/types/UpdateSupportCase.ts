@@ -98,4 +98,4 @@ export type UpdateSupportCaseResponses = {
 /**
  * @description Union of all possible responses
 */
-export type UpdateSupportCaseResponse = (UpdateSupportCaseStatus200 | UpdateSupportCaseStatus400 | UpdateSupportCaseStatus401 | UpdateSupportCaseStatus403 | UpdateSupportCaseStatus404 | UpdateSupportCaseStatus413 | UpdateSupportCaseStatus415 | UpdateSupportCaseStatus500);
+export type UpdateSupportCaseResponse = UpdateSupportCaseStatus200;

@@ -116,4 +116,4 @@ export type CreateAnomalyRuleResponses = {
 /**
  * @description Union of all possible responses
 */
-export type CreateAnomalyRuleResponse = (CreateAnomalyRuleStatus201 | CreateAnomalyRuleStatus400 | CreateAnomalyRuleStatus401 | CreateAnomalyRuleStatus403 | CreateAnomalyRuleStatus404 | CreateAnomalyRuleStatus409 | CreateAnomalyRuleStatus413 | CreateAnomalyRuleStatus415 | CreateAnomalyRuleStatus429 | CreateAnomalyRuleStatus500);
+export type CreateAnomalyRuleResponse = CreateAnomalyRuleStatus201;

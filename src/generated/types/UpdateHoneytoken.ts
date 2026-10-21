@@ -122,4 +122,4 @@ export type UpdateHoneytokenResponses = {
 /**
  * @description Union of all possible responses
 */
-export type UpdateHoneytokenResponse = (UpdateHoneytokenStatus200 | UpdateHoneytokenStatus400 | UpdateHoneytokenStatus401 | UpdateHoneytokenStatus403 | UpdateHoneytokenStatus404 | UpdateHoneytokenStatus409 | UpdateHoneytokenStatus412 | UpdateHoneytokenStatus413 | UpdateHoneytokenStatus415 | UpdateHoneytokenStatus500);
+export type UpdateHoneytokenResponse = UpdateHoneytokenStatus200;

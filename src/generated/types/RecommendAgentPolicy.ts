@@ -104,4 +104,4 @@ export type RecommendAgentPolicyResponses = {
 /**
  * @description Union of all possible responses
 */
-export type RecommendAgentPolicyResponse = (RecommendAgentPolicyStatus200 | RecommendAgentPolicyStatus400 | RecommendAgentPolicyStatus401 | RecommendAgentPolicyStatus403 | RecommendAgentPolicyStatus404 | RecommendAgentPolicyStatus413 | RecommendAgentPolicyStatus415 | RecommendAgentPolicyStatus429 | RecommendAgentPolicyStatus500);
+export type RecommendAgentPolicyResponse = RecommendAgentPolicyStatus200;

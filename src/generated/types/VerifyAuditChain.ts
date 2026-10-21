@@ -108,4 +108,4 @@ export type VerifyAuditChainResponses = {
 /**
  * @description Union of all possible responses
 */
-export type VerifyAuditChainResponse = (VerifyAuditChainStatus200 | VerifyAuditChainStatus304 | VerifyAuditChainStatus400 | VerifyAuditChainStatus401 | VerifyAuditChainStatus403 | VerifyAuditChainStatus404 | VerifyAuditChainStatus429 | VerifyAuditChainStatus500);
+export type VerifyAuditChainResponse = VerifyAuditChainStatus200;

@@ -90,4 +90,4 @@ export type GetApprovalRuleResponses = {
 /**
  * @description Union of all possible responses
 */
-export type GetApprovalRuleResponse = (GetApprovalRuleStatus200 | GetApprovalRuleStatus304 | GetApprovalRuleStatus400 | GetApprovalRuleStatus401 | GetApprovalRuleStatus403 | GetApprovalRuleStatus404 | GetApprovalRuleStatus500);
+export type GetApprovalRuleResponse = GetApprovalRuleStatus200;

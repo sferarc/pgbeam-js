@@ -61,4 +61,4 @@ export type ScanTextResponses = {
 /**
  * @description Union of all possible responses
 */
-export type ScanTextResponse = (ScanTextStatus200 | ScanTextStatus400 | ScanTextStatus402 | ScanTextStatus429 | ScanTextStatus503);
+export type ScanTextResponse = ScanTextStatus200;

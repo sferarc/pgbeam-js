@@ -98,4 +98,4 @@ export type PutSchemaAnnotationResponses = {
 /**
  * @description Union of all possible responses
 */
-export type PutSchemaAnnotationResponse = (PutSchemaAnnotationStatus200 | PutSchemaAnnotationStatus400 | PutSchemaAnnotationStatus401 | PutSchemaAnnotationStatus403 | PutSchemaAnnotationStatus404 | PutSchemaAnnotationStatus413 | PutSchemaAnnotationStatus415 | PutSchemaAnnotationStatus429 | PutSchemaAnnotationStatus500);
+export type PutSchemaAnnotationResponse = PutSchemaAnnotationStatus200;

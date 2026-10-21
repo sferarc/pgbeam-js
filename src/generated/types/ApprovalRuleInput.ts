@@ -41,6 +41,7 @@ export type ApprovalRuleInput = {
      * @description Hold only statements affecting at least this many rows. Must be at least 1. Null or omitted holds every matching statement. The count is taken in a rolled-back trial run; a statement that reports no count (DDL, a batch, a data-modifying CTE) is held regardless.\n
      *
      * Format: `int32`
+     * @minLength 1
      * @example 1000
      * @type integer | undefined
     */

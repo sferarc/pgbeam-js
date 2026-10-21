@@ -90,4 +90,4 @@ export type GetHoneytokenResponses = {
 /**
  * @description Union of all possible responses
 */
-export type GetHoneytokenResponse = (GetHoneytokenStatus200 | GetHoneytokenStatus304 | GetHoneytokenStatus400 | GetHoneytokenStatus401 | GetHoneytokenStatus403 | GetHoneytokenStatus404 | GetHoneytokenStatus500);
+export type GetHoneytokenResponse = GetHoneytokenStatus200;

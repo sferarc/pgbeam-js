@@ -122,4 +122,4 @@ export type UpdateApprovalRuleResponses = {
 /**
  * @description Union of all possible responses
 */
-export type UpdateApprovalRuleResponse = (UpdateApprovalRuleStatus200 | UpdateApprovalRuleStatus400 | UpdateApprovalRuleStatus401 | UpdateApprovalRuleStatus403 | UpdateApprovalRuleStatus404 | UpdateApprovalRuleStatus409 | UpdateApprovalRuleStatus412 | UpdateApprovalRuleStatus413 | UpdateApprovalRuleStatus415 | UpdateApprovalRuleStatus500);
+export type UpdateApprovalRuleResponse = UpdateApprovalRuleStatus200;

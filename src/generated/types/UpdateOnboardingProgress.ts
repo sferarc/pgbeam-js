@@ -99,4 +99,4 @@ export type UpdateOnboardingProgressResponses = {
 /**
  * @description Union of all possible responses
 */
-export type UpdateOnboardingProgressResponse = (UpdateOnboardingProgressStatus200 | UpdateOnboardingProgressStatus400 | UpdateOnboardingProgressStatus401 | UpdateOnboardingProgressStatus403 | UpdateOnboardingProgressStatus404 | UpdateOnboardingProgressStatus413 | UpdateOnboardingProgressStatus415 | UpdateOnboardingProgressStatus429 | UpdateOnboardingProgressStatus500);
+export type UpdateOnboardingProgressResponse = UpdateOnboardingProgressStatus200;

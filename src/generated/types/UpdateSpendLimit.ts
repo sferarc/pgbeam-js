@@ -99,4 +99,4 @@ export type UpdateSpendLimitResponses = {
 /**
  * @description Union of all possible responses
 */
-export type UpdateSpendLimitResponse = (UpdateSpendLimitStatus200 | UpdateSpendLimitStatus400 | UpdateSpendLimitStatus401 | UpdateSpendLimitStatus403 | UpdateSpendLimitStatus404 | UpdateSpendLimitStatus413 | UpdateSpendLimitStatus415 | UpdateSpendLimitStatus429 | UpdateSpendLimitStatus500);
+export type UpdateSpendLimitResponse = UpdateSpendLimitStatus200;

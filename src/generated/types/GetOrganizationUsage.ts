@@ -104,4 +104,4 @@ export type GetOrganizationUsageResponses = {
 /**
  * @description Union of all possible responses
 */
-export type GetOrganizationUsageResponse = (GetOrganizationUsageStatus200 | GetOrganizationUsageStatus304 | GetOrganizationUsageStatus400 | GetOrganizationUsageStatus401 | GetOrganizationUsageStatus403 | GetOrganizationUsageStatus429 | GetOrganizationUsageStatus500);
+export type GetOrganizationUsageResponse = GetOrganizationUsageStatus200;

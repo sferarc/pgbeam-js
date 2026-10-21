@@ -98,4 +98,4 @@ export type ReplayPolicyResponses = {
 /**
  * @description Union of all possible responses
 */
-export type ReplayPolicyResponse = (ReplayPolicyStatus200 | ReplayPolicyStatus400 | ReplayPolicyStatus401 | ReplayPolicyStatus403 | ReplayPolicyStatus404 | ReplayPolicyStatus413 | ReplayPolicyStatus415 | ReplayPolicyStatus429 | ReplayPolicyStatus500);
+export type ReplayPolicyResponse = ReplayPolicyStatus200;

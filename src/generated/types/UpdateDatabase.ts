@@ -122,4 +122,4 @@ export type UpdateDatabaseResponses = {
 /**
  * @description Union of all possible responses
 */
-export type UpdateDatabaseResponse = (UpdateDatabaseStatus200 | UpdateDatabaseStatus400 | UpdateDatabaseStatus401 | UpdateDatabaseStatus403 | UpdateDatabaseStatus404 | UpdateDatabaseStatus412 | UpdateDatabaseStatus413 | UpdateDatabaseStatus415 | UpdateDatabaseStatus429 | UpdateDatabaseStatus500);
+export type UpdateDatabaseResponse = UpdateDatabaseStatus200;

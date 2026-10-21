@@ -90,4 +90,4 @@ export type GetAgentCredentialResponses = {
 /**
  * @description Union of all possible responses
 */
-export type GetAgentCredentialResponse = (GetAgentCredentialStatus200 | GetAgentCredentialStatus304 | GetAgentCredentialStatus400 | GetAgentCredentialStatus401 | GetAgentCredentialStatus403 | GetAgentCredentialStatus404 | GetAgentCredentialStatus500);
+export type GetAgentCredentialResponse = GetAgentCredentialStatus200;

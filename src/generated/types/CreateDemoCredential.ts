@@ -62,4 +62,4 @@ export type CreateDemoCredentialResponses = {
 /**
  * @description Union of all possible responses
 */
-export type CreateDemoCredentialResponse = (CreateDemoCredentialStatus201 | CreateDemoCredentialStatus400 | CreateDemoCredentialStatus402 | CreateDemoCredentialStatus429 | CreateDemoCredentialStatus503);
+export type CreateDemoCredentialResponse = CreateDemoCredentialStatus201;

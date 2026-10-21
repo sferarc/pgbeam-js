@@ -96,4 +96,4 @@ export type RotateSelfHostEnrollmentResponses = {
 /**
  * @description Union of all possible responses
 */
-export type RotateSelfHostEnrollmentResponse = (RotateSelfHostEnrollmentStatus200 | RotateSelfHostEnrollmentStatus400 | RotateSelfHostEnrollmentStatus401 | RotateSelfHostEnrollmentStatus403 | RotateSelfHostEnrollmentStatus404 | RotateSelfHostEnrollmentStatus409 | RotateSelfHostEnrollmentStatus500);
+export type RotateSelfHostEnrollmentResponse = RotateSelfHostEnrollmentStatus200;

@@ -83,4 +83,4 @@ export type ScanDatabaseForPiiResponses = {
 /**
  * @description Union of all possible responses
 */
-export type ScanDatabaseForPiiResponse = (ScanDatabaseForPiiStatus200 | ScanDatabaseForPiiStatus400 | ScanDatabaseForPiiStatus401 | ScanDatabaseForPiiStatus403 | ScanDatabaseForPiiStatus404 | ScanDatabaseForPiiStatus429 | ScanDatabaseForPiiStatus500);
+export type ScanDatabaseForPiiResponse = ScanDatabaseForPiiStatus200;

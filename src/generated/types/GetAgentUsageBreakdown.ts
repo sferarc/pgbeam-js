@@ -108,4 +108,4 @@ export type GetAgentUsageBreakdownResponses = {
 /**
  * @description Union of all possible responses
 */
-export type GetAgentUsageBreakdownResponse = (GetAgentUsageBreakdownStatus200 | GetAgentUsageBreakdownStatus304 | GetAgentUsageBreakdownStatus400 | GetAgentUsageBreakdownStatus401 | GetAgentUsageBreakdownStatus403 | GetAgentUsageBreakdownStatus404 | GetAgentUsageBreakdownStatus429 | GetAgentUsageBreakdownStatus500);
+export type GetAgentUsageBreakdownResponse = GetAgentUsageBreakdownStatus200;
