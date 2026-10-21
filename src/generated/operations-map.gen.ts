@@ -108,7 +108,6 @@ import type { CreateSupportCaseOptions, CreateSupportCaseStatus201 } from "./typ
 import type { GetSupportCaseOptions, GetSupportCaseStatus200 } from "./types/GetSupportCase";
 import type { UpdateSupportCaseOptions, UpdateSupportCaseStatus200 } from "./types/UpdateSupportCase";
 import type { CreateSupportMessageOptions, CreateSupportMessageStatus201 } from "./types/CreateSupportMessage";
-import type { HandleSlackSupportEventOptions, HandleSlackSupportEventStatus200 } from "./types/HandleSlackSupportEvent";
 import type { ScanTextOptions, ScanTextStatus200 } from "./types/ScanText";
 import type { GetOrganizationUsageOptions, GetOrganizationUsageStatus200 } from "./types/GetOrganizationUsage";
 import type { GetProjectUsageOptions, GetProjectUsageStatus200 } from "./types/GetProjectUsage";
@@ -264,9 +263,6 @@ export const operationsByTag = {
     updateSupportCase: { method: "PATCH", path: "/v1/organizations/{org_id}/support/cases/{case_id}" },
     createSupportMessage: { method: "POST", path: "/v1/organizations/{org_id}/support/cases/{case_id}/messages" },
   },
-  internal: {
-    handleSlackSupportEvent: { method: "POST", path: "/v1/internal/support/slack-event" },
-  },
   webhooks: {
     listWebhookEndpoints: { method: "GET", path: "/v1/projects/{project_id}/webhooks" },
     createWebhookEndpoint: { method: "POST", path: "/v1/projects/{project_id}/webhooks" },
@@ -383,7 +379,6 @@ export const operationsByPath = {
   "GET /v1/organizations/{org_id}/support/cases/{case_id}": { method: "GET", path: "/v1/organizations/{org_id}/support/cases/{case_id}", operationId: "getSupportCase" },
   "PATCH /v1/organizations/{org_id}/support/cases/{case_id}": { method: "PATCH", path: "/v1/organizations/{org_id}/support/cases/{case_id}", operationId: "updateSupportCase" },
   "POST /v1/organizations/{org_id}/support/cases/{case_id}/messages": { method: "POST", path: "/v1/organizations/{org_id}/support/cases/{case_id}/messages", operationId: "createSupportMessage" },
-  "POST /v1/internal/support/slack-event": { method: "POST", path: "/v1/internal/support/slack-event", operationId: "handleSlackSupportEvent" },
   "POST /v1/scan/text": { method: "POST", path: "/v1/scan/text", operationId: "scanText", refusesIdempotencyKey: true },
   "GET /v1/organizations/{org_id}/usage": { method: "GET", path: "/v1/organizations/{org_id}/usage", operationId: "getOrganizationUsage" },
   "GET /v1/projects/{project_id}/usage": { method: "GET", path: "/v1/projects/{project_id}/usage", operationId: "getProjectUsage" },
@@ -494,7 +489,6 @@ type CreateSupportCaseParams = { pathParams: NonNullable<CreateSupportCaseOption
 type GetSupportCaseParams = { pathParams: NonNullable<GetSupportCaseOptions["path"]> };
 type UpdateSupportCaseParams = { pathParams: NonNullable<UpdateSupportCaseOptions["path"]>; body: NonNullable<UpdateSupportCaseOptions["body"]> };
 type CreateSupportMessageParams = { pathParams: NonNullable<CreateSupportMessageOptions["path"]>; body: NonNullable<CreateSupportMessageOptions["body"]> };
-type HandleSlackSupportEventParams = { body: NonNullable<HandleSlackSupportEventOptions["body"]> };
 type ScanTextParams = { body: NonNullable<ScanTextOptions["body"]> };
 type GetOrganizationUsageParams = { pathParams: NonNullable<GetOrganizationUsageOptions["path"]>; queryParams: NonNullable<GetOrganizationUsageOptions["query"]> };
 type GetProjectUsageParams = { pathParams: NonNullable<GetProjectUsageOptions["path"]>; queryParams: NonNullable<GetProjectUsageOptions["query"]> };
@@ -650,9 +644,6 @@ export interface ApiOperations {
     updateSupportCase(params: UpdateSupportCaseParams): Promise<UpdateSupportCaseStatus200>;
     createSupportMessage(params: CreateSupportMessageParams): Promise<CreateSupportMessageStatus201>;
   };
-  internal: {
-    handleSlackSupportEvent(params: HandleSlackSupportEventParams): Promise<HandleSlackSupportEventStatus200>;
-  };
   webhooks: {
     listWebhookEndpoints(params: ListWebhookEndpointsParams): Promise<ListWebhookEndpointsStatus200>;
     createWebhookEndpoint(params: CreateWebhookEndpointParams): Promise<CreateWebhookEndpointStatus201>;
@@ -769,7 +760,6 @@ export interface RequestMap {
   "GET /v1/organizations/{org_id}/support/cases/{case_id}": { params: GetSupportCaseParams; response: GetSupportCaseStatus200 };
   "PATCH /v1/organizations/{org_id}/support/cases/{case_id}": { params: UpdateSupportCaseParams; response: UpdateSupportCaseStatus200 };
   "POST /v1/organizations/{org_id}/support/cases/{case_id}/messages": { params: CreateSupportMessageParams; response: CreateSupportMessageStatus201 };
-  "POST /v1/internal/support/slack-event": { params: HandleSlackSupportEventParams; response: HandleSlackSupportEventStatus200 };
   "POST /v1/scan/text": { params: ScanTextParams; response: ScanTextStatus200 };
   "GET /v1/organizations/{org_id}/usage": { params: GetOrganizationUsageParams; response: GetOrganizationUsageStatus200 };
   "GET /v1/projects/{project_id}/usage": { params: GetProjectUsageParams; response: GetProjectUsageStatus200 };

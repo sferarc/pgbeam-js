@@ -25,6 +25,8 @@ export default defineConfig({
     pluginTs({
       output: { path: "./types", barrel: { type: "named" } },
       enumType: "asConst",
+      // Mirrors the Internal tag's x-sdk-exclude, which the maps generator honours but kubb does not read.
+      exclude: [{ type: "tag", pattern: "Internal" }],
     }),
   ],
 });
