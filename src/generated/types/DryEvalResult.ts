@@ -25,7 +25,7 @@ export type DryEvalResult = {
     */
     verdict: DryEvalResultVerdictEnumKey;
     /**
-     * @description Machine-readable decision tag. For a block, the blocking rule (e.g. read_only, table_denied, table_not_allowed, statement_denied, row_filter_unsafe). Otherwise \"ok\".
+     * @description Machine-readable decision tag. For a block, the blocking rule (e.g. read_only, table_denied, table_not_allowed, statement_denied, row_filter_unsafe, template_required). Otherwise \"ok\".
      * @example ok
      * @type string
     */
@@ -61,4 +61,10 @@ export type DryEvalResult = {
      * @type array | undefined
     */
     notes?: string[];
+    /**
+     * @description The name of the project query template the statement matched. Present only when the policy is templates-only and the statement is one of the project\'s enabled templates; a templates-only policy blocks anything else with rule template_required.
+     * @example open_orders
+     * @type string | undefined
+    */
+    template?: string;
 };

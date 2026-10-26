@@ -193,6 +193,32 @@ function isAbortError(err: unknown): boolean {
 
 export type OnResponseHook = (response: Response) => void | Promise<void>;
 
+/** Whether `err` is the `304 Not Modified` a matching `If-None-Match` produces. */
+export function isNotModified(err: unknown): err is ApiError {
+  return err instanceof ApiError && err.status === 304;
+}
+
+/**
+ * Headers the client owns; a caller sending one is refused rather than ignored.
+ * An array, not a Set: Pulumi serializes this module into dynamic providers and
+ * rebuilds a captured Set as a plain object.
+ */
+const RESERVED_HEADERS = ["authorization", "content-type"];
+
+function callerHeaders(headers: FetcherOptions["headers"]): Record<string, string> {
+  const out: Record<string, string> = {};
+  for (const [name, value] of Object.entries(headers ?? {})) {
+    if (value === undefined) continue;
+    if (RESERVED_HEADERS.includes(name.toLowerCase())) {
+      throw new TypeError(
+        `${name} cannot be set per request: the client sets it from its own token and body`,
+      );
+    }
+    out[name] = value;
+  }
+  return out;
+}
+
 export interface RetryConfig {
   /** Max retry attempts after initial request (default: 5, 0 = disabled). */
   maxRetries?: number;
@@ -224,6 +250,12 @@ export interface FetcherOptions {
   pathParams?: Record<string, string>;
   queryParams?: Record<string, unknown>;
   body?: unknown;
+  /**
+   * Extra request headers, such as `If-Match` or `If-None-Match`. `Authorization`
+   * and `Content-Type` are refused. An `Idempotency-Key` here replaces the
+   * generated one.
+   */
+  headers?: Record<string, string | undefined>;
   /** Withhold the automatic Idempotency-Key, for operations the server rejects it on. */
   refusesIdempotencyKey?: boolean;
   baseUrl: string;
@@ -379,6 +411,11 @@ async function resolveToken(
 }
 
 export async function fetcher<T>(options: FetcherOptions): Promise<T> {
+  const extraHeaders = callerHeaders(options.headers);
+  const callerSetKey = Object.keys(extraHeaders).some(
+    (name) => name.toLowerCase() === "idempotency-key",
+  );
+
   let url = options.path;
   if (options.pathParams) {
     for (const [key, value] of Object.entries(options.pathParams)) {
@@ -414,7 +451,7 @@ export async function fetcher<T>(options: FetcherOptions): Promise<T> {
     timeoutMs,
   });
 
-  const headers: Record<string, string> = {};
+  const headers: Record<string, string> = { ...extraHeaders };
   if (token) {
     headers.Authorization = `Bearer ${token}`;
   }
@@ -426,6 +463,7 @@ export async function fetcher<T>(options: FetcherOptions): Promise<T> {
   const idempotencyKey =
     retry.maxRetries > 0 &&
     retry.idempotencyKeys &&
+    !callerSetKey &&
     !options.refusesIdempotencyKey &&
     isMutatingMethod(options.method)
       ? generateUUID()

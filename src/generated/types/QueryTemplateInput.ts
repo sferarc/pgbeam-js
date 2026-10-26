@@ -18,8 +18,9 @@ export type QueryTemplateInput = {
     */
     name: string;
     /**
-     * @description What the template is for, shown to an agent that lists the templates.
+     * @description What the template is for, shown to an agent that lists the templates. Defaults to empty.\n
      * @maxLength 1000
+     * @default ''
      * @example Open orders for one customer, newest first.
      * @type string | undefined
     */

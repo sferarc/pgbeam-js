@@ -3,7 +3,7 @@
  * Run: pnpm generate:sdk
  */
 
-import type { ExportAccountDataStatus200 } from "./types/ExportAccountData";
+import type { ExportAccountDataOptions, ExportAccountDataStatus200 } from "./types/ExportAccountData";
 import type { ListAgentCredentialsOptions, ListAgentCredentialsStatus200 } from "./types/ListAgentCredentials";
 import type { CreateAgentCredentialOptions, CreateAgentCredentialStatus201 } from "./types/CreateAgentCredential";
 import type { GetAgentCredentialOptions, GetAgentCredentialStatus200 } from "./types/GetAgentCredential";
@@ -31,7 +31,7 @@ import type { ExportAuditLogsOptions, ExportAuditLogsStatus200 } from "./types/E
 import type { GetAuditSessionSummaryOptions, GetAuditSessionSummaryStatus200 } from "./types/GetAuditSessionSummary";
 import type { VerifyAuditChainOptions, VerifyAuditChainStatus200 } from "./types/VerifyAuditChain";
 import type { ExecuteBatchOptions, ExecuteBatchStatus200 } from "./types/ExecuteBatch";
-import type { ListPlansStatus200 } from "./types/ListPlans";
+import type { ListPlansOptions, ListPlansStatus200 } from "./types/ListPlans";
 import type { GetOrganizationPlanOptions, GetOrganizationPlanStatus200 } from "./types/GetOrganizationPlan";
 import type { GetVercelInstallationOptions, GetVercelInstallationStatus200 } from "./types/GetVercelInstallation";
 import type { UpdateSpendLimitOptions, UpdateSpendLimitStatus200 } from "./types/UpdateSpendLimit";
@@ -55,7 +55,7 @@ import type { ListCustomDomainsOptions, ListCustomDomainsStatus200 } from "./typ
 import type { CreateCustomDomainOptions, CreateCustomDomainStatus201 } from "./types/CreateCustomDomain";
 import type { DeleteCustomDomainOptions } from "./types/DeleteCustomDomain";
 import type { VerifyCustomDomainOptions, VerifyCustomDomainStatus200 } from "./types/VerifyCustomDomain";
-import type { GetHealthStatus200 } from "./types/GetHealth";
+import type { GetHealthOptions, GetHealthStatus200 } from "./types/GetHealth";
 import type { ListHoneytokensOptions, ListHoneytokensStatus200 } from "./types/ListHoneytokens";
 import type { CreateHoneytokenOptions, CreateHoneytokenStatus201 } from "./types/CreateHoneytoken";
 import type { GetHoneytokenOptions, GetHoneytokenStatus200 } from "./types/GetHoneytoken";
@@ -71,7 +71,7 @@ import type { RevokeOrgInvitationOptions } from "./types/RevokeOrgInvitation";
 import type { LintMigrationOptions, LintMigrationStatus200 } from "./types/LintMigration";
 import type { GetOnboardingProgressOptions, GetOnboardingProgressStatus200 } from "./types/GetOnboardingProgress";
 import type { UpdateOnboardingProgressOptions, UpdateOnboardingProgressStatus200 } from "./types/UpdateOnboardingProgress";
-import type { ListOrganizationsStatus200 } from "./types/ListOrganizations";
+import type { ListOrganizationsOptions, ListOrganizationsStatus200 } from "./types/ListOrganizations";
 import type { ListPaymentResourcesStatus200 } from "./types/ListPaymentResources";
 import type { CreateBudgetTopupOptions, CreateBudgetTopupStatus201 } from "./types/CreateBudgetTopup";
 import type { ListPolicyProfilesOptions, ListPolicyProfilesStatus200 } from "./types/ListPolicyProfiles";
@@ -79,6 +79,7 @@ import type { CreatePolicyProfileOptions, CreatePolicyProfileStatus201 } from ".
 import type { GetPolicyProfileOptions, GetPolicyProfileStatus200 } from "./types/GetPolicyProfile";
 import type { UpdatePolicyProfileOptions, UpdatePolicyProfileStatus200 } from "./types/UpdatePolicyProfile";
 import type { DeletePolicyProfileOptions } from "./types/DeletePolicyProfile";
+import type { GetPolicyStatementKindsOptions, GetPolicyStatementKindsStatus200 } from "./types/GetPolicyStatementKinds";
 import type { DryEvalPolicyOptions, DryEvalPolicyStatus200 } from "./types/DryEvalPolicy";
 import type { ReplayPolicyOptions, ReplayPolicyStatus200 } from "./types/ReplayPolicy";
 import type { ListProjectsOptions, ListProjectsStatus200 } from "./types/ListProjects";
@@ -92,7 +93,7 @@ import type { CreateQueryTemplateOptions, CreateQueryTemplateStatus201 } from ".
 import type { GetQueryTemplateOptions, GetQueryTemplateStatus200 } from "./types/GetQueryTemplate";
 import type { UpdateQueryTemplateOptions, UpdateQueryTemplateStatus200 } from "./types/UpdateQueryTemplate";
 import type { DeleteQueryTemplateOptions } from "./types/DeleteQueryTemplate";
-import type { ListRegionsStatus200 } from "./types/ListRegions";
+import type { ListRegionsOptions, ListRegionsStatus200 } from "./types/ListRegions";
 import type { ListReplicasOptions, ListReplicasStatus200 } from "./types/ListReplicas";
 import type { CreateReplicaOptions, CreateReplicaStatus201 } from "./types/CreateReplica";
 import type { DeleteReplicaOptions } from "./types/DeleteReplica";
@@ -152,6 +153,7 @@ export const operationsByTag = {
     getPolicyProfile: { method: "GET", path: "/v1/projects/{project_id}/policies/{policy_id}" },
     updatePolicyProfile: { method: "PUT", path: "/v1/projects/{project_id}/policies/{policy_id}" },
     deletePolicyProfile: { method: "DELETE", path: "/v1/projects/{project_id}/policies/{policy_id}" },
+    getPolicyStatementKinds: { method: "GET", path: "/v1/projects/{project_id}/policies/{policy_id}/statement-kinds" },
     dryEvalPolicy: { method: "POST", path: "/v1/projects/{project_id}/policy-evaluations" },
     replayPolicy: { method: "POST", path: "/v1/projects/{project_id}/policy-replays" },
     listQueryTemplates: { method: "GET", path: "/v1/projects/{project_id}/query-templates" },
@@ -350,6 +352,7 @@ export const operationsByPath = {
   "GET /v1/projects/{project_id}/policies/{policy_id}": { method: "GET", path: "/v1/projects/{project_id}/policies/{policy_id}", operationId: "getPolicyProfile" },
   "PUT /v1/projects/{project_id}/policies/{policy_id}": { method: "PUT", path: "/v1/projects/{project_id}/policies/{policy_id}", operationId: "updatePolicyProfile" },
   "DELETE /v1/projects/{project_id}/policies/{policy_id}": { method: "DELETE", path: "/v1/projects/{project_id}/policies/{policy_id}", operationId: "deletePolicyProfile" },
+  "GET /v1/projects/{project_id}/policies/{policy_id}/statement-kinds": { method: "GET", path: "/v1/projects/{project_id}/policies/{policy_id}/statement-kinds", operationId: "getPolicyStatementKinds" },
   "POST /v1/projects/{project_id}/policy-evaluations": { method: "POST", path: "/v1/projects/{project_id}/policy-evaluations", operationId: "dryEvalPolicy" },
   "POST /v1/projects/{project_id}/policy-replays": { method: "POST", path: "/v1/projects/{project_id}/policy-replays", operationId: "replayPolicy" },
   "GET /v1/projects": { method: "GET", path: "/v1/projects", operationId: "listProjects" },
@@ -391,118 +394,124 @@ export const operationsByPath = {
   "POST /v1/projects/{project_id}/webhooks/{webhook_id}/test": { method: "POST", path: "/v1/projects/{project_id}/webhooks/{webhook_id}/test", operationId: "testWebhookEndpoint" },
 } as const;
 
-type ListAgentCredentialsParams = { pathParams: NonNullable<ListAgentCredentialsOptions["path"]>; queryParams?: NonNullable<ListAgentCredentialsOptions["query"]> };
-type CreateAgentCredentialParams = { pathParams: NonNullable<CreateAgentCredentialOptions["path"]>; body: NonNullable<CreateAgentCredentialOptions["body"]> };
-type GetAgentCredentialParams = { pathParams: NonNullable<GetAgentCredentialOptions["path"]> };
-type UpdateAgentCredentialStatusParams = { pathParams: NonNullable<UpdateAgentCredentialStatusOptions["path"]>; body: NonNullable<UpdateAgentCredentialStatusOptions["body"]> };
+type ExportAccountDataParams = { headers?: NonNullable<ExportAccountDataOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type ListAgentCredentialsParams = { pathParams: NonNullable<ListAgentCredentialsOptions["path"]>; queryParams?: NonNullable<ListAgentCredentialsOptions["query"]>; headers?: NonNullable<ListAgentCredentialsOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type CreateAgentCredentialParams = { pathParams: NonNullable<CreateAgentCredentialOptions["path"]>; body: NonNullable<CreateAgentCredentialOptions["body"]>; headers?: NonNullable<CreateAgentCredentialOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type GetAgentCredentialParams = { pathParams: NonNullable<GetAgentCredentialOptions["path"]>; headers?: NonNullable<GetAgentCredentialOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type UpdateAgentCredentialStatusParams = { pathParams: NonNullable<UpdateAgentCredentialStatusOptions["path"]>; body: NonNullable<UpdateAgentCredentialStatusOptions["body"]>; headers?: NonNullable<UpdateAgentCredentialStatusOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type RevokeAgentCredentialParams = { pathParams: NonNullable<RevokeAgentCredentialOptions["path"]> };
-type RotateAgentCredentialParams = { pathParams: NonNullable<RotateAgentCredentialOptions["path"]> };
+type RotateAgentCredentialParams = { pathParams: NonNullable<RotateAgentCredentialOptions["path"]>; headers?: NonNullable<RotateAgentCredentialOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type RecommendAgentPolicyParams = { pathParams: NonNullable<RecommendAgentPolicyOptions["path"]>; body: NonNullable<RecommendAgentPolicyOptions["body"]> };
-type ListAnomalyAlertsParams = { pathParams: NonNullable<ListAnomalyAlertsOptions["path"]>; queryParams?: NonNullable<ListAnomalyAlertsOptions["query"]> };
+type ListAnomalyAlertsParams = { pathParams: NonNullable<ListAnomalyAlertsOptions["path"]>; queryParams?: NonNullable<ListAnomalyAlertsOptions["query"]>; headers?: NonNullable<ListAnomalyAlertsOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type UpdateAnomalyAlertParams = { pathParams: NonNullable<UpdateAnomalyAlertOptions["path"]>; body: NonNullable<UpdateAnomalyAlertOptions["body"]> };
-type ListAnomalyRulesParams = { pathParams: NonNullable<ListAnomalyRulesOptions["path"]>; queryParams?: NonNullable<ListAnomalyRulesOptions["query"]> };
-type CreateAnomalyRuleParams = { pathParams: NonNullable<CreateAnomalyRuleOptions["path"]>; body: NonNullable<CreateAnomalyRuleOptions["body"]> };
-type GetAnomalyRuleParams = { pathParams: NonNullable<GetAnomalyRuleOptions["path"]> };
-type UpdateAnomalyRuleParams = { pathParams: NonNullable<UpdateAnomalyRuleOptions["path"]>; body: NonNullable<UpdateAnomalyRuleOptions["body"]> };
+type ListAnomalyRulesParams = { pathParams: NonNullable<ListAnomalyRulesOptions["path"]>; queryParams?: NonNullable<ListAnomalyRulesOptions["query"]>; headers?: NonNullable<ListAnomalyRulesOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type CreateAnomalyRuleParams = { pathParams: NonNullable<CreateAnomalyRuleOptions["path"]>; body: NonNullable<CreateAnomalyRuleOptions["body"]>; headers?: NonNullable<CreateAnomalyRuleOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type GetAnomalyRuleParams = { pathParams: NonNullable<GetAnomalyRuleOptions["path"]>; headers?: NonNullable<GetAnomalyRuleOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type UpdateAnomalyRuleParams = { pathParams: NonNullable<UpdateAnomalyRuleOptions["path"]>; body: NonNullable<UpdateAnomalyRuleOptions["body"]>; headers?: NonNullable<UpdateAnomalyRuleOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type DeleteAnomalyRuleParams = { pathParams: NonNullable<DeleteAnomalyRuleOptions["path"]> };
-type ListApprovalRulesParams = { pathParams: NonNullable<ListApprovalRulesOptions["path"]>; queryParams?: NonNullable<ListApprovalRulesOptions["query"]> };
-type CreateApprovalRuleParams = { pathParams: NonNullable<CreateApprovalRuleOptions["path"]>; body: NonNullable<CreateApprovalRuleOptions["body"]> };
-type GetApprovalRuleParams = { pathParams: NonNullable<GetApprovalRuleOptions["path"]> };
-type UpdateApprovalRuleParams = { pathParams: NonNullable<UpdateApprovalRuleOptions["path"]>; body: NonNullable<UpdateApprovalRuleOptions["body"]> };
+type ListApprovalRulesParams = { pathParams: NonNullable<ListApprovalRulesOptions["path"]>; queryParams?: NonNullable<ListApprovalRulesOptions["query"]>; headers?: NonNullable<ListApprovalRulesOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type CreateApprovalRuleParams = { pathParams: NonNullable<CreateApprovalRuleOptions["path"]>; body: NonNullable<CreateApprovalRuleOptions["body"]>; headers?: NonNullable<CreateApprovalRuleOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type GetApprovalRuleParams = { pathParams: NonNullable<GetApprovalRuleOptions["path"]>; headers?: NonNullable<GetApprovalRuleOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type UpdateApprovalRuleParams = { pathParams: NonNullable<UpdateApprovalRuleOptions["path"]>; body: NonNullable<UpdateApprovalRuleOptions["body"]>; headers?: NonNullable<UpdateApprovalRuleOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type DeleteApprovalRuleParams = { pathParams: NonNullable<DeleteApprovalRuleOptions["path"]> };
-type ListApprovalRequestsParams = { pathParams: NonNullable<ListApprovalRequestsOptions["path"]>; queryParams?: NonNullable<ListApprovalRequestsOptions["query"]> };
+type ListApprovalRequestsParams = { pathParams: NonNullable<ListApprovalRequestsOptions["path"]>; queryParams?: NonNullable<ListApprovalRequestsOptions["query"]>; headers?: NonNullable<ListApprovalRequestsOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type ApproveApprovalRequestParams = { pathParams: NonNullable<ApproveApprovalRequestOptions["path"]>; body: NonNullable<ApproveApprovalRequestOptions["body"]> };
 type RejectApprovalRequestParams = { pathParams: NonNullable<RejectApprovalRequestOptions["path"]>; body: NonNullable<RejectApprovalRequestOptions["body"]> };
-type ListAuditLogsParams = { pathParams: NonNullable<ListAuditLogsOptions["path"]>; queryParams?: NonNullable<ListAuditLogsOptions["query"]> };
+type ListAuditLogsParams = { pathParams: NonNullable<ListAuditLogsOptions["path"]>; queryParams?: NonNullable<ListAuditLogsOptions["query"]>; headers?: NonNullable<ListAuditLogsOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type ExportAuditLogsParams = { pathParams: NonNullable<ExportAuditLogsOptions["path"]>; queryParams?: NonNullable<ExportAuditLogsOptions["query"]> };
-type GetAuditSessionSummaryParams = { pathParams: NonNullable<GetAuditSessionSummaryOptions["path"]>; queryParams?: NonNullable<GetAuditSessionSummaryOptions["query"]> };
-type VerifyAuditChainParams = { pathParams: NonNullable<VerifyAuditChainOptions["path"]>; queryParams?: NonNullable<VerifyAuditChainOptions["query"]> };
+type GetAuditSessionSummaryParams = { pathParams: NonNullable<GetAuditSessionSummaryOptions["path"]>; queryParams?: NonNullable<GetAuditSessionSummaryOptions["query"]>; headers?: NonNullable<GetAuditSessionSummaryOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type VerifyAuditChainParams = { pathParams: NonNullable<VerifyAuditChainOptions["path"]>; queryParams?: NonNullable<VerifyAuditChainOptions["query"]>; headers?: NonNullable<VerifyAuditChainOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type ExecuteBatchParams = { pathParams: NonNullable<ExecuteBatchOptions["path"]>; body: NonNullable<ExecuteBatchOptions["body"]> };
-type GetOrganizationPlanParams = { pathParams: NonNullable<GetOrganizationPlanOptions["path"]> };
-type GetVercelInstallationParams = { pathParams: NonNullable<GetVercelInstallationOptions["path"]> };
+type ListPlansParams = { headers?: NonNullable<ListPlansOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type GetOrganizationPlanParams = { pathParams: NonNullable<GetOrganizationPlanOptions["path"]>; headers?: NonNullable<GetOrganizationPlanOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type GetVercelInstallationParams = { pathParams: NonNullable<GetVercelInstallationOptions["path"]>; headers?: NonNullable<GetVercelInstallationOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type UpdateSpendLimitParams = { pathParams: NonNullable<UpdateSpendLimitOptions["path"]>; body: NonNullable<UpdateSpendLimitOptions["body"]> };
 type SubmitCancellationFeedbackParams = { pathParams: NonNullable<SubmitCancellationFeedbackOptions["path"]>; body: NonNullable<SubmitCancellationFeedbackOptions["body"]> };
-type ListDatabaseBranchesParams = { pathParams: NonNullable<ListDatabaseBranchesOptions["path"]>; queryParams?: NonNullable<ListDatabaseBranchesOptions["query"]> };
+type ListDatabaseBranchesParams = { pathParams: NonNullable<ListDatabaseBranchesOptions["path"]>; queryParams?: NonNullable<ListDatabaseBranchesOptions["query"]>; headers?: NonNullable<ListDatabaseBranchesOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type DiscardDatabaseBranchParams = { pathParams: NonNullable<DiscardDatabaseBranchOptions["path"]> };
-type ListCacheRulesParams = { pathParams: NonNullable<ListCacheRulesOptions["path"]>; queryParams?: NonNullable<ListCacheRulesOptions["query"]> };
+type ListCacheRulesParams = { pathParams: NonNullable<ListCacheRulesOptions["path"]>; queryParams?: NonNullable<ListCacheRulesOptions["query"]>; headers?: NonNullable<ListCacheRulesOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type UpdateCacheRuleParams = { pathParams: NonNullable<UpdateCacheRuleOptions["path"]>; body: NonNullable<UpdateCacheRuleOptions["body"]> };
-type ListDatabasesParams = { pathParams: NonNullable<ListDatabasesOptions["path"]>; queryParams?: NonNullable<ListDatabasesOptions["query"]> };
-type CreateDatabaseParams = { pathParams: NonNullable<CreateDatabaseOptions["path"]>; body: NonNullable<CreateDatabaseOptions["body"]> };
-type GetDatabaseParams = { pathParams: NonNullable<GetDatabaseOptions["path"]> };
-type UpdateDatabaseParams = { pathParams: NonNullable<UpdateDatabaseOptions["path"]>; body: NonNullable<UpdateDatabaseOptions["body"]> };
+type ListDatabasesParams = { pathParams: NonNullable<ListDatabasesOptions["path"]>; queryParams?: NonNullable<ListDatabasesOptions["query"]>; headers?: NonNullable<ListDatabasesOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type CreateDatabaseParams = { pathParams: NonNullable<CreateDatabaseOptions["path"]>; body: NonNullable<CreateDatabaseOptions["body"]>; headers?: NonNullable<CreateDatabaseOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type GetDatabaseParams = { pathParams: NonNullable<GetDatabaseOptions["path"]>; headers?: NonNullable<GetDatabaseOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type UpdateDatabaseParams = { pathParams: NonNullable<UpdateDatabaseOptions["path"]>; body: NonNullable<UpdateDatabaseOptions["body"]>; headers?: NonNullable<UpdateDatabaseOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type DeleteDatabaseParams = { pathParams: NonNullable<DeleteDatabaseOptions["path"]> };
 type TestDatabaseConnectionParams = { pathParams: NonNullable<TestDatabaseConnectionOptions["path"]> };
 type ScanDatabaseForPiiParams = { pathParams: NonNullable<ScanDatabaseForPiiOptions["path"]> };
-type GetSchemaCatalogParams = { pathParams: NonNullable<GetSchemaCatalogOptions["path"]> };
+type GetSchemaCatalogParams = { pathParams: NonNullable<GetSchemaCatalogOptions["path"]>; headers?: NonNullable<GetSchemaCatalogOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type CreateDemoCredentialParams = { body: NonNullable<CreateDemoCredentialOptions["body"]> };
 type ReleaseDemoCredentialParams = { pathParams: NonNullable<ReleaseDemoCredentialOptions["path"]>; body: NonNullable<ReleaseDemoCredentialOptions["body"]> };
-type ListCustomDomainsParams = { pathParams: NonNullable<ListCustomDomainsOptions["path"]>; queryParams?: NonNullable<ListCustomDomainsOptions["query"]> };
-type CreateCustomDomainParams = { pathParams: NonNullable<CreateCustomDomainOptions["path"]>; body: NonNullable<CreateCustomDomainOptions["body"]> };
+type ListCustomDomainsParams = { pathParams: NonNullable<ListCustomDomainsOptions["path"]>; queryParams?: NonNullable<ListCustomDomainsOptions["query"]>; headers?: NonNullable<ListCustomDomainsOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type CreateCustomDomainParams = { pathParams: NonNullable<CreateCustomDomainOptions["path"]>; body: NonNullable<CreateCustomDomainOptions["body"]>; headers?: NonNullable<CreateCustomDomainOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type DeleteCustomDomainParams = { pathParams: NonNullable<DeleteCustomDomainOptions["path"]> };
 type VerifyCustomDomainParams = { pathParams: NonNullable<VerifyCustomDomainOptions["path"]> };
-type ListHoneytokensParams = { pathParams: NonNullable<ListHoneytokensOptions["path"]>; queryParams?: NonNullable<ListHoneytokensOptions["query"]> };
-type CreateHoneytokenParams = { pathParams: NonNullable<CreateHoneytokenOptions["path"]>; body: NonNullable<CreateHoneytokenOptions["body"]> };
-type GetHoneytokenParams = { pathParams: NonNullable<GetHoneytokenOptions["path"]> };
-type UpdateHoneytokenParams = { pathParams: NonNullable<UpdateHoneytokenOptions["path"]>; body: NonNullable<UpdateHoneytokenOptions["body"]> };
+type GetHealthParams = { headers?: NonNullable<GetHealthOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type ListHoneytokensParams = { pathParams: NonNullable<ListHoneytokensOptions["path"]>; queryParams?: NonNullable<ListHoneytokensOptions["query"]>; headers?: NonNullable<ListHoneytokensOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type CreateHoneytokenParams = { pathParams: NonNullable<CreateHoneytokenOptions["path"]>; body: NonNullable<CreateHoneytokenOptions["body"]>; headers?: NonNullable<CreateHoneytokenOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type GetHoneytokenParams = { pathParams: NonNullable<GetHoneytokenOptions["path"]>; headers?: NonNullable<GetHoneytokenOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type UpdateHoneytokenParams = { pathParams: NonNullable<UpdateHoneytokenOptions["path"]>; body: NonNullable<UpdateHoneytokenOptions["body"]>; headers?: NonNullable<UpdateHoneytokenOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type DeleteHoneytokenParams = { pathParams: NonNullable<DeleteHoneytokenOptions["path"]> };
-type GetProjectInsightsParams = { pathParams: NonNullable<GetProjectInsightsOptions["path"]>; queryParams?: NonNullable<GetProjectInsightsOptions["query"]> };
-type ListOrgMembersParams = { pathParams: NonNullable<ListOrgMembersOptions["path"]>; queryParams?: NonNullable<ListOrgMembersOptions["query"]> };
+type GetProjectInsightsParams = { pathParams: NonNullable<GetProjectInsightsOptions["path"]>; queryParams?: NonNullable<GetProjectInsightsOptions["query"]>; headers?: NonNullable<GetProjectInsightsOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type ListOrgMembersParams = { pathParams: NonNullable<ListOrgMembersOptions["path"]>; queryParams?: NonNullable<ListOrgMembersOptions["query"]>; headers?: NonNullable<ListOrgMembersOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type UpdateOrgMemberRoleParams = { pathParams: NonNullable<UpdateOrgMemberRoleOptions["path"]>; body: NonNullable<UpdateOrgMemberRoleOptions["body"]> };
 type RemoveOrgMemberParams = { pathParams: NonNullable<RemoveOrgMemberOptions["path"]> };
-type ListOrgInvitationsParams = { pathParams: NonNullable<ListOrgInvitationsOptions["path"]>; queryParams?: NonNullable<ListOrgInvitationsOptions["query"]> };
+type ListOrgInvitationsParams = { pathParams: NonNullable<ListOrgInvitationsOptions["path"]>; queryParams?: NonNullable<ListOrgInvitationsOptions["query"]>; headers?: NonNullable<ListOrgInvitationsOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type CreateOrgInvitationParams = { pathParams: NonNullable<CreateOrgInvitationOptions["path"]>; body: NonNullable<CreateOrgInvitationOptions["body"]> };
 type RevokeOrgInvitationParams = { pathParams: NonNullable<RevokeOrgInvitationOptions["path"]> };
 type LintMigrationParams = { pathParams: NonNullable<LintMigrationOptions["path"]>; body: NonNullable<LintMigrationOptions["body"]> };
-type GetOnboardingProgressParams = { pathParams: NonNullable<GetOnboardingProgressOptions["path"]> };
+type GetOnboardingProgressParams = { pathParams: NonNullable<GetOnboardingProgressOptions["path"]>; headers?: NonNullable<GetOnboardingProgressOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type UpdateOnboardingProgressParams = { pathParams: NonNullable<UpdateOnboardingProgressOptions["path"]>; body: NonNullable<UpdateOnboardingProgressOptions["body"]> };
-type CreateBudgetTopupParams = { body: NonNullable<CreateBudgetTopupOptions["body"]> };
-type ListPolicyProfilesParams = { pathParams: NonNullable<ListPolicyProfilesOptions["path"]>; queryParams?: NonNullable<ListPolicyProfilesOptions["query"]> };
-type CreatePolicyProfileParams = { pathParams: NonNullable<CreatePolicyProfileOptions["path"]>; body: NonNullable<CreatePolicyProfileOptions["body"]> };
-type GetPolicyProfileParams = { pathParams: NonNullable<GetPolicyProfileOptions["path"]> };
-type UpdatePolicyProfileParams = { pathParams: NonNullable<UpdatePolicyProfileOptions["path"]>; body: NonNullable<UpdatePolicyProfileOptions["body"]> };
+type ListOrganizationsParams = { headers?: NonNullable<ListOrganizationsOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type CreateBudgetTopupParams = { body: NonNullable<CreateBudgetTopupOptions["body"]>; headers?: NonNullable<CreateBudgetTopupOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type ListPolicyProfilesParams = { pathParams: NonNullable<ListPolicyProfilesOptions["path"]>; queryParams?: NonNullable<ListPolicyProfilesOptions["query"]>; headers?: NonNullable<ListPolicyProfilesOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type CreatePolicyProfileParams = { pathParams: NonNullable<CreatePolicyProfileOptions["path"]>; body: NonNullable<CreatePolicyProfileOptions["body"]>; headers?: NonNullable<CreatePolicyProfileOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type GetPolicyProfileParams = { pathParams: NonNullable<GetPolicyProfileOptions["path"]>; headers?: NonNullable<GetPolicyProfileOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type UpdatePolicyProfileParams = { pathParams: NonNullable<UpdatePolicyProfileOptions["path"]>; body: NonNullable<UpdatePolicyProfileOptions["body"]>; headers?: NonNullable<UpdatePolicyProfileOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type DeletePolicyProfileParams = { pathParams: NonNullable<DeletePolicyProfileOptions["path"]> };
+type GetPolicyStatementKindsParams = { pathParams: NonNullable<GetPolicyStatementKindsOptions["path"]> };
 type DryEvalPolicyParams = { pathParams: NonNullable<DryEvalPolicyOptions["path"]>; body: NonNullable<DryEvalPolicyOptions["body"]> };
 type ReplayPolicyParams = { pathParams: NonNullable<ReplayPolicyOptions["path"]>; body: NonNullable<ReplayPolicyOptions["body"]> };
-type ListProjectsParams = { queryParams: NonNullable<ListProjectsOptions["query"]> };
-type CreateProjectParams = { body: NonNullable<CreateProjectOptions["body"]> };
-type GetProjectParams = { pathParams: NonNullable<GetProjectOptions["path"]> };
-type UpdateProjectParams = { pathParams: NonNullable<UpdateProjectOptions["path"]>; body: NonNullable<UpdateProjectOptions["body"]> };
+type ListProjectsParams = { queryParams: NonNullable<ListProjectsOptions["query"]>; headers?: NonNullable<ListProjectsOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type CreateProjectParams = { body: NonNullable<CreateProjectOptions["body"]>; headers?: NonNullable<CreateProjectOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type GetProjectParams = { pathParams: NonNullable<GetProjectOptions["path"]>; headers?: NonNullable<GetProjectOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type UpdateProjectParams = { pathParams: NonNullable<UpdateProjectOptions["path"]>; body: NonNullable<UpdateProjectOptions["body"]>; headers?: NonNullable<UpdateProjectOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type DeleteProjectParams = { pathParams: NonNullable<DeleteProjectOptions["path"]> };
-type GetProjectMetricsParams = { pathParams: NonNullable<GetProjectMetricsOptions["path"]>; queryParams?: NonNullable<GetProjectMetricsOptions["query"]> };
-type ListQueryTemplatesParams = { pathParams: NonNullable<ListQueryTemplatesOptions["path"]>; queryParams?: NonNullable<ListQueryTemplatesOptions["query"]> };
-type CreateQueryTemplateParams = { pathParams: NonNullable<CreateQueryTemplateOptions["path"]>; body: NonNullable<CreateQueryTemplateOptions["body"]> };
-type GetQueryTemplateParams = { pathParams: NonNullable<GetQueryTemplateOptions["path"]> };
-type UpdateQueryTemplateParams = { pathParams: NonNullable<UpdateQueryTemplateOptions["path"]>; body: NonNullable<UpdateQueryTemplateOptions["body"]> };
+type GetProjectMetricsParams = { pathParams: NonNullable<GetProjectMetricsOptions["path"]>; queryParams?: NonNullable<GetProjectMetricsOptions["query"]>; headers?: NonNullable<GetProjectMetricsOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type ListQueryTemplatesParams = { pathParams: NonNullable<ListQueryTemplatesOptions["path"]>; queryParams?: NonNullable<ListQueryTemplatesOptions["query"]>; headers?: NonNullable<ListQueryTemplatesOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type CreateQueryTemplateParams = { pathParams: NonNullable<CreateQueryTemplateOptions["path"]>; body: NonNullable<CreateQueryTemplateOptions["body"]>; headers?: NonNullable<CreateQueryTemplateOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type GetQueryTemplateParams = { pathParams: NonNullable<GetQueryTemplateOptions["path"]>; headers?: NonNullable<GetQueryTemplateOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type UpdateQueryTemplateParams = { pathParams: NonNullable<UpdateQueryTemplateOptions["path"]>; body: NonNullable<UpdateQueryTemplateOptions["body"]>; headers?: NonNullable<UpdateQueryTemplateOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type DeleteQueryTemplateParams = { pathParams: NonNullable<DeleteQueryTemplateOptions["path"]> };
-type ListReplicasParams = { pathParams: NonNullable<ListReplicasOptions["path"]>; queryParams?: NonNullable<ListReplicasOptions["query"]> };
-type CreateReplicaParams = { pathParams: NonNullable<CreateReplicaOptions["path"]>; body: NonNullable<CreateReplicaOptions["body"]> };
+type ListRegionsParams = { headers?: NonNullable<ListRegionsOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type ListReplicasParams = { pathParams: NonNullable<ListReplicasOptions["path"]>; queryParams?: NonNullable<ListReplicasOptions["query"]>; headers?: NonNullable<ListReplicasOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type CreateReplicaParams = { pathParams: NonNullable<CreateReplicaOptions["path"]>; body: NonNullable<CreateReplicaOptions["body"]>; headers?: NonNullable<CreateReplicaOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type DeleteReplicaParams = { pathParams: NonNullable<DeleteReplicaOptions["path"]> };
-type ListSchemaAnnotationsParams = { pathParams: NonNullable<ListSchemaAnnotationsOptions["path"]>; queryParams?: NonNullable<ListSchemaAnnotationsOptions["query"]> };
+type ListSchemaAnnotationsParams = { pathParams: NonNullable<ListSchemaAnnotationsOptions["path"]>; queryParams?: NonNullable<ListSchemaAnnotationsOptions["query"]>; headers?: NonNullable<ListSchemaAnnotationsOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type PutSchemaAnnotationParams = { pathParams: NonNullable<PutSchemaAnnotationOptions["path"]>; body: NonNullable<PutSchemaAnnotationOptions["body"]> };
 type DeleteSchemaAnnotationParams = { pathParams: NonNullable<DeleteSchemaAnnotationOptions["path"]>; queryParams: NonNullable<DeleteSchemaAnnotationOptions["query"]> };
-type ListSelfHostEnrollmentsParams = { pathParams: NonNullable<ListSelfHostEnrollmentsOptions["path"]>; queryParams?: NonNullable<ListSelfHostEnrollmentsOptions["query"]> };
-type CreateSelfHostEnrollmentParams = { pathParams: NonNullable<CreateSelfHostEnrollmentOptions["path"]>; body: NonNullable<CreateSelfHostEnrollmentOptions["body"]> };
+type ListSelfHostEnrollmentsParams = { pathParams: NonNullable<ListSelfHostEnrollmentsOptions["path"]>; queryParams?: NonNullable<ListSelfHostEnrollmentsOptions["query"]>; headers?: NonNullable<ListSelfHostEnrollmentsOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type CreateSelfHostEnrollmentParams = { pathParams: NonNullable<CreateSelfHostEnrollmentOptions["path"]>; body: NonNullable<CreateSelfHostEnrollmentOptions["body"]>; headers?: NonNullable<CreateSelfHostEnrollmentOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type RevokeSelfHostEnrollmentParams = { pathParams: NonNullable<RevokeSelfHostEnrollmentOptions["path"]> };
-type RotateSelfHostEnrollmentParams = { pathParams: NonNullable<RotateSelfHostEnrollmentOptions["path"]> };
-type ListSupportCasesParams = { pathParams: NonNullable<ListSupportCasesOptions["path"]>; queryParams?: NonNullable<ListSupportCasesOptions["query"]> };
-type CreateSupportCaseParams = { pathParams: NonNullable<CreateSupportCaseOptions["path"]>; body: NonNullable<CreateSupportCaseOptions["body"]> };
-type GetSupportCaseParams = { pathParams: NonNullable<GetSupportCaseOptions["path"]> };
+type RotateSelfHostEnrollmentParams = { pathParams: NonNullable<RotateSelfHostEnrollmentOptions["path"]>; headers?: NonNullable<RotateSelfHostEnrollmentOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type ListSupportCasesParams = { pathParams: NonNullable<ListSupportCasesOptions["path"]>; queryParams?: NonNullable<ListSupportCasesOptions["query"]>; headers?: NonNullable<ListSupportCasesOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type CreateSupportCaseParams = { pathParams: NonNullable<CreateSupportCaseOptions["path"]>; body: NonNullable<CreateSupportCaseOptions["body"]>; headers?: NonNullable<CreateSupportCaseOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type GetSupportCaseParams = { pathParams: NonNullable<GetSupportCaseOptions["path"]>; headers?: NonNullable<GetSupportCaseOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type UpdateSupportCaseParams = { pathParams: NonNullable<UpdateSupportCaseOptions["path"]>; body: NonNullable<UpdateSupportCaseOptions["body"]> };
-type CreateSupportMessageParams = { pathParams: NonNullable<CreateSupportMessageOptions["path"]>; body: NonNullable<CreateSupportMessageOptions["body"]> };
+type CreateSupportMessageParams = { pathParams: NonNullable<CreateSupportMessageOptions["path"]>; body: NonNullable<CreateSupportMessageOptions["body"]>; headers?: NonNullable<CreateSupportMessageOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type ScanTextParams = { body: NonNullable<ScanTextOptions["body"]> };
-type GetOrganizationUsageParams = { pathParams: NonNullable<GetOrganizationUsageOptions["path"]>; queryParams: NonNullable<GetOrganizationUsageOptions["query"]> };
-type GetProjectUsageParams = { pathParams: NonNullable<GetProjectUsageOptions["path"]>; queryParams: NonNullable<GetProjectUsageOptions["query"]> };
-type GetAgentUsageBreakdownParams = { pathParams: NonNullable<GetAgentUsageBreakdownOptions["path"]>; queryParams?: NonNullable<GetAgentUsageBreakdownOptions["query"]> };
-type ListWebhookEndpointsParams = { pathParams: NonNullable<ListWebhookEndpointsOptions["path"]>; queryParams?: NonNullable<ListWebhookEndpointsOptions["query"]> };
-type CreateWebhookEndpointParams = { pathParams: NonNullable<CreateWebhookEndpointOptions["path"]>; body: NonNullable<CreateWebhookEndpointOptions["body"]> };
-type GetWebhookEndpointParams = { pathParams: NonNullable<GetWebhookEndpointOptions["path"]> };
-type UpdateWebhookEndpointParams = { pathParams: NonNullable<UpdateWebhookEndpointOptions["path"]>; body: NonNullable<UpdateWebhookEndpointOptions["body"]> };
+type GetOrganizationUsageParams = { pathParams: NonNullable<GetOrganizationUsageOptions["path"]>; queryParams: NonNullable<GetOrganizationUsageOptions["query"]>; headers?: NonNullable<GetOrganizationUsageOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type GetProjectUsageParams = { pathParams: NonNullable<GetProjectUsageOptions["path"]>; queryParams: NonNullable<GetProjectUsageOptions["query"]>; headers?: NonNullable<GetProjectUsageOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type GetAgentUsageBreakdownParams = { pathParams: NonNullable<GetAgentUsageBreakdownOptions["path"]>; queryParams?: NonNullable<GetAgentUsageBreakdownOptions["query"]>; headers?: NonNullable<GetAgentUsageBreakdownOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type ListWebhookEndpointsParams = { pathParams: NonNullable<ListWebhookEndpointsOptions["path"]>; queryParams?: NonNullable<ListWebhookEndpointsOptions["query"]>; headers?: NonNullable<ListWebhookEndpointsOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type CreateWebhookEndpointParams = { pathParams: NonNullable<CreateWebhookEndpointOptions["path"]>; body: NonNullable<CreateWebhookEndpointOptions["body"]>; headers?: NonNullable<CreateWebhookEndpointOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type GetWebhookEndpointParams = { pathParams: NonNullable<GetWebhookEndpointOptions["path"]>; headers?: NonNullable<GetWebhookEndpointOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
+type UpdateWebhookEndpointParams = { pathParams: NonNullable<UpdateWebhookEndpointOptions["path"]>; body: NonNullable<UpdateWebhookEndpointOptions["body"]>; headers?: NonNullable<UpdateWebhookEndpointOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type DeleteWebhookEndpointParams = { pathParams: NonNullable<DeleteWebhookEndpointOptions["path"]> };
 type TestWebhookEndpointParams = { pathParams: NonNullable<TestWebhookEndpointOptions["path"]> };
 
 export interface ApiOperations {
   account: {
-    exportAccountData(): Promise<ExportAccountDataStatus200>;
+    exportAccountData(params?: ExportAccountDataParams): Promise<ExportAccountDataStatus200>;
     listOrgMembers(params: ListOrgMembersParams): Promise<ListOrgMembersStatus200>;
     updateOrgMemberRole(params: UpdateOrgMemberRoleParams): Promise<UpdateOrgMemberRoleStatus200>;
     removeOrgMember(params: RemoveOrgMemberParams): Promise<void>;
@@ -511,7 +520,7 @@ export interface ApiOperations {
     revokeOrgInvitation(params: RevokeOrgInvitationParams): Promise<void>;
     getOnboardingProgress(params: GetOnboardingProgressParams): Promise<GetOnboardingProgressStatus200>;
     updateOnboardingProgress(params: UpdateOnboardingProgressParams): Promise<UpdateOnboardingProgressStatus200>;
-    listOrganizations(): Promise<ListOrganizationsStatus200>;
+    listOrganizations(params?: ListOrganizationsParams): Promise<ListOrganizationsStatus200>;
   };
   agents: {
     listAgentCredentials(params: ListAgentCredentialsParams): Promise<ListAgentCredentialsStatus200>;
@@ -533,6 +542,7 @@ export interface ApiOperations {
     getPolicyProfile(params: GetPolicyProfileParams): Promise<GetPolicyProfileStatus200>;
     updatePolicyProfile(params: UpdatePolicyProfileParams): Promise<UpdatePolicyProfileStatus200>;
     deletePolicyProfile(params: DeletePolicyProfileParams): Promise<void>;
+    getPolicyStatementKinds(params: GetPolicyStatementKindsParams): Promise<GetPolicyStatementKindsStatus200>;
     dryEvalPolicy(params: DryEvalPolicyParams): Promise<DryEvalPolicyStatus200>;
     replayPolicy(params: ReplayPolicyParams): Promise<ReplayPolicyStatus200>;
     listQueryTemplates(params: ListQueryTemplatesParams): Promise<ListQueryTemplatesStatus200>;
@@ -564,7 +574,7 @@ export interface ApiOperations {
     executeBatch(params: ExecuteBatchParams): Promise<ExecuteBatchStatus200>;
   };
   analytics: {
-    listPlans(): Promise<ListPlansStatus200>;
+    listPlans(params?: ListPlansParams): Promise<ListPlansStatus200>;
     getOrganizationPlan(params: GetOrganizationPlanParams): Promise<GetOrganizationPlanStatus200>;
     getVercelInstallation(params: GetVercelInstallationParams): Promise<GetVercelInstallationStatus200>;
     updateSpendLimit(params: UpdateSpendLimitParams): Promise<UpdateSpendLimitStatus200>;
@@ -610,8 +620,8 @@ export interface ApiOperations {
     releaseDemoCredential(params: ReleaseDemoCredentialParams): Promise<ReleaseDemoCredentialStatus200>;
   };
   platform: {
-    getHealth(): Promise<GetHealthStatus200>;
-    listRegions(): Promise<ListRegionsStatus200>;
+    getHealth(params?: GetHealthParams): Promise<GetHealthStatus200>;
+    listRegions(params?: ListRegionsParams): Promise<ListRegionsStatus200>;
     listSelfHostEnrollments(params: ListSelfHostEnrollmentsParams): Promise<ListSelfHostEnrollmentsStatus200>;
     createSelfHostEnrollment(params: CreateSelfHostEnrollmentParams): Promise<CreateSelfHostEnrollmentStatus201>;
     revokeSelfHostEnrollment(params: RevokeSelfHostEnrollmentParams): Promise<void>;
@@ -655,7 +665,7 @@ export interface ApiOperations {
 }
 
 export interface RequestMap {
-  "GET /v1/account/export": { params?: undefined; response: ExportAccountDataStatus200 };
+  "GET /v1/account/export": { params?: ExportAccountDataParams; response: ExportAccountDataStatus200 };
   "GET /v1/projects/{project_id}/agents": { params: ListAgentCredentialsParams; response: ListAgentCredentialsStatus200 };
   "POST /v1/projects/{project_id}/agents": { params: CreateAgentCredentialParams; response: CreateAgentCredentialStatus201 };
   "GET /v1/projects/{project_id}/agents/{agent_id}": { params: GetAgentCredentialParams; response: GetAgentCredentialStatus200 };
@@ -683,7 +693,7 @@ export interface RequestMap {
   "GET /v1/projects/{project_id}/audit-logs/sessions/{session_id}": { params: GetAuditSessionSummaryParams; response: GetAuditSessionSummaryStatus200 };
   "GET /v1/projects/{project_id}/audit-logs/verify": { params: VerifyAuditChainParams; response: VerifyAuditChainStatus200 };
   "POST /v1/projects/{project_id}/batch": { params: ExecuteBatchParams; response: ExecuteBatchStatus200 };
-  "GET /v1/plans": { params?: undefined; response: ListPlansStatus200 };
+  "GET /v1/plans": { params?: ListPlansParams; response: ListPlansStatus200 };
   "GET /v1/organizations/{org_id}/plan": { params: GetOrganizationPlanParams; response: GetOrganizationPlanStatus200 };
   "GET /v1/organizations/{org_id}/vercel-installation": { params: GetVercelInstallationParams; response: GetVercelInstallationStatus200 };
   "PUT /v1/organizations/{org_id}/spend-limit": { params: UpdateSpendLimitParams; response: UpdateSpendLimitStatus200 };
@@ -707,7 +717,7 @@ export interface RequestMap {
   "POST /v1/projects/{project_id}/domains": { params: CreateCustomDomainParams; response: CreateCustomDomainStatus201 };
   "DELETE /v1/projects/{project_id}/domains/{domain_id}": { params: DeleteCustomDomainParams; response: void };
   "POST /v1/projects/{project_id}/domains/{domain_id}/verify": { params: VerifyCustomDomainParams; response: VerifyCustomDomainStatus200 };
-  "GET /v1/health": { params?: undefined; response: GetHealthStatus200 };
+  "GET /v1/health": { params?: GetHealthParams; response: GetHealthStatus200 };
   "GET /v1/projects/{project_id}/honeytokens": { params: ListHoneytokensParams; response: ListHoneytokensStatus200 };
   "POST /v1/projects/{project_id}/honeytokens": { params: CreateHoneytokenParams; response: CreateHoneytokenStatus201 };
   "GET /v1/projects/{project_id}/honeytokens/{honeytoken_id}": { params: GetHoneytokenParams; response: GetHoneytokenStatus200 };
@@ -723,7 +733,7 @@ export interface RequestMap {
   "POST /v1/projects/{project_id}/migrations:lint": { params: LintMigrationParams; response: LintMigrationStatus200 };
   "GET /v1/organizations/{org_id}/onboarding": { params: GetOnboardingProgressParams; response: GetOnboardingProgressStatus200 };
   "PATCH /v1/organizations/{org_id}/onboarding": { params: UpdateOnboardingProgressParams; response: UpdateOnboardingProgressStatus200 };
-  "GET /v1/organizations": { params?: undefined; response: ListOrganizationsStatus200 };
+  "GET /v1/organizations": { params?: ListOrganizationsParams; response: ListOrganizationsStatus200 };
   "GET /v1/payments/resources": { params?: undefined; response: ListPaymentResourcesStatus200 };
   "POST /v1/payments/budget-topups": { params: CreateBudgetTopupParams; response: CreateBudgetTopupStatus201 };
   "GET /v1/projects/{project_id}/policies": { params: ListPolicyProfilesParams; response: ListPolicyProfilesStatus200 };
@@ -731,6 +741,7 @@ export interface RequestMap {
   "GET /v1/projects/{project_id}/policies/{policy_id}": { params: GetPolicyProfileParams; response: GetPolicyProfileStatus200 };
   "PUT /v1/projects/{project_id}/policies/{policy_id}": { params: UpdatePolicyProfileParams; response: UpdatePolicyProfileStatus200 };
   "DELETE /v1/projects/{project_id}/policies/{policy_id}": { params: DeletePolicyProfileParams; response: void };
+  "GET /v1/projects/{project_id}/policies/{policy_id}/statement-kinds": { params: GetPolicyStatementKindsParams; response: GetPolicyStatementKindsStatus200 };
   "POST /v1/projects/{project_id}/policy-evaluations": { params: DryEvalPolicyParams; response: DryEvalPolicyStatus200 };
   "POST /v1/projects/{project_id}/policy-replays": { params: ReplayPolicyParams; response: ReplayPolicyStatus200 };
   "GET /v1/projects": { params: ListProjectsParams; response: ListProjectsStatus200 };
@@ -744,7 +755,7 @@ export interface RequestMap {
   "GET /v1/projects/{project_id}/query-templates/{query_template_id}": { params: GetQueryTemplateParams; response: GetQueryTemplateStatus200 };
   "PUT /v1/projects/{project_id}/query-templates/{query_template_id}": { params: UpdateQueryTemplateParams; response: UpdateQueryTemplateStatus200 };
   "DELETE /v1/projects/{project_id}/query-templates/{query_template_id}": { params: DeleteQueryTemplateParams; response: void };
-  "GET /v1/regions": { params?: undefined; response: ListRegionsStatus200 };
+  "GET /v1/regions": { params?: ListRegionsParams; response: ListRegionsStatus200 };
   "GET /v1/databases/{database_id}/replicas": { params: ListReplicasParams; response: ListReplicasStatus200 };
   "POST /v1/databases/{database_id}/replicas": { params: CreateReplicaParams; response: CreateReplicaStatus201 };
   "DELETE /v1/databases/{database_id}/replicas/{replica_id}": { params: DeleteReplicaParams; response: void };
@@ -788,6 +799,8 @@ export type ApiClient = ApiOperations & {
     route: K,
     ...args: RequestMap[K]["params"] extends undefined
       ? [params?: undefined]
-      : [params: RequestMap[K]["params"]]
+      : undefined extends RequestMap[K]["params"]
+        ? [params?: RequestMap[K]["params"]]
+        : [params: RequestMap[K]["params"]]
   ) => Promise<RequestMap[K]["response"]>;
 };

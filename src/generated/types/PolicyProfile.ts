@@ -47,6 +47,13 @@ export const policyProfileContentScanModeEnum = {
 
 export type PolicyProfileContentScanModeEnumKey = (typeof policyProfileContentScanModeEnum)[keyof typeof policyProfileContentScanModeEnum];
 
+export const policyProfileQueryModeEnum = {
+    sql: "sql",
+    templates: "templates"
+} as const;
+
+export type PolicyProfileQueryModeEnumKey = (typeof policyProfileQueryModeEnum)[keyof typeof policyProfileQueryModeEnum];
+
 /**
  * @description A named bundle of rules enforced on agent credentials in the data plane.
  * @type object
@@ -187,6 +194,12 @@ export type PolicyProfile = {
      * @type integer | undefined
     */
     content_scan_max_bytes?: number;
+    /**
+     * @description What an agent on this profile may send. sql admits any statement the rest of the profile allows. templates admits only the project\'s enabled query templates (matched on the parse tree, so spelling and literals in the template\'s own text count), and refuses everything else with SQLSTATE 42501 and decision rule template_required, MCP query included. A matched template still meets every other rule on this profile: a template narrows what an agent can run and never grants access. The hosted MCP discovery tools (list_tables, describe_table, schema_catalog) keep working under templates.
+     * @default 'sql'
+     * @type string
+    */
+    query_mode: PolicyProfileQueryModeEnumKey;
     /**
      * @description When the policy profile was created.
      *

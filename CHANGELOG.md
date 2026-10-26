@@ -1,5 +1,39 @@
 # pgbeam
 
+## 0.7.0
+
+### Minor Changes
+
+- 796f4a7: Policy profiles carry `query_mode` (`sql` or `templates`). A profile set to `templates` admits only the project's enabled query templates, and every other rule on the profile still applies to what a template runs. Setting `templates` is refused when the project has no enabled template, and while the organization has a live self-hosted enrollment. On update, an omitted `query_mode` keeps the stored mode. In Terraform, Crossplane and Pulumi, removing `query_mode` from a config plans `sql`, and the plan shows that change.
+
+## 0.6.0
+
+### Minor Changes
+
+- ca0bb93: Operations that accept `If-Match` or `If-None-Match` now take a `headers` param, so a read-modify-write can send the `ETag` it read and get a `412` instead of silently overwriting a concurrent change. A per-call `onResponse` hook reads the `ETag` of that one response. A `304 Not Modified` is thrown as an `ApiError` with status 304, is not retried, and is recognised with the new `isNotModified(err)`. `Authorization` and `Content-Type` cannot be set per call; a caller `Idempotency-Key` replaces the generated one. Operations whose params are all optional can now be called with no argument.
+
+### Patch Changes
+
+- 5dbe64b: `DryEvalResult` gains an optional `template` field: the name of the project query template a statement matched, present only when the policy is templates-only.
+- b2fdcfd: Add `pgbeam_connection_arrivals_total` and `pgbeam_sessions_started_total`, labelled by serving `region`, so connections that arrived but never reached a session can be told apart from ones that never reached a machine.
+- 21e87a0: Label `pgbeam_startup_failures_total` with `region`, the region of the proxy machine that served the connection.
+- d651ca6: Query templates can be declared as code: `pgbeam_query_template`, the Crossplane `QueryTemplate` and the Pulumi `QueryTemplate`. Removing `description`, `include_sql`, `enabled` or `params` from a config resets it to the API default (empty, false, true, none) rather than keeping the last value. The query template input's `description` now declares its default (empty) in the contract, which is what the API already stored for an omitted one. Nothing restricts a credential to templates yet: the policy profile setting that does arrives in a later release.
+
+## 0.5.0
+
+### Minor Changes
+
+- acb171b: Add `CACHE_PROJECT_QUOTA_PERCENT` to cap each project at a share of the proxy's L1 cache, so a busy project recycles its own entries instead of evicting other projects' entries. The default is 100, which leaves the cap off; set a lower value to share one instance between projects (`PGBEAM_CACHE_PROJECT_QUOTA_PERCENT` in Compose, `cache.projectQuotaPercent` in Helm).
+- f363bd7: Add the query templates API: create, list, get, update and delete named, parameterized statements on a project (`/v1/projects/{project_id}/query-templates`, under the Policies tag). A template is checked when it is written and refused with 400 if it is not exactly one SELECT, INSERT, UPDATE or DELETE whose `$n` placeholders match its declared parameters. Nothing restricts a credential to templates yet: the policy profile setting that does arrives in a later release.
+- 94466c2: Remove the internal Slack support webhook (`POST /v1/internal/support/slack-event`) from the public SDKs and their docs. It only accepts calls from the dashboard's Slack handler, so `api.internal.handleSlackSupportEvent` (TypeScript), `client.Internal.HandleSlackSupportEvent` and the `SlackEventPayload` type (Go), and `client.internal.handle_slack_support_event` (Python) are gone. This removes public methods, so it would be a breaking change after 1.0; while the SDKs are pre-1.0 it ships as a minor release.
+
+### Patch Changes
+
+- ba058a7: Describe the management MCP endpoint as it behaves: six registered tools, with API operations reached through `call_endpoint`, and the protocol version negotiated at `initialize` rather than pinned.
+- 958f25c: Each generated `<Op>Response` type is now the success response only instead of a union with the error responses, following the @kubb/plugin-ts upgrade. Code that narrowed a `<Op>Response` value on an error status needs to use the matching `<Op>Status<code>` type instead.
+- 6cd15fe: Stop sending an automatic `Idempotency-Key` on `POST /v1/scan/text`, which the API rejects with 400. Retries stay on for that call, since a scan has no side effects.
+- 289e0d3: Never send an unkeyed write twice. A POST or PATCH without an `Idempotency-Key` (`retry.idempotencyKeys: false`) is now retried only on 408, 429 and 503 or on a connection failure that is not a timeout; a timeout, 502 or 504 surfaces at once because the server may already have created the resource. A `Retry-After` longer than `retry.maxDelayMs` returns the error instead of being waited out. Query parameters send a `Date` as ISO 8601 and an array as repeated keys.
+
 ## 0.4.21
 
 ### Patch Changes

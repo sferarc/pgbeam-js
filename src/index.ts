@@ -6,5 +6,11 @@ export type {
 } from "./client";
 export { PgBeamClient } from "./client";
 export type * from "./generated/index";
-export type { RetryConfig } from "./utils/fetcher";
-export { ApiError, describeError, extractMessage, NetworkError } from "./utils/fetcher";
+export type { OnResponseHook, RetryConfig } from "./utils/fetcher";
+export {
+  ApiError,
+  describeError,
+  extractMessage,
+  isNotModified,
+  NetworkError,
+} from "./utils/fetcher";

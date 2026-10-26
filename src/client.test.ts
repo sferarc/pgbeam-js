@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, type Mock, vi } from "vitest";
 import { PgBeamClient } from "./client";
-import { NetworkError } from "./utils/fetcher";
+import { ApiError, isNotModified, NetworkError } from "./utils/fetcher";
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -538,6 +538,139 @@ describe("PgBeamClient", () => {
       });
 
       expect(result).toBeUndefined();
+    });
+  });
+
+  // ---------------------------------------------------------------------------
+  // Conditional requests
+  // ---------------------------------------------------------------------------
+  describe("conditional requests", () => {
+    const dbPath = { project_id: "prj_1", database_id: "db_1" };
+
+    function client(retry?: { maxRetries: number; initialDelayMs?: number }) {
+      return new PgBeamClient({
+        token: "tok",
+        baseUrl: "https://api.example.com",
+        fetch: mockFetch,
+        retry: retry ?? { maxRetries: 3, initialDelayMs: 1 },
+      });
+    }
+
+    it("sends If-Match on a PATCH alongside the client's own headers", async () => {
+      mockFetch.mockResolvedValue(jsonResponse({ id: "db_1" }));
+
+      await client().api.databases.updateDatabase({
+        pathParams: dbPath,
+        body: { name: "renamed" },
+        headers: { "If-Match": '"v1"' },
+      });
+
+      const [, init] = mockFetch.mock.calls[0];
+      expect(init.method).toBe("PATCH");
+      expect(init.headers["If-Match"]).toBe('"v1"');
+      expect(init.headers.Authorization).toBe("Bearer tok");
+      expect(init.headers["Content-Type"]).toBe("application/json");
+      expect(init.headers["Idempotency-Key"]).toBeTruthy();
+    });
+
+    it("surfaces a 412 as an ApiError with the problem code, without retrying", async () => {
+      mockFetch.mockResolvedValue(
+        jsonResponse(
+          {
+            type: "https://pgbeam.com/errors/precondition-failed",
+            title: "Precondition Failed",
+            status: 412,
+            code: "PRECONDITION_FAILED",
+            detail: "The resource changed since it was read.",
+          },
+          412,
+        ),
+      );
+
+      const err = await client()
+        .api.databases.updateDatabase({
+          pathParams: dbPath,
+          body: { name: "renamed" },
+          headers: { "If-Match": '"stale"' },
+        })
+        .catch((e: unknown) => e);
+
+      expect(err).toBeInstanceOf(ApiError);
+      expect((err as ApiError).status).toBe(412);
+      expect((err as ApiError).code).toBe("PRECONDITION_FAILED");
+      expect(mockFetch).toHaveBeenCalledOnce();
+    });
+
+    it("reports a 304 for If-None-Match as isNotModified and does not retry it", async () => {
+      mockFetch.mockResolvedValue(emptyResponse(304));
+
+      const err = await client()
+        .api.databases.getDatabase({
+          pathParams: dbPath,
+          headers: { "If-None-Match": '"v1"' },
+        })
+        .catch((e: unknown) => e);
+
+      expect(isNotModified(err)).toBe(true);
+      expect(mockFetch).toHaveBeenCalledOnce();
+      expect(mockFetch.mock.calls[0][1].headers["If-None-Match"]).toBe('"v1"');
+      expect(isNotModified(new ApiError(404, "Not Found", null))).toBe(false);
+    });
+
+    it("hands the per-call hook the response after the client-level hook", async () => {
+      const order: string[] = [];
+      mockFetch.mockResolvedValue({
+        ...jsonResponse({ id: "db_1" }),
+        headers: new Headers({ "content-type": "application/json", ETag: '"v2"' }),
+      } as Response);
+      const c = new PgBeamClient({
+        token: "tok",
+        baseUrl: "https://api.example.com",
+        fetch: mockFetch,
+        onResponse: () => {
+          order.push("client");
+        },
+      });
+
+      let etag: string | null = null;
+      await c.api.databases.getDatabase({
+        pathParams: dbPath,
+        onResponse: (res) => {
+          order.push("call");
+          etag = res.headers.get("ETag");
+        },
+      });
+
+      expect(order).toEqual(["client", "call"]);
+      expect(etag).toBe('"v2"');
+    });
+
+    it("refuses a caller-supplied Authorization header instead of sending it", async () => {
+      await expect(
+        client().api.request("GET /v1/projects/{project_id}/databases/{database_id}", {
+          pathParams: dbPath,
+          headers: { authorization: "Bearer someone-else" } as never,
+        }),
+      ).rejects.toThrow(TypeError);
+      expect(mockFetch).not.toHaveBeenCalled();
+    });
+
+    it("uses a caller-supplied Idempotency-Key in place of the generated one", async () => {
+      mockFetch
+        .mockResolvedValueOnce(jsonResponse({}, 503))
+        .mockResolvedValueOnce(jsonResponse({ id: "db_1" }));
+
+      await client().api.databases.updateDatabase({
+        pathParams: dbPath,
+        body: { name: "renamed" },
+        headers: { "idempotency-key": "mine" } as never,
+      });
+
+      expect(mockFetch).toHaveBeenCalledTimes(2);
+      for (const [, init] of mockFetch.mock.calls) {
+        expect(init.headers["idempotency-key"]).toBe("mine");
+        expect(init.headers["Idempotency-Key"]).toBeUndefined();
+      }
     });
   });
 });

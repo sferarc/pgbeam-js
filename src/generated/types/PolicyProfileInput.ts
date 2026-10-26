@@ -47,6 +47,13 @@ export const policyProfileInputContentScanModeEnum = {
 
 export type PolicyProfileInputContentScanModeEnumKey = (typeof policyProfileInputContentScanModeEnum)[keyof typeof policyProfileInputContentScanModeEnum];
 
+export const policyProfileInputQueryModeEnum = {
+    sql: "sql",
+    templates: "templates"
+} as const;
+
+export type PolicyProfileInputQueryModeEnumKey = (typeof policyProfileInputQueryModeEnum)[keyof typeof policyProfileInputQueryModeEnum];
+
 /**
  * @description Mutable fields of a policy profile (used for create and update).
  * @type object
@@ -181,4 +188,10 @@ export type PolicyProfileInput = {
      * @type integer | undefined
     */
     content_scan_max_bytes?: number;
+    /**
+     * @description What an agent on this profile may send. sql admits any statement the rest of the profile allows. templates admits only the project\'s enabled query templates and refuses everything else with SQLSTATE 42501 and decision rule template_required; a matched template still meets every other rule on this profile, so it narrows and never grants access. Setting templates is refused with 400 when the project has no enabled template, since that profile would admit nothing, and with 409 while the organization has a live self-hosted enrollment, since an older self-hosted proxy ignores this field and would run unrestricted SQL. On create, omitting the field means sql. On update, omitting it keeps the stored mode, so a client that predates this field cannot widen a templates profile back to sql by saving it; send sql to do that.
+     * @default 'sql'
+     * @type string | undefined
+    */
+    query_mode?: PolicyProfileInputQueryModeEnumKey;
 };

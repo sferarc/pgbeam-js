@@ -40,6 +40,20 @@ interface CallParams {
   pathParams?: FetcherOptions["pathParams"];
   queryParams?: FetcherOptions["queryParams"];
   body?: unknown;
+  headers?: FetcherOptions["headers"];
+  /** Runs after the client-level hook, for this call only (e.g. to read its `ETag`). */
+  onResponse?: OnResponseHook;
+}
+
+function chainHooks(
+  first: OnResponseHook | undefined,
+  second: OnResponseHook | undefined,
+): OnResponseHook | undefined {
+  if (!first || !second) return first ?? second;
+  return async (response) => {
+    await first(response);
+    await second(response);
+  };
 }
 
 export interface PgBeamClientOptions {
@@ -97,11 +111,12 @@ export class PgBeamClient<TApi extends object = ApiClient> {
       pathParams: params.pathParams,
       queryParams: params.queryParams,
       body: params.body,
+      headers: params.headers,
       refusesIdempotencyKey: meta.refusesIdempotencyKey,
       baseUrl: this._baseUrl,
       token: this._tokenOrFn,
       fetchImpl: this._fetchImpl,
-      onResponse: this._onResponse,
+      onResponse: chainHooks(this._onResponse, params.onResponse),
       retry: this._retry,
       timeoutMs: this._timeoutMs,
     });
