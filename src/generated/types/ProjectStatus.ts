@@ -4,9 +4,9 @@
 */
 
 export const projectStatus = {
-    active: "active",
-    suspended: "suspended",
-    deleted: "deleted"
+  active: 'active',
+  suspended: 'suspended',
+  deleted: 'deleted',
 } as const;
 
 export type ProjectStatusKey = (typeof projectStatus)[keyof typeof projectStatus];

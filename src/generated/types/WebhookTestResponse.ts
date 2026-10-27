@@ -6,28 +6,28 @@
 /**
  * @description Result of sending a synthetic test event to a webhook endpoint.
  * @type object
-*/
+ */
 export type WebhookTestResponse = {
-    /**
-     * @description Identifier of the test delivery.
-     * @example id_01j9x8y7z6w5v4u3t2s1r0q9p8
-     * @type string
-    */
-    delivery_id: string;
-    /**
-     * @description Outcome of the test delivery (delivered or failed).
-     * @type string
-    */
-    status: string;
-    /**
-     * @description HTTP status code returned by the endpoint, if a response was received.
-     * @example 10
-     * @type integer | undefined
-    */
-    status_code?: number;
-    /**
-     * @description Error detail when the test delivery failed.
-     * @type string | undefined
-    */
-    error?: string;
+  /**
+   * @description Identifier of the test delivery.
+   * @example id_01j9x8y7z6w5v4u3t2s1r0q9p8
+   * @type string
+   */
+  delivery_id: string;
+  /**
+   * @description Outcome of the test delivery (delivered or failed).
+   * @type string
+   */
+  status: string;
+  /**
+   * @description HTTP status code returned by the endpoint, if a response was received.
+   * @example 10
+   * @type integer | undefined
+   */
+  status_code?: number;
+  /**
+   * @description Error detail when the test delivery failed.
+   * @type string | undefined
+   */
+  error?: string;
 };

@@ -4,10 +4,10 @@
 */
 
 export const approvalRuleStatementKind = {
-    insert: "insert",
-    update: "update",
-    delete: "delete",
-    ddl: "ddl"
+  insert: 'insert',
+  update: 'update',
+  delete: 'delete',
+  ddl: 'ddl',
 } as const;
 
 export type ApprovalRuleStatementKindKey = (typeof approvalRuleStatementKind)[keyof typeof approvalRuleStatementKind];

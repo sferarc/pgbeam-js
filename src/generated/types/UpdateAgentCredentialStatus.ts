@@ -8,118 +8,122 @@ import type { Error } from './Error'
 import type { UpdateAgentCredentialStatusRequest } from './UpdateAgentCredentialStatusRequest'
 
 export type UpdateAgentCredentialStatusPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Unique agent credential identifier (prefixed, e.g. agt_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    agent_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Unique agent credential identifier (prefixed, e.g. agt_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  agent_id: string;
 };
 
 export type UpdateAgentCredentialStatusHeaders = {
-    /**
-     * @description Entity tag the write is based on, taken from the `ETag` of the read that produced the values being sent. The write proceeds only if it still matches the current representation; otherwise it is refused with `412 Precondition Failed` and nothing is changed.\n\nThis is what makes a read-modify-write safe. Without it the last writer wins and a concurrent edit is silently discarded, which is the failure an agent is most likely to cause and least likely to notice. The `412` response carries the current `ETag`, so a caller can re-read, re-apply its change and retry.\n\nOmitting the header keeps the old unconditional behaviour. `*` matches any current representation, which asserts only that the resource exists.
-     * @minLength 1
-     * @maxLength 1024
-     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
-     * @type string | undefined
-    */
-    "If-Match"?: string;
+  /**
+   * @description Entity tag the write is based on, taken from the `ETag` of the read that produced the values being sent. The write proceeds only if it still matches the current representation; otherwise it is refused with `412 Precondition Failed` and nothing is changed.
+   *
+   * This is what makes a read-modify-write safe. Without it the last writer wins and a concurrent edit is silently discarded, which is the failure an agent is most likely to cause and least likely to notice. The `412` response carries the current `ETag`, so a caller can re-read, re-apply its change and retry.
+   *
+   * Omitting the header keeps the old unconditional behaviour. `*` matches any current representation, which asserts only that the resource exists.
+   * @minLength 1
+   * @maxLength 1024
+   * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+   * @type string | undefined
+   */
+  'If-Match'?: string;
 };
 
 /**
  * @description A PgBeam-issued, scoped Postgres login plus hosted MCP token for an AI agent.
  * @type object
-*/
+ */
 export type UpdateAgentCredentialStatusStatus200 = AgentCredential;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateAgentCredentialStatusStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateAgentCredentialStatusStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateAgentCredentialStatusStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateAgentCredentialStatusStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateAgentCredentialStatusStatus409 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateAgentCredentialStatusStatus412 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateAgentCredentialStatusStatus413 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateAgentCredentialStatusStatus415 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateAgentCredentialStatusStatus500 = Error;
 
 /**
  * @description Request body for enabling or disabling an agent credential.
  * @type object
-*/
+ */
 export type UpdateAgentCredentialStatusBody = UpdateAgentCredentialStatusRequest;
 
 export type UpdateAgentCredentialStatusOptions = {
-    body: UpdateAgentCredentialStatusBody;
-    path: UpdateAgentCredentialStatusPath;
-    query?: never;
-    headers?: UpdateAgentCredentialStatusHeaders;
+  body: UpdateAgentCredentialStatusBody;
+  path: UpdateAgentCredentialStatusPath;
+  query?: never;
+  headers?: UpdateAgentCredentialStatusHeaders;
 };
 
 export type UpdateAgentCredentialStatusResponses = {
-    "200": UpdateAgentCredentialStatusStatus200;
-    "400": UpdateAgentCredentialStatusStatus400;
-    "401": UpdateAgentCredentialStatusStatus401;
-    "403": UpdateAgentCredentialStatusStatus403;
-    "404": UpdateAgentCredentialStatusStatus404;
-    "409": UpdateAgentCredentialStatusStatus409;
-    "412": UpdateAgentCredentialStatusStatus412;
-    "413": UpdateAgentCredentialStatusStatus413;
-    "415": UpdateAgentCredentialStatusStatus415;
-    "500": UpdateAgentCredentialStatusStatus500;
+  '200': UpdateAgentCredentialStatusStatus200;
+  '400': UpdateAgentCredentialStatusStatus400;
+  '401': UpdateAgentCredentialStatusStatus401;
+  '403': UpdateAgentCredentialStatusStatus403;
+  '404': UpdateAgentCredentialStatusStatus404;
+  '409': UpdateAgentCredentialStatusStatus409;
+  '412': UpdateAgentCredentialStatusStatus412;
+  '413': UpdateAgentCredentialStatusStatus413;
+  '415': UpdateAgentCredentialStatusStatus415;
+  '500': UpdateAgentCredentialStatusStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type UpdateAgentCredentialStatusResponse = UpdateAgentCredentialStatusStatus200;

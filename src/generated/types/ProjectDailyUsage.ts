@@ -6,53 +6,53 @@
 /**
  * @description Daily usage totals for a single project and region.
  * @type object
-*/
+ */
 export type ProjectDailyUsage = {
-    /**
-     * @description Usage date in UTC.
-     *
-     * Format: `date`
-     * @type string
-    */
-    day: string;
-    /**
-     * @description Region where the traffic was served.
-     * @type string
-    */
-    region: string;
-    /**
-     * @description Total queries served on the day.
-     *
-     * Format: `int64`
-     * @type integer
-    */
-    queries_total: number;
-    /**
-     * @description Total cache hits on the day.
-     *
-     * Format: `int64`
-     * @type integer
-    */
-    cache_hits: number;
-    /**
-     * @description Total cache misses on the day.
-     *
-     * Format: `int64`
-     * @type integer
-    */
-    cache_misses: number;
-    /**
-     * @description Total proxy connection time consumed on the day.
-     *
-     * Format: `int64`
-     * @type integer
-    */
-    connection_seconds: number;
-    /**
-     * @description Total bytes transferred to clients.
-     *
-     * Format: `int64`
-     * @type integer
-    */
-    bytes_transferred: number;
+  /**
+   * @description Usage date in UTC.
+   *
+   * Format: `date`
+   * @type string
+   */
+  day: string;
+  /**
+   * @description Region where the traffic was served.
+   * @type string
+   */
+  region: string;
+  /**
+   * @description Total queries served on the day.
+   *
+   * Format: `int64`
+   * @type integer
+   */
+  queries_total: number;
+  /**
+   * @description Total cache hits on the day.
+   *
+   * Format: `int64`
+   * @type integer
+   */
+  cache_hits: number;
+  /**
+   * @description Total cache misses on the day.
+   *
+   * Format: `int64`
+   * @type integer
+   */
+  cache_misses: number;
+  /**
+   * @description Total proxy connection time consumed on the day.
+   *
+   * Format: `int64`
+   * @type integer
+   */
+  connection_seconds: number;
+  /**
+   * @description Total bytes transferred to clients.
+   *
+   * Format: `int64`
+   * @type integer
+   */
+  bytes_transferred: number;
 };

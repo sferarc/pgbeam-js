@@ -4,11 +4,11 @@
 */
 
 export const mcpRequestMethodEnum = {
-    initialize: "initialize",
-    "notifications/initialized": "notifications/initialized",
-    "tools/list": "tools/list",
-    "tools/call": "tools/call",
-    ping: "ping"
+  initialize: 'initialize',
+  'notifications/initialized': 'notifications/initialized',
+  'tools/list': 'tools/list',
+  'tools/call': 'tools/call',
+  ping: 'ping',
 } as const;
 
 export type McpRequestMethodEnumKey = (typeof mcpRequestMethodEnum)[keyof typeof mcpRequestMethodEnum];
@@ -16,29 +16,29 @@ export type McpRequestMethodEnumKey = (typeof mcpRequestMethodEnum)[keyof typeof
 /**
  * @description JSON-RPC 2.0 request envelope for MCP over Streamable HTTP.
  * @type object
-*/
+ */
 export type McpRequest = {
-    /**
-     * @description JSON-RPC version. Must be \"2.0\".
-     * @example 2.0
-     * @type string
-    */
-    jsonrpc: "2.0";
-    /**
-     * @description Request identifier. Omit for notifications.
-     * @example 1
-     * @type string | undefined
-    */
-    id?: string;
-    /**
-     * @description MCP method to invoke.
-     * @example initialize
-     * @type string
-    */
-    method: McpRequestMethodEnumKey;
-    /**
-     * @description Method-specific parameters. For `tools/call`, `name` is one of the six registered tools (`search_endpoints`, `describe_endpoint`, `call_endpoint`, `list_skills`, `get_skill`, `install_skill`) and `arguments` holds its input; API operations are reached through `call_endpoint`, not called by name.
-     * @type object | undefined
-    */
-    params?: object;
+  /**
+   * @description JSON-RPC version. Must be "2.0".
+   * @example 2.0
+   * @type string
+   */
+  jsonrpc: '2.0';
+  /**
+   * @description Request identifier. Omit for notifications.
+   * @example 1
+   * @type string | undefined
+   */
+  id?: string;
+  /**
+   * @description MCP method to invoke.
+   * @example initialize
+   * @type string
+   */
+  method: McpRequestMethodEnumKey;
+  /**
+   * @description Method-specific parameters. For `tools/call`, `name` is one of the six registered tools (`search_endpoints`, `describe_endpoint`, `call_endpoint`, `list_skills`, `get_skill`, `install_skill`) and `arguments` holds its input; API operations are reached through `call_endpoint`, not called by name.
+   * @type object | undefined
+   */
+  params?: object;
 };

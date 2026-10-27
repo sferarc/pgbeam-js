@@ -8,119 +8,123 @@ import type { Project } from './Project'
 import type { UpdateProjectRequest } from './UpdateProjectRequest'
 
 export type UpdateProjectPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
 };
 
 export type UpdateProjectHeaders = {
-    /**
-     * @description Entity tag the write is based on, taken from the `ETag` of the read that produced the values being sent. The write proceeds only if it still matches the current representation; otherwise it is refused with `412 Precondition Failed` and nothing is changed.\n\nThis is what makes a read-modify-write safe. Without it the last writer wins and a concurrent edit is silently discarded, which is the failure an agent is most likely to cause and least likely to notice. The `412` response carries the current `ETag`, so a caller can re-read, re-apply its change and retry.\n\nOmitting the header keeps the old unconditional behaviour. `*` matches any current representation, which asserts only that the resource exists.
-     * @minLength 1
-     * @maxLength 1024
-     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
-     * @type string | undefined
-    */
-    "If-Match"?: string;
+  /**
+   * @description Entity tag the write is based on, taken from the `ETag` of the read that produced the values being sent. The write proceeds only if it still matches the current representation; otherwise it is refused with `412 Precondition Failed` and nothing is changed.
+   *
+   * This is what makes a read-modify-write safe. Without it the last writer wins and a concurrent edit is silently discarded, which is the failure an agent is most likely to cause and least likely to notice. The `412` response carries the current `ETag`, so a caller can re-read, re-apply its change and retry.
+   *
+   * Omitting the header keeps the old unconditional behaviour. `*` matches any current representation, which asserts only that the resource exists.
+   * @minLength 1
+   * @maxLength 1024
+   * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+   * @type string | undefined
+   */
+  'If-Match'?: string;
 };
 
 /**
  * @description Project configuration and current control-plane state.
  * @type object
-*/
+ */
 export type UpdateProjectStatus200 = Project;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateProjectStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateProjectStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateProjectStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateProjectStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateProjectStatus409 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateProjectStatus412 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateProjectStatus413 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateProjectStatus415 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateProjectStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateProjectStatus500 = Error;
 
 /**
  * @description Request body for partially updating a project.
  * @type object
-*/
+ */
 export type UpdateProjectBody = UpdateProjectRequest;
 
 export type UpdateProjectOptions = {
-    body: UpdateProjectBody;
-    path: UpdateProjectPath;
-    query?: never;
-    headers?: UpdateProjectHeaders;
+  body: UpdateProjectBody;
+  path: UpdateProjectPath;
+  query?: never;
+  headers?: UpdateProjectHeaders;
 };
 
 export type UpdateProjectResponses = {
-    "200": UpdateProjectStatus200;
-    "400": UpdateProjectStatus400;
-    "401": UpdateProjectStatus401;
-    "403": UpdateProjectStatus403;
-    "404": UpdateProjectStatus404;
-    "409": UpdateProjectStatus409;
-    "412": UpdateProjectStatus412;
-    "413": UpdateProjectStatus413;
-    "415": UpdateProjectStatus415;
-    "429": UpdateProjectStatus429;
-    "500": UpdateProjectStatus500;
+  '200': UpdateProjectStatus200;
+  '400': UpdateProjectStatus400;
+  '401': UpdateProjectStatus401;
+  '403': UpdateProjectStatus403;
+  '404': UpdateProjectStatus404;
+  '409': UpdateProjectStatus409;
+  '412': UpdateProjectStatus412;
+  '413': UpdateProjectStatus413;
+  '415': UpdateProjectStatus415;
+  '429': UpdateProjectStatus429;
+  '500': UpdateProjectStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type UpdateProjectResponse = UpdateProjectStatus200;

@@ -8,16 +8,16 @@ import type { AuditLogEntry } from './AuditLogEntry'
 /**
  * @description Time-ordered page of audit entries (newest first).
  * @type object
-*/
+ */
 export type ListAuditLogsResponse = {
-    /**
-     * @description Audit entries on the current page.
-     * @type array
-    */
-    entries: AuditLogEntry[];
-    /**
-     * @description Cursor for the next page. Empty if no more results.
-     * @type string | undefined
-    */
-    next_page_token?: string;
+  /**
+   * @description Audit entries on the current page.
+   * @type array
+   */
+  entries: AuditLogEntry[];
+  /**
+   * @description Cursor for the next page. Empty if no more results.
+   * @type string | undefined
+   */
+  next_page_token?: string;
 };

@@ -8,16 +8,16 @@ import type { AnomalyAlert } from './AnomalyAlert'
 /**
  * @description Cursor-paginated list of anomaly alerts for a project.
  * @type object
-*/
+ */
 export type ListAnomalyAlertsResponse = {
-    /**
-     * @description Anomaly alerts on the current page.
-     * @type array
-    */
-    anomalies: AnomalyAlert[];
-    /**
-     * @description Token for the next page. Empty if no more results.
-     * @type string | undefined
-    */
-    next_page_token?: string;
+  /**
+   * @description Anomaly alerts on the current page.
+   * @type array
+   */
+  anomalies: AnomalyAlert[];
+  /**
+   * @description Token for the next page. Empty if no more results.
+   * @type string | undefined
+   */
+  next_page_token?: string;
 };

@@ -6,27 +6,27 @@
 /**
  * @description Request body for updating cache behavior of a query shape.
  * @type object
-*/
+ */
 export type UpdateCacheRuleRequest = {
-    /**
-     * @description Whether to enable caching for this query shape.
-     * @type boolean
-    */
-    cache_enabled: boolean;
-    /**
-     * @description TTL override in seconds. Null to use project default.
-     * @minLength 0
-     * @maxLength 86400
-     * @example 300
-     * @type integer | undefined
-    */
-    cache_ttl_seconds?: number | null;
-    /**
-     * @description SWR override in seconds. Null to use project default.
-     * @minLength 0
-     * @maxLength 86400
-     * @example 60
-     * @type integer | undefined
-    */
-    cache_swr_seconds?: number | null;
+  /**
+   * @description Whether to enable caching for this query shape.
+   * @type boolean
+   */
+  cache_enabled: boolean;
+  /**
+   * @description TTL override in seconds. Null to use project default.
+   * @minLength 0
+   * @maxLength 86400
+   * @example 300
+   * @type integer | undefined
+   */
+  cache_ttl_seconds?: number | null;
+  /**
+   * @description SWR override in seconds. Null to use project default.
+   * @minLength 0
+   * @maxLength 86400
+   * @example 60
+   * @type integer | undefined
+   */
+  cache_swr_seconds?: number | null;
 };

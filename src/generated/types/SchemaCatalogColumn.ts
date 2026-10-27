@@ -6,23 +6,23 @@
 /**
  * @description One column of a relation in the schema catalog.
  * @type object
-*/
+ */
 export type SchemaCatalogColumn = {
-    /**
-     * @description Column name.
-     * @example email
-     * @type string
-    */
-    name: string;
-    /**
-     * @description PostgreSQL data type (information_schema.data_type).
-     * @example text
-     * @type string
-    */
-    data_type: string;
-    /**
-     * @description True for binary-typed columns (e.g. bytea). Masking a binary column always returns NULL, because a redact/hash token would corrupt the wire type, so the editor warns when a masking rule targets one.
-     * @type boolean
-    */
-    is_binary: boolean;
+  /**
+   * @description Column name.
+   * @example email
+   * @type string
+   */
+  name: string;
+  /**
+   * @description PostgreSQL data type (information_schema.data_type).
+   * @example text
+   * @type string
+   */
+  data_type: string;
+  /**
+   * @description True for binary-typed columns (e.g. bytea). Masking a binary column always returns NULL, because a redact/hash token would corrupt the wire type, so the editor warns when a masking rule targets one.
+   * @type boolean
+   */
+  is_binary: boolean;
 };

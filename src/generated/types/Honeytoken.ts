@@ -4,58 +4,61 @@
 */
 
 export const honeytokenActionEnum = {
-    audit_only: "audit_only",
-    kill: "kill"
+  audit_only: 'audit_only',
+  kill: 'kill',
 } as const;
 
 export type HoneytokenActionEnumKey = (typeof honeytokenActionEnum)[keyof typeof honeytokenActionEnum];
 
 /**
- * @description A decoy (canary) relation. Any agent statement that references it is blocked (fail closed) and recorded as a canary_tripped audit event.\n
+ * @description A decoy (canary) relation. Any agent statement that references it is blocked (fail closed) and recorded as a canary_tripped audit event.
+ *
  * @type object
-*/
+ */
 export type Honeytoken = {
-    /**
-     * @description Unique honeytoken identifier.
-     * @example hnt_01j9x8y7z6w5v4u3t2s1r0q9p8
-     * @type string
-    */
-    id: string;
-    /**
-     * @description Project the honeytoken belongs to.
-     * @example prj_01j9x8y7z6w5v4u3t2s1r0q9p8
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Optional schema. Null matches the unqualified/public form, mirroring the relation allowlist normalization.\n
-     * @example public
-     * @type string | undefined
-    */
-    schema_name?: string | null;
-    /**
-     * @description Relation (table or view) name of the decoy.
-     * @example customer_ssns
-     * @type string
-    */
-    relation_name: string;
-    /**
-     * @description Response when tripped. audit_only blocks the statement, records the event, and fires webhooks. kill additionally disables the tripping credential via the kill-switch.\n
-     * @type string
-    */
-    action: HoneytokenActionEnumKey;
-    /**
-     * @description When the honeytoken was registered.
-     *
-     * Format: `date-time`
-     * @type string
-    */
-    created_at: string;
-    /**
-     * @description When the honeytoken was last updated.
-     *
-     * Format: `date-time`
-     * @type string
-    */
-    updated_at: string;
+  /**
+   * @description Unique honeytoken identifier.
+   * @example hnt_01j9x8y7z6w5v4u3t2s1r0q9p8
+   * @type string
+   */
+  id: string;
+  /**
+   * @description Project the honeytoken belongs to.
+   * @example prj_01j9x8y7z6w5v4u3t2s1r0q9p8
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Optional schema. Null matches the unqualified/public form, mirroring the relation allowlist normalization.
+   *
+   * @example public
+   * @type string | undefined
+   */
+  schema_name?: string | null;
+  /**
+   * @description Relation (table or view) name of the decoy.
+   * @example customer_ssns
+   * @type string
+   */
+  relation_name: string;
+  /**
+   * @description Response when tripped. audit_only blocks the statement, records the event, and fires webhooks. kill additionally disables the tripping credential via the kill-switch.
+   *
+   * @type string
+   */
+  action: HoneytokenActionEnumKey;
+  /**
+   * @description When the honeytoken was registered.
+   *
+   * Format: `date-time`
+   * @type string
+   */
+  created_at: string;
+  /**
+   * @description When the honeytoken was last updated.
+   *
+   * Format: `date-time`
+   * @type string
+   */
+  updated_at: string;
 };

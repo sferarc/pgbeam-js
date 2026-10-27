@@ -7,49 +7,51 @@ import type { Error } from './Error'
 import type { UsageResponse } from './UsageResponse'
 
 export type GetOrganizationUsagePath = {
-    /**
-     * @description Unique organization identifier.
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @example org_abc123
-     * @type string
-    */
-    org_id: string;
+  /**
+   * @description Unique organization identifier.
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @example org_abc123
+   * @type string
+   */
+  org_id: string;
 };
 
 export type GetOrganizationUsageQuery = {
-    /**
-     * @description Start date (inclusive, YYYY-MM-DD).
-     *
-     * Format: `date`
-     * @example 2024-01-01
-     * @type string
-    */
-    start_date: string;
-    /**
-     * @description End date (inclusive, YYYY-MM-DD).
-     *
-     * Format: `date`
-     * @example 2024-01-31
-     * @type string
-    */
-    end_date: string;
+  /**
+   * @description Start date (inclusive, YYYY-MM-DD).
+   *
+   * Format: `date`
+   * @example 2024-01-01
+   * @type string
+   */
+  start_date: string;
+  /**
+   * @description End date (inclusive, YYYY-MM-DD).
+   *
+   * Format: `date`
+   * @example 2024-01-31
+   * @type string
+   */
+  end_date: string;
 };
 
 export type GetOrganizationUsageHeaders = {
-    /**
-     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
-     * @minLength 1
-     * @maxLength 1024
-     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
-     * @type string | undefined
-    */
-    "If-None-Match"?: string;
+  /**
+   * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.
+   *
+   * A comma-separated list is accepted, and `*` matches any current representation.
+   * @minLength 1
+   * @maxLength 1024
+   * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+   * @type string | undefined
+   */
+  'If-None-Match'?: string;
 };
 
 /**
  * @description Response envelope for organization usage queries.
  * @type object
-*/
+ */
 export type GetOrganizationUsageStatus200 = UsageResponse;
 
 export type GetOrganizationUsageStatus304 = unknown;
@@ -57,51 +59,51 @@ export type GetOrganizationUsageStatus304 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetOrganizationUsageStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetOrganizationUsageStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetOrganizationUsageStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetOrganizationUsageStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetOrganizationUsageStatus500 = Error;
 
 export type GetOrganizationUsageOptions = {
-    body?: never;
-    path: GetOrganizationUsagePath;
-    query: GetOrganizationUsageQuery;
-    headers?: GetOrganizationUsageHeaders;
+  body?: never;
+  path: GetOrganizationUsagePath;
+  query: GetOrganizationUsageQuery;
+  headers?: GetOrganizationUsageHeaders;
 };
 
 export type GetOrganizationUsageResponses = {
-    "200": GetOrganizationUsageStatus200;
-    "304": GetOrganizationUsageStatus304;
-    "400": GetOrganizationUsageStatus400;
-    "401": GetOrganizationUsageStatus401;
-    "403": GetOrganizationUsageStatus403;
-    "429": GetOrganizationUsageStatus429;
-    "500": GetOrganizationUsageStatus500;
+  '200': GetOrganizationUsageStatus200;
+  '304': GetOrganizationUsageStatus304;
+  '400': GetOrganizationUsageStatus400;
+  '401': GetOrganizationUsageStatus401;
+  '403': GetOrganizationUsageStatus403;
+  '429': GetOrganizationUsageStatus429;
+  '500': GetOrganizationUsageStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type GetOrganizationUsageResponse = GetOrganizationUsageStatus200;

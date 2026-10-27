@@ -8,94 +8,94 @@ import type { SupportCase } from './SupportCase'
 import type { UpdateSupportCaseRequest } from './UpdateSupportCaseRequest'
 
 export type UpdateSupportCasePath = {
-    /**
-     * @description Unique organization identifier.
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @example org_abc123
-     * @type string
-    */
-    org_id: string;
-    /**
-     * @description Unique support case identifier (prefixed, e.g. sc_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    case_id: string;
+  /**
+   * @description Unique organization identifier.
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @example org_abc123
+   * @type string
+   */
+  org_id: string;
+  /**
+   * @description Unique support case identifier (prefixed, e.g. sc_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  case_id: string;
 };
 
 /**
  * @description A support case filed by an organization member.
  * @type object
-*/
+ */
 export type UpdateSupportCaseStatus200 = SupportCase;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateSupportCaseStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateSupportCaseStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateSupportCaseStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateSupportCaseStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateSupportCaseStatus413 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateSupportCaseStatus415 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateSupportCaseStatus500 = Error;
 
 /**
  * @description Request body for updating a support case status.
  * @type object
-*/
+ */
 export type UpdateSupportCaseBody = UpdateSupportCaseRequest;
 
 export type UpdateSupportCaseOptions = {
-    body: UpdateSupportCaseBody;
-    path: UpdateSupportCasePath;
-    query?: never;
-    headers?: never;
+  body: UpdateSupportCaseBody;
+  path: UpdateSupportCasePath;
+  query?: never;
+  headers?: never;
 };
 
 export type UpdateSupportCaseResponses = {
-    "200": UpdateSupportCaseStatus200;
-    "400": UpdateSupportCaseStatus400;
-    "401": UpdateSupportCaseStatus401;
-    "403": UpdateSupportCaseStatus403;
-    "404": UpdateSupportCaseStatus404;
-    "413": UpdateSupportCaseStatus413;
-    "415": UpdateSupportCaseStatus415;
-    "500": UpdateSupportCaseStatus500;
+  '200': UpdateSupportCaseStatus200;
+  '400': UpdateSupportCaseStatus400;
+  '401': UpdateSupportCaseStatus401;
+  '403': UpdateSupportCaseStatus403;
+  '404': UpdateSupportCaseStatus404;
+  '413': UpdateSupportCaseStatus413;
+  '415': UpdateSupportCaseStatus415;
+  '500': UpdateSupportCaseStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type UpdateSupportCaseResponse = UpdateSupportCaseStatus200;

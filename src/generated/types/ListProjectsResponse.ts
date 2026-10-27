@@ -8,21 +8,21 @@ import type { Project } from './Project'
 /**
  * @description Cursor-paginated list of projects for an organization.
  * @type object
-*/
+ */
 export type ListProjectsResponse = {
-    /**
-     * @description Projects on the current page.
-     * @type array
-    */
-    projects: Project[];
-    /**
-     * @description Total number of projects (across all pages).
-     * @type integer
-    */
-    total: number;
-    /**
-     * @description Token for the next page. Empty if no more results.
-     * @type string | undefined
-    */
-    next_page_token?: string;
+  /**
+   * @description Projects on the current page.
+   * @type array
+   */
+  projects: Project[];
+  /**
+   * @description Total number of projects (across all pages).
+   * @type integer
+   */
+  total: number;
+  /**
+   * @description Token for the next page. Empty if no more results.
+   * @type string | undefined
+   */
+  next_page_token?: string;
 };

@@ -9,28 +9,28 @@ import type { Error } from './Error'
 /**
  * @description Everything an unauthenticated caller needs to decide whether to ask for a demo credential: whether the demo is up, how much capacity is left, what the tiers cost, what the dataset holds, and the walkthrough to run.
  * @type object
-*/
+ */
 export type GetDemoStatus200 = DemoInfo;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetDemoStatus429 = Error;
 
 export type GetDemoOptions = {
-    body?: never;
-    path?: never;
-    query?: never;
-    headers?: never;
+  body?: never;
+  path?: never;
+  query?: never;
+  headers?: never;
 };
 
 export type GetDemoResponses = {
-    "200": GetDemoStatus200;
-    "429": GetDemoStatus429;
+  '200': GetDemoStatus200;
+  '429': GetDemoStatus429;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type GetDemoResponse = GetDemoStatus200;

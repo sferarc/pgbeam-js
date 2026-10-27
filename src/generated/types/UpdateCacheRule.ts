@@ -8,103 +8,103 @@ import type { UpdateCacheRuleRequest } from './UpdateCacheRuleRequest'
 import type { UpdateCacheRuleResponse } from './UpdateCacheRuleResponse'
 
 export type UpdateCacheRulePath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Unique database identifier (prefixed, e.g. db_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    database_id: string;
-    /**
-     * @description xxhash64 hex of the normalized SQL.
-     * @minLength 16
-     * @maxLength 16
-     * @pattern ^[a-f0-9]+$
-     * @type string
-    */
-    query_hash: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Unique database identifier (prefixed, e.g. db_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  database_id: string;
+  /**
+   * @description xxhash64 hex of the normalized SQL.
+   * @minLength 16
+   * @maxLength 16
+   * @pattern ^[a-f0-9]+$
+   * @type string
+   */
+  query_hash: string;
 };
 
 /**
  * @description Response returned after updating a cache rule.
  * @type object
-*/
+ */
 export type UpdateCacheRuleStatus200 = UpdateCacheRuleResponse;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateCacheRuleStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateCacheRuleStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateCacheRuleStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateCacheRuleStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateCacheRuleStatus413 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateCacheRuleStatus415 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateCacheRuleStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateCacheRuleStatus500 = Error;
 
 /**
  * @description Request body for updating cache behavior of a query shape.
  * @type object
-*/
+ */
 export type UpdateCacheRuleBody = UpdateCacheRuleRequest;
 
 export type UpdateCacheRuleOptions = {
-    body: UpdateCacheRuleBody;
-    path: UpdateCacheRulePath;
-    query?: never;
-    headers?: never;
+  body: UpdateCacheRuleBody;
+  path: UpdateCacheRulePath;
+  query?: never;
+  headers?: never;
 };
 
 export type UpdateCacheRuleResponses = {
-    "200": UpdateCacheRuleStatus200;
-    "400": UpdateCacheRuleStatus400;
-    "401": UpdateCacheRuleStatus401;
-    "403": UpdateCacheRuleStatus403;
-    "404": UpdateCacheRuleStatus404;
-    "413": UpdateCacheRuleStatus413;
-    "415": UpdateCacheRuleStatus415;
-    "429": UpdateCacheRuleStatus429;
-    "500": UpdateCacheRuleStatus500;
+  '200': UpdateCacheRuleStatus200;
+  '400': UpdateCacheRuleStatus400;
+  '401': UpdateCacheRuleStatus401;
+  '403': UpdateCacheRuleStatus403;
+  '404': UpdateCacheRuleStatus404;
+  '413': UpdateCacheRuleStatus413;
+  '415': UpdateCacheRuleStatus415;
+  '429': UpdateCacheRuleStatus429;
+  '500': UpdateCacheRuleStatus500;
 };

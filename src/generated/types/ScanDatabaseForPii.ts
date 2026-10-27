@@ -7,80 +7,80 @@ import type { Error } from './Error'
 import type { ScanPiiResult } from './ScanPiiResult'
 
 export type ScanDatabaseForPiiPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Unique database identifier (prefixed, e.g. db_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    database_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Unique database identifier (prefixed, e.g. db_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  database_id: string;
 };
 
 /**
- * @description Result of a PII detection scan over a database\'s schema.
+ * @description Result of a PII detection scan over a database's schema.
  * @type object
-*/
+ */
 export type ScanDatabaseForPiiStatus200 = ScanPiiResult;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ScanDatabaseForPiiStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ScanDatabaseForPiiStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ScanDatabaseForPiiStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ScanDatabaseForPiiStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ScanDatabaseForPiiStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ScanDatabaseForPiiStatus500 = Error;
 
 export type ScanDatabaseForPiiOptions = {
-    body?: never;
-    path: ScanDatabaseForPiiPath;
-    query?: never;
-    headers?: never;
+  body?: never;
+  path: ScanDatabaseForPiiPath;
+  query?: never;
+  headers?: never;
 };
 
 export type ScanDatabaseForPiiResponses = {
-    "200": ScanDatabaseForPiiStatus200;
-    "400": ScanDatabaseForPiiStatus400;
-    "401": ScanDatabaseForPiiStatus401;
-    "403": ScanDatabaseForPiiStatus403;
-    "404": ScanDatabaseForPiiStatus404;
-    "429": ScanDatabaseForPiiStatus429;
-    "500": ScanDatabaseForPiiStatus500;
+  '200': ScanDatabaseForPiiStatus200;
+  '400': ScanDatabaseForPiiStatus400;
+  '401': ScanDatabaseForPiiStatus401;
+  '403': ScanDatabaseForPiiStatus403;
+  '404': ScanDatabaseForPiiStatus404;
+  '429': ScanDatabaseForPiiStatus429;
+  '500': ScanDatabaseForPiiStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type ScanDatabaseForPiiResponse = ScanDatabaseForPiiStatus200;

@@ -8,95 +8,95 @@ import type { OrganizationPlan } from './OrganizationPlan'
 import type { UpdateSpendLimitRequest } from './UpdateSpendLimitRequest'
 
 export type UpdateSpendLimitPath = {
-    /**
-     * @description Unique organization identifier.
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @example org_abc123
-     * @type string
-    */
-    org_id: string;
+  /**
+   * @description Unique organization identifier.
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @example org_abc123
+   * @type string
+   */
+  org_id: string;
 };
 
 /**
  * @description Billing state and plan limits for an organization.
  * @type object
-*/
+ */
 export type UpdateSpendLimitStatus200 = OrganizationPlan;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateSpendLimitStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateSpendLimitStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateSpendLimitStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateSpendLimitStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateSpendLimitStatus413 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateSpendLimitStatus415 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateSpendLimitStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateSpendLimitStatus500 = Error;
 
 /**
- * @description Request body for updating an organization\'s monthly spend cap.
+ * @description Request body for updating an organization's monthly spend cap.
  * @type object
-*/
+ */
 export type UpdateSpendLimitBody = UpdateSpendLimitRequest;
 
 export type UpdateSpendLimitOptions = {
-    body: UpdateSpendLimitBody;
-    path: UpdateSpendLimitPath;
-    query?: never;
-    headers?: never;
+  body: UpdateSpendLimitBody;
+  path: UpdateSpendLimitPath;
+  query?: never;
+  headers?: never;
 };
 
 export type UpdateSpendLimitResponses = {
-    "200": UpdateSpendLimitStatus200;
-    "400": UpdateSpendLimitStatus400;
-    "401": UpdateSpendLimitStatus401;
-    "403": UpdateSpendLimitStatus403;
-    "404": UpdateSpendLimitStatus404;
-    "413": UpdateSpendLimitStatus413;
-    "415": UpdateSpendLimitStatus415;
-    "429": UpdateSpendLimitStatus429;
-    "500": UpdateSpendLimitStatus500;
+  '200': UpdateSpendLimitStatus200;
+  '400': UpdateSpendLimitStatus400;
+  '401': UpdateSpendLimitStatus401;
+  '403': UpdateSpendLimitStatus403;
+  '404': UpdateSpendLimitStatus404;
+  '413': UpdateSpendLimitStatus413;
+  '415': UpdateSpendLimitStatus415;
+  '429': UpdateSpendLimitStatus429;
+  '500': UpdateSpendLimitStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type UpdateSpendLimitResponse = UpdateSpendLimitStatus200;

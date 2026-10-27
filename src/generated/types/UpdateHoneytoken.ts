@@ -8,118 +8,123 @@ import type { Honeytoken } from './Honeytoken'
 import type { HoneytokenInput } from './HoneytokenInput'
 
 export type UpdateHoneytokenPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Unique honeytoken identifier (prefixed, e.g. hnt_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    honeytoken_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Unique honeytoken identifier (prefixed, e.g. hnt_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  honeytoken_id: string;
 };
 
 export type UpdateHoneytokenHeaders = {
-    /**
-     * @description Entity tag the write is based on, taken from the `ETag` of the read that produced the values being sent. The write proceeds only if it still matches the current representation; otherwise it is refused with `412 Precondition Failed` and nothing is changed.\n\nThis is what makes a read-modify-write safe. Without it the last writer wins and a concurrent edit is silently discarded, which is the failure an agent is most likely to cause and least likely to notice. The `412` response carries the current `ETag`, so a caller can re-read, re-apply its change and retry.\n\nOmitting the header keeps the old unconditional behaviour. `*` matches any current representation, which asserts only that the resource exists.
-     * @minLength 1
-     * @maxLength 1024
-     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
-     * @type string | undefined
-    */
-    "If-Match"?: string;
+  /**
+   * @description Entity tag the write is based on, taken from the `ETag` of the read that produced the values being sent. The write proceeds only if it still matches the current representation; otherwise it is refused with `412 Precondition Failed` and nothing is changed.
+   *
+   * This is what makes a read-modify-write safe. Without it the last writer wins and a concurrent edit is silently discarded, which is the failure an agent is most likely to cause and least likely to notice. The `412` response carries the current `ETag`, so a caller can re-read, re-apply its change and retry.
+   *
+   * Omitting the header keeps the old unconditional behaviour. `*` matches any current representation, which asserts only that the resource exists.
+   * @minLength 1
+   * @maxLength 1024
+   * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+   * @type string | undefined
+   */
+  'If-Match'?: string;
 };
 
 /**
- * @description A decoy (canary) relation. Any agent statement that references it is blocked (fail closed) and recorded as a canary_tripped audit event.\n
+ * @description A decoy (canary) relation. Any agent statement that references it is blocked (fail closed) and recorded as a canary_tripped audit event.
+ *
  * @type object
-*/
+ */
 export type UpdateHoneytokenStatus200 = Honeytoken;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateHoneytokenStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateHoneytokenStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateHoneytokenStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateHoneytokenStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateHoneytokenStatus409 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateHoneytokenStatus412 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateHoneytokenStatus413 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateHoneytokenStatus415 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateHoneytokenStatus500 = Error;
 
 /**
  * @description Request body for creating or updating a honeytoken.
  * @type object
-*/
+ */
 export type UpdateHoneytokenBody = HoneytokenInput;
 
 export type UpdateHoneytokenOptions = {
-    body: UpdateHoneytokenBody;
-    path: UpdateHoneytokenPath;
-    query?: never;
-    headers?: UpdateHoneytokenHeaders;
+  body: UpdateHoneytokenBody;
+  path: UpdateHoneytokenPath;
+  query?: never;
+  headers?: UpdateHoneytokenHeaders;
 };
 
 export type UpdateHoneytokenResponses = {
-    "200": UpdateHoneytokenStatus200;
-    "400": UpdateHoneytokenStatus400;
-    "401": UpdateHoneytokenStatus401;
-    "403": UpdateHoneytokenStatus403;
-    "404": UpdateHoneytokenStatus404;
-    "409": UpdateHoneytokenStatus409;
-    "412": UpdateHoneytokenStatus412;
-    "413": UpdateHoneytokenStatus413;
-    "415": UpdateHoneytokenStatus415;
-    "500": UpdateHoneytokenStatus500;
+  '200': UpdateHoneytokenStatus200;
+  '400': UpdateHoneytokenStatus400;
+  '401': UpdateHoneytokenStatus401;
+  '403': UpdateHoneytokenStatus403;
+  '404': UpdateHoneytokenStatus404;
+  '409': UpdateHoneytokenStatus409;
+  '412': UpdateHoneytokenStatus412;
+  '413': UpdateHoneytokenStatus413;
+  '415': UpdateHoneytokenStatus415;
+  '500': UpdateHoneytokenStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type UpdateHoneytokenResponse = UpdateHoneytokenStatus200;

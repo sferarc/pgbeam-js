@@ -6,12 +6,12 @@
 /**
  * @description Optional note attached to an approve/reject decision.
  * @type object
-*/
+ */
 export type ApprovalDecisionRequest = {
-    /**
-     * @description Human-readable note explaining the decision.
-     * @maxLength 500
-     * @type string | undefined
-    */
-    reason?: string;
+  /**
+   * @description Human-readable note explaining the decision.
+   * @maxLength 500
+   * @type string | undefined
+   */
+  reason?: string;
 };

@@ -4,17 +4,17 @@
 */
 
 export const regionProviderEnum = {
-    aws: "aws",
-    azure: "azure",
-    gcp: "gcp"
+  aws: 'aws',
+  azure: 'azure',
+  gcp: 'gcp',
 } as const;
 
 export type RegionProviderEnumKey = (typeof regionProviderEnum)[keyof typeof regionProviderEnum];
 
 export const regionStatusEnum = {
-    active: "active",
-    draining: "draining",
-    inactive: "inactive"
+  active: 'active',
+  draining: 'draining',
+  inactive: 'inactive',
 } as const;
 
 export type RegionStatusEnumKey = (typeof regionStatusEnum)[keyof typeof regionStatusEnum];
@@ -22,44 +22,44 @@ export type RegionStatusEnumKey = (typeof regionStatusEnum)[keyof typeof regionS
 /**
  * @description Data plane region available for PgBeam traffic.
  * @type object
-*/
+ */
 export type Region = {
-    /**
-     * @description Region identifier (e.g. us-east-1).
-     * @example us-east-1
-     * @type string
-    */
-    id: string;
-    /**
-     * @description Human-readable region name.
-     * @example US East (N. Virginia)
-     * @type string
-    */
-    name: string;
-    /**
-     * @description Cloud provider.
-     * @example aws
-     * @type string
-    */
-    provider: RegionProviderEnumKey;
-    /**
-     * @description Region operational status.
-     * @type string
-    */
-    status: RegionStatusEnumKey;
-    /**
-     * @description Whether new projects can currently be assigned to the region.
-     * @type boolean
-    */
-    available: boolean;
-    /**
-     * @description Continent where the region is located.
-     * @type string | undefined
-    */
-    continent?: string;
-    /**
-     * @description Country where the region is located.
-     * @type string | undefined
-    */
-    country?: string;
+  /**
+   * @description Region identifier (e.g. us-east-1).
+   * @example us-east-1
+   * @type string
+   */
+  id: string;
+  /**
+   * @description Human-readable region name.
+   * @example US East (N. Virginia)
+   * @type string
+   */
+  name: string;
+  /**
+   * @description Cloud provider.
+   * @example aws
+   * @type string
+   */
+  provider: RegionProviderEnumKey;
+  /**
+   * @description Region operational status.
+   * @type string
+   */
+  status: RegionStatusEnumKey;
+  /**
+   * @description Whether new projects can currently be assigned to the region.
+   * @type boolean
+   */
+  available: boolean;
+  /**
+   * @description Continent where the region is located.
+   * @type string | undefined
+   */
+  continent?: string;
+  /**
+   * @description Country where the region is located.
+   * @type string | undefined
+   */
+  country?: string;
 };

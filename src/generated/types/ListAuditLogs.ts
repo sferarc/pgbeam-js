@@ -9,89 +9,91 @@ import type { Error } from './Error'
 import type { ListAuditLogsResponse } from './ListAuditLogsResponse'
 
 export type ListAuditLogsPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
 };
 
 export type ListAuditLogsQuery = {
-    /**
-     * @description Filter to a single agent credential.
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string | undefined
-    */
-    credential_id?: string;
-    /**
-     * @description Filter to a single event type (e.g. blocked, masked, query).
-     * @pattern ^[a-z_]+$
-     * @type string | undefined
-    */
-    event?: string;
-    /**
-     * @description Coarse outcome filter that groups events. `allow` = query, auto_approved; `block` = blocked, budget_exhausted, auth_failed, credential_expired, canary_tripped, rejected, approval_expired; `mask` = masked; `truncate` = truncated.
-     * @type string | undefined
-    */
-    decision?: AuditDecisionKey;
-    /**
-     * @description Filter by statement origin (wire, mcp, rest, or control).
-     * @type string | undefined
-    */
-    source?: AuditSourceKey;
-    /**
-     * @description Return entries at or after this timestamp (inclusive lower bound).
-     *
-     * Format: `date-time`
-     * @type string | undefined
-    */
-    start?: string;
-    /**
-     * @description Return entries strictly older than this timestamp (cursor / upper bound).
-     *
-     * Format: `date-time`
-     * @type string | undefined
-    */
-    end?: string;
-    /**
-     * @description Return entries strictly older than this timestamp (keyset pagination cursor).
-     *
-     * Format: `date-time`
-     * @type string | undefined
-    */
-    before?: string;
-    /**
-     * @description Maximum number of items to return (1-100, default 20).
-     * @minLength 1
-     * @maxLength 100
-     * @default 20
-     * @type integer | undefined
-    */
-    page_size?: number;
-    /**
-     * @description Opaque token for cursor-based pagination.
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string | undefined
-    */
-    page_token?: string;
+  /**
+   * @description Filter to a single agent credential.
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string | undefined
+   */
+  credential_id?: string;
+  /**
+   * @description Filter to a single event type (e.g. blocked, masked, query).
+   * @pattern ^[a-z_]+$
+   * @type string | undefined
+   */
+  event?: string;
+  /**
+   * @description Coarse outcome filter that groups events. `allow` = query, auto_approved; `block` = blocked, budget_exhausted, auth_failed, credential_expired, canary_tripped, rejected, approval_expired; `mask` = masked; `truncate` = truncated.
+   * @type string | undefined
+   */
+  decision?: AuditDecisionKey;
+  /**
+   * @description Filter by statement origin (wire, mcp, rest, or control).
+   * @type string | undefined
+   */
+  source?: AuditSourceKey;
+  /**
+   * @description Return entries at or after this timestamp (inclusive lower bound).
+   *
+   * Format: `date-time`
+   * @type string | undefined
+   */
+  start?: string;
+  /**
+   * @description Return entries strictly older than this timestamp (cursor / upper bound).
+   *
+   * Format: `date-time`
+   * @type string | undefined
+   */
+  end?: string;
+  /**
+   * @description Return entries strictly older than this timestamp (keyset pagination cursor).
+   *
+   * Format: `date-time`
+   * @type string | undefined
+   */
+  before?: string;
+  /**
+   * @description Maximum number of items to return (1-100, default 20).
+   * @minLength 1
+   * @maxLength 100
+   * @default 20
+   * @type integer | undefined
+   */
+  page_size?: number;
+  /**
+   * @description Opaque token for cursor-based pagination.
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string | undefined
+   */
+  page_token?: string;
 };
 
 export type ListAuditLogsHeaders = {
-    /**
-     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
-     * @minLength 1
-     * @maxLength 1024
-     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
-     * @type string | undefined
-    */
-    "If-None-Match"?: string;
+  /**
+   * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.
+   *
+   * A comma-separated list is accepted, and `*` matches any current representation.
+   * @minLength 1
+   * @maxLength 1024
+   * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+   * @type string | undefined
+   */
+  'If-None-Match'?: string;
 };
 
 /**
  * @description Time-ordered page of audit entries (newest first).
  * @type object
-*/
+ */
 export type ListAuditLogsStatus200 = ListAuditLogsResponse;
 
 export type ListAuditLogsStatus304 = unknown;
@@ -99,53 +101,53 @@ export type ListAuditLogsStatus304 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListAuditLogsStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListAuditLogsStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListAuditLogsStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListAuditLogsStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListAuditLogsStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListAuditLogsStatus500 = Error;
 
 export type ListAuditLogsOptions = {
-    body?: never;
-    path: ListAuditLogsPath;
-    query?: ListAuditLogsQuery;
-    headers?: ListAuditLogsHeaders;
+  body?: never;
+  path: ListAuditLogsPath;
+  query?: ListAuditLogsQuery;
+  headers?: ListAuditLogsHeaders;
 };
 
 export type ListAuditLogsResponses = {
-    "200": ListAuditLogsStatus200;
-    "304": ListAuditLogsStatus304;
-    "400": ListAuditLogsStatus400;
-    "401": ListAuditLogsStatus401;
-    "403": ListAuditLogsStatus403;
-    "404": ListAuditLogsStatus404;
-    "429": ListAuditLogsStatus429;
-    "500": ListAuditLogsStatus500;
+  '200': ListAuditLogsStatus200;
+  '304': ListAuditLogsStatus304;
+  '400': ListAuditLogsStatus400;
+  '401': ListAuditLogsStatus401;
+  '403': ListAuditLogsStatus403;
+  '404': ListAuditLogsStatus404;
+  '429': ListAuditLogsStatus429;
+  '500': ListAuditLogsStatus500;
 };

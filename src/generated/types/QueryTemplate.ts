@@ -7,74 +7,79 @@ import type { QueryTemplateParam } from './QueryTemplateParam'
 import type { QueryTemplateStatementKindKey } from './QueryTemplateStatementKind'
 
 /**
- * @description A named, parameterized statement, scoped to a project. A policy profile set to admit templates only lets its credentials run the project\'s enabled templates and nothing else. A template admits a statement; it never grants access. A statement it admits still meets the credential\'s whole policy (allowlists, masking, row filters, budgets and approvals).\n
+ * @description A named, parameterized statement, scoped to a project. A policy profile set to admit templates only lets its credentials run the project's enabled templates and nothing else. A template admits a statement; it never grants access. A statement it admits still meets the credential's whole policy (allowlists, masking, row filters, budgets and approvals).
+ *
  * @type object
-*/
+ */
 export type QueryTemplate = {
-    /**
-     * @description Unique query template identifier.
-     * @example qtp_01j9x8y7z6w5v4u3t2s1r0q9p8
-     * @type string
-    */
-    id: string;
-    /**
-     * @description Project the template belongs to.
-     * @example prj_01j9x8y7z6w5v4u3t2s1r0q9p8
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Name an agent invokes the template by. A lower-case identifier, unique within the project.\n
-     * @example open_orders_for_customer
-     * @type string
-    */
-    name: string;
-    /**
-     * @description What the template is for, shown to an agent that lists the templates.
-     * @example Open orders for one customer, newest first.
-     * @type string
-    */
-    description: string;
-    /**
-     * @description The statement, with its parameters as $1, $2 and so on. Exactly one SELECT, INSERT, UPDATE or DELETE. Matched on its parse tree, so whitespace, keyword case and comments do not matter and anything else does.\n
-     * @example SELECT id, total FROM orders WHERE customer_id = $1 AND status = 'open' ORDER BY created_at DESC
-     * @type string
-    */
-    sql: string;
-    /**
-     * @description Declared parameters, in placeholder order.
-     * @type array
-    */
-    params: QueryTemplateParam[];
-    /**
-     * @description The statement kind a template compiles to. Absent on a stored template that no longer compiles, which a data plane skips rather than admits.\n
-     * @type string | undefined
-    */
-    statement_kind?: QueryTemplateStatementKindKey;
-    /**
-     * @description True shows the SQL text to an agent that lists the templates. False shows only the name, description and parameters.\n
-     * @example false
-     * @type boolean
-    */
-    include_sql: boolean;
-    /**
-     * @description False withdraws the template, so it admits nothing.
-     * @example true
-     * @type boolean
-    */
-    enabled: boolean;
-    /**
-     * @description When the template was created.
-     *
-     * Format: `date-time`
-     * @type string
-    */
-    created_at: string;
-    /**
-     * @description When the template was last updated.
-     *
-     * Format: `date-time`
-     * @type string
-    */
-    updated_at: string;
+  /**
+   * @description Unique query template identifier.
+   * @example qtp_01j9x8y7z6w5v4u3t2s1r0q9p8
+   * @type string
+   */
+  id: string;
+  /**
+   * @description Project the template belongs to.
+   * @example prj_01j9x8y7z6w5v4u3t2s1r0q9p8
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Name an agent invokes the template by. A lower-case identifier, unique within the project.
+   *
+   * @example open_orders_for_customer
+   * @type string
+   */
+  name: string;
+  /**
+   * @description What the template is for, shown to an agent that lists the templates.
+   * @example Open orders for one customer, newest first.
+   * @type string
+   */
+  description: string;
+  /**
+   * @description The statement, with its parameters as $1, $2 and so on. Exactly one SELECT, INSERT, UPDATE or DELETE. Matched on its parse tree, so whitespace, keyword case and comments do not matter and anything else does.
+   *
+   * @example SELECT id, total FROM orders WHERE customer_id = $1 AND status = 'open' ORDER BY created_at DESC
+   * @type string
+   */
+  sql: string;
+  /**
+   * @description Declared parameters, in placeholder order.
+   * @type array
+   */
+  params: QueryTemplateParam[];
+  /**
+   * @description The statement kind a template compiles to. Absent on a stored template that no longer compiles, which a data plane skips rather than admits.
+   *
+   * @type string | undefined
+   */
+  statement_kind?: QueryTemplateStatementKindKey;
+  /**
+   * @description True shows the SQL text to an agent that lists the templates. False shows only the name, description and parameters.
+   *
+   * @example false
+   * @type boolean
+   */
+  include_sql: boolean;
+  /**
+   * @description False withdraws the template, so it admits nothing.
+   * @example true
+   * @type boolean
+   */
+  enabled: boolean;
+  /**
+   * @description When the template was created.
+   *
+   * Format: `date-time`
+   * @type string
+   */
+  created_at: string;
+  /**
+   * @description When the template was last updated.
+   *
+   * Format: `date-time`
+   * @type string
+   */
+  updated_at: string;
 };

@@ -8,29 +8,29 @@ import type { AgentCredential } from './AgentCredential'
 /**
  * @description One-time secrets returned only at creation. The connection string and MCP token are not retrievable again.
  * @type object
-*/
+ */
 export type AgentCredentialSecrets = {
-    /**
-     * @description A PgBeam-issued, scoped Postgres login plus hosted MCP token for an AI agent.
-     * @type object
-    */
-    credential: AgentCredential;
-    /**
-     * @description Guarded Postgres connection string for this agent credential.
-     * @example postgresql://agent_a1b2c3d4e5f6:secret@abc.proxy.pgbeam.app:5432/mydb
-     * @type string
-    */
-    connection_string: string;
-    /**
-     * @description Hosted agent-database MCP endpoint for this project, served by the edge proxy on the same per-project host the agent connects to over the wire. Paste into an MCP client (Claude Code, Cursor, …) with the mcp_token as a bearer token.
-     * @example https://abc.proxy.pgbeam.app/mcp
-     * @type string
-    */
-    mcp_url: string;
-    /**
-     * @description Bearer token for the hosted MCP endpoint (shown once).
-     * @example pba_a1b2c3d4e5f6g7h8
-     * @type string
-    */
-    mcp_token: string;
+  /**
+   * @description A PgBeam-issued, scoped Postgres login plus hosted MCP token for an AI agent.
+   * @type object
+   */
+  credential: AgentCredential;
+  /**
+   * @description Guarded Postgres connection string for this agent credential.
+   * @example postgresql://agent_a1b2c3d4e5f6:secret@abc.proxy.pgbeam.app:5432/mydb
+   * @type string
+   */
+  connection_string: string;
+  /**
+   * @description Hosted agent-database MCP endpoint for this project, served by the edge proxy on the same per-project host the agent connects to over the wire. Paste into an MCP client (Claude Code, Cursor, …) with the mcp_token as a bearer token.
+   * @example https://abc.proxy.pgbeam.app/mcp
+   * @type string
+   */
+  mcp_url: string;
+  /**
+   * @description Bearer token for the hosted MCP endpoint (shown once).
+   * @example pba_a1b2c3d4e5f6g7h8
+   * @type string
+   */
+  mcp_token: string;
 };

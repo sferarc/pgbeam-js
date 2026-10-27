@@ -9,57 +9,57 @@ import type { DemoPaymentChallenge } from './DemoPaymentChallenge'
 import type { Error } from './Error'
 
 /**
- * @description A working, scoped, read-only demo credential against PgBeam\'s own database, plus everything needed to use it and to reproduce its policy on a real project. The connection string and MCP token are shown once and are not retrievable again.
+ * @description A working, scoped, read-only demo credential against PgBeam's own database, plus everything needed to use it and to reproduce its policy on a real project. The connection string and MCP token are shown once and are not retrievable again.
  * @type object
-*/
+ */
 export type CreateDemoCredentialStatus201 = DemoCredential;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type CreateDemoCredentialStatus400 = Error;
 
 /**
  * @description The 402 body for a paid demo tier: what is being sold, and how to pay for it. Settle it and replay the request with payment_proof set.
  * @type object
-*/
+ */
 export type CreateDemoCredentialStatus402 = DemoPaymentChallenge;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type CreateDemoCredentialStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type CreateDemoCredentialStatus503 = Error;
 
 /**
  * @description Optional shaping of the demo credential. An empty body issues a free-tier credential, which is the intended path for an agent evaluating the product.
  * @type object | undefined
-*/
+ */
 export type CreateDemoCredentialBody = CreateDemoCredentialRequest | undefined;
 
 export type CreateDemoCredentialOptions = {
-    body: CreateDemoCredentialBody;
-    path?: never;
-    query?: never;
-    headers?: never;
+  body: CreateDemoCredentialBody;
+  path?: never;
+  query?: never;
+  headers?: never;
 };
 
 export type CreateDemoCredentialResponses = {
-    "201": CreateDemoCredentialStatus201;
-    "400": CreateDemoCredentialStatus400;
-    "402": CreateDemoCredentialStatus402;
-    "429": CreateDemoCredentialStatus429;
-    "503": CreateDemoCredentialStatus503;
+  '201': CreateDemoCredentialStatus201;
+  '400': CreateDemoCredentialStatus400;
+  '402': CreateDemoCredentialStatus402;
+  '429': CreateDemoCredentialStatus429;
+  '503': CreateDemoCredentialStatus503;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type CreateDemoCredentialResponse = CreateDemoCredentialStatus201;

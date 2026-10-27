@@ -8,16 +8,16 @@ import type { SchemaAnnotation } from './SchemaAnnotation'
 /**
  * @description Cursor-paginated schema annotations for a project.
  * @type object
-*/
+ */
 export type ListSchemaAnnotationsResponse = {
-    /**
-     * @description Annotations returned for the current page.
-     * @type array
-    */
-    annotations: SchemaAnnotation[];
-    /**
-     * @description Opaque token for cursor-based pagination.
-     * @type string | undefined
-    */
-    next_page_token?: string;
+  /**
+   * @description Annotations returned for the current page.
+   * @type array
+   */
+  annotations: SchemaAnnotation[];
+  /**
+   * @description Opaque token for cursor-based pagination.
+   * @type string | undefined
+   */
+  next_page_token?: string;
 };

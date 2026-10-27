@@ -4,23 +4,23 @@
 */
 
 export const agentCredentialStatusEnum = {
-    active: "active",
-    disabled: "disabled",
-    revoked: "revoked"
+  active: 'active',
+  disabled: 'disabled',
+  revoked: 'revoked',
 } as const;
 
 export type AgentCredentialStatusEnumKey = (typeof agentCredentialStatusEnum)[keyof typeof agentCredentialStatusEnum];
 
 export const agentCredentialPrincipalTypeEnum = {
-    agent: "agent",
-    human: "human"
+  agent: 'agent',
+  human: 'human',
 } as const;
 
 export type AgentCredentialPrincipalTypeEnumKey = (typeof agentCredentialPrincipalTypeEnum)[keyof typeof agentCredentialPrincipalTypeEnum];
 
 export const agentCredentialAuthMethodEnum = {
-    cleartext: "cleartext",
-    "scram-sha-256": "scram-sha-256"
+  cleartext: 'cleartext',
+  'scram-sha-256': 'scram-sha-256',
 } as const;
 
 export type AgentCredentialAuthMethodEnumKey = (typeof agentCredentialAuthMethodEnum)[keyof typeof agentCredentialAuthMethodEnum];
@@ -28,81 +28,81 @@ export type AgentCredentialAuthMethodEnumKey = (typeof agentCredentialAuthMethod
 /**
  * @description A PgBeam-issued, scoped Postgres login plus hosted MCP token for an AI agent.
  * @type object
-*/
+ */
 export type AgentCredential = {
-    /**
-     * @description Unique agent credential identifier (prefixed).
-     * @example agt_01h455vb4pex5vsknk084sn02q
-     * @type string
-    */
-    id: string;
-    /**
-     * @description Owning project ID.
-     * @example prj_01h455vb4pex5vsknk084sn02q
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Policy profile enforced for this credential.
-     * @example pol_01h455vb4pex5vsknk084sn02q
-     * @type string
-    */
-    policy_profile_id: string;
-    /**
-     * @description Human-readable label for the credential.
-     * @example Claude Code (analytics)
-     * @type string
-    */
-    name: string;
-    /**
-     * @description The Postgres username this credential presents to the proxy.
-     * @example agent_a1b2c3d4e5f6
-     * @type string
-    */
-    pg_username: string;
-    /**
-     * @description Lifecycle status of the credential.
-     * @type string
-    */
-    status: AgentCredentialStatusEnumKey;
-    /**
-     * @description Whether this credential represents an autonomous agent or a human operator.
-     * @default 'agent'
-     * @type string | undefined
-    */
-    principal_type?: AgentCredentialPrincipalTypeEnumKey;
-    /**
-     * @description Postgres auth method the proxy presents for this credential.
-     * @default 'scram-sha-256'
-     * @type string | undefined
-    */
-    readonly auth_method?: AgentCredentialAuthMethodEnumKey;
-    /**
-     * @description When the credential was last used to connect, if ever.
-     *
-     * Format: `date-time`
-     * @type string | undefined
-    */
-    last_used_at?: string | null;
-    /**
-     * @description When the credential expires and becomes unusable. Null means it never expires. Enforcement is fail-closed in the proxy the instant this time passes, before any cleanup sweep runs.
-     *
-     * Format: `date-time`
-     * @type string | undefined
-    */
-    expires_at?: string | null;
-    /**
-     * @description When the credential was created.
-     *
-     * Format: `date-time`
-     * @type string
-    */
-    created_at: string;
-    /**
-     * @description When the credential was last updated.
-     *
-     * Format: `date-time`
-     * @type string
-    */
-    updated_at: string;
+  /**
+   * @description Unique agent credential identifier (prefixed).
+   * @example agt_01h455vb4pex5vsknk084sn02q
+   * @type string
+   */
+  id: string;
+  /**
+   * @description Owning project ID.
+   * @example prj_01h455vb4pex5vsknk084sn02q
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Policy profile enforced for this credential.
+   * @example pol_01h455vb4pex5vsknk084sn02q
+   * @type string
+   */
+  policy_profile_id: string;
+  /**
+   * @description Human-readable label for the credential.
+   * @example Claude Code (analytics)
+   * @type string
+   */
+  name: string;
+  /**
+   * @description The Postgres username this credential presents to the proxy.
+   * @example agent_a1b2c3d4e5f6
+   * @type string
+   */
+  pg_username: string;
+  /**
+   * @description Lifecycle status of the credential.
+   * @type string
+   */
+  status: AgentCredentialStatusEnumKey;
+  /**
+   * @description Whether this credential represents an autonomous agent or a human operator.
+   * @default 'agent'
+   * @type string | undefined
+   */
+  principal_type?: AgentCredentialPrincipalTypeEnumKey;
+  /**
+   * @description Postgres auth method the proxy presents for this credential.
+   * @default 'scram-sha-256'
+   * @type string | undefined
+   */
+  readonly auth_method?: AgentCredentialAuthMethodEnumKey;
+  /**
+   * @description When the credential was last used to connect, if ever.
+   *
+   * Format: `date-time`
+   * @type string | undefined
+   */
+  last_used_at?: string | null;
+  /**
+   * @description When the credential expires and becomes unusable. Null means it never expires. Enforcement is fail-closed in the proxy the instant this time passes, before any cleanup sweep runs.
+   *
+   * Format: `date-time`
+   * @type string | undefined
+   */
+  expires_at?: string | null;
+  /**
+   * @description When the credential was created.
+   *
+   * Format: `date-time`
+   * @type string
+   */
+  created_at: string;
+  /**
+   * @description When the credential was last updated.
+   *
+   * Format: `date-time`
+   * @type string
+   */
+  updated_at: string;
 };

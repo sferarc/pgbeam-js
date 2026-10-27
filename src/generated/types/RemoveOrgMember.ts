@@ -6,19 +6,19 @@
 import type { Error } from './Error'
 
 export type RemoveOrgMemberPath = {
-    /**
-     * @description Unique organization identifier.
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @example org_abc123
-     * @type string
-    */
-    org_id: string;
-    /**
-     * @description Unique organization membership identifier. Unlike the resources PgBeam mints itself, memberships carry no type prefix: the id is opaque and is assigned when the membership row is created. Read it from `listOrgMembers` rather than constructing it.
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    member_id: string;
+  /**
+   * @description Unique organization identifier.
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @example org_abc123
+   * @type string
+   */
+  org_id: string;
+  /**
+   * @description Unique organization membership identifier. Unlike the resources PgBeam mints itself, memberships carry no type prefix: the id is opaque and is assigned when the membership row is created. Read it from `listOrgMembers` rather than constructing it.
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  member_id: string;
 };
 
 export type RemoveOrgMemberStatus204 = unknown;
@@ -26,57 +26,57 @@ export type RemoveOrgMemberStatus204 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type RemoveOrgMemberStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type RemoveOrgMemberStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type RemoveOrgMemberStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type RemoveOrgMemberStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type RemoveOrgMemberStatus409 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type RemoveOrgMemberStatus429 = Error;
 
 export type RemoveOrgMemberOptions = {
-    body?: never;
-    path: RemoveOrgMemberPath;
-    query?: never;
-    headers?: never;
+  body?: never;
+  path: RemoveOrgMemberPath;
+  query?: never;
+  headers?: never;
 };
 
 export type RemoveOrgMemberResponses = {
-    "204": RemoveOrgMemberStatus204;
-    "400": RemoveOrgMemberStatus400;
-    "401": RemoveOrgMemberStatus401;
-    "403": RemoveOrgMemberStatus403;
-    "404": RemoveOrgMemberStatus404;
-    "409": RemoveOrgMemberStatus409;
-    "429": RemoveOrgMemberStatus429;
+  '204': RemoveOrgMemberStatus204;
+  '400': RemoveOrgMemberStatus400;
+  '401': RemoveOrgMemberStatus401;
+  '403': RemoveOrgMemberStatus403;
+  '404': RemoveOrgMemberStatus404;
+  '409': RemoveOrgMemberStatus409;
+  '429': RemoveOrgMemberStatus429;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type RemoveOrgMemberResponse = RemoveOrgMemberStatus204;

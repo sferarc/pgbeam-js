@@ -6,33 +6,33 @@
 import type { PlanLimits } from './PlanLimits'
 
 export const organizationPlanPlanEnum = {
-    starter: "starter",
-    pro: "pro",
-    scale: "scale",
-    enterprise: "enterprise"
+  starter: 'starter',
+  pro: 'pro',
+  scale: 'scale',
+  enterprise: 'enterprise',
 } as const;
 
 export type OrganizationPlanPlanEnumKey = (typeof organizationPlanPlanEnum)[keyof typeof organizationPlanPlanEnum];
 
 export const organizationPlanBillingProviderEnum = {
-    stripe: "stripe",
-    vercel: "vercel",
-    aws: "aws",
-    manual: "manual"
+  stripe: 'stripe',
+  vercel: 'vercel',
+  aws: 'aws',
+  manual: 'manual',
 } as const;
 
 export type OrganizationPlanBillingProviderEnumKey = (typeof organizationPlanBillingProviderEnum)[keyof typeof organizationPlanBillingProviderEnum];
 
 export const organizationPlanSubscriptionStatusEnum = {
-    none: "none",
-    active: "active",
-    trialing: "trialing",
-    past_due: "past_due",
-    canceled: "canceled",
-    unpaid: "unpaid",
-    incomplete: "incomplete",
-    incomplete_expired: "incomplete_expired",
-    paused: "paused"
+  none: 'none',
+  active: 'active',
+  trialing: 'trialing',
+  past_due: 'past_due',
+  canceled: 'canceled',
+  unpaid: 'unpaid',
+  incomplete: 'incomplete',
+  incomplete_expired: 'incomplete_expired',
+  paused: 'paused',
 } as const;
 
 export type OrganizationPlanSubscriptionStatusEnumKey = (typeof organizationPlanSubscriptionStatusEnum)[keyof typeof organizationPlanSubscriptionStatusEnum];
@@ -40,83 +40,83 @@ export type OrganizationPlanSubscriptionStatusEnumKey = (typeof organizationPlan
 /**
  * @description Billing state and plan limits for an organization.
  * @type object
-*/
+ */
 export type OrganizationPlan = {
-    /**
-     * @description Organization identifier the plan applies to.
-     * @example org_abc123
-     * @type string
-    */
-    org_id: string;
-    /**
-     * @description Current plan tier.
-     * @type string
-    */
-    plan: OrganizationPlanPlanEnumKey;
-    /**
-     * @description Which billing provider manages this organization\'s subscription.
-     * @type string | undefined
-    */
-    billing_provider?: OrganizationPlanBillingProviderEnumKey;
-    /**
-     * @description Stripe subscription status.
-     * @type string | undefined
-    */
-    subscription_status?: OrganizationPlanSubscriptionStatusEnumKey;
-    /**
-     * @description End of current billing period.
-     *
-     * Format: `date-time`
-     * @type string | undefined
-    */
-    current_period_end?: string;
-    /**
-     * @description Whether the organization billing is active (false = suspended).
-     * @type boolean | undefined
-    */
-    enabled?: boolean;
-    /**
-     * @description Whether the organization has custom enterprise pricing.
-     * @type boolean | undefined
-    */
-    custom_pricing?: boolean;
-    /**
-     * @description Monthly spend limit in dollars. Null means no limit.
-     *
-     * Format: `double`
-     * @example 500
-     * @type number | undefined
-    */
-    spend_limit?: number | null;
-    /**
-     * @description Whether the organization has hit its spend limit and agent access is paused at the proxy. Lifts automatically when usage resets for the new billing period, or immediately when the spend limit is raised or removed.
-     * @type boolean | undefined
-    */
-    spend_capped?: boolean;
-    /**
-     * @description When the spend cap was applied. Null when not capped.
-     *
-     * Format: `date-time`
-     * @type string | undefined
-    */
-    spend_capped_at?: string | null;
-    /**
-     * @description Effective usage limits enforced for an organization plan.
-     * @type object
-    */
-    limits: PlanLimits;
-    /**
-     * @description When the billing record was created.
-     *
-     * Format: `date-time`
-     * @type string | undefined
-    */
-    created_at?: string;
-    /**
-     * @description When the billing record was last updated.
-     *
-     * Format: `date-time`
-     * @type string | undefined
-    */
-    updated_at?: string;
+  /**
+   * @description Organization identifier the plan applies to.
+   * @example org_abc123
+   * @type string
+   */
+  org_id: string;
+  /**
+   * @description Current plan tier.
+   * @type string
+   */
+  plan: OrganizationPlanPlanEnumKey;
+  /**
+   * @description Which billing provider manages this organization's subscription.
+   * @type string | undefined
+   */
+  billing_provider?: OrganizationPlanBillingProviderEnumKey;
+  /**
+   * @description Stripe subscription status.
+   * @type string | undefined
+   */
+  subscription_status?: OrganizationPlanSubscriptionStatusEnumKey;
+  /**
+   * @description End of current billing period.
+   *
+   * Format: `date-time`
+   * @type string | undefined
+   */
+  current_period_end?: string;
+  /**
+   * @description Whether the organization billing is active (false = suspended).
+   * @type boolean | undefined
+   */
+  enabled?: boolean;
+  /**
+   * @description Whether the organization has custom enterprise pricing.
+   * @type boolean | undefined
+   */
+  custom_pricing?: boolean;
+  /**
+   * @description Monthly spend limit in dollars. Null means no limit.
+   *
+   * Format: `double`
+   * @example 500
+   * @type number | undefined
+   */
+  spend_limit?: number | null;
+  /**
+   * @description Whether the organization has hit its spend limit and agent access is paused at the proxy. Lifts automatically when usage resets for the new billing period, or immediately when the spend limit is raised or removed.
+   * @type boolean | undefined
+   */
+  spend_capped?: boolean;
+  /**
+   * @description When the spend cap was applied. Null when not capped.
+   *
+   * Format: `date-time`
+   * @type string | undefined
+   */
+  spend_capped_at?: string | null;
+  /**
+   * @description Effective usage limits enforced for an organization plan.
+   * @type object
+   */
+  limits: PlanLimits;
+  /**
+   * @description When the billing record was created.
+   *
+   * Format: `date-time`
+   * @type string | undefined
+   */
+  created_at?: string;
+  /**
+   * @description When the billing record was last updated.
+   *
+   * Format: `date-time`
+   * @type string | undefined
+   */
+  updated_at?: string;
 };

@@ -8,100 +8,100 @@ import type { PolicyRecommendation } from './PolicyRecommendation'
 import type { PolicyRecommendationInput } from './PolicyRecommendationInput'
 
 export type RecommendAgentPolicyPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Unique agent credential identifier (prefixed, e.g. agt_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    agent_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Unique agent credential identifier (prefixed, e.g. agt_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  agent_id: string;
 };
 
 /**
- * @description A least-privilege policy derived from an agent credential\'s recorded audit history, together with the replay diff that proves the candidate would not newly block any statement the credential legitimately ran. Advisory only: this endpoint never creates, updates, or otherwise mutates a policy or a credential. A good recommendation has replay.summary.newly_blocked == 0.
+ * @description A least-privilege policy derived from an agent credential's recorded audit history, together with the replay diff that proves the candidate would not newly block any statement the credential legitimately ran. Advisory only: this endpoint never creates, updates, or otherwise mutates a policy or a credential. A good recommendation has replay.summary.newly_blocked == 0.
  * @type object
-*/
+ */
 export type RecommendAgentPolicyStatus200 = PolicyRecommendation;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type RecommendAgentPolicyStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type RecommendAgentPolicyStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type RecommendAgentPolicyStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type RecommendAgentPolicyStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type RecommendAgentPolicyStatus413 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type RecommendAgentPolicyStatus415 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type RecommendAgentPolicyStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type RecommendAgentPolicyStatus500 = Error;
 
 /**
- * @description Optional parameters for a least-privilege policy recommendation. Every field is optional; an empty body analyzes the last 30 days of the credential\'s audit history.
+ * @description Optional parameters for a least-privilege policy recommendation. Every field is optional; an empty body analyzes the last 30 days of the credential's audit history.
  * @type object | undefined
-*/
+ */
 export type RecommendAgentPolicyBody = PolicyRecommendationInput | undefined;
 
 export type RecommendAgentPolicyOptions = {
-    body: RecommendAgentPolicyBody;
-    path: RecommendAgentPolicyPath;
-    query?: never;
-    headers?: never;
+  body: RecommendAgentPolicyBody;
+  path: RecommendAgentPolicyPath;
+  query?: never;
+  headers?: never;
 };
 
 export type RecommendAgentPolicyResponses = {
-    "200": RecommendAgentPolicyStatus200;
-    "400": RecommendAgentPolicyStatus400;
-    "401": RecommendAgentPolicyStatus401;
-    "403": RecommendAgentPolicyStatus403;
-    "404": RecommendAgentPolicyStatus404;
-    "413": RecommendAgentPolicyStatus413;
-    "415": RecommendAgentPolicyStatus415;
-    "429": RecommendAgentPolicyStatus429;
-    "500": RecommendAgentPolicyStatus500;
+  '200': RecommendAgentPolicyStatus200;
+  '400': RecommendAgentPolicyStatus400;
+  '401': RecommendAgentPolicyStatus401;
+  '403': RecommendAgentPolicyStatus403;
+  '404': RecommendAgentPolicyStatus404;
+  '413': RecommendAgentPolicyStatus413;
+  '415': RecommendAgentPolicyStatus415;
+  '429': RecommendAgentPolicyStatus429;
+  '500': RecommendAgentPolicyStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type RecommendAgentPolicyResponse = RecommendAgentPolicyStatus200;

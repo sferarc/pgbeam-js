@@ -4,18 +4,18 @@
 */
 
 export const cacheRuleEntryQueryTypeEnum = {
-    read: "read",
-    write: "write",
-    other: "other"
+  read: 'read',
+  write: 'write',
+  other: 'other',
 } as const;
 
 export type CacheRuleEntryQueryTypeEnumKey = (typeof cacheRuleEntryQueryTypeEnum)[keyof typeof cacheRuleEntryQueryTypeEnum];
 
 export const cacheRuleEntryRecommendationEnum = {
-    great: "great",
-    good: "good",
-    fair: "fair",
-    poor: "poor"
+  great: 'great',
+  good: 'good',
+  fair: 'fair',
+  poor: 'poor',
 } as const;
 
 export type CacheRuleEntryRecommendationEnumKey = (typeof cacheRuleEntryRecommendationEnum)[keyof typeof cacheRuleEntryRecommendationEnum];
@@ -23,96 +23,96 @@ export type CacheRuleEntryRecommendationEnumKey = (typeof cacheRuleEntryRecommen
 /**
  * @description Observed query shape and its cache recommendation for a database.
  * @type object
-*/
+ */
 export type CacheRuleEntry = {
-    /**
-     * @description xxhash64 hex of the normalized SQL.
-     * @example a1b2c3d4e5f60718
-     * @type string
-    */
-    query_hash: string;
-    /**
-     * @description SQL with literals replaced by $N placeholders.
-     * @example SELECT * FROM users WHERE id = $1
-     * @type string
-    */
-    normalized_sql: string;
-    /**
-     * @description Query classification.
-     * @type string
-    */
-    query_type: CacheRuleEntryQueryTypeEnumKey;
-    /**
-     * @description Whether caching is enabled for this query shape.
-     * @type boolean
-    */
-    cache_enabled: boolean;
-    /**
-     * @description TTL override in seconds. Null means use project default.
-     * @minLength 0
-     * @example 300
-     * @type integer | undefined
-    */
-    cache_ttl_seconds?: number | null;
-    /**
-     * @description SWR override in seconds. Null means use project default.
-     * @minLength 0
-     * @example 60
-     * @type integer | undefined
-    */
-    cache_swr_seconds?: number | null;
-    /**
-     * @description Total number of executions observed.
-     *
-     * Format: `int64`
-     * @type integer
-    */
-    call_count: number;
-    /**
-     * @description Average query latency in milliseconds.
-     *
-     * Format: `double`
-     * @type number
-    */
-    avg_latency_ms: number;
-    /**
-     * @description 95th percentile latency in milliseconds.
-     *
-     * Format: `double`
-     * @type number
-    */
-    p95_latency_ms: number;
-    /**
-     * @description Average response size in bytes.
-     *
-     * Format: `int64`
-     * @type integer
-    */
-    avg_response_bytes: number;
-    /**
-     * @description Response stability rate (0.0 to 1.0). Higher means more stable.
-     *
-     * Format: `double`
-     * @type number
-    */
-    stability_rate: number;
-    /**
-     * @description Cache recommendation based on frequency, latency, and stability.
-     * @type string
-    */
-    recommendation: CacheRuleEntryRecommendationEnumKey;
-    /**
-     * @description When this query was first observed.
-     *
-     * Format: `date-time`
-     * @type string
-    */
-    first_seen_at: string;
-    /**
-     * @description When this query was last observed.
-     *
-     * Format: `date-time`
-     * @type string
-    */
-    last_seen_at: string;
+  /**
+   * @description xxhash64 hex of the normalized SQL.
+   * @example a1b2c3d4e5f60718
+   * @type string
+   */
+  query_hash: string;
+  /**
+   * @description SQL with literals replaced by $N placeholders.
+   * @example SELECT * FROM users WHERE id = $1
+   * @type string
+   */
+  normalized_sql: string;
+  /**
+   * @description Query classification.
+   * @type string
+   */
+  query_type: CacheRuleEntryQueryTypeEnumKey;
+  /**
+   * @description Whether caching is enabled for this query shape.
+   * @type boolean
+   */
+  cache_enabled: boolean;
+  /**
+   * @description TTL override in seconds. Null means use project default.
+   * @minLength 0
+   * @example 300
+   * @type integer | undefined
+   */
+  cache_ttl_seconds?: number | null;
+  /**
+   * @description SWR override in seconds. Null means use project default.
+   * @minLength 0
+   * @example 60
+   * @type integer | undefined
+   */
+  cache_swr_seconds?: number | null;
+  /**
+   * @description Total number of executions observed.
+   *
+   * Format: `int64`
+   * @type integer
+   */
+  call_count: number;
+  /**
+   * @description Average query latency in milliseconds.
+   *
+   * Format: `double`
+   * @type number
+   */
+  avg_latency_ms: number;
+  /**
+   * @description 95th percentile latency in milliseconds.
+   *
+   * Format: `double`
+   * @type number
+   */
+  p95_latency_ms: number;
+  /**
+   * @description Average response size in bytes.
+   *
+   * Format: `int64`
+   * @type integer
+   */
+  avg_response_bytes: number;
+  /**
+   * @description Response stability rate (0.0 to 1.0). Higher means more stable.
+   *
+   * Format: `double`
+   * @type number
+   */
+  stability_rate: number;
+  /**
+   * @description Cache recommendation based on frequency, latency, and stability.
+   * @type string
+   */
+  recommendation: CacheRuleEntryRecommendationEnumKey;
+  /**
+   * @description When this query was first observed.
+   *
+   * Format: `date-time`
+   * @type string
+   */
+  first_seen_at: string;
+  /**
+   * @description When this query was last observed.
+   *
+   * Format: `date-time`
+   * @type string
+   */
+  last_seen_at: string;
 };

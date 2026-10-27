@@ -11,106 +11,109 @@ import type { SSLModeKey } from './SSLMode'
 /**
  * @description Registered upstream PostgreSQL database for a project.
  * @type object
-*/
+ */
 export type Database = {
-    /**
-     * @description Unique database identifier (prefixed).
-     * @example db_01h455vb4pex5vsknk084sn02q
-     * @type string
-    */
-    id: string;
-    /**
-     * @description Owning project ID.
-     * @example prj_01h455vb4pex5vsknk084sn02q
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Connection string for connecting through PgBeam proxy. Password is replaced with a placeholder.
-     * @example postgresql://myuser:YOUR_PASSWORD@myproject.proxy.pgbeam.app:5432/mydb
-     * @type string | undefined
-    */
-    readonly connection_string?: string;
-    /**
-     * @description PostgreSQL host.
-     * @example db.example.com
-     * @type string
-    */
-    host: string;
-    /**
-     * @description PostgreSQL port.
-     * @minLength 1
-     * @maxLength 65535
-     * @example 5432
-     * @type integer
-    */
-    port: number;
-    /**
-     * @description PostgreSQL database name.
-     * @example mydb
-     * @type string
-    */
-    name: string;
-    /**
-     * @description PostgreSQL username.
-     * @example pgbeam
-     * @type string
-    */
-    username: string;
-    /**
-     * @description PostgreSQL SSL connection mode.
-     * @example require
-     * @type string
-    */
-    ssl_mode: SSLModeKey;
-    /**
-     * @description Database role. Primary receives writes, replicas receive reads.
-     * @default 'primary'
-     * @type string | undefined
-    */
-    role?: DatabaseRoleKey;
-    /**
-     * @description Region where the connection pool is maintained (near the database). When set and different from the client\'s edge region, queries are relayed through the pool region\'s data plane. Empty means direct connection.\n
-     * @example us-east-1
-     * @type string | undefined
-    */
-    pool_region?: string;
-    /**
-     * @description Query timeout in milliseconds. When set (> 0), the proxy sends SET statement_timeout on upstream connections. 0 means disabled (default).\n
-     * @minLength 0
-     * @maxLength 300000
-     * @default 0
-     * @type integer | undefined
-    */
-    query_timeout_ms?: number;
-    /**
-     * @description When enabled and replicas are configured, SELECT queries automatically route to read replicas without requiring the @pgbeam:replica SQL annotation.\n
-     * @default false
-     * @type boolean | undefined
-    */
-    auto_read_routing?: boolean;
-    /**
-     * @description Query cache configuration.
-     * @type object
-    */
-    cache_config: CacheConfig;
-    /**
-     * @description Connection pool configuration.
-     * @type object
-    */
-    pool_config: PoolConfig;
-    /**
-     * @description When the database registration was created.
-     *
-     * Format: `date-time`
-     * @type string
-    */
-    created_at: string;
-    /**
-     * @description When the database registration was last updated.
-     *
-     * Format: `date-time`
-     * @type string
-    */
-    updated_at: string;
+  /**
+   * @description Unique database identifier (prefixed).
+   * @example db_01h455vb4pex5vsknk084sn02q
+   * @type string
+   */
+  id: string;
+  /**
+   * @description Owning project ID.
+   * @example prj_01h455vb4pex5vsknk084sn02q
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Connection string for connecting through PgBeam proxy. Password is replaced with a placeholder.
+   * @example postgresql://myuser:YOUR_PASSWORD@myproject.proxy.pgbeam.app:5432/mydb
+   * @type string | undefined
+   */
+  readonly connection_string?: string;
+  /**
+   * @description PostgreSQL host.
+   * @example db.example.com
+   * @type string
+   */
+  host: string;
+  /**
+   * @description PostgreSQL port.
+   * @minLength 1
+   * @maxLength 65535
+   * @example 5432
+   * @type integer
+   */
+  port: number;
+  /**
+   * @description PostgreSQL database name.
+   * @example mydb
+   * @type string
+   */
+  name: string;
+  /**
+   * @description PostgreSQL username.
+   * @example pgbeam
+   * @type string
+   */
+  username: string;
+  /**
+   * @description PostgreSQL SSL connection mode.
+   * @example require
+   * @type string
+   */
+  ssl_mode: SSLModeKey;
+  /**
+   * @description Database role. Primary receives writes, replicas receive reads.
+   * @default 'primary'
+   * @type string | undefined
+   */
+  role?: DatabaseRoleKey;
+  /**
+   * @description Region where the connection pool is maintained (near the database). When set and different from the client's edge region, queries are relayed through the pool region's data plane. Empty means direct connection.
+   *
+   * @example us-east-1
+   * @type string | undefined
+   */
+  pool_region?: string;
+  /**
+   * @description Query timeout in milliseconds. When set (> 0), the proxy sends SET statement_timeout on upstream connections. 0 means disabled (default).
+   *
+   * @minLength 0
+   * @maxLength 300000
+   * @default 0
+   * @type integer | undefined
+   */
+  query_timeout_ms?: number;
+  /**
+   * @description When enabled and replicas are configured, SELECT queries automatically route to read replicas without requiring the @pgbeam:replica SQL annotation.
+   *
+   * @default false
+   * @type boolean | undefined
+   */
+  auto_read_routing?: boolean;
+  /**
+   * @description Query cache configuration.
+   * @type object
+   */
+  cache_config: CacheConfig;
+  /**
+   * @description Connection pool configuration.
+   * @type object
+   */
+  pool_config: PoolConfig;
+  /**
+   * @description When the database registration was created.
+   *
+   * Format: `date-time`
+   * @type string
+   */
+  created_at: string;
+  /**
+   * @description When the database registration was last updated.
+   *
+   * Format: `date-time`
+   * @type string
+   */
+  updated_at: string;
 };

@@ -8,11 +8,11 @@ import type { ProjectDailyUsage } from './ProjectDailyUsage'
 /**
  * @description Response envelope for project usage queries.
  * @type object
-*/
+ */
 export type ProjectUsageResponse = {
-    /**
-     * @description Daily usage entries grouped by region for the project.
-     * @type array
-    */
-    usage: ProjectDailyUsage[];
+  /**
+   * @description Daily usage entries grouped by region for the project.
+   * @type array
+   */
+  usage: ProjectDailyUsage[];
 };

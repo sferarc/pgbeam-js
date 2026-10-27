@@ -4,9 +4,9 @@
 */
 
 export const dataResidency = {
-    any: "any",
-    us: "us",
-    eu: "eu"
+  any: 'any',
+  us: 'us',
+  eu: 'eu',
 } as const;
 
 export type DataResidencyKey = (typeof dataResidency)[keyof typeof dataResidency];

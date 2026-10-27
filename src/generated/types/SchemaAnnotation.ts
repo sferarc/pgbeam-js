@@ -4,58 +4,61 @@
 */
 
 /**
- * @description A human-written description for a table or column, attached by a project operator and surfaced through the agent-facing MCP catalog. When present it takes precedence over the DB-native comment for the same relation or column.\n
+ * @description A human-written description for a table or column, attached by a project operator and surfaced through the agent-facing MCP catalog. When present it takes precedence over the DB-native comment for the same relation or column.
+ *
  * @type object
-*/
+ */
 export type SchemaAnnotation = {
-    /**
-     * @description Unique annotation identifier.
-     * @example sca_01j9x8y7z6w5v4u3t2s1r0q9p8
-     * @type string
-    */
-    id: string;
-    /**
-     * @description Project the annotation belongs to.
-     * @example prj_01j9x8y7z6w5v4u3t2s1r0q9p8
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Optional schema. Null matches the unqualified form, mirroring the relation allowlist normalization.\n
-     * @example public
-     * @type string | undefined
-    */
-    schema_name?: string | null;
-    /**
-     * @description Relation (table or view) the annotation describes.
-     * @example users
-     * @type string
-    */
-    table_name: string;
-    /**
-     * @description Optional column. Null means the annotation describes the table itself.\n
-     * @example email
-     * @type string | undefined
-    */
-    column_name?: string | null;
-    /**
-     * @description The operator-written description text.
-     * @example Primary customer account. One row per signed-up user.
-     * @type string
-    */
-    description: string;
-    /**
-     * @description When the annotation was created.
-     *
-     * Format: `date-time`
-     * @type string
-    */
-    created_at: string;
-    /**
-     * @description When the annotation was last updated.
-     *
-     * Format: `date-time`
-     * @type string
-    */
-    updated_at: string;
+  /**
+   * @description Unique annotation identifier.
+   * @example sca_01j9x8y7z6w5v4u3t2s1r0q9p8
+   * @type string
+   */
+  id: string;
+  /**
+   * @description Project the annotation belongs to.
+   * @example prj_01j9x8y7z6w5v4u3t2s1r0q9p8
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Optional schema. Null matches the unqualified form, mirroring the relation allowlist normalization.
+   *
+   * @example public
+   * @type string | undefined
+   */
+  schema_name?: string | null;
+  /**
+   * @description Relation (table or view) the annotation describes.
+   * @example users
+   * @type string
+   */
+  table_name: string;
+  /**
+   * @description Optional column. Null means the annotation describes the table itself.
+   *
+   * @example email
+   * @type string | undefined
+   */
+  column_name?: string | null;
+  /**
+   * @description The operator-written description text.
+   * @example Primary customer account. One row per signed-up user.
+   * @type string
+   */
+  description: string;
+  /**
+   * @description When the annotation was created.
+   *
+   * Format: `date-time`
+   * @type string
+   */
+  created_at: string;
+  /**
+   * @description When the annotation was last updated.
+   *
+   * Format: `date-time`
+   * @type string
+   */
+  updated_at: string;
 };

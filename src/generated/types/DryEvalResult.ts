@@ -6,10 +6,10 @@
 import type { DryEvalMaskedColumn } from './DryEvalMaskedColumn'
 
 export const dryEvalResultVerdictEnum = {
-    allow: "allow",
-    block: "block",
-    mask: "mask",
-    "row-filter": "row-filter"
+  allow: 'allow',
+  block: 'block',
+  mask: 'mask',
+  'row-filter': 'row-filter',
 } as const;
 
 export type DryEvalResultVerdictEnumKey = (typeof dryEvalResultVerdictEnum)[keyof typeof dryEvalResultVerdictEnum];
@@ -17,54 +17,54 @@ export type DryEvalResultVerdictEnumKey = (typeof dryEvalResultVerdictEnum)[keyo
 /**
  * @description The decision the proxy would reach for the supplied statement under the supplied policy. verdict is the headline outcome; the remaining fields detail why.
  * @type object
-*/
+ */
 export type DryEvalResult = {
-    /**
-     * @description allow: permitted unchanged; block: rejected; mask: permitted but listed result columns are masked; row-filter: permitted but a WHERE predicate is injected (and any listed columns are also masked).
-     * @type string
-    */
-    verdict: DryEvalResultVerdictEnumKey;
-    /**
-     * @description Machine-readable decision tag. For a block, the blocking rule (e.g. read_only, table_denied, table_not_allowed, statement_denied, row_filter_unsafe, template_required). Otherwise \"ok\".
-     * @example ok
-     * @type string
-    */
-    rule: string;
-    /**
-     * @description Human-readable explanation of the verdict.
-     * @type string
-    */
-    reason: string;
-    /**
-     * @description What the author could do instead (present on block verdicts).
-     * @type string | undefined
-    */
-    hint?: string;
-    /**
-     * @description Result columns that would be masked. Present on mask/row-filter verdicts.
-     * @type array | undefined
-    */
-    masked_columns?: DryEvalMaskedColumn[];
-    /**
-     * @description The row-filter predicate ANDed into the statement\'s WHERE clause.
-     * @example tenant_id = current_setting('pgbeam.tenant')
-     * @type string | undefined
-    */
-    row_filter_predicate?: string;
-    /**
-     * @description The statement as it would be sent upstream after row-filter injection.
-     * @type string | undefined
-    */
-    rewritten_sql?: string;
-    /**
-     * @description Informational caveats about stateful enforcement a single-statement preview cannot model (per-region budgets, approvals, write-mode routing).
-     * @type array | undefined
-    */
-    notes?: string[];
-    /**
-     * @description The name of the project query template the statement matched. Present only when the policy is templates-only and the statement is one of the project\'s enabled templates; a templates-only policy blocks anything else with rule template_required.
-     * @example open_orders
-     * @type string | undefined
-    */
-    template?: string;
+  /**
+   * @description allow: permitted unchanged; block: rejected; mask: permitted but listed result columns are masked; row-filter: permitted but a WHERE predicate is injected (and any listed columns are also masked).
+   * @type string
+   */
+  verdict: DryEvalResultVerdictEnumKey;
+  /**
+   * @description Machine-readable decision tag. For a block, the blocking rule (e.g. read_only, table_denied, table_not_allowed, statement_denied, row_filter_unsafe, template_required). Otherwise "ok".
+   * @example ok
+   * @type string
+   */
+  rule: string;
+  /**
+   * @description Human-readable explanation of the verdict.
+   * @type string
+   */
+  reason: string;
+  /**
+   * @description What the author could do instead (present on block verdicts).
+   * @type string | undefined
+   */
+  hint?: string;
+  /**
+   * @description Result columns that would be masked. Present on mask/row-filter verdicts.
+   * @type array | undefined
+   */
+  masked_columns?: DryEvalMaskedColumn[];
+  /**
+   * @description The row-filter predicate ANDed into the statement's WHERE clause.
+   * @example tenant_id = current_setting('pgbeam.tenant')
+   * @type string | undefined
+   */
+  row_filter_predicate?: string;
+  /**
+   * @description The statement as it would be sent upstream after row-filter injection.
+   * @type string | undefined
+   */
+  rewritten_sql?: string;
+  /**
+   * @description Informational caveats about stateful enforcement a single-statement preview cannot model (per-region budgets, approvals, write-mode routing).
+   * @type array | undefined
+   */
+  notes?: string[];
+  /**
+   * @description The name of the project query template the statement matched. Present only when the policy is templates-only and the statement is one of the project's enabled templates; a templates-only policy blocks anything else with rule template_required.
+   * @example open_orders
+   * @type string | undefined
+   */
+  template?: string;
 };

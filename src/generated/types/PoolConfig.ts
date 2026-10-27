@@ -8,38 +8,38 @@ import type { PoolModeKey } from './PoolMode'
 /**
  * @description Connection pool configuration.
  * @type object
-*/
+ */
 export type PoolConfig = {
-    /**
-     * @description Maximum connections in the pool.
-     * @minLength 1
-     * @maxLength 10000
-     * @default 10
-     * @example 20
-     * @type integer
-    */
-    pool_size: number;
-    /**
-     * @description Minimum idle connections maintained.
-     * @minLength 1
-     * @maxLength 10000
-     * @default 1
-     * @example 5
-     * @type integer
-    */
-    min_pool_size: number;
-    /**
-     * @description Connection pool mode.
-     * @example transaction
-     * @type string
-    */
-    pool_mode: PoolModeKey;
-    /**
-     * @description Maximum concurrent upstream connections per pool.
-     * @minLength 1
-     * @maxLength 10000
-     * @default 200
-     * @type integer | undefined
-    */
-    max_active?: number;
+  /**
+   * @description Maximum connections in the pool.
+   * @minLength 1
+   * @maxLength 10000
+   * @default 10
+   * @example 20
+   * @type integer
+   */
+  pool_size: number;
+  /**
+   * @description Minimum idle connections maintained.
+   * @minLength 1
+   * @maxLength 10000
+   * @default 1
+   * @example 5
+   * @type integer
+   */
+  min_pool_size: number;
+  /**
+   * @description Connection pool mode.
+   * @example transaction
+   * @type string
+   */
+  pool_mode: PoolModeKey;
+  /**
+   * @description Maximum concurrent upstream connections per pool.
+   * @minLength 1
+   * @maxLength 10000
+   * @default 200
+   * @type integer | undefined
+   */
+  max_active?: number;
 };

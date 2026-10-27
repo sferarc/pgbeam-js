@@ -6,18 +6,18 @@
 import type { Error } from './Error'
 
 export type DeleteDatabasePath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Unique database identifier (prefixed, e.g. db_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    database_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Unique database identifier (prefixed, e.g. db_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  database_id: string;
 };
 
 export type DeleteDatabaseStatus204 = unknown;
@@ -25,57 +25,57 @@ export type DeleteDatabaseStatus204 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteDatabaseStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteDatabaseStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteDatabaseStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteDatabaseStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteDatabaseStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteDatabaseStatus500 = Error;
 
 export type DeleteDatabaseOptions = {
-    body?: never;
-    path: DeleteDatabasePath;
-    query?: never;
-    headers?: never;
+  body?: never;
+  path: DeleteDatabasePath;
+  query?: never;
+  headers?: never;
 };
 
 export type DeleteDatabaseResponses = {
-    "204": DeleteDatabaseStatus204;
-    "400": DeleteDatabaseStatus400;
-    "401": DeleteDatabaseStatus401;
-    "403": DeleteDatabaseStatus403;
-    "404": DeleteDatabaseStatus404;
-    "429": DeleteDatabaseStatus429;
-    "500": DeleteDatabaseStatus500;
+  '204': DeleteDatabaseStatus204;
+  '400': DeleteDatabaseStatus400;
+  '401': DeleteDatabaseStatus401;
+  '403': DeleteDatabaseStatus403;
+  '404': DeleteDatabaseStatus404;
+  '429': DeleteDatabaseStatus429;
+  '500': DeleteDatabaseStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type DeleteDatabaseResponse = DeleteDatabaseStatus204;

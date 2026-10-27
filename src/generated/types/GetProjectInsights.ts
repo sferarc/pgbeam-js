@@ -7,56 +7,58 @@ import type { Error } from './Error'
 import type { ProjectInsights } from './ProjectInsights'
 
 export type GetProjectInsightsPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
 };
 
 export const getProjectInsightsRange = {
-    "1h": "1h",
-    "6h": "6h",
-    "24h": "24h",
-    "7d": "7d"
+  '1h': '1h',
+  '6h': '6h',
+  '24h': '24h',
+  '7d': '7d',
 } as const;
 
 export type GetProjectInsightsRangeKey = (typeof getProjectInsightsRange)[keyof typeof getProjectInsightsRange];
 
 export type GetProjectInsightsQuery = {
-    /**
-     * @description Time range to query. Defaults to 24h.
-     * @default '24h'
-     * @example 24h
-     * @type string | undefined
-    */
-    range?: GetProjectInsightsRangeKey;
-    /**
-     * @description Maximum number of top queries to return (1-100).
-     * @minLength 1
-     * @maxLength 100
-     * @default 20
-     * @type integer | undefined
-    */
-    limit?: number;
+  /**
+   * @description Time range to query. Defaults to 24h.
+   * @default '24h'
+   * @example 24h
+   * @type string | undefined
+   */
+  range?: GetProjectInsightsRangeKey;
+  /**
+   * @description Maximum number of top queries to return (1-100).
+   * @minLength 1
+   * @maxLength 100
+   * @default 20
+   * @type integer | undefined
+   */
+  limit?: number;
 };
 
 export type GetProjectInsightsHeaders = {
-    /**
-     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
-     * @minLength 1
-     * @maxLength 1024
-     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
-     * @type string | undefined
-    */
-    "If-None-Match"?: string;
+  /**
+   * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.
+   *
+   * A comma-separated list is accepted, and `*` matches any current representation.
+   * @minLength 1
+   * @maxLength 1024
+   * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+   * @type string | undefined
+   */
+  'If-None-Match'?: string;
 };
 
 /**
  * @description Query insights, cache performance, and latency for a project.
  * @type object
-*/
+ */
 export type GetProjectInsightsStatus200 = ProjectInsights;
 
 export type GetProjectInsightsStatus304 = unknown;
@@ -64,51 +66,51 @@ export type GetProjectInsightsStatus304 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetProjectInsightsStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetProjectInsightsStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetProjectInsightsStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetProjectInsightsStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetProjectInsightsStatus500 = Error;
 
 export type GetProjectInsightsOptions = {
-    body?: never;
-    path: GetProjectInsightsPath;
-    query?: GetProjectInsightsQuery;
-    headers?: GetProjectInsightsHeaders;
+  body?: never;
+  path: GetProjectInsightsPath;
+  query?: GetProjectInsightsQuery;
+  headers?: GetProjectInsightsHeaders;
 };
 
 export type GetProjectInsightsResponses = {
-    "200": GetProjectInsightsStatus200;
-    "304": GetProjectInsightsStatus304;
-    "400": GetProjectInsightsStatus400;
-    "401": GetProjectInsightsStatus401;
-    "404": GetProjectInsightsStatus404;
-    "429": GetProjectInsightsStatus429;
-    "500": GetProjectInsightsStatus500;
+  '200': GetProjectInsightsStatus200;
+  '304': GetProjectInsightsStatus304;
+  '400': GetProjectInsightsStatus400;
+  '401': GetProjectInsightsStatus401;
+  '404': GetProjectInsightsStatus404;
+  '429': GetProjectInsightsStatus429;
+  '500': GetProjectInsightsStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type GetProjectInsightsResponse = GetProjectInsightsStatus200;

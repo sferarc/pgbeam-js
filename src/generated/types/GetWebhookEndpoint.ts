@@ -7,35 +7,37 @@ import type { Error } from './Error'
 import type { WebhookEndpoint } from './WebhookEndpoint'
 
 export type GetWebhookEndpointPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Unique webhook endpoint identifier (prefixed, e.g. whk_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    webhook_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Unique webhook endpoint identifier (prefixed, e.g. whk_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  webhook_id: string;
 };
 
 export type GetWebhookEndpointHeaders = {
-    /**
-     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
-     * @minLength 1
-     * @maxLength 1024
-     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
-     * @type string | undefined
-    */
-    "If-None-Match"?: string;
+  /**
+   * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.
+   *
+   * A comma-separated list is accepted, and `*` matches any current representation.
+   * @minLength 1
+   * @maxLength 1024
+   * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+   * @type string | undefined
+   */
+  'If-None-Match'?: string;
 };
 
 /**
  * @description A delivery target for project audit/event notifications.
  * @type object
-*/
+ */
 export type GetWebhookEndpointStatus200 = WebhookEndpoint;
 
 export type GetWebhookEndpointStatus304 = unknown;
@@ -43,51 +45,51 @@ export type GetWebhookEndpointStatus304 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetWebhookEndpointStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetWebhookEndpointStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetWebhookEndpointStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetWebhookEndpointStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetWebhookEndpointStatus500 = Error;
 
 export type GetWebhookEndpointOptions = {
-    body?: never;
-    path: GetWebhookEndpointPath;
-    query?: never;
-    headers?: GetWebhookEndpointHeaders;
+  body?: never;
+  path: GetWebhookEndpointPath;
+  query?: never;
+  headers?: GetWebhookEndpointHeaders;
 };
 
 export type GetWebhookEndpointResponses = {
-    "200": GetWebhookEndpointStatus200;
-    "304": GetWebhookEndpointStatus304;
-    "400": GetWebhookEndpointStatus400;
-    "401": GetWebhookEndpointStatus401;
-    "403": GetWebhookEndpointStatus403;
-    "404": GetWebhookEndpointStatus404;
-    "500": GetWebhookEndpointStatus500;
+  '200': GetWebhookEndpointStatus200;
+  '304': GetWebhookEndpointStatus304;
+  '400': GetWebhookEndpointStatus400;
+  '401': GetWebhookEndpointStatus401;
+  '403': GetWebhookEndpointStatus403;
+  '404': GetWebhookEndpointStatus404;
+  '500': GetWebhookEndpointStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type GetWebhookEndpointResponse = GetWebhookEndpointStatus200;

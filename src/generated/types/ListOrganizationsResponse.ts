@@ -6,13 +6,13 @@
 import type { OrganizationSummary } from './OrganizationSummary'
 
 /**
- * @description Organizations visible to the caller\'s credential.
+ * @description Organizations visible to the caller's credential.
  * @type object
-*/
+ */
 export type ListOrganizationsResponse = {
-    /**
-     * @description Organizations the caller can access.
-     * @type array
-    */
-    organizations: OrganizationSummary[];
+  /**
+   * @description Organizations the caller can access.
+   * @type array
+   */
+  organizations: OrganizationSummary[];
 };

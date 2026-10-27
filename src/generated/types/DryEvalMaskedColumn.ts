@@ -4,9 +4,9 @@
 */
 
 export const dryEvalMaskedColumnKindEnum = {
-    redact: "redact",
-    null: "null",
-    hash: "hash"
+  redact: 'redact',
+  null: 'null',
+  hash: 'hash',
 } as const;
 
 export type DryEvalMaskedColumnKindEnumKey = (typeof dryEvalMaskedColumnKindEnum)[keyof typeof dryEvalMaskedColumnKindEnum];
@@ -14,17 +14,17 @@ export type DryEvalMaskedColumnKindEnumKey = (typeof dryEvalMaskedColumnKindEnum
 /**
  * @description One result column that would be masked, with the mask kind applied.
  * @type object
-*/
+ */
 export type DryEvalMaskedColumn = {
-    /**
-     * @description The output column name (post-alias) the client would see masked.
-     * @example email
-     * @type string
-    */
-    column: string;
-    /**
-     * @description How the column is masked.
-     * @type string
-    */
-    kind: DryEvalMaskedColumnKindEnumKey;
+  /**
+   * @description The output column name (post-alias) the client would see masked.
+   * @example email
+   * @type string
+   */
+  column: string;
+  /**
+   * @description How the column is masked.
+   * @type string
+   */
+  kind: DryEvalMaskedColumnKindEnumKey;
 };

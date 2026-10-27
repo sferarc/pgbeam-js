@@ -7,30 +7,32 @@ import type { Error } from './Error'
 import type { OrganizationPlan } from './OrganizationPlan'
 
 export type GetOrganizationPlanPath = {
-    /**
-     * @description Unique organization identifier.
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @example org_abc123
-     * @type string
-    */
-    org_id: string;
+  /**
+   * @description Unique organization identifier.
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @example org_abc123
+   * @type string
+   */
+  org_id: string;
 };
 
 export type GetOrganizationPlanHeaders = {
-    /**
-     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
-     * @minLength 1
-     * @maxLength 1024
-     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
-     * @type string | undefined
-    */
-    "If-None-Match"?: string;
+  /**
+   * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.
+   *
+   * A comma-separated list is accepted, and `*` matches any current representation.
+   * @minLength 1
+   * @maxLength 1024
+   * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+   * @type string | undefined
+   */
+  'If-None-Match'?: string;
 };
 
 /**
  * @description Billing state and plan limits for an organization.
  * @type object
-*/
+ */
 export type GetOrganizationPlanStatus200 = OrganizationPlan;
 
 export type GetOrganizationPlanStatus304 = unknown;
@@ -38,51 +40,51 @@ export type GetOrganizationPlanStatus304 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetOrganizationPlanStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetOrganizationPlanStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetOrganizationPlanStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetOrganizationPlanStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetOrganizationPlanStatus500 = Error;
 
 export type GetOrganizationPlanOptions = {
-    body?: never;
-    path: GetOrganizationPlanPath;
-    query?: never;
-    headers?: GetOrganizationPlanHeaders;
+  body?: never;
+  path: GetOrganizationPlanPath;
+  query?: never;
+  headers?: GetOrganizationPlanHeaders;
 };
 
 export type GetOrganizationPlanResponses = {
-    "200": GetOrganizationPlanStatus200;
-    "304": GetOrganizationPlanStatus304;
-    "400": GetOrganizationPlanStatus400;
-    "401": GetOrganizationPlanStatus401;
-    "403": GetOrganizationPlanStatus403;
-    "429": GetOrganizationPlanStatus429;
-    "500": GetOrganizationPlanStatus500;
+  '200': GetOrganizationPlanStatus200;
+  '304': GetOrganizationPlanStatus304;
+  '400': GetOrganizationPlanStatus400;
+  '401': GetOrganizationPlanStatus401;
+  '403': GetOrganizationPlanStatus403;
+  '429': GetOrganizationPlanStatus429;
+  '500': GetOrganizationPlanStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type GetOrganizationPlanResponse = GetOrganizationPlanStatus200;

@@ -8,17 +8,17 @@ import type { DemoTable } from './DemoTable'
 /**
  * @description The fictional dataset a demo credential reads. It is owned by PgBeam, shared by every concurrent demo, and read-only, so no session can change what another session sees.
  * @type object
-*/
+ */
 export type DemoDataset = {
-    /**
-     * @description PostgreSQL schema holding the demo tables.
-     * @example demo
-     * @type string
-    */
-    schema: string;
-    /**
-     * @description Tables in the dataset.
-     * @type array
-    */
-    tables: DemoTable[];
+  /**
+   * @description PostgreSQL schema holding the demo tables.
+   * @example demo
+   * @type string
+   */
+  schema: string;
+  /**
+   * @description Tables in the dataset.
+   * @type array
+   */
+  tables: DemoTable[];
 };

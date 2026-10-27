@@ -7,35 +7,38 @@ import type { Error } from './Error'
 import type { QueryTemplate } from './QueryTemplate'
 
 export type GetQueryTemplatePath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Unique query template identifier (prefixed, e.g. qtp_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    query_template_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Unique query template identifier (prefixed, e.g. qtp_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  query_template_id: string;
 };
 
 export type GetQueryTemplateHeaders = {
-    /**
-     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
-     * @minLength 1
-     * @maxLength 1024
-     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
-     * @type string | undefined
-    */
-    "If-None-Match"?: string;
+  /**
+   * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.
+   *
+   * A comma-separated list is accepted, and `*` matches any current representation.
+   * @minLength 1
+   * @maxLength 1024
+   * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+   * @type string | undefined
+   */
+  'If-None-Match'?: string;
 };
 
 /**
- * @description A named, parameterized statement, scoped to a project. A policy profile set to admit templates only lets its credentials run the project\'s enabled templates and nothing else. A template admits a statement; it never grants access. A statement it admits still meets the credential\'s whole policy (allowlists, masking, row filters, budgets and approvals).\n
+ * @description A named, parameterized statement, scoped to a project. A policy profile set to admit templates only lets its credentials run the project's enabled templates and nothing else. A template admits a statement; it never grants access. A statement it admits still meets the credential's whole policy (allowlists, masking, row filters, budgets and approvals).
+ *
  * @type object
-*/
+ */
 export type GetQueryTemplateStatus200 = QueryTemplate;
 
 export type GetQueryTemplateStatus304 = unknown;
@@ -43,51 +46,51 @@ export type GetQueryTemplateStatus304 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetQueryTemplateStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetQueryTemplateStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetQueryTemplateStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetQueryTemplateStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetQueryTemplateStatus500 = Error;
 
 export type GetQueryTemplateOptions = {
-    body?: never;
-    path: GetQueryTemplatePath;
-    query?: never;
-    headers?: GetQueryTemplateHeaders;
+  body?: never;
+  path: GetQueryTemplatePath;
+  query?: never;
+  headers?: GetQueryTemplateHeaders;
 };
 
 export type GetQueryTemplateResponses = {
-    "200": GetQueryTemplateStatus200;
-    "304": GetQueryTemplateStatus304;
-    "400": GetQueryTemplateStatus400;
-    "401": GetQueryTemplateStatus401;
-    "403": GetQueryTemplateStatus403;
-    "404": GetQueryTemplateStatus404;
-    "500": GetQueryTemplateStatus500;
+  '200': GetQueryTemplateStatus200;
+  '304': GetQueryTemplateStatus304;
+  '400': GetQueryTemplateStatus400;
+  '401': GetQueryTemplateStatus401;
+  '403': GetQueryTemplateStatus403;
+  '404': GetQueryTemplateStatus404;
+  '500': GetQueryTemplateStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type GetQueryTemplateResponse = GetQueryTemplateStatus200;

@@ -6,18 +6,18 @@
 import type { Error } from './Error'
 
 export type DeletePolicyProfilePath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Unique policy profile identifier (prefixed, e.g. pol_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    policy_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Unique policy profile identifier (prefixed, e.g. pol_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  policy_id: string;
 };
 
 export type DeletePolicyProfileStatus204 = unknown;
@@ -25,57 +25,57 @@ export type DeletePolicyProfileStatus204 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeletePolicyProfileStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeletePolicyProfileStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeletePolicyProfileStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeletePolicyProfileStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeletePolicyProfileStatus409 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeletePolicyProfileStatus500 = Error;
 
 export type DeletePolicyProfileOptions = {
-    body?: never;
-    path: DeletePolicyProfilePath;
-    query?: never;
-    headers?: never;
+  body?: never;
+  path: DeletePolicyProfilePath;
+  query?: never;
+  headers?: never;
 };
 
 export type DeletePolicyProfileResponses = {
-    "204": DeletePolicyProfileStatus204;
-    "400": DeletePolicyProfileStatus400;
-    "401": DeletePolicyProfileStatus401;
-    "403": DeletePolicyProfileStatus403;
-    "404": DeletePolicyProfileStatus404;
-    "409": DeletePolicyProfileStatus409;
-    "500": DeletePolicyProfileStatus500;
+  '204': DeletePolicyProfileStatus204;
+  '400': DeletePolicyProfileStatus400;
+  '401': DeletePolicyProfileStatus401;
+  '403': DeletePolicyProfileStatus403;
+  '404': DeletePolicyProfileStatus404;
+  '409': DeletePolicyProfileStatus409;
+  '500': DeletePolicyProfileStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type DeletePolicyProfileResponse = DeletePolicyProfileStatus204;

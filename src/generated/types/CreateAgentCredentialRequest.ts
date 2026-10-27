@@ -4,8 +4,8 @@
 */
 
 export const createAgentCredentialRequestPrincipalTypeEnum = {
-    agent: "agent",
-    human: "human"
+  agent: 'agent',
+  human: 'human',
 } as const;
 
 export type CreateAgentCredentialRequestPrincipalTypeEnumKey = (typeof createAgentCredentialRequestPrincipalTypeEnum)[keyof typeof createAgentCredentialRequestPrincipalTypeEnum];
@@ -13,31 +13,31 @@ export type CreateAgentCredentialRequestPrincipalTypeEnumKey = (typeof createAge
 /**
  * @description Request body for issuing a new agent credential.
  * @type object
-*/
+ */
 export type CreateAgentCredentialRequest = {
-    /**
-     * @description Human-readable label for the credential.
-     * @minLength 1
-     * @maxLength 128
-     * @type string
-    */
-    name: string;
-    /**
-     * @description The policy profile to enforce for this credential.
-     * @type string
-    */
-    policy_profile_id: string;
-    /**
-     * @description Whether this credential represents an autonomous agent or a human operator.
-     * @default 'agent'
-     * @type string | undefined
-    */
-    principal_type?: CreateAgentCredentialRequestPrincipalTypeEnumKey;
-    /**
-     * @description Optional expiry. When set, the credential becomes unusable at this time (must be in the future). Omit or set null for a credential that never expires.
-     *
-     * Format: `date-time`
-     * @type string | undefined
-    */
-    expires_at?: string | null;
+  /**
+   * @description Human-readable label for the credential.
+   * @minLength 1
+   * @maxLength 128
+   * @type string
+   */
+  name: string;
+  /**
+   * @description The policy profile to enforce for this credential.
+   * @type string
+   */
+  policy_profile_id: string;
+  /**
+   * @description Whether this credential represents an autonomous agent or a human operator.
+   * @default 'agent'
+   * @type string | undefined
+   */
+  principal_type?: CreateAgentCredentialRequestPrincipalTypeEnumKey;
+  /**
+   * @description Optional expiry. When set, the credential becomes unusable at this time (must be in the future). Omit or set null for a credential that never expires.
+   *
+   * Format: `date-time`
+   * @type string | undefined
+   */
+  expires_at?: string | null;
 };

@@ -4,8 +4,8 @@
 */
 
 export const supportMessageSource = {
-    user: "user",
-    slack: "slack"
+  user: 'user',
+  slack: 'slack',
 } as const;
 
 export type SupportMessageSourceKey = (typeof supportMessageSource)[keyof typeof supportMessageSource];

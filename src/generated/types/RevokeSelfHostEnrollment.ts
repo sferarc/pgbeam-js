@@ -6,20 +6,20 @@
 import type { Error } from './Error'
 
 export type RevokeSelfHostEnrollmentPath = {
-    /**
-     * @description Unique organization identifier.
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @example org_abc123
-     * @type string
-    */
-    org_id: string;
-    /**
-     * @description Unique enrollment identifier.
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @example she_01h455vb4pex5vsknk084sn02q
-     * @type string
-    */
-    enrollment_id: string;
+  /**
+   * @description Unique organization identifier.
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @example org_abc123
+   * @type string
+   */
+  org_id: string;
+  /**
+   * @description Unique enrollment identifier.
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @example she_01h455vb4pex5vsknk084sn02q
+   * @type string
+   */
+  enrollment_id: string;
 };
 
 export type RevokeSelfHostEnrollmentStatus204 = unknown;
@@ -27,50 +27,50 @@ export type RevokeSelfHostEnrollmentStatus204 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type RevokeSelfHostEnrollmentStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type RevokeSelfHostEnrollmentStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type RevokeSelfHostEnrollmentStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type RevokeSelfHostEnrollmentStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type RevokeSelfHostEnrollmentStatus500 = Error;
 
 export type RevokeSelfHostEnrollmentOptions = {
-    body?: never;
-    path: RevokeSelfHostEnrollmentPath;
-    query?: never;
-    headers?: never;
+  body?: never;
+  path: RevokeSelfHostEnrollmentPath;
+  query?: never;
+  headers?: never;
 };
 
 export type RevokeSelfHostEnrollmentResponses = {
-    "204": RevokeSelfHostEnrollmentStatus204;
-    "400": RevokeSelfHostEnrollmentStatus400;
-    "401": RevokeSelfHostEnrollmentStatus401;
-    "403": RevokeSelfHostEnrollmentStatus403;
-    "404": RevokeSelfHostEnrollmentStatus404;
-    "500": RevokeSelfHostEnrollmentStatus500;
+  '204': RevokeSelfHostEnrollmentStatus204;
+  '400': RevokeSelfHostEnrollmentStatus400;
+  '401': RevokeSelfHostEnrollmentStatus401;
+  '403': RevokeSelfHostEnrollmentStatus403;
+  '404': RevokeSelfHostEnrollmentStatus404;
+  '500': RevokeSelfHostEnrollmentStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type RevokeSelfHostEnrollmentResponse = RevokeSelfHostEnrollmentStatus204;

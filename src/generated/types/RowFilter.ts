@@ -6,18 +6,18 @@
 /**
  * @description A per-relation row filter. The predicate is a raw SQL boolean expression ANDed into the WHERE clause for the matching relation.
  * @type object
-*/
+ */
 export type RowFilter = {
-    /**
-     * @description Relation name, optionally schema-qualified (e.g. \"public.orders\").
-     * @example orders
-     * @type string
-    */
-    table: string;
-    /**
-     * @description Raw SQL boolean expression ANDed into WHERE for this relation.
-     * @example tenant_id = current_setting('pgbeam.tenant')
-     * @type string
-    */
-    predicate: string;
+  /**
+   * @description Relation name, optionally schema-qualified (e.g. "public.orders").
+   * @example orders
+   * @type string
+   */
+  table: string;
+  /**
+   * @description Raw SQL boolean expression ANDed into WHERE for this relation.
+   * @example tenant_id = current_setting('pgbeam.tenant')
+   * @type string
+   */
+  predicate: string;
 };

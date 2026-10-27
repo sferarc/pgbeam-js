@@ -6,13 +6,13 @@
 /**
  * @description Request body for adding a message to a support case.
  * @type object
-*/
+ */
 export type CreateSupportMessageRequest = {
-    /**
-     * @description Message content.
-     * @minLength 1
-     * @maxLength 50000
-     * @type string
-    */
-    body: string;
+  /**
+   * @description Message content.
+   * @minLength 1
+   * @maxLength 50000
+   * @type string
+   */
+  body: string;
 };

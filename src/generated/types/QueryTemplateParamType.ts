@@ -4,16 +4,16 @@
 */
 
 export const queryTemplateParamType = {
-    text: "text",
-    integer: "integer",
-    bigint: "bigint",
-    "double precision": "double precision",
-    numeric: "numeric",
-    boolean: "boolean",
-    uuid: "uuid",
-    date: "date",
-    timestamptz: "timestamptz",
-    jsonb: "jsonb"
+  text: 'text',
+  integer: 'integer',
+  bigint: 'bigint',
+  'double precision': 'double precision',
+  numeric: 'numeric',
+  boolean: 'boolean',
+  uuid: 'uuid',
+  date: 'date',
+  timestamptz: 'timestamptz',
+  jsonb: 'jsonb',
 } as const;
 
 export type QueryTemplateParamTypeKey = (typeof queryTemplateParamType)[keyof typeof queryTemplateParamType];

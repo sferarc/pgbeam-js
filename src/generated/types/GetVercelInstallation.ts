@@ -7,30 +7,32 @@ import type { Error } from './Error'
 import type { VercelInstallationStatus } from './VercelInstallationStatus'
 
 export type GetVercelInstallationPath = {
-    /**
-     * @description Unique organization identifier.
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @example org_abc123
-     * @type string
-    */
-    org_id: string;
+  /**
+   * @description Unique organization identifier.
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @example org_abc123
+   * @type string
+   */
+  org_id: string;
 };
 
 export type GetVercelInstallationHeaders = {
-    /**
-     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
-     * @minLength 1
-     * @maxLength 1024
-     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
-     * @type string | undefined
-    */
-    "If-None-Match"?: string;
+  /**
+   * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.
+   *
+   * A comma-separated list is accepted, and `*` matches any current representation.
+   * @minLength 1
+   * @maxLength 1024
+   * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+   * @type string | undefined
+   */
+  'If-None-Match'?: string;
 };
 
 /**
  * @description Vercel Marketplace installation status for an organization, including its resources.
  * @type object
-*/
+ */
 export type GetVercelInstallationStatus200 = VercelInstallationStatus;
 
 export type GetVercelInstallationStatus304 = unknown;
@@ -38,58 +40,58 @@ export type GetVercelInstallationStatus304 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetVercelInstallationStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetVercelInstallationStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetVercelInstallationStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetVercelInstallationStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetVercelInstallationStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetVercelInstallationStatus500 = Error;
 
 export type GetVercelInstallationOptions = {
-    body?: never;
-    path: GetVercelInstallationPath;
-    query?: never;
-    headers?: GetVercelInstallationHeaders;
+  body?: never;
+  path: GetVercelInstallationPath;
+  query?: never;
+  headers?: GetVercelInstallationHeaders;
 };
 
 export type GetVercelInstallationResponses = {
-    "200": GetVercelInstallationStatus200;
-    "304": GetVercelInstallationStatus304;
-    "400": GetVercelInstallationStatus400;
-    "401": GetVercelInstallationStatus401;
-    "403": GetVercelInstallationStatus403;
-    "404": GetVercelInstallationStatus404;
-    "429": GetVercelInstallationStatus429;
-    "500": GetVercelInstallationStatus500;
+  '200': GetVercelInstallationStatus200;
+  '304': GetVercelInstallationStatus304;
+  '400': GetVercelInstallationStatus400;
+  '401': GetVercelInstallationStatus401;
+  '403': GetVercelInstallationStatus403;
+  '404': GetVercelInstallationStatus404;
+  '429': GetVercelInstallationStatus429;
+  '500': GetVercelInstallationStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type GetVercelInstallationResponse = GetVercelInstallationStatus200;

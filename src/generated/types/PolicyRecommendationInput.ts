@@ -4,24 +4,24 @@
 */
 
 /**
- * @description Optional parameters for a least-privilege policy recommendation. Every field is optional; an empty body analyzes the last 30 days of the credential\'s audit history.
+ * @description Optional parameters for a least-privilege policy recommendation. Every field is optional; an empty body analyzes the last 30 days of the credential's audit history.
  * @type object
-*/
+ */
 export type PolicyRecommendationInput = {
-    /**
-     * @description How many days of recorded audit history to analyze.
-     * @minLength 1
-     * @maxLength 365
-     * @default 30
-     * @type integer | undefined
-    */
-    lookback_days?: number;
-    /**
-     * @description Maximum number of distinct query shapes to analyze and replay, newest first. Traffic is deduplicated by normalized query hash.
-     * @minLength 1
-     * @maxLength 500
-     * @default 200
-     * @type integer | undefined
-    */
-    limit?: number;
+  /**
+   * @description How many days of recorded audit history to analyze.
+   * @minLength 1
+   * @maxLength 365
+   * @default 30
+   * @type integer | undefined
+   */
+  lookback_days?: number;
+  /**
+   * @description Maximum number of distinct query shapes to analyze and replay, newest first. Traffic is deduplicated by normalized query hash.
+   * @minLength 1
+   * @maxLength 500
+   * @default 200
+   * @type integer | undefined
+   */
+  limit?: number;
 };

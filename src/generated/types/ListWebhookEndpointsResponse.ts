@@ -8,17 +8,17 @@ import type { WebhookEndpoint } from './WebhookEndpoint'
 /**
  * @description Cursor-paginated list of webhook endpoints for a project.
  * @type object
-*/
+ */
 export type ListWebhookEndpointsResponse = {
-    /**
-     * @description Webhook endpoints on the current page.
-     * @type array
-    */
-    webhooks: WebhookEndpoint[];
-    /**
-     * @description Token for the next page. Empty if no more results.
-     * @example eyJpZCI6InByal8wMWo5eDh5N3o2In0
-     * @type string | undefined
-    */
-    next_page_token?: string;
+  /**
+   * @description Webhook endpoints on the current page.
+   * @type array
+   */
+  webhooks: WebhookEndpoint[];
+  /**
+   * @description Token for the next page. Empty if no more results.
+   * @example eyJpZCI6InByal8wMWo5eDh5N3o2In0
+   * @type string | undefined
+   */
+  next_page_token?: string;
 };

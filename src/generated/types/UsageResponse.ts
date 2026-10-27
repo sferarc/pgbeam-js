@@ -8,11 +8,11 @@ import type { DailyUsage } from './DailyUsage'
 /**
  * @description Response envelope for organization usage queries.
  * @type object
-*/
+ */
 export type UsageResponse = {
-    /**
-     * @description Daily usage entries aggregated across the organization.
-     * @type array
-    */
-    usage: DailyUsage[];
+  /**
+   * @description Daily usage entries aggregated across the organization.
+   * @type array
+   */
+  usage: DailyUsage[];
 };

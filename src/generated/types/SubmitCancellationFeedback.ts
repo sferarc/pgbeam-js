@@ -7,13 +7,13 @@ import type { CancellationFeedbackRequest } from './CancellationFeedbackRequest'
 import type { Error } from './Error'
 
 export type SubmitCancellationFeedbackPath = {
-    /**
-     * @description Unique organization identifier.
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @example org_abc123
-     * @type string
-    */
-    org_id: string;
+  /**
+   * @description Unique organization identifier.
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @example org_abc123
+   * @type string
+   */
+  org_id: string;
 };
 
 export type SubmitCancellationFeedbackStatus204 = unknown;
@@ -21,70 +21,70 @@ export type SubmitCancellationFeedbackStatus204 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type SubmitCancellationFeedbackStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type SubmitCancellationFeedbackStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type SubmitCancellationFeedbackStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type SubmitCancellationFeedbackStatus413 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type SubmitCancellationFeedbackStatus415 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type SubmitCancellationFeedbackStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type SubmitCancellationFeedbackStatus500 = Error;
 
 /**
  * @description Request body for capturing cancellation feedback from a user.
  * @type object
-*/
+ */
 export type SubmitCancellationFeedbackBody = CancellationFeedbackRequest;
 
 export type SubmitCancellationFeedbackOptions = {
-    body: SubmitCancellationFeedbackBody;
-    path: SubmitCancellationFeedbackPath;
-    query?: never;
-    headers?: never;
+  body: SubmitCancellationFeedbackBody;
+  path: SubmitCancellationFeedbackPath;
+  query?: never;
+  headers?: never;
 };
 
 export type SubmitCancellationFeedbackResponses = {
-    "204": SubmitCancellationFeedbackStatus204;
-    "400": SubmitCancellationFeedbackStatus400;
-    "401": SubmitCancellationFeedbackStatus401;
-    "403": SubmitCancellationFeedbackStatus403;
-    "413": SubmitCancellationFeedbackStatus413;
-    "415": SubmitCancellationFeedbackStatus415;
-    "429": SubmitCancellationFeedbackStatus429;
-    "500": SubmitCancellationFeedbackStatus500;
+  '204': SubmitCancellationFeedbackStatus204;
+  '400': SubmitCancellationFeedbackStatus400;
+  '401': SubmitCancellationFeedbackStatus401;
+  '403': SubmitCancellationFeedbackStatus403;
+  '413': SubmitCancellationFeedbackStatus413;
+  '415': SubmitCancellationFeedbackStatus415;
+  '429': SubmitCancellationFeedbackStatus429;
+  '500': SubmitCancellationFeedbackStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type SubmitCancellationFeedbackResponse = SubmitCancellationFeedbackStatus204;

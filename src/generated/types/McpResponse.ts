@@ -6,37 +6,37 @@
 /**
  * @description JSON-RPC 2.0 response envelope for MCP over Streamable HTTP.
  * @type object
-*/
+ */
 export type McpResponse = {
+  /**
+   * @description JSON-RPC version. Always "2.0".
+   * @type string
+   */
+  jsonrpc: '2.0';
+  /**
+   * @description Mirrors the request id. Null for parse errors.
+   * @type string
+   */
+  id: string | null;
+  /**
+   * @description Method-specific result (present on success).
+   * @type object | undefined
+   */
+  result?: object;
+  /**
+   * @description JSON-RPC error (present on failure).
+   * @type object | undefined
+   */
+  error?: {
     /**
-     * @description JSON-RPC version. Always \"2.0\".
-     * @type string
-    */
-    jsonrpc: "2.0";
+     * @description JSON-RPC error code.
+     * @type integer | undefined
+     */
+    code?: number;
     /**
-     * @description Mirrors the request id. Null for parse errors.
-     * @type string
-    */
-    id: string | null;
-    /**
-     * @description Method-specific result (present on success).
-     * @type object | undefined
-    */
-    result?: object;
-    /**
-     * @description JSON-RPC error (present on failure).
-     * @type object | undefined
-    */
-    error?: {
-        /**
-         * @description JSON-RPC error code.
-         * @type integer | undefined
-        */
-        code?: number;
-        /**
-         * @description Human-readable error message.
-         * @type string | undefined
-        */
-        message?: string;
-    };
+     * @description Human-readable error message.
+     * @type string | undefined
+     */
+    message?: string;
+  };
 };

@@ -4,8 +4,8 @@
 */
 
 export const updateAnomalyAlertRequestStatusEnum = {
-    acknowledged: "acknowledged",
-    resolved: "resolved"
+  acknowledged: 'acknowledged',
+  resolved: 'resolved',
 } as const;
 
 export type UpdateAnomalyAlertRequestStatusEnumKey = (typeof updateAnomalyAlertRequestStatusEnum)[keyof typeof updateAnomalyAlertRequestStatusEnum];
@@ -13,11 +13,11 @@ export type UpdateAnomalyAlertRequestStatusEnumKey = (typeof updateAnomalyAlertR
 /**
  * @description Request body for triaging an anomaly alert.
  * @type object
-*/
+ */
 export type UpdateAnomalyAlertRequest = {
-    /**
-     * @description New triage state for the alert.
-     * @type string
-    */
-    status: UpdateAnomalyAlertRequestStatusEnumKey;
+  /**
+   * @description New triage state for the alert.
+   * @type string
+   */
+  status: UpdateAnomalyAlertRequestStatusEnumKey;
 };

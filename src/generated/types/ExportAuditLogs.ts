@@ -8,51 +8,51 @@ import type { AuditSourceKey } from './AuditSource'
 import type { Error } from './Error'
 
 export type ExportAuditLogsPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
 };
 
 export type ExportAuditLogsQuery = {
-    /**
-     * @description Filter to a single agent credential.
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string | undefined
-    */
-    credential_id?: string;
-    /**
-     * @description Filter to a single event type (e.g. blocked, masked, query).
-     * @pattern ^[a-z_]+$
-     * @type string | undefined
-    */
-    event?: string;
-    /**
-     * @description Coarse outcome filter that groups events. `allow` = query, auto_approved; `block` = blocked, budget_exhausted, auth_failed, credential_expired, canary_tripped, rejected, approval_expired; `mask` = masked; `truncate` = truncated.
-     * @type string | undefined
-    */
-    decision?: AuditDecisionKey;
-    /**
-     * @description Filter by statement origin (wire, mcp, rest, or control).
-     * @type string | undefined
-    */
-    source?: AuditSourceKey;
-    /**
-     * @description Return entries at or after this timestamp (inclusive lower bound).
-     *
-     * Format: `date-time`
-     * @type string | undefined
-    */
-    start?: string;
-    /**
-     * @description Return entries strictly older than this timestamp (cursor / upper bound).
-     *
-     * Format: `date-time`
-     * @type string | undefined
-    */
-    end?: string;
+  /**
+   * @description Filter to a single agent credential.
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string | undefined
+   */
+  credential_id?: string;
+  /**
+   * @description Filter to a single event type (e.g. blocked, masked, query).
+   * @pattern ^[a-z_]+$
+   * @type string | undefined
+   */
+  event?: string;
+  /**
+   * @description Coarse outcome filter that groups events. `allow` = query, auto_approved; `block` = blocked, budget_exhausted, auth_failed, credential_expired, canary_tripped, rejected, approval_expired; `mask` = masked; `truncate` = truncated.
+   * @type string | undefined
+   */
+  decision?: AuditDecisionKey;
+  /**
+   * @description Filter by statement origin (wire, mcp, rest, or control).
+   * @type string | undefined
+   */
+  source?: AuditSourceKey;
+  /**
+   * @description Return entries at or after this timestamp (inclusive lower bound).
+   *
+   * Format: `date-time`
+   * @type string | undefined
+   */
+  start?: string;
+  /**
+   * @description Return entries strictly older than this timestamp (cursor / upper bound).
+   *
+   * Format: `date-time`
+   * @type string | undefined
+   */
+  end?: string;
 };
 
 export type ExportAuditLogsStatus200 = string;
@@ -60,57 +60,57 @@ export type ExportAuditLogsStatus200 = string;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ExportAuditLogsStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ExportAuditLogsStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ExportAuditLogsStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ExportAuditLogsStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ExportAuditLogsStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ExportAuditLogsStatus500 = Error;
 
 export type ExportAuditLogsOptions = {
-    body?: never;
-    path: ExportAuditLogsPath;
-    query?: ExportAuditLogsQuery;
-    headers?: never;
+  body?: never;
+  path: ExportAuditLogsPath;
+  query?: ExportAuditLogsQuery;
+  headers?: never;
 };
 
 export type ExportAuditLogsResponses = {
-    "200": ExportAuditLogsStatus200;
-    "400": ExportAuditLogsStatus400;
-    "401": ExportAuditLogsStatus401;
-    "403": ExportAuditLogsStatus403;
-    "404": ExportAuditLogsStatus404;
-    "429": ExportAuditLogsStatus429;
-    "500": ExportAuditLogsStatus500;
+  '200': ExportAuditLogsStatus200;
+  '400': ExportAuditLogsStatus400;
+  '401': ExportAuditLogsStatus401;
+  '403': ExportAuditLogsStatus403;
+  '404': ExportAuditLogsStatus404;
+  '429': ExportAuditLogsStatus429;
+  '500': ExportAuditLogsStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type ExportAuditLogsResponse = ExportAuditLogsStatus200;

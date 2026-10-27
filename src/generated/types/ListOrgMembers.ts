@@ -7,47 +7,49 @@ import type { Error } from './Error'
 import type { ListOrgMembersResponse } from './ListOrgMembersResponse'
 
 export type ListOrgMembersPath = {
-    /**
-     * @description Unique organization identifier.
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @example org_abc123
-     * @type string
-    */
-    org_id: string;
+  /**
+   * @description Unique organization identifier.
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @example org_abc123
+   * @type string
+   */
+  org_id: string;
 };
 
 export type ListOrgMembersQuery = {
-    /**
-     * @description Maximum number of items to return (1-100, default 20).
-     * @minLength 1
-     * @maxLength 100
-     * @default 20
-     * @type integer | undefined
-    */
-    page_size?: number;
-    /**
-     * @description Opaque token for cursor-based pagination.
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string | undefined
-    */
-    page_token?: string;
+  /**
+   * @description Maximum number of items to return (1-100, default 20).
+   * @minLength 1
+   * @maxLength 100
+   * @default 20
+   * @type integer | undefined
+   */
+  page_size?: number;
+  /**
+   * @description Opaque token for cursor-based pagination.
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string | undefined
+   */
+  page_token?: string;
 };
 
 export type ListOrgMembersHeaders = {
-    /**
-     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
-     * @minLength 1
-     * @maxLength 1024
-     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
-     * @type string | undefined
-    */
-    "If-None-Match"?: string;
+  /**
+   * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.
+   *
+   * A comma-separated list is accepted, and `*` matches any current representation.
+   * @minLength 1
+   * @maxLength 1024
+   * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+   * @type string | undefined
+   */
+  'If-None-Match'?: string;
 };
 
 /**
  * @description A page of organization members.
  * @type object
-*/
+ */
 export type ListOrgMembersStatus200 = ListOrgMembersResponse;
 
 export type ListOrgMembersStatus304 = unknown;
@@ -55,46 +57,46 @@ export type ListOrgMembersStatus304 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListOrgMembersStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListOrgMembersStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListOrgMembersStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListOrgMembersStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListOrgMembersStatus429 = Error;
 
 export type ListOrgMembersOptions = {
-    body?: never;
-    path: ListOrgMembersPath;
-    query?: ListOrgMembersQuery;
-    headers?: ListOrgMembersHeaders;
+  body?: never;
+  path: ListOrgMembersPath;
+  query?: ListOrgMembersQuery;
+  headers?: ListOrgMembersHeaders;
 };
 
 export type ListOrgMembersResponses = {
-    "200": ListOrgMembersStatus200;
-    "304": ListOrgMembersStatus304;
-    "400": ListOrgMembersStatus400;
-    "401": ListOrgMembersStatus401;
-    "403": ListOrgMembersStatus403;
-    "404": ListOrgMembersStatus404;
-    "429": ListOrgMembersStatus429;
+  '200': ListOrgMembersStatus200;
+  '304': ListOrgMembersStatus304;
+  '400': ListOrgMembersStatus400;
+  '401': ListOrgMembersStatus401;
+  '403': ListOrgMembersStatus403;
+  '404': ListOrgMembersStatus404;
+  '429': ListOrgMembersStatus429;
 };

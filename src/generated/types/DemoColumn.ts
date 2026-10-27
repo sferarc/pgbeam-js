@@ -4,10 +4,10 @@
 */
 
 export const demoColumnTreatmentEnum = {
-    visible: "visible",
-    redacted: "redacted",
-    hashed: "hashed",
-    nulled: "nulled"
+  visible: 'visible',
+  redacted: 'redacted',
+  hashed: 'hashed',
+  nulled: 'nulled',
 } as const;
 
 export type DemoColumnTreatmentEnumKey = (typeof demoColumnTreatmentEnum)[keyof typeof demoColumnTreatmentEnum];
@@ -15,21 +15,21 @@ export type DemoColumnTreatmentEnumKey = (typeof demoColumnTreatmentEnum)[keyof 
 /**
  * @description One column of a demo table, and how the demo policy treats it.
  * @type object
-*/
+ */
 export type DemoColumn = {
-    /**
-     * @description Column name.
-     * @type string
-    */
-    name: string;
-    /**
-     * @description PostgreSQL type.
-     * @type string
-    */
-    type: string;
-    /**
-     * @description What a demo credential sees. visible is the raw value; redacted returns a fixed token; hashed returns a SHA-256 hex digest; nulled returns NULL.
-     * @type string
-    */
-    treatment: DemoColumnTreatmentEnumKey;
+  /**
+   * @description Column name.
+   * @type string
+   */
+  name: string;
+  /**
+   * @description PostgreSQL type.
+   * @type string
+   */
+  type: string;
+  /**
+   * @description What a demo credential sees. visible is the raw value; redacted returns a fixed token; hashed returns a SHA-256 hex digest; nulled returns NULL.
+   * @type string
+   */
+  treatment: DemoColumnTreatmentEnumKey;
 };

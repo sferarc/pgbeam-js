@@ -7,46 +7,48 @@ import type { AuditChainVerification } from './AuditChainVerification'
 import type { Error } from './Error'
 
 export type VerifyAuditChainPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
 };
 
 export type VerifyAuditChainQuery = {
-    /**
-     * @description Return entries at or after this timestamp (inclusive lower bound).
-     *
-     * Format: `date-time`
-     * @type string | undefined
-    */
-    start?: string;
-    /**
-     * @description Return entries strictly older than this timestamp (cursor / upper bound).
-     *
-     * Format: `date-time`
-     * @type string | undefined
-    */
-    end?: string;
+  /**
+   * @description Return entries at or after this timestamp (inclusive lower bound).
+   *
+   * Format: `date-time`
+   * @type string | undefined
+   */
+  start?: string;
+  /**
+   * @description Return entries strictly older than this timestamp (cursor / upper bound).
+   *
+   * Format: `date-time`
+   * @type string | undefined
+   */
+  end?: string;
 };
 
 export type VerifyAuditChainHeaders = {
-    /**
-     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
-     * @minLength 1
-     * @maxLength 1024
-     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
-     * @type string | undefined
-    */
-    "If-None-Match"?: string;
+  /**
+   * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.
+   *
+   * A comma-separated list is accepted, and `*` matches any current representation.
+   * @minLength 1
+   * @maxLength 1024
+   * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+   * @type string | undefined
+   */
+  'If-None-Match'?: string;
 };
 
 /**
- * @description Result of recomputing the project\'s tamper-evident audit hash chain over a time range. The chain links each entry to its predecessor, so editing or deleting any row breaks it.
+ * @description Result of recomputing the project's tamper-evident audit hash chain over a time range. The chain links each entry to its predecessor, so editing or deleting any row breaks it.
  * @type object
-*/
+ */
 export type VerifyAuditChainStatus200 = AuditChainVerification;
 
 export type VerifyAuditChainStatus304 = unknown;
@@ -54,58 +56,58 @@ export type VerifyAuditChainStatus304 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type VerifyAuditChainStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type VerifyAuditChainStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type VerifyAuditChainStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type VerifyAuditChainStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type VerifyAuditChainStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type VerifyAuditChainStatus500 = Error;
 
 export type VerifyAuditChainOptions = {
-    body?: never;
-    path: VerifyAuditChainPath;
-    query?: VerifyAuditChainQuery;
-    headers?: VerifyAuditChainHeaders;
+  body?: never;
+  path: VerifyAuditChainPath;
+  query?: VerifyAuditChainQuery;
+  headers?: VerifyAuditChainHeaders;
 };
 
 export type VerifyAuditChainResponses = {
-    "200": VerifyAuditChainStatus200;
-    "304": VerifyAuditChainStatus304;
-    "400": VerifyAuditChainStatus400;
-    "401": VerifyAuditChainStatus401;
-    "403": VerifyAuditChainStatus403;
-    "404": VerifyAuditChainStatus404;
-    "429": VerifyAuditChainStatus429;
-    "500": VerifyAuditChainStatus500;
+  '200': VerifyAuditChainStatus200;
+  '304': VerifyAuditChainStatus304;
+  '400': VerifyAuditChainStatus400;
+  '401': VerifyAuditChainStatus401;
+  '403': VerifyAuditChainStatus403;
+  '404': VerifyAuditChainStatus404;
+  '429': VerifyAuditChainStatus429;
+  '500': VerifyAuditChainStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type VerifyAuditChainResponse = VerifyAuditChainStatus200;

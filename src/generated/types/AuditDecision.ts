@@ -4,10 +4,10 @@
 */
 
 export const auditDecision = {
-    allow: "allow",
-    block: "block",
-    mask: "mask",
-    truncate: "truncate"
+  allow: 'allow',
+  block: 'block',
+  mask: 'mask',
+  truncate: 'truncate',
 } as const;
 
 export type AuditDecisionKey = (typeof auditDecision)[keyof typeof auditDecision];

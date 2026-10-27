@@ -4,12 +4,12 @@
 */
 
 export const updateOnboardingRequestStepEnum = {
-    project_created: "project_created",
-    database_added: "database_added",
-    connection_tested: "connection_tested",
-    connection_string_copied: "connection_string_copied",
-    first_query_run: "first_query_run",
-    agent_credential_created: "agent_credential_created"
+  project_created: 'project_created',
+  database_added: 'database_added',
+  connection_tested: 'connection_tested',
+  connection_string_copied: 'connection_string_copied',
+  first_query_run: 'first_query_run',
+  agent_credential_created: 'agent_credential_created',
 } as const;
 
 export type UpdateOnboardingRequestStepEnumKey = (typeof updateOnboardingRequestStepEnum)[keyof typeof updateOnboardingRequestStepEnum];
@@ -17,17 +17,17 @@ export type UpdateOnboardingRequestStepEnumKey = (typeof updateOnboardingRequest
 /**
  * @description Request body for advancing or dismissing onboarding.
  * @type object
-*/
+ */
 export type UpdateOnboardingRequest = {
-    /**
-     * @description The onboarding step to mark as complete.
-     * @example project_created
-     * @type string | undefined
-    */
-    step?: UpdateOnboardingRequestStepEnumKey;
-    /**
-     * @description Set to true to dismiss the onboarding checklist.
-     * @type boolean | undefined
-    */
-    dismiss?: boolean;
+  /**
+   * @description The onboarding step to mark as complete.
+   * @example project_created
+   * @type string | undefined
+   */
+  step?: UpdateOnboardingRequestStepEnumKey;
+  /**
+   * @description Set to true to dismiss the onboarding checklist.
+   * @type boolean | undefined
+   */
+  dismiss?: boolean;
 };

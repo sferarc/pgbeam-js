@@ -6,16 +6,16 @@
 /**
  * @description Per-statement-kind allow/deny lists. Empty allow means all kinds permitted by the access mode.
  * @type object
-*/
+ */
 export type StatementRules = {
-    /**
-     * @description Allowed statement kinds (select, insert, update, delete, ddl, copy, set, show, explain, transaction).
-     * @type array | undefined
-    */
-    allow?: string[];
-    /**
-     * @description Denied statement kinds (takes precedence over allow).
-     * @type array | undefined
-    */
-    deny?: string[];
+  /**
+   * @description Allowed statement kinds (select, insert, update, delete, ddl, copy, set, show, explain, transaction).
+   * @type array | undefined
+   */
+  allow?: string[];
+  /**
+   * @description Denied statement kinds (takes precedence over allow).
+   * @type array | undefined
+   */
+  deny?: string[];
 };

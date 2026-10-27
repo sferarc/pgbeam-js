@@ -8,95 +8,95 @@ import type { OnboardingProgress } from './OnboardingProgress'
 import type { UpdateOnboardingRequest } from './UpdateOnboardingRequest'
 
 export type UpdateOnboardingProgressPath = {
-    /**
-     * @description Unique organization identifier.
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @example org_abc123
-     * @type string
-    */
-    org_id: string;
+  /**
+   * @description Unique organization identifier.
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @example org_abc123
+   * @type string
+   */
+  org_id: string;
 };
 
 /**
  * @description Progress state for the dashboard onboarding checklist.
  * @type object
-*/
+ */
 export type UpdateOnboardingProgressStatus200 = OnboardingProgress;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateOnboardingProgressStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateOnboardingProgressStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateOnboardingProgressStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateOnboardingProgressStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateOnboardingProgressStatus413 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateOnboardingProgressStatus415 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateOnboardingProgressStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateOnboardingProgressStatus500 = Error;
 
 /**
  * @description Request body for advancing or dismissing onboarding.
  * @type object
-*/
+ */
 export type UpdateOnboardingProgressBody = UpdateOnboardingRequest;
 
 export type UpdateOnboardingProgressOptions = {
-    body: UpdateOnboardingProgressBody;
-    path: UpdateOnboardingProgressPath;
-    query?: never;
-    headers?: never;
+  body: UpdateOnboardingProgressBody;
+  path: UpdateOnboardingProgressPath;
+  query?: never;
+  headers?: never;
 };
 
 export type UpdateOnboardingProgressResponses = {
-    "200": UpdateOnboardingProgressStatus200;
-    "400": UpdateOnboardingProgressStatus400;
-    "401": UpdateOnboardingProgressStatus401;
-    "403": UpdateOnboardingProgressStatus403;
-    "404": UpdateOnboardingProgressStatus404;
-    "413": UpdateOnboardingProgressStatus413;
-    "415": UpdateOnboardingProgressStatus415;
-    "429": UpdateOnboardingProgressStatus429;
-    "500": UpdateOnboardingProgressStatus500;
+  '200': UpdateOnboardingProgressStatus200;
+  '400': UpdateOnboardingProgressStatus400;
+  '401': UpdateOnboardingProgressStatus401;
+  '403': UpdateOnboardingProgressStatus403;
+  '404': UpdateOnboardingProgressStatus404;
+  '413': UpdateOnboardingProgressStatus413;
+  '415': UpdateOnboardingProgressStatus415;
+  '429': UpdateOnboardingProgressStatus429;
+  '500': UpdateOnboardingProgressStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type UpdateOnboardingProgressResponse = UpdateOnboardingProgressStatus200;

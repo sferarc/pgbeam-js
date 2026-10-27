@@ -7,35 +7,37 @@ import type { Error } from './Error'
 import type { SchemaCatalog } from './SchemaCatalog'
 
 export type GetSchemaCatalogPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Unique database identifier (prefixed, e.g. db_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    database_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Unique database identifier (prefixed, e.g. db_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  database_id: string;
 };
 
 export type GetSchemaCatalogHeaders = {
-    /**
-     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
-     * @minLength 1
-     * @maxLength 1024
-     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
-     * @type string | undefined
-    */
-    "If-None-Match"?: string;
+  /**
+   * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.
+   *
+   * A comma-separated list is accepted, and `*` matches any current representation.
+   * @minLength 1
+   * @maxLength 1024
+   * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+   * @type string | undefined
+   */
+  'If-None-Match'?: string;
 };
 
 /**
- * @description A read-only snapshot of a database\'s user relations (tables and views) and their columns, used to power table/column autocomplete and view-aware warnings in the policy editor. System schemas (pg_catalog, information_schema, pg_toast) are excluded.
+ * @description A read-only snapshot of a database's user relations (tables and views) and their columns, used to power table/column autocomplete and view-aware warnings in the policy editor. System schemas (pg_catalog, information_schema, pg_toast) are excluded.
  * @type object
-*/
+ */
 export type GetSchemaCatalogStatus200 = SchemaCatalog;
 
 export type GetSchemaCatalogStatus304 = unknown;
@@ -43,58 +45,58 @@ export type GetSchemaCatalogStatus304 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetSchemaCatalogStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetSchemaCatalogStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetSchemaCatalogStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetSchemaCatalogStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetSchemaCatalogStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetSchemaCatalogStatus500 = Error;
 
 export type GetSchemaCatalogOptions = {
-    body?: never;
-    path: GetSchemaCatalogPath;
-    query?: never;
-    headers?: GetSchemaCatalogHeaders;
+  body?: never;
+  path: GetSchemaCatalogPath;
+  query?: never;
+  headers?: GetSchemaCatalogHeaders;
 };
 
 export type GetSchemaCatalogResponses = {
-    "200": GetSchemaCatalogStatus200;
-    "304": GetSchemaCatalogStatus304;
-    "400": GetSchemaCatalogStatus400;
-    "401": GetSchemaCatalogStatus401;
-    "403": GetSchemaCatalogStatus403;
-    "404": GetSchemaCatalogStatus404;
-    "429": GetSchemaCatalogStatus429;
-    "500": GetSchemaCatalogStatus500;
+  '200': GetSchemaCatalogStatus200;
+  '304': GetSchemaCatalogStatus304;
+  '400': GetSchemaCatalogStatus400;
+  '401': GetSchemaCatalogStatus401;
+  '403': GetSchemaCatalogStatus403;
+  '404': GetSchemaCatalogStatus404;
+  '429': GetSchemaCatalogStatus429;
+  '500': GetSchemaCatalogStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type GetSchemaCatalogResponse = GetSchemaCatalogStatus200;

@@ -7,80 +7,80 @@ import type { Error } from './Error'
 import type { TestConnectionResult } from './TestConnectionResult'
 
 export type TestDatabaseConnectionPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Unique database identifier (prefixed, e.g. db_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    database_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Unique database identifier (prefixed, e.g. db_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  database_id: string;
 };
 
 /**
  * @description Result of testing connectivity to an upstream database.
  * @type object
-*/
+ */
 export type TestDatabaseConnectionStatus200 = TestConnectionResult;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type TestDatabaseConnectionStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type TestDatabaseConnectionStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type TestDatabaseConnectionStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type TestDatabaseConnectionStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type TestDatabaseConnectionStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type TestDatabaseConnectionStatus500 = Error;
 
 export type TestDatabaseConnectionOptions = {
-    body?: never;
-    path: TestDatabaseConnectionPath;
-    query?: never;
-    headers?: never;
+  body?: never;
+  path: TestDatabaseConnectionPath;
+  query?: never;
+  headers?: never;
 };
 
 export type TestDatabaseConnectionResponses = {
-    "200": TestDatabaseConnectionStatus200;
-    "400": TestDatabaseConnectionStatus400;
-    "401": TestDatabaseConnectionStatus401;
-    "403": TestDatabaseConnectionStatus403;
-    "404": TestDatabaseConnectionStatus404;
-    "429": TestDatabaseConnectionStatus429;
-    "500": TestDatabaseConnectionStatus500;
+  '200': TestDatabaseConnectionStatus200;
+  '400': TestDatabaseConnectionStatus400;
+  '401': TestDatabaseConnectionStatus401;
+  '403': TestDatabaseConnectionStatus403;
+  '404': TestDatabaseConnectionStatus404;
+  '429': TestDatabaseConnectionStatus429;
+  '500': TestDatabaseConnectionStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type TestDatabaseConnectionResponse = TestDatabaseConnectionStatus200;

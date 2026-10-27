@@ -7,20 +7,22 @@ import type { AccountExport } from './AccountExport'
 import type { Error } from './Error'
 
 export type ExportAccountDataHeaders = {
-    /**
-     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
-     * @minLength 1
-     * @maxLength 1024
-     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
-     * @type string | undefined
-    */
-    "If-None-Match"?: string;
+  /**
+   * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.
+   *
+   * A comma-separated list is accepted, and `*` matches any current representation.
+   * @minLength 1
+   * @maxLength 1024
+   * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+   * @type string | undefined
+   */
+  'If-None-Match'?: string;
 };
 
 /**
  * @description Full account data export for privacy and data-portability requests.
  * @type object
-*/
+ */
 export type ExportAccountDataStatus200 = AccountExport;
 
 export type ExportAccountDataStatus304 = unknown;
@@ -28,51 +30,51 @@ export type ExportAccountDataStatus304 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ExportAccountDataStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ExportAccountDataStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ExportAccountDataStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ExportAccountDataStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ExportAccountDataStatus500 = Error;
 
 export type ExportAccountDataOptions = {
-    body?: never;
-    path?: never;
-    query?: never;
-    headers?: ExportAccountDataHeaders;
+  body?: never;
+  path?: never;
+  query?: never;
+  headers?: ExportAccountDataHeaders;
 };
 
 export type ExportAccountDataResponses = {
-    "200": ExportAccountDataStatus200;
-    "304": ExportAccountDataStatus304;
-    "400": ExportAccountDataStatus400;
-    "401": ExportAccountDataStatus401;
-    "404": ExportAccountDataStatus404;
-    "429": ExportAccountDataStatus429;
-    "500": ExportAccountDataStatus500;
+  '200': ExportAccountDataStatus200;
+  '304': ExportAccountDataStatus304;
+  '400': ExportAccountDataStatus400;
+  '401': ExportAccountDataStatus401;
+  '404': ExportAccountDataStatus404;
+  '429': ExportAccountDataStatus429;
+  '500': ExportAccountDataStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type ExportAccountDataResponse = ExportAccountDataStatus200;

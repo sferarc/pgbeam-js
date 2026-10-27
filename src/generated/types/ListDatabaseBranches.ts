@@ -7,60 +7,62 @@ import type { Error } from './Error'
 import type { ListDatabaseBranchesResponse } from './ListDatabaseBranchesResponse'
 
 export type ListDatabaseBranchesPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
 };
 
 export const listDatabaseBranchesStatus = {
-    pending: "pending",
-    ready: "ready",
-    error: "error",
-    discarded: "discarded"
+  pending: 'pending',
+  ready: 'ready',
+  error: 'error',
+  discarded: 'discarded',
 } as const;
 
 export type ListDatabaseBranchesStatusKey = (typeof listDatabaseBranchesStatus)[keyof typeof listDatabaseBranchesStatus];
 
 export type ListDatabaseBranchesQuery = {
-    /**
-     * @description Filter to a single status.
-     * @type string | undefined
-    */
-    status?: ListDatabaseBranchesStatusKey;
-    /**
-     * @description Maximum number of items to return (1-100, default 20).
-     * @minLength 1
-     * @maxLength 100
-     * @default 20
-     * @type integer | undefined
-    */
-    page_size?: number;
-    /**
-     * @description Opaque token for cursor-based pagination.
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string | undefined
-    */
-    page_token?: string;
+  /**
+   * @description Filter to a single status.
+   * @type string | undefined
+   */
+  status?: ListDatabaseBranchesStatusKey;
+  /**
+   * @description Maximum number of items to return (1-100, default 20).
+   * @minLength 1
+   * @maxLength 100
+   * @default 20
+   * @type integer | undefined
+   */
+  page_size?: number;
+  /**
+   * @description Opaque token for cursor-based pagination.
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string | undefined
+   */
+  page_token?: string;
 };
 
 export type ListDatabaseBranchesHeaders = {
-    /**
-     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
-     * @minLength 1
-     * @maxLength 1024
-     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
-     * @type string | undefined
-    */
-    "If-None-Match"?: string;
+  /**
+   * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.
+   *
+   * A comma-separated list is accepted, and `*` matches any current representation.
+   * @minLength 1
+   * @maxLength 1024
+   * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+   * @type string | undefined
+   */
+  'If-None-Match'?: string;
 };
 
 /**
  * @description Cursor-paginated list of sandbox branches for a project.
  * @type object
-*/
+ */
 export type ListDatabaseBranchesStatus200 = ListDatabaseBranchesResponse;
 
 export type ListDatabaseBranchesStatus304 = unknown;
@@ -68,53 +70,53 @@ export type ListDatabaseBranchesStatus304 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListDatabaseBranchesStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListDatabaseBranchesStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListDatabaseBranchesStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListDatabaseBranchesStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListDatabaseBranchesStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListDatabaseBranchesStatus500 = Error;
 
 export type ListDatabaseBranchesOptions = {
-    body?: never;
-    path: ListDatabaseBranchesPath;
-    query?: ListDatabaseBranchesQuery;
-    headers?: ListDatabaseBranchesHeaders;
+  body?: never;
+  path: ListDatabaseBranchesPath;
+  query?: ListDatabaseBranchesQuery;
+  headers?: ListDatabaseBranchesHeaders;
 };
 
 export type ListDatabaseBranchesResponses = {
-    "200": ListDatabaseBranchesStatus200;
-    "304": ListDatabaseBranchesStatus304;
-    "400": ListDatabaseBranchesStatus400;
-    "401": ListDatabaseBranchesStatus401;
-    "403": ListDatabaseBranchesStatus403;
-    "404": ListDatabaseBranchesStatus404;
-    "429": ListDatabaseBranchesStatus429;
-    "500": ListDatabaseBranchesStatus500;
+  '200': ListDatabaseBranchesStatus200;
+  '304': ListDatabaseBranchesStatus304;
+  '400': ListDatabaseBranchesStatus400;
+  '401': ListDatabaseBranchesStatus401;
+  '403': ListDatabaseBranchesStatus403;
+  '404': ListDatabaseBranchesStatus404;
+  '429': ListDatabaseBranchesStatus429;
+  '500': ListDatabaseBranchesStatus500;
 };

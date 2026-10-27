@@ -6,18 +6,18 @@
 import type { Error } from './Error'
 
 export type DiscardDatabaseBranchPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Unique sandbox branch identifier (prefixed, e.g. brn_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    branch_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Unique sandbox branch identifier (prefixed, e.g. brn_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  branch_id: string;
 };
 
 export type DiscardDatabaseBranchStatus204 = unknown;
@@ -25,50 +25,50 @@ export type DiscardDatabaseBranchStatus204 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DiscardDatabaseBranchStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DiscardDatabaseBranchStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DiscardDatabaseBranchStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DiscardDatabaseBranchStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DiscardDatabaseBranchStatus500 = Error;
 
 export type DiscardDatabaseBranchOptions = {
-    body?: never;
-    path: DiscardDatabaseBranchPath;
-    query?: never;
-    headers?: never;
+  body?: never;
+  path: DiscardDatabaseBranchPath;
+  query?: never;
+  headers?: never;
 };
 
 export type DiscardDatabaseBranchResponses = {
-    "204": DiscardDatabaseBranchStatus204;
-    "400": DiscardDatabaseBranchStatus400;
-    "401": DiscardDatabaseBranchStatus401;
-    "403": DiscardDatabaseBranchStatus403;
-    "404": DiscardDatabaseBranchStatus404;
-    "500": DiscardDatabaseBranchStatus500;
+  '204': DiscardDatabaseBranchStatus204;
+  '400': DiscardDatabaseBranchStatus400;
+  '401': DiscardDatabaseBranchStatus401;
+  '403': DiscardDatabaseBranchStatus403;
+  '404': DiscardDatabaseBranchStatus404;
+  '500': DiscardDatabaseBranchStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type DiscardDatabaseBranchResponse = DiscardDatabaseBranchStatus204;

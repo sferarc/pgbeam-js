@@ -8,118 +8,122 @@ import type { PolicyProfile } from './PolicyProfile'
 import type { PolicyProfileInput } from './PolicyProfileInput'
 
 export type UpdatePolicyProfilePath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Unique policy profile identifier (prefixed, e.g. pol_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    policy_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Unique policy profile identifier (prefixed, e.g. pol_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  policy_id: string;
 };
 
 export type UpdatePolicyProfileHeaders = {
-    /**
-     * @description Entity tag the write is based on, taken from the `ETag` of the read that produced the values being sent. The write proceeds only if it still matches the current representation; otherwise it is refused with `412 Precondition Failed` and nothing is changed.\n\nThis is what makes a read-modify-write safe. Without it the last writer wins and a concurrent edit is silently discarded, which is the failure an agent is most likely to cause and least likely to notice. The `412` response carries the current `ETag`, so a caller can re-read, re-apply its change and retry.\n\nOmitting the header keeps the old unconditional behaviour. `*` matches any current representation, which asserts only that the resource exists.
-     * @minLength 1
-     * @maxLength 1024
-     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
-     * @type string | undefined
-    */
-    "If-Match"?: string;
+  /**
+   * @description Entity tag the write is based on, taken from the `ETag` of the read that produced the values being sent. The write proceeds only if it still matches the current representation; otherwise it is refused with `412 Precondition Failed` and nothing is changed.
+   *
+   * This is what makes a read-modify-write safe. Without it the last writer wins and a concurrent edit is silently discarded, which is the failure an agent is most likely to cause and least likely to notice. The `412` response carries the current `ETag`, so a caller can re-read, re-apply its change and retry.
+   *
+   * Omitting the header keeps the old unconditional behaviour. `*` matches any current representation, which asserts only that the resource exists.
+   * @minLength 1
+   * @maxLength 1024
+   * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+   * @type string | undefined
+   */
+  'If-Match'?: string;
 };
 
 /**
  * @description A named bundle of rules enforced on agent credentials in the data plane.
  * @type object
-*/
+ */
 export type UpdatePolicyProfileStatus200 = PolicyProfile;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdatePolicyProfileStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdatePolicyProfileStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdatePolicyProfileStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdatePolicyProfileStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdatePolicyProfileStatus412 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdatePolicyProfileStatus413 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdatePolicyProfileStatus415 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdatePolicyProfileStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdatePolicyProfileStatus500 = Error;
 
 /**
  * @description Mutable fields of a policy profile (used for create and update).
  * @type object
-*/
+ */
 export type UpdatePolicyProfileBody = PolicyProfileInput;
 
 export type UpdatePolicyProfileOptions = {
-    body: UpdatePolicyProfileBody;
-    path: UpdatePolicyProfilePath;
-    query?: never;
-    headers?: UpdatePolicyProfileHeaders;
+  body: UpdatePolicyProfileBody;
+  path: UpdatePolicyProfilePath;
+  query?: never;
+  headers?: UpdatePolicyProfileHeaders;
 };
 
 export type UpdatePolicyProfileResponses = {
-    "200": UpdatePolicyProfileStatus200;
-    "400": UpdatePolicyProfileStatus400;
-    "401": UpdatePolicyProfileStatus401;
-    "403": UpdatePolicyProfileStatus403;
-    "404": UpdatePolicyProfileStatus404;
-    "412": UpdatePolicyProfileStatus412;
-    "413": UpdatePolicyProfileStatus413;
-    "415": UpdatePolicyProfileStatus415;
-    "429": UpdatePolicyProfileStatus429;
-    "500": UpdatePolicyProfileStatus500;
+  '200': UpdatePolicyProfileStatus200;
+  '400': UpdatePolicyProfileStatus400;
+  '401': UpdatePolicyProfileStatus401;
+  '403': UpdatePolicyProfileStatus403;
+  '404': UpdatePolicyProfileStatus404;
+  '412': UpdatePolicyProfileStatus412;
+  '413': UpdatePolicyProfileStatus413;
+  '415': UpdatePolicyProfileStatus415;
+  '429': UpdatePolicyProfileStatus429;
+  '500': UpdatePolicyProfileStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type UpdatePolicyProfileResponse = UpdatePolicyProfileStatus200;

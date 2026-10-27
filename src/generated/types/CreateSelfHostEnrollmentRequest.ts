@@ -6,29 +6,29 @@
 /**
  * @description Request body for issuing a self-host enrollment token.
  * @type object
-*/
+ */
 export type CreateSelfHostEnrollmentRequest = {
-    /**
-     * @description Operator-supplied label for where the proxy runs.
-     * @maxLength 100
-     * @pattern ^[^\x00]*$
-     * @example customer-vpc-us-east
-     * @type string | undefined
-    */
-    region_label?: string;
-    /**
-     * @description Optional human-readable note.
-     * @maxLength 500
-     * @pattern ^[^\x00]*$
-     * @example prod cluster
-     * @type string | undefined
-    */
-    description?: string;
-    /**
-     * @description Optional expiry. When set, the enrollment token stops authenticating new proxy connections at this time (must be in the future). Omit or set null for a token that never expires.
-     *
-     * Format: `date-time`
-     * @type string | undefined
-    */
-    expires_at?: string | null;
+  /**
+   * @description Operator-supplied label for where the proxy runs.
+   * @maxLength 100
+   * @pattern ^[^\x00]*$
+   * @example customer-vpc-us-east
+   * @type string | undefined
+   */
+  region_label?: string;
+  /**
+   * @description Optional human-readable note.
+   * @maxLength 500
+   * @pattern ^[^\x00]*$
+   * @example prod cluster
+   * @type string | undefined
+   */
+  description?: string;
+  /**
+   * @description Optional expiry. When set, the enrollment token stops authenticating new proxy connections at this time (must be in the future). Omit or set null for a token that never expires.
+   *
+   * Format: `date-time`
+   * @type string | undefined
+   */
+  expires_at?: string | null;
 };

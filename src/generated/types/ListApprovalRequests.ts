@@ -7,62 +7,64 @@ import type { Error } from './Error'
 import type { ListApprovalRequestsResponse } from './ListApprovalRequestsResponse'
 
 export type ListApprovalRequestsPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
 };
 
 export const listApprovalRequestsStatus = {
-    pending: "pending",
-    approved: "approved",
-    rejected: "rejected",
-    expired: "expired",
-    executed: "executed",
-    failed: "failed"
+  pending: 'pending',
+  approved: 'approved',
+  rejected: 'rejected',
+  expired: 'expired',
+  executed: 'executed',
+  failed: 'failed',
 } as const;
 
 export type ListApprovalRequestsStatusKey = (typeof listApprovalRequestsStatus)[keyof typeof listApprovalRequestsStatus];
 
 export type ListApprovalRequestsQuery = {
-    /**
-     * @description Filter to a single status.
-     * @type string | undefined
-    */
-    status?: ListApprovalRequestsStatusKey;
-    /**
-     * @description Maximum number of items to return (1-100, default 20).
-     * @minLength 1
-     * @maxLength 100
-     * @default 20
-     * @type integer | undefined
-    */
-    page_size?: number;
-    /**
-     * @description Opaque token for cursor-based pagination.
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string | undefined
-    */
-    page_token?: string;
+  /**
+   * @description Filter to a single status.
+   * @type string | undefined
+   */
+  status?: ListApprovalRequestsStatusKey;
+  /**
+   * @description Maximum number of items to return (1-100, default 20).
+   * @minLength 1
+   * @maxLength 100
+   * @default 20
+   * @type integer | undefined
+   */
+  page_size?: number;
+  /**
+   * @description Opaque token for cursor-based pagination.
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string | undefined
+   */
+  page_token?: string;
 };
 
 export type ListApprovalRequestsHeaders = {
-    /**
-     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
-     * @minLength 1
-     * @maxLength 1024
-     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
-     * @type string | undefined
-    */
-    "If-None-Match"?: string;
+  /**
+   * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.
+   *
+   * A comma-separated list is accepted, and `*` matches any current representation.
+   * @minLength 1
+   * @maxLength 1024
+   * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+   * @type string | undefined
+   */
+  'If-None-Match'?: string;
 };
 
 /**
  * @description Cursor-paginated list of approval requests for a project.
  * @type object
-*/
+ */
 export type ListApprovalRequestsStatus200 = ListApprovalRequestsResponse;
 
 export type ListApprovalRequestsStatus304 = unknown;
@@ -70,53 +72,53 @@ export type ListApprovalRequestsStatus304 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListApprovalRequestsStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListApprovalRequestsStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListApprovalRequestsStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListApprovalRequestsStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListApprovalRequestsStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListApprovalRequestsStatus500 = Error;
 
 export type ListApprovalRequestsOptions = {
-    body?: never;
-    path: ListApprovalRequestsPath;
-    query?: ListApprovalRequestsQuery;
-    headers?: ListApprovalRequestsHeaders;
+  body?: never;
+  path: ListApprovalRequestsPath;
+  query?: ListApprovalRequestsQuery;
+  headers?: ListApprovalRequestsHeaders;
 };
 
 export type ListApprovalRequestsResponses = {
-    "200": ListApprovalRequestsStatus200;
-    "304": ListApprovalRequestsStatus304;
-    "400": ListApprovalRequestsStatus400;
-    "401": ListApprovalRequestsStatus401;
-    "403": ListApprovalRequestsStatus403;
-    "404": ListApprovalRequestsStatus404;
-    "429": ListApprovalRequestsStatus429;
-    "500": ListApprovalRequestsStatus500;
+  '200': ListApprovalRequestsStatus200;
+  '304': ListApprovalRequestsStatus304;
+  '400': ListApprovalRequestsStatus400;
+  '401': ListApprovalRequestsStatus401;
+  '403': ListApprovalRequestsStatus403;
+  '404': ListApprovalRequestsStatus404;
+  '429': ListApprovalRequestsStatus429;
+  '500': ListApprovalRequestsStatus500;
 };

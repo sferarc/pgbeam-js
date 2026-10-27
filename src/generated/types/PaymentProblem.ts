@@ -4,38 +4,41 @@
 */
 
 /**
- * @description RFC 9457 Problem Details for a payment failure. MPP puts the reason in the\nbody and the challenge in the `WWW-Authenticate` header, so a 402 carries\nboth.\n
+ * @description RFC 9457 Problem Details for a payment failure. MPP puts the reason in the
+ * body and the challenge in the `WWW-Authenticate` header, so a 402 carries
+ * both.
+ *
  * @type object
-*/
+ */
 export type PaymentProblem = {
-    /**
-     * @description Problem type URI, from the MPP problem registry.
-     *
-     * Format: `uri`
-     * @example https://paymentauth.org/problems/payment-required
-     * @type string
-    */
-    type: string;
-    /**
-     * @description Short human-readable summary of the problem type.
-     * @example Payment Required
-     * @type string
-    */
-    title: string;
-    /**
-     * @description HTTP status code, repeated for clients that read only the body.
-     * @example 402
-     * @type integer
-    */
-    status: number;
-    /**
-     * @description Human-readable explanation of this particular occurrence.
-     * @type string | undefined
-    */
-    detail?: string;
-    /**
-     * @description Identifier of the challenge this problem refers to.
-     * @type string | undefined
-    */
-    challengeId?: string;
+  /**
+   * @description Problem type URI, from the MPP problem registry.
+   *
+   * Format: `uri`
+   * @example https://paymentauth.org/problems/payment-required
+   * @type string
+   */
+  type: string;
+  /**
+   * @description Short human-readable summary of the problem type.
+   * @example Payment Required
+   * @type string
+   */
+  title: string;
+  /**
+   * @description HTTP status code, repeated for clients that read only the body.
+   * @example 402
+   * @type integer
+   */
+  status: number;
+  /**
+   * @description Human-readable explanation of this particular occurrence.
+   * @type string | undefined
+   */
+  detail?: string;
+  /**
+   * @description Identifier of the challenge this problem refers to.
+   * @type string | undefined
+   */
+  challengeId?: string;
 };

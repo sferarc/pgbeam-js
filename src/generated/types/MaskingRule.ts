@@ -4,9 +4,9 @@
 */
 
 export const maskingRuleKindEnum = {
-    redact: "redact",
-    null: "null",
-    hash: "hash"
+  redact: 'redact',
+  null: 'null',
+  hash: 'hash',
 } as const;
 
 export type MaskingRuleKindEnumKey = (typeof maskingRuleKindEnum)[keyof typeof maskingRuleKindEnum];
@@ -14,23 +14,23 @@ export type MaskingRuleKindEnumKey = (typeof maskingRuleKindEnum)[keyof typeof m
 /**
  * @description A column masking rule applied to agent query results.
  * @type object
-*/
+ */
 export type MaskingRule = {
-    /**
-     * @description Relation name, optionally schema-qualified (e.g. \"public.users\" or \"users\").
-     * @example users
-     * @type string
-    */
-    table: string;
-    /**
-     * @description Column to mask.
-     * @example email
-     * @type string
-    */
-    column: string;
-    /**
-     * @description How to mask. redact replaces with a token, null returns NULL, hash returns a SHA-256 hex.
-     * @type string
-    */
-    kind: MaskingRuleKindEnumKey;
+  /**
+   * @description Relation name, optionally schema-qualified (e.g. "public.users" or "users").
+   * @example users
+   * @type string
+   */
+  table: string;
+  /**
+   * @description Column to mask.
+   * @example email
+   * @type string
+   */
+  column: string;
+  /**
+   * @description How to mask. redact replaces with a token, null returns NULL, hash returns a SHA-256 hex.
+   * @type string
+   */
+  kind: MaskingRuleKindEnumKey;
 };

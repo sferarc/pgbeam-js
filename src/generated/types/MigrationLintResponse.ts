@@ -8,16 +8,16 @@ import type { MigrationFinding } from './MigrationFinding'
 /**
  * @description Result of linting a migration script.
  * @type object
-*/
+ */
 export type MigrationLintResponse = {
-    /**
-     * @description True when no error-severity findings were detected.
-     * @type boolean
-    */
-    safe: boolean;
-    /**
-     * @description Findings detected across all statements.
-     * @type array
-    */
-    findings: MigrationFinding[];
+  /**
+   * @description True when no error-severity findings were detected.
+   * @type boolean
+   */
+  safe: boolean;
+  /**
+   * @description Findings detected across all statements.
+   * @type array
+   */
+  findings: MigrationFinding[];
 };

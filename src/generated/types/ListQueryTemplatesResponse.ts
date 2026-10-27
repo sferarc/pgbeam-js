@@ -8,16 +8,16 @@ import type { QueryTemplate } from './QueryTemplate'
 /**
  * @description Cursor-paginated query templates for a project.
  * @type object
-*/
+ */
 export type ListQueryTemplatesResponse = {
-    /**
-     * @description Query templates on the current page.
-     * @type array
-    */
-    query_templates: QueryTemplate[];
-    /**
-     * @description Opaque token for cursor-based pagination.
-     * @type string | undefined
-    */
-    next_page_token?: string;
+  /**
+   * @description Query templates on the current page.
+   * @type array
+   */
+  query_templates: QueryTemplate[];
+  /**
+   * @description Opaque token for cursor-based pagination.
+   * @type string | undefined
+   */
+  next_page_token?: string;
 };

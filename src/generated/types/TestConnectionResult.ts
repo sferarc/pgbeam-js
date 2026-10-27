@@ -6,26 +6,26 @@
 /**
  * @description Result of testing connectivity to an upstream database.
  * @type object
-*/
+ */
 export type TestConnectionResult = {
-    /**
-     * @description Whether the connection test succeeded.
-     * @type boolean
-    */
-    ok: boolean;
-    /**
-     * @description Round-trip connection time in milliseconds.
-     * @type number | undefined
-    */
-    latency_ms?: number | null;
-    /**
-     * @description Error message if the connection test failed.
-     * @type string | undefined
-    */
-    error?: string;
-    /**
-     * @description PostgreSQL server version string, if available.
-     * @type string | undefined
-    */
-    server_version?: string;
+  /**
+   * @description Whether the connection test succeeded.
+   * @type boolean
+   */
+  ok: boolean;
+  /**
+   * @description Round-trip connection time in milliseconds.
+   * @type number | undefined
+   */
+  latency_ms?: number | null;
+  /**
+   * @description Error message if the connection test failed.
+   * @type string | undefined
+   */
+  error?: string;
+  /**
+   * @description PostgreSQL server version string, if available.
+   * @type string | undefined
+   */
+  server_version?: string;
 };

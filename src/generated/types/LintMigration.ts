@@ -8,87 +8,87 @@ import type { MigrationLintRequest } from './MigrationLintRequest'
 import type { MigrationLintResponse } from './MigrationLintResponse'
 
 export type LintMigrationPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
 };
 
 /**
  * @description Result of linting a migration script.
  * @type object
-*/
+ */
 export type LintMigrationStatus200 = MigrationLintResponse;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type LintMigrationStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type LintMigrationStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type LintMigrationStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type LintMigrationStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type LintMigrationStatus413 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type LintMigrationStatus415 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type LintMigrationStatus500 = Error;
 
 /**
  * @description A migration script to lint for unsafe schema changes.
  * @type object
-*/
+ */
 export type LintMigrationBody = MigrationLintRequest;
 
 export type LintMigrationOptions = {
-    body: LintMigrationBody;
-    path: LintMigrationPath;
-    query?: never;
-    headers?: never;
+  body: LintMigrationBody;
+  path: LintMigrationPath;
+  query?: never;
+  headers?: never;
 };
 
 export type LintMigrationResponses = {
-    "200": LintMigrationStatus200;
-    "400": LintMigrationStatus400;
-    "401": LintMigrationStatus401;
-    "403": LintMigrationStatus403;
-    "404": LintMigrationStatus404;
-    "413": LintMigrationStatus413;
-    "415": LintMigrationStatus415;
-    "500": LintMigrationStatus500;
+  '200': LintMigrationStatus200;
+  '400': LintMigrationStatus400;
+  '401': LintMigrationStatus401;
+  '403': LintMigrationStatus403;
+  '404': LintMigrationStatus404;
+  '413': LintMigrationStatus413;
+  '415': LintMigrationStatus415;
+  '500': LintMigrationStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type LintMigrationResponse = LintMigrationStatus200;

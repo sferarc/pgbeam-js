@@ -6,10 +6,10 @@
 import type { WebhookEventTypeKey } from './WebhookEventType'
 
 export const webhookEndpointFormatEnum = {
-    json: "json",
-    splunk_hec: "splunk_hec",
-    datadog: "datadog",
-    elastic: "elastic"
+  json: 'json',
+  splunk_hec: 'splunk_hec',
+  datadog: 'datadog',
+  elastic: 'elastic',
 } as const;
 
 export type WebhookEndpointFormatEnumKey = (typeof webhookEndpointFormatEnum)[keyof typeof webhookEndpointFormatEnum];
@@ -17,64 +17,64 @@ export type WebhookEndpointFormatEnumKey = (typeof webhookEndpointFormatEnum)[ke
 /**
  * @description A delivery target for project audit/event notifications.
  * @type object
-*/
+ */
 export type WebhookEndpoint = {
-    /**
-     * @description Unique webhook endpoint identifier (prefixed).
-     * @example whk_01h455vb4pex5vsknk084sn02q
-     * @type string
-    */
-    id: string;
-    /**
-     * @description Owning project ID.
-     * @example prj_01j9x8y7z6w5v4u3t2s1r0q9p8
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description HTTPS endpoint that receives event deliveries.
-     * @example https://example.com/hooks/pgbeam
-     * @type string
-    */
-    url: string;
-    /**
-     * @description Payload format for delivered events.
-     * @example json
-     * @type string
-    */
-    format: WebhookEndpointFormatEnumKey;
-    /**
-     * @description Event types to deliver. Empty means all events.
-     * @example ["query_blocked","canary_tripped"]
-     * @type array | undefined
-    */
-    event_types?: WebhookEventTypeKey[];
-    /**
-     * @description Whether deliveries are active for this endpoint.
-     * @example true
-     * @type boolean
-    */
-    enabled: boolean;
-    /**
-     * @description Human-readable label for the endpoint.
-     * @example Read-only access for the reporting agent
-     * @type string | undefined
-    */
-    description?: string;
-    /**
-     * @description When the endpoint was created.
-     *
-     * Format: `date-time`
-     * @example 2026-01-15T09:30:00Z
-     * @type string
-    */
-    created_at: string;
-    /**
-     * @description When the endpoint was last updated.
-     *
-     * Format: `date-time`
-     * @example 2026-01-15T09:30:00Z
-     * @type string
-    */
-    updated_at: string;
+  /**
+   * @description Unique webhook endpoint identifier (prefixed).
+   * @example whk_01h455vb4pex5vsknk084sn02q
+   * @type string
+   */
+  id: string;
+  /**
+   * @description Owning project ID.
+   * @example prj_01j9x8y7z6w5v4u3t2s1r0q9p8
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description HTTPS endpoint that receives event deliveries.
+   * @example https://example.com/hooks/pgbeam
+   * @type string
+   */
+  url: string;
+  /**
+   * @description Payload format for delivered events.
+   * @example json
+   * @type string
+   */
+  format: WebhookEndpointFormatEnumKey;
+  /**
+   * @description Event types to deliver. Empty means all events.
+   * @example ["query_blocked","canary_tripped"]
+   * @type array | undefined
+   */
+  event_types?: WebhookEventTypeKey[];
+  /**
+   * @description Whether deliveries are active for this endpoint.
+   * @example true
+   * @type boolean
+   */
+  enabled: boolean;
+  /**
+   * @description Human-readable label for the endpoint.
+   * @example Read-only access for the reporting agent
+   * @type string | undefined
+   */
+  description?: string;
+  /**
+   * @description When the endpoint was created.
+   *
+   * Format: `date-time`
+   * @example 2026-01-15T09:30:00Z
+   * @type string
+   */
+  created_at: string;
+  /**
+   * @description When the endpoint was last updated.
+   *
+   * Format: `date-time`
+   * @example 2026-01-15T09:30:00Z
+   * @type string
+   */
+  updated_at: string;
 };

@@ -6,10 +6,10 @@
 import type { WebhookEventTypeKey } from './WebhookEventType'
 
 export const webhookEndpointInputFormatEnum = {
-    json: "json",
-    splunk_hec: "splunk_hec",
-    datadog: "datadog",
-    elastic: "elastic"
+  json: 'json',
+  splunk_hec: 'splunk_hec',
+  datadog: 'datadog',
+  elastic: 'elastic',
 } as const;
 
 export type WebhookEndpointInputFormatEnumKey = (typeof webhookEndpointInputFormatEnum)[keyof typeof webhookEndpointInputFormatEnum];
@@ -17,48 +17,48 @@ export type WebhookEndpointInputFormatEnumKey = (typeof webhookEndpointInputForm
 /**
  * @description Mutable fields of a webhook endpoint (used for create and update).
  * @type object
-*/
+ */
 export type WebhookEndpointInput = {
-    /**
-     * @description HTTPS endpoint that receives event deliveries.
-     * @minLength 1
-     * @maxLength 2048
-     * @example https://example.com/hooks/pgbeam
-     * @type string
-    */
-    url: string;
-    /**
-     * @description Shared secret used to sign delivery payloads. Write-only.
-     * @maxLength 256
-     * @example whsec_do-not-log-this
-     * @type string | undefined
-    */
-    secret?: string;
-    /**
-     * @description Payload format for delivered events.
-     * @default 'json'
-     * @example json
-     * @type string | undefined
-    */
-    format?: WebhookEndpointInputFormatEnumKey;
-    /**
-     * @description Event types to deliver. Empty means all events.
-     * @example ["query_blocked","canary_tripped"]
-     * @type array | undefined
-    */
-    event_types?: WebhookEventTypeKey[];
-    /**
-     * @description Whether deliveries are active for this endpoint.
-     * @default true
-     * @example true
-     * @type boolean | undefined
-    */
-    enabled?: boolean;
-    /**
-     * @description Human-readable label for the endpoint.
-     * @maxLength 256
-     * @example Read-only access for the reporting agent
-     * @type string | undefined
-    */
-    description?: string;
+  /**
+   * @description HTTPS endpoint that receives event deliveries.
+   * @minLength 1
+   * @maxLength 2048
+   * @example https://example.com/hooks/pgbeam
+   * @type string
+   */
+  url: string;
+  /**
+   * @description Shared secret used to sign delivery payloads. Write-only.
+   * @maxLength 256
+   * @example whsec_do-not-log-this
+   * @type string | undefined
+   */
+  secret?: string;
+  /**
+   * @description Payload format for delivered events.
+   * @default 'json'
+   * @example json
+   * @type string | undefined
+   */
+  format?: WebhookEndpointInputFormatEnumKey;
+  /**
+   * @description Event types to deliver. Empty means all events.
+   * @example ["query_blocked","canary_tripped"]
+   * @type array | undefined
+   */
+  event_types?: WebhookEventTypeKey[];
+  /**
+   * @description Whether deliveries are active for this endpoint.
+   * @default true
+   * @example true
+   * @type boolean | undefined
+   */
+  enabled?: boolean;
+  /**
+   * @description Human-readable label for the endpoint.
+   * @maxLength 256
+   * @example Read-only access for the reporting agent
+   * @type string | undefined
+   */
+  description?: string;
 };

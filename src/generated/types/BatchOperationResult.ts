@@ -6,9 +6,9 @@
 import type { BatchOperationError } from './BatchOperationError'
 
 export const batchOperationResultStatusEnum = {
-    succeeded: "succeeded",
-    failed: "failed",
-    not_applied: "not_applied"
+  succeeded: 'succeeded',
+  failed: 'failed',
+  not_applied: 'not_applied',
 } as const;
 
 export type BatchOperationResultStatusEnumKey = (typeof batchOperationResultStatusEnum)[keyof typeof batchOperationResultStatusEnum];
@@ -16,28 +16,30 @@ export type BatchOperationResultStatusEnumKey = (typeof batchOperationResultStat
 /**
  * @description The outcome of one operation in a batch.
  * @type object
-*/
+ */
 export type BatchOperationResult = {
-    /**
-     * @description The `id` the caller assigned to this operation.
-     * @example revoke-7
-     * @type string
-    */
-    id: string;
-    /**
-     * @description The operation kind that was requested, echoed back.
-     * @example revoke_agent_credential
-     * @type string
-    */
-    op: string;
-    /**
-     * @description Whether this operation applied. `not_applied` means the batch was atomic and rolled back, so this operation left no trace whether or not it had run by the time the batch failed.\n
-     * @type string
-    */
-    status: BatchOperationResultStatusEnumKey;
-    /**
-     * @description Why one operation in a batch failed. Present only on a failed result.\n
-     * @type object | undefined
-    */
-    error?: BatchOperationError;
+  /**
+   * @description The `id` the caller assigned to this operation.
+   * @example revoke-7
+   * @type string
+   */
+  id: string;
+  /**
+   * @description The operation kind that was requested, echoed back.
+   * @example revoke_agent_credential
+   * @type string
+   */
+  op: string;
+  /**
+   * @description Whether this operation applied. `not_applied` means the batch was atomic and rolled back, so this operation left no trace whether or not it had run by the time the batch failed.
+   *
+   * @type string
+   */
+  status: BatchOperationResultStatusEnumKey;
+  /**
+   * @description Why one operation in a batch failed. Present only on a failed result.
+   *
+   * @type object | undefined
+   */
+  error?: BatchOperationError;
 };

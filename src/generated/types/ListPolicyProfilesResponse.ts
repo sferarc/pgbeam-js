@@ -8,16 +8,16 @@ import type { PolicyProfile } from './PolicyProfile'
 /**
  * @description Cursor-paginated list of policy profiles for a project.
  * @type object
-*/
+ */
 export type ListPolicyProfilesResponse = {
-    /**
-     * @description Policy profiles on the current page.
-     * @type array
-    */
-    policies: PolicyProfile[];
-    /**
-     * @description Token for the next page. Empty if no more results.
-     * @type string | undefined
-    */
-    next_page_token?: string;
+  /**
+   * @description Policy profiles on the current page.
+   * @type array
+   */
+  policies: PolicyProfile[];
+  /**
+   * @description Token for the next page. Empty if no more results.
+   * @type string | undefined
+   */
+  next_page_token?: string;
 };

@@ -9,30 +9,30 @@ import type { ListPaymentResourcesResponse } from './ListPaymentResourcesRespons
 /**
  * @description Everything this deployment sells over the Machine Payments Protocol.
  * @type object
-*/
+ */
 export type ListPaymentResourcesStatus200 = ListPaymentResourcesResponse;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListPaymentResourcesStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListPaymentResourcesStatus503 = Error;
 
 export type ListPaymentResourcesOptions = {
-    body?: never;
-    path?: never;
-    query?: never;
-    headers?: never;
+  body?: never;
+  path?: never;
+  query?: never;
+  headers?: never;
 };
 
 export type ListPaymentResourcesResponses = {
-    "200": ListPaymentResourcesStatus200;
-    "429": ListPaymentResourcesStatus429;
-    "503": ListPaymentResourcesStatus503;
+  '200': ListPaymentResourcesStatus200;
+  '429': ListPaymentResourcesStatus429;
+  '503': ListPaymentResourcesStatus503;
 };

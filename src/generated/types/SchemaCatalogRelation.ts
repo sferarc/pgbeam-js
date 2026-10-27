@@ -6,10 +6,10 @@
 import type { SchemaCatalogColumn } from './SchemaCatalogColumn'
 
 export const schemaCatalogRelationKindEnum = {
-    table: "table",
-    view: "view",
-    materialized_view: "materialized_view",
-    other: "other"
+  table: 'table',
+  view: 'view',
+  materialized_view: 'materialized_view',
+  other: 'other',
 } as const;
 
 export type SchemaCatalogRelationKindEnumKey = (typeof schemaCatalogRelationKindEnum)[keyof typeof schemaCatalogRelationKindEnum];
@@ -17,28 +17,28 @@ export type SchemaCatalogRelationKindEnumKey = (typeof schemaCatalogRelationKind
 /**
  * @description One relation (base table or view) in the schema catalog.
  * @type object
-*/
+ */
 export type SchemaCatalogRelation = {
-    /**
-     * @description Schema the relation belongs to.
-     * @example public
-     * @type string
-    */
-    schema: string;
-    /**
-     * @description Relation name.
-     * @example users
-     * @type string
-    */
-    name: string;
-    /**
-     * @description Relation kind. Allowlists, masking, and row-filters are enforced against the named relation itself, NOT through a view to its base tables, so a view over a row-filtered base table can leak. The editor warns when a policy entry targets a view.
-     * @type string
-    */
-    kind: SchemaCatalogRelationKindEnumKey;
-    /**
-     * @description The relation\'s columns.
-     * @type array
-    */
-    columns: SchemaCatalogColumn[];
+  /**
+   * @description Schema the relation belongs to.
+   * @example public
+   * @type string
+   */
+  schema: string;
+  /**
+   * @description Relation name.
+   * @example users
+   * @type string
+   */
+  name: string;
+  /**
+   * @description Relation kind. Allowlists, masking, and row-filters are enforced against the named relation itself, NOT through a view to its base tables, so a view over a row-filtered base table can leak. The editor warns when a policy entry targets a view.
+   * @type string
+   */
+  kind: SchemaCatalogRelationKindEnumKey;
+  /**
+   * @description The relation's columns.
+   * @type array
+   */
+  columns: SchemaCatalogColumn[];
 };

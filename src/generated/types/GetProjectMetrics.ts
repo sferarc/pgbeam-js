@@ -7,46 +7,48 @@ import type { Error } from './Error'
 import type { ProjectMetricsResponse } from './ProjectMetricsResponse'
 
 export type GetProjectMetricsPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
 };
 
 export type GetProjectMetricsQuery = {
-    /**
-     * @description Maximum number of recent snapshots to return.
-     * @minLength 1
-     * @maxLength 1000
-     * @default 60
-     * @type integer | undefined
-    */
-    limit?: number;
-    /**
-     * @description Filter metrics by region code.
-     * @example us-east-1
-     * @type string | undefined
-    */
-    region?: string;
+  /**
+   * @description Maximum number of recent snapshots to return.
+   * @minLength 1
+   * @maxLength 1000
+   * @default 60
+   * @type integer | undefined
+   */
+  limit?: number;
+  /**
+   * @description Filter metrics by region code.
+   * @example us-east-1
+   * @type string | undefined
+   */
+  region?: string;
 };
 
 export type GetProjectMetricsHeaders = {
-    /**
-     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
-     * @minLength 1
-     * @maxLength 1024
-     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
-     * @type string | undefined
-    */
-    "If-None-Match"?: string;
+  /**
+   * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.
+   *
+   * A comma-separated list is accepted, and `*` matches any current representation.
+   * @minLength 1
+   * @maxLength 1024
+   * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+   * @type string | undefined
+   */
+  'If-None-Match'?: string;
 };
 
 /**
  * @description Response envelope for recent project metrics snapshots.
  * @type object
-*/
+ */
 export type GetProjectMetricsStatus200 = ProjectMetricsResponse;
 
 export type GetProjectMetricsStatus304 = unknown;
@@ -54,51 +56,51 @@ export type GetProjectMetricsStatus304 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetProjectMetricsStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetProjectMetricsStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetProjectMetricsStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetProjectMetricsStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetProjectMetricsStatus500 = Error;
 
 export type GetProjectMetricsOptions = {
-    body?: never;
-    path: GetProjectMetricsPath;
-    query?: GetProjectMetricsQuery;
-    headers?: GetProjectMetricsHeaders;
+  body?: never;
+  path: GetProjectMetricsPath;
+  query?: GetProjectMetricsQuery;
+  headers?: GetProjectMetricsHeaders;
 };
 
 export type GetProjectMetricsResponses = {
-    "200": GetProjectMetricsStatus200;
-    "304": GetProjectMetricsStatus304;
-    "400": GetProjectMetricsStatus400;
-    "401": GetProjectMetricsStatus401;
-    "404": GetProjectMetricsStatus404;
-    "429": GetProjectMetricsStatus429;
-    "500": GetProjectMetricsStatus500;
+  '200': GetProjectMetricsStatus200;
+  '304': GetProjectMetricsStatus304;
+  '400': GetProjectMetricsStatus400;
+  '401': GetProjectMetricsStatus401;
+  '404': GetProjectMetricsStatus404;
+  '429': GetProjectMetricsStatus429;
+  '500': GetProjectMetricsStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type GetProjectMetricsResponse = GetProjectMetricsStatus200;

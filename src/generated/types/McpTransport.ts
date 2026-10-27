@@ -10,62 +10,62 @@ import type { McpResponse } from './McpResponse'
 /**
  * @description JSON-RPC 2.0 response envelope for MCP over Streamable HTTP.
  * @type object
-*/
+ */
 export type McpTransportStatus200 = McpResponse;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type McpTransportStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type McpTransportStatus413 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type McpTransportStatus415 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type McpTransportStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type McpTransportStatus500 = Error;
 
 /**
  * @description JSON-RPC 2.0 request envelope for MCP over Streamable HTTP.
  * @type object
-*/
+ */
 export type McpTransportBody = McpRequest;
 
 export type McpTransportOptions = {
-    body: McpTransportBody;
-    path?: never;
-    query?: never;
-    headers?: never;
+  body: McpTransportBody;
+  path?: never;
+  query?: never;
+  headers?: never;
 };
 
 export type McpTransportResponses = {
-    "200": McpTransportStatus200;
-    "401": McpTransportStatus401;
-    "413": McpTransportStatus413;
-    "415": McpTransportStatus415;
-    "429": McpTransportStatus429;
-    "500": McpTransportStatus500;
+  '200': McpTransportStatus200;
+  '401': McpTransportStatus401;
+  '413': McpTransportStatus413;
+  '415': McpTransportStatus415;
+  '429': McpTransportStatus429;
+  '500': McpTransportStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type McpTransportResponse = McpTransportStatus200;

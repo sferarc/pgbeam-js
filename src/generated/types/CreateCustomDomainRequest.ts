@@ -6,15 +6,15 @@
 /**
  * @description Request body for attaching a custom domain to a project.
  * @type object
-*/
+ */
 export type CreateCustomDomainRequest = {
-    /**
-     * @description The custom domain name to add (e.g., db.example.com).
-     * @minLength 1
-     * @maxLength 253
-     * @pattern ^[a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?)*$
-     * @example db.example.com
-     * @type string
-    */
-    domain: string;
+  /**
+   * @description The custom domain name to add (e.g., db.example.com).
+   * @minLength 1
+   * @maxLength 253
+   * @pattern ^[a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?)*$
+   * @example db.example.com
+   * @type string
+   */
+  domain: string;
 };

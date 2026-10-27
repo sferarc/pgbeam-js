@@ -8,49 +8,49 @@ import type { SupportMessageSourceKey } from './SupportMessageSource'
 /**
  * @description A message within a support case thread.
  * @type object
-*/
+ */
 export type SupportMessage = {
-    /**
-     * @description Unique message identifier (prefixed).
-     * @example sm_01h455vb4pex5vsknk084sn02q
-     * @type string
-    */
-    id: string;
-    /**
-     * @description Parent support case ID.
-     * @type string
-    */
-    case_id: string;
-    /**
-     * @description Origin of the message.
-     * @type string
-    */
-    source: SupportMessageSourceKey;
-    /**
-     * @description Display name of the message author.
-     * @type string
-    */
-    author_name: string;
-    /**
-     * @description URL to the author\'s avatar.
-     * @type string | undefined
-    */
-    author_image?: string | null;
-    /**
-     * @description Message content.
-     * @type string
-    */
-    body: string;
-    /**
-     * @description Slack user ID (for Slack-sourced messages).
-     * @type string | undefined
-    */
-    slack_user_id?: string | null;
-    /**
-     * @description When the message was created.
-     *
-     * Format: `date-time`
-     * @type string
-    */
-    created_at: string;
+  /**
+   * @description Unique message identifier (prefixed).
+   * @example sm_01h455vb4pex5vsknk084sn02q
+   * @type string
+   */
+  id: string;
+  /**
+   * @description Parent support case ID.
+   * @type string
+   */
+  case_id: string;
+  /**
+   * @description Origin of the message.
+   * @type string
+   */
+  source: SupportMessageSourceKey;
+  /**
+   * @description Display name of the message author.
+   * @type string
+   */
+  author_name: string;
+  /**
+   * @description URL to the author's avatar.
+   * @type string | undefined
+   */
+  author_image?: string | null;
+  /**
+   * @description Message content.
+   * @type string
+   */
+  body: string;
+  /**
+   * @description Slack user ID (for Slack-sourced messages).
+   * @type string | undefined
+   */
+  slack_user_id?: string | null;
+  /**
+   * @description When the message was created.
+   *
+   * Format: `date-time`
+   * @type string
+   */
+  created_at: string;
 };

@@ -6,18 +6,18 @@
 import type { Error } from './Error'
 
 export type DeleteApprovalRulePath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Unique approval rule identifier (prefixed, e.g. apl_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    approval_rule_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Unique approval rule identifier (prefixed, e.g. apl_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  approval_rule_id: string;
 };
 
 export type DeleteApprovalRuleStatus204 = unknown;
@@ -25,50 +25,50 @@ export type DeleteApprovalRuleStatus204 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteApprovalRuleStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteApprovalRuleStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteApprovalRuleStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteApprovalRuleStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteApprovalRuleStatus500 = Error;
 
 export type DeleteApprovalRuleOptions = {
-    body?: never;
-    path: DeleteApprovalRulePath;
-    query?: never;
-    headers?: never;
+  body?: never;
+  path: DeleteApprovalRulePath;
+  query?: never;
+  headers?: never;
 };
 
 export type DeleteApprovalRuleResponses = {
-    "204": DeleteApprovalRuleStatus204;
-    "400": DeleteApprovalRuleStatus400;
-    "401": DeleteApprovalRuleStatus401;
-    "403": DeleteApprovalRuleStatus403;
-    "404": DeleteApprovalRuleStatus404;
-    "500": DeleteApprovalRuleStatus500;
+  '204': DeleteApprovalRuleStatus204;
+  '400': DeleteApprovalRuleStatus400;
+  '401': DeleteApprovalRuleStatus401;
+  '403': DeleteApprovalRuleStatus403;
+  '404': DeleteApprovalRuleStatus404;
+  '500': DeleteApprovalRuleStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type DeleteApprovalRuleResponse = DeleteApprovalRuleStatus204;

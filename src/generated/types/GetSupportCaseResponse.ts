@@ -9,16 +9,16 @@ import type { SupportMessage } from './SupportMessage'
 /**
  * @description Support case with its message thread.
  * @type object
-*/
+ */
 export type GetSupportCaseResponse = {
-    /**
-     * @description A support case filed by an organization member.
-     * @type object
-    */
-    case: SupportCase;
-    /**
-     * @description Messages in the support case thread.
-     * @type array
-    */
-    messages: SupportMessage[];
+  /**
+   * @description A support case filed by an organization member.
+   * @type object
+   */
+  case: SupportCase;
+  /**
+   * @description Messages in the support case thread.
+   * @type array
+   */
+  messages: SupportMessage[];
 };

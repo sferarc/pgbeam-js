@@ -7,35 +7,38 @@ import type { Error } from './Error'
 import type { Honeytoken } from './Honeytoken'
 
 export type GetHoneytokenPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Unique honeytoken identifier (prefixed, e.g. hnt_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    honeytoken_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Unique honeytoken identifier (prefixed, e.g. hnt_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  honeytoken_id: string;
 };
 
 export type GetHoneytokenHeaders = {
-    /**
-     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
-     * @minLength 1
-     * @maxLength 1024
-     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
-     * @type string | undefined
-    */
-    "If-None-Match"?: string;
+  /**
+   * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.
+   *
+   * A comma-separated list is accepted, and `*` matches any current representation.
+   * @minLength 1
+   * @maxLength 1024
+   * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+   * @type string | undefined
+   */
+  'If-None-Match'?: string;
 };
 
 /**
- * @description A decoy (canary) relation. Any agent statement that references it is blocked (fail closed) and recorded as a canary_tripped audit event.\n
+ * @description A decoy (canary) relation. Any agent statement that references it is blocked (fail closed) and recorded as a canary_tripped audit event.
+ *
  * @type object
-*/
+ */
 export type GetHoneytokenStatus200 = Honeytoken;
 
 export type GetHoneytokenStatus304 = unknown;
@@ -43,51 +46,51 @@ export type GetHoneytokenStatus304 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetHoneytokenStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetHoneytokenStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetHoneytokenStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetHoneytokenStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetHoneytokenStatus500 = Error;
 
 export type GetHoneytokenOptions = {
-    body?: never;
-    path: GetHoneytokenPath;
-    query?: never;
-    headers?: GetHoneytokenHeaders;
+  body?: never;
+  path: GetHoneytokenPath;
+  query?: never;
+  headers?: GetHoneytokenHeaders;
 };
 
 export type GetHoneytokenResponses = {
-    "200": GetHoneytokenStatus200;
-    "304": GetHoneytokenStatus304;
-    "400": GetHoneytokenStatus400;
-    "401": GetHoneytokenStatus401;
-    "403": GetHoneytokenStatus403;
-    "404": GetHoneytokenStatus404;
-    "500": GetHoneytokenStatus500;
+  '200': GetHoneytokenStatus200;
+  '304': GetHoneytokenStatus304;
+  '400': GetHoneytokenStatus400;
+  '401': GetHoneytokenStatus401;
+  '403': GetHoneytokenStatus403;
+  '404': GetHoneytokenStatus404;
+  '500': GetHoneytokenStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type GetHoneytokenResponse = GetHoneytokenStatus200;

@@ -8,94 +8,94 @@ import type { PolicyReplayInput } from './PolicyReplayInput'
 import type { PolicyReplayResult } from './PolicyReplayResult'
 
 export type ReplayPolicyPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
 };
 
 /**
  * @description The outcome of replaying recorded agent traffic against a candidate policy: an aggregate summary plus per-query decisions, changes first.
  * @type object
-*/
+ */
 export type ReplayPolicyStatus200 = PolicyReplayResult;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ReplayPolicyStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ReplayPolicyStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ReplayPolicyStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ReplayPolicyStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ReplayPolicyStatus413 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ReplayPolicyStatus415 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ReplayPolicyStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ReplayPolicyStatus500 = Error;
 
 /**
  * @description A window of recorded agent traffic to replay plus the candidate policy to replay it against. Supply exactly one of policy_id (an existing saved policy) or policy (an unsaved draft, e.g. the in-progress editor form).
  * @type object
-*/
+ */
 export type ReplayPolicyBody = PolicyReplayInput;
 
 export type ReplayPolicyOptions = {
-    body: ReplayPolicyBody;
-    path: ReplayPolicyPath;
-    query?: never;
-    headers?: never;
+  body: ReplayPolicyBody;
+  path: ReplayPolicyPath;
+  query?: never;
+  headers?: never;
 };
 
 export type ReplayPolicyResponses = {
-    "200": ReplayPolicyStatus200;
-    "400": ReplayPolicyStatus400;
-    "401": ReplayPolicyStatus401;
-    "403": ReplayPolicyStatus403;
-    "404": ReplayPolicyStatus404;
-    "413": ReplayPolicyStatus413;
-    "415": ReplayPolicyStatus415;
-    "429": ReplayPolicyStatus429;
-    "500": ReplayPolicyStatus500;
+  '200': ReplayPolicyStatus200;
+  '400': ReplayPolicyStatus400;
+  '401': ReplayPolicyStatus401;
+  '403': ReplayPolicyStatus403;
+  '404': ReplayPolicyStatus404;
+  '413': ReplayPolicyStatus413;
+  '415': ReplayPolicyStatus415;
+  '429': ReplayPolicyStatus429;
+  '500': ReplayPolicyStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type ReplayPolicyResponse = ReplayPolicyStatus200;

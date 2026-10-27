@@ -8,18 +8,18 @@ import type { AssignableOrgRoleKey } from './AssignableOrgRole'
 /**
  * @description Invites someone to join the organization. Omitting `role` invites them as a `member`.
  * @type object
-*/
+ */
 export type CreateOrgInvitationRequest = {
-    /**
-     * @description Address to invite.
-     * @example engineer@example.com
-     * @type string
-    */
-    email: string;
-    /**
-     * @description A role that can be assigned through the member API. This is `OrgRole` without `owner`: ownership is transferred through a separate flow, so requesting it here is rejected with a 400.
-     * @example admin
-     * @type string | undefined
-    */
-    role?: AssignableOrgRoleKey;
+  /**
+   * @description Address to invite.
+   * @example engineer@example.com
+   * @type string
+   */
+  email: string;
+  /**
+   * @description A role that can be assigned through the member API. This is `OrgRole` without `owner`: ownership is transferred through a separate flow, so requesting it here is rejected with a 400.
+   * @example admin
+   * @type string | undefined
+   */
+  role?: AssignableOrgRoleKey;
 };

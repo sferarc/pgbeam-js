@@ -8,16 +8,16 @@ import type { Replica } from './Replica'
 /**
  * @description Response envelope for listing registered replicas.
  * @type object
-*/
+ */
 export type ListReplicasResponse = {
-    /**
-     * @description Read replicas attached to the database.
-     * @type array
-    */
-    replicas: Replica[];
-    /**
-     * @description Opaque token for cursor-based pagination.
-     * @type string | undefined
-    */
-    next_page_token?: string;
+  /**
+   * @description Read replicas attached to the database.
+   * @type array
+   */
+  replicas: Replica[];
+  /**
+   * @description Opaque token for cursor-based pagination.
+   * @type string | undefined
+   */
+  next_page_token?: string;
 };

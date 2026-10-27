@@ -8,52 +8,52 @@ import type { SSLModeKey } from './SSLMode'
 /**
  * @description Read replica registered for a primary database.
  * @type object
-*/
+ */
 export type Replica = {
-    /**
-     * @description Unique replica identifier (prefixed).
-     * @example rep_01h455vb4pex5vsknk084sn02q
-     * @type string
-    */
-    id: string;
-    /**
-     * @description Parent database ID.
-     * @example db_01h455vb4pex5vsknk084sn02q
-     * @type string
-    */
-    database_id: string;
-    /**
-     * @description PostgreSQL replica host.
-     * @example replica.db.example.com
-     * @type string
-    */
-    host: string;
-    /**
-     * @description PostgreSQL replica port.
-     * @minLength 1
-     * @maxLength 65535
-     * @example 5432
-     * @type integer
-    */
-    port: number;
-    /**
-     * @description PostgreSQL SSL connection mode.
-     * @example require
-     * @type string
-    */
-    ssl_mode: SSLModeKey;
-    /**
-     * @description When the replica was created.
-     *
-     * Format: `date-time`
-     * @type string
-    */
-    created_at: string;
-    /**
-     * @description When the replica was last updated.
-     *
-     * Format: `date-time`
-     * @type string
-    */
-    updated_at: string;
+  /**
+   * @description Unique replica identifier (prefixed).
+   * @example rep_01h455vb4pex5vsknk084sn02q
+   * @type string
+   */
+  id: string;
+  /**
+   * @description Parent database ID.
+   * @example db_01h455vb4pex5vsknk084sn02q
+   * @type string
+   */
+  database_id: string;
+  /**
+   * @description PostgreSQL replica host.
+   * @example replica.db.example.com
+   * @type string
+   */
+  host: string;
+  /**
+   * @description PostgreSQL replica port.
+   * @minLength 1
+   * @maxLength 65535
+   * @example 5432
+   * @type integer
+   */
+  port: number;
+  /**
+   * @description PostgreSQL SSL connection mode.
+   * @example require
+   * @type string
+   */
+  ssl_mode: SSLModeKey;
+  /**
+   * @description When the replica was created.
+   *
+   * Format: `date-time`
+   * @type string
+   */
+  created_at: string;
+  /**
+   * @description When the replica was last updated.
+   *
+   * Format: `date-time`
+   * @type string
+   */
+  updated_at: string;
 };

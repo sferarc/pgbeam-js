@@ -8,11 +8,11 @@ import type { CacheRuleEntry } from './CacheRuleEntry'
 /**
  * @description Response returned after updating a cache rule.
  * @type object
-*/
+ */
 export type UpdateCacheRuleResponse = {
-    /**
-     * @description Observed query shape and its cache recommendation for a database.
-     * @type object
-    */
-    entry: CacheRuleEntry;
+  /**
+   * @description Observed query shape and its cache recommendation for a database.
+   * @type object
+   */
+  entry: CacheRuleEntry;
 };

@@ -8,51 +8,51 @@ import type { PolicyProfileInput } from './PolicyProfileInput'
 /**
  * @description A window of recorded agent traffic to replay plus the candidate policy to replay it against. Supply exactly one of policy_id (an existing saved policy) or policy (an unsaved draft, e.g. the in-progress editor form).
  * @type object
-*/
+ */
 export type PolicyReplayInput = {
-    /**
-     * @description ID of an existing saved policy profile to replay against.
-     * @example pol_01h455vb4pex5vsknk084sn02q
-     * @type string | undefined
-    */
-    policy_id?: string;
-    /**
-     * @description Mutable fields of a policy profile (used for create and update).
-     * @type object | undefined
-    */
-    policy?: PolicyProfileInput;
-    /**
-     * @description Restrict the replay to traffic recorded for one agent credential.
-     * @example cred_01h455vb4pex5vsknk084sn02q
-     * @type string | undefined
-    */
-    credential_id?: string;
-    /**
-     * @description Restrict the replay to traffic recorded for the agent credentials currently bound to this policy profile. Use it to preview a change to a live policy against the traffic that policy actually governs: without it the replay covers every credential in the project, including credentials bound to other profiles, whose behaviour saving this candidate cannot change. Mutually exclusive with credential_id.
-     * @example pol_01h455vb4pex5vsknk084sn02q
-     * @type string | undefined
-    */
-    bound_policy_id?: string;
-    /**
-     * @description Start of the traffic window (inclusive). Defaults to 7 days before end_ts.
-     *
-     * Format: `date-time`
-     * @type string | undefined
-    */
-    start_ts?: string;
-    /**
-     * @description End of the traffic window (exclusive). Defaults to now.
-     *
-     * Format: `date-time`
-     * @type string | undefined
-    */
-    end_ts?: string;
-    /**
-     * @description Maximum number of distinct queries to replay, newest first. Traffic is deduplicated by normalized query hash before evaluation.
-     * @minLength 1
-     * @maxLength 500
-     * @default 200
-     * @type integer | undefined
-    */
-    limit?: number;
+  /**
+   * @description ID of an existing saved policy profile to replay against.
+   * @example pol_01h455vb4pex5vsknk084sn02q
+   * @type string | undefined
+   */
+  policy_id?: string;
+  /**
+   * @description Mutable fields of a policy profile (used for create and update).
+   * @type object | undefined
+   */
+  policy?: PolicyProfileInput;
+  /**
+   * @description Restrict the replay to traffic recorded for one agent credential.
+   * @example cred_01h455vb4pex5vsknk084sn02q
+   * @type string | undefined
+   */
+  credential_id?: string;
+  /**
+   * @description Restrict the replay to traffic recorded for the agent credentials currently bound to this policy profile. Use it to preview a change to a live policy against the traffic that policy actually governs: without it the replay covers every credential in the project, including credentials bound to other profiles, whose behaviour saving this candidate cannot change. Mutually exclusive with credential_id.
+   * @example pol_01h455vb4pex5vsknk084sn02q
+   * @type string | undefined
+   */
+  bound_policy_id?: string;
+  /**
+   * @description Start of the traffic window (inclusive). Defaults to 7 days before end_ts.
+   *
+   * Format: `date-time`
+   * @type string | undefined
+   */
+  start_ts?: string;
+  /**
+   * @description End of the traffic window (exclusive). Defaults to now.
+   *
+   * Format: `date-time`
+   * @type string | undefined
+   */
+  end_ts?: string;
+  /**
+   * @description Maximum number of distinct queries to replay, newest first. Traffic is deduplicated by normalized query hash before evaluation.
+   * @minLength 1
+   * @maxLength 500
+   * @default 200
+   * @type integer | undefined
+   */
+  limit?: number;
 };

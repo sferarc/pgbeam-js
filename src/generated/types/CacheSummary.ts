@@ -6,27 +6,27 @@
 /**
  * @description Aggregate cache performance metrics for the selected time range.
  * @type object
-*/
+ */
 export type CacheSummary = {
-    /**
-     * @description Total number of cache hits in the selected time range.
-     *
-     * Format: `int64`
-     * @type integer
-    */
-    total_hits: number;
-    /**
-     * @description Total number of cache misses in the selected time range.
-     *
-     * Format: `int64`
-     * @type integer
-    */
-    total_misses: number;
-    /**
-     * @description Cache hit rate as a fraction (0.0 to 1.0).
-     *
-     * Format: `double`
-     * @type number
-    */
-    hit_rate: number;
+  /**
+   * @description Total number of cache hits in the selected time range.
+   *
+   * Format: `int64`
+   * @type integer
+   */
+  total_hits: number;
+  /**
+   * @description Total number of cache misses in the selected time range.
+   *
+   * Format: `int64`
+   * @type integer
+   */
+  total_misses: number;
+  /**
+   * @description Cache hit rate as a fraction (0.0 to 1.0).
+   *
+   * Format: `double`
+   * @type number
+   */
+  hit_rate: number;
 };

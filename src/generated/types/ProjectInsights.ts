@@ -10,21 +10,21 @@ import type { QueryInsight } from './QueryInsight'
 /**
  * @description Query insights, cache performance, and latency for a project.
  * @type object
-*/
+ */
 export type ProjectInsights = {
-    /**
-     * @description Top query shapes observed for the project.
-     * @type array
-    */
-    queries: QueryInsight[];
-    /**
-     * @description Aggregate cache performance metrics for the selected time range.
-     * @type object
-    */
-    cache: CacheSummary;
-    /**
-     * @description Aggregate latency metrics for the selected time range.
-     * @type object
-    */
-    latency: LatencySummary;
+  /**
+   * @description Top query shapes observed for the project.
+   * @type array
+   */
+  queries: QueryInsight[];
+  /**
+   * @description Aggregate cache performance metrics for the selected time range.
+   * @type object
+   */
+  cache: CacheSummary;
+  /**
+   * @description Aggregate latency metrics for the selected time range.
+   * @type object
+   */
+  latency: LatencySummary;
 };

@@ -4,8 +4,8 @@
 */
 
 export const honeytokenInputActionEnum = {
-    audit_only: "audit_only",
-    kill: "kill"
+  audit_only: 'audit_only',
+  kill: 'kill',
 } as const;
 
 export type HoneytokenInputActionEnumKey = (typeof honeytokenInputActionEnum)[keyof typeof honeytokenInputActionEnum];
@@ -13,26 +13,26 @@ export type HoneytokenInputActionEnumKey = (typeof honeytokenInputActionEnum)[ke
 /**
  * @description Request body for creating or updating a honeytoken.
  * @type object
-*/
+ */
 export type HoneytokenInput = {
-    /**
-     * @description Optional schema. Null or empty matches the unqualified/public form.
-     * @maxLength 255
-     * @example public
-     * @type string | undefined
-    */
-    schema_name?: string | null;
-    /**
-     * @description Relation (table or view) name of the decoy.
-     * @minLength 1
-     * @maxLength 255
-     * @example customer_ssns
-     * @type string
-    */
-    relation_name: string;
-    /**
-     * @description Response when the honeytoken is tripped.
-     * @type string
-    */
-    action: HoneytokenInputActionEnumKey;
+  /**
+   * @description Optional schema. Null or empty matches the unqualified/public form.
+   * @maxLength 255
+   * @example public
+   * @type string | undefined
+   */
+  schema_name?: string | null;
+  /**
+   * @description Relation (table or view) name of the decoy.
+   * @minLength 1
+   * @maxLength 255
+   * @example customer_ssns
+   * @type string
+   */
+  relation_name: string;
+  /**
+   * @description Response when the honeytoken is tripped.
+   * @type string
+   */
+  action: HoneytokenInputActionEnumKey;
 };

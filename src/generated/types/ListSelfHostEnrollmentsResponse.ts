@@ -8,16 +8,16 @@ import type { SelfHostEnrollment } from './SelfHostEnrollment'
 /**
  * @description List of self-host enrollments for an organization.
  * @type object
-*/
+ */
 export type ListSelfHostEnrollmentsResponse = {
-    /**
-     * @description The organization\'s self-host enrollments, newest first.
-     * @type array
-    */
-    enrollments: SelfHostEnrollment[];
-    /**
-     * @description Opaque token for cursor-based pagination.
-     * @type string | undefined
-    */
-    next_page_token?: string;
+  /**
+   * @description The organization's self-host enrollments, newest first.
+   * @type array
+   */
+  enrollments: SelfHostEnrollment[];
+  /**
+   * @description Opaque token for cursor-based pagination.
+   * @type string | undefined
+   */
+  next_page_token?: string;
 };

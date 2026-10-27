@@ -8,16 +8,16 @@ import type { DatabaseBranch } from './DatabaseBranch'
 /**
  * @description Cursor-paginated list of sandbox branches for a project.
  * @type object
-*/
+ */
 export type ListDatabaseBranchesResponse = {
-    /**
-     * @description Sandbox branches on the current page.
-     * @type array
-    */
-    branches: DatabaseBranch[];
-    /**
-     * @description Token for the next page. Empty if no more results.
-     * @type string | undefined
-    */
-    next_page_token?: string;
+  /**
+   * @description Sandbox branches on the current page.
+   * @type array
+   */
+  branches: DatabaseBranch[];
+  /**
+   * @description Token for the next page. Empty if no more results.
+   * @type string | undefined
+   */
+  next_page_token?: string;
 };

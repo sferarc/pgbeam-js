@@ -7,30 +7,32 @@ import type { Error } from './Error'
 import type { OnboardingProgress } from './OnboardingProgress'
 
 export type GetOnboardingProgressPath = {
-    /**
-     * @description Unique organization identifier.
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @example org_abc123
-     * @type string
-    */
-    org_id: string;
+  /**
+   * @description Unique organization identifier.
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @example org_abc123
+   * @type string
+   */
+  org_id: string;
 };
 
 export type GetOnboardingProgressHeaders = {
-    /**
-     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
-     * @minLength 1
-     * @maxLength 1024
-     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
-     * @type string | undefined
-    */
-    "If-None-Match"?: string;
+  /**
+   * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.
+   *
+   * A comma-separated list is accepted, and `*` matches any current representation.
+   * @minLength 1
+   * @maxLength 1024
+   * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+   * @type string | undefined
+   */
+  'If-None-Match'?: string;
 };
 
 /**
  * @description Progress state for the dashboard onboarding checklist.
  * @type object
-*/
+ */
 export type GetOnboardingProgressStatus200 = OnboardingProgress;
 
 export type GetOnboardingProgressStatus304 = unknown;
@@ -38,58 +40,58 @@ export type GetOnboardingProgressStatus304 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetOnboardingProgressStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetOnboardingProgressStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetOnboardingProgressStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetOnboardingProgressStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetOnboardingProgressStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetOnboardingProgressStatus500 = Error;
 
 export type GetOnboardingProgressOptions = {
-    body?: never;
-    path: GetOnboardingProgressPath;
-    query?: never;
-    headers?: GetOnboardingProgressHeaders;
+  body?: never;
+  path: GetOnboardingProgressPath;
+  query?: never;
+  headers?: GetOnboardingProgressHeaders;
 };
 
 export type GetOnboardingProgressResponses = {
-    "200": GetOnboardingProgressStatus200;
-    "304": GetOnboardingProgressStatus304;
-    "400": GetOnboardingProgressStatus400;
-    "401": GetOnboardingProgressStatus401;
-    "403": GetOnboardingProgressStatus403;
-    "404": GetOnboardingProgressStatus404;
-    "429": GetOnboardingProgressStatus429;
-    "500": GetOnboardingProgressStatus500;
+  '200': GetOnboardingProgressStatus200;
+  '304': GetOnboardingProgressStatus304;
+  '400': GetOnboardingProgressStatus400;
+  '401': GetOnboardingProgressStatus401;
+  '403': GetOnboardingProgressStatus403;
+  '404': GetOnboardingProgressStatus404;
+  '429': GetOnboardingProgressStatus429;
+  '500': GetOnboardingProgressStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type GetOnboardingProgressResponse = GetOnboardingProgressStatus200;

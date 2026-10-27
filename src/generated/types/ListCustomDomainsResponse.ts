@@ -8,16 +8,16 @@ import type { CustomDomain } from './CustomDomain'
 /**
  * @description Cursor-paginated list of custom domains for a project.
  * @type object
-*/
+ */
 export type ListCustomDomainsResponse = {
-    /**
-     * @description Custom domains on the current page.
-     * @type array
-    */
-    domains: CustomDomain[];
-    /**
-     * @description Token for the next page. Empty if no more results.
-     * @type string | undefined
-    */
-    next_page_token?: string;
+  /**
+   * @description Custom domains on the current page.
+   * @type array
+   */
+  domains: CustomDomain[];
+  /**
+   * @description Token for the next page. Empty if no more results.
+   * @type string | undefined
+   */
+  next_page_token?: string;
 };

@@ -7,46 +7,48 @@ import type { Error } from './Error'
 import type { ListDatabasesResponse } from './ListDatabasesResponse'
 
 export type ListDatabasesPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
 };
 
 export type ListDatabasesQuery = {
-    /**
-     * @description Maximum number of items to return (1-100, default 20).
-     * @minLength 1
-     * @maxLength 100
-     * @default 20
-     * @type integer | undefined
-    */
-    page_size?: number;
-    /**
-     * @description Opaque token for cursor-based pagination.
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string | undefined
-    */
-    page_token?: string;
+  /**
+   * @description Maximum number of items to return (1-100, default 20).
+   * @minLength 1
+   * @maxLength 100
+   * @default 20
+   * @type integer | undefined
+   */
+  page_size?: number;
+  /**
+   * @description Opaque token for cursor-based pagination.
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string | undefined
+   */
+  page_token?: string;
 };
 
 export type ListDatabasesHeaders = {
-    /**
-     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
-     * @minLength 1
-     * @maxLength 1024
-     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
-     * @type string | undefined
-    */
-    "If-None-Match"?: string;
+  /**
+   * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.
+   *
+   * A comma-separated list is accepted, and `*` matches any current representation.
+   * @minLength 1
+   * @maxLength 1024
+   * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+   * @type string | undefined
+   */
+  'If-None-Match'?: string;
 };
 
 /**
  * @description Cursor-paginated list of databases attached to a project.
  * @type object
-*/
+ */
 export type ListDatabasesStatus200 = ListDatabasesResponse;
 
 export type ListDatabasesStatus304 = unknown;
@@ -54,53 +56,53 @@ export type ListDatabasesStatus304 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListDatabasesStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListDatabasesStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListDatabasesStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListDatabasesStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListDatabasesStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListDatabasesStatus500 = Error;
 
 export type ListDatabasesOptions = {
-    body?: never;
-    path: ListDatabasesPath;
-    query?: ListDatabasesQuery;
-    headers?: ListDatabasesHeaders;
+  body?: never;
+  path: ListDatabasesPath;
+  query?: ListDatabasesQuery;
+  headers?: ListDatabasesHeaders;
 };
 
 export type ListDatabasesResponses = {
-    "200": ListDatabasesStatus200;
-    "304": ListDatabasesStatus304;
-    "400": ListDatabasesStatus400;
-    "401": ListDatabasesStatus401;
-    "403": ListDatabasesStatus403;
-    "404": ListDatabasesStatus404;
-    "429": ListDatabasesStatus429;
-    "500": ListDatabasesStatus500;
+  '200': ListDatabasesStatus200;
+  '304': ListDatabasesStatus304;
+  '400': ListDatabasesStatus400;
+  '401': ListDatabasesStatus401;
+  '403': ListDatabasesStatus403;
+  '404': ListDatabasesStatus404;
+  '429': ListDatabasesStatus429;
+  '500': ListDatabasesStatus500;
 };

@@ -10,58 +10,62 @@ import type { ProjectStatusKey } from './ProjectStatus'
 /**
  * @description Request body for partially updating a project.
  * @type object
-*/
+ */
 export type UpdateProjectRequest = {
-    /**
-     * @description Updated project name.
-     * @minLength 1
-     * @maxLength 100
-     * @pattern ^[^\x00]*$
-     * @example my-app
-     * @type string | undefined
-    */
-    name?: string;
-    /**
-     * @description Updated project description.
-     * @maxLength 500
-     * @example Production database proxy
-     * @type string | undefined
-    */
-    description?: string;
-    /**
-     * @description Replacement set of user-defined project labels.
-     * @example ["production","us-east-1"]
-     * @type array | undefined
-    */
-    tags?: string[];
-    /**
-     * @description Project lifecycle status.
-     * @type string | undefined
-    */
-    status?: ProjectStatusKey;
-    /**
-     * @description IP filtering rules as CIDR ranges with optional labels. Empty array means allow all. Both IPv4 and IPv6 CIDR notation are supported.\n
-     * @example [{"cidr":"10.0.0.0/8","label":"VPC"},{"cidr":"203.0.113.5/32","label":"Office"}]
-     * @type array | undefined
-    */
-    allowed_cidrs?: CidrEntry[];
-    /**
-     * @description When set, passthrough/human connections are enforced against this policy profile. Send an empty string to clear.\n
-     * @example pol_01h455vb4pex5vsknk084sn02q
-     * @type string | undefined
-    */
-    default_policy_profile_id?: string | null;
-    /**
-     * @description Data-residency requirement for the project. \"any\" (default) lets queries be served from the nearest data-plane metro. \"us\" or \"eu\" require the serving metro to be in that jurisdiction; the proxy fails a connection closed when it is served from a metro outside the required jurisdiction, so regulated workloads never process outside their permitted region.\n
-     * @default 'any'
-     * @example eu
-     * @type string | undefined
-    */
-    residency?: DataResidencyKey;
-    /**
-     * @description Project-level kill-switch. Set true to block ALL agent-credential connections to this project (live agent sessions are dropped within seconds); set false to re-enable them. Passthrough/human connections are unaffected. Engaging the kill-switch emits a kill_switch webhook event.\n
-     * @example true
-     * @type boolean | undefined
-    */
-    agents_disabled?: boolean;
+  /**
+   * @description Updated project name.
+   * @minLength 1
+   * @maxLength 100
+   * @pattern ^[^\x00]*$
+   * @example my-app
+   * @type string | undefined
+   */
+  name?: string;
+  /**
+   * @description Updated project description.
+   * @maxLength 500
+   * @example Production database proxy
+   * @type string | undefined
+   */
+  description?: string;
+  /**
+   * @description Replacement set of user-defined project labels.
+   * @example ["production","us-east-1"]
+   * @type array | undefined
+   */
+  tags?: string[];
+  /**
+   * @description Project lifecycle status.
+   * @type string | undefined
+   */
+  status?: ProjectStatusKey;
+  /**
+   * @description IP filtering rules as CIDR ranges with optional labels. Empty array means allow all. Both IPv4 and IPv6 CIDR notation are supported.
+   *
+   * @example [{"cidr":"10.0.0.0/8","label":"VPC"},{"cidr":"203.0.113.5/32","label":"Office"}]
+   * @type array | undefined
+   */
+  allowed_cidrs?: CidrEntry[];
+  /**
+   * @description When set, passthrough/human connections are enforced against this policy profile. Send an empty string to clear.
+   *
+   * @example pol_01h455vb4pex5vsknk084sn02q
+   * @type string | undefined
+   */
+  default_policy_profile_id?: string | null;
+  /**
+   * @description Data-residency requirement for the project. "any" (default) lets queries be served from the nearest data-plane metro. "us" or "eu" require the serving metro to be in that jurisdiction; the proxy fails a connection closed when it is served from a metro outside the required jurisdiction, so regulated workloads never process outside their permitted region.
+   *
+   * @default 'any'
+   * @example eu
+   * @type string | undefined
+   */
+  residency?: DataResidencyKey;
+  /**
+   * @description Project-level kill-switch. Set true to block ALL agent-credential connections to this project (live agent sessions are dropped within seconds); set false to re-enable them. Passthrough/human connections are unaffected. Engaging the kill-switch emits a kill_switch webhook event.
+   *
+   * @example true
+   * @type boolean | undefined
+   */
+  agents_disabled?: boolean;
 };

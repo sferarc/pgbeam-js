@@ -8,94 +8,94 @@ import type { DryEvalResult } from './DryEvalResult'
 import type { Error } from './Error'
 
 export type DryEvalPolicyPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
 };
 
 /**
  * @description The decision the proxy would reach for the supplied statement under the supplied policy. verdict is the headline outcome; the remaining fields detail why.
  * @type object
-*/
+ */
 export type DryEvalPolicyStatus200 = DryEvalResult;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DryEvalPolicyStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DryEvalPolicyStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DryEvalPolicyStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DryEvalPolicyStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DryEvalPolicyStatus413 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DryEvalPolicyStatus415 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DryEvalPolicyStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DryEvalPolicyStatus500 = Error;
 
 /**
  * @description A SQL statement to test plus the policy to test it against. Supply exactly one of policy_id (an existing saved policy) or policy (an unsaved draft, e.g. the in-progress editor form).
  * @type object
-*/
+ */
 export type DryEvalPolicyBody = DryEvalInput;
 
 export type DryEvalPolicyOptions = {
-    body: DryEvalPolicyBody;
-    path: DryEvalPolicyPath;
-    query?: never;
-    headers?: never;
+  body: DryEvalPolicyBody;
+  path: DryEvalPolicyPath;
+  query?: never;
+  headers?: never;
 };
 
 export type DryEvalPolicyResponses = {
-    "200": DryEvalPolicyStatus200;
-    "400": DryEvalPolicyStatus400;
-    "401": DryEvalPolicyStatus401;
-    "403": DryEvalPolicyStatus403;
-    "404": DryEvalPolicyStatus404;
-    "413": DryEvalPolicyStatus413;
-    "415": DryEvalPolicyStatus415;
-    "429": DryEvalPolicyStatus429;
-    "500": DryEvalPolicyStatus500;
+  '200': DryEvalPolicyStatus200;
+  '400': DryEvalPolicyStatus400;
+  '401': DryEvalPolicyStatus401;
+  '403': DryEvalPolicyStatus403;
+  '404': DryEvalPolicyStatus404;
+  '413': DryEvalPolicyStatus413;
+  '415': DryEvalPolicyStatus415;
+  '429': DryEvalPolicyStatus429;
+  '500': DryEvalPolicyStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type DryEvalPolicyResponse = DryEvalPolicyStatus200;

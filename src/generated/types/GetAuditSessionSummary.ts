@@ -7,52 +7,54 @@ import type { AuditSessionSummary } from './AuditSessionSummary'
 import type { Error } from './Error'
 
 export type GetAuditSessionSummaryPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Session identifier from an audit entry\'s session_id field. Unique per connection within a proxy instance, not over time.
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    session_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Session identifier from an audit entry's session_id field. Unique per connection within a proxy instance, not over time.
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  session_id: string;
 };
 
 export type GetAuditSessionSummaryQuery = {
-    /**
-     * @description Return entries at or after this timestamp (inclusive lower bound).
-     *
-     * Format: `date-time`
-     * @type string | undefined
-    */
-    start?: string;
-    /**
-     * @description Return entries strictly older than this timestamp (cursor / upper bound).
-     *
-     * Format: `date-time`
-     * @type string | undefined
-    */
-    end?: string;
+  /**
+   * @description Return entries at or after this timestamp (inclusive lower bound).
+   *
+   * Format: `date-time`
+   * @type string | undefined
+   */
+  start?: string;
+  /**
+   * @description Return entries strictly older than this timestamp (cursor / upper bound).
+   *
+   * Format: `date-time`
+   * @type string | undefined
+   */
+  end?: string;
 };
 
 export type GetAuditSessionSummaryHeaders = {
-    /**
-     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
-     * @minLength 1
-     * @maxLength 1024
-     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
-     * @type string | undefined
-    */
-    "If-None-Match"?: string;
+  /**
+   * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.
+   *
+   * A comma-separated list is accepted, and `*` matches any current representation.
+   * @minLength 1
+   * @maxLength 1024
+   * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+   * @type string | undefined
+   */
+  'If-None-Match'?: string;
 };
 
 /**
- * @description Deterministic summary of one agent session\'s recorded statements: what it touched, how much it moved, and how often the policy engine stepped in. Computed from the project\'s audit log with no model in the loop, so the same entries always summarize the same way. Carries schema metadata (table names) and counts only, never row values.
+ * @description Deterministic summary of one agent session's recorded statements: what it touched, how much it moved, and how often the policy engine stepped in. Computed from the project's audit log with no model in the loop, so the same entries always summarize the same way. Carries schema metadata (table names) and counts only, never row values.
  * @type object
-*/
+ */
 export type GetAuditSessionSummaryStatus200 = AuditSessionSummary;
 
 export type GetAuditSessionSummaryStatus304 = unknown;
@@ -60,58 +62,58 @@ export type GetAuditSessionSummaryStatus304 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetAuditSessionSummaryStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetAuditSessionSummaryStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetAuditSessionSummaryStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetAuditSessionSummaryStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetAuditSessionSummaryStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetAuditSessionSummaryStatus500 = Error;
 
 export type GetAuditSessionSummaryOptions = {
-    body?: never;
-    path: GetAuditSessionSummaryPath;
-    query?: GetAuditSessionSummaryQuery;
-    headers?: GetAuditSessionSummaryHeaders;
+  body?: never;
+  path: GetAuditSessionSummaryPath;
+  query?: GetAuditSessionSummaryQuery;
+  headers?: GetAuditSessionSummaryHeaders;
 };
 
 export type GetAuditSessionSummaryResponses = {
-    "200": GetAuditSessionSummaryStatus200;
-    "304": GetAuditSessionSummaryStatus304;
-    "400": GetAuditSessionSummaryStatus400;
-    "401": GetAuditSessionSummaryStatus401;
-    "403": GetAuditSessionSummaryStatus403;
-    "404": GetAuditSessionSummaryStatus404;
-    "429": GetAuditSessionSummaryStatus429;
-    "500": GetAuditSessionSummaryStatus500;
+  '200': GetAuditSessionSummaryStatus200;
+  '304': GetAuditSessionSummaryStatus304;
+  '400': GetAuditSessionSummaryStatus400;
+  '401': GetAuditSessionSummaryStatus401;
+  '403': GetAuditSessionSummaryStatus403;
+  '404': GetAuditSessionSummaryStatus404;
+  '429': GetAuditSessionSummaryStatus429;
+  '500': GetAuditSessionSummaryStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type GetAuditSessionSummaryResponse = GetAuditSessionSummaryStatus200;

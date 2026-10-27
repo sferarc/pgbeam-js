@@ -6,26 +6,26 @@
 /**
  * @description Slack event forwarded from the dashboard webhook handler.
  * @type object
-*/
+ */
 export type SlackEventPayload = {
-    /**
-     * @description Slack channel ID where the message was posted.
-     * @type string
-    */
-    channel_id: string;
-    /**
-     * @description Slack thread timestamp identifying the support case thread.
-     * @type string
-    */
-    thread_ts: string;
-    /**
-     * @description Slack user ID of the message author.
-     * @type string
-    */
-    user_id: string;
-    /**
-     * @description Message text from Slack.
-     * @type string
-    */
-    text: string;
+  /**
+   * @description Slack channel ID where the message was posted.
+   * @type string
+   */
+  channel_id: string;
+  /**
+   * @description Slack thread timestamp identifying the support case thread.
+   * @type string
+   */
+  thread_ts: string;
+  /**
+   * @description Slack user ID of the message author.
+   * @type string
+   */
+  user_id: string;
+  /**
+   * @description Message text from Slack.
+   * @type string
+   */
+  text: string;
 };

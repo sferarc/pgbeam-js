@@ -6,12 +6,12 @@
 import type { Error } from './Error'
 
 export type DeleteProjectPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
 };
 
 export type DeleteProjectStatus204 = unknown;
@@ -19,57 +19,57 @@ export type DeleteProjectStatus204 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteProjectStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteProjectStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteProjectStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteProjectStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteProjectStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteProjectStatus500 = Error;
 
 export type DeleteProjectOptions = {
-    body?: never;
-    path: DeleteProjectPath;
-    query?: never;
-    headers?: never;
+  body?: never;
+  path: DeleteProjectPath;
+  query?: never;
+  headers?: never;
 };
 
 export type DeleteProjectResponses = {
-    "204": DeleteProjectStatus204;
-    "400": DeleteProjectStatus400;
-    "401": DeleteProjectStatus401;
-    "403": DeleteProjectStatus403;
-    "404": DeleteProjectStatus404;
-    "429": DeleteProjectStatus429;
-    "500": DeleteProjectStatus500;
+  '204': DeleteProjectStatus204;
+  '400': DeleteProjectStatus400;
+  '401': DeleteProjectStatus401;
+  '403': DeleteProjectStatus403;
+  '404': DeleteProjectStatus404;
+  '429': DeleteProjectStatus429;
+  '500': DeleteProjectStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type DeleteProjectResponse = DeleteProjectStatus204;

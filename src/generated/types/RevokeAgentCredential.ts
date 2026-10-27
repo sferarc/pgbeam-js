@@ -6,18 +6,18 @@
 import type { Error } from './Error'
 
 export type RevokeAgentCredentialPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Unique agent credential identifier (prefixed, e.g. agt_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    agent_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Unique agent credential identifier (prefixed, e.g. agt_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  agent_id: string;
 };
 
 export type RevokeAgentCredentialStatus204 = unknown;
@@ -25,50 +25,50 @@ export type RevokeAgentCredentialStatus204 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type RevokeAgentCredentialStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type RevokeAgentCredentialStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type RevokeAgentCredentialStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type RevokeAgentCredentialStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type RevokeAgentCredentialStatus500 = Error;
 
 export type RevokeAgentCredentialOptions = {
-    body?: never;
-    path: RevokeAgentCredentialPath;
-    query?: never;
-    headers?: never;
+  body?: never;
+  path: RevokeAgentCredentialPath;
+  query?: never;
+  headers?: never;
 };
 
 export type RevokeAgentCredentialResponses = {
-    "204": RevokeAgentCredentialStatus204;
-    "400": RevokeAgentCredentialStatus400;
-    "401": RevokeAgentCredentialStatus401;
-    "403": RevokeAgentCredentialStatus403;
-    "404": RevokeAgentCredentialStatus404;
-    "500": RevokeAgentCredentialStatus500;
+  '204': RevokeAgentCredentialStatus204;
+  '400': RevokeAgentCredentialStatus400;
+  '401': RevokeAgentCredentialStatus401;
+  '403': RevokeAgentCredentialStatus403;
+  '404': RevokeAgentCredentialStatus404;
+  '500': RevokeAgentCredentialStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type RevokeAgentCredentialResponse = RevokeAgentCredentialStatus204;

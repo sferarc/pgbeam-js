@@ -4,13 +4,13 @@
 */
 
 export const anomalyKind = {
-    volume_spike: "volume_spike",
-    egress_spike: "egress_spike",
-    new_query_shape: "new_query_shape",
-    off_hours: "off_hours",
-    error_spike: "error_spike",
-    canary_tripped: "canary_tripped",
-    content_flagged: "content_flagged"
+  volume_spike: 'volume_spike',
+  egress_spike: 'egress_spike',
+  new_query_shape: 'new_query_shape',
+  off_hours: 'off_hours',
+  error_spike: 'error_spike',
+  canary_tripped: 'canary_tripped',
+  content_flagged: 'content_flagged',
 } as const;
 
 export type AnomalyKindKey = (typeof anomalyKind)[keyof typeof anomalyKind];

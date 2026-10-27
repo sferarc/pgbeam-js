@@ -6,31 +6,31 @@
 import type { PolicyStatementKindVerdict } from './PolicyStatementKindVerdict'
 
 export const policyStatementKindsAccessModeEnum = {
-    read_only: "read_only",
-    read_write: "read_write"
+  read_only: 'read_only',
+  read_write: 'read_write',
 } as const;
 
 export type PolicyStatementKindsAccessModeEnumKey = (typeof policyStatementKindsAccessModeEnum)[keyof typeof policyStatementKindsAccessModeEnum];
 
 /**
- * @description The policy\'s verdict for each statement kind on its own, as the data plane decides it.
+ * @description The policy's verdict for each statement kind on its own, as the data plane decides it.
  * @type object
-*/
+ */
 export type PolicyStatementKinds = {
-    /**
-     * @description The policy profile these verdicts are for.
-     * @example pol_xxx
-     * @type string
-    */
-    policy_id: string;
-    /**
-     * @description The access mode enforced. Anything stored that is not read_write is enforced as read_only.
-     * @type string
-    */
-    access_mode: PolicyStatementKindsAccessModeEnumKey;
-    /**
-     * @description One verdict per statement kind, in a fixed order.
-     * @type array
-    */
-    statement_kinds: PolicyStatementKindVerdict[];
+  /**
+   * @description The policy profile these verdicts are for.
+   * @example pol_xxx
+   * @type string
+   */
+  policy_id: string;
+  /**
+   * @description The access mode enforced. Anything stored that is not read_write is enforced as read_only.
+   * @type string
+   */
+  access_mode: PolicyStatementKindsAccessModeEnumKey;
+  /**
+   * @description One verdict per statement kind, in a fixed order.
+   * @type array
+   */
+  statement_kinds: PolicyStatementKindVerdict[];
 };

@@ -8,112 +8,118 @@ import type { WebhookEndpoint } from './WebhookEndpoint'
 import type { WebhookEndpointInput } from './WebhookEndpointInput'
 
 export type CreateWebhookEndpointPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
 };
 
 export type CreateWebhookEndpointHeaders = {
-    /**
-     * @description Client-generated key that makes a retry of this request safe. The first request carrying a given key executes normally and its response (status, content type and body) is stored for 24 hours; a later request with the same key returns that stored response without running the operation again, so a retry after a lost or timed-out response cannot create a second resource.\n\nReusing a key with a different request body returns `409 Conflict`: a key is a promise about one specific request, so a changed body is a client bug rather than a retry. Keys are scoped to the calling organization (or to the user, for account-scoped tokens), so one tenant can never read another\'s stored response.\n\nA `5xx`, `408` or `429` is never stored, because those describe a request that produced no settled answer and the next attempt with the same key must run for real. A `4xx` is stored: it is the server\'s settled answer about this exact request.\n\nUse a fresh UUID per logical operation. The PgBeam SDKs generate one per call and reuse it across their own automatic retries.
-     * @minLength 1
-     * @maxLength 255
-     * @example a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d
-     * @type string | undefined
-    */
-    "Idempotency-Key"?: string;
+  /**
+   * @description Client-generated key that makes a retry of this request safe. The first request carrying a given key executes normally and its response (status, content type and body) is stored for 24 hours; a later request with the same key returns that stored response without running the operation again, so a retry after a lost or timed-out response cannot create a second resource.
+   *
+   * Reusing a key with a different request body returns `409 Conflict`: a key is a promise about one specific request, so a changed body is a client bug rather than a retry. Keys are scoped to the calling organization (or to the user, for account-scoped tokens), so one tenant can never read another's stored response.
+   *
+   * A `5xx`, `408` or `429` is never stored, because those describe a request that produced no settled answer and the next attempt with the same key must run for real. A `4xx` is stored: it is the server's settled answer about this exact request.
+   *
+   * Use a fresh UUID per logical operation. The PgBeam SDKs generate one per call and reuse it across their own automatic retries.
+   * @minLength 1
+   * @maxLength 255
+   * @example a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d
+   * @type string | undefined
+   */
+  'Idempotency-Key'?: string;
 };
 
 /**
  * @description A delivery target for project audit/event notifications.
  * @type object
-*/
+ */
 export type CreateWebhookEndpointStatus201 = WebhookEndpoint;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type CreateWebhookEndpointStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type CreateWebhookEndpointStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type CreateWebhookEndpointStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type CreateWebhookEndpointStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type CreateWebhookEndpointStatus409 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type CreateWebhookEndpointStatus413 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type CreateWebhookEndpointStatus415 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type CreateWebhookEndpointStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type CreateWebhookEndpointStatus500 = Error;
 
 /**
  * @description Mutable fields of a webhook endpoint (used for create and update).
  * @type object
-*/
+ */
 export type CreateWebhookEndpointBody = WebhookEndpointInput;
 
 export type CreateWebhookEndpointOptions = {
-    body: CreateWebhookEndpointBody;
-    path: CreateWebhookEndpointPath;
-    query?: never;
-    headers?: CreateWebhookEndpointHeaders;
+  body: CreateWebhookEndpointBody;
+  path: CreateWebhookEndpointPath;
+  query?: never;
+  headers?: CreateWebhookEndpointHeaders;
 };
 
 export type CreateWebhookEndpointResponses = {
-    "201": CreateWebhookEndpointStatus201;
-    "400": CreateWebhookEndpointStatus400;
-    "401": CreateWebhookEndpointStatus401;
-    "403": CreateWebhookEndpointStatus403;
-    "404": CreateWebhookEndpointStatus404;
-    "409": CreateWebhookEndpointStatus409;
-    "413": CreateWebhookEndpointStatus413;
-    "415": CreateWebhookEndpointStatus415;
-    "429": CreateWebhookEndpointStatus429;
-    "500": CreateWebhookEndpointStatus500;
+  '201': CreateWebhookEndpointStatus201;
+  '400': CreateWebhookEndpointStatus400;
+  '401': CreateWebhookEndpointStatus401;
+  '403': CreateWebhookEndpointStatus403;
+  '404': CreateWebhookEndpointStatus404;
+  '409': CreateWebhookEndpointStatus409;
+  '413': CreateWebhookEndpointStatus413;
+  '415': CreateWebhookEndpointStatus415;
+  '429': CreateWebhookEndpointStatus429;
+  '500': CreateWebhookEndpointStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type CreateWebhookEndpointResponse = CreateWebhookEndpointStatus201;

@@ -8,16 +8,16 @@ import type { Honeytoken } from './Honeytoken'
 /**
  * @description Cursor-paginated honeytokens for a project.
  * @type object
-*/
+ */
 export type ListHoneytokensResponse = {
-    /**
-     * @description Honeytokens returned for the current page.
-     * @type array
-    */
-    honeytokens: Honeytoken[];
-    /**
-     * @description Opaque token for cursor-based pagination.
-     * @type string | undefined
-    */
-    next_page_token?: string;
+  /**
+   * @description Honeytokens returned for the current page.
+   * @type array
+   */
+  honeytokens: Honeytoken[];
+  /**
+   * @description Opaque token for cursor-based pagination.
+   * @type string | undefined
+   */
+  next_page_token?: string;
 };

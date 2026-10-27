@@ -6,18 +6,18 @@
 /**
  * @description One request field that failed validation.
  * @type object
-*/
+ */
 export type FieldError = {
-    /**
-     * @description Dotted path to the offending field in the request body.
-     * @example database.host
-     * @type string
-    */
-    field: string;
-    /**
-     * @description What is wrong with that field.
-     * @example database host is required
-     * @type string
-    */
-    detail: string;
+  /**
+   * @description Dotted path to the offending field in the request body.
+   * @example database.host
+   * @type string
+   */
+  field: string;
+  /**
+   * @description What is wrong with that field.
+   * @example database host is required
+   * @type string
+   */
+  detail: string;
 };

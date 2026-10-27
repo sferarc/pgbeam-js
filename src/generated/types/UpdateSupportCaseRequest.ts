@@ -8,11 +8,11 @@ import type { SupportCaseStatusKey } from './SupportCaseStatus'
 /**
  * @description Request body for updating a support case status.
  * @type object
-*/
+ */
 export type UpdateSupportCaseRequest = {
-    /**
-     * @description Current status of the support case.
-     * @type string | undefined
-    */
-    status?: SupportCaseStatusKey;
+  /**
+   * @description Current status of the support case.
+   * @type string | undefined
+   */
+  status?: SupportCaseStatusKey;
 };

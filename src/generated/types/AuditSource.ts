@@ -4,10 +4,10 @@
 */
 
 export const auditSource = {
-    wire: "wire",
-    mcp: "mcp",
-    rest: "rest",
-    control: "control"
+  wire: 'wire',
+  mcp: 'mcp',
+  rest: 'rest',
+  control: 'control',
 } as const;
 
 export type AuditSourceKey = (typeof auditSource)[keyof typeof auditSource];

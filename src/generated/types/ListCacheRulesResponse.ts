@@ -8,16 +8,16 @@ import type { CacheRuleEntry } from './CacheRuleEntry'
 /**
  * @description Cursor-paginated cache-rule entries for a database.
  * @type object
-*/
+ */
 export type ListCacheRulesResponse = {
-    /**
-     * @description Query shapes returned for the current page.
-     * @type array
-    */
-    entries: CacheRuleEntry[];
-    /**
-     * @description Opaque token for cursor-based pagination.
-     * @type string | undefined
-    */
-    next_page_token?: string;
+  /**
+   * @description Query shapes returned for the current page.
+   * @type array
+   */
+  entries: CacheRuleEntry[];
+  /**
+   * @description Opaque token for cursor-based pagination.
+   * @type string | undefined
+   */
+  next_page_token?: string;
 };

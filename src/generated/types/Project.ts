@@ -8,9 +8,9 @@ import type { DataResidencyKey } from './DataResidency'
 import type { ProjectStatusKey } from './ProjectStatus'
 
 export const projectCloudEnum = {
-    aws: "aws",
-    azure: "azure",
-    gcp: "gcp"
+  aws: 'aws',
+  azure: 'azure',
+  gcp: 'gcp',
 } as const;
 
 export type ProjectCloudEnumKey = (typeof projectCloudEnum)[keyof typeof projectCloudEnum];
@@ -18,139 +18,143 @@ export type ProjectCloudEnumKey = (typeof projectCloudEnum)[keyof typeof project
 /**
  * @description Project configuration and current control-plane state.
  * @type object
-*/
+ */
 export type Project = {
-    /**
-     * @description Unique project identifier (prefixed).
-     * @example prj_01h455vb4pex5vsknk084sn02q
-     * @type string
-    */
-    id: string;
-    /**
-     * @description Better Auth organization ID that owns this project.
-     * @example org_abc123
-     * @type string
-    */
-    org_id: string;
-    /**
-     * @description Human-readable project name.
-     * @minLength 1
-     * @maxLength 100
-     * @example my-app
-     * @type string
-    */
-    name: string;
-    /**
-     * @description Optional project description.
-     * @maxLength 500
-     * @example Production database proxy
-     * @type string | undefined
-    */
-    description?: string;
-    /**
-     * @description User-defined labels applied to the project.
-     * @example ["production","us-east-1"]
-     * @type array | undefined
-    */
-    tags?: string[];
-    /**
-     * @description Cloud provider where the project runs.
-     * @type string | undefined
-    */
-    readonly cloud?: ProjectCloudEnumKey;
-    /**
-     * @description When true, this project\'s data plane runs in the customer\'s own VPC/cluster (BYOC): the control plane does not provision hosted infra, and a self-hosted proxy dials home over the config/audit gRPC stream. Requires the Scale or enterprise plan.\n
-     * @example false
-     * @type boolean | undefined
-    */
-    readonly self_hosted?: boolean;
-    /**
-     * @description Proxy hostname for connecting through PgBeam (e.g., myproject.proxy.pgbeam.app).
-     * @type string | undefined
-    */
-    readonly proxy_host?: string;
-    /**
-     * @description Maximum queries per second for this project. 0 means unlimited.
-     *
-     * Format: `int32`
-     * @minLength 0
-     * @maxLength 2147483647
-     * @example 1000
-     * @type integer | undefined
-    */
-    readonly queries_per_second?: number;
-    /**
-     * @description Burst allowance above the steady-state rate. 0 uses queries_per_second as burst.
-     *
-     * Format: `int32`
-     * @minLength 0
-     * @maxLength 2147483647
-     * @example 200
-     * @type integer | undefined
-    */
-    readonly burst_size?: number;
-    /**
-     * @description Maximum concurrent proxy connections. 0 means unlimited.
-     *
-     * Format: `int32`
-     * @minLength 0
-     * @maxLength 2147483647
-     * @example 500
-     * @type integer | undefined
-    */
-    readonly max_connections?: number;
-    /**
-     * @description IP filtering rules as CIDR ranges with optional labels. When non-empty, only connections from matching IPs are accepted. Empty array means all IPs are allowed (default). Both IPv4 (e.g. 10.0.0.0/8) and IPv6 (e.g. 2001:db8::/32) are supported.\n
-     * @example [{"cidr":"10.0.0.0/8","label":"VPC"},{"cidr":"2001:db8::/32","label":"IPv6 range"}]
-     * @type array | undefined
-    */
-    allowed_cidrs?: CidrEntry[];
-    /**
-     * @description When set, passthrough/human connections are enforced against this policy profile.
-     * @example pol_01h455vb4pex5vsknk084sn02q
-     * @type string | undefined
-    */
-    default_policy_profile_id?: string | null;
-    /**
-     * @description Data-residency requirement for the project. \"any\" (default) lets queries be served from the nearest data-plane metro. \"us\" or \"eu\" require the serving metro to be in that jurisdiction; the proxy fails a connection closed when it is served from a metro outside the required jurisdiction, so regulated workloads never process outside their permitted region.\n
-     * @default 'any'
-     * @example eu
-     * @type string | undefined
-    */
-    residency?: DataResidencyKey;
-    /**
-     * @description Project-level kill-switch. When true, ALL agent-credential connections to this project are blocked at the proxy and live agent sessions are dropped within seconds. Passthrough/human connections are unaffected.\n
-     * @example false
-     * @type boolean | undefined
-    */
-    agents_disabled?: boolean;
-    /**
-     * @description Number of databases attached to this project.
-     * @type integer | undefined
-    */
-    readonly database_count?: number;
-    /**
-     * @description Current active connections (latest metrics snapshot). 0 when no metrics data.
-     * @type integer | undefined
-    */
-    readonly active_connections?: number;
-    /**
-     * @description Project lifecycle status.
-     * @type string
-    */
-    status: ProjectStatusKey;
-    /**
-     * @description When the project was created.
-     *
-     * Format: `date-time`
-     * @type string
-    */
-    created_at: string;
-    /**
-     * @description When the project was last updated.
-     *
-     * Format: `date-time`
-     * @type string
-    */
-    updated_at: string;
+  /**
+   * @description Unique project identifier (prefixed).
+   * @example prj_01h455vb4pex5vsknk084sn02q
+   * @type string
+   */
+  id: string;
+  /**
+   * @description Better Auth organization ID that owns this project.
+   * @example org_abc123
+   * @type string
+   */
+  org_id: string;
+  /**
+   * @description Human-readable project name.
+   * @minLength 1
+   * @maxLength 100
+   * @example my-app
+   * @type string
+   */
+  name: string;
+  /**
+   * @description Optional project description.
+   * @maxLength 500
+   * @example Production database proxy
+   * @type string | undefined
+   */
+  description?: string;
+  /**
+   * @description User-defined labels applied to the project.
+   * @example ["production","us-east-1"]
+   * @type array | undefined
+   */
+  tags?: string[];
+  /**
+   * @description Cloud provider where the project runs.
+   * @type string | undefined
+   */
+  readonly cloud?: ProjectCloudEnumKey;
+  /**
+   * @description When true, this project's data plane runs in the customer's own VPC/cluster (BYOC): the control plane does not provision hosted infra, and a self-hosted proxy dials home over the config/audit gRPC stream. Requires the Scale or enterprise plan.
+   *
+   * @example false
+   * @type boolean | undefined
+   */
+  readonly self_hosted?: boolean;
+  /**
+   * @description Proxy hostname for connecting through PgBeam (e.g., myproject.proxy.pgbeam.app).
+   * @type string | undefined
+   */
+  readonly proxy_host?: string;
+  /**
+   * @description Maximum queries per second for this project. 0 means unlimited.
+   *
+   * Format: `int32`
+   * @minLength 0
+   * @maxLength 2147483647
+   * @example 1000
+   * @type integer | undefined
+   */
+  readonly queries_per_second?: number;
+  /**
+   * @description Burst allowance above the steady-state rate. 0 uses queries_per_second as burst.
+   *
+   * Format: `int32`
+   * @minLength 0
+   * @maxLength 2147483647
+   * @example 200
+   * @type integer | undefined
+   */
+  readonly burst_size?: number;
+  /**
+   * @description Maximum concurrent proxy connections. 0 means unlimited.
+   *
+   * Format: `int32`
+   * @minLength 0
+   * @maxLength 2147483647
+   * @example 500
+   * @type integer | undefined
+   */
+  readonly max_connections?: number;
+  /**
+   * @description IP filtering rules as CIDR ranges with optional labels. When non-empty, only connections from matching IPs are accepted. Empty array means all IPs are allowed (default). Both IPv4 (e.g. 10.0.0.0/8) and IPv6 (e.g. 2001:db8::/32) are supported.
+   *
+   * @example [{"cidr":"10.0.0.0/8","label":"VPC"},{"cidr":"2001:db8::/32","label":"IPv6 range"}]
+   * @type array | undefined
+   */
+  allowed_cidrs?: CidrEntry[];
+  /**
+   * @description When set, passthrough/human connections are enforced against this policy profile.
+   * @example pol_01h455vb4pex5vsknk084sn02q
+   * @type string | undefined
+   */
+  default_policy_profile_id?: string | null;
+  /**
+   * @description Data-residency requirement for the project. "any" (default) lets queries be served from the nearest data-plane metro. "us" or "eu" require the serving metro to be in that jurisdiction; the proxy fails a connection closed when it is served from a metro outside the required jurisdiction, so regulated workloads never process outside their permitted region.
+   *
+   * @default 'any'
+   * @example eu
+   * @type string | undefined
+   */
+  residency?: DataResidencyKey;
+  /**
+   * @description Project-level kill-switch. When true, ALL agent-credential connections to this project are blocked at the proxy and live agent sessions are dropped within seconds. Passthrough/human connections are unaffected.
+   *
+   * @example false
+   * @type boolean | undefined
+   */
+  agents_disabled?: boolean;
+  /**
+   * @description Number of databases attached to this project.
+   * @type integer | undefined
+   */
+  readonly database_count?: number;
+  /**
+   * @description Current active connections (latest metrics snapshot). 0 when no metrics data.
+   * @type integer | undefined
+   */
+  readonly active_connections?: number;
+  /**
+   * @description Project lifecycle status.
+   * @type string
+   */
+  status: ProjectStatusKey;
+  /**
+   * @description When the project was created.
+   *
+   * Format: `date-time`
+   * @type string
+   */
+  created_at: string;
+  /**
+   * @description When the project was last updated.
+   *
+   * Format: `date-time`
+   * @type string
+   */
+  updated_at: string;
 };

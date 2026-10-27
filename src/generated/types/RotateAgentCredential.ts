@@ -7,91 +7,97 @@ import type { AgentCredentialSecrets } from './AgentCredentialSecrets'
 import type { Error } from './Error'
 
 export type RotateAgentCredentialPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Unique agent credential identifier (prefixed, e.g. agt_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    agent_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Unique agent credential identifier (prefixed, e.g. agt_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  agent_id: string;
 };
 
 export type RotateAgentCredentialHeaders = {
-    /**
-     * @description Client-generated key that makes a retry of this request safe. The first request carrying a given key executes normally and its response (status, content type and body) is stored for 24 hours; a later request with the same key returns that stored response without running the operation again, so a retry after a lost or timed-out response cannot create a second resource.\n\nReusing a key with a different request body returns `409 Conflict`: a key is a promise about one specific request, so a changed body is a client bug rather than a retry. Keys are scoped to the calling organization (or to the user, for account-scoped tokens), so one tenant can never read another\'s stored response.\n\nA `5xx`, `408` or `429` is never stored, because those describe a request that produced no settled answer and the next attempt with the same key must run for real. A `4xx` is stored: it is the server\'s settled answer about this exact request.\n\nUse a fresh UUID per logical operation. The PgBeam SDKs generate one per call and reuse it across their own automatic retries.
-     * @minLength 1
-     * @maxLength 255
-     * @example a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d
-     * @type string | undefined
-    */
-    "Idempotency-Key"?: string;
+  /**
+   * @description Client-generated key that makes a retry of this request safe. The first request carrying a given key executes normally and its response (status, content type and body) is stored for 24 hours; a later request with the same key returns that stored response without running the operation again, so a retry after a lost or timed-out response cannot create a second resource.
+   *
+   * Reusing a key with a different request body returns `409 Conflict`: a key is a promise about one specific request, so a changed body is a client bug rather than a retry. Keys are scoped to the calling organization (or to the user, for account-scoped tokens), so one tenant can never read another's stored response.
+   *
+   * A `5xx`, `408` or `429` is never stored, because those describe a request that produced no settled answer and the next attempt with the same key must run for real. A `4xx` is stored: it is the server's settled answer about this exact request.
+   *
+   * Use a fresh UUID per logical operation. The PgBeam SDKs generate one per call and reuse it across their own automatic retries.
+   * @minLength 1
+   * @maxLength 255
+   * @example a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d
+   * @type string | undefined
+   */
+  'Idempotency-Key'?: string;
 };
 
 /**
  * @description One-time secrets returned only at creation. The connection string and MCP token are not retrievable again.
  * @type object
-*/
+ */
 export type RotateAgentCredentialStatus200 = AgentCredentialSecrets;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type RotateAgentCredentialStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type RotateAgentCredentialStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type RotateAgentCredentialStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type RotateAgentCredentialStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type RotateAgentCredentialStatus409 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type RotateAgentCredentialStatus500 = Error;
 
 export type RotateAgentCredentialOptions = {
-    body?: never;
-    path: RotateAgentCredentialPath;
-    query?: never;
-    headers?: RotateAgentCredentialHeaders;
+  body?: never;
+  path: RotateAgentCredentialPath;
+  query?: never;
+  headers?: RotateAgentCredentialHeaders;
 };
 
 export type RotateAgentCredentialResponses = {
-    "200": RotateAgentCredentialStatus200;
-    "400": RotateAgentCredentialStatus400;
-    "401": RotateAgentCredentialStatus401;
-    "403": RotateAgentCredentialStatus403;
-    "404": RotateAgentCredentialStatus404;
-    "409": RotateAgentCredentialStatus409;
-    "500": RotateAgentCredentialStatus500;
+  '200': RotateAgentCredentialStatus200;
+  '400': RotateAgentCredentialStatus400;
+  '401': RotateAgentCredentialStatus401;
+  '403': RotateAgentCredentialStatus403;
+  '404': RotateAgentCredentialStatus404;
+  '409': RotateAgentCredentialStatus409;
+  '500': RotateAgentCredentialStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type RotateAgentCredentialResponse = RotateAgentCredentialStatus200;

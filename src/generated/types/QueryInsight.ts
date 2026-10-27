@@ -6,51 +6,51 @@
 /**
  * @description Aggregated analytics for a normalized SQL query shape.
  * @type object
-*/
+ */
 export type QueryInsight = {
-    /**
-     * @description xxhash64 of the normalized SQL pattern (hex).
-     * @type string
-    */
-    query_hash: string;
-    /**
-     * @description Normalized SQL pattern (truncated to 500 chars).
-     * @type string
-    */
-    query_pattern: string;
-    /**
-     * @description Total number of executions in the time range.
-     *
-     * Format: `int64`
-     * @type integer
-    */
-    total_count: number;
-    /**
-     * @description Total cache hits attributed to the query shape.
-     *
-     * Format: `int64`
-     * @type integer
-    */
-    total_cache_hits: number;
-    /**
-     * @description Total cache misses attributed to the query shape.
-     *
-     * Format: `int64`
-     * @type integer
-    */
-    total_cache_misses: number;
-    /**
-     * @description Average query latency in milliseconds.
-     *
-     * Format: `double`
-     * @type number
-    */
-    avg_latency_ms: number;
-    /**
-     * @description P99 query latency in milliseconds.
-     *
-     * Format: `double`
-     * @type number
-    */
-    p99_latency_ms: number;
+  /**
+   * @description xxhash64 of the normalized SQL pattern (hex).
+   * @type string
+   */
+  query_hash: string;
+  /**
+   * @description Normalized SQL pattern (truncated to 500 chars).
+   * @type string
+   */
+  query_pattern: string;
+  /**
+   * @description Total number of executions in the time range.
+   *
+   * Format: `int64`
+   * @type integer
+   */
+  total_count: number;
+  /**
+   * @description Total cache hits attributed to the query shape.
+   *
+   * Format: `int64`
+   * @type integer
+   */
+  total_cache_hits: number;
+  /**
+   * @description Total cache misses attributed to the query shape.
+   *
+   * Format: `int64`
+   * @type integer
+   */
+  total_cache_misses: number;
+  /**
+   * @description Average query latency in milliseconds.
+   *
+   * Format: `double`
+   * @type number
+   */
+  avg_latency_ms: number;
+  /**
+   * @description P99 query latency in milliseconds.
+   *
+   * Format: `double`
+   * @type number
+   */
+  p99_latency_ms: number;
 };

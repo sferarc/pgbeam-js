@@ -7,46 +7,48 @@ import type { Error } from './Error'
 import type { ListWebhookEndpointsResponse } from './ListWebhookEndpointsResponse'
 
 export type ListWebhookEndpointsPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
 };
 
 export type ListWebhookEndpointsQuery = {
-    /**
-     * @description Maximum number of items to return (1-100, default 20).
-     * @minLength 1
-     * @maxLength 100
-     * @default 20
-     * @type integer | undefined
-    */
-    page_size?: number;
-    /**
-     * @description Opaque token for cursor-based pagination.
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string | undefined
-    */
-    page_token?: string;
+  /**
+   * @description Maximum number of items to return (1-100, default 20).
+   * @minLength 1
+   * @maxLength 100
+   * @default 20
+   * @type integer | undefined
+   */
+  page_size?: number;
+  /**
+   * @description Opaque token for cursor-based pagination.
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string | undefined
+   */
+  page_token?: string;
 };
 
 export type ListWebhookEndpointsHeaders = {
-    /**
-     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
-     * @minLength 1
-     * @maxLength 1024
-     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
-     * @type string | undefined
-    */
-    "If-None-Match"?: string;
+  /**
+   * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.
+   *
+   * A comma-separated list is accepted, and `*` matches any current representation.
+   * @minLength 1
+   * @maxLength 1024
+   * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+   * @type string | undefined
+   */
+  'If-None-Match'?: string;
 };
 
 /**
  * @description Cursor-paginated list of webhook endpoints for a project.
  * @type object
-*/
+ */
 export type ListWebhookEndpointsStatus200 = ListWebhookEndpointsResponse;
 
 export type ListWebhookEndpointsStatus304 = unknown;
@@ -54,53 +56,53 @@ export type ListWebhookEndpointsStatus304 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListWebhookEndpointsStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListWebhookEndpointsStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListWebhookEndpointsStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListWebhookEndpointsStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListWebhookEndpointsStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListWebhookEndpointsStatus500 = Error;
 
 export type ListWebhookEndpointsOptions = {
-    body?: never;
-    path: ListWebhookEndpointsPath;
-    query?: ListWebhookEndpointsQuery;
-    headers?: ListWebhookEndpointsHeaders;
+  body?: never;
+  path: ListWebhookEndpointsPath;
+  query?: ListWebhookEndpointsQuery;
+  headers?: ListWebhookEndpointsHeaders;
 };
 
 export type ListWebhookEndpointsResponses = {
-    "200": ListWebhookEndpointsStatus200;
-    "304": ListWebhookEndpointsStatus304;
-    "400": ListWebhookEndpointsStatus400;
-    "401": ListWebhookEndpointsStatus401;
-    "403": ListWebhookEndpointsStatus403;
-    "404": ListWebhookEndpointsStatus404;
-    "429": ListWebhookEndpointsStatus429;
-    "500": ListWebhookEndpointsStatus500;
+  '200': ListWebhookEndpointsStatus200;
+  '304': ListWebhookEndpointsStatus304;
+  '400': ListWebhookEndpointsStatus400;
+  '401': ListWebhookEndpointsStatus401;
+  '403': ListWebhookEndpointsStatus403;
+  '404': ListWebhookEndpointsStatus404;
+  '429': ListWebhookEndpointsStatus429;
+  '500': ListWebhookEndpointsStatus500;
 };

@@ -6,14 +6,14 @@
 import type { AssignableOrgRoleKey } from './AssignableOrgRole'
 
 /**
- * @description Changes a member\'s role.
+ * @description Changes a member's role.
  * @type object
-*/
+ */
 export type UpdateOrgMemberRoleRequest = {
-    /**
-     * @description A role that can be assigned through the member API. This is `OrgRole` without `owner`: ownership is transferred through a separate flow, so requesting it here is rejected with a 400.
-     * @example admin
-     * @type string
-    */
-    role: AssignableOrgRoleKey;
+  /**
+   * @description A role that can be assigned through the member API. This is `OrgRole` without `owner`: ownership is transferred through a separate flow, so requesting it here is rejected with a 400.
+   * @example admin
+   * @type string
+   */
+  role: AssignableOrgRoleKey;
 };

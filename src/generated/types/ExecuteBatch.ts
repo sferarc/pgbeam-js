@@ -8,80 +8,83 @@ import type { BatchResponse } from './BatchResponse'
 import type { Error } from './Error'
 
 export type ExecuteBatchPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
 };
 
 /**
- * @description The outcome of a batch. `results` carries one entry per requested operation in the order they were sent, and `summary` is the same information counted so a caller can branch on one field instead of scanning. Results deliberately do not carry the mutated resources: a batch reports what happened to each item, and a caller that needs the resource reads it, which keeps the response size a function of the item count alone and keeps one response shape for every operation kind.\n
+ * @description The outcome of a batch. `results` carries one entry per requested operation in the order they were sent, and `summary` is the same information counted so a caller can branch on one field instead of scanning. Results deliberately do not carry the mutated resources: a batch reports what happened to each item, and a caller that needs the resource reads it, which keeps the response size a function of the item count alone and keeps one response shape for every operation kind.
+ *
  * @type object
-*/
+ */
 export type ExecuteBatchStatus200 = BatchResponse;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ExecuteBatchStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ExecuteBatchStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ExecuteBatchStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ExecuteBatchStatus404 = Error;
 
 /**
- * @description The outcome of a batch. `results` carries one entry per requested operation in the order they were sent, and `summary` is the same information counted so a caller can branch on one field instead of scanning. Results deliberately do not carry the mutated resources: a batch reports what happened to each item, and a caller that needs the resource reads it, which keeps the response size a function of the item count alone and keeps one response shape for every operation kind.\n
+ * @description The outcome of a batch. `results` carries one entry per requested operation in the order they were sent, and `summary` is the same information counted so a caller can branch on one field instead of scanning. Results deliberately do not carry the mutated resources: a batch reports what happened to each item, and a caller that needs the resource reads it, which keeps the response size a function of the item count alone and keeps one response shape for every operation kind.
+ *
  * @type object
-*/
+ */
 export type ExecuteBatchStatus409 = BatchResponse;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ExecuteBatchStatus429 = Error;
 
 /**
- * @description A set of project-scoped operations to apply in one request, together with the failure semantics the caller wants. Every operation is authorized against the caller\'s scope before any of them runs, and a batch carrying an operation the caller\'s role does not permit is refused whole with 403 rather than half-applied. Authorization here is a property of the caller\'s role rather than a per-item runtime condition, so reporting it per item would make \"you may not do this\" look like an ordinary item failure and would invite a caller to send a batch of things it may not do to see which stick.\n
+ * @description A set of project-scoped operations to apply in one request, together with the failure semantics the caller wants. Every operation is authorized against the caller's scope before any of them runs, and a batch carrying an operation the caller's role does not permit is refused whole with 403 rather than half-applied. Authorization here is a property of the caller's role rather than a per-item runtime condition, so reporting it per item would make "you may not do this" look like an ordinary item failure and would invite a caller to send a batch of things it may not do to see which stick.
+ *
  * @type object
-*/
+ */
 export type ExecuteBatchBody = BatchRequest;
 
 export type ExecuteBatchOptions = {
-    body: ExecuteBatchBody;
-    path: ExecuteBatchPath;
-    query?: never;
-    headers?: never;
+  body: ExecuteBatchBody;
+  path: ExecuteBatchPath;
+  query?: never;
+  headers?: never;
 };
 
 export type ExecuteBatchResponses = {
-    "200": ExecuteBatchStatus200;
-    "400": ExecuteBatchStatus400;
-    "401": ExecuteBatchStatus401;
-    "403": ExecuteBatchStatus403;
-    "404": ExecuteBatchStatus404;
-    "409": ExecuteBatchStatus409;
-    "429": ExecuteBatchStatus429;
+  '200': ExecuteBatchStatus200;
+  '400': ExecuteBatchStatus400;
+  '401': ExecuteBatchStatus401;
+  '403': ExecuteBatchStatus403;
+  '404': ExecuteBatchStatus404;
+  '409': ExecuteBatchStatus409;
+  '429': ExecuteBatchStatus429;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type ExecuteBatchResponse = ExecuteBatchStatus200;

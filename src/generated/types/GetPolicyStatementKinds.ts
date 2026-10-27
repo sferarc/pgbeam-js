@@ -7,80 +7,80 @@ import type { Error } from './Error'
 import type { PolicyStatementKinds } from './PolicyStatementKinds'
 
 export type GetPolicyStatementKindsPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Unique policy profile identifier (prefixed, e.g. pol_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    policy_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Unique policy profile identifier (prefixed, e.g. pol_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  policy_id: string;
 };
 
 /**
- * @description The policy\'s verdict for each statement kind on its own, as the data plane decides it.
+ * @description The policy's verdict for each statement kind on its own, as the data plane decides it.
  * @type object
-*/
+ */
 export type GetPolicyStatementKindsStatus200 = PolicyStatementKinds;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetPolicyStatementKindsStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetPolicyStatementKindsStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetPolicyStatementKindsStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetPolicyStatementKindsStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetPolicyStatementKindsStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetPolicyStatementKindsStatus500 = Error;
 
 export type GetPolicyStatementKindsOptions = {
-    body?: never;
-    path: GetPolicyStatementKindsPath;
-    query?: never;
-    headers?: never;
+  body?: never;
+  path: GetPolicyStatementKindsPath;
+  query?: never;
+  headers?: never;
 };
 
 export type GetPolicyStatementKindsResponses = {
-    "200": GetPolicyStatementKindsStatus200;
-    "400": GetPolicyStatementKindsStatus400;
-    "401": GetPolicyStatementKindsStatus401;
-    "403": GetPolicyStatementKindsStatus403;
-    "404": GetPolicyStatementKindsStatus404;
-    "429": GetPolicyStatementKindsStatus429;
-    "500": GetPolicyStatementKindsStatus500;
+  '200': GetPolicyStatementKindsStatus200;
+  '400': GetPolicyStatementKindsStatus400;
+  '401': GetPolicyStatementKindsStatus401;
+  '403': GetPolicyStatementKindsStatus403;
+  '404': GetPolicyStatementKindsStatus404;
+  '429': GetPolicyStatementKindsStatus429;
+  '500': GetPolicyStatementKindsStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type GetPolicyStatementKindsResponse = GetPolicyStatementKindsStatus200;

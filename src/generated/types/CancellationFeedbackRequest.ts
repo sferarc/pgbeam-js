@@ -6,20 +6,20 @@
 /**
  * @description Request body for capturing cancellation feedback from a user.
  * @type object
-*/
+ */
 export type CancellationFeedbackRequest = {
-    /**
-     * @description Predefined cancellation reason.
-     * @maxLength 200
-     * @example too-expensive
-     * @type string | undefined
-    */
-    reason?: string;
-    /**
-     * @description Free-text feedback from the user.
-     * @maxLength 5000
-     * @example Switching to a self-hosted solution.
-     * @type string | undefined
-    */
-    feedback?: string;
+  /**
+   * @description Predefined cancellation reason.
+   * @maxLength 200
+   * @example too-expensive
+   * @type string | undefined
+   */
+  reason?: string;
+  /**
+   * @description Free-text feedback from the user.
+   * @maxLength 5000
+   * @example Switching to a self-hosted solution.
+   * @type string | undefined
+   */
+  feedback?: string;
 };

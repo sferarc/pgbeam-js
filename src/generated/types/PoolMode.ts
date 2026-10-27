@@ -4,9 +4,9 @@
 */
 
 export const poolMode = {
-    session: "session",
-    transaction: "transaction",
-    statement: "statement"
+  session: 'session',
+  transaction: 'transaction',
+  statement: 'statement',
 } as const;
 
 export type PoolModeKey = (typeof poolMode)[keyof typeof poolMode];

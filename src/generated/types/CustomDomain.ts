@@ -8,67 +8,67 @@ import type { DnsInstructions } from './DnsInstructions'
 /**
  * @description Custom database hostname attached to a project.
  * @type object
-*/
+ */
 export type CustomDomain = {
-    /**
-     * @description Unique domain identifier (prefixed).
-     * @example dom_01h455vb4pex5vsknk084sn02q
-     * @type string
-    */
-    id: string;
-    /**
-     * @description Owning project ID.
-     * @example prj_01h455vb4pex5vsknk084sn02q
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description The custom domain name.
-     * @example db.example.com
-     * @type string
-    */
-    domain: string;
-    /**
-     * @description Whether DNS ownership has been verified.
-     * @type boolean
-    */
-    verified: boolean;
-    /**
-     * @description When DNS verification was completed.
-     *
-     * Format: `date-time`
-     * @type string | undefined
-    */
-    verified_at?: string | null;
-    /**
-     * @description When the TLS certificate expires.
-     *
-     * Format: `date-time`
-     * @type string | undefined
-    */
-    tls_cert_expiry?: string | null;
-    /**
-     * @description Token value for the DNS TXT record verification.
-     * @type string
-    */
-    dns_verification_token: string;
-    /**
-     * @description DNS records the user needs to create for domain verification.
-     * @type object | undefined
-    */
-    dns_instructions?: DnsInstructions;
-    /**
-     * @description When the custom domain was created.
-     *
-     * Format: `date-time`
-     * @type string
-    */
-    created_at: string;
-    /**
-     * @description When the custom domain was last updated.
-     *
-     * Format: `date-time`
-     * @type string
-    */
-    updated_at: string;
+  /**
+   * @description Unique domain identifier (prefixed).
+   * @example dom_01h455vb4pex5vsknk084sn02q
+   * @type string
+   */
+  id: string;
+  /**
+   * @description Owning project ID.
+   * @example prj_01h455vb4pex5vsknk084sn02q
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description The custom domain name.
+   * @example db.example.com
+   * @type string
+   */
+  domain: string;
+  /**
+   * @description Whether DNS ownership has been verified.
+   * @type boolean
+   */
+  verified: boolean;
+  /**
+   * @description When DNS verification was completed.
+   *
+   * Format: `date-time`
+   * @type string | undefined
+   */
+  verified_at?: string | null;
+  /**
+   * @description When the TLS certificate expires.
+   *
+   * Format: `date-time`
+   * @type string | undefined
+   */
+  tls_cert_expiry?: string | null;
+  /**
+   * @description Token value for the DNS TXT record verification.
+   * @type string
+   */
+  dns_verification_token: string;
+  /**
+   * @description DNS records the user needs to create for domain verification.
+   * @type object | undefined
+   */
+  dns_instructions?: DnsInstructions;
+  /**
+   * @description When the custom domain was created.
+   *
+   * Format: `date-time`
+   * @type string
+   */
+  created_at: string;
+  /**
+   * @description When the custom domain was last updated.
+   *
+   * Format: `date-time`
+   * @type string
+   */
+  updated_at: string;
 };

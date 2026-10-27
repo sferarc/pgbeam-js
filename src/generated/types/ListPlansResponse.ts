@@ -8,11 +8,11 @@ import type { PlanInfo } from './PlanInfo'
 /**
  * @description Response envelope for listing available billing plans.
  * @type object
-*/
+ */
 export type ListPlansResponse = {
-    /**
-     * @description Billing plans available for self-serve signups.
-     * @type array
-    */
-    plans: PlanInfo[];
+  /**
+   * @description Billing plans available for self-serve signups.
+   * @type array
+   */
+  plans: PlanInfo[];
 };

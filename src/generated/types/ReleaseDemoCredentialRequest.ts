@@ -6,11 +6,11 @@
 /**
  * @description Release of a demo credential by its holder. The MCP token proves the caller is the one that was issued the session.
  * @type object
-*/
+ */
 export type ReleaseDemoCredentialRequest = {
-    /**
-     * @description The mcp_token returned when the credential was issued.
-     * @type string
-    */
-    mcp_token: string;
+  /**
+   * @description The mcp_token returned when the credential was issued.
+   * @type string
+   */
+  mcp_token: string;
 };

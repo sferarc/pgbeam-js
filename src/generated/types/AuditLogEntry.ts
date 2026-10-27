@@ -6,125 +6,125 @@
 /**
  * @description One agent statement recorded by the gateway.
  * @type object
-*/
+ */
 export type AuditLogEntry = {
-    /**
-     * @description Unique audit entry identifier.
-     * @example aud_01h455vb4pex5vsknk084sn02q
-     * @type string
-    */
-    id: string;
-    /**
-     * @description Owning project ID.
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Agent credential that issued the statement, if known.
-     * @type string | undefined
-    */
-    credential_id?: string | null;
-    /**
-     * @description Data plane region that served the statement.
-     * @type string | undefined
-    */
-    region?: string;
-    /**
-     * @description Event type (query, auto_approved, blocked, masked, truncated, budget_exhausted, canary_tripped, rejected, approval_expired, auth_failed, credential_expired, approval_requested, approved, migration_flagged, content_flagged, result_withheld, entries_dropped). `approved` is a statement a reviewer released from an approval hold, which then runs and records its own outcome; `auto_approved` is a write a policy waved through without a human, and is the only row that write produces; `content_flagged` is not an outcome at all, but the result-content scan reporting instruction-shaped text in the values a statement returned. Under content_scan_mode=annotate those values were forwarded unchanged and the statement records query, masked or truncated. Under block the statement records `result_withheld` instead: it ran on the database, and the agent was sent an error (SQLSTATE 42501) in place of the flagged row and everything after it. rows_returned and bytes_out on that entry count what the agent received before the refusal.
-     * @type string
-    */
-    event: string;
-    /**
-     * @description The statement text (truncated).
-     * @type string | undefined
-    */
-    sql?: string;
-    /**
-     * @description Statement with literals replaced by placeholders.
-     * @type string | undefined
-    */
-    normalized_sql?: string;
-    /**
-     * @description Hash of the normalized statement.
-     * @type string | undefined
-    */
-    query_hash?: string;
-    /**
-     * @description Parsed statement kind.
-     * @type string | undefined
-    */
-    statement_kind?: string;
-    /**
-     * @description Machine-readable rule that produced a block, if any.
-     * @type string | undefined
-    */
-    decision_rule?: string;
-    /**
-     * @description Human-readable explanation of the decision.
-     * @type string | undefined
-    */
-    reason?: string;
-    /**
-     * @description Rows returned to the agent.
-     *
-     * Format: `int64`
-     * @type integer | undefined
-    */
-    rows_returned?: number;
-    /**
-     * @description Bytes sent to the agent.
-     *
-     * Format: `int64`
-     * @type integer | undefined
-    */
-    bytes_out?: number;
-    /**
-     * @description Statement latency in milliseconds.
-     * @type number | undefined
-    */
-    latency_ms?: number;
-    /**
-     * @description Cache outcome for the statement.
-     * @type string | undefined
-    */
-    cache_status?: string;
-    /**
-     * @description Source IP of the agent connection.
-     * @type string | undefined
-    */
-    client_ip?: string;
-    /**
-     * @description Identifier grouping a connection\'s statements.
-     * @type string | undefined
-    */
-    session_id?: string;
-    /**
-     * @description Statement origin (wire, mcp, rest, or control for control-plane lifecycle events).
-     * @type string | undefined
-    */
-    source?: string;
-    /**
-     * @description When the statement executed.
-     *
-     * Format: `date-time`
-     * @type string
-    */
-    ts: string;
-    /**
-     * @description Monotonic per-project position in the tamper-evident hash chain.
-     *
-     * Format: `int64`
-     * @type integer | undefined
-    */
-    seq?: number;
-    /**
-     * @description Hex SHA-256 of the previous chained entry (a fixed genesis value for the first entry). Empty for pre-chain legacy entries.
-     * @type string | undefined
-    */
-    prev_hash?: string;
-    /**
-     * @description Hex SHA-256 of this entry\'s canonical content chained onto prev_hash. Empty for pre-chain legacy entries.
-     * @type string | undefined
-    */
-    entry_hash?: string;
+  /**
+   * @description Unique audit entry identifier.
+   * @example aud_01h455vb4pex5vsknk084sn02q
+   * @type string
+   */
+  id: string;
+  /**
+   * @description Owning project ID.
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Agent credential that issued the statement, if known.
+   * @type string | undefined
+   */
+  credential_id?: string | null;
+  /**
+   * @description Data plane region that served the statement.
+   * @type string | undefined
+   */
+  region?: string;
+  /**
+   * @description Event type (query, auto_approved, blocked, masked, truncated, budget_exhausted, canary_tripped, rejected, approval_expired, auth_failed, credential_expired, approval_requested, approved, migration_flagged, content_flagged, result_withheld, entries_dropped). `approved` is a statement a reviewer released from an approval hold, which then runs and records its own outcome; `auto_approved` is a write a policy waved through without a human, and is the only row that write produces; `content_flagged` is not an outcome at all, but the result-content scan reporting instruction-shaped text in the values a statement returned. Under content_scan_mode=annotate those values were forwarded unchanged and the statement records query, masked or truncated. Under block the statement records `result_withheld` instead: it ran on the database, and the agent was sent an error (SQLSTATE 42501) in place of the flagged row and everything after it. rows_returned and bytes_out on that entry count what the agent received before the refusal.
+   * @type string
+   */
+  event: string;
+  /**
+   * @description The statement text (truncated).
+   * @type string | undefined
+   */
+  sql?: string;
+  /**
+   * @description Statement with literals replaced by placeholders.
+   * @type string | undefined
+   */
+  normalized_sql?: string;
+  /**
+   * @description Hash of the normalized statement.
+   * @type string | undefined
+   */
+  query_hash?: string;
+  /**
+   * @description Parsed statement kind.
+   * @type string | undefined
+   */
+  statement_kind?: string;
+  /**
+   * @description Machine-readable rule that produced a block, if any.
+   * @type string | undefined
+   */
+  decision_rule?: string;
+  /**
+   * @description Human-readable explanation of the decision.
+   * @type string | undefined
+   */
+  reason?: string;
+  /**
+   * @description Rows returned to the agent.
+   *
+   * Format: `int64`
+   * @type integer | undefined
+   */
+  rows_returned?: number;
+  /**
+   * @description Bytes sent to the agent.
+   *
+   * Format: `int64`
+   * @type integer | undefined
+   */
+  bytes_out?: number;
+  /**
+   * @description Statement latency in milliseconds.
+   * @type number | undefined
+   */
+  latency_ms?: number;
+  /**
+   * @description Cache outcome for the statement.
+   * @type string | undefined
+   */
+  cache_status?: string;
+  /**
+   * @description Source IP of the agent connection.
+   * @type string | undefined
+   */
+  client_ip?: string;
+  /**
+   * @description Identifier grouping a connection's statements.
+   * @type string | undefined
+   */
+  session_id?: string;
+  /**
+   * @description Statement origin (wire, mcp, rest, or control for control-plane lifecycle events).
+   * @type string | undefined
+   */
+  source?: string;
+  /**
+   * @description When the statement executed.
+   *
+   * Format: `date-time`
+   * @type string
+   */
+  ts: string;
+  /**
+   * @description Monotonic per-project position in the tamper-evident hash chain.
+   *
+   * Format: `int64`
+   * @type integer | undefined
+   */
+  seq?: number;
+  /**
+   * @description Hex SHA-256 of the previous chained entry (a fixed genesis value for the first entry). Empty for pre-chain legacy entries.
+   * @type string | undefined
+   */
+  prev_hash?: string;
+  /**
+   * @description Hex SHA-256 of this entry's canonical content chained onto prev_hash. Empty for pre-chain legacy entries.
+   * @type string | undefined
+   */
+  entry_hash?: string;
 };

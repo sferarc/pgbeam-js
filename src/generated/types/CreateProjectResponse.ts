@@ -9,16 +9,16 @@ import type { Project } from './Project'
 /**
  * @description Response returned after creating a project and its primary database.
  * @type object
-*/
+ */
 export type CreateProjectResponse = {
-    /**
-     * @description Project configuration and current control-plane state.
-     * @type object
-    */
-    project: Project;
-    /**
-     * @description Registered upstream PostgreSQL database for a project.
-     * @type object | undefined
-    */
-    database?: Database;
+  /**
+   * @description Project configuration and current control-plane state.
+   * @type object
+   */
+  project: Project;
+  /**
+   * @description Registered upstream PostgreSQL database for a project.
+   * @type object | undefined
+   */
+  database?: Database;
 };

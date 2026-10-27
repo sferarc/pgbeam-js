@@ -8,11 +8,11 @@ import type { Region } from './Region'
 /**
  * @description Response envelope for available region queries.
  * @type object
-*/
+ */
 export type ListRegionsResponse = {
-    /**
-     * @description Regions currently known to the control plane.
-     * @type array
-    */
-    regions: Region[];
+  /**
+   * @description Regions currently known to the control plane.
+   * @type array
+   */
+  regions: Region[];
 };

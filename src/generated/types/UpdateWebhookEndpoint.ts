@@ -8,111 +8,115 @@ import type { WebhookEndpoint } from './WebhookEndpoint'
 import type { WebhookEndpointInput } from './WebhookEndpointInput'
 
 export type UpdateWebhookEndpointPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Unique webhook endpoint identifier (prefixed, e.g. whk_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    webhook_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Unique webhook endpoint identifier (prefixed, e.g. whk_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  webhook_id: string;
 };
 
 export type UpdateWebhookEndpointHeaders = {
-    /**
-     * @description Entity tag the write is based on, taken from the `ETag` of the read that produced the values being sent. The write proceeds only if it still matches the current representation; otherwise it is refused with `412 Precondition Failed` and nothing is changed.\n\nThis is what makes a read-modify-write safe. Without it the last writer wins and a concurrent edit is silently discarded, which is the failure an agent is most likely to cause and least likely to notice. The `412` response carries the current `ETag`, so a caller can re-read, re-apply its change and retry.\n\nOmitting the header keeps the old unconditional behaviour. `*` matches any current representation, which asserts only that the resource exists.
-     * @minLength 1
-     * @maxLength 1024
-     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
-     * @type string | undefined
-    */
-    "If-Match"?: string;
+  /**
+   * @description Entity tag the write is based on, taken from the `ETag` of the read that produced the values being sent. The write proceeds only if it still matches the current representation; otherwise it is refused with `412 Precondition Failed` and nothing is changed.
+   *
+   * This is what makes a read-modify-write safe. Without it the last writer wins and a concurrent edit is silently discarded, which is the failure an agent is most likely to cause and least likely to notice. The `412` response carries the current `ETag`, so a caller can re-read, re-apply its change and retry.
+   *
+   * Omitting the header keeps the old unconditional behaviour. `*` matches any current representation, which asserts only that the resource exists.
+   * @minLength 1
+   * @maxLength 1024
+   * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+   * @type string | undefined
+   */
+  'If-Match'?: string;
 };
 
 /**
  * @description A delivery target for project audit/event notifications.
  * @type object
-*/
+ */
 export type UpdateWebhookEndpointStatus200 = WebhookEndpoint;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateWebhookEndpointStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateWebhookEndpointStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateWebhookEndpointStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateWebhookEndpointStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateWebhookEndpointStatus412 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateWebhookEndpointStatus413 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateWebhookEndpointStatus415 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateWebhookEndpointStatus500 = Error;
 
 /**
  * @description Mutable fields of a webhook endpoint (used for create and update).
  * @type object
-*/
+ */
 export type UpdateWebhookEndpointBody = WebhookEndpointInput;
 
 export type UpdateWebhookEndpointOptions = {
-    body: UpdateWebhookEndpointBody;
-    path: UpdateWebhookEndpointPath;
-    query?: never;
-    headers?: UpdateWebhookEndpointHeaders;
+  body: UpdateWebhookEndpointBody;
+  path: UpdateWebhookEndpointPath;
+  query?: never;
+  headers?: UpdateWebhookEndpointHeaders;
 };
 
 export type UpdateWebhookEndpointResponses = {
-    "200": UpdateWebhookEndpointStatus200;
-    "400": UpdateWebhookEndpointStatus400;
-    "401": UpdateWebhookEndpointStatus401;
-    "403": UpdateWebhookEndpointStatus403;
-    "404": UpdateWebhookEndpointStatus404;
-    "412": UpdateWebhookEndpointStatus412;
-    "413": UpdateWebhookEndpointStatus413;
-    "415": UpdateWebhookEndpointStatus415;
-    "500": UpdateWebhookEndpointStatus500;
+  '200': UpdateWebhookEndpointStatus200;
+  '400': UpdateWebhookEndpointStatus400;
+  '401': UpdateWebhookEndpointStatus401;
+  '403': UpdateWebhookEndpointStatus403;
+  '404': UpdateWebhookEndpointStatus404;
+  '412': UpdateWebhookEndpointStatus412;
+  '413': UpdateWebhookEndpointStatus413;
+  '415': UpdateWebhookEndpointStatus415;
+  '500': UpdateWebhookEndpointStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type UpdateWebhookEndpointResponse = UpdateWebhookEndpointStatus200;

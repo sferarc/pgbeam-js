@@ -4,65 +4,66 @@
 */
 
 /**
- * @description An enrollment that lets a self-hosted (BYOC) proxy authenticate to the control plane\'s config/audit gRPC stream on behalf of an organization. The token itself is never returned after creation, only its metadata.\n
+ * @description An enrollment that lets a self-hosted (BYOC) proxy authenticate to the control plane's config/audit gRPC stream on behalf of an organization. The token itself is never returned after creation, only its metadata.
+ *
  * @type object
-*/
+ */
 export type SelfHostEnrollment = {
-    /**
-     * @description Unique enrollment identifier.
-     * @example she_01h455vb4pex5vsknk084sn02q
-     * @type string
-    */
-    id: string;
-    /**
-     * @description Organization that owns this enrollment.
-     * @example org_abc123
-     * @type string
-    */
-    org_id: string;
-    /**
-     * @description Operator-supplied label for where the proxy runs (informational).
-     * @example customer-vpc-us-east
-     * @type string | undefined
-    */
-    region_label?: string;
-    /**
-     * @description Optional human-readable note.
-     * @example prod cluster
-     * @type string | undefined
-    */
-    description?: string;
-    /**
-     * @description User ID that created the enrollment.
-     * @type string | undefined
-    */
-    created_by?: string | null;
-    /**
-     * @description When the enrollment was created.
-     *
-     * Format: `date-time`
-     * @type string
-    */
-    created_at: string;
-    /**
-     * @description Last time a proxy authenticated with this enrollment.
-     *
-     * Format: `date-time`
-     * @type string | undefined
-    */
-    last_seen_at?: string | null;
-    /**
-     * @description When the enrollment was revoked. Null means active.
-     *
-     * Format: `date-time`
-     * @type string | undefined
-    */
-    revoked_at?: string | null;
-    /**
-     * @description When the enrollment token expires and stops authenticating new proxy connections. Null means it never expires. Enforcement is fail-closed at the gRPC auth gate the instant this time passes.
-     *
-     * Format: `date-time`
-     * @type string | undefined
-    */
-    expires_at?: string | null;
+  /**
+   * @description Unique enrollment identifier.
+   * @example she_01h455vb4pex5vsknk084sn02q
+   * @type string
+   */
+  id: string;
+  /**
+   * @description Organization that owns this enrollment.
+   * @example org_abc123
+   * @type string
+   */
+  org_id: string;
+  /**
+   * @description Operator-supplied label for where the proxy runs (informational).
+   * @example customer-vpc-us-east
+   * @type string | undefined
+   */
+  region_label?: string;
+  /**
+   * @description Optional human-readable note.
+   * @example prod cluster
+   * @type string | undefined
+   */
+  description?: string;
+  /**
+   * @description User ID that created the enrollment.
+   * @type string | undefined
+   */
+  created_by?: string | null;
+  /**
+   * @description When the enrollment was created.
+   *
+   * Format: `date-time`
+   * @type string
+   */
+  created_at: string;
+  /**
+   * @description Last time a proxy authenticated with this enrollment.
+   *
+   * Format: `date-time`
+   * @type string | undefined
+   */
+  last_seen_at?: string | null;
+  /**
+   * @description When the enrollment was revoked. Null means active.
+   *
+   * Format: `date-time`
+   * @type string | undefined
+   */
+  revoked_at?: string | null;
+  /**
+   * @description When the enrollment token expires and stops authenticating new proxy connections. Null means it never expires. Enforcement is fail-closed at the gRPC auth gate the instant this time passes.
+   *
+   * Format: `date-time`
+   * @type string | undefined
+   */
+  expires_at?: string | null;
 };

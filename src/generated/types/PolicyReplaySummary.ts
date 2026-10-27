@@ -4,8 +4,8 @@
 */
 
 export const policyReplaySummaryTrafficScopeEnum = {
-    project: "project",
-    bound_credentials: "bound_credentials"
+  project: 'project',
+  bound_credentials: 'bound_credentials',
 } as const;
 
 export type PolicyReplaySummaryTrafficScopeEnumKey = (typeof policyReplaySummaryTrafficScopeEnum)[keyof typeof policyReplaySummaryTrafficScopeEnum];
@@ -13,73 +13,73 @@ export type PolicyReplaySummaryTrafficScopeEnumKey = (typeof policyReplaySummary
 /**
  * @description Aggregate outcome of a policy replay.
  * @type object
-*/
+ */
 export type PolicyReplaySummary = {
-    /**
-     * @description Which recorded traffic the replay covered. \"project\" is every credential in the project, so some replayed queries may belong to credentials this candidate policy does not govern. \"bound_credentials\" is only the credentials bound to bound_policy_id, which is what actually changes when that policy is saved.
-     * @type string
-    */
-    traffic_scope: PolicyReplaySummaryTrafficScopeEnumKey;
-    /**
-     * @description How many agent credentials are bound to bound_policy_id. Set only when traffic_scope is bound_credentials. Zero means the policy governs no credential today, so an empty replay is a statement about bindings and not evidence that the change is safe.
-     * @type integer | undefined
-    */
-    bound_credentials?: number;
-    /**
-     * @description Recorded audit entries covered by the replayed queries.
-     *
-     * Format: `int64`
-     * @type integer
-    */
-    entries_scanned: number;
-    /**
-     * @description Distinct normalized queries found in the window (capped at limit).
-     * @type integer
-    */
-    distinct_queries: number;
-    /**
-     * @description Distinct queries actually evaluated against the candidate policy.
-     * @type integer
-    */
-    evaluated: number;
-    /**
-     * @description Queries the candidate policy would allow unchanged.
-     * @type integer
-    */
-    would_allow: number;
-    /**
-     * @description Queries the candidate policy would block.
-     * @type integer
-    */
-    would_block: number;
-    /**
-     * @description Queries the candidate policy would mask result columns on.
-     * @type integer
-    */
-    would_mask: number;
-    /**
-     * @description Queries the candidate policy would inject a row filter into.
-     * @type integer
-    */
-    would_row_filter: number;
-    /**
-     * @description Queries that executed under the recorded policy but the candidate policy would block.
-     * @type integer
-    */
-    newly_blocked: number;
-    /**
-     * @description Queries that were blocked when recorded but the candidate policy would permit.
-     * @type integer
-    */
-    newly_allowed: number;
-    /**
-     * @description Distinct queries skipped because the stored statement was truncated at record time and can no longer be parsed faithfully.
-     * @type integer
-    */
-    skipped_unparseable: number;
-    /**
-     * @description True when the window contained more distinct queries than limit; only the newest were replayed.
-     * @type boolean
-    */
-    truncated: boolean;
+  /**
+   * @description Which recorded traffic the replay covered. "project" is every credential in the project, so some replayed queries may belong to credentials this candidate policy does not govern. "bound_credentials" is only the credentials bound to bound_policy_id, which is what actually changes when that policy is saved.
+   * @type string
+   */
+  traffic_scope: PolicyReplaySummaryTrafficScopeEnumKey;
+  /**
+   * @description How many agent credentials are bound to bound_policy_id. Set only when traffic_scope is bound_credentials. Zero means the policy governs no credential today, so an empty replay is a statement about bindings and not evidence that the change is safe.
+   * @type integer | undefined
+   */
+  bound_credentials?: number;
+  /**
+   * @description Recorded audit entries covered by the replayed queries.
+   *
+   * Format: `int64`
+   * @type integer
+   */
+  entries_scanned: number;
+  /**
+   * @description Distinct normalized queries found in the window (capped at limit).
+   * @type integer
+   */
+  distinct_queries: number;
+  /**
+   * @description Distinct queries actually evaluated against the candidate policy.
+   * @type integer
+   */
+  evaluated: number;
+  /**
+   * @description Queries the candidate policy would allow unchanged.
+   * @type integer
+   */
+  would_allow: number;
+  /**
+   * @description Queries the candidate policy would block.
+   * @type integer
+   */
+  would_block: number;
+  /**
+   * @description Queries the candidate policy would mask result columns on.
+   * @type integer
+   */
+  would_mask: number;
+  /**
+   * @description Queries the candidate policy would inject a row filter into.
+   * @type integer
+   */
+  would_row_filter: number;
+  /**
+   * @description Queries that executed under the recorded policy but the candidate policy would block.
+   * @type integer
+   */
+  newly_blocked: number;
+  /**
+   * @description Queries that were blocked when recorded but the candidate policy would permit.
+   * @type integer
+   */
+  newly_allowed: number;
+  /**
+   * @description Distinct queries skipped because the stored statement was truncated at record time and can no longer be parsed faithfully.
+   * @type integer
+   */
+  skipped_unparseable: number;
+  /**
+   * @description True when the window contained more distinct queries than limit; only the newest were replayed.
+   * @type boolean
+   */
+  truncated: boolean;
 };

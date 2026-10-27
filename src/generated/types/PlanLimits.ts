@@ -6,82 +6,82 @@
 /**
  * @description Effective usage limits enforced for an organization plan.
  * @type object
-*/
+ */
 export type PlanLimits = {
-    /**
-     * @description Maximum queries per day across all projects. 0 means unlimited.
-     *
-     * Format: `int64`
-     * @type integer
-    */
-    queries_per_day: number;
-    /**
-     * @description Maximum number of active projects.
-     * @type integer
-    */
-    max_projects: number;
-    /**
-     * @description Maximum databases per project.
-     * @type integer
-    */
-    max_databases: number;
-    /**
-     * @description Maximum concurrent connections per project.
-     * @type integer
-    */
-    max_connections: number;
-    /**
-     * @description Maximum queries per second per project.
-     * @type integer
-    */
-    queries_per_second: number;
-    /**
-     * @description Monthly data transfer quota in bytes. 0 means unlimited.
-     *
-     * Format: `int64`
-     * @type integer
-    */
-    bytes_per_month: number;
-    /**
-     * @description Maximum query shapes in cache rules. 0 means unlimited.
-     * @type integer
-    */
-    max_query_shapes: number;
-    /**
-     * @description Number of seats included in the plan.
-     * @type integer
-    */
-    included_seats: number;
-    /**
-     * @description Maximum agent credentials per organization. 0 means unlimited.
-     * @type integer
-    */
-    max_agent_credentials: number;
-    /**
-     * @description Agent audit-log retention window in days.
-     * @type integer
-    */
-    audit_retention_days: number;
-    /**
-     * @description Maximum concurrently active instant (sandbox) branches. 0 means no limit.
-     * @type integer
-    */
-    sandbox_max_branches: number;
-    /**
-     * @description Maximum upstream source-database size a sandbox base sync accepts, in bytes. 0 means no limit.
-     *
-     * Format: `int64`
-     * @type integer
-    */
-    sandbox_max_upstream_bytes: number;
-    /**
-     * @description Idle time before an instant (sandbox) branch scales to zero, in seconds.
-     * @type integer
-    */
-    sandbox_idle_seconds: number;
-    /**
-     * @description Lifetime of an instant (sandbox) branch before the TTL sweep discards it, in seconds.
-     * @type integer
-    */
-    sandbox_ttl_seconds: number;
+  /**
+   * @description Maximum queries per day across all projects. 0 means unlimited.
+   *
+   * Format: `int64`
+   * @type integer
+   */
+  queries_per_day: number;
+  /**
+   * @description Maximum number of active projects.
+   * @type integer
+   */
+  max_projects: number;
+  /**
+   * @description Maximum databases per project.
+   * @type integer
+   */
+  max_databases: number;
+  /**
+   * @description Maximum concurrent connections per project.
+   * @type integer
+   */
+  max_connections: number;
+  /**
+   * @description Maximum queries per second per project.
+   * @type integer
+   */
+  queries_per_second: number;
+  /**
+   * @description Monthly data transfer quota in bytes. 0 means unlimited.
+   *
+   * Format: `int64`
+   * @type integer
+   */
+  bytes_per_month: number;
+  /**
+   * @description Maximum query shapes in cache rules. 0 means unlimited.
+   * @type integer
+   */
+  max_query_shapes: number;
+  /**
+   * @description Number of seats included in the plan.
+   * @type integer
+   */
+  included_seats: number;
+  /**
+   * @description Maximum agent credentials per organization. 0 means unlimited.
+   * @type integer
+   */
+  max_agent_credentials: number;
+  /**
+   * @description Agent audit-log retention window in days.
+   * @type integer
+   */
+  audit_retention_days: number;
+  /**
+   * @description Maximum concurrently active instant (sandbox) branches. 0 means no limit.
+   * @type integer
+   */
+  sandbox_max_branches: number;
+  /**
+   * @description Maximum upstream source-database size a sandbox base sync accepts, in bytes. 0 means no limit.
+   *
+   * Format: `int64`
+   * @type integer
+   */
+  sandbox_max_upstream_bytes: number;
+  /**
+   * @description Idle time before an instant (sandbox) branch scales to zero, in seconds.
+   * @type integer
+   */
+  sandbox_idle_seconds: number;
+  /**
+   * @description Lifetime of an instant (sandbox) branch before the TTL sweep discards it, in seconds.
+   * @type integer
+   */
+  sandbox_ttl_seconds: number;
 };

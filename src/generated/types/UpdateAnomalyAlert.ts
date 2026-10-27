@@ -8,93 +8,93 @@ import type { Error } from './Error'
 import type { UpdateAnomalyAlertRequest } from './UpdateAnomalyAlertRequest'
 
 export type UpdateAnomalyAlertPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Unique anomaly alert identifier (prefixed, e.g. ano_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    anomaly_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Unique anomaly alert identifier (prefixed, e.g. ano_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  anomaly_id: string;
 };
 
 /**
  * @description A surfaced anomalous-behavior alert for review.
  * @type object
-*/
+ */
 export type UpdateAnomalyAlertStatus200 = AnomalyAlert;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateAnomalyAlertStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateAnomalyAlertStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateAnomalyAlertStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateAnomalyAlertStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateAnomalyAlertStatus413 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateAnomalyAlertStatus415 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type UpdateAnomalyAlertStatus500 = Error;
 
 /**
  * @description Request body for triaging an anomaly alert.
  * @type object
-*/
+ */
 export type UpdateAnomalyAlertBody = UpdateAnomalyAlertRequest;
 
 export type UpdateAnomalyAlertOptions = {
-    body: UpdateAnomalyAlertBody;
-    path: UpdateAnomalyAlertPath;
-    query?: never;
-    headers?: never;
+  body: UpdateAnomalyAlertBody;
+  path: UpdateAnomalyAlertPath;
+  query?: never;
+  headers?: never;
 };
 
 export type UpdateAnomalyAlertResponses = {
-    "200": UpdateAnomalyAlertStatus200;
-    "400": UpdateAnomalyAlertStatus400;
-    "401": UpdateAnomalyAlertStatus401;
-    "403": UpdateAnomalyAlertStatus403;
-    "404": UpdateAnomalyAlertStatus404;
-    "413": UpdateAnomalyAlertStatus413;
-    "415": UpdateAnomalyAlertStatus415;
-    "500": UpdateAnomalyAlertStatus500;
+  '200': UpdateAnomalyAlertStatus200;
+  '400': UpdateAnomalyAlertStatus400;
+  '401': UpdateAnomalyAlertStatus401;
+  '403': UpdateAnomalyAlertStatus403;
+  '404': UpdateAnomalyAlertStatus404;
+  '413': UpdateAnomalyAlertStatus413;
+  '415': UpdateAnomalyAlertStatus415;
+  '500': UpdateAnomalyAlertStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type UpdateAnomalyAlertResponse = UpdateAnomalyAlertStatus200;

@@ -6,9 +6,9 @@
 import type { CreateDatabaseRequest } from './CreateDatabaseRequest'
 
 export const createProjectRequestCloudEnum = {
-    aws: "aws",
-    azure: "azure",
-    gcp: "gcp"
+  aws: 'aws',
+  azure: 'azure',
+  gcp: 'gcp',
 } as const;
 
 export type CreateProjectRequestCloudEnumKey = (typeof createProjectRequestCloudEnum)[keyof typeof createProjectRequestCloudEnum];
@@ -16,53 +16,54 @@ export type CreateProjectRequestCloudEnumKey = (typeof createProjectRequestCloud
 /**
  * @description Request body for creating a project and its primary database, which are created atomically.
  * @type object
-*/
+ */
 export type CreateProjectRequest = {
-    /**
-     * @description Human-readable project name.
-     * @minLength 1
-     * @maxLength 100
-     * @pattern ^[^\x00]*$
-     * @example my-app
-     * @type string
-    */
-    name: string;
-    /**
-     * @description Better Auth organization ID.
-     * @minLength 1
-     * @pattern ^[^\x00]+$
-     * @example org_abc123
-     * @type string
-    */
-    org_id: string;
-    /**
-     * @description Optional project description.
-     * @maxLength 500
-     * @example Production database proxy
-     * @type string | undefined
-    */
-    description?: string;
-    /**
-     * @description User-defined labels to attach to the project.
-     * @example ["production","us-east-1"]
-     * @type array | undefined
-    */
-    tags?: string[];
-    /**
-     * @description Cloud provider for the project.
-     * @default 'aws'
-     * @type string | undefined
-    */
-    cloud?: CreateProjectRequestCloudEnumKey;
-    /**
-     * @description Mark this project as running on a self-hosted (BYOC) data plane in the customer\'s own VPC/cluster. Requires the Scale or enterprise plan.\n
-     * @default false
-     * @type boolean | undefined
-    */
-    self_hosted?: boolean;
-    /**
-     * @description Request body for registering an upstream database.
-     * @type object
-    */
-    database: CreateDatabaseRequest;
+  /**
+   * @description Human-readable project name.
+   * @minLength 1
+   * @maxLength 100
+   * @pattern ^[^\x00]*$
+   * @example my-app
+   * @type string
+   */
+  name: string;
+  /**
+   * @description Better Auth organization ID.
+   * @minLength 1
+   * @pattern ^[^\x00]+$
+   * @example org_abc123
+   * @type string
+   */
+  org_id: string;
+  /**
+   * @description Optional project description.
+   * @maxLength 500
+   * @example Production database proxy
+   * @type string | undefined
+   */
+  description?: string;
+  /**
+   * @description User-defined labels to attach to the project.
+   * @example ["production","us-east-1"]
+   * @type array | undefined
+   */
+  tags?: string[];
+  /**
+   * @description Cloud provider for the project.
+   * @default 'aws'
+   * @type string | undefined
+   */
+  cloud?: CreateProjectRequestCloudEnumKey;
+  /**
+   * @description Mark this project as running on a self-hosted (BYOC) data plane in the customer's own VPC/cluster. Requires the Scale or enterprise plan.
+   *
+   * @default false
+   * @type boolean | undefined
+   */
+  self_hosted?: boolean;
+  /**
+   * @description Request body for registering an upstream database.
+   * @type object
+   */
+  database: CreateDatabaseRequest;
 };

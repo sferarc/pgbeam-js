@@ -4,10 +4,10 @@
 */
 
 export const databaseBranchStatusEnum = {
-    pending: "pending",
-    ready: "ready",
-    error: "error",
-    discarded: "discarded"
+  pending: 'pending',
+  ready: 'ready',
+  error: 'error',
+  discarded: 'discarded',
 } as const;
 
 export type DatabaseBranchStatusEnumKey = (typeof databaseBranchStatusEnum)[keyof typeof databaseBranchStatusEnum];
@@ -15,63 +15,63 @@ export type DatabaseBranchStatusEnumKey = (typeof databaseBranchStatusEnum)[keyo
 /**
  * @description An ephemeral sandbox branch of a database used for write isolation.
  * @type object
-*/
+ */
 export type DatabaseBranch = {
-    /**
-     * @description Unique sandbox branch identifier (prefixed).
-     * @example brn_01h455vb4pex5vsknk084sn02q
-     * @type string
-    */
-    id: string;
-    /**
-     * @description Database this branch was created from.
-     * @type string
-    */
-    database_id: string;
-    /**
-     * @description Agent credential that requested the branch, if known.
-     * @type string | undefined
-    */
-    credential_id?: string | null;
-    /**
-     * @description Identifier grouping a connection\'s statements.
-     * @type string | undefined
-    */
-    session_id?: string;
-    /**
-     * @description Generated name for the branch.
-     * @type string
-    */
-    branch_name: string;
-    /**
-     * @description Provisioning state of the branch.
-     * @type string
-    */
-    status: DatabaseBranchStatusEnumKey;
-    /**
-     * @description Provisioning error, if any.
-     * @type string | undefined
-    */
-    error?: string;
-    /**
-     * @description When the branch was created.
-     *
-     * Format: `date-time`
-     * @type string
-    */
-    created_at: string;
-    /**
-     * @description When the branch expires, if set.
-     *
-     * Format: `date-time`
-     * @type string | undefined
-    */
-    expires_at?: string | null;
-    /**
-     * @description When the branch was discarded, if any.
-     *
-     * Format: `date-time`
-     * @type string | undefined
-    */
-    discarded_at?: string | null;
+  /**
+   * @description Unique sandbox branch identifier (prefixed).
+   * @example brn_01h455vb4pex5vsknk084sn02q
+   * @type string
+   */
+  id: string;
+  /**
+   * @description Database this branch was created from.
+   * @type string
+   */
+  database_id: string;
+  /**
+   * @description Agent credential that requested the branch, if known.
+   * @type string | undefined
+   */
+  credential_id?: string | null;
+  /**
+   * @description Identifier grouping a connection's statements.
+   * @type string | undefined
+   */
+  session_id?: string;
+  /**
+   * @description Generated name for the branch.
+   * @type string
+   */
+  branch_name: string;
+  /**
+   * @description Provisioning state of the branch.
+   * @type string
+   */
+  status: DatabaseBranchStatusEnumKey;
+  /**
+   * @description Provisioning error, if any.
+   * @type string | undefined
+   */
+  error?: string;
+  /**
+   * @description When the branch was created.
+   *
+   * Format: `date-time`
+   * @type string
+   */
+  created_at: string;
+  /**
+   * @description When the branch expires, if set.
+   *
+   * Format: `date-time`
+   * @type string | undefined
+   */
+  expires_at?: string | null;
+  /**
+   * @description When the branch was discarded, if any.
+   *
+   * Format: `date-time`
+   * @type string | undefined
+   */
+  discarded_at?: string | null;
 };

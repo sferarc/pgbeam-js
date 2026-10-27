@@ -4,8 +4,8 @@
 */
 
 export const databaseRole = {
-    primary: "primary",
-    replica: "replica"
+  primary: 'primary',
+  replica: 'replica',
 } as const;
 
 export type DatabaseRoleKey = (typeof databaseRole)[keyof typeof databaseRole];

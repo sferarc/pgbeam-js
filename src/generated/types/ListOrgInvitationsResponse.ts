@@ -8,16 +8,16 @@ import type { OrgInvitation } from './OrgInvitation'
 /**
  * @description A page of pending invitations.
  * @type object
-*/
+ */
 export type ListOrgInvitationsResponse = {
-    /**
-     * @description The organization\'s invitations.
-     * @type array
-    */
-    invitations: OrgInvitation[];
-    /**
-     * @description Opaque token for cursor-based pagination.
-     * @type string | undefined
-    */
-    next_page_token?: string;
+  /**
+   * @description The organization's invitations.
+   * @type array
+   */
+  invitations: OrgInvitation[];
+  /**
+   * @description Opaque token for cursor-based pagination.
+   * @type string | undefined
+   */
+  next_page_token?: string;
 };

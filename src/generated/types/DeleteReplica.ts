@@ -6,18 +6,18 @@
 import type { Error } from './Error'
 
 export type DeleteReplicaPath = {
-    /**
-     * @description Unique database identifier (prefixed, e.g. db_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    database_id: string;
-    /**
-     * @description Unique replica identifier (prefixed, e.g. rep_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    replica_id: string;
+  /**
+   * @description Unique database identifier (prefixed, e.g. db_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  database_id: string;
+  /**
+   * @description Unique replica identifier (prefixed, e.g. rep_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  replica_id: string;
 };
 
 export type DeleteReplicaStatus204 = unknown;
@@ -25,57 +25,57 @@ export type DeleteReplicaStatus204 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteReplicaStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteReplicaStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteReplicaStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteReplicaStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteReplicaStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteReplicaStatus500 = Error;
 
 export type DeleteReplicaOptions = {
-    body?: never;
-    path: DeleteReplicaPath;
-    query?: never;
-    headers?: never;
+  body?: never;
+  path: DeleteReplicaPath;
+  query?: never;
+  headers?: never;
 };
 
 export type DeleteReplicaResponses = {
-    "204": DeleteReplicaStatus204;
-    "400": DeleteReplicaStatus400;
-    "401": DeleteReplicaStatus401;
-    "403": DeleteReplicaStatus403;
-    "404": DeleteReplicaStatus404;
-    "429": DeleteReplicaStatus429;
-    "500": DeleteReplicaStatus500;
+  '204': DeleteReplicaStatus204;
+  '400': DeleteReplicaStatus400;
+  '401': DeleteReplicaStatus401;
+  '403': DeleteReplicaStatus403;
+  '404': DeleteReplicaStatus404;
+  '429': DeleteReplicaStatus429;
+  '500': DeleteReplicaStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type DeleteReplicaResponse = DeleteReplicaStatus204;

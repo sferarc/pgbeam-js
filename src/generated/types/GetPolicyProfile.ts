@@ -7,35 +7,37 @@ import type { Error } from './Error'
 import type { PolicyProfile } from './PolicyProfile'
 
 export type GetPolicyProfilePath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Unique policy profile identifier (prefixed, e.g. pol_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    policy_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Unique policy profile identifier (prefixed, e.g. pol_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  policy_id: string;
 };
 
 export type GetPolicyProfileHeaders = {
-    /**
-     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
-     * @minLength 1
-     * @maxLength 1024
-     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
-     * @type string | undefined
-    */
-    "If-None-Match"?: string;
+  /**
+   * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.
+   *
+   * A comma-separated list is accepted, and `*` matches any current representation.
+   * @minLength 1
+   * @maxLength 1024
+   * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+   * @type string | undefined
+   */
+  'If-None-Match'?: string;
 };
 
 /**
  * @description A named bundle of rules enforced on agent credentials in the data plane.
  * @type object
-*/
+ */
 export type GetPolicyProfileStatus200 = PolicyProfile;
 
 export type GetPolicyProfileStatus304 = unknown;
@@ -43,51 +45,51 @@ export type GetPolicyProfileStatus304 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetPolicyProfileStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetPolicyProfileStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetPolicyProfileStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetPolicyProfileStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetPolicyProfileStatus500 = Error;
 
 export type GetPolicyProfileOptions = {
-    body?: never;
-    path: GetPolicyProfilePath;
-    query?: never;
-    headers?: GetPolicyProfileHeaders;
+  body?: never;
+  path: GetPolicyProfilePath;
+  query?: never;
+  headers?: GetPolicyProfileHeaders;
 };
 
 export type GetPolicyProfileResponses = {
-    "200": GetPolicyProfileStatus200;
-    "304": GetPolicyProfileStatus304;
-    "400": GetPolicyProfileStatus400;
-    "401": GetPolicyProfileStatus401;
-    "403": GetPolicyProfileStatus403;
-    "404": GetPolicyProfileStatus404;
-    "500": GetPolicyProfileStatus500;
+  '200': GetPolicyProfileStatus200;
+  '304': GetPolicyProfileStatus304;
+  '400': GetPolicyProfileStatus400;
+  '401': GetPolicyProfileStatus401;
+  '403': GetPolicyProfileStatus403;
+  '404': GetPolicyProfileStatus404;
+  '500': GetPolicyProfileStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type GetPolicyProfileResponse = GetPolicyProfileStatus200;

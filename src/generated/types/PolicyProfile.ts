@@ -8,48 +8,48 @@ import type { RowFilter } from './RowFilter'
 import type { StatementRules } from './StatementRules'
 
 export const policyProfileAccessModeEnum = {
-    read_only: "read_only",
-    read_write: "read_write"
+  read_only: 'read_only',
+  read_write: 'read_write',
 } as const;
 
 export type PolicyProfileAccessModeEnumKey = (typeof policyProfileAccessModeEnum)[keyof typeof policyProfileAccessModeEnum];
 
 export const policyProfileWriteModeEnum = {
-    normal: "normal",
-    rollback: "rollback",
-    sandbox: "sandbox"
+  normal: 'normal',
+  rollback: 'rollback',
+  sandbox: 'sandbox',
 } as const;
 
 export type PolicyProfileWriteModeEnumKey = (typeof policyProfileWriteModeEnum)[keyof typeof policyProfileWriteModeEnum];
 
 export const policyProfileApprovalModeEnum = {
-    off: "off",
-    writes: "writes",
-    ddl: "ddl",
-    all: "all"
+  off: 'off',
+  writes: 'writes',
+  ddl: 'ddl',
+  all: 'all',
 } as const;
 
 export type PolicyProfileApprovalModeEnumKey = (typeof policyProfileApprovalModeEnum)[keyof typeof policyProfileApprovalModeEnum];
 
 export const policyProfileMigrationSafetyEnum = {
-    off: "off",
-    warn: "warn",
-    block: "block"
+  off: 'off',
+  warn: 'warn',
+  block: 'block',
 } as const;
 
 export type PolicyProfileMigrationSafetyEnumKey = (typeof policyProfileMigrationSafetyEnum)[keyof typeof policyProfileMigrationSafetyEnum];
 
 export const policyProfileContentScanModeEnum = {
-    off: "off",
-    annotate: "annotate",
-    block: "block"
+  off: 'off',
+  annotate: 'annotate',
+  block: 'block',
 } as const;
 
 export type PolicyProfileContentScanModeEnumKey = (typeof policyProfileContentScanModeEnum)[keyof typeof policyProfileContentScanModeEnum];
 
 export const policyProfileQueryModeEnum = {
-    sql: "sql",
-    templates: "templates"
+  sql: 'sql',
+  templates: 'templates',
 } as const;
 
 export type PolicyProfileQueryModeEnumKey = (typeof policyProfileQueryModeEnum)[keyof typeof policyProfileQueryModeEnum];
@@ -57,161 +57,161 @@ export type PolicyProfileQueryModeEnumKey = (typeof policyProfileQueryModeEnum)[
 /**
  * @description A named bundle of rules enforced on agent credentials in the data plane.
  * @type object
-*/
+ */
 export type PolicyProfile = {
-    /**
-     * @description Unique policy profile identifier (prefixed).
-     * @example pol_01h455vb4pex5vsknk084sn02q
-     * @type string
-    */
-    id: string;
-    /**
-     * @description Owning project ID.
-     * @example prj_01h455vb4pex5vsknk084sn02q
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Human-readable name for the policy profile.
-     * @example Read-only analytics
-     * @type string
-    */
-    name: string;
-    /**
-     * @description read_only blocks all data and schema mutations.
-     * @type string
-    */
-    access_mode: PolicyProfileAccessModeEnumKey;
-    /**
-     * @description Per-statement-kind allow/deny lists. Empty allow means all kinds permitted by the access mode.
-     * @type object | undefined
-    */
-    statement_rules?: StatementRules;
-    /**
-     * @description If non-empty, only these relations are reachable. Entries are schema-qualified (billing.orders) or bare (orders); a bare entry grants the public schema only, so the same table name in another schema must be listed in full.
-     * @type array
-    */
-    table_allowlist: string[];
-    /**
-     * @description Relations explicitly blocked (takes precedence over the allowlist). A bare entry blocks that relation in every schema.
-     * @type array
-    */
-    table_denylist: string[];
-    /**
-     * @description Column masking rules applied to query results.
-     * @type array
-    */
-    masking_rules: MaskingRule[];
-    /**
-     * @description Max queries per rolling hour window. 0 means unlimited.
-     * @default 0
-     * @type integer | undefined
-    */
-    budget_queries_per_hour?: number;
-    /**
-     * @description Max queries per day window. 0 means unlimited.
-     * @default 0
-     * @type integer | undefined
-    */
-    budget_queries_per_day?: number;
-    /**
-     * @description Max rows returned per query. 0 means unlimited.
-     * @default 0
-     * @type integer | undefined
-    */
-    max_rows?: number;
-    /**
-     * @description Upstream statement timeout for agent sessions. 0 uses the project default.
-     * @default 0
-     * @type integer | undefined
-    */
-    statement_timeout_ms?: number;
-    /**
-     * @description Per-relation row filters ANDed into agent reads.
-     * @type array | undefined
-    */
-    row_filters?: RowFilter[];
-    /**
-     * @description How writes are handled. normal commits, rollback auto-rolls back, sandbox routes to an ephemeral branch.
-     * @default 'normal'
-     * @type string | undefined
-    */
-    write_mode?: PolicyProfileWriteModeEnumKey;
-    /**
-     * @description Which statement classes require human approval before execution.
-     * @default 'off'
-     * @type string | undefined
-    */
-    approval_mode?: PolicyProfileApprovalModeEnumKey;
-    /**
-     * @description Statements touching at most this many rows are auto-approved. 0 means none.
-     * @minLength 0
-     * @default 0
-     * @type integer | undefined
-    */
-    approval_auto_max_rows?: number;
-    /**
-     * @description How long a held statement waits for a decision before expiring.
-     * @minLength 0
-     * @default 300
-     * @type integer | undefined
-    */
-    approval_timeout_seconds?: number;
-    /**
-     * @description Migration safety mode. warn surfaces findings, block refuses unsafe DDL.
-     * @default 'off'
-     * @type string | undefined
-    */
-    migration_safety?: PolicyProfileMigrationSafetyEnumKey;
-    /**
-     * @description Per-day egress budget in bytes. 0 means unlimited.
-     *
-     * Format: `int64`
-     * @minLength 0
-     * @default 0
-     * @type integer | undefined
-    */
-    egress_bytes_per_day?: number;
-    /**
-     * @description Hard cap on rows a single write (INSERT/UPDATE/DELETE) may affect. A write whose affected-row count would exceed this is executed inside a transaction, checked, and rolled back so nothing persists, then blocked. Enforced independently of human approval. 0 means unlimited.
-     * @minLength 0
-     * @default 0
-     * @type integer | undefined
-    */
-    max_affected_rows?: number;
-    /**
-     * @description Result-content scanning, enforced on the data-plane relay path: values on their way out to an agent are checked for instruction-shaped content (stored prompt injection). off scans nothing and costs nothing. annotate scans and forwards every value unchanged, recording what it found. block scans the same way and refuses instead: a value the structural detectors report at high confidence withholds that row and the rest of the exchange, and the statement\'s completion is replaced with an error (SQLSTATE 42501) naming the column, so a withheld result reads as a failed statement rather than a short one. Rows the scan had already cleared stay delivered, because this is a streaming protocol; what block guarantees is that no value carrying such a finding is ever sent to the agent. A lower-confidence finding never refuses, under any mode. No mode rewrites a value or withholds a row without saying so. A flagged statement records one content_flagged audit entry naming the columns, the techniques and whether the scan covered the whole result, alongside the proxy\'s own metrics and logs; the entry carries no value from the row itself, and it is delivered to any endpoint subscribed to the content_flagged webhook event, at either confidence, with decision_rule telling them apart. A finding the structural detectors report at high confidence also raises an anomaly alert, at most one per credential per hour; lower-confidence findings stay in the audit trail and the webhook stream. Values the scan cannot read (binary-format columns, columns this profile masks, and anything past content_scan_max_bytes) are counted as unscanned rather than reported clean. A proxy build older than result-content scanning ignores this field.
-     * @default 'off'
-     * @type string | undefined
-    */
-    content_scan_mode?: PolicyProfileContentScanModeEnumKey;
-    /**
-     * @description Byte budget for one statement\'s content scan, spanning all values in the result. Values past it are reported unscannable rather than skipped quietly. The budget covers a whole statement, so the statements of one simple-query batch share it rather than each getting a fresh allowance. 0 uses the scanner default (4 MiB), which covers an interactive result set and deliberately does not cover a bulk export.
-     *
-     * Format: `int64`
-     * @minLength 0
-     * @default 0
-     * @type integer | undefined
-    */
-    content_scan_max_bytes?: number;
-    /**
-     * @description What an agent on this profile may send. sql admits any statement the rest of the profile allows. templates admits only the project\'s enabled query templates (matched on the parse tree, so spelling and literals in the template\'s own text count), and refuses everything else with SQLSTATE 42501 and decision rule template_required, MCP query included. A matched template still meets every other rule on this profile: a template narrows what an agent can run and never grants access. The hosted MCP discovery tools (list_tables, describe_table, schema_catalog) keep working under templates.
-     * @default 'sql'
-     * @type string
-    */
-    query_mode: PolicyProfileQueryModeEnumKey;
-    /**
-     * @description When the policy profile was created.
-     *
-     * Format: `date-time`
-     * @type string
-    */
-    created_at: string;
-    /**
-     * @description When the policy profile was last updated.
-     *
-     * Format: `date-time`
-     * @type string
-    */
-    updated_at: string;
+  /**
+   * @description Unique policy profile identifier (prefixed).
+   * @example pol_01h455vb4pex5vsknk084sn02q
+   * @type string
+   */
+  id: string;
+  /**
+   * @description Owning project ID.
+   * @example prj_01h455vb4pex5vsknk084sn02q
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Human-readable name for the policy profile.
+   * @example Read-only analytics
+   * @type string
+   */
+  name: string;
+  /**
+   * @description read_only blocks all data and schema mutations.
+   * @type string
+   */
+  access_mode: PolicyProfileAccessModeEnumKey;
+  /**
+   * @description Per-statement-kind allow/deny lists. Empty allow means all kinds permitted by the access mode.
+   * @type object | undefined
+   */
+  statement_rules?: StatementRules;
+  /**
+   * @description If non-empty, only these relations are reachable. Entries are schema-qualified (billing.orders) or bare (orders); a bare entry grants the public schema only, so the same table name in another schema must be listed in full.
+   * @type array
+   */
+  table_allowlist: string[];
+  /**
+   * @description Relations explicitly blocked (takes precedence over the allowlist). A bare entry blocks that relation in every schema.
+   * @type array
+   */
+  table_denylist: string[];
+  /**
+   * @description Column masking rules applied to query results.
+   * @type array
+   */
+  masking_rules: MaskingRule[];
+  /**
+   * @description Max queries per rolling hour window. 0 means unlimited.
+   * @default 0
+   * @type integer | undefined
+   */
+  budget_queries_per_hour?: number;
+  /**
+   * @description Max queries per day window. 0 means unlimited.
+   * @default 0
+   * @type integer | undefined
+   */
+  budget_queries_per_day?: number;
+  /**
+   * @description Max rows returned per query. 0 means unlimited.
+   * @default 0
+   * @type integer | undefined
+   */
+  max_rows?: number;
+  /**
+   * @description Upstream statement timeout for agent sessions. 0 uses the project default.
+   * @default 0
+   * @type integer | undefined
+   */
+  statement_timeout_ms?: number;
+  /**
+   * @description Per-relation row filters ANDed into agent reads.
+   * @type array | undefined
+   */
+  row_filters?: RowFilter[];
+  /**
+   * @description How writes are handled. normal commits, rollback auto-rolls back, sandbox routes to an ephemeral branch.
+   * @default 'normal'
+   * @type string | undefined
+   */
+  write_mode?: PolicyProfileWriteModeEnumKey;
+  /**
+   * @description Which statement classes require human approval before execution.
+   * @default 'off'
+   * @type string | undefined
+   */
+  approval_mode?: PolicyProfileApprovalModeEnumKey;
+  /**
+   * @description Statements touching at most this many rows are auto-approved. 0 means none.
+   * @minLength 0
+   * @default 0
+   * @type integer | undefined
+   */
+  approval_auto_max_rows?: number;
+  /**
+   * @description How long a held statement waits for a decision before expiring.
+   * @minLength 0
+   * @default 300
+   * @type integer | undefined
+   */
+  approval_timeout_seconds?: number;
+  /**
+   * @description Migration safety mode. warn surfaces findings, block refuses unsafe DDL.
+   * @default 'off'
+   * @type string | undefined
+   */
+  migration_safety?: PolicyProfileMigrationSafetyEnumKey;
+  /**
+   * @description Per-day egress budget in bytes. 0 means unlimited.
+   *
+   * Format: `int64`
+   * @minLength 0
+   * @default 0
+   * @type integer | undefined
+   */
+  egress_bytes_per_day?: number;
+  /**
+   * @description Hard cap on rows a single write (INSERT/UPDATE/DELETE) may affect. A write whose affected-row count would exceed this is executed inside a transaction, checked, and rolled back so nothing persists, then blocked. Enforced independently of human approval. 0 means unlimited.
+   * @minLength 0
+   * @default 0
+   * @type integer | undefined
+   */
+  max_affected_rows?: number;
+  /**
+   * @description Result-content scanning, enforced on the data-plane relay path: values on their way out to an agent are checked for instruction-shaped content (stored prompt injection). off scans nothing and costs nothing. annotate scans and forwards every value unchanged, recording what it found. block scans the same way and refuses instead: a value the structural detectors report at high confidence withholds that row and the rest of the exchange, and the statement's completion is replaced with an error (SQLSTATE 42501) naming the column, so a withheld result reads as a failed statement rather than a short one. Rows the scan had already cleared stay delivered, because this is a streaming protocol; what block guarantees is that no value carrying such a finding is ever sent to the agent. A lower-confidence finding never refuses, under any mode. No mode rewrites a value or withholds a row without saying so. A flagged statement records one content_flagged audit entry naming the columns, the techniques and whether the scan covered the whole result, alongside the proxy's own metrics and logs; the entry carries no value from the row itself, and it is delivered to any endpoint subscribed to the content_flagged webhook event, at either confidence, with decision_rule telling them apart. A finding the structural detectors report at high confidence also raises an anomaly alert, at most one per credential per hour; lower-confidence findings stay in the audit trail and the webhook stream. Values the scan cannot read (binary-format columns, columns this profile masks, and anything past content_scan_max_bytes) are counted as unscanned rather than reported clean. A proxy build older than result-content scanning ignores this field.
+   * @default 'off'
+   * @type string | undefined
+   */
+  content_scan_mode?: PolicyProfileContentScanModeEnumKey;
+  /**
+   * @description Byte budget for one statement's content scan, spanning all values in the result. Values past it are reported unscannable rather than skipped quietly. The budget covers a whole statement, so the statements of one simple-query batch share it rather than each getting a fresh allowance. 0 uses the scanner default (4 MiB), which covers an interactive result set and deliberately does not cover a bulk export.
+   *
+   * Format: `int64`
+   * @minLength 0
+   * @default 0
+   * @type integer | undefined
+   */
+  content_scan_max_bytes?: number;
+  /**
+   * @description What an agent on this profile may send. sql admits any statement the rest of the profile allows. templates admits only the project's enabled query templates (matched on the parse tree, so spelling and literals in the template's own text count), and refuses everything else with SQLSTATE 42501 and decision rule template_required, MCP query included. A matched template still meets every other rule on this profile: a template narrows what an agent can run and never grants access. The hosted MCP discovery tools (list_tables, describe_table, schema_catalog) keep working under templates.
+   * @default 'sql'
+   * @type string
+   */
+  query_mode: PolicyProfileQueryModeEnumKey;
+  /**
+   * @description When the policy profile was created.
+   *
+   * Format: `date-time`
+   * @type string
+   */
+  created_at: string;
+  /**
+   * @description When the policy profile was last updated.
+   *
+   * Format: `date-time`
+   * @type string
+   */
+  updated_at: string;
 };

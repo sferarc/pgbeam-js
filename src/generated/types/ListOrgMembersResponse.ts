@@ -8,16 +8,16 @@ import type { OrgMember } from './OrgMember'
 /**
  * @description A page of organization members.
  * @type object
-*/
+ */
 export type ListOrgMembersResponse = {
-    /**
-     * @description Members of the organization.
-     * @type array
-    */
-    members: OrgMember[];
-    /**
-     * @description Opaque token for cursor-based pagination.
-     * @type string | undefined
-    */
-    next_page_token?: string;
+  /**
+   * @description Members of the organization.
+   * @type array
+   */
+  members: OrgMember[];
+  /**
+   * @description Opaque token for cursor-based pagination.
+   * @type string | undefined
+   */
+  next_page_token?: string;
 };

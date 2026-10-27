@@ -8,28 +8,28 @@ import type { SSLModeKey } from './SSLMode'
 /**
  * @description Request body for adding a read replica to a database.
  * @type object
-*/
+ */
 export type CreateReplicaRequest = {
-    /**
-     * @description PostgreSQL replica host.
-     * @minLength 1
-     * @pattern ^[^\s\x00]+$
-     * @example replica.us-west-2.rds.amazonaws.com
-     * @type string
-    */
-    host: string;
-    /**
-     * @description PostgreSQL replica port.
-     * @minLength 1
-     * @maxLength 65535
-     * @example 5432
-     * @type integer
-    */
-    port: number;
-    /**
-     * @description PostgreSQL SSL connection mode.
-     * @example require
-     * @type string | undefined
-    */
-    ssl_mode?: SSLModeKey;
+  /**
+   * @description PostgreSQL replica host.
+   * @minLength 1
+   * @pattern ^[^\s\x00]+$
+   * @example replica.us-west-2.rds.amazonaws.com
+   * @type string
+   */
+  host: string;
+  /**
+   * @description PostgreSQL replica port.
+   * @minLength 1
+   * @maxLength 65535
+   * @example 5432
+   * @type integer
+   */
+  port: number;
+  /**
+   * @description PostgreSQL SSL connection mode.
+   * @example require
+   * @type string | undefined
+   */
+  ssl_mode?: SSLModeKey;
 };

@@ -7,75 +7,75 @@ import type { Error } from './Error'
 import type { VerifyCustomDomainResponse } from './VerifyCustomDomainResponse'
 
 export type VerifyCustomDomainPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Unique custom domain identifier (prefixed, e.g. dom_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    domain_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Unique custom domain identifier (prefixed, e.g. dom_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  domain_id: string;
 };
 
 /**
  * @description Result of checking DNS ownership for a custom domain.
  * @type object
-*/
+ */
 export type VerifyCustomDomainStatus200 = VerifyCustomDomainResponse;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type VerifyCustomDomainStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type VerifyCustomDomainStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type VerifyCustomDomainStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type VerifyCustomDomainStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type VerifyCustomDomainStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type VerifyCustomDomainStatus500 = Error;
 
 export type VerifyCustomDomainOptions = {
-    body?: never;
-    path: VerifyCustomDomainPath;
-    query?: never;
-    headers?: never;
+  body?: never;
+  path: VerifyCustomDomainPath;
+  query?: never;
+  headers?: never;
 };
 
 export type VerifyCustomDomainResponses = {
-    "200": VerifyCustomDomainStatus200;
-    "400": VerifyCustomDomainStatus400;
-    "401": VerifyCustomDomainStatus401;
-    "403": VerifyCustomDomainStatus403;
-    "404": VerifyCustomDomainStatus404;
-    "429": VerifyCustomDomainStatus429;
-    "500": VerifyCustomDomainStatus500;
+  '200': VerifyCustomDomainStatus200;
+  '400': VerifyCustomDomainStatus400;
+  '401': VerifyCustomDomainStatus401;
+  '403': VerifyCustomDomainStatus403;
+  '404': VerifyCustomDomainStatus404;
+  '429': VerifyCustomDomainStatus429;
+  '500': VerifyCustomDomainStatus500;
 };

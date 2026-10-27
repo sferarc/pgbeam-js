@@ -4,10 +4,10 @@
 */
 
 export const queryTemplateStatementKind = {
-    select: "select",
-    insert: "insert",
-    update: "update",
-    delete: "delete"
+  select: 'select',
+  insert: 'insert',
+  update: 'update',
+  delete: 'delete',
 } as const;
 
 export type QueryTemplateStatementKindKey = (typeof queryTemplateStatementKind)[keyof typeof queryTemplateStatementKind];

@@ -6,18 +6,18 @@
 import type { Error } from './Error'
 
 export type DeleteQueryTemplatePath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Unique query template identifier (prefixed, e.g. qtp_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    query_template_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Unique query template identifier (prefixed, e.g. qtp_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  query_template_id: string;
 };
 
 export type DeleteQueryTemplateStatus204 = unknown;
@@ -25,50 +25,50 @@ export type DeleteQueryTemplateStatus204 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteQueryTemplateStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteQueryTemplateStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteQueryTemplateStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteQueryTemplateStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteQueryTemplateStatus500 = Error;
 
 export type DeleteQueryTemplateOptions = {
-    body?: never;
-    path: DeleteQueryTemplatePath;
-    query?: never;
-    headers?: never;
+  body?: never;
+  path: DeleteQueryTemplatePath;
+  query?: never;
+  headers?: never;
 };
 
 export type DeleteQueryTemplateResponses = {
-    "204": DeleteQueryTemplateStatus204;
-    "400": DeleteQueryTemplateStatus400;
-    "401": DeleteQueryTemplateStatus401;
-    "403": DeleteQueryTemplateStatus403;
-    "404": DeleteQueryTemplateStatus404;
-    "500": DeleteQueryTemplateStatus500;
+  '204': DeleteQueryTemplateStatus204;
+  '400': DeleteQueryTemplateStatus400;
+  '401': DeleteQueryTemplateStatus401;
+  '403': DeleteQueryTemplateStatus403;
+  '404': DeleteQueryTemplateStatus404;
+  '500': DeleteQueryTemplateStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type DeleteQueryTemplateResponse = DeleteQueryTemplateStatus204;

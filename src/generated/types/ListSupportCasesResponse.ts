@@ -8,24 +8,24 @@ import type { SupportCase } from './SupportCase'
 /**
  * @description Paginated list of support cases.
  * @type object
-*/
+ */
 export type ListSupportCasesResponse = {
-    /**
-     * @description Opaque token for cursor-based pagination.
-     * @example 20
-     * @type string | undefined
-    */
-    next_page_token?: string;
-    /**
-     * @description Support cases for the current page.
-     * @type array
-    */
-    cases: SupportCase[];
-    /**
-     * @description Total number of cases matching the filter.
-     *
-     * Format: `int64`
-     * @type integer
-    */
-    total: number;
+  /**
+   * @description Opaque token for cursor-based pagination.
+   * @example 20
+   * @type string | undefined
+   */
+  next_page_token?: string;
+  /**
+   * @description Support cases for the current page.
+   * @type array
+   */
+  cases: SupportCase[];
+  /**
+   * @description Total number of cases matching the filter.
+   *
+   * Format: `int64`
+   * @type integer
+   */
+  total: number;
 };

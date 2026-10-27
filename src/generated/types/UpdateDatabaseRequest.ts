@@ -11,84 +11,87 @@ import type { SSLModeKey } from './SSLMode'
 /**
  * @description Request body for partially updating an upstream database.
  * @type object
-*/
+ */
 export type UpdateDatabaseRequest = {
-    /**
-     * @description Updated PostgreSQL host.
-     * @minLength 1
-     * @pattern ^[^\x00]+$
-     * @example db.example.com
-     * @type string | undefined
-    */
-    host?: string;
-    /**
-     * @description Updated PostgreSQL port.
-     * @minLength 1
-     * @maxLength 65535
-     * @example 5432
-     * @type integer | undefined
-    */
-    port?: number;
-    /**
-     * @description Updated PostgreSQL database name.
-     * @pattern ^[^\x00]*$
-     * @example mydb
-     * @type string | undefined
-    */
-    name?: string;
-    /**
-     * @description Updated PostgreSQL username.
-     * @pattern ^[^\x00]*$
-     * @example pgbeam
-     * @type string | undefined
-    */
-    username?: string;
-    /**
-     * @description Updated PostgreSQL password.
-     *
-     * Format: `password`
-     * @pattern ^[^\x00]*$
-     * @type string | undefined
-    */
-    password?: string;
-    /**
-     * @description PostgreSQL SSL connection mode.
-     * @example require
-     * @type string | undefined
-    */
-    ssl_mode?: SSLModeKey;
-    /**
-     * @description Database role. Primary receives writes, replicas receive reads.
-     * @default 'primary'
-     * @type string | undefined
-    */
-    role?: DatabaseRoleKey;
-    /**
-     * @description Region where the connection pool is maintained (near the database). When set and different from the client\'s edge region, queries are relayed through the pool region\'s data plane. Empty means direct connection.\n
-     * @example us-east-1
-     * @type string | undefined
-    */
-    pool_region?: string;
-    /**
-     * @description Query timeout in milliseconds. 0 means disabled.\n
-     * @minLength 0
-     * @maxLength 300000
-     * @type integer | undefined
-    */
-    query_timeout_ms?: number;
-    /**
-     * @description Auto-route SELECT queries to read replicas.\n
-     * @type boolean | undefined
-    */
-    auto_read_routing?: boolean;
-    /**
-     * @description Query cache configuration.
-     * @type object | undefined
-    */
-    cache_config?: CacheConfig;
-    /**
-     * @description Connection pool configuration.
-     * @type object | undefined
-    */
-    pool_config?: PoolConfig;
+  /**
+   * @description Updated PostgreSQL host.
+   * @minLength 1
+   * @pattern ^[^\x00]+$
+   * @example db.example.com
+   * @type string | undefined
+   */
+  host?: string;
+  /**
+   * @description Updated PostgreSQL port.
+   * @minLength 1
+   * @maxLength 65535
+   * @example 5432
+   * @type integer | undefined
+   */
+  port?: number;
+  /**
+   * @description Updated PostgreSQL database name.
+   * @pattern ^[^\x00]*$
+   * @example mydb
+   * @type string | undefined
+   */
+  name?: string;
+  /**
+   * @description Updated PostgreSQL username.
+   * @pattern ^[^\x00]*$
+   * @example pgbeam
+   * @type string | undefined
+   */
+  username?: string;
+  /**
+   * @description Updated PostgreSQL password.
+   *
+   * Format: `password`
+   * @pattern ^[^\x00]*$
+   * @type string | undefined
+   */
+  password?: string;
+  /**
+   * @description PostgreSQL SSL connection mode.
+   * @example require
+   * @type string | undefined
+   */
+  ssl_mode?: SSLModeKey;
+  /**
+   * @description Database role. Primary receives writes, replicas receive reads.
+   * @default 'primary'
+   * @type string | undefined
+   */
+  role?: DatabaseRoleKey;
+  /**
+   * @description Region where the connection pool is maintained (near the database). When set and different from the client's edge region, queries are relayed through the pool region's data plane. Empty means direct connection.
+   *
+   * @example us-east-1
+   * @type string | undefined
+   */
+  pool_region?: string;
+  /**
+   * @description Query timeout in milliseconds. 0 means disabled.
+   *
+   * @minLength 0
+   * @maxLength 300000
+   * @type integer | undefined
+   */
+  query_timeout_ms?: number;
+  /**
+   * @description Auto-route SELECT queries to read replicas.
+   *
+   * @type boolean | undefined
+   */
+  auto_read_routing?: boolean;
+  /**
+   * @description Query cache configuration.
+   * @type object | undefined
+   */
+  cache_config?: CacheConfig;
+  /**
+   * @description Connection pool configuration.
+   * @type object | undefined
+   */
+  pool_config?: PoolConfig;
 };

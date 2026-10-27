@@ -7,48 +7,50 @@ import type { Error } from './Error'
 import type { ProjectUsageResponse } from './ProjectUsageResponse'
 
 export type GetProjectUsagePath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
 };
 
 export type GetProjectUsageQuery = {
-    /**
-     * @description Start date (inclusive, YYYY-MM-DD).
-     *
-     * Format: `date`
-     * @example 2024-01-01
-     * @type string
-    */
-    start_date: string;
-    /**
-     * @description End date (inclusive, YYYY-MM-DD).
-     *
-     * Format: `date`
-     * @example 2024-01-31
-     * @type string
-    */
-    end_date: string;
+  /**
+   * @description Start date (inclusive, YYYY-MM-DD).
+   *
+   * Format: `date`
+   * @example 2024-01-01
+   * @type string
+   */
+  start_date: string;
+  /**
+   * @description End date (inclusive, YYYY-MM-DD).
+   *
+   * Format: `date`
+   * @example 2024-01-31
+   * @type string
+   */
+  end_date: string;
 };
 
 export type GetProjectUsageHeaders = {
-    /**
-     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
-     * @minLength 1
-     * @maxLength 1024
-     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
-     * @type string | undefined
-    */
-    "If-None-Match"?: string;
+  /**
+   * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.
+   *
+   * A comma-separated list is accepted, and `*` matches any current representation.
+   * @minLength 1
+   * @maxLength 1024
+   * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+   * @type string | undefined
+   */
+  'If-None-Match'?: string;
 };
 
 /**
  * @description Response envelope for project usage queries.
  * @type object
-*/
+ */
 export type GetProjectUsageStatus200 = ProjectUsageResponse;
 
 export type GetProjectUsageStatus304 = unknown;
@@ -56,51 +58,51 @@ export type GetProjectUsageStatus304 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetProjectUsageStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetProjectUsageStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetProjectUsageStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetProjectUsageStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetProjectUsageStatus500 = Error;
 
 export type GetProjectUsageOptions = {
-    body?: never;
-    path: GetProjectUsagePath;
-    query: GetProjectUsageQuery;
-    headers?: GetProjectUsageHeaders;
+  body?: never;
+  path: GetProjectUsagePath;
+  query: GetProjectUsageQuery;
+  headers?: GetProjectUsageHeaders;
 };
 
 export type GetProjectUsageResponses = {
-    "200": GetProjectUsageStatus200;
-    "304": GetProjectUsageStatus304;
-    "400": GetProjectUsageStatus400;
-    "401": GetProjectUsageStatus401;
-    "404": GetProjectUsageStatus404;
-    "429": GetProjectUsageStatus429;
-    "500": GetProjectUsageStatus500;
+  '200': GetProjectUsageStatus200;
+  '304': GetProjectUsageStatus304;
+  '400': GetProjectUsageStatus400;
+  '401': GetProjectUsageStatus401;
+  '404': GetProjectUsageStatus404;
+  '429': GetProjectUsageStatus429;
+  '500': GetProjectUsageStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type GetProjectUsageResponse = GetProjectUsageStatus200;

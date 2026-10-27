@@ -6,18 +6,18 @@
 import type { Error } from './Error'
 
 export type DeleteHoneytokenPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Unique honeytoken identifier (prefixed, e.g. hnt_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    honeytoken_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Unique honeytoken identifier (prefixed, e.g. hnt_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  honeytoken_id: string;
 };
 
 export type DeleteHoneytokenStatus204 = unknown;
@@ -25,50 +25,50 @@ export type DeleteHoneytokenStatus204 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteHoneytokenStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteHoneytokenStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteHoneytokenStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteHoneytokenStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteHoneytokenStatus500 = Error;
 
 export type DeleteHoneytokenOptions = {
-    body?: never;
-    path: DeleteHoneytokenPath;
-    query?: never;
-    headers?: never;
+  body?: never;
+  path: DeleteHoneytokenPath;
+  query?: never;
+  headers?: never;
 };
 
 export type DeleteHoneytokenResponses = {
-    "204": DeleteHoneytokenStatus204;
-    "400": DeleteHoneytokenStatus400;
-    "401": DeleteHoneytokenStatus401;
-    "403": DeleteHoneytokenStatus403;
-    "404": DeleteHoneytokenStatus404;
-    "500": DeleteHoneytokenStatus500;
+  '204': DeleteHoneytokenStatus204;
+  '400': DeleteHoneytokenStatus400;
+  '401': DeleteHoneytokenStatus401;
+  '403': DeleteHoneytokenStatus403;
+  '404': DeleteHoneytokenStatus404;
+  '500': DeleteHoneytokenStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type DeleteHoneytokenResponse = DeleteHoneytokenStatus204;

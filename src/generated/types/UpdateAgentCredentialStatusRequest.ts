@@ -4,8 +4,8 @@
 */
 
 export const updateAgentCredentialStatusRequestStatusEnum = {
-    active: "active",
-    disabled: "disabled"
+  active: 'active',
+  disabled: 'disabled',
 } as const;
 
 export type UpdateAgentCredentialStatusRequestStatusEnumKey = (typeof updateAgentCredentialStatusRequestStatusEnum)[keyof typeof updateAgentCredentialStatusRequestStatusEnum];
@@ -13,11 +13,11 @@ export type UpdateAgentCredentialStatusRequestStatusEnumKey = (typeof updateAgen
 /**
  * @description Request body for enabling or disabling an agent credential.
  * @type object
-*/
+ */
 export type UpdateAgentCredentialStatusRequest = {
-    /**
-     * @description Set active to re-enable or disabled to kill-switch. Use DELETE to revoke permanently.
-     * @type string
-    */
-    status: UpdateAgentCredentialStatusRequestStatusEnumKey;
+  /**
+   * @description Set active to re-enable or disabled to kill-switch. Use DELETE to revoke permanently.
+   * @type string
+   */
+  status: UpdateAgentCredentialStatusRequestStatusEnumKey;
 };

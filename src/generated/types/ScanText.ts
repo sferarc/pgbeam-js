@@ -10,55 +10,55 @@ import type { ScanTextResult } from './ScanTextResult'
 /**
  * @description The verdict on one piece of text, with the recommended action and the evidence behind it. Read `action` to decide what to do and `findings` to explain the decision to a human.
  * @type object
-*/
+ */
 export type ScanTextStatus200 = ScanTextResult;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ScanTextStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ScanTextStatus402 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ScanTextStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ScanTextStatus503 = Error;
 
 /**
  * @description One piece of untrusted text to inspect. The text is held in memory for the duration of the request and is never written to a log, a database, or an object store. See https://pgbeam.com/docs/prompt-scan for what that means precisely.
  * @type object
-*/
+ */
 export type ScanTextBody = ScanTextRequest;
 
 export type ScanTextOptions = {
-    body: ScanTextBody;
-    path?: never;
-    query?: never;
-    headers?: never;
+  body: ScanTextBody;
+  path?: never;
+  query?: never;
+  headers?: never;
 };
 
 export type ScanTextResponses = {
-    "200": ScanTextStatus200;
-    "400": ScanTextStatus400;
-    "402": ScanTextStatus402;
-    "429": ScanTextStatus429;
-    "503": ScanTextStatus503;
+  '200': ScanTextStatus200;
+  '400': ScanTextStatus400;
+  '402': ScanTextStatus402;
+  '429': ScanTextStatus429;
+  '503': ScanTextStatus503;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type ScanTextResponse = ScanTextStatus200;

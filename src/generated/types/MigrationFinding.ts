@@ -4,9 +4,9 @@
 */
 
 export const migrationFindingSeverityEnum = {
-    info: "info",
-    warning: "warning",
-    error: "error"
+  info: 'info',
+  warning: 'warning',
+  error: 'error',
 } as const;
 
 export type MigrationFindingSeverityEnumKey = (typeof migrationFindingSeverityEnum)[keyof typeof migrationFindingSeverityEnum];
@@ -14,31 +14,31 @@ export type MigrationFindingSeverityEnumKey = (typeof migrationFindingSeverityEn
 /**
  * @description A single issue found while linting a migration.
  * @type object
-*/
+ */
 export type MigrationFinding = {
-    /**
-     * @description How serious the finding is. error indicates an unsafe change.
-     * @type string
-    */
-    severity: MigrationFindingSeverityEnumKey;
-    /**
-     * @description Machine-readable rule identifier (e.g. drop_table, add_not_null_no_default).
-     * @type string
-    */
-    rule: string;
-    /**
-     * @description Human-readable description of the issue.
-     * @type string
-    */
-    message: string;
-    /**
-     * @description The statement that triggered the finding.
-     * @type string | undefined
-    */
-    statement?: string;
-    /**
-     * @description Suggested safer alternative, if any.
-     * @type string | undefined
-    */
-    hint?: string;
+  /**
+   * @description How serious the finding is. error indicates an unsafe change.
+   * @type string
+   */
+  severity: MigrationFindingSeverityEnumKey;
+  /**
+   * @description Machine-readable rule identifier (e.g. drop_table, add_not_null_no_default).
+   * @type string
+   */
+  rule: string;
+  /**
+   * @description Human-readable description of the issue.
+   * @type string
+   */
+  message: string;
+  /**
+   * @description The statement that triggered the finding.
+   * @type string | undefined
+   */
+  statement?: string;
+  /**
+   * @description Suggested safer alternative, if any.
+   * @type string | undefined
+   */
+  hint?: string;
 };

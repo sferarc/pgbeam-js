@@ -4,12 +4,12 @@
 */
 
 export const approvalRequestStatusEnum = {
-    pending: "pending",
-    approved: "approved",
-    rejected: "rejected",
-    expired: "expired",
-    executed: "executed",
-    failed: "failed"
+  pending: 'pending',
+  approved: 'approved',
+  rejected: 'rejected',
+  expired: 'expired',
+  executed: 'executed',
+  failed: 'failed',
 } as const;
 
 export type ApprovalRequestStatusEnumKey = (typeof approvalRequestStatusEnum)[keyof typeof approvalRequestStatusEnum];
@@ -17,105 +17,105 @@ export type ApprovalRequestStatusEnumKey = (typeof approvalRequestStatusEnum)[ke
 /**
  * @description A statement held by the gateway awaiting a human approval decision.
  * @type object
-*/
+ */
 export type ApprovalRequest = {
-    /**
-     * @description Unique approval request identifier (prefixed).
-     * @example apr_01h455vb4pex5vsknk084sn02q
-     * @type string
-    */
-    id: string;
-    /**
-     * @description Owning project ID.
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Agent credential that submitted the statement, if known.
-     * @type string | undefined
-    */
-    credential_id?: string | null;
-    /**
-     * @description Policy profile that required approval.
-     * @type string
-    */
-    policy_profile_id: string;
-    /**
-     * @description Data plane region that held the statement.
-     * @type string | undefined
-    */
-    region?: string;
-    /**
-     * @description Identifier grouping a connection\'s statements.
-     * @type string | undefined
-    */
-    session_id?: string;
-    /**
-     * @description The held statement text.
-     * @type string
-    */
-    sql: string;
-    /**
-     * @description Statement with literals replaced by placeholders.
-     * @type string | undefined
-    */
-    normalized_sql?: string;
-    /**
-     * @description Parsed statement kind (e.g. update, delete, ddl).
-     * @type string | undefined
-    */
-    statement_kind?: string;
-    /**
-     * @description Best-effort estimate of how many rows the statement would affect, attached by the data plane when the statement was held. Either the planner estimate from EXPLAIN or the exact count observed in a rolled-back trial execution. Null when no estimate could be made; treat it as an estimate, not a guarantee.
-     *
-     * Format: `int64`
-     * @type integer | undefined
-    */
-    estimated_rows?: number | null;
-    /**
-     * @description Relations the statement touches, from the gateway\'s parse analysis.
-     * @type array | undefined
-    */
-    target_tables?: string[];
-    /**
-     * @description Name of the approval rule that held the statement, as it was named when the statement was held. Null when the policy profile\'s approval_mode held it rather than a rule.
-     * @type string | undefined
-    */
-    approval_rule_name?: string | null;
-    /**
-     * @description Current state of the approval request.
-     * @type string
-    */
-    status: ApprovalRequestStatusEnumKey;
-    /**
-     * @description Human-readable note attached to a decision.
-     * @type string | undefined
-    */
-    reason?: string;
-    /**
-     * @description When the statement was first held.
-     *
-     * Format: `date-time`
-     * @type string
-    */
-    requested_at: string;
-    /**
-     * @description When a decision was recorded, if any.
-     *
-     * Format: `date-time`
-     * @type string | undefined
-    */
-    decided_at?: string | null;
-    /**
-     * @description User who decided, if any.
-     * @type string | undefined
-    */
-    decided_by?: string | null;
-    /**
-     * @description When the request expires if undecided.
-     *
-     * Format: `date-time`
-     * @type string
-    */
-    expires_at: string;
+  /**
+   * @description Unique approval request identifier (prefixed).
+   * @example apr_01h455vb4pex5vsknk084sn02q
+   * @type string
+   */
+  id: string;
+  /**
+   * @description Owning project ID.
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Agent credential that submitted the statement, if known.
+   * @type string | undefined
+   */
+  credential_id?: string | null;
+  /**
+   * @description Policy profile that required approval.
+   * @type string
+   */
+  policy_profile_id: string;
+  /**
+   * @description Data plane region that held the statement.
+   * @type string | undefined
+   */
+  region?: string;
+  /**
+   * @description Identifier grouping a connection's statements.
+   * @type string | undefined
+   */
+  session_id?: string;
+  /**
+   * @description The held statement text.
+   * @type string
+   */
+  sql: string;
+  /**
+   * @description Statement with literals replaced by placeholders.
+   * @type string | undefined
+   */
+  normalized_sql?: string;
+  /**
+   * @description Parsed statement kind (e.g. update, delete, ddl).
+   * @type string | undefined
+   */
+  statement_kind?: string;
+  /**
+   * @description Best-effort estimate of how many rows the statement would affect, attached by the data plane when the statement was held. Either the planner estimate from EXPLAIN or the exact count observed in a rolled-back trial execution. Null when no estimate could be made; treat it as an estimate, not a guarantee.
+   *
+   * Format: `int64`
+   * @type integer | undefined
+   */
+  estimated_rows?: number | null;
+  /**
+   * @description Relations the statement touches, from the gateway's parse analysis.
+   * @type array | undefined
+   */
+  target_tables?: string[];
+  /**
+   * @description Name of the approval rule that held the statement, as it was named when the statement was held. Null when the policy profile's approval_mode held it rather than a rule.
+   * @type string | undefined
+   */
+  approval_rule_name?: string | null;
+  /**
+   * @description Current state of the approval request.
+   * @type string
+   */
+  status: ApprovalRequestStatusEnumKey;
+  /**
+   * @description Human-readable note attached to a decision.
+   * @type string | undefined
+   */
+  reason?: string;
+  /**
+   * @description When the statement was first held.
+   *
+   * Format: `date-time`
+   * @type string
+   */
+  requested_at: string;
+  /**
+   * @description When a decision was recorded, if any.
+   *
+   * Format: `date-time`
+   * @type string | undefined
+   */
+  decided_at?: string | null;
+  /**
+   * @description User who decided, if any.
+   * @type string | undefined
+   */
+  decided_by?: string | null;
+  /**
+   * @description When the request expires if undecided.
+   *
+   * Format: `date-time`
+   * @type string
+   */
+  expires_at: string;
 };

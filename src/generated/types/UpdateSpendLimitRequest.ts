@@ -4,18 +4,18 @@
 */
 
 /**
- * @description Request body for updating an organization\'s monthly spend cap.
+ * @description Request body for updating an organization's monthly spend cap.
  * @type object
-*/
+ */
 export type UpdateSpendLimitRequest = {
-    /**
-     * @description Monthly spend limit in dollars. Null to remove the limit. An active spend cap lifts only when the limit is removed or raised.
-     *
-     * Format: `double`
-     * @minLength 0.01
-     * @maxLength 99999999.99
-     * @example 500
-     * @type number | undefined
-    */
-    spend_limit?: number | null;
+  /**
+   * @description Monthly spend limit in dollars. Null to remove the limit. An active spend cap lifts only when the limit is removed or raised.
+   *
+   * Format: `double`
+   * @minLength 0.01
+   * @maxLength 99999999.99
+   * @example 500
+   * @type number | undefined
+   */
+  spend_limit?: number | null;
 };

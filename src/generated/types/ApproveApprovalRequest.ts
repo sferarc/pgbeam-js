@@ -8,100 +8,100 @@ import type { ApprovalRequest } from './ApprovalRequest'
 import type { Error } from './Error'
 
 export type ApproveApprovalRequestPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Unique approval request identifier (prefixed, e.g. apr_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    approval_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Unique approval request identifier (prefixed, e.g. apr_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  approval_id: string;
 };
 
 /**
  * @description A statement held by the gateway awaiting a human approval decision.
  * @type object
-*/
+ */
 export type ApproveApprovalRequestStatus200 = ApprovalRequest;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ApproveApprovalRequestStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ApproveApprovalRequestStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ApproveApprovalRequestStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ApproveApprovalRequestStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ApproveApprovalRequestStatus409 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ApproveApprovalRequestStatus413 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ApproveApprovalRequestStatus415 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ApproveApprovalRequestStatus500 = Error;
 
 /**
  * @description Optional note attached to an approve/reject decision.
  * @type object | undefined
-*/
+ */
 export type ApproveApprovalRequestBody = ApprovalDecisionRequest | undefined;
 
 export type ApproveApprovalRequestOptions = {
-    body: ApproveApprovalRequestBody;
-    path: ApproveApprovalRequestPath;
-    query?: never;
-    headers?: never;
+  body: ApproveApprovalRequestBody;
+  path: ApproveApprovalRequestPath;
+  query?: never;
+  headers?: never;
 };
 
 export type ApproveApprovalRequestResponses = {
-    "200": ApproveApprovalRequestStatus200;
-    "400": ApproveApprovalRequestStatus400;
-    "401": ApproveApprovalRequestStatus401;
-    "403": ApproveApprovalRequestStatus403;
-    "404": ApproveApprovalRequestStatus404;
-    "409": ApproveApprovalRequestStatus409;
-    "413": ApproveApprovalRequestStatus413;
-    "415": ApproveApprovalRequestStatus415;
-    "500": ApproveApprovalRequestStatus500;
+  '200': ApproveApprovalRequestStatus200;
+  '400': ApproveApprovalRequestStatus400;
+  '401': ApproveApprovalRequestStatus401;
+  '403': ApproveApprovalRequestStatus403;
+  '404': ApproveApprovalRequestStatus404;
+  '409': ApproveApprovalRequestStatus409;
+  '413': ApproveApprovalRequestStatus413;
+  '415': ApproveApprovalRequestStatus415;
+  '500': ApproveApprovalRequestStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type ApproveApprovalRequestResponse = ApproveApprovalRequestStatus200;

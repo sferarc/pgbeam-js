@@ -4,17 +4,17 @@
 */
 
 export const webhookEventType = {
-    query_blocked: "query_blocked",
-    budget_exhausted: "budget_exhausted",
-    kill_switch: "kill_switch",
-    masked: "masked",
-    migration_flagged: "migration_flagged",
-    approval_requested: "approval_requested",
-    anomaly_alert: "anomaly_alert",
-    canary_tripped: "canary_tripped",
-    content_flagged: "content_flagged",
-    audit_checkpoint: "audit_checkpoint",
-    "webhook.test": "webhook.test"
+  query_blocked: 'query_blocked',
+  budget_exhausted: 'budget_exhausted',
+  kill_switch: 'kill_switch',
+  masked: 'masked',
+  migration_flagged: 'migration_flagged',
+  approval_requested: 'approval_requested',
+  anomaly_alert: 'anomaly_alert',
+  canary_tripped: 'canary_tripped',
+  content_flagged: 'content_flagged',
+  audit_checkpoint: 'audit_checkpoint',
+  'webhook.test': 'webhook.test',
 } as const;
 
 export type WebhookEventTypeKey = (typeof webhookEventType)[keyof typeof webhookEventType];

@@ -7,46 +7,48 @@ import type { Error } from './Error'
 import type { ListCustomDomainsResponse } from './ListCustomDomainsResponse'
 
 export type ListCustomDomainsPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
 };
 
 export type ListCustomDomainsQuery = {
-    /**
-     * @description Maximum number of items to return (1-100, default 20).
-     * @minLength 1
-     * @maxLength 100
-     * @default 20
-     * @type integer | undefined
-    */
-    page_size?: number;
-    /**
-     * @description Opaque token for cursor-based pagination.
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string | undefined
-    */
-    page_token?: string;
+  /**
+   * @description Maximum number of items to return (1-100, default 20).
+   * @minLength 1
+   * @maxLength 100
+   * @default 20
+   * @type integer | undefined
+   */
+  page_size?: number;
+  /**
+   * @description Opaque token for cursor-based pagination.
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string | undefined
+   */
+  page_token?: string;
 };
 
 export type ListCustomDomainsHeaders = {
-    /**
-     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
-     * @minLength 1
-     * @maxLength 1024
-     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
-     * @type string | undefined
-    */
-    "If-None-Match"?: string;
+  /**
+   * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.
+   *
+   * A comma-separated list is accepted, and `*` matches any current representation.
+   * @minLength 1
+   * @maxLength 1024
+   * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+   * @type string | undefined
+   */
+  'If-None-Match'?: string;
 };
 
 /**
  * @description Cursor-paginated list of custom domains for a project.
  * @type object
-*/
+ */
 export type ListCustomDomainsStatus200 = ListCustomDomainsResponse;
 
 export type ListCustomDomainsStatus304 = unknown;
@@ -54,53 +56,53 @@ export type ListCustomDomainsStatus304 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListCustomDomainsStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListCustomDomainsStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListCustomDomainsStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListCustomDomainsStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListCustomDomainsStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListCustomDomainsStatus500 = Error;
 
 export type ListCustomDomainsOptions = {
-    body?: never;
-    path: ListCustomDomainsPath;
-    query?: ListCustomDomainsQuery;
-    headers?: ListCustomDomainsHeaders;
+  body?: never;
+  path: ListCustomDomainsPath;
+  query?: ListCustomDomainsQuery;
+  headers?: ListCustomDomainsHeaders;
 };
 
 export type ListCustomDomainsResponses = {
-    "200": ListCustomDomainsStatus200;
-    "304": ListCustomDomainsStatus304;
-    "400": ListCustomDomainsStatus400;
-    "401": ListCustomDomainsStatus401;
-    "403": ListCustomDomainsStatus403;
-    "404": ListCustomDomainsStatus404;
-    "429": ListCustomDomainsStatus429;
-    "500": ListCustomDomainsStatus500;
+  '200': ListCustomDomainsStatus200;
+  '304': ListCustomDomainsStatus304;
+  '400': ListCustomDomainsStatus400;
+  '401': ListCustomDomainsStatus401;
+  '403': ListCustomDomainsStatus403;
+  '404': ListCustomDomainsStatus404;
+  '429': ListCustomDomainsStatus429;
+  '500': ListCustomDomainsStatus500;
 };

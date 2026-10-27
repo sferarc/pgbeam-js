@@ -7,35 +7,37 @@ import type { AgentCredential } from './AgentCredential'
 import type { Error } from './Error'
 
 export type GetAgentCredentialPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Unique agent credential identifier (prefixed, e.g. agt_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    agent_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Unique agent credential identifier (prefixed, e.g. agt_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  agent_id: string;
 };
 
 export type GetAgentCredentialHeaders = {
-    /**
-     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
-     * @minLength 1
-     * @maxLength 1024
-     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
-     * @type string | undefined
-    */
-    "If-None-Match"?: string;
+  /**
+   * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.
+   *
+   * A comma-separated list is accepted, and `*` matches any current representation.
+   * @minLength 1
+   * @maxLength 1024
+   * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+   * @type string | undefined
+   */
+  'If-None-Match'?: string;
 };
 
 /**
  * @description A PgBeam-issued, scoped Postgres login plus hosted MCP token for an AI agent.
  * @type object
-*/
+ */
 export type GetAgentCredentialStatus200 = AgentCredential;
 
 export type GetAgentCredentialStatus304 = unknown;
@@ -43,51 +45,51 @@ export type GetAgentCredentialStatus304 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetAgentCredentialStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetAgentCredentialStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetAgentCredentialStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetAgentCredentialStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type GetAgentCredentialStatus500 = Error;
 
 export type GetAgentCredentialOptions = {
-    body?: never;
-    path: GetAgentCredentialPath;
-    query?: never;
-    headers?: GetAgentCredentialHeaders;
+  body?: never;
+  path: GetAgentCredentialPath;
+  query?: never;
+  headers?: GetAgentCredentialHeaders;
 };
 
 export type GetAgentCredentialResponses = {
-    "200": GetAgentCredentialStatus200;
-    "304": GetAgentCredentialStatus304;
-    "400": GetAgentCredentialStatus400;
-    "401": GetAgentCredentialStatus401;
-    "403": GetAgentCredentialStatus403;
-    "404": GetAgentCredentialStatus404;
-    "500": GetAgentCredentialStatus500;
+  '200': GetAgentCredentialStatus200;
+  '304': GetAgentCredentialStatus304;
+  '400': GetAgentCredentialStatus400;
+  '401': GetAgentCredentialStatus401;
+  '403': GetAgentCredentialStatus403;
+  '404': GetAgentCredentialStatus404;
+  '500': GetAgentCredentialStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type GetAgentCredentialResponse = GetAgentCredentialStatus200;

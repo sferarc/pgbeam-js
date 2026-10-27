@@ -4,12 +4,12 @@
 */
 
 export const SSLMode = {
-    disable: "disable",
-    allow: "allow",
-    prefer: "prefer",
-    require: "require",
-    "verify-ca": "verify-ca",
-    "verify-full": "verify-full"
+  disable: 'disable',
+  allow: 'allow',
+  prefer: 'prefer',
+  require: 'require',
+  'verify-ca': 'verify-ca',
+  'verify-full': 'verify-full',
 } as const;
 
 export type SSLModeKey = (typeof SSLMode)[keyof typeof SSLMode];

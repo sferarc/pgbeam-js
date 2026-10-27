@@ -8,16 +8,16 @@ import type { AnomalyRule } from './AnomalyRule'
 /**
  * @description Cursor-paginated anomaly rules for a project.
  * @type object
-*/
+ */
 export type ListAnomalyRulesResponse = {
-    /**
-     * @description Anomaly rules on the current page.
-     * @type array
-    */
-    anomaly_rules: AnomalyRule[];
-    /**
-     * @description Opaque token for cursor-based pagination.
-     * @type string | undefined
-    */
-    next_page_token?: string;
+  /**
+   * @description Anomaly rules on the current page.
+   * @type array
+   */
+  anomaly_rules: AnomalyRule[];
+  /**
+   * @description Opaque token for cursor-based pagination.
+   * @type string | undefined
+   */
+  next_page_token?: string;
 };

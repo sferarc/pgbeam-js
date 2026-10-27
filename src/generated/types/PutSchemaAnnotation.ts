@@ -8,94 +8,96 @@ import type { SchemaAnnotation } from './SchemaAnnotation'
 import type { SchemaAnnotationInput } from './SchemaAnnotationInput'
 
 export type PutSchemaAnnotationPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
 };
 
 /**
- * @description A human-written description for a table or column, attached by a project operator and surfaced through the agent-facing MCP catalog. When present it takes precedence over the DB-native comment for the same relation or column.\n
+ * @description A human-written description for a table or column, attached by a project operator and surfaced through the agent-facing MCP catalog. When present it takes precedence over the DB-native comment for the same relation or column.
+ *
  * @type object
-*/
+ */
 export type PutSchemaAnnotationStatus200 = SchemaAnnotation;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type PutSchemaAnnotationStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type PutSchemaAnnotationStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type PutSchemaAnnotationStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type PutSchemaAnnotationStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type PutSchemaAnnotationStatus413 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type PutSchemaAnnotationStatus415 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type PutSchemaAnnotationStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type PutSchemaAnnotationStatus500 = Error;
 
 /**
- * @description Request body for creating or replacing a schema annotation. Keyed by (schema_name, table_name, column_name); an existing annotation with the same key is replaced.\n
+ * @description Request body for creating or replacing a schema annotation. Keyed by (schema_name, table_name, column_name); an existing annotation with the same key is replaced.
+ *
  * @type object
-*/
+ */
 export type PutSchemaAnnotationBody = SchemaAnnotationInput;
 
 export type PutSchemaAnnotationOptions = {
-    body: PutSchemaAnnotationBody;
-    path: PutSchemaAnnotationPath;
-    query?: never;
-    headers?: never;
+  body: PutSchemaAnnotationBody;
+  path: PutSchemaAnnotationPath;
+  query?: never;
+  headers?: never;
 };
 
 export type PutSchemaAnnotationResponses = {
-    "200": PutSchemaAnnotationStatus200;
-    "400": PutSchemaAnnotationStatus400;
-    "401": PutSchemaAnnotationStatus401;
-    "403": PutSchemaAnnotationStatus403;
-    "404": PutSchemaAnnotationStatus404;
-    "413": PutSchemaAnnotationStatus413;
-    "415": PutSchemaAnnotationStatus415;
-    "429": PutSchemaAnnotationStatus429;
-    "500": PutSchemaAnnotationStatus500;
+  '200': PutSchemaAnnotationStatus200;
+  '400': PutSchemaAnnotationStatus400;
+  '401': PutSchemaAnnotationStatus401;
+  '403': PutSchemaAnnotationStatus403;
+  '404': PutSchemaAnnotationStatus404;
+  '413': PutSchemaAnnotationStatus413;
+  '415': PutSchemaAnnotationStatus415;
+  '429': PutSchemaAnnotationStatus429;
+  '500': PutSchemaAnnotationStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type PutSchemaAnnotationResponse = PutSchemaAnnotationStatus200;

@@ -6,34 +6,34 @@
 import type { Error } from './Error'
 
 export type DeleteSchemaAnnotationPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
 };
 
 export type DeleteSchemaAnnotationQuery = {
-    /**
-     * @description Relation (table or view) the annotation describes.
-     * @minLength 1
-     * @maxLength 255
-     * @type string
-    */
-    table_name: string;
-    /**
-     * @description Optional schema. Omit to match the unqualified form.
-     * @maxLength 255
-     * @type string | undefined
-    */
-    schema_name?: string;
-    /**
-     * @description Optional column. Omit to delete a table-level annotation.
-     * @maxLength 255
-     * @type string | undefined
-    */
-    column_name?: string;
+  /**
+   * @description Relation (table or view) the annotation describes.
+   * @minLength 1
+   * @maxLength 255
+   * @type string
+   */
+  table_name: string;
+  /**
+   * @description Optional schema. Omit to match the unqualified form.
+   * @maxLength 255
+   * @type string | undefined
+   */
+  schema_name?: string;
+  /**
+   * @description Optional column. Omit to delete a table-level annotation.
+   * @maxLength 255
+   * @type string | undefined
+   */
+  column_name?: string;
 };
 
 export type DeleteSchemaAnnotationStatus204 = unknown;
@@ -41,50 +41,50 @@ export type DeleteSchemaAnnotationStatus204 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteSchemaAnnotationStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteSchemaAnnotationStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteSchemaAnnotationStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteSchemaAnnotationStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteSchemaAnnotationStatus500 = Error;
 
 export type DeleteSchemaAnnotationOptions = {
-    body?: never;
-    path: DeleteSchemaAnnotationPath;
-    query: DeleteSchemaAnnotationQuery;
-    headers?: never;
+  body?: never;
+  path: DeleteSchemaAnnotationPath;
+  query: DeleteSchemaAnnotationQuery;
+  headers?: never;
 };
 
 export type DeleteSchemaAnnotationResponses = {
-    "204": DeleteSchemaAnnotationStatus204;
-    "400": DeleteSchemaAnnotationStatus400;
-    "401": DeleteSchemaAnnotationStatus401;
-    "403": DeleteSchemaAnnotationStatus403;
-    "404": DeleteSchemaAnnotationStatus404;
-    "500": DeleteSchemaAnnotationStatus500;
+  '204': DeleteSchemaAnnotationStatus204;
+  '400': DeleteSchemaAnnotationStatus400;
+  '401': DeleteSchemaAnnotationStatus401;
+  '403': DeleteSchemaAnnotationStatus403;
+  '404': DeleteSchemaAnnotationStatus404;
+  '500': DeleteSchemaAnnotationStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type DeleteSchemaAnnotationResponse = DeleteSchemaAnnotationStatus204;

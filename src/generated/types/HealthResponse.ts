@@ -4,8 +4,8 @@
 */
 
 export const healthResponseStatusEnum = {
-    ok: "ok",
-    degraded: "degraded"
+  ok: 'ok',
+  degraded: 'degraded',
 } as const;
 
 export type HealthResponseStatusEnumKey = (typeof healthResponseStatusEnum)[keyof typeof healthResponseStatusEnum];
@@ -13,30 +13,30 @@ export type HealthResponseStatusEnumKey = (typeof healthResponseStatusEnum)[keyo
 /**
  * @description Health status and build metadata for the API service.
  * @type object
-*/
+ */
 export type HealthResponse = {
-    /**
-     * @description Overall service health.
-     * @type string
-    */
-    status: HealthResponseStatusEnumKey;
-    /**
-     * @description API server version.
-     * @example 1.0.0
-     * @type string
-    */
-    version: string;
-    /**
-     * @description Resolved image SHA (digest or SHA tag).
-     * @example f1f01eda9e1bc25a3a1d28b1e18c5579fa9a128fede12169d3a392504f9729e4
-     * @type string
-    */
-    image_sha: string;
-    /**
-     * @description Server time.
-     *
-     * Format: `date-time`
-     * @type string | undefined
-    */
-    timestamp?: string;
+  /**
+   * @description Overall service health.
+   * @type string
+   */
+  status: HealthResponseStatusEnumKey;
+  /**
+   * @description API server version.
+   * @example 1.0.0
+   * @type string
+   */
+  version: string;
+  /**
+   * @description Resolved image SHA (digest or SHA tag).
+   * @example f1f01eda9e1bc25a3a1d28b1e18c5579fa9a128fede12169d3a392504f9729e4
+   * @type string
+   */
+  image_sha: string;
+  /**
+   * @description Server time.
+   *
+   * Format: `date-time`
+   * @type string | undefined
+   */
+  timestamp?: string;
 };

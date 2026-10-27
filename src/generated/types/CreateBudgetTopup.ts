@@ -9,91 +9,102 @@ import type { Error } from './Error'
 import type { PaymentProblem } from './PaymentProblem'
 
 export type CreateBudgetTopupHeaders = {
-    /**
-     * @description The MPP payment credential, `Payment <base64url>`, echoing the\nchallenge from the `402` and carrying the method-specific proof. For\nthe `stripe` method the payload is `{\"spt\": \"spt_...\"}`, a single-use\nShared Payment Token.\n
-     * @type string | undefined
-    */
-    "Payment-Authorization"?: string;
-    /**
-     * @description Payment method and intent preferences, for example `stripe/charge`.\nIgnored when it matches nothing this endpoint offers.\n
-     * @type string | undefined
-    */
-    "Accept-Payment"?: string;
+  /**
+   * @description The MPP payment credential, `Payment <base64url>`, echoing the
+   * challenge from the `402` and carrying the method-specific proof. For
+   * the `stripe` method the payload is `{"spt": "spt_..."}`, a single-use
+   * Shared Payment Token.
+   *
+   * @type string | undefined
+   */
+  'Payment-Authorization'?: string;
+  /**
+   * @description Payment method and intent preferences, for example `stripe/charge`.
+   * Ignored when it matches nothing this endpoint offers.
+   *
+   * @type string | undefined
+   */
+  'Accept-Payment'?: string;
 };
 
 /**
  * @description Purchased query headroom, already granted and streamed to the data planes.
  * @type object
-*/
+ */
 export type CreateBudgetTopupStatus201 = BudgetTopup;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type CreateBudgetTopupStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type CreateBudgetTopupStatus401 = Error;
 
 /**
- * @description RFC 9457 Problem Details for a payment failure. MPP puts the reason in the\nbody and the challenge in the `WWW-Authenticate` header, so a 402 carries\nboth.\n
+ * @description RFC 9457 Problem Details for a payment failure. MPP puts the reason in the
+ * body and the challenge in the `WWW-Authenticate` header, so a 402 carries
+ * both.
+ *
  * @type object
-*/
+ */
 export type CreateBudgetTopupStatus402 = PaymentProblem;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type CreateBudgetTopupStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type CreateBudgetTopupStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type CreateBudgetTopupStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type CreateBudgetTopupStatus503 = Error;
 
 /**
- * @description How much query budget to buy for the agent credential the request is\nauthenticated as.\n
+ * @description How much query budget to buy for the agent credential the request is
+ * authenticated as.
+ *
  * @type object | undefined
-*/
+ */
 export type CreateBudgetTopupBody = BudgetTopupInput | undefined;
 
 export type CreateBudgetTopupOptions = {
-    body: CreateBudgetTopupBody;
-    path?: never;
-    query?: never;
-    headers?: CreateBudgetTopupHeaders;
+  body: CreateBudgetTopupBody;
+  path?: never;
+  query?: never;
+  headers?: CreateBudgetTopupHeaders;
 };
 
 export type CreateBudgetTopupResponses = {
-    "201": CreateBudgetTopupStatus201;
-    "400": CreateBudgetTopupStatus400;
-    "401": CreateBudgetTopupStatus401;
-    "402": CreateBudgetTopupStatus402;
-    "403": CreateBudgetTopupStatus403;
-    "404": CreateBudgetTopupStatus404;
-    "429": CreateBudgetTopupStatus429;
-    "503": CreateBudgetTopupStatus503;
+  '201': CreateBudgetTopupStatus201;
+  '400': CreateBudgetTopupStatus400;
+  '401': CreateBudgetTopupStatus401;
+  '402': CreateBudgetTopupStatus402;
+  '403': CreateBudgetTopupStatus403;
+  '404': CreateBudgetTopupStatus404;
+  '429': CreateBudgetTopupStatus429;
+  '503': CreateBudgetTopupStatus503;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type CreateBudgetTopupResponse = CreateBudgetTopupStatus201;

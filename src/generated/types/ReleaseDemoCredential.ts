@@ -8,72 +8,72 @@ import type { Error } from './Error'
 import type { ReleaseDemoCredentialRequest } from './ReleaseDemoCredentialRequest'
 
 export type ReleaseDemoCredentialPath = {
-    /**
-     * @description The demo session to release, as returned when it was issued.
-     * @type string
-    */
-    session_id: string;
+  /**
+   * @description The demo session to release, as returned when it was issued.
+   * @type string
+   */
+  session_id: string;
 };
 
 /**
  * @description Outcome of releasing a demo credential.
  * @type object
-*/
+ */
 export type ReleaseDemoCredentialStatus200 = DemoReleaseResult;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ReleaseDemoCredentialStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ReleaseDemoCredentialStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ReleaseDemoCredentialStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ReleaseDemoCredentialStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ReleaseDemoCredentialStatus503 = Error;
 
 /**
  * @description Release of a demo credential by its holder. The MCP token proves the caller is the one that was issued the session.
  * @type object
-*/
+ */
 export type ReleaseDemoCredentialBody = ReleaseDemoCredentialRequest;
 
 export type ReleaseDemoCredentialOptions = {
-    body: ReleaseDemoCredentialBody;
-    path: ReleaseDemoCredentialPath;
-    query?: never;
-    headers?: never;
+  body: ReleaseDemoCredentialBody;
+  path: ReleaseDemoCredentialPath;
+  query?: never;
+  headers?: never;
 };
 
 export type ReleaseDemoCredentialResponses = {
-    "200": ReleaseDemoCredentialStatus200;
-    "400": ReleaseDemoCredentialStatus400;
-    "401": ReleaseDemoCredentialStatus401;
-    "404": ReleaseDemoCredentialStatus404;
-    "429": ReleaseDemoCredentialStatus429;
-    "503": ReleaseDemoCredentialStatus503;
+  '200': ReleaseDemoCredentialStatus200;
+  '400': ReleaseDemoCredentialStatus400;
+  '401': ReleaseDemoCredentialStatus401;
+  '404': ReleaseDemoCredentialStatus404;
+  '429': ReleaseDemoCredentialStatus429;
+  '503': ReleaseDemoCredentialStatus503;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type ReleaseDemoCredentialResponse = ReleaseDemoCredentialStatus200;

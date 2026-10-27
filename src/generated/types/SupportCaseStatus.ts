@@ -4,8 +4,8 @@
 */
 
 export const supportCaseStatus = {
-    open: "open",
-    closed: "closed"
+  open: 'open',
+  closed: 'closed',
 } as const;
 
 export type SupportCaseStatusKey = (typeof supportCaseStatus)[keyof typeof supportCaseStatus];

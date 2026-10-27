@@ -8,38 +8,38 @@ import type { VercelResourceStatus } from './VercelResourceStatus'
 /**
  * @description Vercel Marketplace installation status for an organization, including its resources.
  * @type object
-*/
+ */
 export type VercelInstallationStatus = {
-    /**
-     * @description Vercel installation (integration configuration) identifier.
-     * @type string
-    */
-    installation_id: string;
-    /**
-     * @description Vercel account/team identifier that owns the installation.
-     * @type string
-    */
-    vercel_account_id: string;
-    /**
-     * @description Current plan tier for the organization.
-     * @type string
-    */
-    plan: string;
-    /**
-     * @description Installation status (active).
-     * @type string
-    */
-    status: string;
-    /**
-     * @description When the installation was created.
-     *
-     * Format: `date-time`
-     * @type string | undefined
-    */
-    created_at?: string;
-    /**
-     * @description Resources (projects) provisioned under this installation.
-     * @type array
-    */
-    resources: VercelResourceStatus[];
+  /**
+   * @description Vercel installation (integration configuration) identifier.
+   * @type string
+   */
+  installation_id: string;
+  /**
+   * @description Vercel account/team identifier that owns the installation.
+   * @type string
+   */
+  vercel_account_id: string;
+  /**
+   * @description Current plan tier for the organization.
+   * @type string
+   */
+  plan: string;
+  /**
+   * @description Installation status (active).
+   * @type string
+   */
+  status: string;
+  /**
+   * @description When the installation was created.
+   *
+   * Format: `date-time`
+   * @type string | undefined
+   */
+  created_at?: string;
+  /**
+   * @description Resources (projects) provisioned under this installation.
+   * @type array
+   */
+  resources: VercelResourceStatus[];
 };

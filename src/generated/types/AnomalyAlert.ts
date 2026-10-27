@@ -4,17 +4,17 @@
 */
 
 export const anomalyAlertSeverityEnum = {
-    info: "info",
-    warning: "warning",
-    critical: "critical"
+  info: 'info',
+  warning: 'warning',
+  critical: 'critical',
 } as const;
 
 export type AnomalyAlertSeverityEnumKey = (typeof anomalyAlertSeverityEnum)[keyof typeof anomalyAlertSeverityEnum];
 
 export const anomalyAlertStatusEnum = {
-    open: "open",
-    acknowledged: "acknowledged",
-    resolved: "resolved"
+  open: 'open',
+  acknowledged: 'acknowledged',
+  resolved: 'resolved',
 } as const;
 
 export type AnomalyAlertStatusEnumKey = (typeof anomalyAlertStatusEnum)[keyof typeof anomalyAlertStatusEnum];
@@ -22,82 +22,82 @@ export type AnomalyAlertStatusEnumKey = (typeof anomalyAlertStatusEnum)[keyof ty
 /**
  * @description A surfaced anomalous-behavior alert for review.
  * @type object
-*/
+ */
 export type AnomalyAlert = {
-    /**
-     * @description Unique anomaly alert identifier (prefixed).
-     * @example ano_01h455vb4pex5vsknk084sn02q
-     * @type string
-    */
-    id: string;
-    /**
-     * @description Owning project ID.
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Agent credential implicated, if any.
-     * @type string | undefined
-    */
-    credential_id?: string | null;
-    /**
-     * @description Machine-readable anomaly kind, one of the AnomalyKind values (e.g. egress_spike, new_query_shape). A string rather than the enum so a client built before a new kind ships still reads the alert.
-     * @type string
-    */
-    kind: string;
-    /**
-     * @description Alert severity.
-     * @type string
-    */
-    severity: AnomalyAlertSeverityEnumKey;
-    /**
-     * @description Human-readable summary.
-     * @type string
-    */
-    title: string;
-    /**
-     * @description Structured details about the anomaly.
-     * @type object | undefined
-    */
-    details?: {
-        [key: string]: unknown;
-    };
-    /**
-     * @description Triage state of the alert.
-     * @type string
-    */
-    status: AnomalyAlertStatusEnumKey;
-    /**
-     * @description Start of the observation window, if applicable.
-     *
-     * Format: `date-time`
-     * @type string | undefined
-    */
-    window_start?: string | null;
-    /**
-     * @description End of the observation window, if applicable.
-     *
-     * Format: `date-time`
-     * @type string | undefined
-    */
-    window_end?: string | null;
-    /**
-     * @description When the alert was raised.
-     *
-     * Format: `date-time`
-     * @type string
-    */
-    created_at: string;
-    /**
-     * @description When the alert was acknowledged, if any.
-     *
-     * Format: `date-time`
-     * @type string | undefined
-    */
-    acknowledged_at?: string | null;
-    /**
-     * @description User who acknowledged the alert, if any.
-     * @type string | undefined
-    */
-    acknowledged_by?: string | null;
+  /**
+   * @description Unique anomaly alert identifier (prefixed).
+   * @example ano_01h455vb4pex5vsknk084sn02q
+   * @type string
+   */
+  id: string;
+  /**
+   * @description Owning project ID.
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Agent credential implicated, if any.
+   * @type string | undefined
+   */
+  credential_id?: string | null;
+  /**
+   * @description Machine-readable anomaly kind, one of the AnomalyKind values (e.g. egress_spike, new_query_shape). A string rather than the enum so a client built before a new kind ships still reads the alert.
+   * @type string
+   */
+  kind: string;
+  /**
+   * @description Alert severity.
+   * @type string
+   */
+  severity: AnomalyAlertSeverityEnumKey;
+  /**
+   * @description Human-readable summary.
+   * @type string
+   */
+  title: string;
+  /**
+   * @description Structured details about the anomaly.
+   * @type object | undefined
+   */
+  details?: {
+    [key: string]: unknown;
+  };
+  /**
+   * @description Triage state of the alert.
+   * @type string
+   */
+  status: AnomalyAlertStatusEnumKey;
+  /**
+   * @description Start of the observation window, if applicable.
+   *
+   * Format: `date-time`
+   * @type string | undefined
+   */
+  window_start?: string | null;
+  /**
+   * @description End of the observation window, if applicable.
+   *
+   * Format: `date-time`
+   * @type string | undefined
+   */
+  window_end?: string | null;
+  /**
+   * @description When the alert was raised.
+   *
+   * Format: `date-time`
+   * @type string
+   */
+  created_at: string;
+  /**
+   * @description When the alert was acknowledged, if any.
+   *
+   * Format: `date-time`
+   * @type string | undefined
+   */
+  acknowledged_at?: string | null;
+  /**
+   * @description User who acknowledged the alert, if any.
+   * @type string | undefined
+   */
+  acknowledged_by?: string | null;
 };

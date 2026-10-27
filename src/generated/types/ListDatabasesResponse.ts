@@ -8,16 +8,16 @@ import type { Database } from './Database'
 /**
  * @description Cursor-paginated list of databases attached to a project.
  * @type object
-*/
+ */
 export type ListDatabasesResponse = {
-    /**
-     * @description Databases on the current page.
-     * @type array
-    */
-    databases: Database[];
-    /**
-     * @description Token for the next page. Empty if no more results.
-     * @type string | undefined
-    */
-    next_page_token?: string;
+  /**
+   * @description Databases on the current page.
+   * @type array
+   */
+  databases: Database[];
+  /**
+   * @description Token for the next page. Empty if no more results.
+   * @type string | undefined
+   */
+  next_page_token?: string;
 };

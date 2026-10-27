@@ -7,20 +7,22 @@ import type { Error } from './Error'
 import type { ListRegionsResponse } from './ListRegionsResponse'
 
 export type ListRegionsHeaders = {
-    /**
-     * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.\n\nA comma-separated list is accepted, and `*` matches any current representation.
-     * @minLength 1
-     * @maxLength 1024
-     * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
-     * @type string | undefined
-    */
-    "If-None-Match"?: string;
+  /**
+   * @description Entity tag the client already holds, taken from the `ETag` of an earlier response. When it still matches the current representation the server answers `304 Not Modified` with no body, so a poll that finds nothing changed costs a round trip rather than a transfer.
+   *
+   * A comma-separated list is accepted, and `*` matches any current representation.
+   * @minLength 1
+   * @maxLength 1024
+   * @example "9f8a1c2b3d4e5f60a1b2c3d4e5f60718"
+   * @type string | undefined
+   */
+  'If-None-Match'?: string;
 };
 
 /**
  * @description Response envelope for available region queries.
  * @type object
-*/
+ */
 export type ListRegionsStatus200 = ListRegionsResponse;
 
 export type ListRegionsStatus304 = unknown;
@@ -28,39 +30,39 @@ export type ListRegionsStatus304 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListRegionsStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListRegionsStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListRegionsStatus429 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type ListRegionsStatus500 = Error;
 
 export type ListRegionsOptions = {
-    body?: never;
-    path?: never;
-    query?: never;
-    headers?: ListRegionsHeaders;
+  body?: never;
+  path?: never;
+  query?: never;
+  headers?: ListRegionsHeaders;
 };
 
 export type ListRegionsResponses = {
-    "200": ListRegionsStatus200;
-    "304": ListRegionsStatus304;
-    "400": ListRegionsStatus400;
-    "401": ListRegionsStatus401;
-    "429": ListRegionsStatus429;
-    "500": ListRegionsStatus500;
+  '200': ListRegionsStatus200;
+  '304': ListRegionsStatus304;
+  '400': ListRegionsStatus400;
+  '401': ListRegionsStatus401;
+  '429': ListRegionsStatus429;
+  '500': ListRegionsStatus500;
 };

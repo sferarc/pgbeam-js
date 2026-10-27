@@ -4,9 +4,9 @@
 */
 
 export const vercelResourceStatusStatusEnum = {
-    ready: "ready",
-    suspended: "suspended",
-    deleted: "deleted"
+  ready: 'ready',
+  suspended: 'suspended',
+  deleted: 'deleted',
 } as const;
 
 export type VercelResourceStatusStatusEnumKey = (typeof vercelResourceStatusStatusEnum)[keyof typeof vercelResourceStatusStatusEnum];
@@ -14,45 +14,45 @@ export type VercelResourceStatusStatusEnumKey = (typeof vercelResourceStatusStat
 /**
  * @description A PgBeam project provisioned as a Vercel Marketplace resource, with current-period usage.
  * @type object
-*/
+ */
 export type VercelResourceStatus = {
-    /**
-     * @description Vercel resource identifier.
-     * @type string
-    */
-    resource_id: string;
-    /**
-     * @description PgBeam project identifier backing the resource.
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Human-readable resource/project name.
-     * @type string
-    */
-    name: string;
-    /**
-     * @description Plan tier the resource is billed on.
-     * @type string
-    */
-    billing_plan_id: string;
-    /**
-     * @description Current resource lifecycle status.
-     * @type string
-    */
-    status: VercelResourceStatusStatusEnumKey;
-    /**
-     * @description Queries this resource has served in the current billing period.
-     *
-     * Format: `int64`
-     * @type integer
-    */
-    period_queries: number;
-    /**
-     * @description Bytes transferred by this resource in the current billing period.
-     *
-     * Format: `int64`
-     * @type integer
-    */
-    period_bytes: number;
+  /**
+   * @description Vercel resource identifier.
+   * @type string
+   */
+  resource_id: string;
+  /**
+   * @description PgBeam project identifier backing the resource.
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Human-readable resource/project name.
+   * @type string
+   */
+  name: string;
+  /**
+   * @description Plan tier the resource is billed on.
+   * @type string
+   */
+  billing_plan_id: string;
+  /**
+   * @description Current resource lifecycle status.
+   * @type string
+   */
+  status: VercelResourceStatusStatusEnumKey;
+  /**
+   * @description Queries this resource has served in the current billing period.
+   *
+   * Format: `int64`
+   * @type integer
+   */
+  period_queries: number;
+  /**
+   * @description Bytes transferred by this resource in the current billing period.
+   *
+   * Format: `int64`
+   * @type integer
+   */
+  period_bytes: number;
 };

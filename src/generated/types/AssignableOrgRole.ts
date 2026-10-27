@@ -4,13 +4,13 @@
 */
 
 export const assignableOrgRole = {
-    admin: "admin",
-    member: "member",
-    security_admin: "security_admin",
-    billing_admin: "billing_admin",
-    auditor: "auditor",
-    "policy-author": "policy-author",
-    approver: "approver"
+  admin: 'admin',
+  member: 'member',
+  security_admin: 'security_admin',
+  billing_admin: 'billing_admin',
+  auditor: 'auditor',
+  'policy-author': 'policy-author',
+  approver: 'approver',
 } as const;
 
 export type AssignableOrgRoleKey = (typeof assignableOrgRole)[keyof typeof assignableOrgRole];

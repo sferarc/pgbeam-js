@@ -6,18 +6,18 @@
 import type { Error } from './Error'
 
 export type DeleteWebhookEndpointPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Unique webhook endpoint identifier (prefixed, e.g. whk_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    webhook_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Unique webhook endpoint identifier (prefixed, e.g. whk_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  webhook_id: string;
 };
 
 export type DeleteWebhookEndpointStatus204 = unknown;
@@ -25,50 +25,50 @@ export type DeleteWebhookEndpointStatus204 = unknown;
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteWebhookEndpointStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteWebhookEndpointStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteWebhookEndpointStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteWebhookEndpointStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type DeleteWebhookEndpointStatus500 = Error;
 
 export type DeleteWebhookEndpointOptions = {
-    body?: never;
-    path: DeleteWebhookEndpointPath;
-    query?: never;
-    headers?: never;
+  body?: never;
+  path: DeleteWebhookEndpointPath;
+  query?: never;
+  headers?: never;
 };
 
 export type DeleteWebhookEndpointResponses = {
-    "204": DeleteWebhookEndpointStatus204;
-    "400": DeleteWebhookEndpointStatus400;
-    "401": DeleteWebhookEndpointStatus401;
-    "403": DeleteWebhookEndpointStatus403;
-    "404": DeleteWebhookEndpointStatus404;
-    "500": DeleteWebhookEndpointStatus500;
+  '204': DeleteWebhookEndpointStatus204;
+  '400': DeleteWebhookEndpointStatus400;
+  '401': DeleteWebhookEndpointStatus401;
+  '403': DeleteWebhookEndpointStatus403;
+  '404': DeleteWebhookEndpointStatus404;
+  '500': DeleteWebhookEndpointStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type DeleteWebhookEndpointResponse = DeleteWebhookEndpointStatus204;

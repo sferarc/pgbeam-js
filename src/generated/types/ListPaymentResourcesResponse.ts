@@ -8,11 +8,11 @@ import type { PaymentResource } from './PaymentResource'
 /**
  * @description Everything this deployment sells over the Machine Payments Protocol.
  * @type object
-*/
+ */
 export type ListPaymentResourcesResponse = {
-    /**
-     * @description The priced resources, in catalog order.
-     * @type array
-    */
-    resources: PaymentResource[];
+  /**
+   * @description The priced resources, in catalog order.
+   * @type array
+   */
+  resources: PaymentResource[];
 };

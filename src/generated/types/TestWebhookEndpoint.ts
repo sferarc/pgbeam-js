@@ -7,73 +7,73 @@ import type { Error } from './Error'
 import type { WebhookTestResponse } from './WebhookTestResponse'
 
 export type TestWebhookEndpointPath = {
-    /**
-     * @description Unique project identifier (prefixed, e.g. prj_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    project_id: string;
-    /**
-     * @description Unique webhook endpoint identifier (prefixed, e.g. whk_xxx).
-     * @pattern ^[a-zA-Z0-9_.-]+$
-     * @type string
-    */
-    webhook_id: string;
+  /**
+   * @description Unique project identifier (prefixed, e.g. prj_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  project_id: string;
+  /**
+   * @description Unique webhook endpoint identifier (prefixed, e.g. whk_xxx).
+   * @pattern ^[a-zA-Z0-9_.-]+$
+   * @type string
+   */
+  webhook_id: string;
 };
 
 /**
  * @description Result of sending a synthetic test event to a webhook endpoint.
  * @type object
-*/
+ */
 export type TestWebhookEndpointStatus202 = WebhookTestResponse;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type TestWebhookEndpointStatus400 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type TestWebhookEndpointStatus401 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type TestWebhookEndpointStatus403 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type TestWebhookEndpointStatus404 = Error;
 
 /**
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
-*/
+ */
 export type TestWebhookEndpointStatus500 = Error;
 
 export type TestWebhookEndpointOptions = {
-    body?: never;
-    path: TestWebhookEndpointPath;
-    query?: never;
-    headers?: never;
+  body?: never;
+  path: TestWebhookEndpointPath;
+  query?: never;
+  headers?: never;
 };
 
 export type TestWebhookEndpointResponses = {
-    "202": TestWebhookEndpointStatus202;
-    "400": TestWebhookEndpointStatus400;
-    "401": TestWebhookEndpointStatus401;
-    "403": TestWebhookEndpointStatus403;
-    "404": TestWebhookEndpointStatus404;
-    "500": TestWebhookEndpointStatus500;
+  '202': TestWebhookEndpointStatus202;
+  '400': TestWebhookEndpointStatus400;
+  '401': TestWebhookEndpointStatus401;
+  '403': TestWebhookEndpointStatus403;
+  '404': TestWebhookEndpointStatus404;
+  '500': TestWebhookEndpointStatus500;
 };
 
 /**
  * @description Union of all possible responses
-*/
+ */
 export type TestWebhookEndpointResponse = TestWebhookEndpointStatus202;
