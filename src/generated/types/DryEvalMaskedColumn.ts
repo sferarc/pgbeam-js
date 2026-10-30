@@ -7,6 +7,8 @@ export const dryEvalMaskedColumnKindEnum = {
   redact: 'redact',
   null: 'null',
   hash: 'hash',
+  last4: 'last4',
+  email_domain: 'email_domain',
 } as const;
 
 export type DryEvalMaskedColumnKindEnumKey = (typeof dryEvalMaskedColumnKindEnum)[keyof typeof dryEvalMaskedColumnKindEnum];

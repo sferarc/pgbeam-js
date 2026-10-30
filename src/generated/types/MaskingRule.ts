@@ -7,6 +7,8 @@ export const maskingRuleKindEnum = {
   redact: 'redact',
   null: 'null',
   hash: 'hash',
+  last4: 'last4',
+  email_domain: 'email_domain',
 } as const;
 
 export type MaskingRuleKindEnumKey = (typeof maskingRuleKindEnum)[keyof typeof maskingRuleKindEnum];
@@ -29,7 +31,7 @@ export type MaskingRule = {
    */
   column: string;
   /**
-   * @description How to mask. redact replaces with a token, null returns NULL, hash returns a SHA-256 hex.
+   * @description How to mask. redact replaces with a token, null returns NULL, hash returns a SHA-256 hex, last4 keeps the final four characters behind "****", and email_domain keeps the domain behind "****@". A value too short for last4 or not shaped like an email for email_domain is redacted instead.
    * @type string
    */
   kind: MaskingRuleKindEnumKey;
