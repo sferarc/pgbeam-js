@@ -43,6 +43,20 @@ export type PlanLimits = {
    */
   bytes_per_month: number;
   /**
+   * @description Price in USD for each 1,000 queries over the daily quota. 0 means the quota is a hard cap and no query overage is billed.
+   *
+   * Format: `double`
+   * @type number
+   */
+  overage_per_1k: number;
+  /**
+   * @description Price in USD for each GB transferred over the monthly quota. 0 means the quota is a hard cap and no transfer overage is billed.
+   *
+   * Format: `double`
+   * @type number
+   */
+  overage_per_gb: number;
+  /**
    * @description Maximum query shapes in cache rules. 0 means unlimited.
    * @type integer
    */
