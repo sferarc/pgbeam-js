@@ -194,4 +194,9 @@ export type PolicyProfileInput = {
    * @type string | undefined
    */
   query_mode?: PolicyProfileInputQueryModeEnumKey;
+  /**
+   * @description Functions an agent on this profile may not call, on top of the proxy's built-in dangerous-function floor. Each entry is a bare name (recompute) or one schema-qualified name (billing.recompute), with no whitespace, quotes or parentheses and at most 63 bytes per part. A bare entry matches the name in every schema; a qualified entry also matches an unqualified call of the same name. On create, omitting the field means an empty list. On update, omitting it keeps the stored list, so a client that predates this field cannot clear it by saving the profile; send an empty array to do that. A non-empty list is refused with 409 while the organization has a live self-hosted enrollment, since an older self-hosted proxy ignores this field and would let those calls run. An empty list is always accepted.
+   * @type array | undefined
+   */
+  function_denylist?: string[];
 };

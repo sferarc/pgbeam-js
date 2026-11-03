@@ -201,6 +201,11 @@ export type PolicyProfile = {
    */
   query_mode: PolicyProfileQueryModeEnumKey;
   /**
+   * @description Functions an agent on this profile may not call, refused with SQLSTATE 42501 and decision rule function_denied. This adds to the proxy's built-in dangerous-function floor, which no profile can relax. Matching is case-insensitive and sees every call in the statement, including inside a CTE, a sub-select or a function argument. A bare entry (recompute) matches the name in every schema. A schema-qualified entry (billing.recompute) matches a call qualified with that schema and also an unqualified call of the same name, since the proxy cannot see where search_path resolves it. A function reached only through an operator, a cast, a view, a trigger or a column default is not matched. A proxy build older than this field ignores it, so the API refuses a non-empty list while the organization has a live self-hosted enrollment.
+   * @type array
+   */
+  function_denylist: string[];
+  /**
    * @description When the policy profile was created.
    *
    * Format: `date-time`

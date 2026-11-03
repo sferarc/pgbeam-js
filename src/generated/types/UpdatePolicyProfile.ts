@@ -71,6 +71,12 @@ export type UpdatePolicyProfileStatus404 = Error;
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
  */
+export type UpdatePolicyProfileStatus409 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+ */
 export type UpdatePolicyProfileStatus412 = Error;
 
 /**
@@ -116,6 +122,7 @@ export type UpdatePolicyProfileResponses = {
   '401': UpdatePolicyProfileStatus401;
   '403': UpdatePolicyProfileStatus403;
   '404': UpdatePolicyProfileStatus404;
+  '409': UpdatePolicyProfileStatus409;
   '412': UpdatePolicyProfileStatus412;
   '413': UpdatePolicyProfileStatus413;
   '415': UpdatePolicyProfileStatus415;
