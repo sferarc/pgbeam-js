@@ -38,8 +38,8 @@ export type SupportCase = {
   title: string;
   /**
    * @description Severity level: 1=Critical, 2=High, 3=Normal, 4=Low.
-   * @minLength 1
-   * @maxLength 4
+   * @minimum 1
+   * @maximum 4
    * @type integer
    */
   severity: number;

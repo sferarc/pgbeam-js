@@ -30,8 +30,8 @@ export type ListSupportCasesQuery = {
   search?: string;
   /**
    * @description Number of results per page (1-100, default 20).
-   * @minLength 1
-   * @maxLength 100
+   * @minimum 1
+   * @maximum 100
    * @default 20
    * @type integer | undefined
    */
@@ -44,7 +44,7 @@ export type ListSupportCasesQuery = {
   page_token?: string;
   /**
    * @description Page number (1-based, default 1).
-   * @minLength 1
+   * @minimum 1
    * @default 1
    * @type integer | undefined
    */
@@ -111,3 +111,8 @@ export type ListSupportCasesResponses = {
   '403': ListSupportCasesStatus403;
   '500': ListSupportCasesStatus500;
 };
+
+/**
+ * @description Union of all possible responses
+ */
+export type ListSupportCasesResponse2 = ListSupportCasesStatus200;

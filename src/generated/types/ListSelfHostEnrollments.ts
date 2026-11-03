@@ -19,8 +19,8 @@ export type ListSelfHostEnrollmentsPath = {
 export type ListSelfHostEnrollmentsQuery = {
   /**
    * @description Maximum number of items to return (1-100, default 20).
-   * @minLength 1
-   * @maxLength 100
+   * @minimum 1
+   * @maximum 100
    * @default 20
    * @type integer | undefined
    */
@@ -93,3 +93,8 @@ export type ListSelfHostEnrollmentsResponses = {
   '403': ListSelfHostEnrollmentsStatus403;
   '500': ListSelfHostEnrollmentsStatus500;
 };
+
+/**
+ * @description Union of all possible responses
+ */
+export type ListSelfHostEnrollmentsResponse2 = ListSelfHostEnrollmentsStatus200;

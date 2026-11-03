@@ -18,8 +18,8 @@ export type ListPolicyProfilesPath = {
 export type ListPolicyProfilesQuery = {
   /**
    * @description Maximum number of items to return (1-100, default 20).
-   * @minLength 1
-   * @maxLength 100
+   * @minimum 1
+   * @maximum 100
    * @default 20
    * @type integer | undefined
    */
@@ -106,3 +106,8 @@ export type ListPolicyProfilesResponses = {
   '429': ListPolicyProfilesStatus429;
   '500': ListPolicyProfilesStatus500;
 };
+
+/**
+ * @description Union of all possible responses
+ */
+export type ListPolicyProfilesResponse2 = ListPolicyProfilesStatus200;

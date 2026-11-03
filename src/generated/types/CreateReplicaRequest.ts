@@ -20,8 +20,8 @@ export type CreateReplicaRequest = {
   host: string;
   /**
    * @description PostgreSQL replica port.
-   * @minLength 1
-   * @maxLength 65535
+   * @minimum 1
+   * @maximum 65535
    * @example 5432
    * @type integer
    */

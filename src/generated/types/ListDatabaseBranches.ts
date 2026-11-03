@@ -32,8 +32,8 @@ export type ListDatabaseBranchesQuery = {
   status?: ListDatabaseBranchesStatusKey;
   /**
    * @description Maximum number of items to return (1-100, default 20).
-   * @minLength 1
-   * @maxLength 100
+   * @minimum 1
+   * @maximum 100
    * @default 20
    * @type integer | undefined
    */
@@ -120,3 +120,8 @@ export type ListDatabaseBranchesResponses = {
   '429': ListDatabaseBranchesStatus429;
   '500': ListDatabaseBranchesStatus500;
 };
+
+/**
+ * @description Union of all possible responses
+ */
+export type ListDatabaseBranchesResponse2 = ListDatabaseBranchesStatus200;

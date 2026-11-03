@@ -33,8 +33,8 @@ export type ListOrgInvitationsQuery = {
   status?: ListOrgInvitationsStatusKey;
   /**
    * @description Maximum number of items to return (1-100, default 20).
-   * @minLength 1
-   * @maxLength 100
+   * @minimum 1
+   * @maximum 100
    * @default 20
    * @type integer | undefined
    */
@@ -114,3 +114,8 @@ export type ListOrgInvitationsResponses = {
   '404': ListOrgInvitationsStatus404;
   '429': ListOrgInvitationsStatus429;
 };
+
+/**
+ * @description Union of all possible responses
+ */
+export type ListOrgInvitationsResponse2 = ListOrgInvitationsStatus200;

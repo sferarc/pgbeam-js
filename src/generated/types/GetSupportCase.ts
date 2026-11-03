@@ -89,3 +89,8 @@ export type GetSupportCaseResponses = {
   '404': GetSupportCaseStatus404;
   '500': GetSupportCaseStatus500;
 };
+
+/**
+ * @description Union of all possible responses
+ */
+export type GetSupportCaseResponse2 = GetSupportCaseStatus200;

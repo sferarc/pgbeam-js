@@ -18,8 +18,8 @@ export type ListDatabasesPath = {
 export type ListDatabasesQuery = {
   /**
    * @description Maximum number of items to return (1-100, default 20).
-   * @minLength 1
-   * @maxLength 100
+   * @minimum 1
+   * @maximum 100
    * @default 20
    * @type integer | undefined
    */
@@ -106,3 +106,8 @@ export type ListDatabasesResponses = {
   '429': ListDatabasesStatus429;
   '500': ListDatabasesStatus500;
 };
+
+/**
+ * @description Union of all possible responses
+ */
+export type ListDatabasesResponse2 = ListDatabasesStatus200;

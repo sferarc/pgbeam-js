@@ -17,13 +17,13 @@ export type SchemaCatalog = {
   relations: SchemaCatalogRelation[];
   /**
    * @description Number of relations in the catalog.
-   * @minLength 0
+   * @minimum 0
    * @type integer
    */
   scanned_relations: number;
   /**
    * @description Number of columns in the catalog.
-   * @minLength 0
+   * @minimum 0
    * @type integer
    */
   scanned_columns: number;

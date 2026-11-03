@@ -49,14 +49,14 @@ export type CacheRuleEntry = {
   cache_enabled: boolean;
   /**
    * @description TTL override in seconds. Null means use project default.
-   * @minLength 0
+   * @minimum 0
    * @example 300
    * @type integer | undefined
    */
   cache_ttl_seconds?: number | null;
   /**
    * @description SWR override in seconds. Null means use project default.
-   * @minLength 0
+   * @minimum 0
    * @example 60
    * @type integer | undefined
    */

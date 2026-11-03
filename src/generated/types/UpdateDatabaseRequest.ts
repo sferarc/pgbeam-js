@@ -23,8 +23,8 @@ export type UpdateDatabaseRequest = {
   host?: string;
   /**
    * @description Updated PostgreSQL port.
-   * @minLength 1
-   * @maxLength 65535
+   * @minimum 1
+   * @maximum 65535
    * @example 5432
    * @type integer | undefined
    */
@@ -73,8 +73,8 @@ export type UpdateDatabaseRequest = {
   /**
    * @description Query timeout in milliseconds. 0 means disabled.
    *
-   * @minLength 0
-   * @maxLength 300000
+   * @minimum 0
+   * @maximum 300000
    * @type integer | undefined
    */
   query_timeout_ms?: number;

@@ -12,8 +12,8 @@ import type { PoolModeKey } from './PoolMode'
 export type PoolConfig = {
   /**
    * @description Maximum connections in the pool.
-   * @minLength 1
-   * @maxLength 10000
+   * @minimum 1
+   * @maximum 10000
    * @default 10
    * @example 20
    * @type integer
@@ -21,8 +21,8 @@ export type PoolConfig = {
   pool_size: number;
   /**
    * @description Minimum idle connections maintained.
-   * @minLength 1
-   * @maxLength 10000
+   * @minimum 1
+   * @maximum 10000
    * @default 1
    * @example 5
    * @type integer
@@ -36,8 +36,8 @@ export type PoolConfig = {
   pool_mode: PoolModeKey;
   /**
    * @description Maximum concurrent upstream connections per pool.
-   * @minLength 1
-   * @maxLength 10000
+   * @minimum 1
+   * @maximum 10000
    * @default 200
    * @type integer | undefined
    */

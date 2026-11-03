@@ -18,8 +18,8 @@ export type ListSchemaAnnotationsPath = {
 export type ListSchemaAnnotationsQuery = {
   /**
    * @description Maximum number of items to return (1-100, default 20).
-   * @minLength 1
-   * @maxLength 100
+   * @minimum 1
+   * @maximum 100
    * @default 20
    * @type integer | undefined
    */
@@ -106,3 +106,8 @@ export type ListSchemaAnnotationsResponses = {
   '429': ListSchemaAnnotationsStatus429;
   '500': ListSchemaAnnotationsStatus500;
 };
+
+/**
+ * @description Union of all possible responses
+ */
+export type ListSchemaAnnotationsResponse2 = ListSchemaAnnotationsStatus200;

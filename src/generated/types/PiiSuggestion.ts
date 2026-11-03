@@ -72,8 +72,8 @@ export type PiiSuggestion = {
    * @description Confidence score in [0,1]. Combines column-name signal and sampled-value signal; higher is stronger evidence.
    *
    * Format: `float`
-   * @minLength 0
-   * @maxLength 1
+   * @minimum 0
+   * @maximum 1
    * @example 0.95
    * @type number
    */
@@ -86,13 +86,13 @@ export type PiiSuggestion = {
   reasons: string[];
   /**
    * @description Number of sampled non-null values that matched the PII pattern.
-   * @minLength 0
+   * @minimum 0
    * @type integer | undefined
    */
   sample_match_count?: number;
   /**
    * @description Number of non-null values sampled from the column.
-   * @minLength 0
+   * @minimum 0
    * @type integer | undefined
    */
   sample_size?: number;

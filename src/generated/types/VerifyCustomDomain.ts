@@ -79,3 +79,8 @@ export type VerifyCustomDomainResponses = {
   '429': VerifyCustomDomainStatus429;
   '500': VerifyCustomDomainStatus500;
 };
+
+/**
+ * @description Union of all possible responses
+ */
+export type VerifyCustomDomainResponse2 = VerifyCustomDomainStatus200;

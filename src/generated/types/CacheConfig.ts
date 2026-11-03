@@ -16,24 +16,24 @@ export type CacheConfig = {
   enabled: boolean;
   /**
    * @description Cache TTL in seconds for query results.
-   * @minLength 0
-   * @maxLength 86400
+   * @minimum 0
+   * @maximum 86400
    * @default 60
    * @type integer
    */
   ttl_seconds: number;
   /**
    * @description Maximum number of cached query results.
-   * @minLength 0
-   * @maxLength 1000000
+   * @minimum 0
+   * @maximum 1000000
    * @default 10000
    * @type integer
    */
   max_entries: number;
   /**
    * @description Stale-while-revalidate window in seconds.
-   * @minLength 0
-   * @maxLength 86400
+   * @minimum 0
+   * @maximum 86400
    * @default 30
    * @type integer
    */

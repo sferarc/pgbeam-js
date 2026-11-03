@@ -102,3 +102,8 @@ export type CreateProjectResponses = {
   '429': CreateProjectStatus429;
   '500': CreateProjectStatus500;
 };
+
+/**
+ * @description Union of all possible responses
+ */
+export type CreateProjectResponse2 = CreateProjectStatus201;

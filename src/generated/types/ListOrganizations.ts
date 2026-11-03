@@ -66,3 +66,8 @@ export type ListOrganizationsResponses = {
   '429': ListOrganizationsStatus429;
   '500': ListOrganizationsStatus500;
 };
+
+/**
+ * @description Union of all possible responses
+ */
+export type ListOrganizationsResponse2 = ListOrganizationsStatus200;

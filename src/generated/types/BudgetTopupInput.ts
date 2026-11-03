@@ -16,7 +16,7 @@ export type BudgetTopupInput = {
    *
    *
    * Format: `int64`
-   * @minLength 1
+   * @minimum 1
    * @default 1
    * @example 1
    * @type integer | undefined

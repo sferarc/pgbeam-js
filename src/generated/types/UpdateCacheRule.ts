@@ -108,3 +108,8 @@ export type UpdateCacheRuleResponses = {
   '429': UpdateCacheRuleStatus429;
   '500': UpdateCacheRuleStatus500;
 };
+
+/**
+ * @description Union of all possible responses
+ */
+export type UpdateCacheRuleResponse2 = UpdateCacheRuleStatus200;

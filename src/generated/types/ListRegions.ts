@@ -66,3 +66,8 @@ export type ListRegionsResponses = {
   '429': ListRegionsStatus429;
   '500': ListRegionsStatus500;
 };
+
+/**
+ * @description Union of all possible responses
+ */
+export type ListRegionsResponse2 = ListRegionsStatus200;

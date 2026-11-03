@@ -23,8 +23,8 @@ export type CreateDatabaseRequest = {
   host: string;
   /**
    * @description PostgreSQL port.
-   * @minLength 1
-   * @maxLength 65535
+   * @minimum 1
+   * @maximum 65535
    * @example 5432
    * @type integer
    */
@@ -76,8 +76,8 @@ export type CreateDatabaseRequest = {
   /**
    * @description Query timeout in milliseconds. 0 means disabled (default).
    *
-   * @minLength 0
-   * @maxLength 300000
+   * @minimum 0
+   * @maximum 300000
    * @default 0
    * @type integer | undefined
    */

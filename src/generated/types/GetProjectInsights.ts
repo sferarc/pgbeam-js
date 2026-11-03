@@ -34,8 +34,8 @@ export type GetProjectInsightsQuery = {
   range?: GetProjectInsightsRangeKey;
   /**
    * @description Maximum number of top queries to return (1-100).
-   * @minLength 1
-   * @maxLength 100
+   * @minimum 1
+   * @maximum 100
    * @default 20
    * @type integer | undefined
    */

@@ -66,3 +66,8 @@ export type ListPlansResponses = {
   '429': ListPlansStatus429;
   '500': ListPlansStatus500;
 };
+
+/**
+ * @description Union of all possible responses
+ */
+export type ListPlansResponse2 = ListPlansStatus200;

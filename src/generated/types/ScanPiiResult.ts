@@ -12,13 +12,13 @@ import type { PiiSuggestion } from './PiiSuggestion'
 export type ScanPiiResult = {
   /**
    * @description Number of tables inspected.
-   * @minLength 0
+   * @minimum 0
    * @type integer
    */
   scanned_tables: number;
   /**
    * @description Number of columns inspected.
-   * @minLength 0
+   * @minimum 0
    * @type integer
    */
   scanned_columns: number;

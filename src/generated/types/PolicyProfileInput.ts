@@ -94,28 +94,28 @@ export type PolicyProfileInput = {
   masking_rules?: MaskingRule[];
   /**
    * @description Max queries per rolling hour window. 0 means unlimited.
-   * @minLength 0
+   * @minimum 0
    * @default 0
    * @type integer | undefined
    */
   budget_queries_per_hour?: number;
   /**
    * @description Max queries per day window. 0 means unlimited.
-   * @minLength 0
+   * @minimum 0
    * @default 0
    * @type integer | undefined
    */
   budget_queries_per_day?: number;
   /**
    * @description Max rows returned per query. 0 means unlimited.
-   * @minLength 0
+   * @minimum 0
    * @default 0
    * @type integer | undefined
    */
   max_rows?: number;
   /**
    * @description Upstream statement timeout for agent sessions. 0 uses the project default.
-   * @minLength 0
+   * @minimum 0
    * @default 0
    * @type integer | undefined
    */
@@ -139,14 +139,14 @@ export type PolicyProfileInput = {
   approval_mode?: PolicyProfileInputApprovalModeEnumKey;
   /**
    * @description Statements touching at most this many rows are auto-approved. 0 means none.
-   * @minLength 0
+   * @minimum 0
    * @default 0
    * @type integer | undefined
    */
   approval_auto_max_rows?: number;
   /**
    * @description How long a held statement waits for a decision before expiring.
-   * @minLength 0
+   * @minimum 0
    * @default 300
    * @type integer | undefined
    */
@@ -161,14 +161,14 @@ export type PolicyProfileInput = {
    * @description Per-day egress budget in bytes. 0 means unlimited.
    *
    * Format: `int64`
-   * @minLength 0
+   * @minimum 0
    * @default 0
    * @type integer | undefined
    */
   egress_bytes_per_day?: number;
   /**
    * @description Hard cap on rows a single write (INSERT/UPDATE/DELETE) may affect. A write whose affected-row count would exceed this is executed inside a transaction, checked, and rolled back so nothing persists, then blocked. Enforced independently of human approval. 0 means unlimited.
-   * @minLength 0
+   * @minimum 0
    * @default 0
    * @type integer | undefined
    */
@@ -183,7 +183,7 @@ export type PolicyProfileInput = {
    * @description Byte budget for one statement's content scan, spanning all values in the result. Values past it are reported unscannable rather than skipped quietly. The budget covers a whole statement, so the statements of one simple-query batch share it rather than each getting a fresh allowance. 0 uses the scanner default (4 MiB), which covers an interactive result set and deliberately does not cover a bulk export.
    *
    * Format: `int64`
-   * @minLength 0
+   * @minimum 0
    * @default 0
    * @type integer | undefined
    */

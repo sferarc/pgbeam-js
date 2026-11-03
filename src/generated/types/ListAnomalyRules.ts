@@ -18,8 +18,8 @@ export type ListAnomalyRulesPath = {
 export type ListAnomalyRulesQuery = {
   /**
    * @description Maximum number of items to return (1-100, default 20).
-   * @minLength 1
-   * @maxLength 100
+   * @minimum 1
+   * @maximum 100
    * @default 20
    * @type integer | undefined
    */
@@ -106,3 +106,8 @@ export type ListAnomalyRulesResponses = {
   '429': ListAnomalyRulesStatus429;
   '500': ListAnomalyRulesStatus500;
 };
+
+/**
+ * @description Union of all possible responses
+ */
+export type ListAnomalyRulesResponse2 = ListAnomalyRulesStatus200;

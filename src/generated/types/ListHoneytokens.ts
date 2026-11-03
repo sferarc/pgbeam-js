@@ -18,8 +18,8 @@ export type ListHoneytokensPath = {
 export type ListHoneytokensQuery = {
   /**
    * @description Maximum number of items to return (1-100, default 20).
-   * @minLength 1
-   * @maxLength 100
+   * @minimum 1
+   * @maximum 100
    * @default 20
    * @type integer | undefined
    */
@@ -106,3 +106,8 @@ export type ListHoneytokensResponses = {
   '429': ListHoneytokensStatus429;
   '500': ListHoneytokensStatus500;
 };
+
+/**
+ * @description Union of all possible responses
+ */
+export type ListHoneytokensResponse2 = ListHoneytokensStatus200;

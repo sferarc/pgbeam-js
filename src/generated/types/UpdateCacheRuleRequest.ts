@@ -15,16 +15,16 @@ export type UpdateCacheRuleRequest = {
   cache_enabled: boolean;
   /**
    * @description TTL override in seconds. Null to use project default.
-   * @minLength 0
-   * @maxLength 86400
+   * @minimum 0
+   * @maximum 86400
    * @example 300
    * @type integer | undefined
    */
   cache_ttl_seconds?: number | null;
   /**
    * @description SWR override in seconds. Null to use project default.
-   * @minLength 0
-   * @maxLength 86400
+   * @minimum 0
+   * @maximum 86400
    * @example 60
    * @type integer | undefined
    */

@@ -18,8 +18,8 @@ export type GetProjectMetricsPath = {
 export type GetProjectMetricsQuery = {
   /**
    * @description Maximum number of recent snapshots to return.
-   * @minLength 1
-   * @maxLength 1000
+   * @minimum 1
+   * @maximum 1000
    * @default 60
    * @type integer | undefined
    */

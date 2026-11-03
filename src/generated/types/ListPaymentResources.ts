@@ -36,3 +36,8 @@ export type ListPaymentResourcesResponses = {
   '429': ListPaymentResourcesStatus429;
   '503': ListPaymentResourcesStatus503;
 };
+
+/**
+ * @description Union of all possible responses
+ */
+export type ListPaymentResourcesResponse2 = ListPaymentResourcesStatus200;

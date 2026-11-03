@@ -49,8 +49,8 @@ export type PolicyReplayInput = {
   end_ts?: string;
   /**
    * @description Maximum number of distinct queries to replay, newest first. Traffic is deduplicated by normalized query hash before evaluation.
-   * @minLength 1
-   * @maxLength 500
+   * @minimum 1
+   * @maximum 500
    * @default 200
    * @type integer | undefined
    */

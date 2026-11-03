@@ -10,16 +10,16 @@
 export type PolicyRecommendationInput = {
   /**
    * @description How many days of recorded audit history to analyze.
-   * @minLength 1
-   * @maxLength 365
+   * @minimum 1
+   * @maximum 365
    * @default 30
    * @type integer | undefined
    */
   lookback_days?: number;
   /**
    * @description Maximum number of distinct query shapes to analyze and replay, newest first. Traffic is deduplicated by normalized query hash.
-   * @minLength 1
-   * @maxLength 500
+   * @minimum 1
+   * @maximum 500
    * @default 200
    * @type integer | undefined
    */

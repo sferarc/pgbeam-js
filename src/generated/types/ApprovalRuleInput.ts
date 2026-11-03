@@ -44,7 +44,7 @@ export type ApprovalRuleInput = {
    *
    *
    * Format: `int32`
-   * @minLength 1
+   * @minimum 1
    * @example 1000
    * @type integer | undefined
    */
