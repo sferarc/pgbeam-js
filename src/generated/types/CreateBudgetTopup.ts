@@ -25,6 +25,20 @@ export type CreateBudgetTopupHeaders = {
    * @type string | undefined
    */
   'Accept-Payment'?: string;
+  /**
+   * @description Client-generated key that makes a retry of this request safe. The first request carrying a given key executes normally and its response (status, content type and body) is stored for 24 hours; a later request with the same key returns that stored response without running the operation again, so a retry after a lost or timed-out response cannot create a second resource.
+   *
+   * Reusing a key with a different request body returns `409 Conflict`: a key is a promise about one specific request, so a changed body is a client bug rather than a retry. Keys are scoped to the calling organization (or to the user, for account-scoped tokens, or to the agent MCP token, for a budget top-up), so one tenant can never read another's stored response.
+   *
+   * A `5xx`, `402`, `408` or `429` is never stored, because those describe a request that produced no settled answer and the next attempt with the same key must run for real: a `402` asks for that next attempt to carry a payment. Any other `4xx` is stored: it is the server's settled answer about this exact request.
+   *
+   * Use a fresh UUID per logical operation. The PgBeam SDKs generate one per call and reuse it across their own automatic retries.
+   * @minLength 1
+   * @maxLength 255
+   * @example a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d
+   * @type string | undefined
+   */
+  'Idempotency-Key'?: string;
 };
 
 /**
@@ -70,6 +84,12 @@ export type CreateBudgetTopupStatus404 = Error;
  * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
  * @type object
  */
+export type CreateBudgetTopupStatus409 = Error;
+
+/**
+ * @description An RFC 9457 problem detail, served as `application/problem+json`. Every error the API returns has this shape.
+ * @type object
+ */
 export type CreateBudgetTopupStatus429 = Error;
 
 /**
@@ -100,6 +120,7 @@ export type CreateBudgetTopupResponses = {
   '402': CreateBudgetTopupStatus402;
   '403': CreateBudgetTopupStatus403;
   '404': CreateBudgetTopupStatus404;
+  '409': CreateBudgetTopupStatus409;
   '429': CreateBudgetTopupStatus429;
   '503': CreateBudgetTopupStatus503;
 };

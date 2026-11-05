@@ -20,9 +20,9 @@ export type CreateReplicaHeaders = {
   /**
    * @description Client-generated key that makes a retry of this request safe. The first request carrying a given key executes normally and its response (status, content type and body) is stored for 24 hours; a later request with the same key returns that stored response without running the operation again, so a retry after a lost or timed-out response cannot create a second resource.
    *
-   * Reusing a key with a different request body returns `409 Conflict`: a key is a promise about one specific request, so a changed body is a client bug rather than a retry. Keys are scoped to the calling organization (or to the user, for account-scoped tokens), so one tenant can never read another's stored response.
+   * Reusing a key with a different request body returns `409 Conflict`: a key is a promise about one specific request, so a changed body is a client bug rather than a retry. Keys are scoped to the calling organization (or to the user, for account-scoped tokens, or to the agent MCP token, for a budget top-up), so one tenant can never read another's stored response.
    *
-   * A `5xx`, `408` or `429` is never stored, because those describe a request that produced no settled answer and the next attempt with the same key must run for real. A `4xx` is stored: it is the server's settled answer about this exact request.
+   * A `5xx`, `402`, `408` or `429` is never stored, because those describe a request that produced no settled answer and the next attempt with the same key must run for real: a `402` asks for that next attempt to carry a payment. Any other `4xx` is stored: it is the server's settled answer about this exact request.
    *
    * Use a fresh UUID per logical operation. The PgBeam SDKs generate one per call and reuse it across their own automatic retries.
    * @minLength 1

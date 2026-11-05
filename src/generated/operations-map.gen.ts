@@ -421,12 +421,12 @@ type ListAuditLogsParams = { pathParams: NonNullable<ListAuditLogsOptions["path"
 type ExportAuditLogsParams = { pathParams: NonNullable<ExportAuditLogsOptions["path"]>; queryParams?: NonNullable<ExportAuditLogsOptions["query"]> };
 type GetAuditSessionSummaryParams = { pathParams: NonNullable<GetAuditSessionSummaryOptions["path"]>; queryParams?: NonNullable<GetAuditSessionSummaryOptions["query"]>; headers?: NonNullable<GetAuditSessionSummaryOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type VerifyAuditChainParams = { pathParams: NonNullable<VerifyAuditChainOptions["path"]>; queryParams?: NonNullable<VerifyAuditChainOptions["query"]>; headers?: NonNullable<VerifyAuditChainOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
-type ExecuteBatchParams = { pathParams: NonNullable<ExecuteBatchOptions["path"]>; body: NonNullable<ExecuteBatchOptions["body"]> };
+type ExecuteBatchParams = { pathParams: NonNullable<ExecuteBatchOptions["path"]>; body: NonNullable<ExecuteBatchOptions["body"]>; headers?: NonNullable<ExecuteBatchOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type ListPlansParams = { headers?: NonNullable<ListPlansOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type GetOrganizationPlanParams = { pathParams: NonNullable<GetOrganizationPlanOptions["path"]>; headers?: NonNullable<GetOrganizationPlanOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type GetVercelInstallationParams = { pathParams: NonNullable<GetVercelInstallationOptions["path"]>; headers?: NonNullable<GetVercelInstallationOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type UpdateSpendLimitParams = { pathParams: NonNullable<UpdateSpendLimitOptions["path"]>; body: NonNullable<UpdateSpendLimitOptions["body"]> };
-type SubmitCancellationFeedbackParams = { pathParams: NonNullable<SubmitCancellationFeedbackOptions["path"]>; body: NonNullable<SubmitCancellationFeedbackOptions["body"]> };
+type SubmitCancellationFeedbackParams = { pathParams: NonNullable<SubmitCancellationFeedbackOptions["path"]>; body: NonNullable<SubmitCancellationFeedbackOptions["body"]>; headers?: NonNullable<SubmitCancellationFeedbackOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type ListDatabaseBranchesParams = { pathParams: NonNullable<ListDatabaseBranchesOptions["path"]>; queryParams?: NonNullable<ListDatabaseBranchesOptions["query"]>; headers?: NonNullable<ListDatabaseBranchesOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type DiscardDatabaseBranchParams = { pathParams: NonNullable<DiscardDatabaseBranchOptions["path"]> };
 type ListCacheRulesParams = { pathParams: NonNullable<ListCacheRulesOptions["path"]>; queryParams?: NonNullable<ListCacheRulesOptions["query"]>; headers?: NonNullable<ListCacheRulesOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
@@ -456,7 +456,7 @@ type ListOrgMembersParams = { pathParams: NonNullable<ListOrgMembersOptions["pat
 type UpdateOrgMemberRoleParams = { pathParams: NonNullable<UpdateOrgMemberRoleOptions["path"]>; body: NonNullable<UpdateOrgMemberRoleOptions["body"]> };
 type RemoveOrgMemberParams = { pathParams: NonNullable<RemoveOrgMemberOptions["path"]> };
 type ListOrgInvitationsParams = { pathParams: NonNullable<ListOrgInvitationsOptions["path"]>; queryParams?: NonNullable<ListOrgInvitationsOptions["query"]>; headers?: NonNullable<ListOrgInvitationsOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
-type CreateOrgInvitationParams = { pathParams: NonNullable<CreateOrgInvitationOptions["path"]>; body: NonNullable<CreateOrgInvitationOptions["body"]> };
+type CreateOrgInvitationParams = { pathParams: NonNullable<CreateOrgInvitationOptions["path"]>; body: NonNullable<CreateOrgInvitationOptions["body"]>; headers?: NonNullable<CreateOrgInvitationOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
 type RevokeOrgInvitationParams = { pathParams: NonNullable<RevokeOrgInvitationOptions["path"]> };
 type LintMigrationParams = { pathParams: NonNullable<LintMigrationOptions["path"]>; body: NonNullable<LintMigrationOptions["body"]> };
 type GetOnboardingProgressParams = { pathParams: NonNullable<GetOnboardingProgressOptions["path"]>; headers?: NonNullable<GetOnboardingProgressOptions["headers"]>; onResponse?: (response: Response) => void | Promise<void> };
