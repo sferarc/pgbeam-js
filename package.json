@@ -36,16 +36,24 @@
     "dist"
   ],
   "keywords": [
+    "ai-agents",
+    "mcp",
+    "database-security",
     "pgbeam",
     "postgresql",
     "postgres",
     "proxy",
-    "connection-pooling",
-    "query-caching",
     "sdk",
     "api-client"
   ],
   "homepage": "https://pgbeam.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sferarc/pgbeam-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sferarc/pgbeam-js/issues"
+  },
   "scripts": {
     "build": "bunchee",
     "prepublishOnly": "pnpm build",
